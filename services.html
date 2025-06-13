@@ -138,5 +138,18 @@
         lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
       }, false);
     </script>
+    <script>
+        const hamburger = document.querySelector('.hamburger-menu');
+        const navMenu = document.querySelector('header nav');
+
+        hamburger.addEventListener('click', () => {
+            // Toggle hamburger animation
+            hamburger.classList.toggle('is-active');
+            // Toggle menu visibility
+            navMenu.classList.toggle('nav-open');
+        });
+    </script>
+    </body>
+</html>
 </body>
 </html>
