@@ -885,3 +885,7 @@ body.modal-open #contact-modal-overlay {
     text-align: center;
     margin-bottom: 25px;
 }
+/* Styling for the Apply Now button on the services page */
+.apply-btn {
+    margin-top: 15px;
+}
