@@ -810,3 +810,73 @@ footer {
 .transparent-header-page header.scrolled nav ul li a.active {
     color: #007bff; /* Active link color */
 }
+/* ========================================= */
+/* CONTACT MODAL STYLES                      */
+/* ========================================= */
+
+#contact-modal-overlay {
+    position: fixed; /* Sit on top of the page content */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Black background with opacity */
+    z-index: 2000; /* Display on top of everything */
+    justify-content: center;
+    align-items: center;
+    display: none; /* Hidden by default */
+}
+
+/* This class will be added by JavaScript to show the modal */
+body.modal-open #contact-modal-overlay {
+    display: flex;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 30px 40px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    animation: slide-down 0.3s ease-out;
+}
+
+@keyframes slide-down {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #aaa;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.modal-close:hover {
+    color: #333;
+}
+
+.modal-content h3 {
+    text-align: center;
+    margin-top: 0;
+    color: #0056b3;
+}
+
+.modal-content p {
+    text-align: center;
+    margin-bottom: 25px;
+}
