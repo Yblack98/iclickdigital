@@ -213,6 +213,24 @@
             }
         });
     </script>
+    <script>
+        const applyButtons = document.querySelectorAll('.apply-btn');
+        const modalSubjectField = document.getElementById('modal-subject');
+
+        applyButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Get the service name from the button's data-service attribute
+                const serviceName = button.dataset.service;
+
+                // Set the value of the modal's subject field
+                if (modalSubjectField) {
+                    modalSubjectField.value = `Service Inquiry: ${serviceName}`;
+                }
+            });
+        });
+    </script>
+    </body>
+</html>
     </body>
 </html>
     </body>
