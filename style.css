@@ -500,6 +500,7 @@ section h2.section-title::after, section h3.section-title::after {
 }
 .form-group input[type="text"],
 .form-group input[type="email"],
+.form-group input[type="tel"],
 .form-group textarea {
     width: 100%;
     padding: 12px;
@@ -512,6 +513,7 @@ section h2.section-title::after, section h3.section-title::after {
 }
 .form-group input[type="text"]:focus,
 .form-group input[type="email"]:focus,
+.form-group input[type="tel"]:focus,
 .form-group textarea:focus {
     border-color: var(--secondary-color);
     outline: none;
