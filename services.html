@@ -182,6 +182,33 @@
             navMenu.classList.toggle('nav-open');
         });
     </script>
+    <script>
+        const openModalTriggers = document.querySelectorAll('.js-open-contact-modal');
+        const closeModalButton = document.querySelector('.modal-close');
+        const modalOverlay = document.getElementById('contact-modal-overlay');
+
+        openModalTriggers.forEach(trigger => {
+            trigger.addEventListener('click', (event) => {
+                event.preventDefault(); // Stop the link from going to contact.html
+                document.body.classList.add('modal-open');
+            });
+        });
+
+        const closeModal = () => {
+            document.body.classList.remove('modal-open');
+        };
+
+        closeModalButton.addEventListener('click', closeModal);
+
+        modalOverlay.addEventListener('click', (event) => {
+            // Close the modal if the overlay itself (the dark background) is clicked
+            if (event.target === modalOverlay) {
+                closeModal();
+            }
+        });
+    </script>
+    </body>
+</html>
     </body>
 </html>
 </body>
