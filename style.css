@@ -1,29 +1,24 @@
-/* General Body Styles */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto:wght@400;700&display=swap');
-
+/* ========================================= */
+/* 1. VARIABLES & GENERAL STYLES             */
+/* ========================================= */
 :root {
-    --primary-color: #0056b3; /* Blue from logo */
-    --primary-hover-color: #00418a; /* Darker blue for hover */
-    --secondary-color: #007bff; /* Brighter blue for accents/buttons */
-    --secondary-hover-color: #0056b3; 
-    --text-color: #333333;
-    --text-light-color: #555555;
-    --background-color: #ffffff;
-    --light-gray-background: #f9f9f9;
-    --border-color: #e0e0e0;
-    --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    --card-hover-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
-    --border-radius: 8px;
-    --font-family-headings: 'Poppins', sans-serif;
-    --font-family-body: 'Roboto', sans-serif;
+    --primary-color: #007bff;
+    --primary-darker: #0056b3;
+    --accent-color: #f0ad4e; /* A warm gold/orange for special buttons */
+    --text-dark: #212529; /* A professional dark grey for text */
+    --text-light: #ffffff;
+    --background-soft: #f8f9fa; /* A very light grey for section backgrounds */
+    --border-color: #dee2e6;
+    --font-heading: 'Merriweather', serif;
+    --font-body: 'Lato', sans-serif;
 }
 
 body {
-    font-family: var(--font-family-body);
+    font-family: var(--font-body);
     margin: 0;
     padding: 0;
-    background-color: var(--light-gray-background);
-    color: var(--text-color);
+    background-color: var(--text-light);
+    color: var(--text-dark);
     line-height: 1.7;
     font-size: 16px;
 }
@@ -32,821 +27,252 @@ body {
     width: 90%;
     max-width: 1100px;
     margin: auto;
-    overflow: hidden; /* Clears floats */
+    overflow: hidden;
     padding: 0 20px;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-family-headings);
-    color: var(--primary-color);
-    font-weight: 600;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--text-dark);
 }
 
-p {
-    color: var(--text-light-color);
-    margin-bottom: 1em;
+.intro-paragraph {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 1.15em;
+    color: #6c757d;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-a {
-    color: var(--secondary-color);
-    text-decoration: none;
-    transition: color 0.3s ease;
+section h2 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 25px;
 }
 
-a:hover {
-    color: var(--primary-hover-color);
-    text-decoration: underline;
-}
-
-img {
-    max-width: 100%;
-    height: auto;
-}
-
-/* Header Styles */
+/* ========================================= */
+/* 2. HEADER STYLES                          */
+/* ========================================= */
 header {
-    background: var(--background-color);
+    background: var(--text-light);
     padding: 1rem 0;
     border-bottom: 1px solid var(--border-color);
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    transition: top 0.3s ease-in-out;
+    transition: top 0.3s ease-in-out, background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
+
 .header-hidden {
     top: -150px;
 }
 
-
-header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-header .logo-container {
-    display: flex;
-    align-items: center;
-}
-
-header #logo {
-    height: 55px; 
-    margin-right: 15px;
-}
-
-header h1 {
+header .logo-container h1 {
     margin: 0;
-    font-size: 1.7em; /* Slightly reduced for balance */
-    font-weight: 700;
-}
-
-header nav ul {
-    padding: 0;
-    list-style: none;
-    margin: 0;
-    display: flex;
-}
-
-header nav ul li {
-    margin-left: 25px;
+    font-size: 1.8em;
+    color: var(--primary-darker);
+    transition: color 0.3s ease-in-out;
 }
 
 header nav ul li a {
-    color: var(--text-color);
-    font-weight: 600;
-    font-family: var(--font-family-headings);
-    padding-bottom: 5px; /* For border effect */
-    border-bottom: 2px solid transparent;
+    color: var(--text-dark);
+    font-weight: 700;
 }
 
 header nav ul li a:hover,
 header nav ul li a.active {
-    color: var(--secondary-color);
-    border-bottom: 2px solid var(--secondary-color);
-    text-decoration: none;
+    color: var(--primary-color);
 }
 
-/* Hero Section */
-#hero {
-    background: linear-gradient(rgba(0, 86, 179, 0.8), rgba(0, 65, 138, 0.9)), url('images/hero_background_placeholder.jpg') no-repeat center center/cover; /* Add your image */
-    color: #fff;
-    padding: 100px 0; /* Increased padding */
-    text-align: center;
-    min-height: 70vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+/* Transparent Header Styles */
+body.transparent-header-page header {
+    background-color: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-#hero h2 {
-    font-size: 3.2em; /* Larger font size */
-    margin-bottom: 25px;
-    font-weight: 700;
-    color: #fff; /* Ensure hero heading is white */
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+body.transparent-header-page header .logo-container h1,
+body.transparent-header-page header nav ul li a {
+    color: var(--text-light);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
 }
 
-#hero p {
-    font-size: 1.3em; /* Larger font size */
-    margin-bottom: 40px;
-    max-width: 750px;
-    margin-left: auto;
-    margin-right: auto;
-    color: #f0f0f0; /* Lighter text color on hero */
-    line-height: 1.8;
+body.transparent-header-page header.scrolled {
+    background-color: var(--text-light);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
 }
 
+body.transparent-header-page header.scrolled .logo-container h1,
+body.transparent-header-page header.scrolled nav ul li a {
+    color: var(--text-dark);
+    text-shadow: none;
+}
+
+body.transparent-header-page header.scrolled nav ul li a.active {
+    color: var(--primary-color);
+}
+
+
+/* ========================================= */
+/* 3. BUTTONS & FORMS                         */
+/* ========================================= */
 .btn {
     display: inline-block;
-    background: var(--secondary-color);
-    color: #fff;
-    padding: 15px 35px; /* Increased padding */
-    text-decoration: none;
-    border-radius: var(--border-radius);
-    font-weight: 600;
-    font-family: var(--font-family-headings);
-    transition: all 0.3s ease;
-    margin: 10px;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    text-decoration: none;
+    text-align: center;
     border: none;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
 }
 
 .btn:hover {
-    background: var(--secondary-hover-color);
-    transform: translateY(-2px); /* Slight lift on hover */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.btn.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+}
+
+.btn.btn-primary:hover {
+    background-color: var(--primary-darker);
+}
+
+.btn.btn-secondary {
+    background-color: var(--text-dark);
+    color: var(--text-light);
+}
+
+.btn.btn-secondary:hover {
+    background-color: #000;
+}
+
+.btn.btn-accent {
+    background-color: var(--accent-color);
+    color: var(--text-light);
+}
+
+.btn.btn-accent:hover {
+    background-color: #e69500;
+}
+
+.btn-learn-more {
+    color: var(--primary-color);
+    font-weight: 700;
     text-decoration: none;
-    color: #fff;
 }
-
-.btn-secondary {
-    background: transparent; /* Made transparent explicit */
-    color: #fff;
-    border: 2px solid #fff;
-}
-.btn-secondary:hover {
-    background: #fff;
-    color: var(--primary-color);
-}
-
-/* Section Styling */
-section {
-    padding: 80px 0; /* Consistent padding for sections */
-}
-
-section h2.section-title, section h3.section-title { /* For generic section titles */
-    text-align: center;
-    font-size: 2.5em;
-    margin-bottom: 60px; /* More space after title */
-    position: relative;
-    padding-bottom: 20px;
-}
-/* Underline effect for section titles */
-section h2.section-title::after, section h3.section-title::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 4px;
-    background-color: var(--secondary-color);
-    border-radius: 2px;
-}
-
-
-/* Intro Services Section (Homepage) */
-#intro-services {
-    background-color: var(--background-color); /* White background for this section */
-}
-#intro-services h3 { /* Used for section title already */
-    font-size: 2.5em;
-    margin-bottom: 60px;
-    color: var(--primary-color);
-    text-align: center;
-}
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* Min width for cards */
-    gap: 30px;
-}
-.service-item-intro {
-    background: var(--background-color);
-    padding: 30px; /* More padding */
-    border-radius: var(--border-radius);
-    box-shadow: var(--card-shadow);
-    text-align: left;
-    transition: all 0.3s ease;
-}
-.service-item-intro:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--card-hover-shadow);
-}
-.service-item-intro h4 {
-    color: var(--primary-color);
-    margin-top: 0;
-    margin-bottom: 15px; /* Spacing */
-    font-size: 1.4em;
-}
-.service-item-intro p {
-    font-size: 0.95em;
-    margin-bottom: 20px;
-}
-.service-item-intro a {
-    color: var(--secondary-color);
-    text-decoration: none;
-    font-weight: bold;
-    font-family: var(--font-family-headings);
-}
-.service-item-intro a:hover {
+.btn-learn-more:hover {
     text-decoration: underline;
 }
 
-/* CTA Home Section */
-#cta-home {
-    background: var(--primary-color);
-    color: #fff;
-    padding: 70px 0; /* More padding */
-    text-align: center;
-}
-#cta-home h3 {
-    font-size: 2.2em;
-    margin-bottom: 20px;
-    color: #fff;
-}
-#cta-home p {
-    color: #f0f0f0;
-    margin-bottom: 30px;
-}
 
-
-/* About Us Page */
-#about-us-content h2, #team h2, #services-page h2, #portfolio-page h2, #contact-page h2 { /* Standardized section titles */
-    text-align: center;
-    font-size: 2.5em;
-    margin-bottom: 60px;
-    color: var(--primary-color);
-    position: relative;
-    padding-bottom: 20px;
-}
-#about-us-content h2::after, #team h2::after, #services-page h2::after, #portfolio-page h2::after, #contact-page h2::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 4px;
-    background-color: var(--secondary-color);
-    border-radius: 2px;
-}
-#about-us-content h3 { /* For Mission/Vision */
-    color: var(--primary-color);
-    font-size: 1.8em;
-    margin-top: 40px;
-    margin-bottom: 15px;
-}
-
-/* Team Section */
-.team-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    text-align: center;
-}
-.team-member {
-    background: var(--background-color);
-    padding: 25px;
-    border-radius: var(--border-radius);
-    box-shadow: var(--card-shadow);
-    transition: all 0.3s ease;
-}
-.team-member:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--card-hover-shadow);
-}
-.team-member img {
-    width: 120px;  /* <<< CHANGED FROM 160px */
-    height: 120px; /* <<< CHANGED FROM 160px */
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 20px;
-    border: 3px solid var(--secondary-color); /* <<< CHANGED FROM 4px */
-}
-.team-member h4 {
-    margin-bottom: 8px;
-    color: var(--text-color);
-    font-size: 1.3em;
-}
-.team-member .role {
-    font-style: normal;
-    font-weight: 600;
-    color: var(--secondary-color);
-    margin-bottom: 10px;
-    font-size: 0.9em;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-.team-member p:not(.role) {
-    font-size: 0.9em;
-}
-
-/* Services Page */
-#services-page .intro-paragraph {
-    text-align: center;
-    margin-bottom: 60px; /* More space */
-    font-size: 1.15em;
-    color: var(--text-light-color);
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-}
-.service-detail {
-    background: var(--background-color);
-    padding: 35px; /* More padding */
-    margin-bottom: 30px;
-    border-radius: var(--border-radius);
-    box-shadow: var(--card-shadow);
-    transition: box-shadow 0.3s ease;
-}
-.service-detail:hover {
-    box-shadow: var(--card-hover-shadow);
-}
-.service-detail h3 {
-    color: var(--primary-color);
-    margin-top: 0;
-    margin-bottom: 15px;
-    font-size: 1.8em;
-}
-
-/* Portfolio Page */
-#portfolio-page .intro-paragraph {
-    text-align: center;
-    margin-bottom: 60px;
-    font-size: 1.15em;
-    color: var(--text-light-color);
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-}
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-}
-.portfolio-item {
-    background: var(--background-color);
-    border-radius: var(--border-radius);
-    box-shadow: var(--card-shadow);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column; /* Ensure content flows well */
-    transition: all 0.3s ease;
-}
-.portfolio-item:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--card-hover-shadow);
-}
-.portfolio-item img {
-    width: 100%;
-    height: 220px; 
-    object-fit: cover;
-    display: block;
-}
-.portfolio-item-content { /* New div to wrap text content */
-    padding: 25px;
-    flex-grow: 1; /* Allow content to take available space */
-    display: flex;
-    flex-direction: column;
-}
-.portfolio-item-content h4 {
-    color: var(--primary-color);
-    margin-top: 0;
-    margin-bottom: 10px;
-    font-size: 1.4em;
-}
-.portfolio-item-content p {
-    font-size: 0.95em;
-    margin-bottom: 15px;
-    flex-grow: 1; /* Pushes button to bottom */
-}
-.portfolio-item-content .btn-learn-more { /* Use the global .btn style */
-    background: var(--secondary-color);
-    color: #fff;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: var(--border-radius);
-    font-size: 0.9em;
-    font-weight: 600;
-    text-align: center;
-    margin-top: auto; /* Pushes button to bottom */
-    align-self: flex-start; /* Align button to start */
-}
-.portfolio-item-content .btn-learn-more:hover {
-    background: var(--secondary-hover-color);
-    color: #fff;
-    text-decoration: none;
-}
-
-
-/* Contact Page */
-#contact-page .intro-paragraph {
-    text-align: center;
-    margin-bottom: 60px;
-    font-size: 1.15em;
-    color: var(--text-light-color);
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-}
-.contact-content-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 40px;
-}
-.contact-form {
-    flex: 2;
-    background: var(--background-color);
-    padding: 35px;
-    border-radius: var(--border-radius);
-    box-shadow: var(--card-shadow);
-}
-.contact-details {
-    flex: 1;
-    background: var(--background-color);
-    padding: 35px;
-    border-radius: var(--border-radius);
-    box-shadow: var(--card-shadow);
-}
-.contact-form h3, .contact-details h3 {
-    color: var(--primary-color);
-    margin-top: 0;
-    margin-bottom: 25px;
-    font-size: 1.8em;
-}
-.form-group {
-    margin-bottom: 25px;
-}
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-    font-family: var(--font-family-headings);
-    font-size: 0.95em;
-}
-/* This new rule now includes 'select' to style the dropdown */
-.form-group input[type="text"],
-.form-group input[type="email"],
-.form-group input[type="tel"],
-.form-group input[type="password"],
+/* Form Styles */
+.form-group input,
 .form-group textarea,
 .form-group select {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
     border-radius: 4px;
     box-sizing: border-box;
-    /* The following line helps ensure consistent height */
-    height: 40px; 
+    font-family: var(--font-body);
+    font-size: 1rem;
 }
-
-/* Textarea has its own height rule */
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+}
+.form-group select {
+    height: 44px;
+}
 .form-group textarea {
     height: auto;
     resize: vertical;
 }
-    font-family: var(--font-family-body);
-    font-size: 1em;
-    transition: border-color 0.3s ease;
-}
-.form-group input[type="text"]:focus,
-.form-group input[type="email"]:focus,
-.form-group input[type="tel"]:focus,
-.form-group textarea:focus {
-    border-color: var(--secondary-color);
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
-}
-.form-group textarea {
-    resize: vertical;
-    min-height: 120px;
-}
-.contact-details p {
-    margin-bottom: 20px;
-    font-size: 1.05em;
-}
-.contact-details strong {
-    color: var(--text-color);
-    font-weight: 600;
-}
-.contact-details a {
-    color: var(--secondary-color);
-}
-.social-links-contact {
-    margin-top: 20px;
-}
-.social-links-contact a {
-    display: inline-block;
-    margin-right: 15px;
-    color: var(--primary-color);
-    text-decoration: none;
-    font-size: 1.5em; /* Larger icons */
-}
-.social-links-contact a:hover {
-    color: var(--secondary-color);
-}
 
-
-/* Footer Styles */
-footer {
-    background: var(--text-color); /* Darker background */
-    color: #a0a0a0; /* Lighter grey for text */
-    padding: 60px 0 30px 0; /* More padding */
-    margin-top: 80px; /* More space before footer */
-}
-
-.footer-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 40px; /* Increased gap */
-    margin-bottom: 40px;
-}
-
-.footer-content h4 {
-    color: #fff; /* White headings in footer */
-    margin-bottom: 20px;
-    font-size: 1.3em;
-    font-weight: 600;
-}
-
-.footer-content p,
-.footer-content ul li a {
-    color: #c0c0c0; /* Slightly brighter than default footer text */
-    text-decoration: none;
-    font-size: 0.95em;
-    line-height: 1.8;
-}
-.footer-content ul {
-    list-style: none;
-    padding: 0;
-}
-.footer-content ul li {
-    margin-bottom: 10px; /* Increased spacing */
-}
-.footer-content ul li a:hover {
-    color: var(--secondary-color);
-    text-decoration: underline;
-}
-.footer-about .social-links {
-    margin-top: 20px;
-}
-.footer-about .social-links a {
-    display: inline-block;
-    margin-right: 12px;
-    color: #c0c0c0;
-    font-size: 1.4em; 
-    transition: color 0.3s ease;
-}
-.footer-about .social-links a:hover {
-    color: var(--secondary-color);
-}
-
-.copyright {
-    text-align: center;
-    padding-top: 30px;
-    border-top: 1px solid #444; /* Subtler border */
-    font-size: 0.9em;
-    color: #888;
-}
-
-
-/* Responsive Design Adjustments */
-@media (max-width: 992px) {
-    #hero h2 {
-        font-size: 2.8em;
-    }
-    #hero p {
-        font-size: 1.2em;
-    }
-}
-
-@media (max-width: 768px) {
-    body {
-        font-size: 15px;
-    }
-    header .container {
-        flex-direction: column;
-        text-align: center;
-    }
-    header .logo-container {
-        margin-bottom: 15px;
-    }
-    header nav {
-        width: 100%; /* Ensure nav takes full width */
-    }
-    header nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
-    header nav ul li {
-        margin: 10px 0;
-    }
-    header nav ul li a, header nav ul li a.active {
-        border-bottom: none; /* Remove border for stacked nav */
-        padding-bottom: 0;
-    }
-    header nav ul li a:hover {
-        color: var(--secondary-color);
-    }
-
-    #hero {
-        padding: 60px 0;
-        min-height: auto;
-    }
-    #hero h2 {
-        font-size: 2.2em;
-    }
-    #hero p {
-        font-size: 1em;
-    }
-    .btn {
-        padding: 12px 25px;
-        font-size: 0.95em;
-    }
-
-    section {
-        padding: 60px 0;
-    }
-    section h2.section-title, section h3.section-title, 
-    #about-us-content h2, #team h2, #services-page h2, #portfolio-page h2, #contact-page h2 {
-        font-size: 2em;
-        margin-bottom: 40px;
-    }
-    
-    .contact-content-wrapper {
-        flex-direction: column;
-    }
-    .contact-details {
-        margin-top: 30px; /* Space when stacked */
-    }
-
-    .footer-content {
-        grid-template-columns: 1fr; /* Stack footer columns */
-        text-align: center;
-    }
-    .footer-about .social-links {
-        justify-content: center; /* Center social links in footer when stacked */
-    }
-}
-/* --- Hamburger Menu Icon Styling --- */
-.hamburger-menu {
-    display: none; /* Hidden on desktop */
-    flex-direction: column;
-    justify-content: space-around;
-    width: 30px;
-    height: 25px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    /* START: Added lines for the fix */
-    position: absolute; /* Position relative to the header container */
-    top: 35px; /* Adjust vertical position */
-    right: 30px; /* Adjust horizontal position */
-    z-index: 1100; /* Lifts the button above other content */
-    /* END: Added lines for the fix */
-}
-
-.hamburger-menu .bar {
-    height: 3px;
-    width: 100%;
-    background-color: #333;
-    border-radius: 10px;
-    transition: all 0.3s ease-in-out;
-}
-
-/* --- Responsive Styles applied on screens 768px or less --- */
-@media (max-width: 768px) {
-    /* Adjust font sizes for mobile */
-    #hero h2 {
-        font-size: 2em;
-    }
-
-    header h1 {
-        font-size: 1.5em; /* Make header title smaller */
-    }
-
-    /* --- Hamburger Menu Logic --- */
-    .hamburger-menu {
-        display: flex; /* Show the hamburger icon on mobile */
-    }
-
-    header nav {
-        position: fixed;
-        top: 0;
-        left: 100%; /* Start off-screen to the right */
-        width: 100%;
-        height: 100vh; /* Full viewport height */
-        background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent white background */
-        backdrop-filter: blur(5px);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transition: left 0.3s ease-in-out;
-    }
-
-    header nav.nav-open {
-        left: 0; /* Slide the menu into view */
-    }
-
-    header nav ul {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    header nav ul li {
-        display: block;
-        margin: 20px 0;
-    }
-
-    header nav ul li a {
-        font-size: 1.5em; /* Make menu links bigger for easier tapping */
-    }
-
-    /* --- Animate Hamburger to an "X" when menu is open --- */
-    .hamburger-menu.is-active .bar:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-    }
-    .hamburger-menu.is-active .bar:nth-child(2) {
-        opacity: 0;
-    }
-    .hamburger-menu.is-active .bar:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
-    }
-}
 /* ========================================= */
-/* TRANSPARENT HEADER STYLES                */
+/* 4. PAGE SECTIONS & CARDS                   */
 /* ========================================= */
 
-/* This applies only to the homepage body */
-.transparent-header-page header {
-    background-color: transparent;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* A subtle line for style */
+#hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop');
+    color: var(--text-light);
+    padding: 120px 0;
 }
 
-/* Change link colors to be visible on a dark hero image */
-.transparent-header-page header h1,
-.transparent-header-page header nav ul li a {
-    color: #fff;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Add shadow for readability */
+#intro-services, #team {
+    background-color: var(--background-soft);
+    padding: 80px 0;
 }
 
-/* This class gets added by JavaScript when you scroll */
-.transparent-header-page header.scrolled {
-    background-color: #fff; /* Solid white background on scroll */
-    border-bottom: 1px solid #ddd;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+.service-item-intro, .team-member, .service-detail, .portfolio-item {
+    background: var(--text-light);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 25px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Revert link colors to normal when scrolled */
-.transparent-header-page header.scrolled h1,
-.transparent-header-page header.scrolled nav ul li a {
-    color: #333; /* Default text color */
-    text-shadow: none; /* Remove the shadow */
+.service-item-intro:hover, .team-member:hover, .service-detail:hover, .portfolio-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
 }
 
-/* Ensure active link stays blue even when scrolled */
-.transparent-header-page header.scrolled nav ul li a.active {
-    color: #007bff; /* Active link color */
+.service-detail h3 {
+    color: var(--primary-darker);
 }
+.apply-btn {
+    margin-top: 15px;
+}
+
+
 /* ========================================= */
-/* CONTACT MODAL STYLES                      */
+/* 5. MODAL & FLOATING BUTTONS               */
 /* ========================================= */
+.floating-contact-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 1500;
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4);
+    border-radius: 50px;
+    padding: 12px 25px; /* Use same padding as other buttons */
+}
+.floating-contact-btn:hover {
+    background-color: var(--primary-darker);
+}
 
 #contact-modal-overlay {
-    position: fixed; /* Sit on top of the page content */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); /* Black background with opacity */
-    z-index: 2000; /* Display on top of everything */
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 2000;
     justify-content: center;
     align-items: center;
-    display: none; /* Hidden by default */
+    display: none;
 }
-
-/* This class will be added by JavaScript to show the modal */
 body.modal-open #contact-modal-overlay {
     display: flex;
 }
-
 .modal-content {
-    background: #fff;
+    background: var(--text-light);
     padding: 30px 40px;
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
@@ -855,18 +281,10 @@ body.modal-open #contact-modal-overlay {
     position: relative;
     animation: slide-down 0.3s ease-out;
 }
-
 @keyframes slide-down {
-    from {
-        transform: translateY(-50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
 }
-
 .modal-close {
     position: absolute;
     top: 10px;
@@ -878,38 +296,95 @@ body.modal-open #contact-modal-overlay {
     border: none;
     cursor: pointer;
 }
+.modal-close:hover { color: var(--text-dark); }
+.modal-content h3 { text-align: center; margin-top: 0; color: var(--primary-darker); }
+.modal-content p { text-align: center; margin-bottom: 25px; }
 
-.modal-close:hover {
-    color: #333;
+
+/* ========================================= */
+/* 6. MOBILE RESPONSIVENESS & HAMBURGER      */
+/* ========================================= */
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    position: absolute;
+    top: 35px;
+    right: 30px;
+    z-index: 1100;
+}
+.hamburger-menu .bar {
+    height: 3px;
+    width: 100%;
+    background-color: var(--text-dark);
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+}
+body.transparent-header-page header:not(.scrolled) .hamburger-menu .bar {
+    background-color: var(--text-light);
 }
 
-.modal-content h3 {
-    text-align: center;
-    margin-top: 0;
-    color: #0056b3;
-}
-
-.modal-content p {
-    text-align: center;
-    margin-bottom: 25px;
-}
-/* Styling for the Apply Now button on the services page */
-.apply-btn {
-    margin-top: 15px;
-}
-/* THIS IS THE NEW, CORRECTED CSS */
-.floating-contact-btn {
-    position: fixed; /* Stays in place when you scroll */
-    bottom: 25px;   /* Default position for desktop */
-    right: 25px;    /* Default position for desktop */
-    z-index: 1500;  /* Stays on top of other content */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-}
-
-/* On mobile screens, raise the button higher to avoid browser UI */
 @media (max-width: 768px) {
-    .floating-contact-btn {
-        bottom: 80px; /* Raised position for mobile */
-        right: 20px;
+    #hero h2 { font-size: 2em; }
+    header h1 { font-size: 1.5em; }
+
+    .hamburger-menu { display: flex; }
+
+    header nav {
+        position: fixed;
+        top: 0;
+        left: 100%;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(5px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: left 0.3s ease-in-out;
     }
+    header nav.nav-open { left: 0; }
+    header nav ul { flex-direction: column; }
+    header nav ul li { display: block; margin: 20px 0; }
+    header nav ul li a { font-size: 1.5em; color: var(--text-dark) !important; text-shadow: none !important; }
+
+    .hamburger-menu.is-active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger-menu.is-active .bar:nth-child(2) { opacity: 0; }
+    .hamburger-menu.is-active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+    
+    body.transparent-header-page header.scrolled .hamburger-menu .bar { background-color: var(--text-dark); }
+    
+    .floating-contact-btn { bottom: 80px; }
+}
+
+/* ========================================= */
+/* 7. FOOTER                                 */
+/* ========================================= */
+footer {
+    background: #212529;
+    color: #f4f4f4;
+    padding: 60px 0 20px 0;
+    margin-top: 40px;
+}
+.footer-content h4 {
+    color: var(--text-light);
+    margin-bottom: 20px;
+    font-size: 1.2em;
+}
+.footer-content, .footer-content a {
+    color: #adb5bd;
+}
+.footer-content ul li a:hover {
+    color: var(--text-light);
+    text-decoration: underline;
+}
+.copyright {
+    border-top: 1px solid #495057;
+    color: #6c757d;
 }
