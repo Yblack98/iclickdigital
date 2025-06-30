@@ -7,12 +7,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="academy-page">
     <header>
         <div class="container">
             <div class="logo-container">
                 <img src="images/logo.png" alt="i-Click Logo" id="logo">
-                <h1>Iclick Digital Innovation Firm</h1>
+                <h1>Iclick Digital Academy</h1>
             </div>
             <nav>
                 <ul>
@@ -41,14 +41,12 @@
                         <h2>Join the Academy</h2>
                         <p>Unlock your potential by creating an account. Gain access to exclusive content, track your progress, and connect with a community of digital innovators.</p>
                     </div>
-
                     <div class="auth-form-panel">
                         <div class="auth-form-card active" id="initial-view">
                             <h3>Welcome Back!</h3>
                             <button class="btn btn-primary" data-show-form="login-card">Login</button>
                             <button class="btn btn-secondary" data-show-form="signup-card">Create Account</button>
                         </div>
-
                         <div class="auth-form-card" id="login-card">
                             <h3>Login to Your Account</h3>
                             <form id="login-form">
@@ -65,7 +63,6 @@
                                 <p class="form-link"><a href="#forgot-password">Forgot Password?</a></p>
                             </form>
                         </div>
-
                         <div class="auth-form-card" id="signup-card">
                             <h3>Create Your Account</h3>
                             <form id="signup-form">
@@ -114,13 +111,9 @@
             </div>
         </div>
     </section>
-
-    <a href="contact.html" class="floating-contact-btn btn btn-primary js-open-contact-modal">Contact Us</a>
-
+    
     <footer>
-        <div class="container">
-            </div>
-    </footer>
+        </footer>
 
     <div id="contact-modal-overlay">
         </div>
@@ -130,10 +123,10 @@
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
     
     <script>
-        // --- Standard Site-wide Scripts ---
+        // --- Standard Site-wide Scripts (Header, Hamburger, Modal) ---
+        let lastScrollTop = 0;
         const header = document.querySelector('header');
         const headerHeight = header.offsetHeight;
-        let lastScrollTop = 0;
         window.addEventListener("scroll", function() {
             let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             if (scrollTop > lastScrollTop && scrollTop > headerHeight){ header.classList.add('header-hidden'); } 
@@ -148,27 +141,9 @@
             navMenu.classList.toggle('nav-open');
         });
 
-        const openModalTriggers = document.querySelectorAll('.js-open-contact-modal');
-        const closeModalButton = document.querySelector('.modal-close');
-        const modalOverlay = document.getElementById('contact-modal-overlay');
-        openModalTriggers.forEach(trigger => {
-            trigger.addEventListener('click', (event) => {
-                event.preventDefault();
-                document.body.classList.add('modal-open');
-            });
-        });
-        const closeModal = () => {
-            document.body.classList.remove('modal-open');
-            document.getElementById('modal-selected-service').value = "";
-        };
-        if(closeModalButton) closeModalButton.addEventListener('click', closeModal);
-        if(modalOverlay) modalOverlay.addEventListener('click', (event) => {
-            if (event.target === modalOverlay) { closeModal(); }
-        });
-
         // --- Academy Page Specific Scripts ---
         
-        // 1. YOUR FIREBASE CONFIGURATION
+        // 1. YOUR PERSONAL FIREBASE CONFIGURATION (Corrected)
         const firebaseConfig = {
             apiKey: "AIzaSyB1C9RoG73nRWN558jQziiStlSr2YjaKLA",
             authDomain: "iclickdigitalacademy-9e319.firebaseapp.com",
@@ -178,27 +153,29 @@
             appId: "1:975873003687:web:fb03bcbc3945628bfccb82"
         };
 
-        // 2. INITIALIZE FIREBASE AND GET SERVICES
+        // 2. INITIALIZE FIREBASE
         firebase.initializeApp(firebaseConfig);
         const auth = firebase.auth();
         const db = firebase.firestore();
 
         // 3. GET PAGE ELEMENTS
-        const signupForm = document.getElementById('signup-form');
-        const loginForm = document.getElementById('login-form');
-        const userProfileSection = document.getElementById('user-profile');
         const authContainer = document.getElementById('auth-container');
-        const logoutButton = document.getElementById('logout-button');
+        const userProfileSection = document.getElementById('user-profile');
         const formPanel = document.querySelector('.auth-form-panel');
+        const loginForm = document.getElementById('login-form');
+        const signupForm = document.getElementById('signup-form');
+        const logoutButton = document.getElementById('logout-button');
+        const forgotPasswordLink = document.querySelector('a[href="#forgot-password"]');
+        const courseListContainer = document.getElementById('course-list');
 
-        // 4. AUTH STATE LISTENER (The Main Controller)
+        // 4. AUTH STATE LISTENER (This is the main controller that shows/hides content)
         auth.onAuthStateChanged(user => {
             if (user) {
-                // User is logged in
+                // User is logged in: Hide forms, show dashboard
                 authContainer.style.display = 'none';
                 userProfileSection.classList.remove('hidden');
                 
-                // Populate the dashboard
+                // Populate the dashboard with user's data
                 db.collection('users').doc(user.uid).get().then(doc => {
                     if (doc.exists) {
                         const userData = doc.data();
@@ -206,26 +183,23 @@
                         document.getElementById('dashboard-user-email').innerText = userData.email;
                     }
                 });
-                
-                // Load the courses
                 displayCourses();
-
             } else {
-                // User is logged out
+                // User is logged out: Show forms, hide dashboard
                 authContainer.style.display = 'block';
                 userProfileSection.classList.add('hidden');
             }
         });
 
-        // 5. FORM & VIEW SWITCHER LOGIC
-        if (formPanel) {
-            formPanel.addEventListener('click', (e) => {
-                if (e.target.matches('[data-show-form]')) {
-                    const formId = e.target.dataset.showForm;
-                    formPanel.querySelectorAll('.auth-form-card').forEach(card => card.classList.remove('active'));
-                    const targetForm = document.getElementById(formId);
-                    if (targetForm) targetForm.classList.add('active');
-                }
+        // 5. LOGIN LOGIC
+        if(loginForm) {
+            loginForm.addEventListener('submit', e => {
+                e.preventDefault();
+                const email = loginForm['login-identifier'].value;
+                const password = loginForm['login-password'].value;
+                auth.signInWithEmailAndPassword(email, password)
+                    .then(() => { loginForm.reset(); })
+                    .catch(err => alert(err.message));
             });
         }
 
@@ -254,31 +228,42 @@
                     .catch(err => alert("Error: " + err.message));
             });
         }
-
-        // 7. LOGIN LOGIC
-        if(loginForm) {
-            loginForm.addEventListener('submit', e => {
-                e.preventDefault();
-                const email = loginForm['login-identifier'].value;
-                const password = loginForm['login-password'].value;
-                auth.signInWithEmailAndPassword(email, password)
-                    .then(() => loginForm.reset())
-                    .catch(err => alert("Error: " + err.message));
+        
+        // 7. VIEW SWITCHER LOGIC (for Login/Sign-up tabs)
+        if (formPanel) {
+            formPanel.addEventListener('click', (e) => {
+                if (e.target.matches('[data-show-form]')) {
+                    const formId = e.target.dataset.showForm;
+                    formPanel.querySelectorAll('.auth-form-card').forEach(card => card.classList.remove('active'));
+                    const targetForm = document.getElementById(formId);
+                    if (targetForm) targetForm.classList.add('active');
+                }
             });
         }
 
         // 8. LOGOUT LOGIC
         if(logoutButton) {
             logoutButton.addEventListener('click', () => {
-                auth.signOut().then(() => alert("You have been logged out."));
+                auth.signOut().catch(error => console.error("Logout Error:", error));
             });
         }
-        
-        // 9. DISPLAY COURSES FUNCTION
-        function displayCourses() {
-            const courseListContainer = document.getElementById('course-list');
-            if (!courseListContainer) return;
 
+        // 9. FORGOT PASSWORD LOGIC
+        if (forgotPasswordLink) {
+            forgotPasswordLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                const email = prompt("Please enter your email address to send a password reset link:");
+                if (email) {
+                    auth.sendPasswordResetEmail(email)
+                        .then(() => alert("Password reset email sent! Check your inbox."))
+                        .catch(error => alert("Error: " + error.message));
+                }
+            });
+        }
+
+        // 10. DISPLAY COURSES FUNCTION
+        function displayCourses() {
+            if (!courseListContainer) return;
             db.collection('courses').get().then(snapshot => {
                 let courseHtml = '';
                 if (snapshot.empty) {
@@ -287,23 +272,13 @@
                 }
                 snapshot.forEach(doc => {
                     const course = doc.data();
-                    courseHtml += `
-                        <div class="course-item">
-                            <h4>${course.title}</h4>
-                            <p>${course.description}</p>
-                            <div>
-                                <span>${course.level} | ${course.duration}</span>
-                                <button class="btn btn-primary btn-enroll" data-course-id="${doc.id}">Enroll</button>
-                            </div>
-                        </div>
-                    `;
+                    courseHtml += `<div class="course-item"><h4>${course.title}</h4><p>${course.description}</p><div><span>${course.level} | ${course.duration}</span><button class="btn btn-primary btn-enroll" data-course-id="${doc.id}">Enroll</button></div></div>`;
                 });
                 courseListContainer.innerHTML = courseHtml;
             });
         }
-        
-        // 10. ENROLLMENT LOGIC
-        const courseListContainer = document.getElementById('course-list');
+
+        // 11. ENROLLMENT LOGIC
         if (courseListContainer) {
             courseListContainer.addEventListener('click', (e) => {
                 if (e.target.classList.contains('btn-enroll')) {
@@ -314,19 +289,15 @@
                         const userCourseRef = db.collection('users').doc(user.uid).collection('enrolledCourses').doc(courseId);
                         userCourseRef.set({ enrolledAt: firebase.firestore.FieldValue.serverTimestamp() })
                             .then(() => {
-                                alert("You have successfully enrolled!");
                                 enrollButton.innerText = "Enrolled";
                                 enrollButton.disabled = true;
                             })
-                            .catch(error => alert("There was an error enrolling in the course."));
-                    } else {
-                        alert("Please log in to enroll in a course.");
+                            .catch(error => alert("There was an error enrolling."));
                     }
                 }
             });
         }
-
     </script>
 </body>
-            </html>
-            
+    </html>
+    
