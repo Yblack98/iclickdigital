@@ -158,87 +158,64 @@
         </form>
     </div>
 </div>
-    <script>
-      // Combined Smart Header and Transparent Header Logic
-      let lastScrollTop = 0;
-      const header = document.querySelector('header');
-      const headerHeight = header.offsetHeight;
-      const body = document.body;
+   <script>
+    // --- Combined Smart Header and Transparent Header Logic ---
+    let lastScrollTop = 0;
+    const header = document.querySelector('header');
+    const headerHeight = header.offsetHeight;
+    const body = document.body;
 
-      window.addEventListener("scroll", function() {
+    window.addEventListener("scroll", function() {
         let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-        // --- Logic for Transparency (only on homepage) ---
-        // Checks if the body has the special class we added
+        // Logic for Transparency (only on homepage)
         if (body.classList.contains('transparent-header-page')) {
-            if (scrollTop > 50) { // Add solid background after scrolling 50px
+            if (scrollTop > 50) { 
                 header.classList.add('scrolled');
             } else {
                 header.classList.remove('scrolled');
             }
         }
         
-        // --- Logic for Hiding Header on Scroll Down ---
-        if (scrollTop > lastScrollTop && scrollTop > headerHeight){
-          // Scrolling Down
-          header.classList.add('header-hidden');
-        } else {
-          // Scrolling Up
-          header.classList.remove('header-hidden');
+        // Logic for Hiding Header on Scroll Down
+        if (scrollTop > lastScrollTop && scrollTop > headerHeight){ 
+            header.classList.add('header-hidden');
+        } else { 
+            header.classList.remove('header-hidden');
         }
         lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-      }, false);
-    </script>
-      <script>
-        const openModalTriggers = document.querySelectorAll('.js-open-contact-modal');
-        const closeModalButton = document.querySelector('.modal-close');
-        const modalOverlay = document.getElementById('contact-modal-overlay');
+    }, false);
 
-        openModalTriggers.forEach(trigger => {
-            trigger.addEventListener('click', (event) => {
-                event.preventDefault(); // Stop the link from going to contact.html
-                document.body.classList.add('modal-open');
-            });
+    // --- Hamburger Menu Logic ---
+    const hamburger = document.querySelector('.hamburger-menu');
+    const navMenu = document.querySelector('header nav');
+
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('is-active');
+        navMenu.classList.toggle('nav-open');
+    });
+
+    // --- Contact Modal Logic ---
+    const openModalTriggers = document.querySelectorAll('.js-open-contact-modal');
+    const closeModalButton = document.querySelector('.modal-close');
+    const modalOverlay = document.getElementById('contact-modal-overlay');
+
+    openModalTriggers.forEach(trigger => {
+        trigger.addEventListener('click', (event) => {
+            event.preventDefault();
+            document.body.classList.add('modal-open');
         });
-
-        const closeModal = () => {
-            document.body.classList.remove('modal-open');
-        };
-
-        closeModalButton.addEventListener('click', closeModal);
-
-        modalOverlay.addEventListener('click', (event) => {
-            // Close the modal if the overlay itself (the dark background) is clicked
-            if (event.target === modalOverlay) {
-                closeModal();
-            }
-        });
-    </script>
-    <script>
-        const openModalTriggers = document.querySelectorAll('.js-open-contact-modal');
-        const closeModalButton = document.querySelector('.modal-close');
-        const modalOverlay = document.getElementById('contact-modal-overlay');
-
-        openModalTriggers.forEach(trigger => {
-            trigger.addEventListener('click', (event) => {
-                event.preventDefault(); // Stop the link from going to contact.html
-                document.body.classList.add('modal-open');
-            });
-        });
-
-        const closeModal = () => {
-            document.body.classList.remove('modal-open');
-        };
-
-        closeModalButton.addEventListener('click', closeModal);
-
-        modalOverlay.addEventListener('click', (event) => {
-            // Close the modal if the overlay itself (the dark background) is clicked
-            if (event.target === modalOverlay) {
-                closeModal();
-            }
-        });
-    </script>
+    });
+    const closeModal = () => { 
+        document.body.classList.remove('modal-open'); 
+    };
+    closeModalButton.addEventListener('click', closeModal);
+    modalOverlay.addEventListener('click', (event) => {
+        if (event.target === modalOverlay) { 
+            closeModal(); 
+        }
+    });
+</script>
     </body>
 </html>
     </body>
