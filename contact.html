@@ -158,38 +158,65 @@
             </form>
         </div>
     </div>
-    <script>
-      // Smart Hiding Header Logic
-      let lastScrollTop = 0;
-      const header = document.querySelector('header');
-      const headerHeight = header.offsetHeight; // Get the actual height of the header
+<script>
+    // --- Combined Smart Header and Transparent Header Logic ---
+    let lastScrollTop = 0;
+    const header = document.querySelector('header');
+    const headerHeight = header.offsetHeight;
+    const body = document.body;
 
-      window.addEventListener("scroll", function() {
+    window.addEventListener("scroll", function() {
         let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-        // Make sure we scroll past the header height before hiding
-        if (scrollTop > lastScrollTop && scrollTop > headerHeight){
-          // Scrolling Down
-          header.classList.add('header-hidden');
-        } else {
-          // Scrolling Up
-          header.classList.remove('header-hidden');
+        // Logic for Transparency (only on homepage)
+        if (body.classList.contains('transparent-header-page')) {
+            if (scrollTop > 50) { 
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
         }
-        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
-      }, false);
-    </script>
-    <script>
-        const hamburger = document.querySelector('.hamburger-menu');
-        const navMenu = document.querySelector('header nav');
+        
+        // Logic for Hiding Header on Scroll Down
+        if (scrollTop > lastScrollTop && scrollTop > headerHeight){ 
+            header.classList.add('header-hidden');
+        } else { 
+            header.classList.remove('header-hidden');
+        }
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    }, false);
 
-        hamburger.addEventListener('click', () => {
-            // Toggle hamburger animation
-            hamburger.classList.toggle('is-active');
-            // Toggle menu visibility
-            navMenu.classList.toggle('nav-open');
+    // --- Hamburger Menu Logic ---
+    const hamburger = document.querySelector('.hamburger-menu');
+    const navMenu = document.querySelector('header nav');
+
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('is-active');
+        navMenu.classList.toggle('nav-open');
+    });
+
+    // --- Contact Modal Logic ---
+    const openModalTriggers = document.querySelectorAll('.js-open-contact-modal');
+    const closeModalButton = document.querySelector('.modal-close');
+    const modalOverlay = document.getElementById('contact-modal-overlay');
+
+    openModalTriggers.forEach(trigger => {
+        trigger.addEventListener('click', (event) => {
+            event.preventDefault();
+            document.body.classList.add('modal-open');
         });
-    </script>
-    </body>
+    });
+    const closeModal = () => { 
+        document.body.classList.remove('modal-open'); 
+    };
+    closeModalButton.addEventListener('click', closeModal);
+    modalOverlay.addEventListener('click', (event) => {
+        if (event.target === modalOverlay) { 
+            closeModal(); 
+        }
+    });
+</script>    
+</body>
 </html>
 </body>
 </html>
