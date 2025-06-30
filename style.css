@@ -631,4 +631,62 @@ footer {
         text-align: center;
     }
 }
+/* ========================================= */
+/* 11. ACADEMY USER DASHBOARD                */
+/* ========================================= */
+
+#user-profile {
+    background-color: var(--background-soft);
+    padding: 60px 0;
+}
+
+#user-profile .container {
+    max-width: 900px;
+}
+
+.dashboard-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.dashboard-header h2 {
+    font-size: 2.2em;
+    margin-bottom: 10px;
+}
+
+.dashboard-header p {
+    font-size: 1.1em;
+    color: #6c757d;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.dashboard-card {
+    background-color: var(--text-light);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.04);
+}
+
+.dashboard-card h3 {
+    margin-top: 0;
+    color: var(--primary-darker);
+}
+
+#logout-button {
+    display: block;
+    margin: 40px auto 0 auto;
+    width: fit-content;
+}
+
+@media (max-width: 768px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}
 
