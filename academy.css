@@ -132,4 +132,58 @@ body {
     .auth-welcome-panel { padding: 40px 30px; text-align: center; }
     .dashboard-grid { grid-template-columns: 1fr; }
 }
+/* ========================================= */
+/* 12. ACADEMY COURSE CARDS                  */
+/* ========================================= */
+
+#my-courses-list {
+    display: grid;
+    grid-template-columns: 1fr; /* Default to one column */
+    gap: 20px;
+}
+
+.course-card {
+    display: flex;
+    background-color: var(--text-light);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.course-card-img {
+    flex-shrink: 0;
+    width: 150px;
+    background-size: cover;
+    background-position: center;
+}
+
+.course-card-content {
+    padding: 20px;
+}
+
+.course-card-content h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.course-card-content p {
+    margin-bottom: 15px;
+    font-size: 0.95em;
+    color: #6c757d;
+}
+
+.course-card-meta {
+    font-size: 0.8em;
+    font-weight: 700;
+    color: #6c757d;
+    text-transform: uppercase;
+}
+
 
