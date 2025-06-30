@@ -103,16 +103,265 @@
         </div>
     </section>
 
-    <a href="contact.html" class="floating-contact-btn btn btn-primary js-open-contact-modal">
-        Contact Us
-    </a>
+    <a href="contact.html" class="floating-contact-btn btn btn-primary js-open-contact-modal">Contact Us</a>
 
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h4>Iclick Digital Innovation Firm</h4>
+                    <p>Innovation at Your Fingertips. Empowering businesses with innovative digital solutions that drive growth and engagement.</p>
+                     <div class="social-links">
+                        <a href="https://www.linkedin.com/in/muhammad-yasin-ibrahim-814ab0109" target="_blank">LinkedIn</a>
+                        <a href="https://www.facebook.com/iclick.digital.academy" target="_blank">Facebook</a>
+                        <a href="https://www.instagram.com/__yblack" target="_blank">Instagram</a>
+                        <a href="https://wa.me/message/4OTTZSJXH2C3A1" target="_blank">WhatsApp</a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="academy.html">Digital Academy</a></li>
+                        <li><a href="contact.html" class="js-open-contact-modal">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-services">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html#social-media">Social Media Management</a></li>
+                        <li><a href="services.html#content-creation">Content Creation</a></li>
+                        <li><a href="services.html#digital-strategy">Digital Strategy</a></li>
+                        <li><a href="services.html#brand-development">Brand Development</a></li>
+                        <li><a href="services.html#web-development">Web Development</a></li>
+                        <li><a href="services.html#data-analytics">Data Analytics</a></li>
+                        <li><a href="services.html#digital-literacy">Digital Literacy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <p>41C Sultan Bello Road, Sokoto, Nigeria</p>
+                    <p>Phone: 07084920844</p>
+                    <p>Email: info@iclickdigital.com</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Iclick Digital Innovation Firm. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <div id="contact-modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h3>Service Application</h3>
+            <p>Please fill out the form below to apply for the selected service.</p>
+            <form action="https://formspree.io/f/xqabkrln" method="POST">
+                <div class="form-group">
+                    <label for="modal-selected-service">Applying for Service:</label>
+                    <select id="modal-selected-service" name="selected_service" required>
+                        <option value="" disabled selected>-- Please choose a service --</option>
+                        <option value="Social Media Management">Social Media Management</option>
+                        <option value="Content Creation">Content Creation</option>
+                        <option value="Digital Strategy">Digital Strategy</option>
+                        <option value="Brand Development">Brand Development</option>
+                        <option value="Web Development">Web Development</option>
+                        <option value="Data Analytics">Data Analytics</option>
+                        <option value="Digital Literacy">Digital Literacy</option>
+                        <option value="Other">Other/General Inquiry</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="modal-name">Your Name:</label>
+                    <input type="text" id="modal-name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="modal-email">Email Address:</label>
+                    <input type="email" id="modal-email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="modal-phone">Phone Number (Optional):</label>
+                    <input type="tel" id="modal-phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="modal-message">Message:</label>
+                    <textarea id="modal-message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Send Application</button>
+            </form>
+        </div>
+    </div>
+    
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
-    
+
     <script>
-        // All necessary scripts for header, modal, hamburger, tabs, and Firebase will be combined here...
+        // Site-wide scripts
+        let lastScrollTop = 0;
+        const header = document.querySelector('header');
+        const headerHeight = header.offsetHeight;
+        window.addEventListener("scroll", function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop && scrollTop > headerHeight){ header.classList.add('header-hidden'); } 
+            else { header.classList.remove('header-hidden'); }
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        }, false);
+
+        const hamburger = document.querySelector('.hamburger-menu');
+        const navMenu = document.querySelector('header nav');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('is-active');
+            navMenu.classList.toggle('nav-open');
+        });
+
+        const openModalTriggers = document.querySelectorAll('.js-open-contact-modal');
+        const closeModalButton = document.querySelector('.modal-close');
+        const modalOverlay = document.getElementById('contact-modal-overlay');
+        openModalTriggers.forEach(trigger => {
+            trigger.addEventListener('click', (event) => {
+                event.preventDefault();
+                document.body.classList.add('modal-open');
+            });
+        });
+        const closeModal = () => {
+            document.body.classList.remove('modal-open');
+            document.getElementById('modal-selected-service').value = "";
+        };
+        closeModalButton.addEventListener('click', closeModal);
+        modalOverlay.addEventListener('click', (event) => {
+            if (event.target === modalOverlay) { closeModal(); }
+        });
+
+        // Academy Page Specific Scripts
+        // 1. YOUR FIREBASE CONFIGURATION
+        const firebaseConfig = {
+            apiKey: "AIzaSyB1C9RoG73nRWN558jQziiStlSr2YjaKLA",
+            authDomain: "iclickdigitalacademy-9e319.firebaseapp.com",
+            projectId: "iclickdigitalacademy-9e319",
+            storageBucket: "iclickdigitalacademy-9e319.appspot.com",
+            messagingSenderId: "975873003687",
+            appId: "1:975873003687:web:fb03bcbc3945628bfccb82"
+        };
+
+        // 2. INITIALIZE FIREBASE AND GET SERVICES
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        // 3. GET HTML ELEMENTS
+        const signupForm = document.getElementById('signup-form');
+        const loginForm = document.getElementById('login-form');
+        const profileSection = document.getElementById('user-profile');
+        const profileFullName = document.getElementById('profile-fullname');
+        const profileUsername = document.getElementById('profile-username');
+        const profileEmail = document.getElementById('profile-email');
+        const authContainer = document.getElementById('auth-container');
+        const logoutButton = document.getElementById('logout-button');
+
+        // 4. SIGN-UP LOGIC
+        if (signupForm) {
+            signupForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const fullName = signupForm['signup-fullname'].value;
+                const username = signupForm['signup-username'].value;
+                const email = signupForm['signup-email'].value;
+                const password = signupForm['signup-password'].value;
+                if (password !== signupForm['signup-confirm-password'].value) {
+                    alert("Passwords do not match!");
+                    return;
+                }
+                auth.createUserWithEmailAndPassword(email, password)
+                    .then(userCredential => {
+                        alert('Account created successfully!');
+                        return db.collection('users').doc(userCredential.user.uid).set({
+                            fullName: fullName,
+                            username: username,
+                            email: email,
+                            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                        });
+                    })
+                    .then(() => signupForm.reset())
+                    .catch(error => alert("Error: " + error.message));
+            });
+        }
+
+        // 5. LOGIN LOGIC
+        if (loginForm) {
+            loginForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = loginForm['login-identifier'].value;
+                const password = loginForm['login-password'].value;
+                auth.signInWithEmailAndPassword(email, password)
+                    .then(userCredential => loginForm.reset())
+                    .catch(error => alert("Error: " + error.message));
+            });
+        }
+
+        // 6. AUTH STATE LISTENER (Shows profile or forms)
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                db.collection('users').doc(user.uid).get().then(doc => {
+                    if (doc.exists) {
+                        const userData = doc.data();
+                        profileFullName.innerText = userData.fullName;
+                        profileUsername.innerText = userData.username;
+                        profileEmail.innerText = userData.email;
+                    }
+                    profileSection.classList.remove('hidden');
+                    authContainer.style.display = 'none';
+                });
+            } else {
+                profileSection.classList.add('hidden');
+                authContainer.style.display = 'block';
+            }
+        });
+
+        // 7. LOGOUT LOGIC
+        if(logoutButton) {
+            logoutButton.addEventListener('click', () => {
+                auth.signOut().then(() => alert("You have been logged out."));
+            });
+        }
+
+        // 8. FORGOT PASSWORD LOGIC
+        const forgotPasswordLink = document.querySelector('a[href="#forgot-password"]');
+        if (forgotPasswordLink) {
+            forgotPasswordLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                const email = prompt("Please enter your email address to send a password reset link:");
+                if (email) {
+                    auth.sendPasswordResetEmail(email)
+                        .then(() => alert("Password reset email sent! Please check your inbox."))
+                        .catch(error => alert("Error: " + error.message));
+                }
+            });
+        }
+        
+        // 9. ACADEMY TABS LOGIC
+        const tabButtons = document.querySelectorAll('.auth-tab-btn');
+        const formCards = document.querySelectorAll('.auth-form-card');
+        
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                const formId = button.dataset.form;
+                
+                formCards.forEach(card => {
+                    if (card.id === formId) {
+                        card.classList.add('active');
+                    } else {
+                        card.classList.remove('active');
+                    }
+                });
+            });
+        });
+
     </script>
 </body>
 </html>
