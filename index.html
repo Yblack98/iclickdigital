@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="transparent-header-page">
     <header>
         <div class="container">
             <div class="logo-container">
@@ -15,12 +15,13 @@
                 <h1>Iclick Digital Innovation Firm</h1>
             </div>
             <nav>
-                  <li><a href="index.html">Home</a></li>
-    <li><a href="about.html">About Us</a></li>
-    <li><a href="services.html">Services</a></li>
-    <li><a href="portfolio.html">Portfolio</a></li>
-    <li><a href="academy.html">Digital Academy</a></li>
-    <li><a href="contact.html" class="js-open-contact-modal">Contact Us</a></li>
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="contact.html" class="js-open-contact-modal">Contact Us</a></li>
+                </ul>
             </nav>
             <button class="hamburger-menu">
                 <div class="bar"></div>
@@ -43,22 +44,22 @@
         <div class="container">
             <h2>Key Services</h2>
             <div class="services-grid">
-             <div class="service-item-intro hidden-on-load">
+                <div class="service-item-intro">
                     <h4>Social Media Management</h4>
                     <p>Engaging content and strategic management to boost your brand's social presence.</p>
                     <a href="services.html#social-media" class="btn-learn-more">Learn More</a>
                 </div>
-                <div class="service-item-intro hidden-on-load">
+                <div class="service-item-intro">
                     <h4>Content Creation</h4>
                     <p>High-quality graphics, videos, and copy that captivate your audience.</p>
                     <a href="services.html#content-creation" class="btn-learn-more">Learn More</a>
                 </div>
-                <div class="service-item-intro hidden-on-load">
+                <div class="service-item-intro">
                     <h4>Web Development</h4>
                     <p>Professional website design to establish a strong and effective online presence.</p>
                     <a href="services.html#web-development" class="btn-learn-more">Learn More</a>
                 </div>
-                <div class="service-item-intro hidden-on-load">
+                <div class="service-item-intro">
                     <h4>Data Analytics</h4>
                     <p>Leveraging marketing analytics and data science to drive informed decisions.</p>
                     <a href="services.html#data-analytics" class="btn-learn-more">Learn More</a>
@@ -214,20 +215,5 @@
             if (event.target === modalOverlay) { closeModal(); }
         });
     </script>
-<script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                } else {
-                    // Optional: remove class if you want animation to repeat every time
-                    // entry.target.classList.remove('visible'); 
-                }
-            });
-        });
-
-        const elementsToAnimate = document.querySelectorAll('.hidden-on-load');
-        elementsToAnimate.forEach((el) => observer.observe(el));
-    </script>
-    </body>
+</body>
 </html>
