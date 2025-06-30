@@ -493,3 +493,44 @@ footer {
     color: #6c757d;
     font-size: 0.9em;
 }
+/* ========================================= */
+/* 9. ACADEMY PAGE TABS                      */
+/* ========================================= */
+
+.auth-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 30px;
+}
+
+.auth-tabs button {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1.1em;
+    padding: 15px 30px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    color: #6c757d;
+    border-bottom: 3px solid transparent;
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.auth-tabs button:hover {
+    color: var(--text-dark);
+}
+
+.auth-tabs button.active {
+    color: var(--primary-color);
+    border-bottom: 3px solid var(--primary-color);
+}
+
+/* Hide the inactive form card */
+.auth-form-card {
+    display: none;
+}
+
+/* Show the active form card */
+.auth-form-card.active {
+    display: block;
+}
