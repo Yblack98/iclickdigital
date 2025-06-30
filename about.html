@@ -3,21 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Iclick Digital Innovation Firm</title> <link rel="stylesheet" href="style.css">
+    <title>About Us - Iclick Digital Innovation Firm</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
         <div class="container">
             <div class="logo-container">
                 <img src="images/logo.png" alt="i-Click Logo" id="logo">
-                <h1>Iclick Digital Innovation Firm</h1> </div>
+                <h1>Iclick Digital Innovation Firm</h1>
+            </div>
             <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html" class="active">About Us</a></li>
                     <li><a href="services.html">Services</a></li>
                     <li><a href="portfolio.html">Portfolio</a></li>
-                  <li><a href="contact.html" class="js-open-contact-modal">Contact Us</a></li>
+                    <li><a href="contact.html" class="js-open-contact-modal">Contact Us</a></li>
                 </ul>
             </nav>
             <button class="hamburger-menu">
@@ -30,7 +33,8 @@
 
     <section id="about-us-content">
         <div class="container">
-            <h2>About Iclick Digital Innovation Firm</h2> <p>Iclick Digital Innovation Firm is a premier digital marketing agency based in Sokoto State, Nigeria. Founded by Muhammad Yasin Ibrahim, an ambitious Computer Science graduate from Sokoto State University, our firm is dedicated to helping businesses establish and enhance their digital presence.</p>
+            <h2>About Iclick Digital Innovation Firm</h2>
+            <p>Iclick Digital Innovation Firm is a premier digital marketing agency based in Sokoto State, Nigeria. Founded by Muhammad Yasin Ibrahim, an ambitious Computer Science graduate from Sokoto State University, our firm is dedicated to helping businesses establish and enhance their digital presence.</p>
             <p>At Iclick Digital, we combine creativity with technical expertise to deliver innovative digital solutions that drive growth and engagement for our clients. Our team of skilled professionals is passionate about staying ahead of digital trends and implementing cutting-edge strategies.</p>
             <p>We believe in building lasting relationships with our clients through transparency, reliability, and consistently delivering results that exceed expectations.</p>
 
@@ -48,7 +52,8 @@
             <p class="intro-paragraph">Meet the talented professionals behind Iclick Digital Innovation Firm.</p>
             <div class="team-grid">
                 <div class="team-member">
-                    <img src="images/yasin.jpg" alt="Muhammad Yasin Ibrahim - Founder & CEO" loading="lazy"> <h4>Muhammad Yasin Ibrahim</h4>
+                    <img src="images/yasin.jpg" alt="Muhammad Yasin Ibrahim - Founder & CEO" loading="lazy">
+                    <h4>Muhammad Yasin Ibrahim</h4>
                     <p class="role">Founder & CEO</p>
                     <p>Computer Science graduate from Sokoto State University with a passion for digital innovation.</p>
                 </div>
@@ -74,7 +79,7 @@
         </div>
     </section>
     
-    <a href="contact.html" class="floating-contact-btn btn js-open-contact-modal">
+    <a href="contact.html" class="floating-contact-btn btn btn-primary js-open-contact-modal">
         Contact Us
     </a>
 
@@ -98,16 +103,31 @@
                         <li><a href="about.html">About</a></li>
                         <li><a href="services.html">Services</a></li>
                         <li><a href="portfolio.html">Portfolio</a></li>
-                        <li><a href="academy.html">Digital Academy</a></li> <li><a href="contact.html" class="js-open-contact-modal">Contact Us</a></li>
+                        <li><a href="contact.html" class="js-open-contact-modal">Contact Us</a></li>
                     </ul>
                 </div>
                 <div class="footer-services">
-                    </div>
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html#social-media">Social Media Management</a></li>
+                        <li><a href="services.html#content-creation">Content Creation</a></li>
+                        <li><a href="services.html#digital-strategy">Digital Strategy</a></li>
+                        <li><a href="services.html#brand-development">Brand Development</a></li>
+                        <li><a href="services.html#web-development">Web Development</a></li>
+                        <li><a href="services.html#data-analytics">Data Analytics</a></li>
+                        <li><a href="services.html#digital-literacy">Digital Literacy</a></li>
+                    </ul>
+                </div>
                 <div class="footer-contact">
-                    </div>
+                    <h4>Contact Us</h4>
+                    <p>41C Sultan Bello Road, Sokoto, Nigeria</p>
+                    <p>Phone: 07084920844</p>
+                    <p>Email: info@iclickdigital.com</p>
+                </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2025 Iclick Digital Innovation Firm. All rights reserved.</p> </div>
+                <p>&copy; 2025 Iclick Digital Innovation Firm. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
@@ -147,12 +167,13 @@
                     <label for="modal-message">Message:</label>
                     <textarea id="modal-message" name="message" rows="5" required></textarea>
                 </div>
-                <button type="submit" class="btn">Send Application</button>
+                <button type="submit" class="btn btn-primary">Send Application</button>
             </form>
         </div>
     </div>
     
     <script>
+        // --- Smart Header Logic ---
         let lastScrollTop = 0;
         const header = document.querySelector('header');
         const headerHeight = header.offsetHeight;
@@ -162,43 +183,33 @@
             else { header.classList.remove('header-hidden'); }
             lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
         }, false);
-    </script>
 
-    <script>
+        // --- Hamburger Menu Logic ---
         const hamburger = document.querySelector('.hamburger-menu');
         const navMenu = document.querySelector('header nav');
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('is-active');
             navMenu.classList.toggle('nav-open');
         });
-    </script>
 
-    <script>
+        // --- Contact Modal Logic ---
         const openModalTriggers = document.querySelectorAll('.js-open-contact-modal');
-        const closeModalButton = document.querySelector('.modal-close'); // This line was missing
+        const closeModalButton = document.querySelector('.modal-close');
         const modalOverlay = document.getElementById('contact-modal-overlay');
-
         openModalTriggers.forEach(trigger => {
             trigger.addEventListener('click', (event) => {
                 event.preventDefault();
                 document.body.classList.add('modal-open');
             });
         });
-
-        // This is the single, correct closeModal function
         const closeModal = () => {
             document.body.classList.remove('modal-open');
-            document.getElementById('modal-selected-service').value = ""; 
+            document.getElementById('modal-selected-service').value = "";
         };
-
         closeModalButton.addEventListener('click', closeModal);
-
         modalOverlay.addEventListener('click', (event) => {
-            if (event.target === modalOverlay) { 
-                closeModal(); 
-            }
+            if (event.target === modalOverlay) { closeModal(); }
         });
     </script>
-
 </body>
 </html>
