@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iclick Digital Academy</title>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="academy.css"> 
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="academy.css">
 </head>
-<body>
+<body class="academy-page">
 
     <div id="auth-container">
         <div class="auth-split-screen">
@@ -90,17 +91,18 @@
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
     
     <script>
-        // 1. YOUR FIREBASE CONFIGURATION
+        // 1. YOUR NEW, CORRECT FIREBASE CONFIGURATION
         const firebaseConfig = {
-            apiKey: "AIzaSyB1C9RoG73nRWN558jQziiStlSr2YjaKLA",
-            authDomain: "iclickdigitalacademy-9e319.firebaseapp.com",
-            projectId: "iclickdigitalacademy-9e319",
-            storageBucket: "iclickdigitalacademy-9e319.appspot.com",
-            messagingSenderId: "975873003687",
-            appId: "1:975873003687:web:fb03bcbc3945628bfccb82"
+            apiKey: "AIzaSyD2RlsEkK-mMGq4DpnOZxxO2ITE_Izptk4",
+            authDomain: "iclick-digital-academy-6d856.firebaseapp.com",
+            projectId: "iclick-digital-academy-6d856",
+            storageBucket: "iclick-digital-academy-6d856.appspot.com",
+            messagingSenderId: "1055517177266",
+            appId: "1:1055517177266:web:90b469d6b206f873ff60ab",
+            measurementId: "G-87B1E47L9S"
         };
 
-        // 2. INITIALIZE FIREBASE AND GET SERVICES
+        // 2. INITIALIZE FIREBASE
         firebase.initializeApp(firebaseConfig);
         const auth = firebase.auth();
         const db = firebase.firestore();
@@ -122,7 +124,6 @@
                 if(authContainer) authContainer.style.display = 'none';
                 if(userProfileSection) userProfileSection.classList.remove('hidden');
                 
-                // Populate the dashboard
                 db.collection('users').doc(user.uid).get().then(doc => {
                     if (doc.exists) {
                         const userData = doc.data();
@@ -138,7 +139,7 @@
             }
         });
 
-        // 5. LOGIN/SIGNUP VIEW SWITCHER LOGIC
+        // 5. VIEW SWITCHER LOGIC
         if (formPanel) {
             formPanel.addEventListener('click', (e) => {
                 if (e.target.matches('[data-show-form]')) {
