@@ -888,13 +888,19 @@ body.modal-open #contact-modal-overlay {
 .apply-btn {
     margin-top: 15px;
 }
-/* THIS IS THE NEW, SIMPLIFIED CSS */
+/* THIS IS THE NEW, CORRECTED CSS */
 .floating-contact-btn {
     position: fixed; /* Stays in place when you scroll */
-    bottom: 20px;
-    right: 20px;
-    z-index: 1500; /* Stays on top of other content */
+    bottom: 25px;   /* Default position for desktop */
+    right: 25px;    /* Default position for desktop */
+    z-index: 1500;  /* Stays on top of other content */
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
-/* The :hover effect from the old rule is already handled by the main .btn:hover rule */
+/* On mobile screens, raise the button higher to avoid browser UI */
+@media (max-width: 768px) {
+    .floating-contact-btn {
+        bottom: 80px; /* Raised position for mobile */
+        right: 20px;
+    }
+}
