@@ -689,4 +689,30 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+/* Styling for course item layout and enroll button */
+.course-item div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.course-item span {
+    font-size: 0.85em;
+    font-weight: 700;
+    color: #6c757d;
+}
+
+.btn-enroll {
+    padding: 5px 15px; /* Make the button a bit smaller */
+    font-size: 0.8em;
+    text-transform: none; /* Keep normal case */
+}
+
+.btn-enroll:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+    transform: none; /* Disable hover effect */
+    box-shadow: none;
+}
+
 
