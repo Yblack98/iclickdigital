@@ -1,10 +1,10 @@
-
-                <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Portfolio - Iclick Digital Innovation Firm</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -38,7 +38,7 @@
             
             <div class="portfolio-grid">
                 <div class="portfolio-item">
-                    <img src="images/portfolio_social_campaign_placeholder.png" alt="Social Media Campaign Project">
+                    <img src="images/portfolio_social_campaign_placeholder.png" alt="Social Media Campaign Project" loading="lazy">
                     <h4>Social Media Campaign</h4>
                     <p>Service: <a href="services.html#social-media">Social Media Management</a></p>
                     <p>Brief description of the project, challenges, and results achieved for a client's social media campaign.</p>
@@ -46,7 +46,7 @@
                 </div>
 
                 <div class="portfolio-item">
-                    <img src="images/portfolio_brand_identity_placeholder.png" alt="Brand Identity Design Project">
+                    <img src="images/portfolio_brand_identity_placeholder.png" alt="Brand Identity Design Project" loading="lazy">
                     <h4>Brand Identity Design</h4>
                     <p>Service: <a href="services.html#brand-development">Brand Development</a></p>
                     <p>Showcasing a brand identity we developed, including logo, color palette, and style guidelines for a client.</p>
@@ -54,7 +54,7 @@
                 </div>
 
                 <div class="portfolio-item">
-                    <img src="images/portfolio_content_strategy_placeholder.png" alt="Content Marketing Strategy Project">
+                    <img src="images/portfolio_content_strategy_placeholder.png" alt="Content Marketing Strategy Project" loading="lazy">
                     <h4>Content Marketing Strategy</h4>
                     <p>Service: <a href="services.html#content-creation">Content Creation</a></p>
                     <p>An example of a successful content marketing strategy implemented for a client, highlighting content types and outcomes.</p>
@@ -62,7 +62,7 @@
                 </div>
 
                 <div class="portfolio-item">
-                    <img src="images/portfolio_digital_campaign_placeholder.png" alt="Digital Marketing Campaign Project">
+                    <img src="images/portfolio_digital_campaign_placeholder.png" alt="Digital Marketing Campaign Project" loading="lazy">
                     <h4>Digital Marketing Campaign</h4>
                     <p>Service: <a href="services.html#digital-strategy">Digital Strategy</a></p>
                     <p>Overview of a comprehensive digital marketing campaign, detailing the strategy, channels used, and success metrics.</p>
@@ -70,14 +70,15 @@
                 </div>
 
                 <div class="portfolio-item">
-                    <img src="images/portfolio_website_redesign_placeholder.png" alt="Website Redesign Project">
+                    <img src="images/portfolio_website_redesign_placeholder.png" alt="Website Redesign Project" loading="lazy">
                     <h4>Website Redesign</h4>
                     <p>Service: <a href="services.html#web-development">Web Development</a></p>
                     <p>A case study of a website redesign project, focusing on improved UX, design, and performance.</p>
                     <a href="#" class="btn-learn-more">Learn More</a>
                 </div>
-                 <div class="portfolio-item">
-                    <img src="images/portfolio_social_growth_placeholder.png" alt="Social Media Growth">
+                
+                <div class="portfolio-item">
+                    <img src="images/portfolio_social_growth_placeholder.png" alt="Social Media Growth" loading="lazy">
                     <h4>Social Media Growth</h4>
                     <p>Service: <a href="services.html#social-media">Social Media Management</a></p>
                     <p>Demonstrating significant audience growth and engagement achieved for a client's social media channels.</p>
@@ -87,7 +88,7 @@
         </div>
     </section>
 
-    <a href="contact.html" class="floating-contact-btn btn js-open-contact-modal">
+    <a href="contact.html" class="floating-contact-btn btn btn-primary js-open-contact-modal">
         Contact Us
     </a>
 
@@ -111,7 +112,7 @@
                         <li><a href="about.html">About</a></li>
                         <li><a href="services.html">Services</a></li>
                         <li><a href="portfolio.html">Portfolio</a></li>
-                         <li><a href="contact.html" class="js-open-contact-modal">Contact Us</a></li>
+                        <li><a href="contact.html" class="js-open-contact-modal">Contact Us</a></li>
                     </ul>
                 </div>
                 <div class="footer-services">
@@ -175,7 +176,7 @@
                     <label for="modal-message">Message:</label>
                     <textarea id="modal-message" name="message" rows="5" required></textarea>
                 </div>
-                <button type="submit" class="btn">Send Application</button>
+                <button type="submit" class="btn btn-primary">Send Application</button>
             </form>
         </div>
     </div>
@@ -185,7 +186,6 @@
         let lastScrollTop = 0;
         const header = document.querySelector('header');
         const headerHeight = header.offsetHeight;
-
         window.addEventListener("scroll", function() {
             let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             if (scrollTop > lastScrollTop && scrollTop > headerHeight){ header.classList.add('header-hidden'); } 
@@ -205,7 +205,6 @@
         const openModalTriggers = document.querySelectorAll('.js-open-contact-modal');
         const closeModalButton = document.querySelector('.modal-close');
         const modalOverlay = document.getElementById('contact-modal-overlay');
-
         openModalTriggers.forEach(trigger => {
             trigger.addEventListener('click', (event) => {
                 event.preventDefault();
@@ -222,5 +221,4 @@
         });
     </script>
 </body>
-                            </html>
-                            
+</html>
