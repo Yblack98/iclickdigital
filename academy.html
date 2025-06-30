@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iclick Digital Academy - Iclick Digital Innovation Firm</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <img src="images/logo.png" alt="i-Click Logo" id="logo">
+                <h1>Iclick Digital Innovation Firm</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="academy.html" class="active">Digital Academy</a></li>
+                    <li><a href="contact.html" class="js-open-contact-modal">Contact Us</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger-menu">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </button>
+        </div>
+    </header>
+
+    <section id="user-profile" class="hidden">
+        <div class="container">
+            <h3>My Profile</h3>
+            <div class="profile-details">
+                <p><strong>Welcome,</strong> <span id="profile-fullname"></span>!</p>
+                <p><strong>Username:</strong> <span id="profile-username"></span></p>
+                <p><strong>Email:</strong> <span id="profile-email"></span></p>
+                <button id="logout-button" class="btn btn-secondary">Logout</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="academy-page">
+        <div class="container">
+            <h2>Welcome to Iclick Digital Academy</h2>
+            <p class="intro-paragraph">Unlock your potential and master the digital skills of tomorrow. Create an account or log in to access our resources.</p>
+
+            <div class="auth-forms-container">
+                <div class="auth-form-card" id="signup-card">
+                    <h3>Create Your Account</h3>
+                    <form id="signup-form">
+                        <div class="form-group">
+                            <label for="signup-fullname">Full Name:</label>
+                            <input type="text" id="signup-fullname" name="fullname" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-username">Username:</label>
+                            <input type="text" id="signup-username" name="username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-email">Email Address:</label>
+                            <input type="email" id="signup-email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-password">Password:</label>
+                            <input type="password" id="signup-password" name="password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-confirm-password">Confirm Password:</label>
+                            <input type="password" id="signup-confirm-password" name="confirmPassword" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Sign Up</button>
+                    </form>
+                </div>
+
+                <div class="auth-form-card" id="login-card">
+                    <h3>Login to Your Account</h3>
+                    <form id="login-form">
+                        <div class="form-group">
+                            <label for="login-identifier">Email Address:</label>
+                            <input type="email" id="login-identifier" name="identifier" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Password:</label>
+                            <input type="password" id="login-password" name="password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                        <p class="form-link"><a href="#forgot-password">Forgot Password?</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <a href="contact.html" class="floating-contact-btn btn btn-primary js-open-contact-modal">
+        Contact Us
+    </a>
+
+    <footer>
+        </footer>
+
+    <div id="contact-modal-overlay">
+        </div>
+    
+    <script>
+      // Smart Header, Hamburger, and Modal scripts go here...
+    </script>
+    
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
+
+    <script>
+        // 1. YOUR FIREBASE CONFIGURATION
+        const firebaseConfig = {
+            apiKey: "AIzaSyB1C9RoG73nRWN558jQziiStlSr2YjaKLA",
+            authDomain: "iclickdigitalacademy-9e319.firebaseapp.com",
+            projectId: "iclickdigitalacademy-9e319",
+            storageBucket: "iclickdigitalacademy-9e319.appspot.com",
+            messagingSenderId: "975873003687",
+            appId: "1:975873003687:web:fb03bcbc3945628bfccb82"
+        };
+
+        // 2. INITIALIZE FIREBASE AND GET SERVICES
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+        console.log("Firebase has been initialized on Academy page!");
+
+        // 3. GET HTML ELEMENTS
+        const signupForm = document.getElementById('signup-form');
+        const loginForm = document.getElementById('login-form');
+        const profileSection = document.getElementById('user-profile');
+        const profileFullName = document.getElementById('profile-fullname');
+        const profileUsername = document.getElementById('profile-username');
+        const profileEmail = document.getElementById('profile-email');
+        const authFormsContainer = document.querySelector('.auth-forms-container');
+        const logoutButton = document.getElementById('logout-button');
+
+        // 4. SIGN-UP LOGIC
+        signupForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const fullName = signupForm['signup-fullname'].value;
+            const username = signupForm['signup-username'].value;
+            const email = signupForm['signup-email'].value;
+            const password = signupForm['signup-password'].value;
+            if (password !== signupForm['signup-confirm-password'].value) {
+                alert("Passwords do not match!");
+                return;
+            }
+            auth.createUserWithEmailAndPassword(email, password)
+                .then(userCredential => {
+                    alert('Account created successfully!');
+                    return db.collection('users').doc(userCredential.user.uid).set({
+                        fullName: fullName,
+                        username: username,
+                        email: email,
+                        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                    });
+                })
+                .then(() => signupForm.reset())
+                .catch(error => alert("Error: " + error.message));
+        });
+
+        // 5. LOGIN LOGIC
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = loginForm['login-identifier'].value;
+            const password = loginForm['login-password'].value;
+            auth.signInWithEmailAndPassword(email, password)
+                .then(userCredential => loginForm.reset())
+                .catch(error => alert("Error: " + error.message));
+        });
+
+        // 6. AUTH STATE LISTENER (Shows profile or forms)
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                db.collection('users').doc(user.uid).get().then(doc => {
+                    if (doc.exists) {
+                        const userData = doc.data();
+                        profileFullName.innerText = userData.fullName;
+                        profileUsername.innerText = userData.username;
+                        profileEmail.innerText = userData.email;
+                    }
+                    profileSection.classList.remove('hidden');
+                    authFormsContainer.style.display = 'none';
+                });
+            } else {
+                profileSection.classList.add('hidden');
+                authFormsContainer.style.display = 'flex';
+            }
+        });
+
+        // 7. LOGOUT LOGIC
+        logoutButton.addEventListener('click', () => {
+            auth.signOut().then(() => alert("You have been logged out."));
+        });
+
+        // 8. FORGOT PASSWORD LOGIC
+        const forgotPasswordLink = document.querySelector('a[href="#forgot-password"]');
+        if (forgotPasswordLink) {
+            forgotPasswordLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                const email = prompt("Please enter your email address to send a password reset link:");
+                if (email) {
+                    auth.sendPasswordResetEmail(email)
+                        .then(() => alert("Password reset email sent! Please check your inbox."))
+                        .catch(error => alert("Error: " + error.message));
+                }
+            });
+        }
+    </script>
+    
+    </body>
+</html>
