@@ -160,89 +160,51 @@
         </form>
     </div>
 </div>
-    <script>
-      // Smart Hiding Header Logic
-      let lastScrollTop = 0;
-      const header = document.querySelector('header');
-      const headerHeight = header.offsetHeight; // Get the actual height of the header
-
-      window.addEventListener("scroll", function() {
+   <script>
+    let lastScrollTop = 0;
+    const header = document.querySelector('header');
+    const headerHeight = header.offsetHeight;
+    window.addEventListener("scroll", function() {
         let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        if (scrollTop > lastScrollTop && scrollTop > headerHeight){ header.classList.add('header-hidden'); } 
+        else { header.classList.remove('header-hidden'); }
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    }, false);
+</script>
 
-        // Make sure we scroll past the header height before hiding
-        if (scrollTop > lastScrollTop && scrollTop > headerHeight){
-          // Scrolling Down
-          header.classList.add('header-hidden');
-        } else {
-          // Scrolling Up
-          header.classList.remove('header-hidden');
-        }
-        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
-      }, false);
-    </script>
-    <script>
-        const hamburger = document.querySelector('.hamburger-menu');
-        const navMenu = document.querySelector('header nav');
+<script>
+    const hamburger = document.querySelector('.hamburger-menu');
+    const navMenu = document.querySelector('header nav');
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('is-active');
+        navMenu.classList.toggle('nav-open');
+    });
+</script>
 
-        hamburger.addEventListener('click', () => {
-            // Toggle hamburger animation
-            hamburger.classList.toggle('is-active');
-            // Toggle menu visibility
-            navMenu.classList.toggle('nav-open');
+<script>
+    const openModalTriggers = document.querySelectorAll('.js-open-contact-modal');
+    const closeModalButton = document.querySelector('.modal-close');
+    const modalOverlay = document.getElementById('contact-modal-overlay');
+    openModalTriggers.forEach(trigger => {
+        trigger.addEventListener('click', (event) => {
+            event.preventDefault();
+            document.body.classList.add('modal-open');
         });
-    </script>
-    <script>
-        const openModalTriggers = document.querySelectorAll('.js-open-contact-modal');
-        const closeModalButton = document.querySelector('.modal-close');
-        const modalOverlay = document.getElementById('contact-modal-overlay');
+    });
+    const closeModal = () => { document.body.classList.remove('modal-open'); };
+    closeModalButton.addEventListener('click', closeModal);
+    modalOverlay.addEventListener('click', (event) => {
+        if (event.target === modalOverlay) { closeModal(); }
+    });
+</script>
 
-        openModalTriggers.forEach(trigger => {
-            trigger.addEventListener('click', (event) => {
-                event.preventDefault(); // Stop the link from going to contact.html
-                document.body.classList.add('modal-open');
-            });
-        });
-
-        const closeModal = () => {
-            document.body.classList.remove('modal-open');
-        };
-
-        closeModalButton.addEventListener('click', closeModal);
-
-        modalOverlay.addEventListener('click', (event) => {
-            // Close the modal if the overlay itself (the dark background) is clicked
-            if (event.target === modalOverlay) {
-                closeModal();
-            }
-        });
-    </script>
-    <script>
-        const applyButtons = document.querySelectorAll('.apply-btn');
-        const modalSubjectField = document.getElementById('modal-subject');
-
-        applyButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Get the service name from the button's data-service attribute
-                const serviceName = button.dataset.service;
-
-                // Set the value of the modal's subject field
-                if (modalSubjectField) {
-                    modalSubjectField.value = `Service Inquiry: ${serviceName}`;
-                }
-            });
-        });
-    </script>
-    <script>
+<script>
     const applyButtons = document.querySelectorAll('.apply-btn');
     const modalServiceField = document.getElementById('modal-selected-service');
-
     if (applyButtons.length > 0 && modalServiceField) {
         applyButtons.forEach(button => {
             button.addEventListener('click', () => {
-                // Get the service name from the button's data-service attribute
                 const serviceName = button.dataset.service;
-
-                // Set the value of the modal's "selected_service" input field
                 modalServiceField.value = serviceName;
             });
         });
