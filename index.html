@@ -76,16 +76,144 @@
         </div>
     </section>
 
-    <a href="contact.html" class="floating-contact-btn btn btn-primary js-open-contact-modal">Contact Us</a>
+    <a href="contact.html" class="floating-contact-btn btn btn-primary js-open-contact-modal">
+        Contact Us
+    </a>
     
     <footer>
-        </footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h4>Iclick Digital Innovation Firm</h4>
+                    <p>Innovation at Your Fingertips. Empowering businesses with innovative digital solutions that drive growth and engagement.</p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/muhammad-yasin-ibrahim-814ab0109?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">LinkedIn</a>
+                        <a href="https://www.facebook.com/share/1AZcLwy6bD/" target="_blank">Facebook</a>
+                        <a href="https://www.instagram.com/__yblack?igsh=MW4xMmZwNnBoOGE3aA==" target="_blank">Instagram</a>
+                        <a href="https://wa.me/qr/O2E4IAQJNV2FJ1" target="_blank">WhatsApp</a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="contact.html" class="js-open-contact-modal">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-services">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html#social-media">Social Media Management</a></li>
+                        <li><a href="services.html#content-creation">Content Creation</a></li>
+                        <li><a href="services.html#digital-strategy">Digital Strategy</a></li>
+                        <li><a href="services.html#brand-development">Brand Development</a></li>
+                        <li><a href="services.html#web-development">Web Development</a></li>
+                        <li><a href="services.html#data-analytics">Data Analytics</a></li>
+                        <li><a href="services.html#digital-literacy">Digital Literacy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <p>41C Sultan Bello Road, Sokoto, Nigeria</p>
+                    <p>Phone: 07084920844</p>
+                    <p>Email: info@iclickdigital.com</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Iclick Digital Innovation Firm. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
     
     <div id="contact-modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h3>Service Application</h3>
+            <p>Please fill out the form below to apply for the selected service.</p>
+            <form action="https://formspree.io/f/xqabkrln" method="POST">
+                <div class="form-group">
+                    <label for="modal-selected-service">Applying for Service:</label>
+                    <select id="modal-selected-service" name="selected_service" required>
+                        <option value="" disabled selected>-- Please choose a service --</option>
+                        <option value="Social Media Management">Social Media Management</option>
+                        <option value="Content Creation">Content Creation</option>
+                        <option value="Digital Strategy">Digital Strategy</option>
+                        <option value="Brand Development">Brand Development</option>
+                        <option value="Web Development">Web Development</option>
+                        <option value="Data Analytics">Data Analytics</option>
+                        <option value="Digital Literacy">Digital Literacy</option>
+                        <option value="Other">Other/General Inquiry</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="modal-name">Your Name:</label>
+                    <input type="text" id="modal-name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="modal-email">Email Address:</label>
+                    <input type="email" id="modal-email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="modal-phone">Phone Number (Optional):</label>
+                    <input type="tel" id="modal-phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="modal-message">Message:</label>
+                    <textarea id="modal-message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Send Application</button>
+            </form>
         </div>
+    </div>
 
     <script>
-        // All necessary scripts...
+        // --- Combined Smart Header and Transparent Header Logic ---
+        let lastScrollTop = 0;
+        const header = document.querySelector('header');
+        const headerHeight = header.offsetHeight;
+        const body = document.body;
+
+        window.addEventListener("scroll", function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (body.classList.contains('transparent-header-page')) {
+                if (scrollTop > 50) { header.classList.add('scrolled'); } 
+                else { header.classList.remove('scrolled'); }
+            }
+            if (scrollTop > lastScrollTop && scrollTop > headerHeight){ header.classList.add('header-hidden'); } 
+            else { header.classList.remove('header-hidden'); }
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        }, false);
+
+        // --- Hamburger Menu Logic ---
+        const hamburger = document.querySelector('.hamburger-menu');
+        const navMenu = document.querySelector('header nav');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('is-active');
+            navMenu.classList.toggle('nav-open');
+        });
+
+        // --- Contact Modal Logic ---
+        const openModalTriggers = document.querySelectorAll('.js-open-contact-modal');
+        const closeModalButton = document.querySelector('.modal-close');
+        const modalOverlay = document.getElementById('contact-modal-overlay');
+
+        openModalTriggers.forEach(trigger => {
+            trigger.addEventListener('click', (event) => {
+                event.preventDefault();
+                document.body.classList.add('modal-open');
+            });
+        });
+        const closeModal = () => {
+            document.body.classList.remove('modal-open');
+            document.getElementById('modal-selected-service').value = "";
+        };
+        closeModalButton.addEventListener('click', closeModal);
+        modalOverlay.addEventListener('click', (event) => {
+            if (event.target === modalOverlay) { closeModal(); }
+        });
     </script>
 </body>
 </html>
