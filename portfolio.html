@@ -220,5 +220,20 @@
             if (event.target === modalOverlay) { closeModal(); }
         });
     </script>
-</body>
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                } else {
+                    // Optional: remove class if you want animation to repeat every time
+                    // entry.target.classList.remove('visible'); 
+                }
+            });
+        });
+
+        const elementsToAnimate = document.querySelectorAll('.hidden-on-load');
+        elementsToAnimate.forEach((el) => observer.observe(el));
+    </script>
+    </body>
 </html>
