@@ -693,10 +693,6 @@ footer {
         justify-content: center; /* Center social links in footer when stacked */
     }
 }
-/* ========================================= */
-/* MOBILE RESPONSIVENESS & HAMBURGER MENU   */
-/* ========================================= */
-
 /* --- Hamburger Menu Icon Styling --- */
 .hamburger-menu {
     display: none; /* Hidden on desktop */
@@ -708,9 +704,12 @@ footer {
     border: none;
     cursor: pointer;
     padding: 0;
-    position: absolute; /* Position relative to header container */
+    /* START: Added lines for the fix */
+    position: absolute; /* Position relative to the header container */
     top: 35px; /* Adjust vertical position */
     right: 30px; /* Adjust horizontal position */
+    z-index: 1100; /* Lifts the button above other content */
+    /* END: Added lines for the fix */
 }
 
 .hamburger-menu .bar {
