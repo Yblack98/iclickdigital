@@ -1,9 +1,10 @@
 /* ========================================= */
-/* STYLES FOR ICICK DIGITAL ACADEMY          */
+/* STYLES SPECIFIC TO ICICK DIGITAL ACADEMY  */
 /* ========================================= */
 
+/* Sets a unique background for the academy page body */
 body.academy-page {
-    background-color: #f0f2f5; /* A neutral background for the app */
+    background-color: #f0f2f5;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -58,7 +59,6 @@ body.academy-page {
     justify-content: center;
 }
 
-/* Tab and Form Card Logic */
 .auth-tabs {
     display: flex;
     border-bottom: 1px solid var(--border-color);
@@ -87,11 +87,9 @@ body.academy-page {
     to { opacity: 1; }
 }
 
-/* Initial choice buttons */
 #initial-view h3 { text-align: center; color: var(--text-dark); }
 #initial-view .btn { display: block; width: 100%; margin-bottom: 15px; text-align: center; }
 
-/* Link to switch between forms */
 .form-switcher-link {
     text-align: center;
     margin-top: 20px;
@@ -147,4 +145,4 @@ body.academy-page {
     .auth-split-screen { grid-template-columns: 1fr; border-radius: 0; }
     .auth-welcome-panel { padding: 40px 30px; text-align: center; }
     .dashboard-grid { grid-template-columns: 1fr; }
-    }
+}
