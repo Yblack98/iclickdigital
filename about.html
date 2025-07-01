@@ -15,14 +15,14 @@
                 <h1>Iclick Digital Innovation Firm</h1>
             </div>
             <nav>
-              <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="about.html">About Us</a></li>
-    <li><a href="services.html">Services</a></li>
-    <li><a href="portfolio.html">Portfolio</a></li>
-    <li><a href="academy.html">Digital Academy</a></li>
-    <li><a href="contact.html" class="js-open-contact-modal">Contact Us</a></li>
-</ul>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html" class="active">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="academy.html">Digital Academy</a></li>
+                    <li><a href="contact.html" class="js-open-contact-modal">Contact Us</a></li>
+                </ul>
             </nav>
             <button class="hamburger-menu">
                 <div class="bar"></div>
@@ -52,25 +52,25 @@
             <h2>Our Team</h2>
             <p class="intro-paragraph">Meet the talented professionals behind Iclick Digital Innovation Firm.</p>
             <div class="team-grid">
-               <div class="team-member hidden-on-load">
+                <div class="team-member animate-on-scroll">
                     <img src="images/yasin.jpg" alt="Muhammad Yasin Ibrahim - Founder & CEO" loading="lazy">
                     <h4>Muhammad Yasin Ibrahim</h4>
                     <p class="role">Founder & CEO</p>
                     <p>Computer Science graduate from Sokoto State University with a passion for digital innovation.</p>
                 </div>
-                <div class="team-member hidden-on-load">
+                <div class="team-member animate-on-scroll">
                     <img src="images/other.jpg" alt="Ibrahim Ibrahim Garba - social media manager" loading="lazy">
                     <h4>Ibrahim Ibrahim Garba</h4>
                     <p class="role">Social Media Manager</p>
                     <p>Expert in social media strategy with over 5 years of experience in digital marketing.</p>
                 </div>
-                <div class="team-member hidden-on-load">
+                <div class="team-member animate-on-scroll">
                     <img src="images/other.jpg" alt="Mustafa Ibrahim Garba - Content Director" loading="lazy">
                     <h4>Mustafa Ibrahim Garba</h4>
                     <p class="role">Content Director</p>
                     <p>Creative professional specializing in content creation and brand storytelling.</p>
                 </div>
-                <div class="team-member hidden-on-load">
+                <div class="team-member animate-on-scroll">
                     <img src="images/other.jpg" alt="Amina Bello - Digital Strategist" loading="lazy">
                     <h4>Amina Bello</h4>
                     <p class="role">Digital Strategist</p>
@@ -212,21 +212,17 @@
         modalOverlay.addEventListener('click', (event) => {
             if (event.target === modalOverlay) { closeModal(); }
         });
-    </script>
-<script>
+
+        // --- Scroll-In Animation Logic ---
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                } else {
-                    // Optional: remove class if you want animation to repeat every time
-                    // entry.target.classList.remove('visible'); 
+                    entry.target.classList.add('is-visible');
                 }
             });
         });
-
-        const elementsToAnimate = document.querySelectorAll('.hidden-on-load');
+        const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
         elementsToAnimate.forEach((el) => observer.observe(el));
     </script>
-    </body>
+</body>
 </html>
