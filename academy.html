@@ -16,7 +16,7 @@
                 <img src="images/logo.png" alt="i-Click Logo">
             </div>
             
-            <div class="auth-form-card active" id="login-card">
+            <div class="auth-form-card" id="login-card">
                 <h3>Welcome back</h3>
                 <form id="login-form">
                     <div class="form-group">
@@ -91,14 +91,14 @@
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
     
     <script>
-        // 1. FIREBASE CONFIGURATION & INITIALIZATION
+        // 1. FIREBASE CONFIGURATION
         const firebaseConfig = {
             apiKey: "AIzaSyD2RlsEkK-mMGq4DpnOZxxO2ITE_Izptk4",
             authDomain: "iclick-digital-academy-6d856.firebaseapp.com",
             projectId: "iclick-digital-academy-6d856",
             storageBucket: "iclick-digital-academy-6d856.appspot.com",
             messagingSenderId: "1055517177266",
-            appId: "1:1055517177266:web:90b469d6b206f873ff60ab"
+            appId: "1:1055517177266:web:90b469d6b206f873ff60ab",
         };
         firebase.initializeApp(firebaseConfig);
         const auth = firebase.auth();
@@ -116,15 +116,17 @@
         const googleSignUpBtn = document.getElementById('google-signup-btn');
         const courseListContainer = document.getElementById('my-courses-list');
 
-        // 3. VIEW/NAVIGATION LOGIC
-        const showView = (viewId) => {
+        // 3. VIEW & NAVIGATION LOGIC
+        const showView = (viewId, pushState = true) => {
             if (!formContainer) return;
             formContainer.querySelectorAll('.auth-form-card').forEach(card => card.classList.remove('active'));
             const targetView = document.getElementById(viewId);
             if (targetView) {
                 targetView.classList.add('active');
-                // Add to browser history so back/forward buttons work
-                history.pushState({view: viewId}, "", `#${viewId}`);
+                if (pushState) {
+                    // Add this view to the browser's history
+                    history.pushState({view: viewId}, "", `#${viewId}`);
+                }
             }
         };
 
@@ -140,17 +142,15 @@
         // Listen for browser back/forward button clicks
         window.addEventListener('popstate', (e) => {
             if (e.state && e.state.view) {
-                showView(e.state.view);
+                showView(e.state.view, false); // false to prevent re-pushing history
             } else {
-                showView('login-card'); // Default view
+                showView('login-card', false); // Default view
             }
         });
 
-
-        // 4. AUTH STATE LISTENER (The Main Controller)
+        // 4. MAIN CONTROLLER (Handles what to show/hide on page load)
         auth.onAuthStateChanged(user => {
             if (user && user.emailVerified) {
-                // User is logged in AND verified
                 if(authContainer) authContainer.style.display = 'none';
                 if(userProfileSection) userProfileSection.classList.remove('hidden');
                 
@@ -166,10 +166,11 @@
                 });
                 fetchAndDisplayCourses();
             } else {
-                // User is logged out or not verified
                 if(authContainer) authContainer.style.display = 'block';
                 if(userProfileSection) userProfileSection.classList.add('hidden');
-                showView('login-card'); // Start at the login view
+                // Check URL hash to show correct form on page load
+                const currentView = window.location.hash.replace('#', '') || 'login-card';
+                showView(currentView, false);
             }
         });
 
@@ -180,7 +181,7 @@
                 const fullName = signupForm['signup-fullname'].value;
                 const email = signupForm['signup-email'].value;
                 const password = signupForm['signup-password'].value;
-
+                
                 auth.createUserWithEmailAndPassword(email, password)
                     .then(cred => {
                         cred.user.sendEmailVerification();
@@ -193,7 +194,7 @@
                     .then(() => {
                         alert("Account created! Please check your email inbox (and spam folder) for a verification link.");
                         signupForm.reset();
-                        showView('login-card'); // Switch to login view after signup
+                        showView('login-card');
                     })
                     .catch(err => alert("Error: " + err.message));
             });
@@ -209,7 +210,7 @@
                     .then((userCredential) => {
                         if (!userCredential.user.emailVerified) {
                             auth.signOut();
-                            alert("Your email is not verified. Please check your inbox for the verification link. A new link has been sent.");
+                            alert("Please verify your email before logging in. A new verification link has been sent.");
                             userCredential.user.sendEmailVerification();
                         }
                     })
@@ -222,6 +223,7 @@
             const provider = new firebase.auth.GoogleAuthProvider();
             auth.signInWithPopup(provider)
                 .then((result) => {
+                    // Google users are automatically email-verified
                     if (result.additionalUserInfo.isNewUser) {
                         return db.collection('users').doc(result.user.uid).set({
                             fullName: result.user.displayName,
@@ -230,7 +232,7 @@
                         });
                     }
                 })
-                .catch((error) => alert("Error: " + error.message));
+                .catch((error) => alert("Error during Google sign-in: " + error.message));
         };
         if(googleSignInBtn) { googleSignInBtn.addEventListener('click', handleGoogleSignIn); }
         if(googleSignUpBtn) { googleSignUpBtn.addEventListener('click', handleGoogleSignIn); }
@@ -255,9 +257,7 @@
         }
 
         // 10. FETCH AND DISPLAY COURSES
-        const fetchAndDisplayCourses = () => {
-            // (The course fetching logic remains the same as before)
-        };
+        const fetchAndDisplayCourses = () => { /* Course fetching logic remains the same */ };
     </script>
 </body>
 </html>
