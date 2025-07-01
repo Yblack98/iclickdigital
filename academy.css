@@ -52,3 +52,7 @@
     gap: 10px; /* Space between icon and text */
     width: 100%;
 }
+/* Style for the reCAPTCHA container needed for phone auth */
+#recaptcha-container {
+    margin-top: 20px;
+}
