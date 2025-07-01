@@ -8,10 +8,9 @@
     <link rel="stylesheet" href="style.css"> 
     <link rel="stylesheet" href="academy.css">
 </head>
-    
 <body class="academy-page">
 
-    <div id="auth-container">
+    <div id="auth-container" class="animate-on-scroll">
         <div class="auth-split-screen">
             <div class="auth-welcome-panel">
                 <h2>Join the Academy</h2>
@@ -67,13 +66,12 @@
         </div>
     </div>
 
-    <div id="user-profile" class="hidden">
+    <div id="user-profile" class="hidden animate-on-scroll">
         <div class="container">
             <div class="dashboard-header">
                 <h2>Welcome, <span id="dashboard-user-name">User</span>!</h2>
                 <p>This is your personal dashboard. Your learning journey starts here.</p>
             </div>
-            
             <div class="dashboard-grid">
                 <div class="dashboard-card">
                     <h3>Available Courses</h3>
@@ -86,7 +84,6 @@
                     <p>More account settings will be available here soon.</p>
                 </div>
             </div>
-
             <button id="logout-button" class="btn btn-secondary">Logout</button>
         </div>
     </div>
@@ -95,152 +92,168 @@
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
     
-<script>
-    // 1. FIREBASE CONFIGURATION
-    const firebaseConfig = {
-        apiKey: "AIzaSyD2RlsEkK-mMGq4DpnOZxxO2ITE_Izptk4",
-        authDomain: "iclick-digital-academy-6d856.firebaseapp.com",
-        projectId: "iclick-digital-academy-6d856",
-        storageBucket: "iclick-digital-academy-6d856.appspot.com",
-        messagingSenderId: "1055517177266",
-        appId: "1:1055517177266:web:90b469d6b206f873ff60ab",
-        measurementId: "G-87B1E47L9S"
-    };
+    <script>
+        // 1. FIREBASE CONFIGURATION
+        const firebaseConfig = {
+            apiKey: "AIzaSyD2RlsEkK-mMGq4DpnOZxxO2ITE_Izptk4",
+            authDomain: "iclick-digital-academy-6d856.firebaseapp.com",
+            projectId: "iclick-digital-academy-6d856",
+            storageBucket: "iclick-digital-academy-6d856.appspot.com",
+            messagingSenderId: "1055517177266",
+            appId: "1:1055517177266:web:90b469d6b206f873ff60ab",
+            measurementId: "G-87B1E47L9S"
+        };
 
-    // 2. INITIALIZE FIREBASE
-    firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
-    const db = firebase.firestore();
+        // 2. INITIALIZE FIREBASE
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
 
-    // 3. GET PAGE ELEMENTS
-    const authContainer = document.getElementById('auth-container');
-    const userProfileSection = document.getElementById('user-profile');
-    const formPanel = document.querySelector('.auth-form-panel');
-    const loginForm = document.getElementById('login-form');
-    const signupForm = document.getElementById('signup-form');
-    const logoutButton = document.getElementById('logout-button');
-    const forgotPasswordLink = document.getElementById('forgot-password-link');
-    const courseListContainer = document.getElementById('my-courses-list');
+        // 3. GET PAGE ELEMENTS
+        const authContainer = document.getElementById('auth-container');
+        const userProfileSection = document.getElementById('user-profile');
+        const formPanel = document.querySelector('.auth-form-panel');
+        const loginForm = document.getElementById('login-form');
+        const signupForm = document.getElementById('signup-form');
+        const logoutButton = document.getElementById('logout-button');
+        const forgotPasswordLink = document.getElementById('forgot-password-link');
+        const courseListContainer = document.getElementById('my-courses-list');
 
-    // 4. MAIN CONTROLLER (Handles what to show/hide)
-    auth.onAuthStateChanged(user => {
-        if (user) {
-            if(authContainer) authContainer.style.display = 'none';
-            if(userProfileSection) userProfileSection.classList.remove('hidden');
-            
-            db.collection('users').doc(user.uid).get().then(doc => {
-                if (doc.exists) {
-                    const userData = doc.data();
-                    document.getElementById('dashboard-user-name').innerText = userData.fullName;
-                    document.getElementById('dashboard-user-email').innerText = userData.email;
+        // 4. MAIN CONTROLLER (Handles what to show/hide)
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                if(authContainer) authContainer.style.display = 'none';
+                if(userProfileSection) userProfileSection.classList.remove('hidden');
+                
+                db.collection('users').doc(user.uid).get().then(doc => {
+                    if (doc.exists) {
+                        const userData = doc.data();
+                        document.getElementById('dashboard-user-name').innerText = userData.fullName;
+                        document.getElementById('dashboard-user-email').innerText = userData.email;
+                    }
+                });
+                fetchAndDisplayCourses();
+            } else {
+                if(authContainer) authContainer.style.display = 'block';
+                if(userProfileSection) userProfileSection.classList.add('hidden');
+            }
+        });
+
+        // 5. VIEW SWITCHER LOGIC
+        if (formPanel) {
+            formPanel.addEventListener('click', (e) => {
+                if (e.target.matches('[data-show-form]')) {
+                    const formId = e.target.dataset.showForm;
+                    formPanel.querySelectorAll('.auth-form-card').forEach(card => card.classList.remove('active'));
+                    const targetForm = document.getElementById(formId);
+                    if (targetForm) { targetForm.classList.add('active'); }
                 }
             });
-            fetchAndDisplayCourses();
-        } else {
-            if(authContainer) authContainer.style.display = 'block';
-            if(userProfileSection) userProfileSection.classList.add('hidden');
         }
-    });
 
-    // 5. VIEW SWITCHER LOGIC
-    if (formPanel) {
-        formPanel.addEventListener('click', (e) => {
-            if (e.target.matches('[data-show-form]')) {
-                const formId = e.target.dataset.showForm;
-                formPanel.querySelectorAll('.auth-form-card').forEach(card => card.classList.remove('active'));
-                const targetForm = document.getElementById(formId);
-                if (targetForm) { targetForm.classList.add('active'); }
-            }
-        });
-    }
-
-    // 6. SIGN-UP LOGIC
-    if(signupForm) {
-        signupForm.addEventListener('submit', e => {
-            e.preventDefault();
-            const fullName = signupForm['signup-fullname'].value;
-            const email = signupForm['signup-email'].value;
-            const password = signupForm['signup-password'].value;
-            if (password !== signupForm['signup-confirm-password'].value) { return alert("Passwords do not match!"); }
-            
-            auth.createUserWithEmailAndPassword(email, password)
-                .then(cred => db.collection('users').doc(cred.user.uid).set({
-                    fullName: fullName,
-                    email: email,
-                    createdAt: firebase.firestore.FieldValue.serverTimestamp()
-                }))
-                .then(() => {
-                    alert("Account created successfully! You are now logged in.");
-                    signupForm.reset();
-                })
-                .catch(err => alert("Error: " + err.message));
-        });
-    }
-
-    // 7. LOGIN LOGIC
-    if(loginForm) {
-        loginForm.addEventListener('submit', e => {
-            e.preventDefault();
-            const email = loginForm['login-identifier'].value;
-            const password = loginForm['login-password'].value;
-            auth.signInWithEmailAndPassword(email, password)
-                .then(() => {
-                    alert("Login successful!");
-                    loginForm.reset();
-                })
-                .catch(err => alert("Error: " + err.message));
-        });
-    }
-
-    // 8. LOGOUT LOGIC
-    if(logoutButton) {
-        logoutButton.addEventListener('click', () => {
-            auth.signOut().catch(error => console.error("Logout Error:", error));
-        });
-    }
-    
-    // 9. FORGOT PASSWORD LOGIC
-    if (forgotPasswordLink) {
-        forgotPasswordLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            const email = prompt("Please enter your email address to send a password reset link:");
-            if (email) {
-                auth.sendPasswordResetEmail(email)
-                    .then(() => alert("Password reset email sent! Please check your inbox."))
-                    .catch(error => alert("Error: " + error.message));
-            }
-        });
-    }
-
-    // 10. FETCH AND DISPLAY COURSES FUNCTION
-    const fetchAndDisplayCourses = () => {
-        if (!courseListContainer) return;
-        db.collection('courses').get().then(querySnapshot => {
-            let html = "";
-            if (snapshot.empty) {
-                courseListContainer.innerHTML = '<p>No courses available at the moment.</p>';
-                return;
-            }
-            querySnapshot.forEach(doc => {
-                const course = doc.data();
-                html += `
-                    <div class="course-card">
-                        <div class="course-card-img" style="background-image: url('${course.imageUrl}')"></div>
-                        <div class="course-card-content">
-                            <div class="course-card-meta">${course.difficulty} | ${course.category}</div>
-                            <h4>${course.title}</h4>
-                            <p>${course.description}</p>
-                            <a href="#" class="btn-learn-more">Start Course</a>
-                        </div>
-                    </div>
-                `;
+        // 6. SIGN-UP LOGIC
+        if(signupForm) {
+            signupForm.addEventListener('submit', e => {
+                e.preventDefault();
+                const fullName = signupForm['signup-fullname'].value;
+                const email = signupForm['signup-email'].value;
+                const password = signupForm['signup-password'].value;
+                if (password !== signupForm['signup-confirm-password'].value) { return alert("Passwords do not match!"); }
+                
+                auth.createUserWithEmailAndPassword(email, password)
+                    .then(cred => db.collection('users').doc(cred.user.uid).set({
+                        fullName: fullName,
+                        email: email,
+                        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                    }))
+                    .then(() => {
+                        alert("Account created successfully! You are now logged in.");
+                        signupForm.reset();
+                    })
+                    .catch(err => alert("Error: " + err.message));
             });
-            courseListContainer.innerHTML = html;
-        }).catch(error => {
-            console.error("Error fetching courses: ", error);
-            courseListContainer.innerHTML = '<p>Could not load courses. Check Firestore rules.</p>';
-        });
-    };
-</script>
+        }
+
+        // 7. LOGIN LOGIC
+        if(loginForm) {
+            loginForm.addEventListener('submit', e => {
+                e.preventDefault();
+                const email = loginForm['login-identifier'].value;
+                const password = loginForm['login-password'].value;
+                auth.signInWithEmailAndPassword(email, password)
+                    .then(() => {
+                        alert("Login successful!");
+                        loginForm.reset();
+                    })
+                    .catch(err => alert("Error: " + err.message));
+            });
+        }
+
+        // 8. LOGOUT LOGIC
+        if(logoutButton) {
+            logoutButton.addEventListener('click', () => {
+                auth.signOut().catch(error => console.error("Logout Error:", error));
+            });
+        }
+        
+        // 9. FORGOT PASSWORD LOGIC
+        if (forgotPasswordLink) {
+            forgotPasswordLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                const email = prompt("Please enter your email address to send a password reset link:");
+                if (email) {
+                    auth.sendPasswordResetEmail(email)
+                        .then(() => alert("Password reset email sent! Please check your inbox."))
+                        .catch(error => alert("Error: " + error.message));
+                }
+            });
+        }
+
+        // 10. FETCH AND DISPLAY COURSES FUNCTION
+        const fetchAndDisplayCourses = () => {
+            if (!courseListContainer) return;
+            db.collection('courses').get().then(querySnapshot => {
+                let html = "";
+                if (snapshot.empty) {
+                    courseListContainer.innerHTML = '<p>No courses available at the moment.</p>';
+                    return;
+                }
+                querySnapshot.forEach(doc => {
+                    const course = doc.data();
+                    html += `
+                        <div class="course-card animate-on-scroll">
+                            <div class="course-card-img" style="background-image: url('${course.imageUrl}')"></div>
+                            <div class="course-card-content">
+                                <div class="course-card-meta">${course.difficulty} | ${course.category}</div>
+                                <h4>${course.title}</h4>
+                                <p>${course.description}</p>
+                                <a href="#" class="btn-learn-more">Start Course</a>
+                            </div>
+                        </div>
+                    `;
+                });
+                courseListContainer.innerHTML = html;
+                // After adding courses, tell the animation observer to find them
+                const newElementsToAnimate = courseListContainer.querySelectorAll('.animate-on-scroll');
+                newElementsToAnimate.forEach((el) => observer.observe(el));
+            }).catch(error => {
+                console.error("Error fetching courses: ", error);
+                courseListContainer.innerHTML = '<p>Could not load courses. Please check Firestore rules.</p>';
+            });
+        };
+        
+        // 11. SCROLL-IN ANIMATION LOGIC (This is NEW)
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, { threshold: 0.1 }); // Trigger when 10% of the element is visible
+
+        const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
+        elementsToAnimate.forEach((el) => observer.observe(el));
+
+    </script>
 </body>
 </html>
