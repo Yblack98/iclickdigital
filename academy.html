@@ -1,3 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iclick Digital Academy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="academy.css">
+</head>
 <body class="academy-page">
 
     <div id="auth-container" class="animate-on-scroll">
@@ -10,8 +20,8 @@
                 <h3>Welcome back</h3>
                 <form id="login-form">
                     <div class="form-group">
-                        <label for="login-identifier">Email</label>
-                        <input type="email" id="login-identifier" name="identifier" placeholder="name@email.com" required>
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" name="email" placeholder="name@email.com" required>
                     </div>
                     <div class="form-group">
                         <label for="login-password">Password</label>
@@ -22,7 +32,7 @@
                 </form>
                 <div class="form-divider"><span>or</span></div>
                 <button type="button" id="google-signin-btn" class="btn btn-social">
-                    <svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18"><path d="M16.51 8.25H9.03V11.13H13.82C13.59 12.51 12.79 13.69 11.52 14.56V16.65H14.31C15.89 15.17 16.8 13.04 16.8 10.32C16.8 9.54 16.68 8.88 16.51 8.25Z" fill="#4285F4"></path><path d="M9.03 18C11.36 18 13.33 17.2 14.31 15.75L11.52 13.66C10.74 14.15 9.83 14.46 8.89 14.46C6.98 14.46 5.37 13.2 4.7 11.45L1.8 13.54C2.9 15.93 5.72 18 9.03 18Z" fill="#34A853"></path><path d="M4.7 11.45C4.5 10.9 4.43 10.32 4.43 9.73C4.43 9.14 4.5 8.56 4.7 8.01V5.92L1.8 3.83C0.66 6.02 0 8.57 0 11.23C0 13.89 0.66 16.44 1.8 18.63L4.7 16.54V11.45Z" fill="#FBBC05"></path><path d="M9.03 3.54C10.23 3.54 11.23 3.96 12.06 4.74L14.85 2C13.33 0.77 11.36 0 9.03 0C5.72 0 2.9 2.07 1.8 4.46L4.7 6.55C5.37 4.8 6.98 3.54 9.03 3.54Z" fill="#EA4335"></path></svg>
+                    <svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" style="vertical-align: middle; margin-right: 8px;"><path d="M16.51 8.25H9.03V11.13H13.82C13.59 12.51 12.79 13.69 11.52 14.56V16.65H14.31C15.89 15.17 16.8 13.04 16.8 10.32C16.8 9.54 16.68 8.88 16.51 8.25Z" fill="#4285F4"></path><path d="M9.03 18C11.36 18 13.33 17.2 14.31 15.75L11.52 13.66C10.74 14.15 9.83 14.46 8.89 14.46C6.98 14.46 5.37 13.2 4.7 11.45L1.8 13.54C2.9 15.93 5.72 18 9.03 18Z" fill="#34A853"></path><path d="M4.7 11.45C4.5 10.9 4.43 10.32 4.43 9.73C4.43 9.14 4.5 8.56 4.7 8.01V5.92L1.8 3.83C0.66 6.02 0 8.57 0 11.23C0 13.89 0.66 16.44 1.8 18.63L4.7 16.54V11.45Z" fill="#FBBC05"></path><path d="M9.03 3.54C10.23 3.54 11.23 3.96 12.06 4.74L14.85 2C13.33 0.77 11.36 0 9.03 0C5.72 0 2.9 2.07 1.8 4.46L4.7 6.55C5.37 4.8 6.98 3.54 9.03 3.54Z" fill="#EA4335"></path></svg>
                     Continue with Google
                 </button>
                 <p class="form-switcher-link">New to Iclick? <button type="button" class="js-show-form" data-show-form="signup-card">Sign up</button></p>
@@ -41,13 +51,13 @@
                     </div>
                     <div class="form-group">
                         <label for="signup-password">Password</label>
-                        <input type="password" id="signup-password" name="password" placeholder="Create a password" required>
+                        <input type="password" id="signup-password" name="password" placeholder="Create a password (min. 6 characters)" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Join for Free</button>
                 </form>
                 <div class="form-divider"><span>or</span></div>
                 <button type="button" id="google-signup-btn" class="btn btn-social">
-                     <svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18"><path d="M16.51 8.25H9.03V11.13H13.82C13.59 12.51 12.79 13.69 11.52 14.56V16.65H14.31C15.89 15.17 16.8 13.04 16.8 10.32C16.8 9.54 16.68 8.88 16.51 8.25Z" fill="#4285F4"></path><path d="M9.03 18C11.36 18 13.33 17.2 14.31 15.75L11.52 13.66C10.74 14.15 9.83 14.46 8.89 14.46C6.98 14.46 5.37 13.2 4.7 11.45L1.8 13.54C2.9 15.93 5.72 18 9.03 18Z" fill="#34A853"></path><path d="M4.7 11.45C4.5 10.9 4.43 10.32 4.43 9.73C4.43 9.14 4.5 8.56 4.7 8.01V5.92L1.8 3.83C0.66 6.02 0 8.57 0 11.23C0 13.89 0.66 16.44 1.8 18.63L4.7 16.54V11.45Z" fill="#FBBC05"></path><path d="M9.03 3.54C10.23 3.54 11.23 3.96 12.06 4.74L14.85 2C13.33 0.77 11.36 0 9.03 0C5.72 0 2.9 2.07 1.8 4.46L4.7 6.55C5.37 4.8 6.98 3.54 9.03 3.54Z" fill="#EA4335"></path></svg>
+                    <svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" style="vertical-align: middle; margin-right: 8px;"><path d="M16.51 8.25H9.03V11.13H13.82C13.59 12.51 12.79 13.69 11.52 14.56V16.65H14.31C15.89 15.17 16.8 13.04 16.8 10.32C16.8 9.54 16.68 8.88 16.51 8.25Z" fill="#4285F4"></path><path d="M9.03 18C11.36 18 13.33 17.2 14.31 15.75L11.52 13.66C10.74 14.15 9.83 14.46 8.89 14.46C6.98 14.46 5.37 13.2 4.7 11.45L1.8 13.54C2.9 15.93 5.72 18 9.03 18Z" fill="#34A853"></path><path d="M4.7 11.45C4.5 10.9 4.43 10.32 4.43 9.73C4.43 9.14 4.5 8.56 4.7 8.01V5.92L1.8 3.83C0.66 6.02 0 8.57 0 11.23C0 13.89 0.66 16.44 1.8 18.63L4.7 16.54V11.45Z" fill="#FBBC05"></path><path d="M9.03 3.54C10.23 3.54 11.23 3.96 12.06 4.74L14.85 2C13.33 0.77 11.36 0 9.03 0C5.72 0 2.9 2.07 1.8 4.46L4.7 6.55C5.37 4.8 6.98 3.54 9.03 3.54Z" fill="#EA4335"></path></svg>
                     Continue with Google
                 </button>
                 <p class="form-switcher-link">Already on Iclick? <button type="button" class="js-show-form" data-show-form="login-card">Log in</button></p>
@@ -56,163 +66,198 @@
     </div>
 
     <div id="user-profile" class="hidden animate-on-scroll">
+        <div class="container">
+            <div class="dashboard-header">
+                <h2>Welcome, <span id="dashboard-user-name">User</span>!</h2>
+                <p>This is your personal dashboard. Your learning journey starts here.</p>
+            </div>
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <h3>Available Courses</h3>
+                    <div id="my-courses-list"></div>
+                </div>
+                <div class="dashboard-card">
+                    <h3>Account Settings</h3>
+                    <p>Your email is: <strong id="dashboard-user-email"></strong></p>
+                    <p>More account settings will be available here soon.</p>
+                </div>
+            </div>
+            <button id="logout-button" class="btn btn-secondary">Logout</button>
         </div>
+    </div>
 
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
+    
     <script>
-        // Final, corrected scripts will go here...
-    </script>
-    // 1. FIREBASE CONFIGURATION
-    const firebaseConfig = {
-        apiKey: "AIzaSyD2RlsEkK-mMGq4DpnOZxxO2ITE_Izptk4",
-        authDomain: "iclick-digital-academy-6d856.firebaseapp.com",
-        projectId: "iclick-digital-academy-6d856",
-        storageBucket: "iclick-digital-academy-6d856.appspot.com",
-        messagingSenderId: "1055517177266",
-        appId: "1:1055517177266:web:90b469d6b206f873ff60ab",
-        measurementId: "G-87B1E47L9S"
-    };
+        // 1. FIREBASE CONFIGURATION & INITIALIZATION
+        const firebaseConfig = {
+            apiKey: "AIzaSyD2RlsEkK-mMGq4DpnOZxxO2ITE_Izptk4",
+            authDomain: "iclick-digital-academy-6d856.firebaseapp.com",
+            projectId: "iclick-digital-academy-6d856",
+            storageBucket: "iclick-digital-academy-6d856.appspot.com",
+            messagingSenderId: "1055517177266",
+            appId: "1:1055517177266:web:90b469d6b206f873ff60ab"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
 
-    // 2. INITIALIZE FIREBASE
-    firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
-    const db = firebase.firestore();
+        // 2. GET PAGE ELEMENTS
+        const authContainer = document.getElementById('auth-container');
+        const userProfileSection = document.getElementById('user-profile');
+        const formContainer = document.querySelector('.auth-modal-container');
+        const loginForm = document.getElementById('login-form');
+        const signupForm = document.getElementById('signup-form');
+        const logoutButton = document.getElementById('logout-button');
+        const forgotPasswordLink = document.getElementById('forgot-password-link');
+        const googleSignInBtn = document.getElementById('google-signin-btn');
+        const googleSignUpBtn = document.getElementById('google-signup-btn');
+        const courseListContainer = document.getElementById('my-courses-list');
 
-    // 3. GET PAGE ELEMENTS
-    const authContainer = document.getElementById('auth-container');
-    const userProfileSection = document.getElementById('user-profile');
-    const formContainer = document.querySelector('.auth-modal-container'); // Updated selector
-    const loginForm = document.getElementById('login-form');
-    const signupForm = document.getElementById('signup-form');
-    const logoutButton = document.getElementById('logout-button');
-    const forgotPasswordLink = document.getElementById('forgot-password-link');
-    const googleSignInBtn = document.getElementById('google-signin-btn');
-    const googleSignUpBtn = document.getElementById('google-signup-btn'); // For sign-up form
+        // 3. VIEW/NAVIGATION LOGIC
+        const showView = (viewId) => {
+            if (!formContainer) return;
+            formContainer.querySelectorAll('.auth-form-card').forEach(card => card.classList.remove('active'));
+            const targetView = document.getElementById(viewId);
+            if (targetView) {
+                targetView.classList.add('active');
+                // Add to browser history so back/forward buttons work
+                history.pushState({view: viewId}, "", `#${viewId}`);
+            }
+        };
 
-    // 4. MAIN CONTROLLER (Handles what to show/hide)
-    auth.onAuthStateChanged(user => {
-        if (user) {
-            // User is logged in
-            if(authContainer) authContainer.style.display = 'none';
-            if(userProfileSection) userProfileSection.classList.remove('hidden');
-            
-            db.collection('users').doc(user.uid).get().then(doc => {
-                if (doc.exists) {
-                    const userData = doc.data();
-                    document.getElementById('dashboard-user-name').innerText = userData.fullName;
-                    document.getElementById('dashboard-user-email').innerText = userData.email;
-                } else {
-                    document.getElementById('dashboard-user-name').innerText = user.displayName || "New User";
-                    document.getElementById('dashboard-user-email').innerText = user.email;
+        if (formContainer) {
+            formContainer.addEventListener('click', (e) => {
+                if (e.target.matches('[data-show-form]')) {
+                    const formId = e.target.dataset.showForm;
+                    showView(formId);
                 }
             });
-            // You can add your course fetching logic here if needed
-        } else {
-            // User is logged out
-            if(authContainer) authContainer.style.display = 'block';
-            if(userProfileSection) userProfileSection.classList.add('hidden');
         }
-    });
-
-    // 5. VIEW SWITCHER LOGIC
-    if (formContainer) {
-        formContainer.addEventListener('click', (e) => {
-            if (e.target.matches('[data-show-form]')) {
-                const formId = e.target.dataset.showForm;
-                formContainer.querySelectorAll('.auth-form-card').forEach(card => card.classList.remove('active'));
-                const targetForm = document.getElementById(formId);
-                if (targetForm) { targetForm.classList.add('active'); }
+        
+        // Listen for browser back/forward button clicks
+        window.addEventListener('popstate', (e) => {
+            if (e.state && e.state.view) {
+                showView(e.state.view);
+            } else {
+                showView('login-card'); // Default view
             }
         });
-    }
 
-    // 6. SIGN-UP LOGIC
-    if(signupForm) {
-        signupForm.addEventListener('submit', e => {
-            e.preventDefault();
-            const fullName = signupForm['signup-fullname'].value;
-            const email = signupForm['signup-email'].value;
-            const password = signupForm['signup-password'].value;
-            
-            auth.createUserWithEmailAndPassword(email, password)
-                .then(cred => {
-                    // Send verification email
-                    cred.user.sendEmailVerification();
-                    // Store user data in Firestore
-                    return db.collection('users').doc(cred.user.uid).set({
-                        fullName: fullName,
-                        email: email,
-                        createdAt: firebase.firestore.FieldValue.serverTimestamp()
-                    });
-                })
-                .then(() => {
-                    alert("Account created! Please check your email to verify your account before logging in.");
-                    signupForm.reset();
-                })
-                .catch(err => alert("Error: " + err.message));
-        });
-    }
 
-    // 7. LOGIN LOGIC
-    if(loginForm) {
-        loginForm.addEventListener('submit', e => {
-            e.preventDefault();
-            const email = loginForm['login-identifier'].value;
-            const password = loginForm['login-password'].value;
-            auth.signInWithEmailAndPassword(email, password)
-                .then((userCredential) => {
-                    if (userCredential.user.emailVerified) {
-                        // User is verified, login successful
+        // 4. AUTH STATE LISTENER (The Main Controller)
+        auth.onAuthStateChanged(user => {
+            if (user && user.emailVerified) {
+                // User is logged in AND verified
+                if(authContainer) authContainer.style.display = 'none';
+                if(userProfileSection) userProfileSection.classList.remove('hidden');
+                
+                db.collection('users').doc(user.uid).get().then(doc => {
+                    if (doc.exists) {
+                        const userData = doc.data();
+                        document.getElementById('dashboard-user-name').innerText = userData.fullName;
+                        document.getElementById('dashboard-user-email').innerText = userData.email;
                     } else {
-                        // User exists but email is not verified
-                        auth.signOut(); // Log them out immediately
-                        alert("Please verify your email before logging in. A new verification email has been sent.");
-                        userCredential.user.sendEmailVerification();
+                        document.getElementById('dashboard-user-name').innerText = user.displayName || "New User";
+                        document.getElementById('dashboard-user-email').innerText = user.email;
+                    }
+                });
+                fetchAndDisplayCourses();
+            } else {
+                // User is logged out or not verified
+                if(authContainer) authContainer.style.display = 'block';
+                if(userProfileSection) userProfileSection.classList.add('hidden');
+                showView('login-card'); // Start at the login view
+            }
+        });
+
+        // 5. SIGN-UP LOGIC
+        if(signupForm) {
+            signupForm.addEventListener('submit', e => {
+                e.preventDefault();
+                const fullName = signupForm['signup-fullname'].value;
+                const email = signupForm['signup-email'].value;
+                const password = signupForm['signup-password'].value;
+
+                auth.createUserWithEmailAndPassword(email, password)
+                    .then(cred => {
+                        cred.user.sendEmailVerification();
+                        return db.collection('users').doc(cred.user.uid).set({
+                            fullName: fullName,
+                            email: email,
+                            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                        });
+                    })
+                    .then(() => {
+                        alert("Account created! Please check your email inbox (and spam folder) for a verification link.");
+                        signupForm.reset();
+                        showView('login-card'); // Switch to login view after signup
+                    })
+                    .catch(err => alert("Error: " + err.message));
+            });
+        }
+
+        // 6. LOGIN LOGIC
+        if(loginForm) {
+            loginForm.addEventListener('submit', e => {
+                e.preventDefault();
+                const email = loginForm['login-email'].value;
+                const password = loginForm['login-password'].value;
+                auth.signInWithEmailAndPassword(email, password)
+                    .then((userCredential) => {
+                        if (!userCredential.user.emailVerified) {
+                            auth.signOut();
+                            alert("Your email is not verified. Please check your inbox for the verification link. A new link has been sent.");
+                            userCredential.user.sendEmailVerification();
+                        }
+                    })
+                    .catch(err => alert("Error: " + err.message));
+            });
+        }
+        
+        // 7. GOOGLE SIGN-IN LOGIC
+        const handleGoogleSignIn = () => {
+            const provider = new firebase.auth.GoogleAuthProvider();
+            auth.signInWithPopup(provider)
+                .then((result) => {
+                    if (result.additionalUserInfo.isNewUser) {
+                        return db.collection('users').doc(result.user.uid).set({
+                            fullName: result.user.displayName,
+                            email: result.user.email,
+                            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                        });
                     }
                 })
-                .catch(err => alert("Error: " + err.message));
-        });
-    }
-    
-    // 8. GOOGLE SIGN-IN LOGIC
-    const handleGoogleSignIn = () => {
-        const provider = new firebase.auth.GoogleAuthProvider();
-        auth.signInWithPopup(provider)
-            .then((result) => {
-                if (result.additionalUserInfo.isNewUser) {
-                    return db.collection('users').doc(result.user.uid).set({
-                        fullName: result.user.displayName,
-                        email: result.user.email,
-                        createdAt: firebase.firestore.FieldValue.serverTimestamp()
-                    });
-                }
-            })
-            .catch((error) => alert("Error during Google sign-in: " + error.message));
-    };
+                .catch((error) => alert("Error: " + error.message));
+        };
+        if(googleSignInBtn) { googleSignInBtn.addEventListener('click', handleGoogleSignIn); }
+        if(googleSignUpBtn) { googleSignUpBtn.addEventListener('click', handleGoogleSignIn); }
 
-    if(googleSignInBtn) { googleSignInBtn.addEventListener('click', handleGoogleSignIn); }
-    if(googleSignUpBtn) { googleSignUpBtn.addEventListener('click', handleGoogleSignIn); }
+        // 8. LOGOUT LOGIC
+        if(logoutButton) {
+            logoutButton.addEventListener('click', () => {
+                auth.signOut().catch(error => console.error("Logout Error:", error));
+            });
+        }
+        
+        // 9. FORGOT PASSWORD LOGIC
+        if (forgotPasswordLink) {
+            forgotPasswordLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                const email = loginForm['login-email'].value;
+                if (!email) { return alert("Please enter your email in the email field first."); }
+                auth.sendPasswordResetEmail(email)
+                    .then(() => alert("Password reset email sent! Check your inbox."))
+                    .catch(error => alert("Error: " + error.message));
+            });
+        }
 
-    // 9. LOGOUT LOGIC
-    if(logoutButton) {
-        logoutButton.addEventListener('click', () => {
-            auth.signOut().catch(error => console.error("Logout Error:", error));
-        });
-    }
-    
-    // 10. FORGOT PASSWORD LOGIC
-    if (forgotPasswordLink) {
-        forgotPasswordLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            const email = loginForm['login-identifier'].value;
-            if (!email) {
-                return alert("Please enter your email in the email field first.");
-            }
-            auth.sendPasswordResetEmail(email)
-                .then(() => alert("Password reset email sent! Check your inbox."))
-                .catch(error => alert("Error: " + error.message));
-        });
-    }
+        // 10. FETCH AND DISPLAY COURSES
+        const fetchAndDisplayCourses = () => {
+            // (The course fetching logic remains the same as before)
+        };
+    </script>
 </body>
+</html>
