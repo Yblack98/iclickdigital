@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="transparent-header-page">
     <header>
         <div class="container">
             <div class="logo-container">
@@ -45,22 +45,22 @@
         <div class="container">
             <h2>Key Services</h2>
             <div class="services-grid">
-                <div class="service-item-intro">
+                <div class="service-item-intro animate-on-scroll">
                     <h4>Social Media Management</h4>
                     <p>Engaging content and strategic management to boost your brand's social presence.</p>
                     <a href="services.html#social-media" class="btn-learn-more">Learn More</a>
                 </div>
-                <div class="service-item-intro">
+                <div class="service-item-intro animate-on-scroll">
                     <h4>Content Creation</h4>
                     <p>High-quality graphics, videos, and copy that captivate your audience.</p>
                     <a href="services.html#content-creation" class="btn-learn-more">Learn More</a>
                 </div>
-                <div class="service-item-intro">
+                <div class="service-item-intro animate-on-scroll">
                     <h4>Web Development</h4>
                     <p>Professional website design to establish a strong and effective online presence.</p>
                     <a href="services.html#web-development" class="btn-learn-more">Learn More</a>
                 </div>
-                <div class="service-item-intro">
+                <div class="service-item-intro animate-on-scroll">
                     <h4>Data Analytics</h4>
                     <p>Leveraging marketing analytics and data science to drive informed decisions.</p>
                     <a href="services.html#data-analytics" class="btn-learn-more">Learn More</a>
@@ -201,7 +201,6 @@
         const openModalTriggers = document.querySelectorAll('.js-open-contact-modal');
         const closeModalButton = document.querySelector('.modal-close');
         const modalOverlay = document.getElementById('contact-modal-overlay');
-
         openModalTriggers.forEach(trigger => {
             trigger.addEventListener('click', (event) => {
                 event.preventDefault();
@@ -216,6 +215,17 @@
         modalOverlay.addEventListener('click', (event) => {
             if (event.target === modalOverlay) { closeModal(); }
         });
+        
+        // --- Scroll-In Animation Logic ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        });
+        const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
+        elementsToAnimate.forEach((el) => observer.observe(el));
     </script>
 </body>
 </html>
