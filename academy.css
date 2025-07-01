@@ -1,58 +1,147 @@
-/* --- Styles for Login Form Divider and Google Button --- */
+/* ========================================= */
+/* STYLES FOR ICICK DIGITAL ACADEMY V2       */
+/* ========================================= */
+
+body.academy-page {
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align to top */
+    min-height: 100vh;
+    padding: 40px 20px;
+    box-sizing: border-box;
+}
+
+/* --- Main Auth Modal Container --- */
+.auth-modal-container {
+    background: var(--text-light);
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 420px; /* Optimal width for a form */
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+.auth-modal-logo {
+    text-align: center;
+    margin-bottom: 25px;
+}
+.auth-modal-logo img {
+    height: 40px;
+    margin: 0 auto;
+}
+
+.auth-form-card { display: none; }
+.auth-form-card.active { display: block; animation: fade-in 0.5s ease; }
+
+@keyframes fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.auth-modal-container h3 {
+    font-family: var(--font-heading);
+    text-align: center;
+    font-size: 1.8em;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+.form-group label {
+    font-weight: 700;
+    font-size: 0.9em;
+    margin-bottom: 8px;
+}
+.form-group input {
+    height: 48px; /* Taller, more modern inputs */
+    padding: 0 15px;
+}
+
+.form-link {
+    text-align: right;
+    font-size: 0.9em;
+    margin: -10px 0 20px 0;
+}
+.form-link a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 700;
+}
+.form-link a:hover {
+    text-decoration: underline;
+}
+
+.auth-modal-container .btn-primary {
+    width: 100%;
+    padding: 15px; /* Taller button */
+    font-size: 1em;
+}
+
+/* --- Social Login & Divider --- */
 .form-divider {
     display: flex;
     align-items: center;
     text-align: center;
     color: #aaa;
-    margin: 20px 0;
+    margin: 25px 0;
+    font-size: 0.8em;
+    font-weight: 700;
+    text-transform: uppercase;
 }
 .form-divider::before, .form-divider::after {
     content: '';
     flex: 1;
     border-bottom: 1px solid #ddd;
 }
-.form-divider:not(:empty)::before {
-    margin-right: .25em;
-}
-.form-divider:not(:empty)::after {
-    margin-left: .25em;
-}
+.form-divider:not(:empty)::before { margin-right: .5em; }
+.form-divider:not(:empty)::after { margin-left: .5em; }
 
-#google-signin-btn {
+.btn.btn-social {
+    width: 100%;
+    background-color: #fff;
+    color: var(--text-dark);
+    border: 1px solid var(--border-color);
+    text-transform: none;
+    font-weight: 700;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px; /* Space between icon and text */
-    width: 100%;
+    gap: 10px;
+    padding: 12px;
 }
-/* --- Styles for Login Form Divider and Google Button --- */
-.form-divider {
-    display: flex;
-    align-items: center;
+.btn.btn-social:hover {
+    background-color: #f8f9fa;
+}
+
+.form-switcher-link {
     text-align: center;
-    color: #aaa;
-    margin: 20px 0;
+    margin-top: 30px;
+    font-size: 1em;
 }
-.form-divider::before, .form-divider::after {
-    content: '';
-    flex: 1;
-    border-bottom: 1px solid #ddd;
-}
-.form-divider:not(:empty)::before {
-    margin-right: .25em;
-}
-.form-divider:not(:empty)::after {
-    margin-left: .25em;
+.form-switcher-link button {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-weight: 700;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 1em;
+    font-family: var(--font-body);
 }
 
-#google-signin-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px; /* Space between icon and text */
-    width: 100%;
+/* --- User Dashboard --- */
+#user-profile.hidden { display: none; }
+.dashboard-header { text-align: center; margin-bottom: 40px; }
+.dashboard-header h2 { font-size: 2.2em; margin-bottom: 10px; }
+.dashboard-header p { font-size: 1.1em; color: #6c757d; }
+.dashboard-grid { display: grid; grid-template-columns: 1fr; gap: 20px; } /* Single column for dashboard */
+.dashboard-card {
+    background-color: var(--text-light);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.04);
 }
-/* Style for the reCAPTCHA container needed for phone auth */
-#recaptcha-container {
-    margin-top: 20px;
-}
+.dashboard-card h3 { margin-top: 0; color: var(--primary-darker); }
+#logout-button { display: block; margin: 40px auto 0 auto; width: fit-content; }
