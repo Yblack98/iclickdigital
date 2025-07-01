@@ -16,9 +16,9 @@
                 <img src="images/logo.png" alt="i-Click Logo">
             </div>
             
-            <div class="auth-form-card" id="login-card">
+            <div class="auth-form-card active" id="login-card">
                 <h3>Welcome back</h3>
-                <form id="login-form">
+                <form id="login-form" novalidate>
                     <div class="form-group">
                         <label for="login-email">Email</label>
                         <input type="email" id="login-email" name="email" placeholder="name@email.com" required>
@@ -40,7 +40,7 @@
 
             <div class="auth-form-card" id="signup-card">
                 <h3>Join for Free</h3>
-                <form id="signup-form">
+                <form id="signup-form" novalidate>
                     <div class="form-group">
                         <label for="signup-fullname">Full Name</label>
                         <input type="text" id="signup-fullname" name="fullname" placeholder="Enter your full name" required>
@@ -98,7 +98,7 @@
             projectId: "iclick-digital-academy-6d856",
             storageBucket: "iclick-digital-academy-6d856.appspot.com",
             messagingSenderId: "1055517177266",
-            appId: "1:1055517177266:web:90b469d6b206f873ff60ab",
+            appId: "1:1055517177266:web:90b469d6b206f873ff60ab"
         };
         firebase.initializeApp(firebaseConfig);
         const auth = firebase.auth();
@@ -119,12 +119,12 @@
         // 3. VIEW & NAVIGATION LOGIC
         const showView = (viewId, pushState = true) => {
             if (!formContainer) return;
-            formContainer.querySelectorAll('.auth-form-card').forEach(card => card.classList.remove('active'));
+            const activeClass = 'active';
+            formContainer.querySelectorAll('.auth-form-card').forEach(card => card.classList.remove(activeClass));
             const targetView = document.getElementById(viewId);
             if (targetView) {
-                targetView.classList.add('active');
+                targetView.classList.add(activeClass);
                 if (pushState) {
-                    // Add this view to the browser's history
                     history.pushState({view: viewId}, "", `#${viewId}`);
                 }
             }
@@ -132,20 +132,17 @@
 
         if (formContainer) {
             formContainer.addEventListener('click', (e) => {
-                if (e.target.matches('[data-show-form]')) {
-                    const formId = e.target.dataset.showForm;
+                const targetButton = e.target.closest('[data-show-form]');
+                if (targetButton) {
+                    const formId = targetButton.dataset.showForm;
                     showView(formId);
                 }
             });
         }
         
-        // Listen for browser back/forward button clicks
         window.addEventListener('popstate', (e) => {
-            if (e.state && e.state.view) {
-                showView(e.state.view, false); // false to prevent re-pushing history
-            } else {
-                showView('login-card', false); // Default view
-            }
+            const viewId = (e.state && e.state.view) || 'login-card';
+            showView(viewId, false);
         });
 
         // 4. MAIN CONTROLLER (Handles what to show/hide on page load)
@@ -168,7 +165,6 @@
             } else {
                 if(authContainer) authContainer.style.display = 'block';
                 if(userProfileSection) userProfileSection.classList.add('hidden');
-                // Check URL hash to show correct form on page load
                 const currentView = window.location.hash.replace('#', '') || 'login-card';
                 showView(currentView, false);
             }
@@ -223,7 +219,7 @@
             const provider = new firebase.auth.GoogleAuthProvider();
             auth.signInWithPopup(provider)
                 .then((result) => {
-                    // Google users are automatically email-verified
+                    // Google users have verified emails by default.
                     if (result.additionalUserInfo.isNewUser) {
                         return db.collection('users').doc(result.user.uid).set({
                             fullName: result.user.displayName,
@@ -257,7 +253,49 @@
         }
 
         // 10. FETCH AND DISPLAY COURSES
-        const fetchAndDisplayCourses = () => { /* Course fetching logic remains the same */ };
+        const fetchAndDisplayCourses = () => {
+            const courseListContainer = document.getElementById('my-courses-list');
+            if (!courseListContainer) return;
+
+            db.collection('courses').get().then(querySnapshot => {
+                let html = "";
+                if (snapshot.empty) {
+                    courseListContainer.innerHTML = '<p>No courses available at the moment.</p>';
+                    return;
+                }
+                querySnapshot.forEach(doc => {
+                    const course = doc.data();
+                    html += `
+                        <div class="course-card animate-on-scroll">
+                            <div class="course-card-img" style="background-image: url('${course.imageUrl}')"></div>
+                            <div class="course-card-content">
+                                <div class="course-card-meta">${course.difficulty} | ${course.category}</div>
+                                <h4>${course.title}</h4>
+                                <p>${course.description}</p>
+                                <a href="#" class="btn-learn-more">Start Course</a>
+                            </div>
+                        </div>
+                    `;
+                });
+                courseListContainer.innerHTML = html;
+                const newElementsToAnimate = courseListContainer.querySelectorAll('.animate-on-scroll');
+                newElementsToAnimate.forEach((el) => observer.observe(el));
+            }).catch(error => {
+                console.error("Error fetching courses: ", error);
+                courseListContainer.innerHTML = '<p>Could not load courses. Check Firestore rules.</p>';
+            });
+        };
+
+        // 11. SCROLL-IN ANIMATION LOGIC
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
+        elementsToAnimate.forEach((el) => observer.observe(el));
     </script>
 </body>
 </html>
