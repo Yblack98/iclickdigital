@@ -19,54 +19,47 @@
             <div class="auth-form-panel">
                 <div class="auth-form-card active" id="initial-view">
                     <h3>Welcome!</h3>
-                    <p style="text-align:center; margin-top: -15px; margin-bottom: 25px;">Log in or create an account to get started.</p>
-                    <button class="btn btn-primary" data-show-form="login-card">Login with Email</button>
-                    <button class="btn btn-secondary" data-show-form="signup-card">Create Account</button>
+                    <p style="text-align:center; margin-top: -15px; margin-bottom: 25px;">Sign in to get started.</p>
+                    
+                    <button type="button" id="google-signin-btn" class="btn btn-secondary">
+                        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" style="margin-right: 8px;"><path d="M16.51 8.25H9.03V11.13H13.82C13.59 12.51 12.79 13.69 11.52 14.56V16.65H14.31C15.89 15.17 16.8 13.04 16.8 10.32C16.8 9.54 16.68 8.88 16.51 8.25Z" fill="#4285F4"></path><path d="M9.03 18C11.36 18 13.33 17.2 14.31 15.75L11.52 13.66C10.74 14.15 9.83 14.46 8.89 14.46C6.98 14.46 5.37 13.2 4.7 11.45L1.8 13.54C2.9 15.93 5.72 18 9.03 18Z" fill="#34A853"></path><path d="M4.7 11.45C4.5 10.9 4.43 10.32 4.43 9.73C4.43 9.14 4.5 8.56 4.7 8.01V5.92L1.8 3.83C0.66 6.02 0 8.57 0 11.23C0 13.89 0.66 16.44 1.8 18.63L4.7 16.54V11.45Z" fill="#FBBC05"></path><path d="M9.03 3.54C10.23 3.54 11.23 3.96 12.06 4.74L14.85 2C13.33 0.77 11.36 0 9.03 0C5.72 0 2.9 2.07 1.8 4.46L4.7 6.55C5.37 4.8 6.98 3.54 9.03 3.54Z" fill="#EA4335"></path></svg>
+                        Continue with Google
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-show-form="phone-card">Continue with Phone</button>
+                    
+                    <div class="form-divider"><span>or</span></div>
+                    <p class="form-switcher-link">
+                        <button type="button" class="js-show-form" data-show-form="login-card">Continue with Email</button>
+                    </p>
                 </div>
 
                 <div class="auth-form-card" id="login-card">
-                    <h3>Login to Your Account</h3>
-                    <form id="login-form">
+                    </div>
+                
+                <div class="auth-form-card" id="signup-card">
+                    </div>
+
+                <div class="auth-form-card" id="phone-card">
+                    <h3>Enter your phone number</h3>
+                    <form id="phone-form">
                         <div class="form-group">
-                            <label for="login-identifier">Email Address:</label>
-                            <input type="email" id="login-identifier" name="identifier" required>
+                            <label for="phone-number">Phone Number (e.g., +2348012345678)</label>
+                            <input type="tel" id="phone-number" name="phone" required>
                         </div>
-                        <div class="form-group">
-                            <label for="login-password">Password:</label>
-                            <input type="password" id="login-password" name="password" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Login</button>
-                        <div class="form-divider"><span>or</span></div>
-                        <button type="button" id="google-signin-btn" class="btn btn-secondary">
-                            <svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" style="margin-right: 8px;"><path d="M16.51 8.25H9.03V11.13H13.82C13.59 12.51 12.79 13.69 11.52 14.56V16.65H14.31C15.89 15.17 16.8 13.04 16.8 10.32C16.8 9.54 16.68 8.88 16.51 8.25Z" fill="#4285F4"></path><path d="M9.03 18C11.36 18 13.33 17.2 14.31 15.75L11.52 13.66C10.74 14.15 9.83 14.46 8.89 14.46C6.98 14.46 5.37 13.2 4.7 11.45L1.8 13.54C2.9 15.93 5.72 18 9.03 18Z" fill="#34A853"></path><path d="M4.7 11.45C4.5 10.9 4.43 10.32 4.43 9.73C4.43 9.14 4.5 8.56 4.7 8.01V5.92L1.8 3.83C0.66 6.02 0 8.57 0 11.23C0 13.89 0.66 16.44 1.8 18.63L4.7 16.54V11.45Z" fill="#FBBC05"></path><path d="M9.03 3.54C10.23 3.54 11.23 3.96 12.06 4.74L14.85 2C13.33 0.77 11.36 0 9.03 0C5.72 0 2.9 2.07 1.8 4.46L4.7 6.55C5.37 4.8 6.98 3.54 9.03 3.54Z" fill="#EA4335"></path></svg>
-                            Continue with Google
-                        </button>
-                        <p class="form-switcher-link">No account? <button type="button" class="js-show-form" data-show-form="signup-card">Sign Up</button></p>
-                        <p class="form-link"><a href="#" id="forgot-password-link">Forgot Password?</a></p>
+                        <button type="submit" class="btn btn-primary">Send Verification Code</button>
+                        <div id="recaptcha-container"></div>
                     </form>
                 </div>
 
-                <div class="auth-form-card" id="signup-card">
-                    <h3>Create Your Account</h3>
-                    <form id="signup-form">
+                <div class="auth-form-card" id="code-card">
+                    <h3>Enter Verification Code</h3>
+                    <p id="code-message">We've sent a 6-digit code to your phone.</p>
+                    <form id="code-form">
                         <div class="form-group">
-                            <label for="signup-fullname">Full Name:</label>
-                            <input type="text" id="signup-fullname" name="fullname" required>
+                            <label for="verification-code">Verification Code</label>
+                            <input type="text" id="verification-code" required>
                         </div>
-                        <div class="form-group">
-                            <label for="signup-email">Email Address:</label>
-                            <input type="email" id="signup-email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="signup-password">Password (min. 6 characters):</label>
-                            <input type="password" id="signup-password" name="password" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="signup-confirm-password">Confirm Password:</label>
-                            <input type="password" id="signup-confirm-password" name="confirmPassword" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Create Account</button>
-                        <p class="form-switcher-link">Already have an account? <button type="button" class="js-show-form" data-show-form="login-card">Login</button></p>
+                        <button type="submit" class="btn btn-primary">Verify & Sign In</button>
                     </form>
                 </div>
             </div>
@@ -74,33 +67,13 @@
     </div>
 
     <div id="user-profile" class="hidden animate-on-scroll">
-        <div class="container">
-            <div class="dashboard-header">
-                <h2>Welcome, <span id="dashboard-user-name">User</span>!</h2>
-                <p>This is your personal dashboard. Your learning journey starts here.</p>
-            </div>
-            <div class="dashboard-grid">
-                <div class="dashboard-card">
-                    <h3>Available Courses</h3>
-                    <div id="my-courses-list">
-                        </div>
-                </div>
-                <div class="dashboard-card">
-                    <h3>Account Settings</h3>
-                    <p>Your email is: <strong id="dashboard-user-email"></strong></p>
-                    <p>More account settings will be available here soon.</p>
-                </div>
-            </div>
-            <button id="logout-button" class="btn btn-secondary">Logout</button>
         </div>
-    </div>
 
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
-    
     <script>
-        // 1. FIREBASE CONFIGURATION
+        // 1. FIREBASE CONFIG & INIT
         const firebaseConfig = {
             apiKey: "AIzaSyD2RlsEkK-mMGq4DpnOZxxO2ITE_Izptk4",
             authDomain: "iclick-digital-academy-6d856.firebaseapp.com",
@@ -110,170 +83,61 @@
             appId: "1:1055517177266:web:90b469d6b206f873ff60ab",
             measurementId: "G-87B1E47L9S"
         };
-
-        // 2. INITIALIZE FIREBASE
         firebase.initializeApp(firebaseConfig);
         const auth = firebase.auth();
         const db = firebase.firestore();
 
-        // 3. GET PAGE ELEMENTS
-        const authContainer = document.getElementById('auth-container');
-        const userProfileSection = document.getElementById('user-profile');
-        const formPanel = document.querySelector('.auth-form-panel');
-        const loginForm = document.getElementById('login-form');
-        const signupForm = document.getElementById('signup-form');
-        const logoutButton = document.getElementById('logout-button');
-        const forgotPasswordLink = document.getElementById('forgot-password-link');
-        const courseListContainer = document.getElementById('my-courses-list');
-        const googleSignInBtn = document.getElementById('google-signin-btn');
+        // 2. GET PAGE ELEMENTS
+        const phoneForm = document.getElementById('phone-form');
+        const codeForm = document.getElementById('code-form');
+        // ... (other element getters)
 
-        // 4. MAIN CONTROLLER (Handles what to show/hide)
-        auth.onAuthStateChanged(user => {
-            if (user) {
-                if(authContainer) authContainer.style.display = 'none';
-                if(userProfileSection) userProfileSection.classList.remove('hidden');
-                
-                db.collection('users').doc(user.uid).get().then(doc => {
-                    if (doc.exists) {
-                        const userData = doc.data();
-                        document.getElementById('dashboard-user-name').innerText = userData.fullName;
-                        document.getElementById('dashboard-user-email').innerText = userData.email;
-                    } else {
-                        // For users who signed in with Google and might not have a doc yet
-                        document.getElementById('dashboard-user-name').innerText = user.displayName || "New User";
-                        document.getElementById('dashboard-user-email').innerText = user.email;
-                    }
-                });
-                fetchAndDisplayCourses();
-            } else {
-                if(authContainer) authContainer.style.display = 'block';
-                if(userProfileSection) userProfileSection.classList.add('hidden');
-            }
+        // 3. PHONE SIGN-IN SETUP
+        // Render the reCAPTCHA verifier
+        window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
+            'size': 'invisible'
         });
 
-        // 5. VIEW SWITCHER LOGIC
-        if (formPanel) {
-            formPanel.addEventListener('click', (e) => {
-                if (e.target.matches('[data-show-form]')) {
-                    const formId = e.target.dataset.showForm;
-                    formPanel.querySelectorAll('.auth-form-card').forEach(card => card.classList.remove('active'));
-                    const targetForm = document.getElementById(formId);
-                    if (targetForm) { targetForm.classList.add('active'); }
-                }
-            });
-        }
-
-        // 6. SIGN-UP LOGIC
-        if(signupForm) {
-            signupForm.addEventListener('submit', e => {
+        // Handle Phone Number submission
+        if (phoneForm) {
+            phoneForm.addEventListener('submit', (e) => {
                 e.preventDefault();
-                const fullName = signupForm['signup-fullname'].value;
-                const email = signupForm['signup-email'].value;
-                const password = signupForm['signup-password'].value;
-                if (password !== signupForm['signup-confirm-password'].value) { return alert("Passwords do not match!"); }
-                
-                auth.createUserWithEmailAndPassword(email, password)
-                    .then(cred => db.collection('users').doc(cred.user.uid).set({
-                        fullName: fullName,
-                        email: email,
-                        createdAt: firebase.firestore.FieldValue.serverTimestamp()
-                    }))
-                    .then(() => signupForm.reset())
-                    .catch(err => alert("Error: " + err.message));
+                const phoneNumber = phoneForm['phone-number'].value;
+                const appVerifier = window.recaptchaVerifier;
+
+                auth.signInWithPhoneNumber(phoneNumber, appVerifier)
+                    .then((confirmationResult) => {
+                        // SMS sent. Save confirmation result to use later.
+                        window.confirmationResult = confirmationResult;
+                        alert("Verification code sent!");
+                        // Show the code entry form
+                        document.querySelectorAll('.auth-form-card').forEach(c => c.classList.remove('active'));
+                        document.getElementById('code-card').classList.add('active');
+                    }).catch((error) => {
+                        alert("Error sending code: " + error.message);
+                        // Reset reCAPTCHA so user can try again
+                        grecaptcha.reset(window.recaptchaWidgetId);
+                    });
             });
         }
 
-        // 7. LOGIN LOGIC
-        if(loginForm) {
-            loginForm.addEventListener('submit', e => {
+        // Handle Code submission
+        if (codeForm) {
+            codeForm.addEventListener('submit', (e) => {
                 e.preventDefault();
-                const email = loginForm['login-identifier'].value;
-                const password = loginForm['login-password'].value;
-                auth.signInWithEmailAndPassword(email, password)
-                    .catch(err => alert("Error: " + err.message));
-            });
-        }
-
-        // 8. GOOGLE SIGN-IN LOGIC
-        if(googleSignInBtn) {
-            googleSignInBtn.addEventListener('click', () => {
-                const provider = new firebase.auth.GoogleAuthProvider();
-                auth.signInWithPopup(provider)
-                    .then((result) => {
-                        const user = result.user;
-                        const isNewUser = result.additionalUserInfo.isNewUser;
-                        if (isNewUser) {
-                            return db.collection('users').doc(user.uid).set({
-                                fullName: user.displayName,
-                                email: user.email,
-                                createdAt: firebase.firestore.FieldValue.serverTimestamp()
-                            });
-                        }
-                    })
-                    .catch((error) => alert("Error during Google sign-in: " + error.message));
-            });
-        }
-
-        // 9. LOGOUT LOGIC
-        if(logoutButton) {
-            logoutButton.addEventListener('click', () => {
-                auth.signOut().catch(error => console.error("Logout Error:", error));
-            });
-        }
-        
-        // 10. FORGOT PASSWORD LOGIC
-        if (forgotPasswordLink) {
-            forgotPasswordLink.addEventListener('click', (e) => {
-                e.preventDefault();
-                const email = prompt("Please enter your email address to send a password reset link:");
-                if (email) {
-                    auth.sendPasswordResetEmail(email)
-                        .then(() => alert("Password reset email sent! Check your inbox."))
-                        .catch(error => alert("Error: " + error.message));
-                }
-            });
-        }
-
-        // 11. FETCH AND DISPLAY COURSES FUNCTION
-        const fetchAndDisplayCourses = () => {
-            if (!courseListContainer) return;
-            db.collection('courses').get().then(querySnapshot => {
-                let html = "";
-                if (snapshot.empty) {
-                    courseListContainer.innerHTML = '<p>No courses available at the moment.</p>';
-                    return;
-                }
-                querySnapshot.forEach(doc => {
-                    const course = doc.data();
-                    html += `
-                        <div class="course-card">
-                            <div class="course-card-img" style="background-image: url('${course.imageUrl}')"></div>
-                            <div class="course-card-content">
-                                <div class="course-card-meta">${course.difficulty} | ${course.category}</div>
-                                <h4>${course.title}</h4>
-                                <p>${course.description}</p>
-                                <a href="#" class="btn-learn-more">Start Course</a>
-                            </div>
-                        </div>
-                    `;
+                const code = codeForm['verification-code'].value;
+                window.confirmationResult.confirm(code).then((result) => {
+                    const user = result.user;
+                    alert("You are now signed in!");
+                    // Check if user is new and create a profile doc if needed
+                }).catch((error) => {
+                    alert("Error, invalid code: " + error.message);
                 });
-                courseListContainer.innerHTML = html;
-            }).catch(error => {
-                console.error("Error fetching courses: ", error);
-                courseListContainer.innerHTML = '<p>Could not load courses. Please check Firestore rules.</p>';
             });
-        };
+        }
 
-        // 12. SCROLL-IN ANIMATION LOGIC
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                }
-            });
-        }, { threshold: 0.1 });
-        const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
-        elementsToAnimate.forEach((el) => observer.observe(el));
+        // --- (All your other existing scripts for Google Sign-in, Email, Auth State, etc., go here) ---
+        
     </script>
 </body>
 </html>
