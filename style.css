@@ -715,4 +715,19 @@ footer {
     box-shadow: none;
 }
 
+/* ========================================= */
+/* 8. SCROLL-IN ANIMATIONS                   */
+/* ========================================= */
 
+/* The initial state of an element before it's visible */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* The state of the element once it becomes visible */
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
