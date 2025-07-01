@@ -2,26 +2,13 @@
 /* STYLES FOR ICICK DIGITAL ACADEMY          */
 /* ========================================= */
 
-/* --- General & Fonts --- */
-:root {
-    --primary-color: #007bff;
-    --primary-darker: #0056b3;
-    --text-dark: #212529;
-    --text-light: #ffffff;
-    --border-color: #dee2e6;
-    --font-heading: 'Merriweather', serif;
-    --font-body: 'Lato', sans-serif;
-}
-
-body {
-    font-family: var(--font-body);
+body.academy-page {
     background-color: #f0f2f5; /* A neutral background for the app */
-    margin: 0;
-    padding: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    padding: 20px;
     box-sizing: border-box;
 }
 
@@ -66,7 +53,31 @@ body {
 
 .auth-form-panel {
     padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
+
+/* Tab and Form Card Logic */
+.auth-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 30px;
+}
+.auth-tabs button {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1.1em;
+    padding: 15px 30px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    color: #6c757d;
+    border-bottom: 3px solid transparent;
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+.auth-tabs button:hover { color: var(--text-dark); }
+.auth-tabs button.active { color: var(--primary-color); border-bottom: 3px solid var(--primary-color); }
 
 .auth-form-card { display: none; }
 .auth-form-card.active { display: block; animation: fade-in 0.5s ease; }
@@ -76,15 +87,16 @@ body {
     to { opacity: 1; }
 }
 
+/* Initial choice buttons */
 #initial-view h3 { text-align: center; color: var(--text-dark); }
 #initial-view .btn { display: block; width: 100%; margin-bottom: 15px; text-align: center; }
 
+/* Link to switch between forms */
 .form-switcher-link {
     text-align: center;
     margin-top: 20px;
     font-size: 0.9em;
 }
-
 .form-switcher-link button {
     background: none;
     border: none;
@@ -96,9 +108,7 @@ body {
 }
 
 /* --- User Dashboard --- */
-#user-profile.hidden {
-    display: none;
-}
+#user-profile.hidden { display: none; }
 .dashboard-header { text-align: center; margin-bottom: 40px; }
 .dashboard-header h2 { font-size: 2.2em; margin-bottom: 10px; }
 .dashboard-header p { font-size: 1.1em; color: #6c757d; }
@@ -113,35 +123,8 @@ body {
 .dashboard-card h3 { margin-top: 0; color: var(--primary-darker); }
 #logout-button { display: block; margin: 40px auto 0 auto; width: fit-content; }
 
-/* --- Course List Styling --- */
-.course-item { border-top: 1px solid var(--border-color); padding: 15px 0; }
-.course-item:first-child { border-top: none; }
-.course-item h4 { margin-top: 0; margin-bottom: 5px; color: var(--primary-color); }
-.course-item p { margin: 0 0 10px 0; font-size: 0.95em; }
-.course-item div { display: flex; justify-content: space-between; align-items: center; }
-.course-item span { font-size: 0.85em; font-weight: 700; color: #6c757d; }
-.btn-enroll { padding: 5px 15px; font-size: 0.8em; text-transform: none; }
-.btn-enroll:disabled { background-color: #6c757d; cursor: not-allowed; transform: none; box-shadow: none; }
-
-/* --- Forms & Buttons (Copied from main stylesheet) --- */
-.form-group, .btn { /* Add rules from main stylesheet if needed */ }
-
-/* Mobile View for Academy */
-@media (max-width: 850px) {
-    .auth-split-screen { grid-template-columns: 1fr; }
-    .auth-welcome-panel { padding: 40px 30px; text-align: center; }
-    .dashboard-grid { grid-template-columns: 1fr; }
-}
-/* ========================================= */
-/* 12. ACADEMY COURSE CARDS                  */
-/* ========================================= */
-
-#my-courses-list {
-    display: grid;
-    grid-template-columns: 1fr; /* Default to one column */
-    gap: 20px;
-}
-
+/* Course Card Styling */
+#my-courses-list { display: grid; grid-template-columns: 1fr; gap: 20px; }
 .course-card {
     display: flex;
     background-color: var(--text-light);
@@ -151,39 +134,17 @@ body {
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.04);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.course-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
+.course-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); }
+.course-card-img { flex-shrink: 0; width: 150px; background-size: cover; background-position: center; }
+.course-card-content { padding: 20px; }
+.course-card-content h4 { margin-top: 0; margin-bottom: 10px; font-size: 1.2em; }
+.course-card-content p { margin-bottom: 15px; font-size: 0.95em; color: #6c757d; }
+.course-card-meta { font-size: 0.8em; font-weight: 700; color: #6c757d; text-transform: uppercase; }
 
-.course-card-img {
-    flex-shrink: 0;
-    width: 150px;
-    background-size: cover;
-    background-position: center;
-}
-
-.course-card-content {
-    padding: 20px;
-}
-
-.course-card-content h4 {
-    margin-top: 0;
-    margin-bottom: 10px;
-    font-size: 1.2em;
-}
-
-.course-card-content p {
-    margin-bottom: 15px;
-    font-size: 0.95em;
-    color: #6c757d;
-}
-
-.course-card-meta {
-    font-size: 0.8em;
-    font-weight: 700;
-    color: #6c757d;
-    text-transform: uppercase;
-}
-
-
+/* Mobile View for Academy */
+@media (max-width: 850px) {
+    body.academy-page { padding: 0; }
+    .auth-split-screen { grid-template-columns: 1fr; border-radius: 0; }
+    .auth-welcome-panel { padding: 40px 30px; text-align: center; }
+    .dashboard-grid { grid-template-columns: 1fr; }
+    }
