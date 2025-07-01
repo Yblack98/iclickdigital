@@ -16,11 +16,17 @@
                 <img src="images/logo.png" alt="i-Click Logo">
             </div>
             
-            <div class="auth-form-card" id="login-card">
+            <div class="auth-form-card active" id="login-card">
                 <h3>Welcome back</h3>
                 <form id="login-form" novalidate>
-                    <div class="form-group"><label for="login-email">Email</label><input type="email" id="login-email" name="email" placeholder="name@email.com" required></div>
-                    <div class="form-group"><label for="login-password">Password</label><input type="password" id="login-password" name="password" placeholder="Enter your password" required></div>
+                    <div class="form-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" name="email" placeholder="name@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" name="password" placeholder="Enter your password" required>
+                    </div>
                     <p class="form-link"><a href="#" id="forgot-password-link">Forgot password?</a></p>
                     <button type="submit" class="btn btn-primary">Login</button>
                 </form>
@@ -35,9 +41,18 @@
             <div class="auth-form-card" id="signup-card">
                 <h3>Join for Free</h3>
                 <form id="signup-form" novalidate>
-                    <div class="form-group"><label for="signup-fullname">Full Name</label><input type="text" id="signup-fullname" name="fullname" placeholder="Enter your full name" required></div>
-                    <div class="form-group"><label for="signup-email">Email</label><input type="email" id="signup-email" name="email" placeholder="name@email.com" required></div>
-                    <div class="form-group"><label for="signup-password">Password</label><input type="password" id="signup-password" name="password" placeholder="Create a password (min. 6 characters)" required></div>
+                    <div class="form-group">
+                        <label for="signup-fullname">Full Name</label>
+                        <input type="text" id="signup-fullname" name="fullname" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-email">Email</label>
+                        <input type="email" id="signup-email" name="email" placeholder="name@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password">Password</label>
+                        <input type="password" id="signup-password" name="password" placeholder="Create a password (min. 6 characters)" required>
+                    </div>
                     <button type="submit" class="btn btn-primary">Join for Free</button>
                 </form>
                 <div class="form-divider"><span>or</span></div>
@@ -103,10 +118,11 @@
         // 3. VIEW & NAVIGATION LOGIC
         const showView = (viewId, pushState = true) => {
             if (!formContainer) return;
-            formContainer.querySelectorAll('.auth-form-card').forEach(card => card.classList.remove('active'));
+            const activeClass = 'active';
+            formContainer.querySelectorAll('.auth-form-card').forEach(card => card.classList.remove(activeClass));
             const targetView = document.getElementById(viewId);
             if (targetView) {
-                targetView.classList.add('active');
+                targetView.classList.add(activeClass);
                 if (pushState) {
                     history.pushState({view: viewId}, "", `#${viewId}`);
                 }
@@ -145,7 +161,7 @@
                         document.getElementById('dashboard-user-email').innerText = user.email;
                     }
                 });
-                // We can add course fetching here later if needed
+                // Course fetching logic could go here
             } else {
                 if(authContainer) authContainer.style.display = 'block';
                 if(userProfileSection) userProfileSection.classList.add('hidden');
