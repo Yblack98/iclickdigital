@@ -18,9 +18,9 @@
             
             <div class="auth-form-card active" id="initial-view">
                 <h3>Welcome!</h3>
-                <p style="text-align:center; margin-top: -15px; margin-bottom: 25px;">Sign in or create an account to get started.</p>
-                <button type="button" id="google-signin-btn-initial" class="btn btn-social">
-                    <svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" style="vertical-align: middle; margin-right: 8px;"><path d="M16.51 8.25H9.03V11.13H13.82C13.59 12.51 12.79 13.69 11.52 14.56V16.65H14.31C15.89 15.17 16.8 13.04 16.8 10.32C16.8 9.54 16.68 8.88 16.51 8.25Z" fill="#4285F4"></path><path d="M9.03 18C11.36 18 13.33 17.2 14.31 15.75L11.52 13.66C10.74 14.15 9.83 14.46 8.89 14.46C6.98 14.46 5.37 13.2 4.7 11.45L1.8 13.54C2.9 15.93 5.72 18 9.03 18Z" fill="#34A853"></path><path d="M4.7 11.45C4.5 10.9 4.43 10.32 4.43 9.73C4.43 9.14 4.5 8.56 4.7 8.01V5.92L1.8 3.83C0.66 6.02 0 8.57 0 11.23C0 13.89 0.66 16.44 1.8 18.63L4.7 16.54V11.45Z" fill="#FBBC05"></path><path d="M9.03 3.54C10.23 3.54 11.23 3.96 12.06 4.74L14.85 2C13.33 0.77 11.36 0 9.03 0C5.72 0 2.9 2.07 1.8 4.46L4.7 6.55C5.37 4.8 6.98 3.54 9.03 3.54Z" fill="#EA4335"></path></svg>
+                <p style="text-align:center; margin-top: -15px; margin-bottom: 25px;">Sign in or create an account.</p>
+                <button type="button" id="google-signin-btn" class="btn btn-social">
+                    <svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18"><path d="M16.51 8.25H9.03V11.13H13.82C13.59 12.51 12.79 13.69 11.52 14.56V16.65H14.31C15.89 15.17 16.8 13.04 16.8 10.32C16.8 9.54 16.68 8.88 16.51 8.25Z" fill="#4285F4"></path><path d="M9.03 18C11.36 18 13.33 17.2 14.31 15.75L11.52 13.66C10.74 14.15 9.83 14.46 8.89 14.46C6.98 14.46 5.37 13.2 4.7 11.45L1.8 13.54C2.9 15.93 5.72 18 9.03 18Z" fill="#34A853"></path><path d="M4.7 11.45C4.5 10.9 4.43 10.32 4.43 9.73C4.43 9.14 4.5 8.56 4.7 8.01V5.92L1.8 3.83C0.66 6.02 0 8.57 0 11.23C0 13.89 0.66 16.44 1.8 18.63L4.7 16.54V11.45Z" fill="#FBBC05"></path><path d="M9.03 3.54C10.23 3.54 11.23 3.96 12.06 4.74L14.85 2C13.33 0.77 11.36 0 9.03 0C5.72 0 2.9 2.07 1.8 4.46L4.7 6.55C5.37 4.8 6.98 3.54 9.03 3.54Z" fill="#EA4335"></path></svg>
                     Continue with Google
                 </button>
                 <button type="button" class="btn btn-secondary" data-show-view="phone-card">Continue with Phone</button>
@@ -33,33 +33,31 @@
             <div class="auth-form-card" id="login-card">
                 <h3>Login with Email</h3>
                 <form id="login-form" novalidate>
-                    <div class="form-group"><label for="login-email">Email</label><input type="email" id="login-email" name="email" placeholder="name@email.com" required></div>
-                    <div class="form-group"><label for="login-password">Password</label><input type="password" id="login-password" name="password" placeholder="Enter your password" required></div>
+                    <div class="form-group"><label for="login-email">Email</label><input type="email" id="login-email" required></div>
+                    <div class="form-group"><label for="login-password">Password</label><input type="password" id="login-password" required></div>
                     <p class="form-link"><a href="#" id="forgot-password-link">Forgot password?</a></p>
                     <button type="submit" class="btn btn-primary">Login</button>
                     <p class="form-switcher-link">No account? <button type="button" class="js-show-form" data-show-view="signup-card">Sign Up</button></p>
+                    <p class="form-switcher-link" style="margin-top:10px;"><button type="button" class="js-show-form" data-show-view="initial-view">« Back to other options</button></p>
                 </form>
             </div>
             
             <div class="auth-form-card" id="signup-card">
-                <h3>Create Account with Email</h3>
+                <h3>Create Account</h3>
                 <form id="signup-form" novalidate>
-                    <div class="form-group"><label for="signup-fullname">Full Name</label><input type="text" id="signup-fullname" name="fullname" placeholder="Enter your full name" required></div>
-                    <div class="form-group"><label for="signup-email">Email</label><input type="email" id="signup-email" name="email" placeholder="name@email.com" required></div>
-                    <div class="form-group"><label for="signup-password">Password</label><input type="password" id="signup-password" name="password" placeholder="Create a password (min. 6 characters)" required></div>
+                    <div class="form-group"><label for="signup-fullname">Full Name</label><input type="text" id="signup-fullname" required></div>
+                    <div class="form-group"><label for="signup-email">Email</label><input type="email" id="signup-email" required></div>
+                    <div class="form-group"><label for="signup-password">Password (min. 6 characters)</label><input type="password" id="signup-password" required></div>
                     <button type="submit" class="btn btn-primary">Create Account</button>
                     <p class="form-switcher-link">Already have an account? <button type="button" class="js-show-form" data-show-view="login-card">Log in</button></p>
                 </form>
             </div>
 
             <div class="auth-form-card" id="phone-card">
-                <h3>Enter Your Phone Number</h3>
+                <h3>Enter Phone Number</h3>
                 <form id="phone-form">
-                    <div class="form-group">
-                        <label for="phone-number">Phone Number (e.g., +2348012345678)</label>
-                        <input type="tel" id="phone-number" name="phone" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Send Verification Code</button>
+                    <div class="form-group"><label for="phone-number">Your number (e.g., +2348012345678)</label><input type="tel" id="phone-number" required></div>
+                    <button type="submit" class="btn btn-primary">Send Code</button>
                     <p class="form-switcher-link"><button type="button" class="js-show-form" data-show-view="initial-view">Back</button></p>
                     <div id="recaptcha-container"></div>
                 </form>
@@ -67,38 +65,16 @@
 
             <div class="auth-form-card" id="code-card">
                 <h3>Enter Verification Code</h3>
-                <p id="code-message" style="text-align:center;">We've sent a 6-digit code to your phone.</p>
                 <form id="code-form">
-                    <div class="form-group">
-                        <label for="verification-code">6-Digit Code</label>
-                        <input type="text" id="verification-code" required>
-                    </div>
+                    <div class="form-group"><label for="verification-code">6-Digit Code</label><input type="text" id="verification-code" required></div>
                     <button type="submit" class="btn btn-primary">Verify & Sign In</button>
                 </form>
             </div>
         </div>
     </div>
 
-    <div id="user-profile" class="hidden animate-on-scroll">
-        <div class="container">
-            <div class="dashboard-header">
-                <h2>Welcome, <span id="dashboard-user-name">User</span>!</h2>
-                <p>This is your personal dashboard. Your learning journey starts here.</p>
-            </div>
-            <div class="dashboard-grid">
-                <div class="dashboard-card">
-                    <h3>Available Courses</h3>
-                    <div id="my-courses-list"></div>
-                </div>
-                <div class="dashboard-card">
-                    <h3>Account Settings</h3>
-                    <p>Your email is: <strong id="dashboard-user-email"></strong></p>
-                    <p>More account settings will be available here soon.</p>
-                </div>
-            </div>
-            <button id="logout-button" class="btn btn-secondary">Logout</button>
+    <div id="user-profile" class="hidden">
         </div>
-    </div>
 
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
@@ -106,7 +82,6 @@
     
     <script>
       document.addEventListener('DOMContentLoaded', () => {
-        // 1. FIREBASE CONFIGURATION
         const firebaseConfig = {
             apiKey: "AIzaSyD2RlsEkK-mMGq4DpnOZxxO2ITE_Izptk4",
             authDomain: "iclick-digital-academy-6d856.firebaseapp.com",
@@ -119,114 +94,107 @@
         const auth = firebase.auth();
         const db = firebase.firestore();
 
-        // 2. GET PAGE ELEMENTS
         const authContainer = document.getElementById('auth-container');
         const userProfileSection = document.getElementById('user-profile');
         const formContainer = document.querySelector('.auth-modal-container');
-        const loginForm = document.getElementById('login-form');
-        const signupForm = document.getElementById('signup-form');
-        const phoneForm = document.getElementById('phone-form');
-        const codeForm = document.getElementById('code-form');
-        const logoutButton = document.getElementById('logout-button');
-        const forgotPasswordLink = document.getElementById('forgot-password-link');
-        const googleSignInBtn = document.getElementById('google-signin-btn-initial');
-        const courseListContainer = document.getElementById('my-courses-list');
-
-        // 3. PHONE SIGN-IN SETUP
-        try {
-            window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
-                'size': 'invisible',
-                'callback': () => {}
-            });
-            window.recaptchaVerifier.render();
-        } catch (e) {
-            console.error("reCAPTCHA render error:", e);
-        }
-
-        // 4. VIEW & NAVIGATION LOGIC
-        const showView = (viewId, pushState = true) => {
+        
+        const showView = (viewId) => {
             if (!formContainer) return;
             formContainer.querySelectorAll('.auth-form-card').forEach(card => card.classList.remove('active'));
-            const targetView = document.getElementById(viewId);
-            if (targetView) {
-                targetView.classList.add('active');
-                if (pushState) {
-                    history.pushState({view: viewId}, "", `#${viewId}`);
-                }
-            }
+            document.getElementById(viewId)?.classList.add('active');
         };
 
-        if (formContainer) {
-            formContainer.addEventListener('click', (e) => {
-                const targetButton = e.target.closest('[data-show-view]');
-                if (targetButton) {
-                    e.preventDefault();
-                    showView(targetButton.dataset.showView);
-                }
-            });
-        }
-        
-        window.addEventListener('popstate', (e) => {
-            const viewId = (e.state && e.state.view) || 'initial-view';
-            showView(viewId, false);
+        formContainer.addEventListener('click', (e) => {
+            const target = e.target.closest('[data-show-view]');
+            if(target) showView(target.dataset.showView);
         });
 
-        // 5. MAIN CONTROLLER
         auth.onAuthStateChanged(user => {
-            const isGoogleUser = user && user.providerData.some(p => p.providerId === 'google.com');
-            const isPhoneUser = user && user.providerData.some(p => p.providerId === 'phone');
-            if (user && (user.emailVerified || isGoogleUser || isPhoneUser)) {
-                if(authContainer) authContainer.style.display = 'none';
-                if(userProfileSection) userProfileSection.classList.remove('hidden');
-                
-                db.collection('users').doc(user.uid).get().then(doc => {
-                    if (doc.exists) {
-                        const userData = doc.data();
-                        document.getElementById('dashboard-user-name').innerText = userData.fullName;
-                        document.getElementById('dashboard-user-email').innerText = userData.email || user.phoneNumber;
-                    } else {
-                        document.getElementById('dashboard-user-name').innerText = user.displayName || "New User";
-                        document.getElementById('dashboard-user-email').innerText = user.email || user.phoneNumber;
-                    }
-                });
-                fetchAndDisplayCourses();
+            const isVerified = user ? (user.emailVerified || user.providerData.some(p => p.providerId !== 'password')) : false;
+            if (user && isVerified) {
+                authContainer.style.display = 'none';
+                userProfileSection.classList.remove('hidden');
             } else {
-                if(authContainer) authContainer.style.display = 'block';
-                if(userProfileSection) userProfileSection.classList.add('hidden');
-                const currentView = window.location.hash.replace('#', '') || 'initial-view';
-                showView(currentView, false);
+                authContainer.style.display = 'block';
+                userProfileSection.classList.add('hidden');
+                showView('initial-view');
             }
         });
 
-        // 6. AUTH LOGIC
-        if(signupForm) {
-            signupForm.addEventListener('submit', e => { /* Email Signup Logic */ });
-        }
-        if(loginForm) {
-            loginForm.addEventListener('submit', e => { /* Email Login Logic */ });
-        }
-        if(googleSignInBtn) {
-            googleSignInBtn.addEventListener('click', () => { /* Google Sign-in Logic */ });
-        }
-        if (phoneForm) {
-            phoneForm.addEventListener('submit', (e) => { /* Phone Submit Logic */ });
-        }
-        if (codeForm) {
-            codeForm.addEventListener('submit', (e) => { /* Code Submit Logic */ });
-        }
-        if(logoutButton) {
-            logoutButton.addEventListener('click', () => { auth.signOut(); });
-        }
-        if (forgotPasswordLink) {
-            forgotPasswordLink.addEventListener('click', (e) => { /* Forgot Password Logic */ });
-        }
-        
-        // 7. FETCH AND DISPLAY COURSES
-        const fetchAndDisplayCourses = () => { /* ... */ };
+        // --- AUTHENTICATION LOGIC ---
+        // Email/Pass Sign-up
+        document.getElementById('signup-form').addEventListener('submit', e => {
+            e.preventDefault();
+            const fullName = document.getElementById('signup-fullname').value;
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+            auth.createUserWithEmailAndPassword(email, password)
+                .then(cred => {
+                    cred.user.sendEmailVerification();
+                    db.collection('users').doc(cred.user.uid).set({ fullName, email });
+                    alert("Account created! Please check your email for a verification link.");
+                    showView('login-card');
+                }).catch(err => alert(err.message));
+        });
 
-        // 8. SCROLL-IN ANIMATION
-        const observer = new IntersectionObserver((entries) => { /* ... */ });
-        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+        // Email/Pass Login
+        document.getElementById('login-form').addEventListener('submit', e => {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            auth.signInWithEmailAndPassword(email, password).then(cred => {
+                if (!cred.user.emailVerified) {
+                    auth.signOut();
+                    alert("Please verify your email before logging in.");
+                }
+            }).catch(err => alert(err.message));
+        });
+
+        // Google Sign-in
+        document.getElementById('google-signin-btn').addEventListener('click', () => {
+            const provider = new firebase.auth.GoogleAuthProvider();
+            auth.signInWithPopup(provider).then(result => {
+                if (result.additionalUserInfo.isNewUser) {
+                    db.collection('users').doc(result.user.uid).set({
+                        fullName: result.user.displayName, email: result.user.email
+                    });
+                }
+            }).catch(err => alert(err.message));
+        });
+
+        // Phone Sign-in
+        document.getElementById('phone-form').addEventListener('submit', e => {
+            e.preventDefault();
+            window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', { 'size': 'invisible' });
+            auth.signInWithPhoneNumber(document.getElementById('phone-number').value, window.recaptchaVerifier)
+                .then(confirmationResult => {
+                    window.confirmationResult = confirmationResult;
+                    showView('code-card');
+                }).catch(err => alert(err.message));
+        });
+
+        // Verify SMS Code
+        document.getElementById('code-form').addEventListener('submit', e => {
+            e.preventDefault();
+            window.confirmationResult.confirm(document.getElementById('verification-code').value)
+            .then(result => {
+                if (result.additionalUserInfo.isNewUser) {
+                    db.collection('users').doc(result.user.uid).set({
+                        fullName: "Phone User", phone: result.user.phoneNumber
+                    });
+                }
+            }).catch(err => alert("Invalid code."));
+        });
+
+        // Forgot Password
+        document.getElementById('forgot-password-link').addEventListener('click', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            if (!email) return alert("Please enter your email first.");
+            auth.sendPasswordResetEmail(email)
+                .then(() => alert("Password reset email sent!"))
+                .catch(err => alert(err.message));
+        });
       });
     </script>
 </body>
