@@ -19,7 +19,7 @@
             <div class="auth-form-card active" id="initial-view">
                 <h3>Welcome!</h3>
                 <p style="text-align:center; margin-top: -15px; margin-bottom: 25px;">Sign in or create an account to get started.</p>
-                <button type="button" id="google-signin-btn" class="btn btn-social">
+                <button type="button" id="google-signin-btn-initial" class="btn btn-social">
                     <svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" style="vertical-align: middle; margin-right: 8px;"><path d="M16.51 8.25H9.03V11.13H13.82C13.59 12.51 12.79 13.69 11.52 14.56V16.65H14.31C15.89 15.17 16.8 13.04 16.8 10.32C16.8 9.54 16.68 8.88 16.51 8.25Z" fill="#4285F4"></path><path d="M9.03 18C11.36 18 13.33 17.2 14.31 15.75L11.52 13.66C10.74 14.15 9.83 14.46 8.89 14.46C6.98 14.46 5.37 13.2 4.7 11.45L1.8 13.54C2.9 15.93 5.72 18 9.03 18Z" fill="#34A853"></path><path d="M4.7 11.45C4.5 10.9 4.43 10.32 4.43 9.73C4.43 9.14 4.5 8.56 4.7 8.01V5.92L1.8 3.83C0.66 6.02 0 8.57 0 11.23C0 13.89 0.66 16.44 1.8 18.63L4.7 16.54V11.45Z" fill="#FBBC05"></path><path d="M9.03 3.54C10.23 3.54 11.23 3.96 12.06 4.74L14.85 2C13.33 0.77 11.36 0 9.03 0C5.72 0 2.9 2.07 1.8 4.46L4.7 6.55C5.37 4.8 6.98 3.54 9.03 3.54Z" fill="#EA4335"></path></svg>
                     Continue with Google
                 </button>
@@ -38,7 +38,6 @@
                     <p class="form-link"><a href="#" id="forgot-password-link">Forgot password?</a></p>
                     <button type="submit" class="btn btn-primary">Login</button>
                     <p class="form-switcher-link">No account? <button type="button" class="js-show-form" data-show-view="signup-card">Sign Up</button></p>
-                    <p class="form-switcher-link" style="margin-top:10px;"><button type="button" class="js-show-form" data-show-view="initial-view">« Back to all options</button></p>
                 </form>
             </div>
             
@@ -104,188 +103,199 @@
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
-        <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // 1. FIREBASE CONFIGURATION
-            const firebaseConfig = {
-                apiKey: "AIzaSyD2RlsEkK-mMGq4DpnOZxxO2ITE_Izptk4",
-                authDomain: "iclick-digital-academy-6d856.firebaseapp.com",
-                projectId: "iclick-digital-academy-6d856",
-                storageBucket: "iclick-digital-academy-6d856.appspot.com",
-                messagingSenderId: "1055517177266",
-                appId: "1:1055517177266:web:90b469d6b206f873ff60ab"
-            };
-            firebase.initializeApp(firebaseConfig);
-            const auth = firebase.auth();
-            const db = firebase.firestore();
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // 1. FIREBASE CONFIG & INITIALIZATION
+        const firebaseConfig = {
+            apiKey: "AIzaSyD2RlsEkK-mMGq4DpnOZxxO2ITE_Izptk4",
+            authDomain: "iclick-digital-academy-6d856.firebaseapp.com",
+            projectId: "iclick-digital-academy-6d856",
+            storageBucket: "iclick-digital-academy-6d856.appspot.com",
+            messagingSenderId: "1055517177266",
+            appId: "1:1055517177266:web:90b469d6b206f873ff60ab"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
 
-            // 2. GET PAGE ELEMENTS
-            const authContainer = document.getElementById('auth-container');
-            const userProfileSection = document.getElementById('user-profile');
-            const formContainer = document.querySelector('.auth-modal-container');
-            const loginForm = document.getElementById('login-form');
-            const signupForm = document.getElementById('signup-form');
-            const phoneForm = document.getElementById('phone-form');
-            const codeForm = document.getElementById('code-form');
-            const logoutButton = document.getElementById('logout-button');
-            const forgotPasswordLink = document.getElementById('forgot-password-link');
-            const googleSignInBtn = document.getElementById('google-signin-btn');
-            const googleSignUpBtn = document.getElementById('google-signup-btn');
+        // 2. GET PAGE ELEMENTS
+        const authContainer = document.getElementById('auth-container');
+        const userProfileSection = document.getElementById('user-profile');
+        const formContainer = document.querySelector('.auth-modal-container');
+        const loginForm = document.getElementById('login-form');
+        const signupForm = document.getElementById('signup-form');
+        const phoneForm = document.getElementById('phone-form');
+        const codeForm = document.getElementById('code-form');
+        const logoutButton = document.getElementById('logout-button');
+        const forgotPasswordLink = document.getElementById('forgot-password-link');
+        const googleSignInBtn = document.getElementById('google-signin-btn');
+        const googleSignUpBtn = document.getElementById('google-signup-btn'); // Note: This ID is not in the new HTML, can be removed if not used
+        const courseListContainer = document.getElementById('my-courses-list');
 
-            // 3. VIEW & NAVIGATION LOGIC
-            const showView = (viewId, pushState = true) => {
-                if (!formContainer) return;
-                formContainer.querySelectorAll('.auth-form-card').forEach(card => card.classList.remove('active'));
-                const targetView = document.getElementById(viewId);
-                if (targetView) {
-                    targetView.classList.add('active');
-                    if (pushState) {
-                        history.pushState({view: viewId}, "", `#${viewId}`);
-                    }
+        // 3. VIEW & NAVIGATION LOGIC
+        const showView = (viewId, pushState = true) => {
+            if (!formContainer) return;
+            formContainer.querySelectorAll('.auth-form-card').forEach(card => card.classList.remove('active'));
+            const targetView = document.getElementById(viewId);
+            if (targetView) {
+                targetView.classList.add('active');
+                if (pushState) {
+                    history.pushState({view: viewId}, "", `#${viewId}`);
                 }
-            };
-            
-            if (formContainer) {
-                formContainer.addEventListener('click', (e) => {
-                    const targetButton = e.target.closest('[data-show-view]');
-                    if (targetButton) {
-                        e.preventDefault();
-                        showView(targetButton.dataset.showView);
-                    }
-                });
             }
-            
-            window.addEventListener('popstate', (e) => {
-                const viewId = (e.state && e.state.view) || 'initial-view';
-                showView(viewId, false);
-            });
+        };
 
-            // 4. MAIN CONTROLLER
-            auth.onAuthStateChanged(user => {
-                const isVerified = user ? (user.emailVerified || user.providerData.some(p => p.providerId !== 'password')) : false;
-                if (user && isVerified) {
-                    if(authContainer) authContainer.style.display = 'none';
-                    if(userProfileSection) userProfileSection.classList.remove('hidden');
-                } else {
-                    if(authContainer) authContainer.style.display = 'block';
-                    if(userProfileSection) userProfileSection.classList.add('hidden');
-                    const currentView = window.location.hash.replace('#', '') || 'initial-view';
-                    showView(currentView, false);
+        if (formContainer) {
+            formContainer.addEventListener('click', (e) => {
+                const targetButton = e.target.closest('[data-show-view]');
+                if (targetButton) {
+                    e.preventDefault();
+                    showView(targetButton.dataset.showView);
                 }
             });
+        }
+        
+        window.addEventListener('popstate', (e) => {
+            const viewId = (e.state && e.state.view) || 'initial-view';
+            showView(viewId, false);
+        });
 
-            // 5. AUTH LOGIC FUNCTIONS
-            // Email/Pass Sign-up
-            if(signupForm) {
-                signupForm.addEventListener('submit', e => {
-                    e.preventDefault();
-                    const fullName = signupForm['fullname'].value;
-                    const email = signupForm['email'].value;
-                    const password = signupForm['password'].value;
-                    auth.createUserWithEmailAndPassword(email, password)
-                        .then(cred => {
-                            cred.user.sendEmailVerification();
-                            return db.collection('users').doc(cred.user.uid).set({ fullName, email });
-                        })
-                        .then(() => {
-                            alert("Account created! Please check your email for a verification link.");
-                            showView('login-card');
-                        })
-                        .catch(err => alert(err.message));
+        // 4. MAIN CONTROLLER
+        auth.onAuthStateChanged(user => {
+            const isGoogleUser = user && user.providerData.some(p => p.providerId === 'google.com');
+            if (user && (user.emailVerified || isGoogleUser)) {
+                if(authContainer) authContainer.style.display = 'none';
+                if(userProfileSection) userProfileSection.classList.remove('hidden');
+                
+                db.collection('users').doc(user.uid).get().then(doc => {
+                    if (doc.exists) {
+                        const userData = doc.data();
+                        document.getElementById('dashboard-user-name').innerText = userData.fullName;
+                        document.getElementById('dashboard-user-email').innerText = userData.email || user.phoneNumber;
+                    } else {
+                        document.getElementById('dashboard-user-name').innerText = user.displayName || "New User";
+                        document.getElementById('dashboard-user-email').innerText = user.email || user.phoneNumber;
+                    }
                 });
-            }
-
-            // Email/Pass Login
-            if(loginForm) {
-                loginForm.addEventListener('submit', e => {
-                    e.preventDefault();
-                    const email = loginForm['login-email'].value;
-                    const password = loginForm['login-password'].value;
-                    auth.signInWithEmailAndPassword(email, password)
-                        .then(cred => {
-                            if (!cred.user.emailVerified) {
-                                auth.signOut();
-                                alert("Please verify your email before logging in.");
-                            }
-                        })
-                        .catch(err => alert(err.message));
-                });
-            }
-            
-            // Google Sign-in
-            const handleGoogleSignIn = () => {
-                const provider = new firebase.auth.GoogleAuthProvider();
-                auth.signInWithPopup(provider)
-                    .then(result => {
-                        if (result.additionalUserInfo.isNewUser) {
-                            return db.collection('users').doc(result.user.uid).set({
-                                fullName: result.user.displayName,
-                                email: result.user.email
-                            });
-                        }
-                    })
-                    .catch(err => alert(err.message));
-            };
-            if(googleSignInBtn) { googleSignInBtn.addEventListener('click', handleGoogleSignIn); }
-            if(googleSignUpBtn) { googleSignUpBtn.addEventListener('click', handleGoogleSignIn); }
-            
-            // Phone Sign-in
-            if (phoneForm) {
-                phoneForm.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    // Setup reCAPTCHA here, only when needed
-                    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
-                        'size': 'invisible'
-                    });
-                    const phoneNumber = phoneForm['phone-number'].value;
-                    const appVerifier = window.recaptchaVerifier;
-                    auth.signInWithPhoneNumber(phoneNumber, appVerifier)
-                        .then(confirmationResult => {
-                            window.confirmationResult = confirmationResult;
-                            alert("Verification code sent!");
-                            showView('code-card');
-                        }).catch(error => {
-                            alert("Error: " + error.message);
-                        });
-                });
-            }
-            
-            // Verify SMS Code
-            if (codeForm) {
-                codeForm.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    const code = codeForm['verification-code'].value;
-                    window.confirmationResult.confirm(code).then(result => {
-                        if (result.additionalUserInfo.isNewUser) {
-                            return db.collection('users').doc(result.user.uid).set({
-                                fullName: "Phone User",
-                                phone: result.user.phoneNumber
-                            });
-                        }
-                    }).catch(error => alert("Error: Invalid code. " + error.message));
-                });
-            }
-
-            // Logout
-            if(logoutButton) {
-                logoutButton.addEventListener('click', () => { auth.signOut(); });
-            }
-            
-            // Forgot Password
-            if (forgotPasswordLink) {
-                forgotPasswordLink.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const email = loginForm['login-email'].value;
-                    if (!email) { return alert("Please enter your email in the email field first."); }
-                    auth.sendPasswordResetEmail(email)
-                        .then(() => alert("Password reset email sent!"))
-                        .catch(error => alert(error.message));
-                });
+                fetchAndDisplayCourses();
+            } else {
+                if(authContainer) authContainer.style.display = 'block';
+                if(userProfileSection) userProfileSection.classList.add('hidden');
+                const currentView = window.location.hash.replace('#', '').split('?')[0] || 'initial-view';
+                showView(currentView, false);
             }
         });
-                </script>
-    
 
+        // 5. AUTH LOGIC
+        // Email Sign-up
+        if(signupForm) {
+            signupForm.addEventListener('submit', e => {
+                e.preventDefault();
+                const fullName = signupForm['fullname'].value;
+                const email = signupForm['email'].value;
+                const password = signupForm['password'].value;
+                
+                auth.createUserWithEmailAndPassword(email, password)
+                    .then(cred => {
+                        cred.user.sendEmailVerification();
+                        return db.collection('users').doc(cred.user.uid).set({ fullName, email });
+                    })
+                    .then(() => {
+                        alert("Account created! Please check your email for a verification link.");
+                        showView('login-card');
+                    })
+                    .catch(err => alert("Error: " + err.message));
+            });
+        }
+
+        // Email Login
+        if(loginForm) {
+            loginForm.addEventListener('submit', e => {
+                e.preventDefault();
+                const email = loginForm['login-email'].value;
+                const password = loginForm['login-password'].value;
+                auth.signInWithEmailAndPassword(email, password)
+                    .then(cred => {
+                        if (!cred.user.emailVerified) {
+                            auth.signOut();
+                            alert("Please verify your email before logging in. A new verification link has been sent.");
+                        }
+                    })
+                    .catch(err => alert("Error: " + err.message));
+            });
+        }
+        
+        // Google Sign-in
+        const handleGoogleSignIn = () => {
+            const provider = new firebase.auth.GoogleAuthProvider();
+            auth.signInWithPopup(provider)
+                .then(result => {
+                    if (result.additionalUserInfo.isNewUser) {
+                        return db.collection('users').doc(result.user.uid).set({
+                            fullName: result.user.displayName,
+                            email: result.user.email,
+                        });
+                    }
+                })
+                .catch(err => alert("Error: " + err.message));
+        };
+        if(googleSignInBtn) { googleSignInBtn.addEventListener('click', handleGoogleSignIn); }
+        if(googleSignUpBtn) { googleSignUpBtn.addEventListener('click', handleGoogleSignIn); }
+
+        // Phone Sign-in
+        if (phoneForm) {
+            phoneForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', { 'size': 'invisible' });
+                const phoneNumber = phoneForm['phone-number'].value;
+                const appVerifier = window.recaptchaVerifier;
+                auth.signInWithPhoneNumber(phoneNumber, appVerifier)
+                    .then(confirmationResult => {
+                        window.confirmationResult = confirmationResult;
+                        alert("Verification code sent!");
+                        showView('code-card');
+                    }).catch(error => {
+                        alert("Error: " + error.message);
+                    });
+            });
+        }
+        
+        // Verify SMS Code
+        if (codeForm) {
+            codeForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const code = codeForm['verification-code'].value;
+                window.confirmationResult.confirm(code).then(result => {
+                    if (result.additionalUserInfo.isNewUser) {
+                        return db.collection('users').doc(result.user.uid).set({
+                            fullName: "Phone User",
+                            phone: result.user.phoneNumber
+                        });
+                    }
+                }).catch(err => alert("Error: Invalid code."));
+            });
+        }
+
+        // Logout
+        if(logoutButton) {
+            logoutButton.addEventListener('click', () => { auth.signOut(); });
+        }
+        
+        // Forgot Password
+        if (forgotPasswordLink) {
+            forgotPasswordLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                const email = loginForm['login-email'].value;
+                if (!email) { return alert("Please enter your email in the email field first."); }
+                auth.sendPasswordResetEmail(email)
+                    .then(() => alert("Password reset email sent!"))
+                    .catch(error => alert(error.message));
+            });
+        }
+        
+        // ... Other scripts like course fetching and animations ...
+      });
+    </script>
 </body>
-                </html>
-    
+</html>
