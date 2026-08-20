@@ -28,18 +28,22 @@
 </head>
 <body class="bg-brand-50 text-brand-900 min-h-screen flex flex-col antialiased">
 
-  <!-- Admin Login Gate Overlay (Protects Admin Page) -->
+  <!-- Admin Login Gate Overlay -->
   <div id="adminLoginGate" class="fixed inset-0 z-50 bg-brand-950 flex items-center justify-center p-4">
     <div class="glass-card w-full max-w-md p-8 rounded-3xl text-brand-50 shadow-2xl space-y-6">
       <div class="text-center">
         <div class="w-12 h-12 rounded-2xl bg-brand-300 text-brand-950 font-black text-xl flex items-center justify-center mx-auto mb-3 shadow-md">iC</div>
         <h2 class="text-xl font-bold">Admin Restricted Access</h2>
-        <p class="text-xs text-brand-300 mt-1">Enter secure administrator credentials to proceed.</p>
+        <p class="text-xs text-brand-300 mt-1">Sign in with your admin credentials to manage applications.</p>
       </div>
       <form onsubmit="handleAdminLogin(event)" class="space-y-4">
         <div>
+          <label class="block text-xs font-medium text-brand-200 mb-1">Admin Email</label>
+          <input type="email" id="adminEmailInput" required value="admin@iclickdigitalventures.com" class="w-full px-4 py-3 rounded-xl bg-brand-950 border border-brand-700 text-white text-xs focus:outline-none">
+        </div>
+        <div>
           <label class="block text-xs font-medium text-brand-200 mb-1">Admin Passkey</label>
-          <input type="password" id="adminPasswordInput" required placeholder="Enter admin password" class="w-full px-4 py-3 rounded-xl bg-brand-950 border border-brand-700 text-white text-xs focus:outline-none focus:border-brand-300">
+          <input type="password" id="adminPasswordInput" required placeholder="Enter passkey (iClick2026Admin)" class="w-full px-4 py-3 rounded-xl bg-brand-950 border border-brand-700 text-white text-xs focus:outline-none">
         </div>
         <button type="submit" class="w-full py-3.5 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold text-xs uppercase tracking-wider transition shadow-md">Authenticate Admin</button>
       </form>
@@ -49,7 +53,7 @@
     </div>
   </div>
 
-  <!-- Main Admin Control Panel (Hidden until authenticated) -->
+  <!-- Admin Control Panel -->
   <div id="adminMainContent" class="hidden flex flex-col min-h-screen">
     <nav class="bg-brand-900 border-b border-brand-800 px-6 py-4 flex justify-between items-center sticky top-0 z-40 text-white">
       <div class="flex items-center space-x-3">
@@ -69,7 +73,7 @@
       <div class="flex justify-between items-center">
         <div>
           <h2 class="text-2xl font-black text-brand-900">Student Admissions & Service Requests</h2>
-          <p class="text-xs text-brand-700">Approve applications to unlock student LMS access and dispatch offer letters/acknowledgements.</p>
+          <p class="text-xs text-brand-700">Approve applications to auto-generate login credentials, send offer letters, and manage client mail.</p>
         </div>
         <button onclick="renderAdminTable()" class="px-4 py-2 rounded-xl bg-brand-900 text-brand-50 text-xs font-bold shadow-md">Refresh Table</button>
       </div>
@@ -103,15 +107,17 @@
 
     function handleAdminLogin(e) {
       e.preventDefault();
+      const email = document.getElementById('adminEmailInput').value.trim();
       const pass = document.getElementById('adminPasswordInput').value;
-      // Default secure admin password passcode
-      if (pass === "iClick2026Admin") {
+      
+      // Admin Credentials: admin@iclickdigitalventures.com / iClick2026Admin
+      if (email.toLowerCase() === "admin@iclickdigitalventures.com" && pass === "iClick2026Admin") {
         localStorage.setItem('iclick_admin_auth', 'true');
         document.getElementById('adminLoginGate').classList.add('hidden');
         document.getElementById('adminMainContent').classList.remove('hidden');
         renderAdminTable();
       } else {
-        alert("Invalid Admin Passkey. Access Denied.");
+        alert("Invalid Admin Email or Passkey. Access Denied.");
       }
     }
 
@@ -156,19 +162,25 @@
 
     function approveAndDispatch(idx) {
       let apps = JSON.parse(localStorage.getItem('iclick_all_applications') || '[]');
+      
+      // Auto-generate secure student password if not already generated
+      if (!apps[idx].tempPassword) {
+        apps[idx].tempPassword = "iC-Pass-" + Math.floor(1000 + Math.random() * 9000);
+      }
       apps[idx].status = "Accepted";
       localStorage.setItem('iclick_all_applications', JSON.stringify(apps));
       
       const app = apps[idx];
-      alert(`Admission approved for ${app.fullName}! Opening email client to send acceptance offer and LMS login details.`);
-      window.location.href = `mailto:${app.email}?subject=Admission Approved & LMS Access - iClick Digital Academy (${app.appId})&body=Dear ${app.fullName},%0D%0A%0D%0AWe are thrilled to inform you that your application for ${app.course} (ID: ${app.appId}) has been officially APPROVED!%0D%0A%0D%0AYou can now sign in to the Student LMS portal at lms.html using your registered email address (${app.email}) to access your live Zoom lectures and course modules.%0D%0A%0D%0AWelcoming you to iClick Digital Ventures.%0D%0A%0D%0ABest regards,%0D%0AAdmin Office`;
+      alert(`Admission approved for ${app.fullName}! Auto-generated password: ${app.tempPassword}. Opening email client to send official offer letter.`);
+      
+      window.location.href = `mailto:${app.email}?subject=Official Admission Offer & LMS Credentials - iClick Digital Academy (${app.appId})&body=Dear ${app.fullName},%0D%0A%0D%0AWe are pleased to offer you official admission into the ${app.course} cohort at iClick Digital Academy.%0D%0A%0D%0AYaw Student ID: ${app.appId}%0D%0ALMS Login Email: ${app.email}%0D%0ATemporary LMS Password: ${app.tempPassword}%0D%0A%0D%0APlease sign in at lms.html using these credentials to access your live lecture rooms.%0D%0A%0D%0AWelcome aboard!%0D%0A%0D%0ABest regards,%0D%0AAdmin Office, iClick Digital Ventures`;
       renderAdminTable();
     }
 
     function acknowledgeClient(idx) {
       const app = JSON.parse(localStorage.getItem('iclick_all_applications') || '[]')[idx];
-      alert(`Opening email client to send acknowledgement to ${app.fullName} (${app.email}).`);
-      window.location.href = `mailto:${app.email}?subject=Acknowledgement of Submission - iClick Digital Ventures (${app.appId})&body=Dear ${app.fullName},%0D%0A%0D%0AThis email acknowledges receipt of your submission for ${app.course}. Our executive committee is reviewing your details and will respond shortly.%0D%0A%0D%0ABest regards,%0D%0AiClick Digital Ventures`;
+      alert(`Opening email client to acknowledge submission from ${app.fullName}.`);
+      window.location.href = `mailto:${app.email}?subject=Acknowledgement of Submission - iClick Digital Ventures (${app.appId})&body=Dear ${app.fullName},%0D%0A%0D%0AWe have successfully received your submission regarding ${app.course}. Our team is reviewing your details and will revert shortly.%0D%0A%0D%0ABest regards,%0D%0AiClick Digital Ventures`;
     }
 
     function rejectStudent(idx) {
@@ -180,4 +192,4 @@
     }
   </script>
 </body>
-</html>
+    </html>
