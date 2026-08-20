@@ -64,24 +64,38 @@
 
   <header class="py-20 border-b border-brand-200 text-center">
     <div class="max-w-4xl mx-auto px-4">
-      <span class="px-4 py-1.5 rounded-full bg-brand-200 text-brand-800 text-xs font-semibold uppercase tracking-wider inline-block mb-4">Human Capital Development[cite: 2]</span>
+      <span class="px-4 py-1.5 rounded-full bg-brand-200 text-brand-800 text-xs font-semibold uppercase tracking-wider inline-block mb-4">iClick Digital Academy</span>
       <h1 class="text-4xl sm:text-6xl font-black text-brand-900">Practical Cohort Programs & Upskilling</h1>
     </div>
   </header>
 
-  <main class="max-w-6xl mx-auto px-4 py-16 space-y-8 flex-1 w-full">
+  <main class="max-w-6xl mx-auto px-4 py-16 space-y-12 flex-1 w-full">
+    
+    <!-- Resume Application / Status Check Box -->
+    <div class="glass-card text-brand-50 rounded-3xl p-8 shadow-xl max-w-2xl mx-auto space-y-4 text-center">
+      <h3 class="text-xl font-bold">Resume or Check Application Status</h3>
+      <p class="text-xs text-brand-300">Already applied? Enter your generated Student ID (e.g., iC-STU-XXXX) to resume your application status.</p>
+      
+      <div class="flex flex-col sm:flex-row gap-2">
+        <input type="text" id="resumeAppIdInput" placeholder="Enter Application ID (e.g., iC-STU-1234)" class="flex-1 px-4 py-3 rounded-xl bg-brand-950 border border-brand-700 text-white text-xs uppercase focus:outline-none">
+        <button onclick="resumeApplicationById()" class="px-6 py-3 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold text-xs uppercase transition whitespace-nowrap shadow-md">Check Status</button>
+      </div>
+      <div id="resumeResultBox" class="hidden p-4 rounded-2xl bg-brand-950 border border-brand-800 text-left text-xs space-y-2"></div>
+    </div>
+
+    <!-- Courses Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       <div class="glass-card text-brand-50 rounded-3xl p-8">
         <span class="text-[11px] font-bold px-3 py-1 rounded-full bg-brand-800 text-brand-300">Track 01</span>
         <h3 class="text-xl font-bold text-brand-50 mt-4 mb-2">No-Code & AI Engineering</h3>
-        <p class="text-xs sm:text-sm text-brand-200 leading-relaxed mb-6">Master Make.com workflows, Airtable relational databases, and conversational AI agents for enterprise automation[cite: 4].</p>
+        <p class="text-xs sm:text-sm text-brand-200 leading-relaxed mb-6">Master Make.com workflows, Airtable relational databases, and conversational AI agents for enterprise automation.</p>
         <button onclick="openSignupModalWithCourse('No-Code & AI Engineering')" class="px-4 py-2 rounded-xl bg-brand-300 text-brand-950 font-bold text-xs uppercase">Sign Up / Enroll →</button>
       </div>
 
       <div class="glass-card text-brand-50 rounded-3xl p-8">
         <span class="text-[11px] font-bold px-3 py-1 rounded-full bg-brand-800 text-brand-300">Track 02</span>
         <h3 class="text-xl font-bold text-brand-50 mt-4 mb-2">Digital Literacy & Workplace Productivity</h3>
-        <p class="text-xs sm:text-sm text-brand-200 leading-relaxed mb-6">Essential office computing, cloud collaboration tools, and professional digital execution for graduates and civil servants[cite: 4].</p>
+        <p class="text-xs sm:text-sm text-brand-200 leading-relaxed mb-6">Essential office computing, cloud collaboration tools, and professional digital execution.</p>
         <button onclick="openSignupModalWithCourse('Digital Literacy & Workplace Productivity')" class="px-4 py-2 rounded-xl bg-brand-300 text-brand-950 font-bold text-xs uppercase">Sign Up / Enroll →</button>
       </div>
 
@@ -95,13 +109,13 @@
       <div class="glass-card text-brand-50 rounded-3xl p-8">
         <span class="text-[11px] font-bold px-3 py-1 rounded-full bg-brand-800 text-brand-300">Track 04</span>
         <h3 class="text-xl font-bold text-brand-50 mt-4 mb-2">GovTech Systems Administration</h3>
-        <p class="text-xs sm:text-sm text-brand-200 leading-relaxed mb-6">Training for public sector personnel on managing electronic document archiving, OCR scanning, and QR file tracking architectures.</p>
+        <p class="text-xs sm:text-sm text-brand-200 leading-relaxed mb-6">Training for public sector personnel on managing electronic document archiving, OCR scanning, and QR file tracking.</p>
         <button onclick="openSignupModalWithCourse('GovTech Systems Administration')" class="px-4 py-2 rounded-xl bg-brand-300 text-brand-950 font-bold text-xs uppercase">Sign Up / Enroll →</button>
       </div>
     </div>
   </main>
 
-  <!-- Academy Admissions Formspree Modal (Insert your Formspree link here) -->
+  <!-- Academy Admissions Formspree Modal -->
   <div id="signupModal" class="hidden fixed inset-0 z-50 bg-brand-950/80 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="glass-card w-full max-w-lg p-8 rounded-3xl relative text-brand-50 shadow-2xl">
       <button onclick="closeSignupModal()" class="absolute top-4 right-4 text-brand-300 hover:text-white"><i data-lucide="x" class="w-6 h-6"></i></button>
@@ -147,7 +161,7 @@
     <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
       <div>
         <span class="font-bold text-brand-50 text-sm">iClick Digital Ventures</span>
-        <p class="text-[11px] text-brand-400 mt-0.5">CAC Reg No: BN 9772940 • Abuja, Federal Capital Territory, Nigeria[cite: 1]</p>
+        <p class="text-[11px] text-brand-400 mt-0.5">CAC Reg No: BN 9772940 • Abuja, Federal Capital Territory, Nigeria</p>
       </div>
       <div class="flex flex-wrap justify-center gap-6 text-[11px]">
         <a href="index.html" class="hover:text-brand-100 transition">Home</a>
@@ -157,7 +171,7 @@
         <a href="about.html" class="hover:text-brand-100 transition">About</a>
       </div>
     </div>
-    <div class="max-w-7xl mx-auto px-4 mt-6 pt-4 border-t border-brand-950 text-center text-[10px] text-brand-500">&copy; 2026 iClick Digital Ventures. All rights reserved. • iclickdigitalventures@gmail.com[cite: 1]</div>
+    <div class="max-w-7xl mx-auto px-4 mt-6 pt-4 border-t border-brand-950 text-center text-[10px] text-brand-500">&copy; 2026 iClick Digital Ventures. All rights reserved. • iclickdigitalventures@gmail.com</div>
   </footer>
   <script>
     lucide.createIcons();
@@ -190,6 +204,29 @@
       localStorage.setItem('iclick_all_applications', JSON.stringify(apps));
     }
 
+    function resumeApplicationById() {
+      const searchId = document.getElementById('resumeAppIdInput').value.trim().toUpperCase();
+      const resultBox = document.getElementById('resumeResultBox');
+      if (!searchId) { alert("Please enter a valid Application ID."); return; }
+
+      const apps = JSON.parse(localStorage.getItem('iclick_all_applications') || '[]');
+      const record = apps.find(a => a.appId.toUpperCase() === searchId);
+
+      resultBox.classList.remove('hidden');
+      if (!record) {
+        resultBox.innerHTML = `<span class="text-rose-400 font-bold">No application found matching ID: ${searchId}</span>. Please verify your ID or submit a new application.`;
+      } else {
+        let statusColor = record.status === "Accepted" ? "text-emerald-400" : "text-amber-400";
+        resultBox.innerHTML = `
+          <div><strong>Applicant Name:</strong> ${record.fullName}</div>
+          <div><strong>Course Track:</strong> ${record.course}</div>
+          <div><strong>Application ID:</strong> <span class="font-mono">${record.appId}</span></div>
+          <div><strong>Status:</strong> <span class="${statusColor} font-bold">${record.status}</span></div>
+          ${record.status === "Accepted" ? `<div class="pt-2"><a href="lms.html" class="text-cyan-300 underline font-semibold">Proceed to Student LMS Sign In →</a></div>` : `<div class="text-[11px] text-slate-400 pt-1">Your application is currently under review by admin.</div>`}
+        `;
+      }
+    }
+
     function handleStudentLogin(e) {
       e.preventDefault();
       const email = document.getElementById('loginEmail').value.trim().toLowerCase();
@@ -198,4 +235,4 @@
     }
   </script>
 </body>
-</html>
+  </html>
