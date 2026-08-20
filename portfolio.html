@@ -15,15 +15,16 @@
         extend: {
           fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
           colors: {
-            brand: {
-              50: '#f0fdfa',
-              100: '#ccfbf1',
-              500: '#00a8cc',
-              600: '#0284c7',
-              700: '#0369a1',
-              dark: '#080e1a',
-              card: '#0f172a',
-              accent: '#38bdf8'
+            brown: {
+              50: '#fdfbf7',
+              100: '#f4ede2',
+              200: '#e5d5c0',
+              300: '#d4a373',
+              400: '#b87d52',
+              600: '#8c5842',
+              800: '#4a2e2b',
+              900: '#2c1810',
+              950: '#1a0e0a'
             }
           }
         }
@@ -32,84 +33,207 @@
   </script>
   <style>
     body { font-family: 'Plus Jakarta Sans', sans-serif; }
-    .glass-card {
-      background: rgba(15, 23, 42, 0.75);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+    .glass-card { 
+      background: rgba(44, 24, 16, 0.75); 
+      backdrop-filter: blur(16px); 
+      border: 1px solid rgba(212, 163, 115, 0.15); 
     }
-    .glow-cyan {
-      box-shadow: 0 0 35px -10px rgba(56, 189, 248, 0.25);
-    }
+    .glow-brown { box-shadow: 0 0 40px -10px rgba(212, 163, 115, 0.2); }
   </style>
 </head>
-<body class="bg-[#050914] text-slate-100 min-h-screen flex flex-col antialiased">
+<body class="bg-brown-950 text-brown-100 min-h-screen flex flex-col antialiased">
 
-  <!-- Top Announcement Bar -->
-  <div class="bg-[#080e1a] text-slate-300 text-xs py-2.5 px-4 border-b border-slate-800/80">
-    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
-      <div class="flex items-center space-x-3">
-        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-950/80 text-emerald-400 border border-emerald-800/60">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 mr-1.5 animate-pulse"></span> CAC Reg No: BN 9772940 • SCUML Compliant
-        </span>
-        <span class="hidden md:inline text-slate-400">• Abuja, Federal Capital Territory, Nigeria</span>
-      </div>
-      <div class="flex items-center space-x-4 text-xs">
-        <a href="mailto:iclickdigitalventures@gmail.com" class="hover:text-cyan-400 transition flex items-center gap-1.5 text-slate-300">
-          <i data-lucide="mail" class="w-3.5 h-3.5 text-cyan-400"></i> iclickdigitalventures@gmail.com
-        </a>
-      </div>
-    </div>
+  <!-- Top Bar -->
+  <div class="bg-brown-900 text-brown-300 text-xs py-2 px-6 border-b border-brown-800 flex justify-between items-center">
+    <span>CAC Reg No: BN 9772940 • SCUML (EFCC) Compliant</span>
+    <a href="mailto:iclickdigitalventures@gmail.com" class="text-brown-300 hover:text-brown-200 transition">iclickdigitalventures@gmail.com</a>
   </div>
 
-  <!-- Navigation -->
-  <nav class="bg-[#080e1a]/90 backdrop-blur-md sticky top-0 z-50 border-b border-slate-800/80">
+  <!-- Navigation with Working Mobile Dropdown -->
+  <nav class="bg-brown-950/90 backdrop-blur-md sticky top-0 z-50 border-b border-brown-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
+      
+      <!-- Brand Logo -->
       <a href="index.html" class="flex items-center space-x-3">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-slate-950 font-black text-xl shadow-lg shadow-cyan-500/20">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brown-400 to-brown-600 flex items-center justify-center text-brown-50 font-black text-xl shadow-lg shadow-brown-900/50">
           iC
         </div>
         <div>
-          <span class="text-xl font-extrabold text-white tracking-tight block leading-none">iClick</span>
-          <span class="text-[10px] font-bold text-cyan-400 tracking-widest uppercase block mt-0.5">Digital Ventures</span>
+          <span class="text-lg font-extrabold text-brown-100 tracking-tight block leading-none">iClick</span>
+          <span class="text-[10px] font-bold text-brown-300 tracking-widest uppercase block mt-0.5">Digital Ventures</span>
         </div>
       </a>
 
-      <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
-        <a href="index.html" class="hover:text-cyan-400 transition">Home</a>
-        <a href="services.html" class="hover:text-cyan-400 transition">Services</a>
-        <a href="portfolio.html" class="text-white border-b-2 border-cyan-400 pb-1">Case Studies</a>
-        <a href="academy.html" class="hover:text-cyan-400 transition text-emerald-400 font-semibold flex items-center gap-1.5">
-          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> Academy Portal
-        </a>
-        <a href="about.html" class="hover:text-cyan-400 transition">About</a>
+      <!-- Desktop Navigation Links -->
+      <div class="hidden md:flex items-center space-x-6 text-sm font-medium text-brown-200">
+        <a href="index.html" class="hover:text-brown-300 transition">Home</a>
+        <a href="services.html" class="hover:text-brown-300 transition">Services</a>
+        <a href="portfolio.html" class="text-brown-300 border-b-2 border-brown-400 pb-1 font-semibold">Case Studies</a>
+        <a href="academy.html" class="hover:text-brown-300 transition">Academy Portal</a>
+        <a href="about.html" class="hover:text-brown-300 transition">About</a>
+        <a href="lms.html" class="text-brown-300 font-bold hover:underline">Student LMS</a>
+        <a href="admin.html" class="text-brown-400 hover:text-brown-200 transition">Admin</a>
       </div>
 
-      <a href="index.html#contact" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-xs uppercase tracking-wider shadow-lg shadow-cyan-500/20 transition flex items-center gap-1.5">
-        <span>Request Audit</span>
-        <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-      </a>
+      <!-- Desktop Action Button -->
+      <div class="hidden md:block">
+        <a href="services.html#contact" class="px-5 py-2.5 rounded-xl bg-brown-300 hover:bg-brown-400 text-brown-950 font-bold text-xs uppercase tracking-wider transition shadow-md">
+          Request Audit
+        </a>
+      </div>
+
+      <!-- Mobile Menu Toggle Button -->
+      <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-xl bg-brown-900 text-brown-200 hover:text-brown-50 focus:outline-none">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobileMenu" class="hidden md:hidden px-4 pt-3 pb-6 space-y-2 bg-brown-900 border-b border-brown-800 transition-all">
+      <a href="index.html" class="block px-3 py-2 rounded-lg text-sm text-brown-200 hover:bg-brown-800">Home</a>
+      <a href="services.html" class="block px-3 py-2 rounded-lg text-sm text-brown-200 hover:bg-brown-800">Services</a>
+      <a href="portfolio.html" class="block px-3 py-2 rounded-lg text-sm text-brown-50 font-bold bg-brown-800">Case Studies</a>
+      <a href="academy.html" class="block px-3 py-2 rounded-lg text-sm text-brown-200 hover:bg-brown-800">Academy Portal</a>
+      <a href="about.html" class="block px-3 py-2 rounded-lg text-sm text-brown-200 hover:bg-brown-800">About</a>
+      <a href="lms.html" class="block px-3 py-2 rounded-lg text-sm text-brown-300 font-semibold hover:bg-brown-800">Student LMS</a>
+      <a href="admin.html" class="block px-3 py-2 rounded-lg text-sm text-brown-400 hover:bg-brown-800">Admin Portal</a>
+      <div class="pt-2">
+        <a href="services.html#contact" class="block text-center w-full py-3 rounded-xl bg-brown-300 text-brown-950 font-bold text-xs uppercase tracking-wider">
+          Request Audit
+        </a>
+      </div>
     </div>
   </nav>
 
-  <!-- Header -->
-  <header class="py-20 border-b border-slate-800/80 relative overflow-hidden text-center">
+  <!-- Hero Header -->
+  <header class="py-20 border-b border-brown-800/80 text-center relative overflow-hidden">
     <div class="max-w-4xl mx-auto px-4">
-      <span class="px-3.5 py-1.5 rounded-full bg-cyan-950/80 border border-cyan-700/50 text-cyan-300 text-xs font-semibold uppercase tracking-wider inline-block mb-6">
+      <span class="px-4 py-1.5 rounded-full bg-brown-900 border border-brown-700 text-brown-300 text-xs font-semibold uppercase tracking-wider inline-block mb-4">
         Proven Impact & Executed Projects
       </span>
-      <h1 class="text-4xl sm:text-6xl font-black text-white leading-tight">
-        Demonstrated Deployments Across <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-400">Africa</span>
+      <h1 class="text-4xl sm:text-6xl font-black text-brown-50 tracking-tight leading-tight">
+        Demonstrated Deployments <span class="text-brown-300">Across Africa</span>
       </h1>
-      <p class="mt-6 text-base sm:text-lg text-slate-400 leading-relaxed font-light">
-        A breakdown of our digital transformations across public registries, automated enterprise systems, human capacity cohorts, and smart infrastructure deployments.
+      <p class="mt-4 text-sm sm:text-base text-brown-200 max-w-2xl mx-auto font-light leading-relaxed">
+        A breakdown of our digital transformations across public registries, automated enterprise pipelines, human capacity cohorts, and smart infrastructure deployments.
       </p>
     </div>
   </header>
 
-  <!-- Portfolio Showcase -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12 flex-1">
+  <!-- Case Studies Container -->
+  <main class="max-w-6xl mx-auto px-4 py-16 space-y-10 flex-1 w-full">
 
-    <!-- Project 1: GovTech -->
+    <!-- Project 1 -->
+    <div class="glass-card rounded-3xl p-8 sm:p-10 border border-brown-800 glow-brown">
+      <div class="flex justify-between items-center mb-4">
+        <span class="text-[11px] font-bold px-3 py-1 rounded-full bg-brown-900 text-brown-300 border border-brown-700">iClick GovTech Deployment</span>
+        <span class="text-xs text-brown-400 font-mono">Judicial & Public Sector</span>
+      </div>
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-brown-50 mb-3">Court Registry Archival Digitization & QR File Tracking Architecture</h2>
+      <p class="text-xs sm:text-sm text-brown-200 leading-relaxed mb-6">
+        Modernized a high-volume registry with paper backlog issues by implementing high-speed optical scanning (OCR), digitized metadata repositories, and unique QR barcode custody routing tags.
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 border-t border-brown-800 text-xs">
+        <div>
+          <span class="text-brown-400 block font-semibold mb-1">Key Impact:</span>
+          <span class="text-brown-100">Reduced physical file retrieval time from 45 minutes to under 15 seconds.</span>
+        </div>
+        <div>
+          <span class="text-brown-400 block font-semibold mb-1">Delivery Lifecycle:</span>
+          <span class="text-brown-100">5-Stage Zero-Disruption Rollout & Staff Transition Training.</span>
+        </div>
+        <div>
+          <span class="text-brown-400 block font-semibold mb-1">Architecture:</span>
+          <span class="text-brown-100">Airtable Enterprise Backend, Softr Administrative Portal & QR Scanners.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="glass-card rounded-3xl p-8 sm:p-10 border border-brown-800">
+      <div class="flex justify-between items-center mb-4">
+        <span class="text-[11px] font-bold px-3 py-1 rounded-full bg-brown-900 text-brown-300 border border-brown-700">iClick AI Automation Engine</span>
+        <span class="text-xs text-brown-400 font-mono">Enterprise B2B</span>
+      </div>
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-brown-50 mb-3">Omnichannel WhatsApp API Lead Conversion & Automated CRM Pipeline</h2>
+      <p class="text-xs sm:text-sm text-brown-200 leading-relaxed mb-6">
+        Replaced slow manual spreadsheet intake with an automated WhatsApp Cloud API conversational agent that qualifies incoming client inquiries, updates CRM records, and dispatches automated billing alerts.
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 border-t border-brown-800 text-xs">
+        <div>
+          <span class="text-brown-400 block font-semibold mb-1">Key Impact:</span>
+          <span class="text-brown-100">Instant response time with automated pipeline execution 24 hours a day.</span>
+        </div>
+        <div>
+          <span class="text-brown-400 block font-semibold mb-1">Technology Stack:</span>
+          <span class="text-brown-100">WhatsApp Cloud API, Make.com Webhooks, Airtable CRM.</span>
+        </div>
+        <div>
+          <span class="text-brown-400 block font-semibold mb-1">Commercial Model:</span>
+          <span class="text-brown-100">Zero-code custom integration with monthly support retainers.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="glass-card rounded-3xl p-8 sm:p-10 border border-brown-800">
+      <div class="flex justify-between items-center mb-4">
+        <span class="text-[11px] font-bold px-3 py-1 rounded-full bg-brown-900 text-brown-300 border border-brown-700">iClick Digital Academy Track</span>
+        <span class="text-xs text-brown-400 font-mono">Talent & Upskilling</span>
+      </div>
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-brown-50 mb-3">Practical AI & No-Code Systems Talent Accelerator</h2>
+      <p class="text-xs sm:text-sm text-brown-200 leading-relaxed mb-6">
+        Delivered live, project-based cohort bootcamps equipping young professionals and institutional personnel with actionable skills in low-code databases, workflow automations, and AI tools.
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 border-t border-brown-800 text-xs">
+        <div>
+          <span class="text-brown-400 block font-semibold mb-1">Outcomes:</span>
+          <span class="text-brown-100">Portfolio capstone projects delivered by all graduating students.</span>
+        </div>
+        <div>
+          <span class="text-brown-400 block font-semibold mb-1">Ecosystem Pipeline:</span>
+          <span class="text-brown-100">Top 5% of cohort graduates recruited directly onto live client systems.</span>
+        </div>
+        <div>
+          <span class="text-brown-400 block font-semibold mb-1">Curriculum:</span>
+          <span class="text-brown-100">No-Code Engineering, Workplace Digital Systems & AI Productivity.</span>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Clean Professional Footer -->
+  <footer class="bg-brown-900 border-t border-brown-800 text-xs text-brown-400 py-10 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+      <div>
+        <span class="font-bold text-brown-100 text-sm">iClick Digital Ventures</span>
+        <p class="text-[11px] text-brown-400 mt-0.5">CAC Reg No: BN 9772940 • Abuja, Federal Capital Territory, Nigeria</p>
+      </div>
+      <div class="flex flex-wrap justify-center gap-6 text-[11px]">
+        <a href="index.html" class="hover:text-brown-200 transition">Home</a>
+        <a href="services.html" class="hover:text-brown-200 transition">Services</a>
+        <a href="portfolio.html" class="hover:text-brown-200 transition">Case Studies</a>
+        <a href="academy.html" class="hover:text-brown-200 transition">Academy</a>
+        <a href="about.html" class="hover:text-brown-200 transition">About</a>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 mt-6 pt-4 border-t border-brown-950 text-center text-[10px] text-brown-500">
+      &copy; 2026 iClick Digital Ventures. All rights reserved. • iclickdigitalventures@gmail.com
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    // Mobile Menu Dropdown Toggle Script
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('hidden');
+    }
+  </script>
+</body>
+</html>    <!-- Project 1: GovTech -->
     <div class="glass-card rounded-3xl p-8 sm:p-10 border border-slate-800 hover:border-blue-500/40 transition">
       <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
         <div>
