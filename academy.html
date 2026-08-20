@@ -3,113 +3,218 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>iClick Digital Academy | Practical AI & Tech Talent Accelerator</title>
+  <title>iClick Digital Academy | Practical Tech Cohorts</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
         extend: {
           fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
-          colors: {
-            brand: {
-              50: '#f0fdfa',
-              100: '#ccfbf1',
-              500: '#00a8cc',
-              600: '#0284c7',
-              700: '#0369a1',
-              dark: '#080e1a',
-              card: '#0f172a',
-              accent: '#38bdf8'
-            }
-          }
         }
       }
     }
   </script>
-  <style>
-    body { font-family: 'Plus Jakarta Sans', sans-serif; }
-    .glass-card {
-      background: rgba(15, 23, 42, 0.85);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-    .glow-cyan {
-      box-shadow: 0 0 40px -10px rgba(56, 189, 248, 0.25);
-    }
-    .glow-emerald {
-      box-shadow: 0 0 40px -10px rgba(16, 185, 129, 0.25);
-    }
-  </style>
 </head>
-<body class="bg-[#050914] text-slate-100 min-h-screen flex flex-col antialiased">
+<body class="bg-white text-slate-800 font-sans antialiased flex flex-col min-h-screen">
 
-  <!-- Top Announcement Bar -->
-  <div class="bg-[#080e1a] text-slate-300 text-xs py-2.5 px-4 border-b border-slate-800/80">
-    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
-      <div class="flex items-center space-x-3">
-        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-950/80 text-emerald-400 border border-emerald-800/60">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 mr-1.5 animate-pulse"></span> Cohort Admissions Open
-        </span>
-        <span class="hidden md:inline text-slate-400">• iClick Digital Academy • A Vertical of iClick Digital Ventures[cite: 1, 2]</span>
-      </div>
-      <div class="flex items-center space-x-4 text-xs">
-        <a href="mailto:iclickdigitalventures@gmail.com" class="hover:text-cyan-400 transition flex items-center gap-1.5 text-slate-300">
-          <i data-lucide="mail" class="w-3.5 h-3.5 text-cyan-400"></i> iclickdigitalventures@gmail.com[cite: 1, 2]
-        </a>
-      </div>
+  <!-- Top Bar -->
+  <div class="border-b border-slate-100 bg-slate-50 text-xs py-2 text-slate-500">
+    <div class="max-w-6xl mx-auto px-4 flex justify-between items-center">
+      <span class="font-medium text-slate-600">iClick Digital Academy • Admissions Portal</span>
+      <a href="mailto:iclickdigitalventures@gmail.com" class="hover:text-sky-600 font-medium transition">iclickdigitalventures@gmail.com[cite: 1, 2]</a>
     </div>
   </div>
 
   <!-- Navigation -->
-  <nav class="bg-[#080e1a]/90 backdrop-blur-md sticky top-0 z-50 border-b border-slate-800/80">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
-      <a href="index.html" class="flex items-center space-x-3">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-500 to-cyan-600 flex items-center justify-center text-slate-950 font-black text-xl shadow-lg shadow-emerald-500/20">
-          iC
-        </div>
-        <div>
-          <span class="text-xl font-extrabold text-white tracking-tight block leading-none">iClick</span>
-          <span class="text-[10px] font-bold text-emerald-400 tracking-widest uppercase block mt-0.5">Digital Academy[cite: 1, 2]</span>
-        </div>
+  <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-100">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center space-x-2.5">
+        <div class="w-8 h-8 rounded-lg bg-emerald-600 text-white font-bold text-sm flex items-center justify-center">iC</div>
+        <span class="font-bold text-slate-900 text-base tracking-tight">iClick Digital Academy[cite: 1, 2]</span>
       </a>
-
-      <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
-        <a href="index.html" class="hover:text-cyan-400 transition">Holding Home</a>
-        <a href="#tracks" class="hover:text-emerald-400 transition">Tracks & Fees</a>
-        <a href="#curriculum" class="hover:text-emerald-400 transition">Curriculum</a>
-        <a href="#verify" class="hover:text-emerald-400 transition">Verify Certificate</a>
-        <a href="about.html" class="hover:text-cyan-400 transition">About</a>
+      <div class="hidden md:flex items-center space-x-7 text-sm font-medium text-slate-600">
+        <a href="index.html" class="hover:text-slate-900">Home</a>
+        <a href="services.html" class="hover:text-slate-900">Services</a>
+        <a href="portfolio.html" class="hover:text-slate-900">Case Studies</a>
+        <a href="academy.html" class="text-slate-900 font-semibold">Academy Portal</a>
+        <a href="about.html" class="hover:text-slate-900">About</a>
       </div>
-
-      <div class="flex items-center space-x-3">
-        <a href="#lms-login" onclick="openLoginModal()" class="hidden sm:inline-flex px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs font-semibold border border-slate-700 transition flex items-center gap-1.5">
-          <i data-lucide="lock" class="w-3.5 h-3.5 text-cyan-400"></i>
-          <span>Student LMS Login</span>
-        </a>
-        <a href="#enroll" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 font-bold text-xs uppercase tracking-wider shadow-lg shadow-emerald-500/20 transition flex items-center gap-1.5">
-          <span>Enroll Now</span>
-          <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-        </a>
-      </div>
+      <a href="#enrollment-section" class="px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold tracking-wide transition">
+        Enroll Now
+      </a>
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <header class="relative overflow-hidden py-20 sm:py-28 border-b border-slate-800/80 text-center">
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_0%,rgba(16,185,129,0.15),transparent)]"></div>
-    <div class="relative max-w-5xl mx-auto px-4 z-10">
-      
-      <span class="px-4 py-1.5 rounded-full bg-emerald-950/70 border border-emerald-700/40 text-emerald-300 text-xs font-semibold uppercase tracking-wider inline-block mb-6">
-        🚀 High-Impact Practical Cohorts & Executive Upskilling[cite: 5, 20]
-      </span>
-
-      <h1 class="text-4xl sm:text-6xl font-black tracking-tight text-white leading-tight">
-        Master Real-World <span class="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-cyan-400 to-blue-400">No-Code & AI Systems</span>
+  <!-- Academy Header -->
+  <header class="py-14 border-b border-slate-100 bg-slate-50/50">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <span class="text-xs font-semibold text-sky-700 uppercase tracking-wide">iClick Digital Academy[cite: 1, 2]</span>
+      <h1 class="text-3xl sm:text-4xl font-bold text-slate-900 mt-2 tracking-tight">
+        Practical Tech Cohorts That Deliver Results.
       </h1>
+      <p class="mt-3 text-sm sm:text-base text-slate-600 max-w-xl mx-auto">
+        Learn hands-on automation, database workflows, and digital office systems in 4 to 6 weeks[cite: 5, 20]. No abstract theory, zero coding experience required[cite: 24].
+      </p>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 py-12 flex-1 space-y-12">
+    <!-- Tracks -->
+    <div>
+      <h2 class="text-lg font-bold text-slate-900 mb-4">Available Learning Tracks</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Track 1 -->
+        <div class="p-6 rounded-xl border border-slate-200 bg-white hover:border-slate-300 transition flex flex-col justify-between">
+          <div>
+            <span class="text-xs font-bold text-slate-400">Track 01 • 6 Weeks[cite: 24]</span>
+            <h3 class="text-base font-bold text-slate-900 mt-1 mb-2">No-Code AI & Automation</h3>
+            <p class="text-xs text-slate-600 leading-relaxed mb-4">Master Make.com, Airtable databases, and WhatsApp API chatbots for businesses[cite: 1, 2, 24].</p>
+          </div>
+          <div>
+            <div class="text-lg font-bold text-slate-900 mb-3">₦45,000[cite: 24]</div>
+            <button onclick="setTrack('No-Code AI & Automation (₦45,000)')" class="w-full py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold transition">
+              Select Track
+            </button>
+          </div>
+        </div>
+
+        <!-- Track 2 -->
+        <div class="p-6 rounded-xl border border-slate-200 bg-white hover:border-slate-300 transition flex flex-col justify-between">
+          <div>
+            <span class="text-xs font-bold text-slate-400">Track 02 • 4 Weeks[cite: 24]</span>
+            <h3 class="text-base font-bold text-slate-900 mt-1 mb-2">Digital Office & Registry Systems</h3>
+            <p class="text-xs text-slate-600 leading-relaxed mb-4">For administrative staff to digitize paper files, indexing (OCR), and barcode routing[cite: 5, 20].</p>
+          </div>
+          <div>
+            <div class="text-lg font-bold text-slate-900 mb-3">₦35,000[cite: 24]</div>
+            <button onclick="setTrack('Digital Office & Registry Systems (₦35,000)')" class="w-full py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold transition">
+              Select Track
+            </button>
+          </div>
+        </div>
+
+        <!-- Track 3 -->
+        <div class="p-6 rounded-xl border border-slate-200 bg-white hover:border-slate-300 transition flex flex-col justify-between">
+          <div>
+            <span class="text-xs font-bold text-slate-400">Track 03 • 3 Days[cite: 24]</span>
+            <h3 class="text-base font-bold text-slate-900 mt-1 mb-2">Executive AI Productivity</h3>
+            <p class="text-xs text-slate-600 leading-relaxed mb-4">For team leads and directors to streamline team workflows with modern AI tools[cite: 1, 2, 24].</p>
+          </div>
+          <div>
+            <div class="text-lg font-bold text-slate-900 mb-3">₦75,000[cite: 24]</div>
+            <button onclick="setTrack('Executive AI Productivity (₦75,000)')" class="w-full py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold transition">
+              Select Track
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Clean Enrollment Form -->
+    <div id="enrollment-section" class="max-w-xl mx-auto p-6 sm:p-8 rounded-2xl bg-white border border-slate-200 shadow-sm">
+      <h3 class="text-base font-bold text-slate-900 mb-1">Student Enrollment Form</h3>
+      <p class="text-xs text-slate-500 mb-5">Complete your application. Payment instructions and LMS access are emailed immediately[cite: 24].</p>
+
+      <form onsubmit="handleAcademyEnroll(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-medium text-slate-700 mb-1">Full Legal Name</label>
+          <input id="cadName" type="text" required placeholder="Muhammad Ibrahim" class="w-full px-3 py-2 rounded-lg border border-slate-300 text-sm focus:ring-2 focus:ring-slate-900 focus:outline-none">
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-medium text-slate-700 mb-1">Email Address</label>
+            <input id="cadEmail" type="email" required placeholder="name@email.com" class="w-full px-3 py-2 rounded-lg border border-slate-300 text-sm focus:ring-2 focus:ring-slate-900 focus:outline-none">
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-slate-700 mb-1">WhatsApp Phone</label>
+            <input id="cadPhone" type="tel" required placeholder="080 0000 0000" class="w-full px-3 py-2 rounded-lg border border-slate-300 text-sm focus:ring-2 focus:ring-slate-900 focus:outline-none">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-medium text-slate-700 mb-1">Selected Track</label>
+          <select id="cadTrack" class="w-full px-3 py-2 rounded-lg border border-slate-300 text-sm focus:ring-2 focus:ring-slate-900 focus:outline-none bg-white">
+            <option>No-Code AI & Automation (₦45,000)</option>
+            <option>Digital Office & Registry Systems (₦35,000)</option>
+            <option>Executive AI Productivity (₦75,000)</option>
+          </select>
+        </div>
+
+        <button type="submit" id="enrollBtn" class="w-full py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs tracking-wide transition">
+          Submit Enrollment Application
+        </button>
+      </form>
+
+      <div id="enrollSuccess" class="hidden mt-4 p-4 rounded-lg bg-emerald-50 border border-emerald-200 text-center text-xs text-emerald-800">
+        Registration recorded! Welcome aboard. Check your inbox for onboarding details[cite: 24].
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-100 bg-slate-50 text-slate-500 text-xs py-10 mt-auto">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <div class="flex items-center space-x-2">
+        <span class="font-bold text-slate-900 text-sm">iClick Digital Ventures[cite: 1, 2]</span>
+        <span>• CAC Registered • Abuja, Nigeria[cite: 1, 2, 7]</span>
+      </div>
+      <div class="flex space-x-6">
+        <a href="index.html" class="hover:text-slate-900">Home</a>
+        <a href="services.html" class="hover:text-slate-900">Services</a>
+        <a href="portfolio.html" class="hover:text-slate-900">Case Studies</a>
+        <a href="academy.html" class="hover:text-slate-900">Academy</a>
+        <a href="about.html" class="hover:text-slate-900">About</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    function setTrack(trackText) {
+      const select = document.getElementById('cadTrack');
+      for (let i = 0; i < select.options.length; i++) {
+        if (select.options[i].text.includes(trackText.split('(')[0].trim())) {
+          select.selectedIndex = i;
+          break;
+        }
+      }
+      document.getElementById('enrollment-section').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function handleAcademyEnroll(e) {
+      e.preventDefault();
+      const btn = document.getElementById('enrollBtn');
+      btn.innerText = "Submitting...";
+      btn.disabled = true;
+
+      const data = {
+        name: document.getElementById('cadName').value,
+        email: document.getElementById('cadEmail').value,
+        phone: document.getElementById('cadPhone').value,
+        track: document.getElementById('cadTrack').value,
+        date: new Date().toLocaleDateString()
+      };
+
+      let list = JSON.parse(localStorage.getItem('iclick_enrollments') || '[]');
+      list.push(data);
+      localStorage.setItem('iclick_enrollments', JSON.stringify(list));
+
+      setTimeout(() => {
+        btn.innerText = "Application Submitted ✓";
+        document.getElementById('enrollSuccess').classList.remove('hidden');
+      }, 500);
+    }
+  </script>
+</body>
+</html>      </h1>
 
       <p class="mt-6 text-base sm:text-lg text-slate-300 max-w-2xl mx-auto font-light leading-relaxed">
         Bridge the gap between theoretical knowledge and practical market execution. Build functional client systems, automate business workflows, and qualify for live ecosystem projects[cite: 1, 2, 3].
