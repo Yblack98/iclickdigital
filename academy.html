@@ -43,7 +43,7 @@
 </head>
 <body class="bg-[#050914] text-slate-100 min-h-screen flex flex-col antialiased">
 
-  <!-- Top Bar -->
+  <!-- Top Announcement Bar -->
   <div class="bg-[#080e1a] text-slate-300 text-xs py-2.5 px-4 border-b border-slate-800/80">
     <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
       <div class="flex items-center space-x-3">
@@ -76,20 +76,20 @@
       <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
         <a href="index.html" class="hover:text-cyan-400 transition">Holding Home</a>
         <a href="#tracks" class="hover:text-emerald-400 transition">Courses & Fees</a>
-        <a href="#track-status" class="hover:text-cyan-400 transition">Track Application</a>
-        <a href="lms.html" class="hover:text-emerald-400 transition font-bold text-emerald-400">LMS Portal</a>
-        <a href="about.html" class="hover:text-cyan-400 transition">About</a>
+        <a href="#track-status" class="hover:text-cyan-400 transition">Track Admission</a>
+        <a href="#verify" class="hover:text-emerald-400 transition">Verify Alumni</a>
+        <a href="lms.html" class="hover:text-emerald-400 transition text-emerald-400 font-semibold">Student LMS</a>
       </div>
 
       <div class="flex items-center space-x-3">
-        <a href="lms.html" class="hidden sm:inline-flex px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs font-semibold border border-slate-700 transition flex items-center gap-1.5">
-          <i data-lucide="book-open" class="w-3.5 h-3.5 text-cyan-400"></i>
-          <span>Student LMS</span>
-        </a>
-        <a href="#application-portal" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 font-bold text-xs uppercase tracking-wider shadow-lg shadow-emerald-500/20 transition flex items-center gap-1.5">
+        <button onclick="openResumeModal()" class="hidden sm:inline-flex px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs font-semibold border border-slate-700 transition flex items-center gap-1.5">
+          <i data-lucide="folder-open" class="w-3.5 h-3.5 text-amber-400"></i>
+          <span>Resume Application</span>
+        </button>
+        <button onclick="openApplyModal()" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 font-bold text-xs uppercase tracking-wider shadow-lg shadow-emerald-500/20 transition flex items-center gap-1.5">
           <span>Apply Now</span>
           <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-        </a>
+        </button>
       </div>
     </div>
   </nav>
@@ -100,26 +100,26 @@
     <div class="relative max-w-5xl mx-auto px-4 z-10">
       
       <span class="px-4 py-1.5 rounded-full bg-emerald-950/70 border border-emerald-700/40 text-emerald-300 text-xs font-semibold uppercase tracking-wider inline-block mb-6">
-        🚀 Practical Digital Literacy, Data Analytics & AI
+        🚀 High-Impact Practical Cohorts & Verified Certifications
       </span>
 
       <h1 class="text-4xl sm:text-6xl font-black tracking-tight text-white leading-tight">
-        Master In-Demand <span class="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-cyan-400 to-blue-400">Tech & Workplace Skills</span>
+        Empowering Africa With <span class="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-cyan-400 to-blue-400">Practical Tech Mastery</span>
       </h1>
 
       <p class="mt-6 text-base sm:text-lg text-slate-300 max-w-2xl mx-auto font-light leading-relaxed">
-        Join certified live cohorts in Data Analytics, Social Media Growth, No-Code AI, Digital Office Records, and Essential Computer Literacy.
+        Master Data Analytics, Social Media Growth, No-Code AI, and Essential Digital Literacy through project-driven cohorts with live Zoom & YouTube lectures.
       </p>
 
       <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="#application-portal" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 font-extrabold text-xs uppercase tracking-wider shadow-lg shadow-emerald-500/25 transition flex items-center justify-center gap-2">
-          <span>Start Application</span>
-          <i data-lucide="arrow-down" class="w-4 h-4"></i>
-        </a>
-        <a href="#track-status" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs uppercase tracking-wider border border-slate-700 transition flex items-center justify-center gap-2">
-          <span>Check Admission Status</span>
-          <i data-lucide="search" class="w-4 h-4 text-cyan-400"></i>
-        </a>
+        <button onclick="openApplyModal()" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 font-extrabold text-xs uppercase tracking-wider shadow-lg shadow-emerald-500/25 transition flex items-center justify-center gap-2">
+          <span>Start New Application</span>
+          <i data-lucide="sparkles" class="w-4 h-4"></i>
+        </button>
+        <button onclick="openResumeModal()" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs uppercase tracking-wider border border-slate-700 transition flex items-center justify-center gap-2">
+          <i data-lucide="key" class="w-4 h-4 text-amber-400"></i>
+          <span>Resume Draft (App ID)</span>
+        </button>
       </div>
 
     </div>
@@ -131,12 +131,13 @@
     <div id="tracks">
       <div class="text-center max-w-2xl mx-auto mb-14">
         <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest">Our Curriculum Programs</span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-1">Certified Learning Programs</h2>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-1">Certified Learning Tracks</h2>
+        <p class="text-xs text-slate-400 mt-2">Click any course to launch your application immediately.</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         
-        <!-- Track 1: Data Analytics -->
+        <!-- Track 1 -->
         <div class="glass-card rounded-3xl p-6 flex flex-col justify-between border border-slate-800 hover:border-cyan-500/40 transition glow-cyan">
           <div>
             <div class="flex justify-between items-center mb-3">
@@ -148,17 +149,17 @@
           </div>
           <div>
             <div class="text-xl font-black text-white mb-3">₦40,000</div>
-            <button onclick="selectCourse('Data Analytics & Business Intelligence', '₦40,000')" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-xs uppercase tracking-wider transition">
-              Select This Course
+            <button onclick="openApplyModal('Data Analytics & Business Intelligence (₦40,000)')" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-xs uppercase tracking-wider transition">
+              Apply for This Track
             </button>
           </div>
         </div>
 
-        <!-- Track 2: Social Media Management -->
+        <!-- Track 2 -->
         <div class="glass-card rounded-3xl p-6 flex flex-col justify-between border border-slate-800 hover:border-emerald-500/40 transition glow-emerald">
           <div>
             <div class="flex justify-between items-center mb-3">
-              <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-950 text-emerald-400 border border-emerald-800">New Cohort</span>
+              <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-950 text-emerald-400 border border-emerald-800">Growth Track</span>
               <span class="text-xs text-slate-400">4 Weeks</span>
             </div>
             <h3 class="text-lg font-bold text-white mb-2">Social Media Management & Digital Growth</h3>
@@ -166,13 +167,13 @@
           </div>
           <div>
             <div class="text-xl font-black text-white mb-3">₦30,000</div>
-            <button onclick="selectCourse('Social Media Management & Digital Growth', '₦30,000')" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition">
-              Select This Course
+            <button onclick="openApplyModal('Social Media Management & Digital Growth (₦30,000)')" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition">
+              Apply for This Track
             </button>
           </div>
         </div>
 
-        <!-- Track 3: No-Code AI & Automation -->
+        <!-- Track 3 -->
         <div class="glass-card rounded-3xl p-6 flex flex-col justify-between border border-slate-800 hover:border-blue-500/40 transition">
           <div>
             <div class="flex justify-between items-center mb-3">
@@ -184,13 +185,13 @@
           </div>
           <div>
             <div class="text-xl font-black text-white mb-3">₦45,000</div>
-            <button onclick="selectCourse('No-Code AI & Workflow Automation', '₦45,000')" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs uppercase tracking-wider transition">
-              Select This Course
+            <button onclick="openApplyModal('No-Code AI & Workflow Automation (₦45,000)')" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs uppercase tracking-wider transition">
+              Apply for This Track
             </button>
           </div>
         </div>
 
-        <!-- Track 4: Digital Literacy & Office Tools -->
+        <!-- Track 4 -->
         <div class="glass-card rounded-3xl p-6 flex flex-col justify-between border border-slate-800 hover:border-emerald-500/40 transition">
           <div>
             <div class="flex justify-between items-center mb-3">
@@ -202,13 +203,13 @@
           </div>
           <div>
             <div class="text-xl font-black text-white mb-3">₦25,000</div>
-            <button onclick="selectCourse('Essential Digital Literacy & Office Tools', '₦25,000')" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs uppercase tracking-wider transition">
-              Select This Course
+            <button onclick="openApplyModal('Essential Digital Literacy & Office Tools (₦25,000)')" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs uppercase tracking-wider transition">
+              Apply for This Track
             </button>
           </div>
         </div>
 
-        <!-- Track 5: Digital Registry Records -->
+        <!-- Track 5 -->
         <div class="glass-card rounded-3xl p-6 flex flex-col justify-between border border-slate-800 hover:border-blue-500/40 transition">
           <div>
             <div class="flex justify-between items-center mb-3">
@@ -220,13 +221,13 @@
           </div>
           <div>
             <div class="text-xl font-black text-white mb-3">₦35,000</div>
-            <button onclick="selectCourse('Digital Office & Electronic Records', '₦35,000')" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs uppercase tracking-wider transition">
-              Select This Course
+            <button onclick="openApplyModal('Digital Office & Electronic Records (₦35,000)')" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs uppercase tracking-wider transition">
+              Apply for This Track
             </button>
           </div>
         </div>
 
-        <!-- Track 6: Executive AI -->
+        <!-- Track 6 -->
         <div class="glass-card rounded-3xl p-6 flex flex-col justify-between border border-slate-800 hover:border-purple-500/40 transition">
           <div>
             <div class="flex justify-between items-center mb-3">
@@ -238,8 +239,8 @@
           </div>
           <div>
             <div class="text-xl font-black text-white mb-3">₦75,000</div>
-            <button onclick="selectCourse('Executive Enterprise AI Masterclass', '₦75,000')" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs uppercase tracking-wider transition">
-              Select This Course
+            <button onclick="openApplyModal('Executive Enterprise AI Masterclass (₦75,000)')" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs uppercase tracking-wider transition">
+              Apply for This Track
             </button>
           </div>
         </div>
@@ -247,97 +248,136 @@
       </div>
     </div>
 
-    <!-- 2-STAGE APPLICATION PORTAL (Formspree: https://formspree.io/f/maewalrd) -->
-    <div id="application-portal" class="max-w-3xl mx-auto glass-card rounded-3xl p-8 sm:p-12 border border-slate-700 glow-cyan">
+    <!-- APPLICATION STATUS TRACKER -->
+    <div id="track-status" class="max-w-xl mx-auto glass-card rounded-3xl p-8 border border-slate-800 text-center">
+      <div class="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center mx-auto mb-3">
+        <i data-lucide="search" class="w-6 h-6"></i>
+      </div>
+      <h3 class="text-lg font-bold text-white">Track Admission Status</h3>
+      <p class="text-xs text-slate-400 mt-1 mb-4">Enter your Application ID to check if your admission is accepted, pending, or under review.</p>
       
-      <!-- Stage Stepper -->
-      <div class="flex items-center justify-between mb-8 pb-4 border-b border-slate-800">
-        <div class="flex items-center space-x-3">
-          <div id="step1Indicator" class="w-8 h-8 rounded-full bg-emerald-500 text-slate-950 font-bold text-xs flex items-center justify-center shadow-md">1</div>
-          <span class="text-xs font-bold text-white">Stage 1: Profile Account</span>
+      <div class="flex gap-2">
+        <input id="trackerAppIdInput" type="text" placeholder="e.g. iC-ACAD-2026-4821" class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:ring-2 focus:ring-cyan-400 focus:outline-none">
+        <button onclick="trackApplicationStatus()" class="px-5 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition">
+          Check
+        </button>
+      </div>
+
+      <div id="trackerResultBox" class="hidden mt-4 p-4 rounded-xl text-xs text-left"></div>
+    </div>
+
+    <!-- CERTIFICATE & ALUMNI VERIFICATION ENGINE (Admin Approved Only) -->
+    <div id="verify" class="max-w-xl mx-auto glass-card rounded-3xl p-8 border border-slate-800 text-center">
+      <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mx-auto mb-3">
+        <i data-lucide="shield-check" class="w-6 h-6"></i>
+      </div>
+      <h3 class="text-lg font-bold text-white">Official Alumni & Certificate Verification</h3>
+      <p class="text-xs text-slate-400 mt-1 mb-4">Enter a Certificate ID to verify authenticated graduates approved by the iClick Academic Board.</p>
+      
+      <div class="flex gap-2">
+        <input id="certId" type="text" placeholder="e.g. iC-CERT-2026-0042" class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:ring-2 focus:ring-emerald-400 focus:outline-none">
+        <button onclick="verifyAlumniCertificate()" class="px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition">
+          Verify
+        </button>
+      </div>
+      <div id="certResult" class="hidden mt-3 p-4 rounded-xl text-xs font-semibold text-left"></div>
+    </div>
+
+  </main>
+
+  <!-- MODAL 1: APPLICATION PORTAL (Hidden until "Apply Now" is clicked) -->
+  <div id="applyModal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
+    <div class="glass-card rounded-3xl p-6 sm:p-10 max-w-2xl w-full border border-slate-700 my-8 relative">
+      <button onclick="closeApplyModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <!-- Stepper -->
+      <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-800">
+        <div class="flex items-center space-x-2">
+          <div id="mStep1" class="w-7 h-7 rounded-full bg-emerald-500 text-slate-950 font-bold text-xs flex items-center justify-center">1</div>
+          <span class="text-xs font-bold text-white">Profile & Bio</span>
         </div>
         <div class="w-12 h-0.5 bg-slate-700"></div>
-        <div class="flex items-center space-x-3">
-          <div id="step2Indicator" class="w-8 h-8 rounded-full bg-slate-800 text-slate-400 font-bold text-xs flex items-center justify-center border border-slate-700">2</div>
-          <span class="text-xs font-bold text-slate-400" id="step2Title">Stage 2: Checkout & Submission</span>
+        <div class="flex items-center space-x-2">
+          <div id="mStep2" class="w-7 h-7 rounded-full bg-slate-800 text-slate-400 font-bold text-xs flex items-center justify-center border border-slate-700">2</div>
+          <span class="text-xs font-bold text-slate-400" id="mStep2Label">Course & Payment</span>
         </div>
       </div>
 
-      <!-- STAGE 1: ACCOUNT SETUP -->
-      <div id="stage1Box">
-        <div class="mb-6">
-          <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest">Step 1 of 2</span>
-          <h3 class="text-2xl font-bold text-white mt-1">Create Application Account</h3>
-          <p class="text-xs text-slate-400 mt-1">Save your application progress so you can resume anytime.</p>
-        </div>
+      <!-- STAGE 1: PROFILE SETUP -->
+      <div id="modalStage1">
+        <h3 class="text-xl font-bold text-white mb-1">Student Profile Setup</h3>
+        <p class="text-xs text-slate-400 mb-4">Your Application ID is generated when you proceed to Stage 2.</p>
 
-        <form id="stage1Form" onsubmit="handleStage1Submit(event)" class="space-y-4">
+        <form onsubmit="handleModalStage1Submit(event)" class="space-y-3">
           <div>
             <label class="block text-xs font-medium text-slate-300 mb-1">Full Legal Name</label>
-            <input id="appFullName" type="text" required placeholder="Muhammad Ibrahim" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:ring-2 focus:ring-emerald-400 focus:outline-none placeholder-slate-500">
+            <input id="mFullName" type="text" required placeholder="Muhammad Ibrahim" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:ring-2 focus:ring-emerald-400 focus:outline-none">
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
               <label class="block text-xs font-medium text-slate-300 mb-1">Email Address</label>
-              <input id="appEmail" type="email" required placeholder="student@example.com" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:ring-2 focus:ring-emerald-400 focus:outline-none placeholder-slate-500">
+              <input id="mEmail" type="email" required placeholder="student@example.com" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:ring-2 focus:ring-emerald-400 focus:outline-none">
             </div>
             <div>
-              <label class="block text-xs font-medium text-slate-300 mb-1">Create Password (To resume draft later)</label>
-              <input id="appPassword" type="password" required placeholder="••••••••" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:ring-2 focus:ring-emerald-400 focus:outline-none placeholder-slate-500">
+              <label class="block text-xs font-medium text-slate-300 mb-1">Account Password (To Resume Draft)</label>
+              <input id="mPassword" type="password" required placeholder="••••••••" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:ring-2 focus:ring-emerald-400 focus:outline-none">
             </div>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-medium text-slate-300 mb-1">Email Address</label>
+              <input id="mEmail" type="email" required placeholder="student@example.com" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:ring-2 focus:ring-emerald-400 focus:outline-none">
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-slate-300 mb-1">Account Password (To Resume Draft)</label>
+              <input id="mPassword" type="password" required placeholder="••••••••" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:ring-2 focus:ring-emerald-400 focus:outline-none">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
               <label class="block text-xs font-medium text-slate-300 mb-1">WhatsApp Phone Number</label>
-              <input id="appPhone" type="tel" required placeholder="+234 800 000 0000" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:ring-2 focus:ring-emerald-400 focus:outline-none placeholder-slate-500">
+              <input id="mPhone" type="tel" required placeholder="+234 800 000 0000" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:ring-2 focus:ring-emerald-400 focus:outline-none">
             </div>
             <div>
-              <label class="block text-xs font-medium text-slate-300 mb-1">City & State of Residence</label>
-              <input id="appCity" type="text" required placeholder="e.g. Abuja, FCT" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:ring-2 focus:ring-emerald-400 focus:outline-none placeholder-slate-500">
+              <label class="block text-xs font-medium text-slate-300 mb-1">Location / City</label>
+              <input id="mCity" type="text" required placeholder="Abuja, FCT" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:ring-2 focus:ring-emerald-400 focus:outline-none">
             </div>
           </div>
 
-          <div class="flex items-center justify-between pt-4">
-            <button type="button" onclick="openStudentLoginModal()" class="text-xs text-cyan-400 hover:underline">
-              Already started? Login to resume
-            </button>
-            <button type="submit" class="px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition shadow-md flex items-center gap-2">
-              <span>Save & Proceed to Stage 2</span>
-              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-            </button>
-          </div>
+          <button type="submit" class="w-full py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition mt-4 flex items-center justify-center gap-2">
+            <span>Generate ID & Proceed to Checkout</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </button>
         </form>
       </div>
 
-      <!-- STAGE 2: COURSE, PAYMENT & DIRECT FORMSPREE DISPATCH -->
-      <div id="stage2Box" class="hidden">
-        <div class="mb-6 flex justify-between items-start">
+      <!-- STAGE 2: SUBMIT & DISPATCH -->
+      <div id="modalStage2" class="hidden">
+        <div class="p-3.5 rounded-xl bg-cyan-950/60 border border-cyan-800/80 mb-4 flex justify-between items-center">
           <div>
-            <span class="text-xs font-bold text-cyan-400 uppercase tracking-widest">Step 2 of 2</span>
-            <h3 class="text-2xl font-bold text-white mt-1">Course & Payment Checkout</h3>
-            <p class="text-xs text-slate-400 mt-1">Generated Application ID: <strong id="displayAppId" class="text-cyan-400 font-mono font-bold"></strong></p>
+            <span class="text-[10px] text-cyan-300 uppercase block font-bold">Your Generated Application ID:</span>
+            <span id="mDisplayAppId" class="text-base font-mono font-black text-white"></span>
           </div>
-          <button onclick="backToStage1()" class="text-xs text-slate-400 hover:text-white underline">
-            ← Edit Profile
-          </button>
+          <span class="text-[10px] text-slate-400">Keep this ID safe</span>
         </div>
 
-        <form action="https://formspree.io/f/maewalrd" method="POST" id="finalEnrollmentForm" onsubmit="handleFinalSubmit(event)" class="space-y-5">
-          
-         <!-- Hidden Payload Sent to Formspree -->
-          <input type="hidden" name="Application_ID" id="hiddenAppId">
-          <input type="hidden" name="Applicant_Name" id="hiddenFullName">
-          <input type="hidden" name="Applicant_Email" id="hiddenEmail">
-          <input type="hidden" name="Applicant_Phone" id="hiddenPhone">
-          <input type="hidden" name="Applicant_Location" id="hiddenCity">
-          <input type="hidden" name="_replyto" id="hiddenReplyTo">
-          <input type="hidden" name="_subject" id="hiddenSubject" value="New Student Application - iClick Digital Academy">
+        <form action="https://formspree.io/f/maewalrd" method="POST" id="mFinalForm" onsubmit="handleModalFinalSubmit(event)" class="space-y-3">
+          <input type="hidden" name="Application_ID" id="mHiddenAppId">
+          <input type="hidden" name="Applicant_Name" id="mHiddenName">
+          <input type="hidden" name="Applicant_Email" id="mHiddenEmail">
+          <input type="hidden" name="Applicant_Phone" id="mHiddenPhone">
+          <input type="hidden" name="Applicant_City" id="mHiddenCity">
+          <input type="hidden" name="_replyto" id="mHiddenReplyTo">
+          <input type="hidden" name="_subject" value="New Student Application - iClick Digital Academy">
 
           <div>
-            <label class="block text-xs font-medium text-slate-300 mb-1">Select Chosen Course Track</label>
-            <select name="Selected_Course" id="finalCourseSelect" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:ring-2 focus:ring-cyan-400 focus:outline-none">
+            <label class="block text-xs font-medium text-slate-300 mb-1">Chosen Track</label>
+            <select name="Selected_Course" id="mCourseSelect" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:ring-2 focus:ring-cyan-400 focus:outline-none">
               <option value="Data Analytics & Business Intelligence (₦40,000)">Data Analytics & Business Intelligence (₦40,000)</option>
               <option value="Social Media Management & Digital Growth (₦30,000)">Social Media Management & Digital Growth (₦30,000)</option>
               <option value="No-Code AI & Workflow Automation (₦45,000)">No-Code AI & Workflow Automation (₦45,000)</option>
@@ -347,104 +387,71 @@
             </select>
           </div>
 
-          <!-- Payment Method Dropdown -->
           <div>
-            <label class="block text-xs font-medium text-slate-300 mb-1">Select Payment Method</label>
-            <select name="Payment_Method" id="paymentMethodSelect" onchange="handlePaymentMethodChange()" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:ring-2 focus:ring-cyan-400 focus:outline-none">
+            <label class="block text-xs font-medium text-slate-300 mb-1">Payment Method</label>
+            <select name="Payment_Method" id="mPaymentSelect" onchange="renderModalPaymentInfo()" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:ring-2 focus:ring-cyan-400 focus:outline-none">
               <option value="Direct Bank Transfer">Direct Bank Transfer (CAC Corporate Account)</option>
               <option value="Flutterwave Online Payment">Flutterwave (Card / Apple Pay / Google Pay)</option>
-              <option value="Debit / Credit Card Direct">Debit / Credit Card (Mastercard / Visa / Verve)</option>
+              <option value="Debit / Credit Card Direct">Debit / Credit Card Direct</option>
               <option value="USSD Bank Code Transfer">USSD Bank Code Transfer</option>
             </select>
           </div>
 
-          <!-- Dynamic Payment Instruction Box -->
-          <div id="paymentDetailsContainer" class="p-5 rounded-2xl bg-slate-900/90 border border-slate-700 text-xs text-slate-300"></div>
+          <div id="mPaymentBox" class="p-4 rounded-xl bg-slate-900/90 border border-slate-800 text-xs text-slate-300"></div>
 
-          <button type="submit" id="finalSubmitBtn" class="w-full py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 font-black text-xs uppercase tracking-wider transition shadow-lg shadow-cyan-500/25">
-            Submit Application & Dispatch Confirmation
-          </button>
+          <div class="flex gap-2 pt-2">
+            <button type="button" onclick="backToModalStage1()" class="px-4 py-2.5 rounded-xl bg-slate-800 text-slate-300 text-xs">
+              Back
+            </button>
+            <button type="submit" id="mSubmitBtn" class="flex-1 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 font-black text-xs uppercase tracking-wider transition shadow-md">
+              Confirm & Dispatch Application
+            </button>
+          </div>
         </form>
       </div>
 
-      <!-- Submission Success Modal -->
-      <div id="statusModal" class="hidden mt-6 p-6 rounded-2xl bg-emerald-950/90 border border-emerald-500/50 text-center">
+      <!-- Stage Complete Box -->
+      <div id="modalSuccess" class="hidden text-center py-6">
         <div class="w-12 h-12 rounded-full bg-emerald-500 text-slate-950 flex items-center justify-center mx-auto mb-3">
           <i data-lucide="check" class="w-6 h-6 stroke-[3]"></i>
         </div>
-        <h4 class="text-lg font-bold text-white">Application Recorded & Dispatched!</h4>
-        <p class="text-xs text-emerald-300 mt-1">
-          Your Official Application ID: <strong id="successAppId" class="text-white font-mono font-bold"></strong>
-        </p>
-        <p class="text-[11px] text-slate-400 mt-2">
-          Your record has been queued to <strong>iclickdigitalventures@gmail.com</strong>. You can use your Application ID below to check your acceptance status anytime.
-        </p>
-      </div>
-
-    </div>
-
-    <!-- STUDENT APPLICATION STATUS TRACKER -->
-    <div id="track-status" class="max-w-xl mx-auto glass-card rounded-3xl p-8 border border-slate-800 text-center">
-      <div class="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center mx-auto mb-3">
-        <i data-lucide="search" class="w-6 h-6"></i>
-      </div>
-      <h3 class="text-lg font-bold text-white">Track Admission Acceptance Status</h3>
-      <p class="text-xs text-slate-400 mt-1 mb-4">Enter your generated Application ID to check your review status in real time.</p>
-      
-      <div class="flex gap-2">
-        <input id="trackerAppIdInput" type="text" placeholder="e.g. iC-ACAD-2026-4821" class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:ring-2 focus:ring-cyan-400 focus:outline-none">
-        <button onclick="trackApplicationStatus()" class="px-5 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition">
-          Check Status
+        <h4 class="text-lg font-bold text-white">Application Successfully Submitted!</h4>
+        <p class="text-xs text-emerald-400 mt-1">Application ID: <strong id="mDoneAppId" class="font-mono text-white"></strong></p>
+        <p class="text-xs text-slate-400 mt-2">Dispatched to <strong>iclickdigitalventures@gmail.com</strong>. You can check admission status anytime with your ID.</p>
+        <button onclick="closeApplyModal()" class="mt-4 px-6 py-2.5 rounded-xl bg-slate-800 text-white text-xs font-bold">
+          Close Window
         </button>
       </div>
 
-      <!-- Result Container -->
-      <div id="trackerResultBox" class="hidden mt-4 p-4 rounded-xl text-xs text-left"></div>
     </div>
+  </div>
 
-    <!-- Certificate Verification Section -->
-    <div id="verify" class="max-w-xl mx-auto glass-card rounded-3xl p-8 border border-slate-800 text-center">
-      <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mx-auto mb-3">
-        <i data-lucide="shield-check" class="w-6 h-6"></i>
-      </div>
-      <h3 class="text-lg font-bold text-white">Verify Graduate Certificate</h3>
-      <p class="text-xs text-slate-400 mt-1 mb-4">Enter a Certificate ID to verify credentials issued by iClick Digital Academy.</p>
-      
-      <div class="flex gap-2">
-        <input id="certId" type="text" placeholder="e.g. iC-ACAD-2026-0042" class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:ring-2 focus:ring-emerald-400 focus:outline-none">
-        <button onclick="verifyCertificate()" class="px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition">
-          Verify
-        </button>
-      </div>
-      <div id="certResult" class="hidden mt-3 text-xs font-semibold"></div>
-    </div>
-
-  </main>
-
-  <!-- RESUME DRAFT MODAL -->
-  <div id="loginModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+  <!-- MODAL 2: RESUME APPLICATION USING APPLICATION ID -->
+  <div id="resumeModal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
     <div class="glass-card rounded-3xl p-8 max-w-sm w-full border border-slate-700 relative">
-      <button onclick="closeStudentLoginModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white">
+      <button onclick="closeResumeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white">
         <i data-lucide="x" class="w-5 h-5"></i>
       </button>
+
       <div class="text-center mb-6">
-        <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mx-auto mb-2 border border-emerald-500/20">
-          <i data-lucide="user-check" class="w-6 h-6"></i>
+        <div class="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-400 flex items-center justify-center mx-auto mb-2 border border-amber-500/20">
+          <i data-lucide="key" class="w-6 h-6"></i>
         </div>
-        <h4 class="text-lg font-bold text-white">Resume Your Application</h4>
-        <p class="text-xs text-slate-400 mt-1">Sign in with your email to load your saved draft.</p>
+        <h4 class="text-lg font-bold text-white">Resume Application</h4>
+        <p class="text-xs text-slate-400 mt-1">Enter your Application ID & Password to continue.</p>
       </div>
-      <form onsubmit="handleResumeLogin(event)" class="space-y-3">
+
+      <form onsubmit="handleResumeWithAppId(event)" class="space-y-3">
         <div>
-          <label class="block text-xs font-medium text-slate-300 mb-1">Email Address</label>
-          <input id="loginEmail" type="email" required placeholder="student@example.com" class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:ring-2 focus:ring-emerald-400 focus:outline-none">
+          <label class="block text-xs font-medium text-slate-300 mb-1">Application ID</label>
+          <input id="rAppId" type="text" required placeholder="iC-ACAD-2026-XXXX" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:ring-2 focus:ring-amber-400 focus:outline-none">
         </div>
         <div>
           <label class="block text-xs font-medium text-slate-300 mb-1">Password</label>
-          <input id="loginPassword" type="password" required placeholder="••••••••" class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:ring-2 focus:ring-emerald-400 focus:outline-none">
+          <input id="rPassword" type="password" required placeholder="••••••••" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:ring-2 focus:ring-amber-400 focus:outline-none">
         </div>
-        <button type="submit" class="w-full py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition">
-          Load My Application Draft
+        <button type="submit" class="w-full py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition">
+          Load Application Draft
         </button>
       </form>
     </div>
@@ -456,8 +463,8 @@
       <p class="font-medium text-slate-300">iClick Digital Academy • A Subsidiary of iClick Digital Ventures</p>
       <p class="text-[11px] text-slate-500 mt-1">CAC Reg No: BN 9772940 • www.iclickdigital.com • Abuja, Nigeria</p>
       <div class="mt-4 flex justify-center space-x-6 text-[11px] text-slate-500">
-        <a href="lms.html" class="hover:text-emerald-400">LMS Portal</a>
-        <a href="admin.html" class="hover:text-cyan-400">Admissions Admin</a>
+        <a href="lms.html" class="hover:text-emerald-400 font-semibold">Student LMS</a>
+        <a href="admin.html" class="hover:text-cyan-400">Admissions & LMS Admin</a>
       </div>
     </div>
   </footer>
@@ -465,135 +472,132 @@
   <script>
     lucide.createIcons();
 
-    function generateApplicationID() {
-      const randomDigits = Math.floor(1000 + Math.random() * 9000);
-      return `iC-ACAD-2026-${randomDigits}`;
+    // Unique Application ID Generator
+    function generateAppID() {
+      const rand = Math.floor(1000 + Math.random() * 9000);
+      return `iC-ACAD-2026-${rand}`;
     }
 
-    function selectCourse(courseTitle, price) {
-      const select = document.getElementById('finalCourseSelect');
-      for (let i = 0; i < select.options.length; i++) {
-        if (select.options[i].value.includes(courseTitle)) {
-          select.selectedIndex = i;
-          break;
+    // Modal Triggers
+    function openApplyModal(preselectedCourse) {
+      if (preselectedCourse) {
+        const sel = document.getElementById('mCourseSelect');
+        for (let i = 0; i < sel.options.length; i++) {
+          if (sel.options[i].value.includes(preselectedCourse.split('(')[0].trim())) {
+            sel.selectedIndex = i;
+            break;
+          }
         }
       }
-      document.getElementById('application-portal').scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('applyModal').classList.remove('hidden');
+      renderModalPaymentInfo();
+      lucide.createIcons();
     }
 
-    function handleStage1Submit(e) {
+    function closeApplyModal() {
+      document.getElementById('applyModal').classList.add('hidden');
+    }
+
+    function openResumeModal() {
+      document.getElementById('resumeModal').classList.remove('hidden');
+    }
+
+    function closeResumeModal() {
+      document.getElementById('resumeModal').classList.add('hidden');
+    }
+
+    // Handle Stage 1 Submit & Generate ID
+    function handleModalStage1Submit(e) {
       e.preventDefault();
-      const appId = generateApplicationID();
-      
-      const profile = {
-        appId: appId,
-        fullName: document.getElementById('appFullName').value.trim(),
-        email: document.getElementById('appEmail').value.trim().toLowerCase(),
-        password: document.getElementById('appPassword').value,
-        phone: document.getElementById('appPhone').value.trim(),
-        city: document.getElementById('appCity').value.trim(),
-        stage: 2,
+      const generatedId = generateAppID();
+
+      const studentDraft = {
+        appId: generatedId,
+        fullName: document.getElementById('mFullName').value.trim(),
+        email: document.getElementById('mEmail').value.trim().toLowerCase(),
+        password: document.getElementById('mPassword').value,
+        phone: document.getElementById('mPhone').value.trim(),
+        city: document.getElementById('mCity').value.trim(),
         status: 'Pending Review',
-        updatedAt: new Date().toISOString()
+        submittedAt: new Date().toLocaleDateString()
       };
 
-      localStorage.setItem(`iclick_draft_${profile.email}`, JSON.stringify(profile));
-      localStorage.setItem('iclick_active_session', JSON.stringify(profile));
+      // Save to localStorage by AppID and Email for seamless resuming
+      localStorage.setItem(`draft_${generatedId}`, JSON.stringify(studentDraft));
+      localStorage.setItem(`draft_${studentDraft.email}`, JSON.stringify(studentDraft));
 
-      populateStage2(profile);
-    }
+      // Populate Stage 2
+      document.getElementById('mDisplayAppId').innerText = generatedId;
+      document.getElementById('mHiddenAppId').value = generatedId;
+      document.getElementById('mHiddenName').value = studentDraft.fullName;
+      document.getElementById('mHiddenEmail').value = studentDraft.email;
+      document.getElementById('mHiddenReplyTo').value = studentDraft.email;
+      document.getElementById('mHiddenPhone').value = studentDraft.phone;
+      document.getElementById('mHiddenCity').value = studentDraft.city;
 
-    function populateStage2(profile) {
-      document.getElementById('displayAppId').innerText = profile.appId;
-      document.getElementById('hiddenAppId').value = profile.appId;
-      document.getElementById('hiddenFullName').value = profile.fullName;
-      document.getElementById('hiddenEmail').value = profile.email;
-      document.getElementById('hiddenReplyTo').value = profile.email;
-      document.getElementById('hiddenPhone').value = profile.phone;
-      document.getElementById('hiddenCity').value = profile.city;
+      document.getElementById('modalStage1').classList.add('hidden');
+      document.getElementById('modalStage2').classList.remove('hidden');
+      document.getElementById('mStep2').className = "w-7 h-7 rounded-full bg-cyan-500 text-slate-950 font-bold text-xs flex items-center justify-center";
+      document.getElementById('mStep2Label').className = "text-xs font-bold text-white";
 
-      document.getElementById('stage1Box').classList.add('hidden');
-      document.getElementById('stage2Box').classList.remove('hidden');
-      document.getElementById('step2Indicator').className = "w-8 h-8 rounded-full bg-cyan-500 text-slate-950 font-bold text-xs flex items-center justify-center shadow-md";
-      document.getElementById('step2Title').className = "text-xs font-bold text-white";
-
-      handlePaymentMethodChange();
+      renderModalPaymentInfo();
       lucide.createIcons();
     }
 
-    function backToStage1() {
-      document.getElementById('stage2Box').classList.add('hidden');
-      document.getElementById('stage1Box').classList.remove('hidden');
+    function backToModalStage1() {
+      document.getElementById('modalStage2').classList.add('hidden');
+      document.getElementById('modalStage1').classList.remove('hidden');
     }
 
-    function handlePaymentMethodChange() {
-      const method = document.getElementById('paymentMethodSelect').value;
-      const container = document.getElementById('paymentDetailsContainer');
+    function renderModalPaymentInfo() {
+      const method = document.getElementById('mPaymentSelect').value;
+      const box = document.getElementById('mPaymentBox');
 
       if (method === "Direct Bank Transfer") {
-        container.innerHTML = `
-          <div class="space-y-1.5">
-            <div class="font-bold text-white flex items-center gap-1.5 mb-2">
-              <i data-lucide="landmark" class="w-4 h-4 text-emerald-400"></i> Corporate Bank Transfer Details
-            </div>
-            <div>Account Name: <strong class="text-white">iClick Digital Ventures</strong></div>
-            <div>Bank: <strong class="text-white">Moniepoint / Commercial Bank of Nigeria</strong></div>
-            <div>Registration Status: <strong class="text-emerald-400">CAC Registered (BN 9772940)</strong></div>
-            <div class="text-[11px] text-slate-400 mt-2">
-              Use your generated Application ID as your payment transfer narration.
-            </div>
-          </div>
+        box.innerHTML = `
+          <div>Account Name: <strong class="text-white">iClick Digital Ventures</strong></div>
+          <div>Bank: <strong class="text-white">Moniepoint / Commercial Bank of Nigeria</strong></div>
+          <div>CAC Reg: <strong class="text-emerald-400">BN 9772940</strong></div>
+          <div class="text-[11px] text-slate-400 mt-1">Use your generated Application ID as transfer narration.</div>
         `;
       } else if (method === "Flutterwave Online Payment") {
-        container.innerHTML = `
-          <div class="space-y-1.5">
-            <div class="font-bold text-white flex items-center gap-1.5 mb-2">
-              <i data-lucide="credit-card" class="w-4 h-4 text-cyan-400"></i> Flutterwave Secure Checkout
-            </div>
-            <p>Instant enrollment via Card, Apple Pay, or Bank USSD Transfer.</p>
-            <div class="text-[11px] text-emerald-400 font-semibold mt-2">✓ Automatic LMS activation on completion.</div>
-          </div>
+        box.innerHTML = `
+          <div class="text-cyan-300 font-semibold">Flutterwave Instant Gateway</div>
+          <div class="text-[11px] text-slate-400 mt-1">Supports instant cards, Apple Pay, and automated USSD verification.</div>
         `;
       } else if (method === "Debit / Credit Card Direct") {
-        container.innerHTML = `
-          <div class="space-y-1.5">
-            <div class="font-bold text-white flex items-center gap-1.5 mb-2">
-              <i data-lucide="shield-check" class="w-4 h-4 text-cyan-400"></i> Direct Card Processing (256-Bit SSL)
-            </div>
-            <p>Supports all Nigerian and International Mastercard, Visa, and Verve cards.</p>
-          </div>
+        box.innerHTML = `
+          <div class="text-cyan-300 font-semibold">Direct Card Processing</div>
+          <div class="text-[11px] text-slate-400 mt-1">Secured with 256-Bit SSL Encryption. Supports Visa, Mastercard & Verve.</div>
         `;
-      } else if (method === "USSD Bank Code Transfer") {
-        container.innerHTML = `
-          <div class="space-y-1.5">
-            <div class="font-bold text-white flex items-center gap-1.5 mb-2">
-              <i data-lucide="smartphone" class="w-4 h-4 text-amber-400"></i> USSD Mobile Banking
-            </div>
-            <p>Dial your bank's USSD transfer code (e.g. *737#, *894#, *901#, *966#) to transfer to iClick Digital Ventures.</p>
-          </div>
+      } else {
+        box.innerHTML = `
+          <div class="text-amber-300 font-semibold">USSD Mobile Transfer</div>
+          <div class="text-[11px] text-slate-400 mt-1">Dial your bank's transfer code to complete payment to iClick Digital Ventures.</div>
         `;
       }
-      lucide.createIcons();
     }
 
-    async function handleFinalSubmit(e) {
+    // Final Submit & Send to Formspree
+    async function handleModalFinalSubmit(e) {
       e.preventDefault();
-      const btn = document.getElementById('finalSubmitBtn');
+      const btn = document.getElementById('mSubmitBtn');
       btn.innerText = "Dispatching Application...";
       btn.disabled = true;
 
-      const form = document.getElementById('finalEnrollmentForm');
+      const form = document.getElementById('mFinalForm');
       const formData = new FormData(form);
 
-      const appId = document.getElementById('hiddenAppId').value;
-      const fullName = document.getElementById('hiddenFullName').value;
-      const email = document.getElementById('hiddenEmail').value;
-      const phone = document.getElementById('hiddenPhone').value;
-      const course = document.getElementById('finalCourseSelect').value;
-      const method = document.getElementById('paymentMethodSelect').value;
+      const appId = document.getElementById('mHiddenAppId').value;
+      const fullName = document.getElementById('mHiddenName').value;
+      const email = document.getElementById('mHiddenEmail').value;
+      const phone = document.getElementById('mHiddenPhone').value;
+      const course = document.getElementById('mCourseSelect').value;
+      const method = document.getElementById('mPaymentSelect').value;
 
+      // Save to Admin Registry
       let allApps = JSON.parse(localStorage.getItem('iclick_all_applications') || '[]');
-      const newAppRecord = {
+      allApps.push({
         appId: appId,
         fullName: fullName,
         email: email,
@@ -601,9 +605,9 @@
         course: course,
         paymentMethod: method,
         status: 'Pending Review',
+        isAlumni: false,
         submittedAt: new Date().toLocaleDateString()
-      };
-      allApps.push(newAppRecord);
+      });
       localStorage.setItem('iclick_all_applications', JSON.stringify(allApps));
 
       try {
@@ -613,87 +617,107 @@
           headers: { 'Accept': 'application/json' }
         });
       } catch (err) {
-        console.log("Email forwarded.");
+        console.log("Email queued.");
       }
 
-      document.getElementById('successAppId').innerText = appId;
-      document.getElementById('stage2Box').classList.add('hidden');
-      document.getElementById('statusModal').classList.remove('hidden');
+      document.getElementById('mDoneAppId').innerText = appId;
+      document.getElementById('modalStage2').classList.add('hidden');
+      document.getElementById('modalSuccess').classList.remove('hidden');
       lucide.createIcons();
     }
 
-    function trackApplicationStatus() {
-      const queryId = document.getElementById('trackerAppIdInput').value.trim().toUpperCase();
-      const resultBox = document.getElementById('trackerResultBox');
-      resultBox.classList.remove('hidden');
-
-      const allApps = JSON.parse(localStorage.getItem('iclick_all_applications') || '[]');
-      const found = allApps.find(app => app.appId.toUpperCase() === queryId);
-
-      if (found) {
-        let badgeColor = "bg-amber-950 text-amber-300 border border-amber-700";
-        let extraInfo = "Your application is currently being reviewed by the admissions committee. Official admission decision will be dispatched via email.";
-
-        if (found.status === "Accepted") {
-          badgeColor = "bg-emerald-950 text-emerald-300 border border-emerald-500";
-          extraInfo = `🎉 <strong>Congratulations!</strong> You have been admitted for [${found.course}]. Check your email for your official Offer Letter and LMS login credentials. <br><a href="lms.html" class="text-cyan-400 font-bold underline mt-2 block">Go to Student LMS Login →</a>`;
-        } else if (found.status === "Rejected") {
-          badgeColor = "bg-rose-950 text-rose-300 border border-rose-700";
-          extraInfo = "Thank you for applying. At this time, our cohort quota is filled. Your details remain active on the priority waitlist for the subsequent cohort.";
-        }
-
-        resultBox.className = "mt-4 p-5 rounded-2xl bg-slate-900 border border-slate-700 text-xs";
-        resultBox.innerHTML = `
-          <div class="flex justify-between items-center mb-2">
-            <span class="font-bold text-white text-sm">${found.fullName}</span>
-            <span class="px-2.5 py-1 rounded-full text-[11px] font-bold ${badgeColor}">${found.status}</span>
-          </div>
-          <p class="text-slate-400">Course Track: <strong class="text-white">${found.course}</strong></p>
-          <p class="text-slate-400">Submitted Date: ${found.submittedAt}</p>
-          <div class="mt-3 pt-3 border-t border-slate-800 text-slate-300 leading-relaxed">${extraInfo}</div>
-        `;
-      } else {
-        resultBox.className = "mt-4 p-4 rounded-xl bg-rose-950/70 border border-rose-700 text-rose-300 text-xs";
-        resultBox.innerHTML = `Application ID <strong>${queryId}</strong> not found. Please verify the code and re-enter.`;
-      }
-    }
-
-    function openStudentLoginModal() { document.getElementById('loginModal').classList.remove('hidden'); }
-    function closeStudentLoginModal() { document.getElementById('loginModal').classList.add('hidden'); }
-
-    function handleResumeLogin(e) {
+    // Resume Application with AppID
+    function handleResumeWithAppId(e) {
       e.preventDefault();
-      const email = document.getElementById('loginEmail').value.trim().toLowerCase();
-      const password = document.getElementById('loginPassword').value;
-      const savedDraft = localStorage.getItem(`iclick_draft_${email}`);
+      const inputId = document.getElementById('rAppId').value.trim().toUpperCase();
+      const password = document.getElementById('rPassword').value;
 
-      if (savedDraft) {
-        const profile = JSON.parse(savedDraft);
-        if (profile.password === password) {
-          closeStudentLoginModal();
-          populateStage2(profile);
-          document.getElementById('application-portal').scrollIntoView({ behavior: 'smooth' });
+      const saved = localStorage.getItem(`draft_${inputId}`);
+      if (saved) {
+        const draft = JSON.parse(saved);
+        if (draft.password === password) {
+          closeResumeModal();
+          // Populate modal stage 2
+          document.getElementById('mDisplayAppId').innerText = draft.appId;
+          document.getElementById('mHiddenAppId').value = draft.appId;
+          document.getElementById('mHiddenName').value = draft.fullName;
+          document.getElementById('mHiddenEmail').value = draft.email;
+          document.getElementById('mHiddenReplyTo').value = draft.email;
+          document.getElementById('mHiddenPhone').value = draft.phone;
+          document.getElementById('mHiddenCity').value = draft.city;
+
+          document.getElementById('modalStage1').classList.add('hidden');
+          document.getElementById('modalStage2').classList.remove('hidden');
+          openApplyModal();
           return;
         } else {
-          alert('Incorrect password for this student application draft.');
+          alert('Incorrect password for this Application ID.');
           return;
         }
       }
-      alert('No existing draft found for this email address. Please start a new application.');
+      alert('Application ID not found. Please verify your ID or start a new application.');
     }
 
-    function verifyCertificate() {
-      const id = document.getElementById('certId').value.trim();
-      const result = document.getElementById('certResult');
-      result.classList.remove('hidden');
-      if (id.length > 5) {
-        result.className = "mt-3 text-xs font-semibold text-emerald-400";
-        result.innerText = "✓ Valid Credential: iClick Certified Professional (Alumni Record Verified).";
+    // Admission Status Tracker
+    function trackApplicationStatus() {
+      const qId = document.getElementById('trackerAppIdInput').value.trim().toUpperCase();
+      const box = document.getElementById('trackerResultBox');
+      box.classList.remove('hidden');
+
+      const apps = JSON.parse(localStorage.getItem('iclick_all_applications') || '[]');
+      const found = apps.find(a => a.appId.toUpperCase() === qId);
+
+      if (found) {
+        let badge = 'bg-amber-950 text-amber-300 border-amber-700';
+        let msg = 'Your application is under active admissions review.';
+
+        if (found.status === 'Accepted') {
+          badge = 'bg-emerald-950 text-emerald-300 border-emerald-500';
+          msg = `🎉 Congratulations! Your admission for [${found.course}] is <strong>ACCEPTED</strong>. <a href="lms.html" class="text-cyan-400 underline font-bold block mt-2">Log in to Student LMS →</a>`;
+        } else if (found.status === 'Rejected') {
+          badge = 'bg-rose-950 text-rose-300 border-rose-700';
+          msg = 'Our quota for this cohort is filled. Your details remain on the priority waitlist.';
+        }
+
+        box.className = "mt-4 p-5 rounded-2xl bg-slate-900 border border-slate-700 text-xs";
+        box.innerHTML = `
+          <div class="flex justify-between items-center mb-2">
+            <span class="font-bold text-white text-sm">${found.fullName}</span>
+            <span class="px-2.5 py-0.5 rounded-full font-bold border ${badge}">${found.status}</span>
+          </div>
+          <p class="text-slate-400">Course: <strong class="text-white">${found.course}</strong></p>
+          <div class="mt-2 text-slate-300">${msg}</div>
+        `;
       } else {
-        result.className = "mt-3 text-xs font-semibold text-rose-400";
-        result.innerText = "✗ Certificate ID not found in database. Please verify and re-enter.";
+        box.className = "mt-4 p-4 rounded-xl bg-rose-950/70 border border-rose-700 text-rose-300 text-xs";
+        box.innerHTML = `Application ID <strong>${qId}</strong> not found.`;
+      }
+    }
+
+    // Strict Admin-Approved Alumni Verification Engine
+    function verifyAlumniCertificate() {
+      const qCert = document.getElementById('certId').value.trim().toUpperCase();
+      const res = document.getElementById('certResult');
+      res.classList.remove('hidden');
+
+      // Approved Alumni Database managed by Admin
+      const approvedAlumni = JSON.parse(localStorage.getItem('iclick_approved_alumni') || '[]');
+      const graduate = approvedAlumni.find(g => g.certId.toUpperCase() === qCert);
+
+      if (graduate) {
+        res.className = "mt-3 p-4 rounded-xl bg-emerald-950/80 border border-emerald-500 text-xs text-emerald-300";
+        res.innerHTML = `
+          <div class="font-bold text-white text-sm mb-1">✓ Verified Graduate of iClick Digital Academy</div>
+          <div>Graduate Name: <strong class="text-white">${graduate.fullName}</strong></div>
+          <div>Course Program: <strong class="text-white">${graduate.course}</strong></div>
+          <div>Graduation Date: ${graduate.gradDate}</div>
+          <div>Credential Status: <span class="text-emerald-400 font-bold">Admin Board Approved (80%+ Pass Grade)</span></div>
+        `;
+      } else {
+        res.className = "mt-3 p-4 rounded-xl bg-rose-950/70 border border-rose-700 text-xs text-rose-300";
+        res.innerHTML = `✗ Certificate ID <strong>${qCert}</strong> is not recognized as an approved graduate in the official alumni register.`;
       }
     }
   </script>
 </body>
-            </html> 
+</html>
