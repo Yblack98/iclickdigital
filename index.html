@@ -8,108 +8,314 @@
   <script src="https://unpkg.com/lucide@latest"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
         extend: {
           fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+          colors: {
+            brand: {
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              500: '#00a8cc',
+              600: '#0284c7',
+              700: '#0369a1',
+              dark: '#080e1a',
+              card: '#0f172a',
+              accent: '#38bdf8'
+            }
+          }
         }
       }
     }
   </script>
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .glass-card {
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glow-cyan {
+      box-shadow: 0 0 40px -10px rgba(56, 189, 248, 0.3);
+    }
+  </style>
 </head>
-<body class="bg-white text-slate-800 font-sans antialiased flex flex-col min-h-screen">
+<body class="bg-[#050914] text-slate-100 font-sans antialiased min-h-screen flex flex-col">
 
-  <!-- Top Bar -->
-  <div class="border-b border-slate-100 bg-slate-50 text-xs py-2 text-slate-500">
-    <div class="max-w-6xl mx-auto px-4 flex justify-between items-center">
-      <span class="font-medium text-slate-600">iClick Digital Ventures • Abuja, Nigeria[cite: 1, 2]</span>
-      <a href="mailto:iclickdigitalventures@gmail.com" class="hover:text-sky-600 font-medium transition">iclickdigitalventures@gmail.com[cite: 1, 2]</a>
+  <!-- Top Announcement Bar -->
+  <div class="bg-[#080e1a] text-slate-300 text-xs py-2.5 px-4 border-b border-slate-800/80">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+      <div class="flex items-center space-x-3">
+        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-950/80 text-emerald-400 border border-emerald-800/60">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 mr-1.5 animate-pulse"></span> CAC Reg No: BN 9772940 • SCUML (EFCC) Compliant
+        </span>
+        <span class="hidden md:inline text-slate-400">• Abuja, Federal Capital Territory, Nigeria</span>
+      </div>
+      <div class="flex items-center space-x-4 text-xs">
+        <a href="mailto:iclickdigitalventures@gmail.com" class="hover:text-cyan-400 transition flex items-center gap-1.5 text-slate-300">
+          <i data-lucide="mail" class="w-3.5 h-3.5 text-cyan-400"></i> iclickdigitalventures@gmail.com
+        </a>
+      </div>
     </div>
   </div>
 
   <!-- Navigation -->
-  <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-100">
-    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-      <a href="index.html" class="flex items-center space-x-2.5">
-        <div class="w-8 h-8 rounded-lg bg-slate-900 text-white font-bold text-sm flex items-center justify-center">iC</div>
-        <span class="font-bold text-slate-900 text-base tracking-tight">iClick Digital[cite: 1, 2]</span>
-      </a>
+  <nav class="bg-[#080e1a]/90 backdrop-blur-md sticky top-0 z-50 border-b border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <a href="index.html" class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-slate-950 font-black text-xl shadow-lg shadow-cyan-500/20">
+            iC
+          </div>
+          <div>
+            <span class="text-xl font-extrabold text-white tracking-tight block leading-none">iClick</span>
+            <span class="text-[10px] font-bold text-cyan-400 tracking-widest uppercase block mt-0.5">Digital Ventures</span>
+          </div>
+        </a>
 
-      <div class="hidden md:flex items-center space-x-7 text-sm font-medium text-slate-600">
-        <a href="index.html" class="text-slate-900 font-semibold">Home</a>
-        <a href="services.html" class="hover:text-slate-900 transition">Services</a>
-        <a href="portfolio.html" class="hover:text-slate-900 transition">Case Studies</a>
-        <a href="academy.html" class="hover:text-sky-600 font-semibold transition text-sky-600">Academy Portal</a>
-        <a href="about.html" class="hover:text-slate-900 transition">About</a>
+        <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
+          <a href="index.html" class="text-white border-b-2 border-cyan-400 pb-1">Home</a>
+          <a href="services.html" class="hover:text-cyan-400 transition">Services</a>
+          <a href="portfolio.html" class="hover:text-cyan-400 transition">Case Studies</a>
+          <a href="academy.html" class="hover:text-cyan-400 transition text-emerald-400 font-semibold flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> Academy Portal
+          </a>
+          <a href="about.html" class="hover:text-cyan-400 transition">About</a>
+        </div>
+
+        <div class="flex items-center space-x-3">
+          <a href="academy.html" class="hidden sm:inline-flex px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold border border-slate-700 transition">
+            Student Portal
+          </a>
+          <a href="#contact" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-xs uppercase tracking-wider shadow-lg shadow-cyan-500/20 transition flex items-center gap-1.5">
+            <span>Consultation</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
       </div>
-
-      <a href="#contact" class="hidden sm:inline-flex px-4 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold tracking-wide transition">
-        Get in Touch
-      </a>
     </div>
   </nav>
 
   <!-- Hero Section -->
-  <header class="py-16 sm:py-24 border-b border-slate-100 bg-gradient-to-b from-white to-slate-50/50">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      <h1 class="text-3xl sm:text-5xl font-bold text-slate-900 tracking-tight leading-tight">
-        Modern digital systems and talent development for Africa[cite: 1, 2].
+  <header class="relative overflow-hidden py-24 sm:py-32 border-b border-slate-800/80">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_0%,rgba(0,168,204,0.18),transparent)]"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
+      
+      <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-cyan-950/60 border border-cyan-700/40 text-cyan-300 text-xs font-medium mb-8 backdrop-blur-sm">
+        <i data-lucide="sparkles" class="w-3.5 h-3.5 text-cyan-400"></i>
+        <span>Integrated Technology Holding Enterprise</span>
+      </div>
+
+      <h1 class="text-4xl sm:text-7xl font-extrabold tracking-tight text-white max-w-5xl mx-auto leading-[1.1]">
+        Accelerating Digital Transformation <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400">Across Africa</span>
       </h1>
-      <p class="mt-5 text-base sm:text-lg text-slate-600 font-normal max-w-2xl mx-auto leading-relaxed">
-        iClick Digital Ventures builds practical digital workflows for public institutions and enterprises, trains high-demand tech talent, and deploys connected workplace hardware[cite: 1, 2].
+
+      <p class="mt-8 text-base sm:text-xl text-slate-400 max-w-3xl mx-auto font-light leading-relaxed">
+        Modernizing public institutions, automating enterprise workflows, equipping youth and civil servants with practical digital literacy & AI skills, and provisioning connected hardware.
       </p>
-      <div class="mt-8 flex flex-wrap justify-center gap-3">
-        <a href="services.html" class="px-5 py-2.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold tracking-wide transition">
-          View Our Services
+
+      <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="services.html#govtech" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-xs uppercase tracking-wider shadow-lg shadow-cyan-500/25 transition flex items-center justify-center gap-2">
+          <span>Institutional GovTech</span>
+          <i data-lucide="shield-check" class="w-4 h-4"></i>
         </a>
-        <a href="academy.html" class="px-5 py-2.5 rounded-lg bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold border border-slate-200 shadow-sm transition">
-          Join Digital Academy
+        <a href="academy.html" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-emerald-950/80 hover:bg-emerald-900 text-emerald-300 font-bold text-xs uppercase tracking-wider border border-emerald-700/60 transition flex items-center justify-center gap-2">
+          <span>Explore Digital Academy</span>
+          <i data-lucide="graduation-cap" class="w-4 h-4 text-emerald-400"></i>
         </a>
       </div>
+
+      <!-- Trust Badges -->
+      <div class="mt-16 pt-10 border-t border-slate-800/80 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto text-left">
+        <div class="glass-card p-4 rounded-xl">
+          <div class="text-cyan-400 mb-1"><i data-lucide="shield" class="w-5 h-5"></i></div>
+          <div class="text-xs font-bold text-white">CAC Registered</div>
+          <div class="text-[11px] text-slate-400">BN 9772940</div>
+        </div>
+        <div class="glass-card p-4 rounded-xl">
+          <div class="text-cyan-400 mb-1"><i data-lucide="file-check" class="w-5 h-5"></i></div>
+          <div class="text-xs font-bold text-white">SCUML Certified</div>
+          <div class="text-[11px] text-slate-400">EFCC AML Compliant</div>
+        </div>
+        <div class="glass-card p-4 rounded-xl">
+          <div class="text-emerald-400 mb-1"><i data-lucide="book-open" class="w-5 h-5"></i></div>
+          <div class="text-xs font-bold text-white">Digital Literacy & AI</div>
+          <div class="text-[11px] text-slate-400">Practical Academy Tracks</div>
+        </div>
+        <div class="glass-card p-4 rounded-xl">
+          <div class="text-cyan-400 mb-1"><i data-lucide="cpu" class="w-5 h-5"></i></div>
+          <div class="text-xs font-bold text-white">Zero-Disruption Tech</div>
+          <div class="text-[11px] text-slate-400">Low-Code & Hardware</div>
+        </div>
+      </div>
+
     </div>
   </header>
 
-  <!-- 4 Pillars Section -->
-  <main class="max-w-6xl mx-auto px-4 py-16 flex-1 space-y-16">
-    <div>
-      <div class="mb-8">
-        <h2 class="text-xl font-bold text-slate-900">What We Do</h2>
-        <p class="text-sm text-slate-500 mt-1">Our four specialized subsidiaries deliver focused, reliable technology solutions[cite: 1, 2].</p>
+  <!-- Subsidiary 4 Operating Engines -->
+  <section class="py-24 bg-[#080e1a]/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-bold text-cyan-400 tracking-widest uppercase">Holding Ecosystem</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">The Four Operational Pillars</h2>
+        <p class="text-sm text-slate-400 mt-3">An interconnected holding structure solving systemic friction across institutions, commerce, education, and connected hardware.</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
         <!-- GovTech -->
-        <div class="p-6 rounded-xl border border-slate-200 hover:border-slate-300 transition bg-white flex flex-col justify-between">
-          <div>
-            <div class="flex items-center space-x-2 text-sky-600 font-semibold text-xs mb-2">
-              <i data-lucide="landmark" class="w-4 h-4"></i>
-              <span>Public Sector & Judiciaries[cite: 1, 2]</span>
+        <div class="glass-card rounded-3xl p-8 border border-slate-800 hover:border-cyan-500/40 transition group">
+          <div class="flex items-center justify-between mb-6">
+            <div class="w-12 h-12 rounded-2xl bg-blue-500/10 text-blue-400 flex items-center justify-center border border-blue-500/20">
+              <i data-lucide="landmark" class="w-6 h-6"></i>
             </div>
-            <h3 class="text-lg font-bold text-slate-900 mb-2">iClick GovTech</h3>
-            <p class="text-sm text-slate-600 leading-relaxed mb-4">
-              Paperless registries, document scanning (OCR), and barcode-tracked file movement systems that eliminate lost files in court registries and public agencies[cite: 1, 2, 5].
-            </p>
+            <span class="text-[11px] font-bold px-3 py-1 rounded-full bg-blue-950 text-blue-300 border border-blue-800">Subsidiary 01</span>
           </div>
-          <a href="services.html#govtech" class="text-xs font-semibold text-slate-900 hover:text-sky-600 flex items-center gap-1">
-            Learn more <span>→</span>
-          </a>
+          <h3 class="text-2xl font-bold text-white group-hover:text-cyan-400 transition">iClick GovTech</h3>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">Modernizing court registries, MDA workflows, and inter-departmental paper tracking with automated audit logs.</p>
+          <ul class="mt-6 space-y-2 text-xs text-slate-300">
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-cyan-400"></i> Archival Registry Digitization & OCR Indexing</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-cyan-400"></i> Barcode & QR Code Physical File Tracking Systems</li>
+          </ul>
+          <div class="mt-8 pt-6 border-t border-slate-800 flex justify-between items-center">
+            <span class="text-xs text-slate-500">B2G & Judicial Systems</span>
+            <a href="services.html#govtech" class="text-xs font-bold text-cyan-400 hover:text-cyan-300 flex items-center gap-1">
+              Explore Subsidiary <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
         </div>
 
         <!-- AI Automation -->
-        <div class="p-6 rounded-xl border border-slate-200 hover:border-slate-300 transition bg-white flex flex-col justify-between">
-          <div>
-            <div class="flex items-center space-x-2 text-indigo-600 font-semibold text-xs mb-2">
-              <i data-lucide="bot" class="w-4 h-4"></i>
-              <span>Enterprise & SME Operations[cite: 5, 20]</span>
+        <div class="glass-card rounded-3xl p-8 border border-slate-800 hover:border-purple-500/40 transition group">
+          <div class="flex items-center justify-between mb-6">
+            <div class="w-12 h-12 rounded-2xl bg-purple-500/10 text-purple-400 flex items-center justify-center border border-purple-500/20">
+              <i data-lucide="bot" class="w-6 h-6"></i>
             </div>
-            <h3 class="text-lg font-bold text-slate-900 mb-2">iClick AI Automation</h3>
-            <p class="text-sm text-slate-600 leading-relaxed mb-4">
-              Automated WhatsApp customer support bots, centralized Airtable CRMs, and Make.com integrations that save hours of repetitive administrative work every week[cite: 1, 2, 5].
-            </p>
+            <span class="text-[11px] font-bold px-3 py-1 rounded-full bg-purple-950 text-purple-300 border border-purple-800">Subsidiary 02</span>
           </div>
-          <a href="services.html#ai" class="text-xs font-semibold text-slate-900 hover:text-indigo-600 flex items-center gap-1">
+          <h3 class="text-2xl font-bold text-white group-hover:text-purple-400 transition">iClick AI Automation</h3>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">Building 24/7 WhatsApp API bots, automated Airtable CRM pipelines, and low-code operational middleware.</p>
+          <ul class="mt-6 space-y-2 text-xs text-slate-300">
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-purple-400"></i> 24/7 WhatsApp Cloud API Lead Qualification Bots</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-purple-400"></i> Zero-Maintenance Make.com & CRM Workflows</li>
+          </ul>
+          <div class="mt-8 pt-6 border-t border-slate-800 flex justify-between items-center">
+            <span class="text-xs text-slate-500">Enterprise B2B Retainers</span>
+            <a href="services.html#ai" class="text-xs font-bold text-purple-400 hover:text-purple-300 flex items-center gap-1">
+              Explore Subsidiary <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Academy -->
+        <div class="glass-card rounded-3xl p-8 border border-slate-800 hover:border-emerald-500/40 transition group glow-cyan">
+          <div class="flex items-center justify-between mb-6">
+            <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center border border-emerald-500/20">
+              <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+            </div>
+            <span class="text-[11px] font-bold px-3 py-1 rounded-full bg-emerald-950 text-emerald-300 border border-emerald-800">Subsidiary 03</span>
+          </div>
+          <h3 class="text-2xl font-bold text-white group-hover:text-emerald-400 transition">iClick Digital Academy</h3>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">Teaching foundational digital literacy, office computing, and advanced No-Code/AI automation systems.</p>
+          <ul class="mt-6 space-y-2 text-xs text-slate-300">
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Digital Literacy & Modern Workplace Computing</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> No-Code Engineering & Direct Project Placement</li>
+          </ul>
+          <div class="mt-8 pt-6 border-t border-slate-800 flex justify-between items-center">
+            <span class="text-xs text-slate-500">Live Admissions Open</span>
+            <a href="academy.html" class="text-xs font-bold text-emerald-400 hover:text-emerald-300 flex items-center gap-1">
+              Open Academy Portal <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- IoT -->
+        <div class="glass-card rounded-3xl p-8 border border-slate-800 hover:border-amber-500/40 transition group">
+          <div class="flex items-center justify-between mb-6">
+            <div class="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-400 flex items-center justify-center border border-amber-500/20">
+              <i data-lucide="wifi" class="w-6 h-6"></i>
+            </div>
+            <span class="text-[11px] font-bold px-3 py-1 rounded-full bg-amber-950 text-amber-300 border border-amber-800">Subsidiary 04</span>
+          </div>
+          <h3 class="text-2xl font-bold text-white group-hover:text-amber-400 transition">iClick IoT & Digital Accessories</h3>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">Smart office biometric controls, high-speed document scanners, and enterprise hardware provisioning.</p>
+          <ul class="mt-6 space-y-2 text-xs text-slate-300">
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-amber-400"></i> Smart Building Automation & Power Management</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-amber-400"></i> Direct OEM Wholesale Procurement on PO</li>
+          </ul>
+          <div class="mt-8 pt-6 border-t border-slate-800 flex justify-between items-center">
+            <span class="text-xs text-slate-500">Hardware & Facilities</span>
+            <a href="services.html#iot" class="text-xs font-bold text-amber-400 hover:text-amber-300 flex items-center gap-1">
+              Explore Hardware <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Engagement Form -->
+  <section id="contact" class="py-20 max-w-4xl mx-auto px-4 w-full">
+    <div class="glass-card rounded-3xl p-8 sm:p-12 border border-slate-800">
+      <div class="text-center max-w-xl mx-auto mb-8">
+        <span class="text-xs font-bold text-cyan-400 tracking-widest uppercase">Executive Inquiries</span>
+        <h3 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Initiate an Engagement</h3>
+        <p class="text-xs text-slate-400 mt-2">Whether you need an institutional registry audit, an automated enterprise pipeline, or corporate training, our team is ready.</p>
+      </div>
+
+      <form class="space-y-4" onsubmit="event.preventDefault(); alert('Inquiry received. Our team will contact you within 24 hours.');">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-medium text-slate-300 mb-1">Full Name / Organization</label>
+            <input type="text" required placeholder="Muhammad Ibrahim" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:ring-2 focus:ring-cyan-400 focus:outline-none placeholder-slate-500">
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-slate-300 mb-1">Official Corporate Email</label>
+            <input type="email" required placeholder="contact@domain.com" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:ring-2 focus:ring-cyan-400 focus:outline-none placeholder-slate-500">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-medium text-slate-300 mb-1">WhatsApp / Phone</label>
+            <input type="tel" required placeholder="+234 800 000 0000" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:ring-2 focus:ring-cyan-400 focus:outline-none placeholder-slate-500">
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-slate-300 mb-1">Target Subsidiary</label>
+            <select class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:ring-2 focus:ring-cyan-400 focus:outline-none">
+              <option>iClick GovTech (Institutional Modernization)</option>
+              <option>iClick AI Automation (SME & Enterprise Pipelines)</option>
+              <option>iClick Digital Academy (Training & Literacy Cohorts)</option>
+              <option>iClick IoT & Hardware Procurement</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-medium text-slate-300 mb-1">Project Brief or Inquiry</label>
+          <textarea rows="3" placeholder="Briefly outline your operational bottleneck or training objectives..." class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:ring-2 focus:ring-cyan-400 focus:outline-none placeholder-slate-500"></textarea>
+        </div>
+
+        <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-black text-xs uppercase tracking-wider transition shadow-lg shadow-cyan-500/25">
+          Submit Executive Request
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-[#080e1a] border-t border-slate-800 text-xs text-slate-400 py-12 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div>
+        <div class="flex items-center space-x-2 mb-3">
+          <div class="w-7 h-7 rounded-lg bg-cyan-500 flex items-center justify-center text-slate-950 font-black text-sm">iC</div>
+          <span class="text-sm font-bold text-white">iClick Digital Ventures</span>
+        </div>
+        <p class="text-[11px] text-slate-400 leading-relaxed">Integrated technology holding enterprise driving institutional modernizatio          <a href="services.html#ai" class="text-xs font-semibold text-slate-900 hover:text-indigo-600 flex items-center gap-1">
             Learn more <span>→</span>
           </a>
         </div>
