@@ -3,113 +3,212 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Case Studies & Impact | iClick Digital Ventures</title>
+  <title>Case Studies & Portfolio | iClick Digital Ventures</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
         extend: {
           fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+          colors: {
+            brand: {
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              500: '#00a8cc',
+              600: '#0284c7',
+              700: '#0369a1',
+              dark: '#080e1a',
+              card: '#0f172a',
+              accent: '#38bdf8'
+            }
+          }
         }
       }
     }
   </script>
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .glass-card {
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glow-cyan {
+      box-shadow: 0 0 35px -10px rgba(56, 189, 248, 0.25);
+    }
+  </style>
 </head>
-<body class="bg-white text-slate-800 font-sans antialiased flex flex-col min-h-screen">
+<body class="bg-[#050914] text-slate-100 min-h-screen flex flex-col antialiased">
 
-  <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-100">
-    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-      <a href="index.html" class="flex items-center space-x-2.5">
-        <div class="w-8 h-8 rounded-lg bg-slate-900 text-white font-bold text-sm flex items-center justify-center">iC</div>
-        <span class="font-bold text-slate-900 text-base tracking-tight">iClick Digital[cite: 1, 2]</span>
-      </a>
-      <div class="hidden md:flex items-center space-x-7 text-sm font-medium text-slate-600">
-        <a href="index.html" class="hover:text-slate-900">Home</a>
-        <a href="services.html" class="hover:text-slate-900">Services</a>
-        <a href="portfolio.html" class="text-slate-900 font-semibold">Case Studies</a>
-        <a href="academy.html" class="hover:text-sky-600 font-semibold transition text-sky-600">Academy Portal</a>
-        <a href="about.html" class="hover:text-slate-900">About</a>
+  <!-- Top Announcement Bar -->
+  <div class="bg-[#080e1a] text-slate-300 text-xs py-2.5 px-4 border-b border-slate-800/80">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+      <div class="flex items-center space-x-3">
+        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-950/80 text-emerald-400 border border-emerald-800/60">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 mr-1.5 animate-pulse"></span> CAC Reg No: BN 9772940 • SCUML Compliant
+        </span>
+        <span class="hidden md:inline text-slate-400">• Abuja, Federal Capital Territory, Nigeria</span>
       </div>
-      <a href="index.html#contact" class="px-4 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold tracking-wide transition">
-        Get in Touch
+      <div class="flex items-center space-x-4 text-xs">
+        <a href="mailto:iclickdigitalventures@gmail.com" class="hover:text-cyan-400 transition flex items-center gap-1.5 text-slate-300">
+          <i data-lucide="mail" class="w-3.5 h-3.5 text-cyan-400"></i> iclickdigitalventures@gmail.com
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="bg-[#080e1a]/90 backdrop-blur-md sticky top-0 z-50 border-b border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
+      <a href="index.html" class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-slate-950 font-black text-xl shadow-lg shadow-cyan-500/20">
+          iC
+        </div>
+        <div>
+          <span class="text-xl font-extrabold text-white tracking-tight block leading-none">iClick</span>
+          <span class="text-[10px] font-bold text-cyan-400 tracking-widest uppercase block mt-0.5">Digital Ventures</span>
+        </div>
+      </a>
+
+      <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
+        <a href="index.html" class="hover:text-cyan-400 transition">Home</a>
+        <a href="services.html" class="hover:text-cyan-400 transition">Services</a>
+        <a href="portfolio.html" class="text-white border-b-2 border-cyan-400 pb-1">Case Studies</a>
+        <a href="academy.html" class="hover:text-cyan-400 transition text-emerald-400 font-semibold flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> Academy Portal
+        </a>
+        <a href="about.html" class="hover:text-cyan-400 transition">About</a>
+      </div>
+
+      <a href="index.html#contact" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-xs uppercase tracking-wider shadow-lg shadow-cyan-500/20 transition flex items-center gap-1.5">
+        <span>Request Audit</span>
+        <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
       </a>
     </div>
   </nav>
 
-  <header class="py-14 border-b border-slate-100 bg-slate-50/50">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      <h1 class="text-3xl font-bold text-slate-900 tracking-tight">Case Studies & Impact</h1>
-      <p class="mt-2 text-sm sm:text-base text-slate-600">A glance at how our solutions deliver real operational improvements[cite: 7, 20].</p>
+  <!-- Header -->
+  <header class="py-20 border-b border-slate-800/80 relative overflow-hidden text-center">
+    <div class="max-w-4xl mx-auto px-4">
+      <span class="px-3.5 py-1.5 rounded-full bg-cyan-950/80 border border-cyan-700/50 text-cyan-300 text-xs font-semibold uppercase tracking-wider inline-block mb-6">
+        Proven Impact & Executed Projects
+      </span>
+      <h1 class="text-4xl sm:text-6xl font-black text-white leading-tight">
+        Demonstrated Deployments Across <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-400">Africa</span>
+      </h1>
+      <p class="mt-6 text-base sm:text-lg text-slate-400 leading-relaxed font-light">
+        A breakdown of our digital transformations across public registries, automated enterprise systems, human capacity cohorts, and smart infrastructure deployments.
+      </p>
     </div>
   </header>
 
-  <main class="max-w-5xl mx-auto px-4 py-12 flex-1 space-y-8">
-    <div class="p-6 rounded-xl border border-slate-200 bg-white">
-      <span class="text-xs font-semibold text-sky-600 uppercase">GovTech Case Study[cite: 1, 2]</span>
-      <h2 class="text-lg font-bold text-slate-900 mt-1 mb-2">Court Registry File Tracking Architecture[cite: 5, 20]</h2>
-      <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
-        Deployed optical OCR scanning and unique QR barcode tracking labels across physical litigation files[cite: 5, 20]. Reduced file retrieval times from over 40 minutes to under 30 seconds, providing full timestamped custody logs[cite: 5].
-      </p>
-      <div class="flex flex-wrap gap-4 text-xs text-slate-500 pt-3 border-t border-slate-100">
-        <span><strong>Key Result:</strong> Zero missing files</span>
-        <span>•</span>
-        <span><strong>Stack:</strong> Airtable, Custom Portal, Zebra Scanners[cite: 5, 20]</span>
-      </div>
-    </div>
-
-    <div class="p-6 rounded-xl border border-slate-200 bg-white">
-      <span class="text-xs font-semibold text-indigo-600 uppercase">AI Automation Case Study[cite: 1, 2]</span>
-      <h2 class="text-lg font-bold text-slate-900 mt-1 mb-2">WhatsApp Business API & CRM Integration[cite: 5, 20]</h2>
-      <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
-        Integrated an automated WhatsApp bot for customer intake, automatically creating customer cards in Airtable and notifying the sales desk within 5 seconds[cite: 5, 20].
-      </p>
-      <div class="flex flex-wrap gap-4 text-xs text-slate-500 pt-3 border-t border-slate-100">
-        <span><strong>Key Result:</strong> 24/7 immediate customer response[cite: 5, 20]</span>
-        <span>•</span>
-        <span><strong>Stack:</strong> WhatsApp Cloud API, Make.com, Airtable[cite: 5, 9, 20]</span>
-      </div>
-    </div>
-  </main>
-
-  <footer class="border-t border-slate-100 bg-slate-50 text-slate-500 text-xs py-10 mt-auto">
-    <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-4">
-      <div class="flex items-center space-x-2">
-        <span class="font-bold text-slate-900 text-sm">iClick Digital Ventures[cite: 1, 2]</span>
-        <span>• CAC Registered • Abuja, Nigeria[cite: 1, 2, 7]</span>
-      </div>
-      <div class="flex space-x-6">
-        <a href="index.html" class="hover:text-slate-900">Home</a>
-        <a href="services.html" class="hover:text-slate-900">Services</a>
-        <a href="portfolio.html" class="hover:text-slate-900">Case Studies</a>
-        <a href="academy.html" class="hover:text-slate-900">Academy</a>
-        <a href="about.html" class="hover:text-slate-900">About</a>
-      </div>
-    </div>
-  </footer>
-
-  <script>lucide.createIcons();</script>
-</body>
-</html>  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12 flex-1">
+  <!-- Portfolio Showcase -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12 flex-1">
 
     <!-- Project 1: GovTech -->
     <div class="glass-card rounded-3xl p-8 sm:p-10 border border-slate-800 hover:border-blue-500/40 transition">
       <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
         <div>
-          <span class="text-xs font-bold text-blue-400 uppercase tracking-widest block mb-1">iClick GovTech Deployment[cite: 1, 2]</span>
-          <h2 class="text-2xl font-bold text-white">Court Registry Archival Digitization & QR File Tracking Architecture[cite: 5, 20]</h2>
+          <span class="text-xs font-bold text-blue-400 uppercase tracking-widest block mb-1">iClick GovTech Deployment</span>
+          <h2 class="text-2xl font-bold text-white">Court Registry Archival Digitization & QR File Tracking Architecture</h2>
         </div>
         <span class="px-3.5 py-1 rounded-full bg-blue-950 text-blue-300 text-xs font-semibold border border-blue-800 w-fit">
-          Judicial & Public Sector[cite: 1, 2]
+          Judicial & Public Sector
         </span>
       </div>
       <p class="text-xs sm:text-sm text-slate-400 leading-relaxed mb-6">
-        Modernized a high-volume registry with paper backlog issues by implementing high-speed optical scanning (OCR), digitized metadata repositories, and unique QR barcode custody routing tags[cite: 5, 20].
+        Modernized a high-volume registry with paper backlog issues by implementing high-speed optical scanning (OCR), digitized metadata repositories, and unique QR barcode custody routing tags.
       </p>
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs pt-4 border-t border-slate-800/80">
+        <div>
+          <strong class="text-white block mb-1">Key Impact:</strong>
+          <span class="text-slate-400">Reduced physical file retrieval time from 45 minutes to under 15 seconds.</span>
+        </div>
+        <div>
+          <strong class="text-white block mb-1">Delivery Lifecycle:</strong>
+          <span class="text-slate-400">5-Stage Zero-Disruption Rollout & Staff Transition Training.</span>
+        </div>
+        <div>
+          <strong class="text-white block mb-1">Architecture:</strong>
+          <span class="text-slate-400">Airtable Enterprise Backend, Softr Administrative Portal & QR Scanners.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 2: AI Automation -->
+    <div class="glass-card rounded-3xl p-8 sm:p-10 border border-slate-800 hover:border-purple-500/40 transition glow-cyan">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+        <div>
+          <span class="text-xs font-bold text-purple-400 uppercase tracking-widest block mb-1">iClick AI Automation Engine</span>
+          <h2 class="text-2xl font-bold text-white">Omnichannel WhatsApp API Lead Conversion & Automated CRM Pipeline</h2>
+        </div>
+        <span class="px-3.5 py-1 rounded-full bg-purple-950 text-purple-300 text-xs font-semibold border border-purple-800 w-fit">
+          Enterprise B2B
+        </span>
+      </div>
+      <p class="text-xs sm:text-sm text-slate-400 leading-relaxed mb-6">
+        Replaced slow manual spreadsheet intake with an automated WhatsApp Cloud API conversational agent that qualifies incoming client inquiries, updates CRM records, and dispatches automated billing alerts.
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs pt-4 border-t border-slate-800/80">
+        <div>
+          <strong class="text-white block mb-1">Key Impact:</strong>
+          <span class="text-slate-400">Instant response time with automated pipeline execution 24 hours a day.</span>
+        </div>
+        <div>
+          <strong class="text-white block mb-1">Technology Stack:</strong>
+          <span class="text-slate-400">WhatsApp Cloud API, Make.com Webhooks, Airtable CRM.</span>
+        </div>
+        <div>
+          <strong class="text-white block mb-1">Commercial Model:</strong>
+          <span class="text-slate-400">Zero-code custom integration with monthly support retainers.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 3: Digital Academy -->
+    <div class="glass-card rounded-3xl p-8 sm:p-10 border border-slate-800 hover:border-emerald-500/40 transition">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+        <div>
+          <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest block mb-1">iClick Digital Academy Track</span>
+          <h2 class="text-2xl font-bold text-white">Practical AI & No-Code Systems Talent Accelerator</h2>
+        </div>
+        <span class="px-3.5 py-1 rounded-full bg-emerald-950 text-emerald-300 text-xs font-semibold border border-emerald-800 w-fit">
+          Talent & Upskilling
+        </span>
+      </div>
+      <p class="text-xs sm:text-sm text-slate-400 leading-relaxed mb-6">
+        Delivered live, project-based cohort bootcamps equipping young professionals and institutional personnel with actionable skills in low-code databases, workflow automations, and AI tools.
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs pt-4 border-t border-slate-800/80">
+        <div>
+          <strong class="text-white block mb-1">Outcomes:</strong>
+          <span class="text-slate-400">Portfolio capstone projects delivered by all graduating students.</span>
+        </div>
+        <div>
+          <strong class="text-white block mb-1">Ecosystem Pipeline:</strong>
+          <span class="text-slate-400">Top 5% of cohort graduates recruited directly onto live client systems.</span>
+        </div>
+        <div>
+          <strong class="text-white block mb-1">Curriculum:</strong>
+          <span class="text-slate-400">No-Code Engineering, Workplace Digital Systems & AI Productivity.</span>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-[#080e1a] border-t border-slate-800 text-xs text-slate-500 py-8 text-center mt-auto">
+    &copy; 2026 iClick Digital Ventures • CAC Reg No: BN 9772940 • www.iclickdigital.com • Abuja, Nigeria
+  </footer>
+
+  <script>lucide.createIcons();</script>
+</body>
+</html>      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs pt-4 border-t border-slate-800/80">
         <div>
           <strong class="text-white block mb-1">Key Impact:</strong>
           <span class="text-slate-400">Reduced physical file retrieval time from 45 minutes to under 15 seconds[cite: 5].</span>
