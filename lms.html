@@ -53,7 +53,7 @@
       <a href="index.html" class="block px-3 py-2 rounded-lg text-sm hover:bg-brand-800">Home</a>
       <a href="services.html" class="block px-3 py-2 rounded-lg text-sm hover:bg-brand-800">Services</a>
       <a href="portfolio.html" class="block px-3 py-2 rounded-lg text-sm hover:bg-brand-800">Case Studies</a>
-      <a href="academy.html" class="block px-3 py-2 rounded-lg text-sm hover:bg-brand-800">Academy</a>
+      <a href="academy.html" class="block px-3 py-2 rounded-lg text-sm font-bold bg-brand-800 text-brand-300">Academy</a>
       <a href="about.html" class="block px-3 py-2 rounded-lg text-sm hover:bg-brand-800">About</a>
     </div>
   </nav>
@@ -63,13 +63,23 @@
   </header>
 
   <main class="max-w-4xl mx-auto px-4 py-16 flex-1 w-full">
-    <div class="glass-card text-brand-50 rounded-3xl p-8 sm:p-10 text-center">
-      <h3 id="lmsGreeting" class="text-xl font-bold mb-2">Checking Registration...</h3>
-      <p id="lmsStatusMsg" class="text-xs text-brand-200 mb-6">Verifying admission status against admin records.</p>
+    <div class="glass-card text-brand-50 rounded-3xl p-8 sm:p-10 text-center shadow-xl">
+      <h3 id="lmsGreeting" class="text-2xl font-bold mb-2">Verifying Admission Status...</h3>
+      <p id="lmsStatusMsg" class="text-xs text-brand-200 mb-6">Checking session credentials against approved admin records.</p>
       
       <div id="lectureDetailsBox" class="hidden p-6 rounded-2xl bg-brand-950 border border-brand-800 text-left space-y-4">
-        <div><strong class="text-brand-300 block text-xs uppercase">Approved Course & ID:</strong><span id="studentAssignedCourse" class="text-white text-sm font-semibold"></span></div>
-        <div><strong class="text-brand-300 block text-xs uppercase">Active Live Zoom Link & Credentials:</strong><a href="https://zoom.us" target="_blank" class="text-brand-300 underline text-sm block mt-1">Join Live Zoom Lecture Room →</a></div>
+        <div>
+          <strong class="text-brand-300 block text-xs uppercase">Approved Course Track & Student ID:</strong>
+          <span id="studentAssignedCourse" class="text-white text-sm font-semibold"></span>
+        </div>
+        <div>
+          <strong class="text-brand-300 block text-xs uppercase">Active Live Zoom Link & Course Modules:</strong>
+          <a href="https://zoom.us" target="_blank" class="text-brand-300 underline text-sm block mt-1 hover:text-white transition">Join Live Zoom Lecture Room →</a>
+        </div>
+      </div>
+      
+      <div id="backToAcademyBtn" class="mt-6 hidden">
+        <a href="academy.html" class="px-6 py-3 rounded-xl bg-brand-300 text-brand-950 font-bold text-xs uppercase tracking-wider inline-block">Return to Academy Sign In</a>
       </div>
     </div>
   </main>
@@ -78,7 +88,7 @@
     <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
       <div>
         <span class="font-bold text-brand-50 text-sm">iClick Digital Ventures</span>
-        <p class="text-[11px] text-brand-400 mt-0.5">CAC Reg No: BN 9772940 • Abuja, Federal Capital Territory, Nigeria[cite: 1]</p>
+        <p class="text-[11px] text-brand-400 mt-0.5">CAC Reg No: BN 9772940 • Abuja, Federal Capital Territory, Nigeria</p>
       </div>
       <div class="flex flex-wrap justify-center gap-6 text-[11px]">
         <a href="index.html" class="hover:text-brand-100 transition">Home</a>
@@ -88,19 +98,39 @@
         <a href="about.html" class="hover:text-brand-100 transition">About</a>
       </div>
     </div>
-    <div class="max-w-7xl mx-auto px-4 mt-6 pt-4 border-t border-brand-950 text-center text-[10px] text-brand-500">&copy; 2026 iClick Digital Ventures. All rights reserved. • iclickdigitalventures@gmail.com[cite: 1]</div>
+    <div class="max-w-7xl mx-auto px-4 mt-6 pt-4 border-t border-brand-950 text-center text-[10px] text-brand-500">&copy; 2026 iClick Digital Ventures. All rights reserved. • iclickdigitalventures@gmail.com</div>
   </footer>
+
   <script>
     lucide.createIcons();
     function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('hidden'); }
+
     window.onload = function() {
       const studentEmail = localStorage.getItem('iclick_current_student');
-      if (!studentEmail) { document.getElementById('lmsGreeting').innerText = "Access Denied"; document.getElementById('lmsStatusMsg').innerText = "Please sign in with your registered student email from the Academy page."; return; }
+      if (!studentEmail) {
+        document.getElementById('lmsGreeting').innerText = "Access Restricted";
+        document.getElementById('lmsStatusMsg').innerText = "No active student session found. Please sign in via the Digital Academy portal using your registered email.";
+        document.getElementById('backToAcademyBtn').classList.remove('hidden');
+        return;
+      }
+
       const apps = JSON.parse(localStorage.getItem('iclick_all_applications') || '[]');
       const record = apps.find(a => a.email.toLowerCase() === studentEmail.toLowerCase());
-      if (!record) { document.getElementById('lmsGreeting').innerText = "No Registration Found"; document.getElementById('lmsStatusMsg').innerText = "Please sign up through the Digital Academy page first."; }
-      else if (record.status !== "Accepted") { document.getElementById('lmsGreeting').innerText = "Application Pending Review"; document.getElementById('lmsStatusMsg').innerText = `Hello ${record.fullName}, your registration (${record.appId}) is under review by admin.`; }
-      else { document.getElementById('lmsGreeting').innerText = "Welcome back, " + record.fullName + "!"; document.getElementById('lmsStatusMsg').innerText = "Admission approved! Your LMS credentials and live session are unlocked below:"; document.getElementById('studentAssignedCourse').innerText = record.course + " (ID: " + record.appId + ")"; document.getElementById('lectureDetailsBox').classList.remove('hidden'); }
+
+      if (!record) {
+        document.getElementById('lmsGreeting').innerText = "Registration Record Not Found";
+        document.getElementById('lmsStatusMsg').innerText = `No application matches ${studentEmail}. Please register through the Academy page.`;
+        document.getElementById('backToAcademyBtn').classList.remove('hidden');
+      } else if (record.status !== "Accepted") {
+        document.getElementById('lmsGreeting').innerText = "Admission Pending Review";
+        document.getElementById('lmsStatusMsg').innerText = `Hello ${record.fullName}, your application (${record.appId}) is currently under review by admin. Check back once your offer has been approved.`;
+        document.getElementById('backToAcademyBtn').classList.remove('hidden');
+      } else {
+        document.getElementById('lmsGreeting').innerText = "Welcome back, " + record.fullName + "!";
+        document.getElementById('lmsStatusMsg').innerText = "Your admission has been officially approved by admin. Access your live session and credentials below:";
+        document.getElementById('studentAssignedCourse').innerText = record.course + " (Student ID: " + record.appId + ")";
+        document.getElementById('lectureDetailsBox').classList.remove('hidden');
+      }
     };
   </script>
 </body>
