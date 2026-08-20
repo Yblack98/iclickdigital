@@ -3,455 +3,68 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Control Center | iClick Digital Academy</title>
+  <title>Admin Control Center | iClick Digital Ventures</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+          colors: {
+            brand: {
+              50: '#f9f8f6',
+              100: '#f0ece4',
+              200: '#e2d7c8',
+              300: '#d4a373',
+              400: '#b87d52',
+              600: '#8c5842',
+              800: '#4a2e2b',
+              900: '#2d1810',
+              950: '#1a0e0a'
+            }
+          }
+        }
+      }
+    }
+  </script>
   <style>
     body { font-family: 'Plus Jakarta Sans', sans-serif; }
-    .glass-card { background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); }
+    .glass-card { background: #2d1810; border: 1px solid rgba(212, 163, 115, 0.2); }
   </style>
 </head>
-<body class="bg-[#050914] text-slate-100 min-h-screen flex flex-col antialiased">
+<body class="bg-brand-50 text-brand-900 min-h-screen flex flex-col antialiased">
 
   <!-- Nav -->
-  <nav class="bg-[#080e1a] border-b border-slate-800 px-6 py-4 flex justify-between items-center sticky top-0 z-50">
+  <nav class="bg-brand-900 border-b border-brand-800 px-6 py-4 flex justify-between items-center sticky top-0 z-50 text-white">
     <div class="flex items-center space-x-3">
-      <div class="w-9 h-9 rounded-lg bg-cyan-500 text-slate-950 font-black flex items-center justify-center">iC</div>
+      <div class="w-9 h-9 rounded-lg bg-brand-300 text-brand-950 font-black flex items-center justify-center">iC</div>
       <div>
-        <h1 class="text-base font-bold text-white">iClick Admin Control Center</h1>
-        <span class="text-[10px] text-cyan-400 font-mono">Admissions, Grading, Inbox & Lecture Management</span>
+        <h1 class="text-base font-bold">iClick Admin Control Center</h1>
+        <span class="text-[10px] text-brand-300 font-mono">Admissions, Grading & Inbox Management</span>
       </div>
     </div>
-    <div class="flex items-center space-x-4">
-      <a href="academy.html" class="text-xs text-slate-400 hover:text-white transition">Academy</a>
-      <a href="lms.html" class="text-xs text-emerald-400 hover:underline">Student LMS</a>
+    <div class="flex items-center space-x-4 text-xs">
+      <a href="index.html" class="text-brand-300 hover:underline">Home</a>
+      <a href="lms.html" class="text-brand-300 hover:underline">Student LMS</a>
     </div>
   </nav>
 
-  <main class="max-w-7xl mx-auto px-4 py-8 flex-1 w-full space-y-10">
-    
-    <!-- STATISTICS DASHBOARD -->
-    <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
-      <div class="glass-card p-5 rounded-2xl">
-        <span class="text-xs text-slate-400">Total Applicants</span>
-        <div id="statTotal" class="text-2xl font-black text-white mt-1">0</div>
-      </div>
-      <div class="glass-card p-5 rounded-2xl">
-        <span class="text-xs text-emerald-400">Accepted</span>
-        <div id="statAccepted" class="text-2xl font-black text-emerald-400 mt-1">0</div>
-      </div>
-      <div class="glass-card p-5 rounded-2xl">
-        <span class="text-xs text-amber-400">Pending Review</span>
-        <div id="statPending" class="text-2xl font-black text-amber-400 mt-1">0</div>
-      </div>
-      <div class="glass-card p-5 rounded-2xl">
-        <span class="text-xs text-cyan-400">Inbox Messages</span>
-        <div id="statMessages" class="text-2xl font-black text-cyan-400 mt-1">0</div>
-      </div>
+  <main class="max-w-7xl mx-auto px-4 py-8 flex-1 w-full space-y-8">
+    <div class="glass-card text-brand-50 p-6 rounded-3xl">
+      <h2 class="text-lg font-bold mb-2">Admin Dashboard Controls</h2>
+      <p class="text-xs text-brand-200">Manage student grades, LMS Zoom links, and incoming service engagement inquiries.</p>
     </div>
-
-    <!-- 1. LIVE LECTURE LINKS CONFIGURATION (Zoom & YouTube for LMS) -->
-    <div class="glass-card p-6 rounded-3xl border border-slate-800">
-      <div class="flex items-center space-x-2 text-cyan-400 mb-2">
-        <i data-lucide="radio" class="w-5 h-5"></i>
-        <h2 class="text-lg font-bold text-white">LMS Live Streaming & Zoom Lecture Settings</h2>
-      </div>
-      <p class="text-xs text-slate-400 mb-4">Update the links below. They will automatically update on the student's LMS dashboard for live classes and recordings.</p>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div>
-          <label class="block text-xs font-medium text-slate-300 mb-1">Live Zoom Class URL</label>
-          <input id="cfgZoom" type="url" placeholder="https://zoom.us/j/your-meeting-id" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:ring-2 focus:ring-cyan-400 focus:outline-none">
-        </div>
-        <div>
-          <label class="block text-xs font-medium text-slate-300 mb-1">YouTube Lecture Stream / Playlist URL</label>
-          <input id="cfgYt" type="url" placeholder="https://youtube.com/playlist?list=..." class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:ring-2 focus:ring-cyan-400 focus:outline-none">
-        </div>
-      </div>
-      <button onclick="saveLmsConfig()" class="mt-4 px-5 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition">
-        Update LMS Class Links
-      </button>
-    </div>
-
-    <!-- 2. STUDENT GRADING & PROGRESSION (80% PASS RULE & GRADUATION) -->
-    <div class="glass-card p-6 rounded-3xl border border-slate-800">
-      <div class="flex justify-between items-center mb-4">
-        <div>
-          <h2 class="text-lg font-bold text-white">Student Assignment Grading & Module Unlock</h2>
-          <p class="text-xs text-slate-400">Award grades. Scores of 80%+ automatically unlock subsequent modules in the student's LMS.</p>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4">
-        <div>
-          <label class="block text-xs font-medium text-slate-300 mb-1">Select Student Email</label>
-          <input id="gradeStudentEmail" type="email" placeholder="student@example.com" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs">
-        </div>
-        <div>
-          <label class="block text-xs font-medium text-slate-300 mb-1">Module</label>
-          <select id="gradeModuleSelect" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs">
-            <option value="mod1">Module 1 Assignment</option>
-            <option value="mod2">Module 2 Assignment</option>
-            <option value="mod3">Module 3 Final Capstone</option>
-          </select>
-        </div>
-        <div>
-          <label class="block text-xs font-medium text-slate-300 mb-1">Award Grade (0–100%)</label>
-          <input id="gradeScoreInput" type="number" min="0" max="100" placeholder="e.g. 85" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs">
-        </div>
-      </div>
-
-      <div class="flex gap-3">
-        <button onclick="saveStudentGrade()" class="px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition">
-          Record Grade & Update LMS
-        </button>
-        <button onclick="graduateStudentAsAlumni()" class="px-5 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs uppercase tracking-wider transition">
-          Approve for Graduation & Register Alumni
-        </button>
-      </div>
-    </div>
-
-    <!-- 3. COMMUNICATIONS INBOX & MANUAL ACKNOWLEDGMENT DISPATCHER -->
-    <div class="glass-card rounded-3xl p-6 border border-slate-800">
-      <div class="flex justify-between items-center mb-4">
-        <div>
-          <h2 class="text-lg font-bold text-white">Communications Inbox & Acknowledgment Mailer</h2>
-          <p class="text-xs text-slate-400">Incoming inquiries from "Start a Conversation" saved locally. Click "Acknowledge" to instantly dispatch receipt confirmation via mail client.</p>
-        </div>
-        <button onclick="loadMessages()" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-cyan-400 border border-slate-700">
-          Refresh Inbox
-        </button>
-      </div>
-
-      <div class="overflow-x-auto">
-        <table class="w-full text-left text-xs">
-          <thead class="bg-slate-900 text-slate-400 uppercase text-[10px] tracking-wider border-b border-slate-800">
-            <tr>
-              <th class="p-3">Date</th>
-              <th class="p-3">Sender Name</th>
-              <th class="p-3">Message Snippet</th>
-              <th class="p-3">Status</th>
-              <th class="p-3 text-right">Admin Action</th>
-            </tr>
-          </thead>
-          <tbody id="adminMessagesTable" class="divide-y divide-slate-800 text-slate-300">
-            <!-- Rendered by JS -->
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- 4. ADMISSIONS SUBMISSIONS & STATUS DECISIONS -->
-    <div class="glass-card rounded-3xl p-6 border border-slate-800">
-      <h2 class="text-lg font-bold text-white mb-4">Admissions Registry & Applications</h2>
-      <div class="overflow-x-auto">
-        <table class="w-full text-left text-xs">
-          <thead class="bg-slate-900 text-slate-400 uppercase text-[10px] tracking-wider border-b border-slate-800">
-            <tr>
-              <th class="p-3">App ID</th>
-              <th class="p-3">Applicant Name</th>
-              <th class="p-3">Course Track</th>
-              <th class="p-3">Status</th>
-              <th class="p-3 text-right">Actions</th>
-            </tr>
-          </thead>
-          <tbody id="adminAppTable" class="divide-y divide-slate-800 text-slate-300">
-            <!-- Rendered by JS -->
-          </tbody>
-        </table>
-      </div>
-    </div>
-
   </main>
 
-  <script>
-    lucide.createIcons();
-
-    // 1. Load Live Lecture Settings
-    function loadLmsConfig() {
-      const cfg = JSON.parse(localStorage.getItem('iclick_lms_config') || '{"zoomUrl":"https://zoom.us/join", "ytUrl":"https://youtube.com"}');
-      document.getElementById('cfgZoom').value = cfg.zoomUrl;
-      document.getElementById('cfgYt').value = cfg.ytUrl;
-    }
-
-    function saveLmsConfig() {
-      const cfg = {
-        zoomUrl: document.getElementById('cfgZoom').value.trim(),
-        ytUrl: document.getElementById('cfgYt').value.trim()
-      };
-      localStorage.setItem('iclick_lms_config', JSON.stringify(cfg));
-      alert('LMS live links updated successfully!');
-    }
-
-    // 2. Save Grade & Unlock Modules (80% Rule)
-    function saveStudentGrade() {
-      const student = document.getElementById('gradeStudentEmail').value.trim().toLowerCase();
-      const mod = document.getElementById('gradeModuleSelect').value;
-      const score = parseInt(document.getElementById('gradeScoreInput').value);
-
-      if (!student || isNaN(score)) {
-        alert('Please enter student email and valid score.');
-        return;
-      }
-
-      let grades = JSON.parse(localStorage.getItem(`grades_${student}`) || '{"mod1": 0, "mod2": 0, "mod3": 0, "graduated": false, "certId": ""}');
-      grades[mod] = score;
-      localStorage.setItem(`grades_${student}`, JSON.stringify(grades));
-
-      alert(`Grade of ${score}% recorded for ${student} on ${mod}. ${score >= 80 ? 'Student passed (Unlocked next stage in LMS) ✓' : 'Grade below 80% (Next module remains locked).'}`);
-    }
-
-    // 3. Official Graduation Approval & Alumni Registration
-    function graduateStudentAsAlumni() {
-      const student = document.getElementById('gradeStudentEmail').value.trim().toLowerCase();
-      if (!student) {
-        alert('Enter student email.');
-        return;
-      }
-
-      let grades = JSON.parse(localStorage.getItem(`grades_${student}`) || '{"mod1": 0, "mod2": 0, "mod3": 0, "graduated": false, "certId": ""}');
-      
-      const certId = `iC-CERT-2026-${Math.floor(1000 + Math.random() * 9000)}`;
-      grades.graduated = true;
-      grades.certId = certId;
-      localStorage.setItem(`grades_${student}`, JSON.stringify(grades));
-
-      let approvedAlumni = JSON.parse(localStorage.getItem('iclick_approved_alumni') || '[]');
-      approvedAlumni.push({
-        certId: certId,
-        fullName: student.split('@')[0].toUpperCase(),
-        course: "Practical Tech & AI Track",
-        gradDate: new Date().toLocaleDateString()
-      });
-      localStorage.setItem('iclick_approved_alumni', JSON.stringify(approvedAlumni));
-
-      alert(`🎉 Student approved as official Alumni! Generated Certificate ID: ${certId}. This credential is now fully verified on academy.html.`);
-    }
-
-    // 4. Inbox & Acknowledgment Dispatcher
-    function loadMessages() {
-      const tbody = document.getElementById('adminMessagesTable');
-      const messages = JSON.parse(localStorage.getItem('iclick_messages') || '[]');
-      
-      document.getElementById('statMessages').innerText = messages.length;
-
-      if (messages.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-slate-500">No pending messages in the inbox.</td></tr>`;
-        return;
-      }
-
-      tbody.innerHTML = '';
-      messages.slice().reverse().forEach((msg, reverseIdx) => {
-        const originalIdx = messages.length - 1 - reverseIdx;
-        
-        const statusBadge = msg.acknowledged 
-          ? `<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-950 text-emerald-400">Acknowledged</span>`
-          : `<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-rose-950 text-rose-400">Pending Reply</span>`;
-          
-        const actionBtnClass = msg.acknowledged 
-          ? `bg-slate-800 text-slate-400`
-          : `bg-blue-600 hover:bg-blue-500 text-white`;
-          
-        const actionText = msg.acknowledged ? "Resend Mail" : "Acknowledge";
-
-        tbody.innerHTML += `
-          <tr class="hover:bg-slate-900/50">
-            <td class="p-3 text-[10px] text-slate-500">${msg.date}</td>
-            <td class="p-3 font-bold text-white">${msg.name} <br><span class="text-[10px] font-normal text-cyan-400">${msg.email}</span></td>
-            <td class="p-3 text-slate-400 truncate max-w-[200px]" title="${msg.message}">${msg.message.substring(0, 45)}...</td>
-            <td class="p-3">${statusBadge}</td>
-            <td class="p-3 text-right">
-              <button onclick="dispatchAcknowledgment(${originalIdx})" class="px-3 py-1.5 rounded-lg font-bold text-[10px] transition ${actionBtnClass}">
-                ${actionText}
-              </button>
-            </td>
-          </tr>
-        `;
-      });
-    }
-
-    function dispatchAcknowledgment(index) {
-      let messages = JSON.parse(localStorage.getItem('iclick_messages') || '[]');
-      const msg = messages[index];
-
-      const subject = encodeURIComponent(`We received your message | iClick Digital Ventures`);
-      const body = encodeURIComponent(
-`Dear ${msg.name},
-
-Thank you for reaching out to iClick Digital Ventures. 
-
-We have safely received your inquiry regarding:
-"${msg.message}"
-
-A designated member of our solutions team is currently reviewing your note and will follow up with you directly within 24 business hours.
-
-Warm regards,
-Client Relations Team
-iClick Digital Ventures
-CAC Reg No: BN 9772940
-iclickdigitalventures@gmail.com | www.iclickdigital.com`
-      );
-
-      window.open(`mailto:${msg.email}?subject=${subject}&body=${body}`, '_blank');
-
-      messages[index].acknowledged = true;
-      localStorage.setItem('iclick_messages', JSON.stringify(messages));
-      loadMessages();
-    }
-
-    // 5. Render Applications Table
-    function renderApps() {
-      const tbody = document.getElementById('adminAppTable');
-      const apps = JSON.parse(localStorage.getItem('iclick_all_applications') || '[]');
-
-      document.getElementById('statTotal').innerText = apps.length;
-      document.getElementById('statAccepted').innerText = apps.filter(a => a.status === 'Accepted').length;
-      document.getElementById('statPending').innerText = apps.filter(a => a.status === 'Pending Review').length;
-
-      if (apps.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-slate-500">No applications yet.</td></tr>`;
-        return;
-      }
-
-      tbody.innerHTML = '';
-      apps.forEach((app, idx) => {
-        tbody.innerHTML += `
-          <tr class="hover:bg-slate-900/50">
-            <td class="p-3 font-mono text-cyan-400 font-bold">${app.appId}</td>
-            <td class="p-3 font-bold text-white">${app.fullName}</td>
-            <td class="p-3">${app.course}</td>
-            <td class="p-3"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-800 text-slate-300">${app.status}</span></td>
-            <td class="p-3 text-right space-x-2">
-              <button onclick="updateStatus(${idx}, 'Accepted')" class="px-2.5 py-1 rounded bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-[10px]">Accept</button>
-              <button onclick="updateStatus(${idx}, 'Rejected')" class="px-2.5 py-1 rounded bg-rose-600 hover:bg-rose-500 text-white font-bold text-[10px]">Reject</button>
-            </td>
-          </tr>
-        `;
-      });
-    }
-
-    function updateStatus(idx, newStatus) {
-      let apps = JSON.parse(localStorage.getItem('iclick_all_applications') || '[]');
-      apps[idx].status = newStatus;
-      localStorage.setItem('iclick_all_applications', JSON.stringify(apps));
-      renderApps();
-      alert(`Application updated to ${newStatus}.`);
-    }
-
-    loadLmsConfig();
-    loadMessages();
-    renderApps();
-  </script>
-</body>
-</html>        </table>
-      </div>
+  <!-- Footer -->
+  <footer class="bg-brand-900 border-t border-brand-800 text-xs text-brand-300 py-10 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 text-center text-[10px] text-brand-500">
+      &copy; 2026 iClick Digital Ventures. All rights reserved. • iclickdigitalventures@gmail.com
     </div>
+  </footer>
 
-  </main>
-
-  <script>
-    lucide.createIcons();
-
-    // 1. Load Live Lecture Settings
-    function loadLmsConfig() {
-      const cfg = JSON.parse(localStorage.getItem('iclick_lms_config') || '{"zoomUrl":"https://zoom.us/join", "ytUrl":"https://youtube.com"}');
-      document.getElementById('cfgZoom').value = cfg.zoomUrl;
-      document.getElementById('cfgYt').value = cfg.ytUrl;
-    }
-
-    function saveLmsConfig() {
-      const cfg = {
-        zoomUrl: document.getElementById('cfgZoom').value.trim(),
-        ytUrl: document.getElementById('cfgYt').value.trim()
-      };
-      localStorage.setItem('iclick_lms_config', JSON.stringify(cfg));
-      alert('LMS live links updated successfully!');
-    }
-
-    // 2. Save Grade & Unlock Modules (80% Rule)
-    function saveStudentGrade() {
-      const student = document.getElementById('gradeStudentEmail').value.trim().toLowerCase();
-      const mod = document.getElementById('gradeModuleSelect').value;
-      const score = parseInt(document.getElementById('gradeScoreInput').value);
-
-      if (!student || isNaN(score)) {
-        alert('Please enter student email and valid score.');
-        return;
-      }
-
-      let grades = JSON.parse(localStorage.getItem(`grades_${student}`) || '{"mod1": 0, "mod2": 0, "mod3": 0, "graduated": false, "certId": ""}');
-      grades[mod] = score;
-      localStorage.setItem(`grades_${student}`, JSON.stringify(grades));
-
-      alert(`Grade of ${score}% recorded for ${student} on ${mod}. ${score >= 80 ? 'Student passed (Unlocked next stage in LMS) ✓' : 'Grade below 80% (Next module remains locked).'}`);
-    }
-
-    // 3. Official Graduation Approval & Alumni Registration
-    function graduateStudentAsAlumni() {
-      const student = document.getElementById('gradeStudentEmail').value.trim().toLowerCase();
-      if (!student) {
-        alert('Enter student email.');
-        return;
-      }
-
-      let grades = JSON.parse(localStorage.getItem(`grades_${student}`) || '{"mod1": 0, "mod2": 0, "mod3": 0, "graduated": false, "certId": ""}');
-      
-      const certId = `iC-CERT-2026-${Math.floor(1000 + Math.random() * 9000)}`;
-      grades.graduated = true;
-      grades.certId = certId;
-      localStorage.setItem(`grades_${student}`, JSON.stringify(grades));
-
-      // Add to official verified alumni registry recognized by academy.html
-      let approvedAlumni = JSON.parse(localStorage.getItem('iclick_approved_alumni') || '[]');
-      approvedAlumni.push({
-        certId: certId,
-        fullName: student.split('@')[0].toUpperCase(),
-        course: "Practical Tech & AI Track",
-        gradDate: new Date().toLocaleDateString()
-      });
-      localStorage.setItem('iclick_approved_alumni', JSON.stringify(approvedAlumni));
-
-      alert(`🎉 Student approved as official Alumni! Generated Certificate ID: ${certId}. This credential is now fully verified on academy.html.`);
-    }
-
-    // 4. Render Applications Table
-    function renderApps() {
-      const tbody = document.getElementById('adminAppTable');
-      const apps = JSON.parse(localStorage.getItem('iclick_all_applications') || '[]');
-
-      if (apps.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-slate-500">No applications yet.</td></tr>`;
-        return;
-      }
-
-      tbody.innerHTML = '';
-      apps.forEach((app, idx) => {
-        tbody.innerHTML += `
-          <tr class="hover:bg-slate-900/50">
-            <td class="p-3 font-mono text-cyan-400 font-bold">${app.appId}</td>
-            <td class="p-3 font-bold text-white">${app.fullName}</td>
-            <td class="p-3">${app.course}</td>
-            <td class="p-3"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-800 text-slate-300">${app.status}</span></td>
-            <td class="p-3 text-right space-x-2">
-              <button onclick="updateStatus(${idx}, 'Accepted')" class="px-2.5 py-1 rounded bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-[10px]">Accept</button>
-              <button onclick="updateStatus(${idx}, 'Rejected')" class="px-2.5 py-1 rounded bg-rose-600 hover:bg-rose-500 text-white font-bold text-[10px]">Reject</button>
-            </td>
-          </tr>
-        `;
-      });
-    }
-
-    function updateStatus(idx, newStatus) {
-      let apps = JSON.parse(localStorage.getItem('iclick_all_applications') || '[]');
-      apps[idx].status = newStatus;
-      localStorage.setItem('iclick_all_applications', JSON.stringify(apps));
-      renderApps();
-      alert(`Application updated to ${newStatus}.`);
-    }
-
-    loadLmsConfig();
-    renderApps();
-  </script>
+  <script>lucide.createIcons();</script>
 </body>
 </html>
