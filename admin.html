@@ -27,42 +27,114 @@
   </style>
 </head>
 <body class="bg-brand-50 text-brand-900 min-h-screen flex flex-col antialiased">
-  <nav class="bg-brand-900 border-b border-brand-800 px-6 py-4 flex justify-between items-center sticky top-0 z-50 text-white">
-    <div class="flex items-center space-x-3">
-      <div class="w-9 h-9 rounded-lg bg-brand-300 text-brand-950 font-black flex items-center justify-center">iC</div>
-      <div><h1 class="text-base font-bold">iClick Admin Control Center</h1><span class="text-[10px] text-brand-300 font-mono">Admissions & Client Feedback Management</span></div>
-    </div>
-    <div class="flex items-center space-x-4 text-xs"><a href="index.html" class="text-brand-300 hover:underline">Home</a><a href="lms.html" class="text-brand-300 hover:underline">Student LMS</a></div>
-  </nav>
 
-  <main class="max-w-7xl mx-auto px-4 py-8 flex-1 w-full space-y-6">
-    <div class="flex justify-between items-center">
-      <div><h2 class="text-2xl font-black text-brand-900">Student Admissions & Service Requests</h2><p class="text-xs text-brand-700">Approve applications to unlock student LMS access and dispatch client acknowledgement mails.</p></div>
-      <button onclick="renderAdminTable()" class="px-4 py-2 rounded-xl bg-brand-900 text-brand-50 text-xs font-bold">Refresh Table</button>
+  <!-- Admin Login Gate Overlay (Protects Admin Page) -->
+  <div id="adminLoginGate" class="fixed inset-0 z-50 bg-brand-950 flex items-center justify-center p-4">
+    <div class="glass-card w-full max-w-md p-8 rounded-3xl text-brand-50 shadow-2xl space-y-6">
+      <div class="text-center">
+        <div class="w-12 h-12 rounded-2xl bg-brand-300 text-brand-950 font-black text-xl flex items-center justify-center mx-auto mb-3 shadow-md">iC</div>
+        <h2 class="text-xl font-bold">Admin Restricted Access</h2>
+        <p class="text-xs text-brand-300 mt-1">Enter secure administrator credentials to proceed.</p>
+      </div>
+      <form onsubmit="handleAdminLogin(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-medium text-brand-200 mb-1">Admin Passkey</label>
+          <input type="password" id="adminPasswordInput" required placeholder="Enter admin password" class="w-full px-4 py-3 rounded-xl bg-brand-950 border border-brand-700 text-white text-xs focus:outline-none focus:border-brand-300">
+        </div>
+        <button type="submit" class="w-full py-3.5 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold text-xs uppercase tracking-wider transition shadow-md">Authenticate Admin</button>
+      </form>
+      <div class="text-center">
+        <a href="index.html" class="text-xs text-brand-400 hover:text-brand-200 transition">← Return to Public Homepage</a>
+      </div>
     </div>
+  </div>
 
-    <div class="glass-card rounded-3xl p-6 overflow-x-auto">
-      <table class="w-full text-left text-xs text-brand-50">
-        <thead class="bg-brand-950 text-brand-300 uppercase text-[10px] border-b border-brand-800">
-          <tr><th class="p-3">App ID</th><th class="p-3">Applicant Name</th><th class="p-3">Email</th><th class="p-3">Track / Service</th><th class="p-3">Status</th><th class="p-3 text-right">Admin Action</th></tr>
-        </thead>
-        <tbody id="adminTableBody" class="divide-y divide-brand-800">
-          <tr><td colspan="6" class="p-4 text-center text-brand-400">No applications recorded yet.</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </main>
+  <!-- Main Admin Control Panel (Hidden until authenticated) -->
+  <div id="adminMainContent" class="hidden flex flex-col min-h-screen">
+    <nav class="bg-brand-900 border-b border-brand-800 px-6 py-4 flex justify-between items-center sticky top-0 z-40 text-white">
+      <div class="flex items-center space-x-3">
+        <div class="w-9 h-9 rounded-lg bg-brand-300 text-brand-950 font-black flex items-center justify-center">iC</div>
+        <div>
+          <h1 class="text-base font-bold">iClick Admin Control Center</h1>
+          <span class="text-[10px] text-brand-300 font-mono">Admissions & Client Feedback Management</span>
+        </div>
+      </div>
+      <div class="flex items-center space-x-4 text-xs">
+        <a href="index.html" class="text-brand-300 hover:underline">Home</a>
+        <button onclick="adminLogout()" class="px-3 py-1.5 rounded-lg bg-rose-800 hover:bg-rose-700 text-white font-bold transition">Lock Session</button>
+      </div>
+    </nav>
 
-  <footer class="bg-brand-900 border-t border-brand-800 text-xs text-brand-300 py-10 mt-auto">
-    <div class="max-w-7xl mx-auto px-4 text-center text-[10px] text-brand-500">&copy; 2026 iClick Digital Ventures. All rights reserved. • iclickdigitalventures@gmail.com[cite: 1]</div>
-  </footer>
+    <main class="max-w-7xl mx-auto px-4 py-8 flex-1 w-full space-y-6">
+      <div class="flex justify-between items-center">
+        <div>
+          <h2 class="text-2xl font-black text-brand-900">Student Admissions & Service Requests</h2>
+          <p class="text-xs text-brand-700">Approve applications to unlock student LMS access and dispatch offer letters/acknowledgements.</p>
+        </div>
+        <button onclick="renderAdminTable()" class="px-4 py-2 rounded-xl bg-brand-900 text-brand-50 text-xs font-bold shadow-md">Refresh Table</button>
+      </div>
+
+      <div class="glass-card rounded-3xl p-6 overflow-x-auto shadow-xl">
+        <table class="w-full text-left text-xs text-brand-50">
+          <thead class="bg-brand-950 text-brand-300 uppercase text-[10px] border-b border-brand-800">
+            <tr>
+              <th class="p-3">App ID</th>
+              <th class="p-3">Applicant Name</th>
+              <th class="p-3">Email</th>
+              <th class="p-3">Track / Service</th>
+              <th class="p-3">Status</th>
+              <th class="p-3 text-right">Admin Actions</th>
+            </tr>
+          </thead>
+          <tbody id="adminTableBody" class="divide-y divide-brand-800">
+            <tr><td colspan="6" class="p-4 text-center text-brand-400">No applications recorded yet.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+
+    <footer class="bg-brand-900 border-t border-brand-800 text-xs text-brand-300 py-8 text-center mt-auto">
+      &copy; 2026 iClick Digital Ventures. All rights reserved. • iclickdigitalventures@gmail.com
+    </footer>
+  </div>
 
   <script>
     lucide.createIcons();
+
+    function handleAdminLogin(e) {
+      e.preventDefault();
+      const pass = document.getElementById('adminPasswordInput').value;
+      // Default secure admin password passcode
+      if (pass === "iClick2026Admin") {
+        localStorage.setItem('iclick_admin_auth', 'true');
+        document.getElementById('adminLoginGate').classList.add('hidden');
+        document.getElementById('adminMainContent').classList.remove('hidden');
+        renderAdminTable();
+      } else {
+        alert("Invalid Admin Passkey. Access Denied.");
+      }
+    }
+
+    function adminLogout() {
+      localStorage.removeItem('iclick_admin_auth');
+      location.reload();
+    }
+
+    window.onload = function() {
+      if (localStorage.getItem('iclick_admin_auth') === 'true') {
+        document.getElementById('adminLoginGate').classList.add('hidden');
+        document.getElementById('adminMainContent').classList.remove('hidden');
+        renderAdminTable();
+      }
+    };
+
     function renderAdminTable() {
       const tbody = document.getElementById('adminTableBody');
       const apps = JSON.parse(localStorage.getItem('iclick_all_applications') || '[]');
-      if (apps.length === 0) { tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-brand-400">No applications recorded yet.</td></tr>`; return; }
+      if (apps.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-brand-400">No applications recorded yet.</td></tr>`;
+        return;
+      }
       tbody.innerHTML = '';
       apps.forEach((app, idx) => {
         tbody.innerHTML += `
@@ -72,10 +144,10 @@
             <td class="p-3 text-brand-200">${app.email}</td>
             <td class="p-3">${app.course}</td>
             <td class="p-3"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-brand-800 text-brand-300">${app.status}</span></td>
-            <td class="p-3 text-right space-x-1">
-              <button onclick="approveAndDispatch(${idx})" class="px-2.5 py-1 bg-emerald-700 text-white rounded text-[10px] font-bold">Approve & Send Offer</button>
-              <button onclick="acknowledgeClient(${idx})" class="px-2.5 py-1 bg-cyan-700 text-white rounded text-[10px] font-bold">Acknowledge Mail</button>
-              <button onclick="rejectStudent(${idx})" class="px-2.5 py-1 bg-rose-700 text-white rounded text-[10px] font-bold">Reject</button>
+            <td class="p-3 text-right space-x-1 whitespace-nowrap">
+              <button onclick="approveAndDispatch(${idx})" class="px-2.5 py-1 bg-emerald-700 hover:bg-emerald-600 text-white rounded text-[10px] font-bold transition">Approve & Send Offer</button>
+              <button onclick="acknowledgeClient(${idx})" class="px-2.5 py-1 bg-cyan-800 hover:bg-cyan-700 text-white rounded text-[10px] font-bold transition">Acknowledge Mail</button>
+              <button onclick="rejectStudent(${idx})" class="px-2.5 py-1 bg-rose-800 hover:bg-rose-700 text-white rounded text-[10px] font-bold transition">Reject</button>
             </td>
           </tr>
         `;
@@ -89,14 +161,14 @@
       
       const app = apps[idx];
       alert(`Admission approved for ${app.fullName}! Opening email client to send acceptance offer and LMS login details.`);
-      window.location.href = `mailto:${app.email}?subject=Admission Approved - iClick Digital Academy (${app.appId})&body=Dear ${app.fullName},%0D%0A%0D%0AWe are pleased to inform you that your application for ${app.course} (ID: ${app.appId}) has been accepted!%0D%0A%0D%0APlease sign in to the Student LMS portal at lms.html using this registered email address to access your live lectures and Zoom room credentials.%0D%0A%0D%0AWelcoming you to iClick Digital Ventures.%0D%0A%0D%0ABest regards,%0D%0AAdmin Office`;
+      window.location.href = `mailto:${app.email}?subject=Admission Approved & LMS Access - iClick Digital Academy (${app.appId})&body=Dear ${app.fullName},%0D%0A%0D%0AWe are thrilled to inform you that your application for ${app.course} (ID: ${app.appId}) has been officially APPROVED!%0D%0A%0D%0AYou can now sign in to the Student LMS portal at lms.html using your registered email address (${app.email}) to access your live Zoom lectures and course modules.%0D%0A%0D%0AWelcoming you to iClick Digital Ventures.%0D%0A%0D%0ABest regards,%0D%0AAdmin Office`;
       renderAdminTable();
     }
 
     function acknowledgeClient(idx) {
       const app = JSON.parse(localStorage.getItem('iclick_all_applications') || '[]')[idx];
       alert(`Opening email client to send acknowledgement to ${app.fullName} (${app.email}).`);
-      window.location.href = `mailto:${app.email}?subject=Acknowledgement of Inquiry - iClick Digital Ventures (${app.appId})&body=Dear ${app.fullName},%0D%0A%0D%0AWe have successfully received your submission regarding ${app.course}. Our team is reviewing your details and will get back to you shortly.%0D%0A%0D%0ABest regards,%0D%0AiClick Digital Ventures`;
+      window.location.href = `mailto:${app.email}?subject=Acknowledgement of Submission - iClick Digital Ventures (${app.appId})&body=Dear ${app.fullName},%0D%0A%0D%0AThis email acknowledges receipt of your submission for ${app.course}. Our executive committee is reviewing your details and will respond shortly.%0D%0A%0D%0ABest regards,%0D%0AiClick Digital Ventures`;
     }
 
     function rejectStudent(idx) {
@@ -106,8 +178,6 @@
       alert(`Application for ${apps[idx].fullName} has been rejected.`);
       renderAdminTable();
     }
-
-    window.onload = renderAdminTable;
   </script>
 </body>
 </html>
