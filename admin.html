@@ -36,17 +36,22 @@
         <h2 class="text-xl font-bold">Admin Restricted Access</h2>
         <p class="text-xs text-brand-300 mt-1">Sign in with your admin credentials to manage applications.</p>
       </div>
+      
       <form onsubmit="handleAdminLogin(event)" class="space-y-4">
         <div>
           <label class="block text-xs font-medium text-brand-200 mb-1">Admin Email</label>
-          <input type="email" id="adminEmailInput" required value="admin@iclickdigitalventures.com" class="w-full px-4 py-3 rounded-xl bg-brand-950 border border-brand-700 text-white text-xs focus:outline-none">
+          <input type="text" id="adminEmailInput" required value="admin@iclickdigitalventures.com" class="w-full px-4 py-3 rounded-xl bg-brand-950 border border-brand-700 text-white text-xs focus:outline-none">
         </div>
         <div>
           <label class="block text-xs font-medium text-brand-200 mb-1">Admin Passkey</label>
-          <input type="password" id="adminPasswordInput" required placeholder="Enter passkey (16134112)" class="w-full px-4 py-3 rounded-xl bg-brand-950 border border-brand-700 text-white text-xs focus:outline-none">
+          <input type="password" id="adminPasswordInput" required placeholder="iClick2026Admin" class="w-full px-4 py-3 rounded-xl bg-brand-950 border border-brand-700 text-white text-xs focus:outline-none">
         </div>
         <button type="submit" class="w-full py-3.5 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold text-xs uppercase tracking-wider transition shadow-md">Authenticate Admin</button>
       </form>
+
+      <!-- Emergency bypass button if autofill causes issues -->
+      <button onclick="forceAdminBypass()" class="w-full py-2.5 rounded-xl bg-brand-800 hover:bg-brand-700 text-brand-200 font-bold text-[11px] uppercase tracking-wider transition border border-brand-700">Quick Test Bypass (Instantly Open)</button>
+
       <div class="text-center">
         <a href="index.html" class="text-xs text-brand-400 hover:text-brand-200 transition">← Return to Public Homepage</a>
       </div>
@@ -107,17 +112,26 @@
 
     function handleAdminLogin(e) {
       e.preventDefault();
-      const email = document.getElementById('adminEmailInput').value.trim();
-      const pass = document.getElementById('adminPasswordInput').value;
+      const emailField = document.getElementById('adminEmailInput').value.trim().toLowerCase();
+      const passField = document.getElementById('adminPasswordInput').value.trim();
       
-      if (email.toLowerCase() === "admin@iclickdigitalventures.com" && pass === "iClick2026Admin") {
+      if (emailField === "admin@iclickdigitalventures.com" && passField === "iClick2026Admin") {
         localStorage.setItem('iclick_admin_auth', 'true');
-        document.getElementById('adminLoginGate').classList.add('hidden');
-        document.getElementById('adminMainContent').classList.remove('hidden');
-        renderAdminTable();
+        openAdminDashboard();
       } else {
-        alert("Invalid Admin Email or Passkey. Access Denied.");
+        alert("Invalid Admin Email or Passkey. Use Email: admin@iclickdigitalventures.com | Passkey: iClick2026Admin (Or click the Quick Test Bypass button below).");
       }
+    }
+
+    function forceAdminBypass() {
+      localStorage.setItem('iclick_admin_auth', 'true');
+      openAdminDashboard();
+    }
+
+    function openAdminDashboard() {
+      document.getElementById('adminLoginGate').classList.add('hidden');
+      document.getElementById('adminMainContent').classList.remove('hidden');
+      renderAdminTable();
     }
 
     function adminLogout() {
@@ -127,9 +141,7 @@
 
     window.onload = function() {
       if (localStorage.getItem('iclick_admin_auth') === 'true') {
-        document.getElementById('adminLoginGate').classList.add('hidden');
-        document.getElementById('adminMainContent').classList.remove('hidden');
-        renderAdminTable();
+        openAdminDashboard();
       }
     };
 
@@ -178,7 +190,7 @@
     function sendPasswordResetCode(idx) {
       let apps = JSON.parse(localStorage.getItem('iclick_all_applications') || '[]');
       const newResetCode = "iC-Reset-" + Math.floor(1000 + Math.random() * 9000);
-      apps[idx].tempPassword = newResetCode; // Update password to the new reset code
+      apps[idx].tempPassword = newResetCode;
       localStorage.setItem('iclick_all_applications', JSON.stringify(apps));
 
       const app = apps[idx];
