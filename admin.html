@@ -14,15 +14,7 @@
           fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
           colors: {
             brand: {
-              50: '#f9f8f6',
-              100: '#f0ece4',
-              200: '#e2d7c8',
-              300: '#d4a373',
-              400: '#b87d52',
-              600: '#8c5842',
-              800: '#4a2e2b',
-              900: '#2d1810',
-              950: '#1a0e0a'
+              50: '#f9f8f6', 100: '#f0ece4', 200: '#e2d7c8', 300: '#d4a373', 400: '#b87d52', 600: '#8c5842', 800: '#4a2e2b', 900: '#2d1810', 950: '#1a0e0a'
             }
           }
         }
@@ -35,41 +27,24 @@
   </style>
 </head>
 <body class="bg-brand-50 text-brand-900 min-h-screen flex flex-col antialiased">
-
   <nav class="bg-brand-900 border-b border-brand-800 px-6 py-4 flex justify-between items-center sticky top-0 z-50 text-white">
     <div class="flex items-center space-x-3">
       <div class="w-9 h-9 rounded-lg bg-brand-300 text-brand-950 font-black flex items-center justify-center">iC</div>
-      <div>
-        <h1 class="text-base font-bold">iClick Admin Control Center</h1>
-        <span class="text-[10px] text-brand-300 font-mono">Admissions & Feedback Management</span>
-      </div>
+      <div><h1 class="text-base font-bold">iClick Admin Control Center</h1><span class="text-[10px] text-brand-300 font-mono">Admissions & Feedback Management</span></div>
     </div>
-    <div class="flex items-center space-x-4 text-xs">
-      <a href="index.html" class="text-brand-300 hover:underline">Home</a>
-      <a href="lms.html" class="text-brand-300 hover:underline">Student LMS</a>
-    </div>
+    <div class="flex items-center space-x-4 text-xs"><a href="index.html" class="text-brand-300 hover:underline">Home</a><a href="lms.html" class="text-brand-300 hover:underline">Student LMS</a></div>
   </nav>
 
   <main class="max-w-7xl mx-auto px-4 py-8 flex-1 w-full space-y-6">
     <div class="flex justify-between items-center">
-      <div>
-        <h2 class="text-2xl font-black text-brand-900">Student Admissions & Service Requests</h2>
-        <p class="text-xs text-brand-700">Approve applications to unlock student LMS access and dispatch feedback acknowledgements.</p>
-      </div>
+      <div><h2 class="text-2xl font-black text-brand-900">Student Admissions & Service Requests</h2><p class="text-xs text-brand-700">Approve applications to unlock student LMS access and dispatch feedback.</p></div>
       <button onclick="renderAdminTable()" class="px-4 py-2 rounded-xl bg-brand-900 text-brand-50 text-xs font-bold">Refresh Table</button>
     </div>
 
     <div class="glass-card rounded-3xl p-6 overflow-x-auto">
       <table class="w-full text-left text-xs text-brand-50">
         <thead class="bg-brand-950 text-brand-300 uppercase text-[10px] border-b border-brand-800">
-          <tr>
-            <th class="p-3">App ID</th>
-            <th class="p-3">Applicant Name</th>
-            <th class="p-3">Email</th>
-            <th class="p-3">Track / Service</th>
-            <th class="p-3">Status</th>
-            <th class="p-3 text-right">Admin Action</th>
-          </tr>
+          <tr><th class="p-3">App ID</th><th class="p-3">Applicant Name</th><th class="p-3">Email</th><th class="p-3">Track / Service</th><th class="p-3">Status</th><th class="p-3 text-right">Admin Action</th></tr>
         </thead>
         <tbody id="adminTableBody" class="divide-y divide-brand-800">
           <tr><td colspan="6" class="p-4 text-center text-brand-400">No applications recorded yet.</td></tr>
@@ -79,7 +54,7 @@
   </main>
 
   <footer class="bg-brand-900 border-t border-brand-800 text-xs text-brand-300 py-10 mt-auto">
-    <div class="max-w-7xl mx-auto px-4 text-center text-[10px] text-brand-500">&copy; 2026 iClick Digital Ventures. All rights reserved. • iclickdigitalventures@gmail.com</div>
+    <div class="max-w-7xl mx-auto px-4 text-center text-[10px] text-brand-500">&copy; 2026 iClick Digital Ventures. All rights reserved. • iclickdigitalventures@gmail.com[cite: 1]</div>
   </footer>
 
   <script>
@@ -87,10 +62,7 @@
     function renderAdminTable() {
       const tbody = document.getElementById('adminTableBody');
       const apps = JSON.parse(localStorage.getItem('iclick_all_applications') || '[]');
-      if (apps.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-brand-400">No applications recorded yet.</td></tr>`;
-        return;
-      }
+      if (apps.length === 0) { tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-brand-400">No applications recorded yet.</td></tr>`; return; }
       tbody.innerHTML = '';
       apps.forEach((app, idx) => {
         tbody.innerHTML += `
@@ -113,7 +85,7 @@
       let apps = JSON.parse(localStorage.getItem('iclick_all_applications') || '[]');
       apps[idx].status = "Accepted";
       localStorage.setItem('iclick_all_applications', JSON.stringify(apps));
-      alert(`Admission approved for ${apps[idx].fullName} (${apps[idx].email}). LMS access and details have been unlocked for their account.`);
+      alert(`Admission approved for ${apps[idx].fullName} (${apps[idx].email}). LMS access and details unlocked.`);
       renderAdminTable();
     }
 
