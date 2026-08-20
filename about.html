@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us | iClick Digital Ventures</title>
+  <title>About Us & Leadership | iClick Digital Ventures</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,7 +38,7 @@
 </head>
 <body class="bg-brand-50 text-brand-900 min-h-screen flex flex-col antialiased">
 
-  <!-- Navigation with Mobile Dropdown -->
+  <!-- Navigation -->
   <nav class="bg-brand-50/90 backdrop-blur-md sticky top-0 z-50 border-b border-brand-200 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
       <a href="index.html" class="flex items-center space-x-3">
@@ -80,11 +80,6 @@
       <a href="about.html" class="block px-3 py-2 rounded-lg text-sm font-bold bg-brand-800 text-brand-300">About</a>
       <a href="lms.html" class="block px-3 py-2 rounded-lg text-sm text-brand-300 font-semibold hover:bg-brand-800">Student LMS</a>
       <a href="admin.html" class="block px-3 py-2 rounded-lg text-sm text-brand-400 hover:bg-brand-800">Admin Portal</a>
-      <div class="pt-2">
-        <a href="services.html#contact" class="block text-center w-full py-3 rounded-xl bg-brand-300 text-brand-950 font-bold text-xs uppercase tracking-wider">
-          Request Audit
-        </a>
-      </div>
     </div>
   </nav>
 
@@ -92,7 +87,7 @@
   <header class="py-20 border-b border-brand-200 text-center relative overflow-hidden">
     <div class="max-w-4xl mx-auto px-4">
       <span class="px-4 py-1.5 rounded-full bg-brand-200 text-brand-800 text-xs font-semibold uppercase tracking-wider inline-block mb-4">
-        Corporate Profile & Vision
+        Corporate Profile & Leadership
       </span>
       <h1 class="text-4xl sm:text-6xl font-black text-brand-900 tracking-tight leading-tight">
         Building the Digital Backbone for <span class="text-brand-600">African Enterprise & Governance</span>
@@ -102,15 +97,34 @@
 
   <!-- Main Content -->
   <main class="max-w-5xl mx-auto px-4 py-16 space-y-12 flex-1 w-full">
+    
+    <!-- Corporate Overview -->
     <div class="glass-card text-brand-50 rounded-3xl p-8 sm:p-10">
       <h3 class="text-2xl font-bold text-brand-50 mb-3">Our Corporate Governance</h3>
       <p class="text-xs sm:text-sm text-brand-200 leading-relaxed">
         Headquartered in Abuja, Nigeria, iClick Digital Ventures (CAC Reg No: BN 9772940) is an integrated technology holding company driving seamless transformation across public institutions, commercial automation, and practical skill development.
       </p>
     </div>
+
+    <!-- Founder Details -->
+    <div class="glass-card text-brand-50 rounded-3xl p-8 sm:p-10">
+      <div class="flex items-center space-x-4 mb-6">
+        <div class="w-14 h-14 rounded-2xl bg-brand-800 text-brand-300 flex items-center justify-center font-bold text-xl border border-brand-700">
+          FD
+        </div>
+        <div>
+          <h3 class="text-xl font-bold text-brand-50">Executive Leadership</h3>
+          <span class="text-xs text-brand-300">Founder & Chief Executive Officer</span>
+        </div>
+      </div>
+      <p class="text-xs sm:text-sm text-brand-200 leading-relaxed">
+        The firm is led by experienced systems architecture and digital transformation strategists committed to eliminating administrative friction in public sector registries and equipping African youth with high-value technical competencies.
+      </p>
+    </div>
+
   </main>
 
-  <!-- Clean Single Footer -->
+  <!-- Footer -->
   <footer class="bg-brand-900 border-t border-brand-800 text-xs text-brand-300 py-10 mt-auto">
     <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
       <div>
@@ -132,9 +146,7 @@
 
   <script>
     lucide.createIcons();
-    function toggleMobileMenu() {
-      document.getElementById('mobileMenu').classList.toggle('hidden');
-    }
+    function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('hidden'); }
   </script>
 </body>
 </html>
