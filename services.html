@@ -38,19 +38,15 @@
 </head>
 <body class="bg-brand-50 text-brand-900 min-h-screen flex flex-col antialiased">
 
-  <!-- Navigation -->
   <nav class="bg-brand-50/90 backdrop-blur-md sticky top-0 z-50 border-b border-brand-200 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
       <a href="index.html" class="flex items-center space-x-3">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-800 to-brand-600 flex items-center justify-center text-brand-50 font-black text-xl shadow-md">
-          iC
-        </div>
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-800 to-brand-600 flex items-center justify-center text-brand-50 font-black text-xl shadow-md">iC</div>
         <div>
           <span class="text-lg font-extrabold text-brand-900 tracking-tight block leading-none">iClick</span>
           <span class="text-[10px] font-bold text-brand-600 tracking-widest uppercase block mt-0.5">Digital Ventures</span>
         </div>
       </a>
-
       <div class="hidden md:flex items-center space-x-6 text-sm font-medium text-brand-800">
         <a href="index.html" class="hover:text-brand-300 transition">Home</a>
         <a href="services.html" class="text-brand-600 border-b-2 border-brand-300 pb-1 font-semibold">Services</a>
@@ -60,18 +56,8 @@
         <a href="lms.html" class="text-brand-600 font-bold hover:underline">Student LMS</a>
         <a href="admin.html" class="text-brand-500 hover:text-brand-900 transition">Admin</a>
       </div>
-
-      <div class="hidden md:block">
-        <a href="#contact" class="px-5 py-2.5 rounded-xl bg-brand-900 hover:bg-brand-800 text-brand-50 font-bold text-xs uppercase tracking-wider transition shadow-md">
-          Request Audit
-        </a>
-      </div>
-
-      <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-xl bg-brand-200 text-brand-900 focus:outline-none">
-        <i data-lucide="menu" class="w-6 h-6"></i>
-      </button>
+      <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-xl bg-brand-200 text-brand-900 focus:outline-none"><i data-lucide="menu" class="w-6 h-6"></i></button>
     </div>
-
     <div id="mobileMenu" class="hidden md:hidden px-4 pt-3 pb-6 space-y-2 bg-brand-900 text-brand-100 border-b border-brand-800 shadow-xl">
       <a href="index.html" class="block px-3 py-2 rounded-lg text-sm hover:bg-brand-800">Home</a>
       <a href="services.html" class="block px-3 py-2 rounded-lg text-sm font-bold bg-brand-800 text-brand-300">Services</a>
@@ -81,29 +67,20 @@
     </div>
   </nav>
 
-  <!-- Hero -->
   <header class="py-20 border-b border-brand-200 text-center relative overflow-hidden">
     <div class="max-w-4xl mx-auto px-4">
-      <span class="px-4 py-1.5 rounded-full bg-brand-200 text-brand-800 text-xs font-semibold uppercase tracking-wider inline-block mb-4">
-        Capabilities & Subsidiary Offerings
-      </span>
-      <h1 class="text-4xl sm:text-6xl font-black text-brand-900 tracking-tight leading-tight">
-        Integrated Digital Solutions for <span class="text-brand-600">Scale & Governance</span>
-      </h1>
+      <span class="px-4 py-1.5 rounded-full bg-brand-200 text-brand-800 text-xs font-semibold uppercase tracking-wider inline-block mb-4">Capabilities & Subsidiary Offerings</span>
+      <h1 class="text-4xl sm:text-6xl font-black text-brand-900 tracking-tight leading-tight">Integrated Digital Solutions for <span class="text-brand-600">Scale & Governance</span></h1>
     </div>
   </header>
 
-  <!-- Main Content -->
   <main class="max-w-6xl mx-auto px-4 py-16 space-y-12 flex-1 w-full">
-
     <div id="govtech" class="glass-card text-brand-50 rounded-3xl p-8 sm:p-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
       <div>
         <h2 class="text-2xl font-bold text-brand-50 mb-2">iClick GovTech Solutions</h2>
         <p class="text-xs sm:text-sm text-brand-200 max-w-2xl leading-relaxed">Modernizing judicial administrative workflows, registry paperwork, and inter-departmental memo tracking without disrupting statutory civil service procedures.</p>
       </div>
-      <button onclick="openApplyModal('GovTech Institutional Modernization')" class="px-5 py-3 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold text-xs uppercase tracking-wider transition whitespace-nowrap">
-        Apply & Connect →
-      </button>
+      <button onclick="openApplyModal('GovTech Institutional Modernization')" class="px-5 py-3 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold text-xs uppercase tracking-wider transition whitespace-nowrap">Apply & Connect →</button>
     </div>
 
     <div id="ai" class="glass-card text-brand-50 rounded-3xl p-8 sm:p-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
@@ -111,9 +88,7 @@
         <h2 class="text-2xl font-bold text-brand-50 mb-2">iClick AI Automation</h2>
         <p class="text-xs sm:text-sm text-brand-200 max-w-2xl leading-relaxed">Eliminating repetitive human tasks, manual spreadsheets, and customer delays with automated CRM architectures and API integrations.</p>
       </div>
-      <button onclick="openApplyModal('AI Automation Pipeline')" class="px-5 py-3 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold text-xs uppercase tracking-wider transition whitespace-nowrap">
-        Apply & Connect →
-      </button>
+      <button onclick="openApplyModal('AI Automation Pipeline')" class="px-5 py-3 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold text-xs uppercase tracking-wider transition whitespace-nowrap">Apply & Connect →</button>
     </div>
 
     <div id="iot" class="glass-card text-brand-50 rounded-3xl p-8 sm:p-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
@@ -121,46 +96,26 @@
         <h2 class="text-2xl font-bold text-brand-50 mb-2">iClick IoT & Digital Accessories</h2>
         <p class="text-xs sm:text-sm text-brand-200 max-w-2xl leading-relaxed">Direct wholesale supply of enterprise IT hardware, high-speed document scanners, and smart building automation systems.</p>
       </div>
-      <button onclick="openApplyModal('IoT & Hardware Procurement')" class="px-5 py-3 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold text-xs uppercase tracking-wider transition whitespace-nowrap">
-        Apply & Connect →
-      </button>
+      <button onclick="openApplyModal('IoT & Hardware Procurement')" class="px-5 py-3 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold text-xs uppercase tracking-wider transition whitespace-nowrap">Apply & Connect →</button>
     </div>
-
   </main>
 
-  <!-- Application Modal -->
   <div id="applyModal" class="hidden fixed inset-0 z-50 bg-brand-950/80 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="glass-card w-full max-w-lg p-8 rounded-3xl relative text-brand-50">
       <button onclick="closeApplyModal()" class="absolute top-4 right-4 text-brand-300 hover:text-white"><i data-lucide="x" class="w-6 h-6"></i></button>
       <h3 class="text-xl font-bold text-brand-50 mb-1">Service Engagement Application</h3>
       <p id="modalServiceName" class="text-xs text-brand-300 mb-6">Applying for: Selected Service</p>
-      
       <form action="https://formspree.io/f/xwleaabe" method="POST" class="space-y-4">
         <input type="hidden" id="selectedServiceInput" name="Selected_Service" value="">
-        <div>
-          <label class="block text-xs font-medium text-brand-200 mb-1">Full Name / Official</label>
-          <input type="text" name="Full_Name" required class="w-full px-4 py-3 rounded-xl bg-brand-950 border border-brand-700 text-white text-xs focus:outline-none">
-        </div>
-        <div>
-          <label class="block text-xs font-medium text-brand-200 mb-1">Email Address</label>
-          <input type="email" name="_replyto" required class="w-full px-4 py-3 rounded-xl bg-brand-950 border border-brand-700 text-white text-xs focus:outline-none">
-        </div>
-        <div>
-          <label class="block text-xs font-medium text-brand-200 mb-1">Phone / WhatsApp</label>
-          <input type="tel" name="Phone" required class="w-full px-4 py-3 rounded-xl bg-brand-950 border border-brand-700 text-white text-xs focus:outline-none">
-        </div>
-        <div>
-          <label class="block text-xs font-medium text-brand-200 mb-1">Project Requirements</label>
-          <textarea name="Message" rows="3" required class="w-full px-4 py-3 rounded-xl bg-brand-950 border border-brand-700 text-white text-xs focus:outline-none"></textarea>
-        </div>
-        <button type="submit" class="w-full py-3.5 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold text-xs uppercase tracking-wider transition">
-          Submit Application
-        </button>
+        <div><label class="block text-xs font-medium text-brand-200 mb-1">Full Name / Official</label><input type="text" name="Full_Name" required class="w-full px-4 py-3 rounded-xl bg-brand-950 border border-brand-700 text-white text-xs focus:outline-none"></div>
+        <div><label class="block text-xs font-medium text-brand-200 mb-1">Email Address</label><input type="email" name="_replyto" required class="w-full px-4 py-3 rounded-xl bg-brand-950 border border-brand-700 text-white text-xs focus:outline-none"></div>
+        <div><label class="block text-xs font-medium text-brand-200 mb-1">Phone / WhatsApp</label><input type="tel" name="Phone" required class="w-full px-4 py-3 rounded-xl bg-brand-950 border border-brand-700 text-white text-xs focus:outline-none"></div>
+        <div><label class="block text-xs font-medium text-brand-200 mb-1">Project Requirements</label><textarea name="Message" rows="3" required class="w-full px-4 py-3 rounded-xl bg-brand-950 border border-brand-700 text-white text-xs focus:outline-none"></textarea></div>
+        <button type="submit" class="w-full py-3.5 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold text-xs uppercase tracking-wider transition">Submit Application</button>
       </form>
     </div>
   </div>
 
-  <!-- Footer -->
   <footer class="bg-brand-900 border-t border-brand-800 text-xs text-brand-300 py-10 mt-auto">
     <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
       <div>
@@ -175,20 +130,13 @@
         <a href="about.html" class="hover:text-brand-100 transition">About</a>
       </div>
     </div>
-    <div class="max-w-7xl mx-auto px-4 mt-6 pt-4 border-t border-brand-950 text-center text-[10px] text-brand-500">
-      &copy; 2026 iClick Digital Ventures. All rights reserved. • iclickdigitalventures@gmail.com
-    </div>
+    <div class="max-w-7xl mx-auto px-4 mt-6 pt-4 border-t border-brand-950 text-center text-[10px] text-brand-500">&copy; 2026 iClick Digital Ventures. All rights reserved. • iclickdigitalventures@gmail.com</div>
   </footer>
-
   <script>
     lucide.createIcons();
     function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('hidden'); }
-    function openApplyModal(service) {
-      document.getElementById('modalServiceName').innerText = "Applying for: " + service;
-      document.getElementById('selectedServiceInput').value = service;
-      document.getElementById('applyModal').classList.remove('hidden');
-    }
+    function openApplyModal(service) { document.getElementById('modalServiceName').innerText = "Applying for: " + service; document.getElementById('selectedServiceInput').value = service; document.getElementById('applyModal').classList.remove('hidden'); }
     function closeApplyModal() { document.getElementById('applyModal').classList.add('hidden'); }
   </script>
 </body>
-          </html>
+        </html>
