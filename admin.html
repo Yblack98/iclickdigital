@@ -49,7 +49,6 @@
         <button type="submit" class="w-full py-3.5 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold text-xs uppercase tracking-wider transition shadow-md">Authenticate Admin</button>
       </form>
 
-      <!-- Emergency bypass button if autofill causes issues -->
       <button onclick="forceAdminBypass()" class="w-full py-2.5 rounded-xl bg-brand-800 hover:bg-brand-700 text-brand-200 font-bold text-[11px] uppercase tracking-wider transition border border-brand-700">Quick Test Bypass (Instantly Open)</button>
 
       <div class="text-center">
@@ -74,32 +73,63 @@
       </div>
     </nav>
 
-    <main class="max-w-7xl mx-auto px-4 py-8 flex-1 w-full space-y-6">
-      <div class="flex justify-between items-center">
-        <div>
-          <h2 class="text-2xl font-black text-brand-900">Student Admissions & Service Requests</h2>
-          <p class="text-xs text-brand-700">Approve applications, dispatch credentials, and manage password reset codes.</p>
+    <main class="max-w-7xl mx-auto px-4 py-8 flex-1 w-full space-y-12">
+      
+      <!-- SECTION 1: Digital Academy Admissions -->
+      <div class="space-y-4">
+        <div class="flex justify-between items-center">
+          <div>
+            <h2 class="text-2xl font-black text-brand-900">Digital Academy Admissions</h2>
+            <p class="text-xs text-brand-700">Manage student cohort applications, approve admissions, and dispatch LMS credentials.</p>
+          </div>
+          <button onclick="renderAdminTables()" class="px-4 py-2 rounded-xl bg-brand-900 text-brand-50 text-xs font-bold shadow-md">Refresh Data</button>
         </div>
-        <button onclick="renderAdminTable()" class="px-4 py-2 rounded-xl bg-brand-900 text-brand-50 text-xs font-bold shadow-md">Refresh Table</button>
+
+        <div class="glass-card rounded-3xl p-6 overflow-x-auto shadow-xl">
+          <table class="w-full text-left text-xs text-brand-50">
+            <thead class="bg-brand-950 text-brand-300 uppercase text-[10px] border-b border-brand-800">
+              <tr>
+                <th class="p-3">Student ID</th>
+                <th class="p-3">Full Name</th>
+                <th class="p-3">Email</th>
+                <th class="p-3">Course Track</th>
+                <th class="p-3">Status</th>
+                <th class="p-3 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="academyTableBody" class="divide-y divide-brand-800">
+              <tr><td colspan="6" class="p-4 text-center text-brand-400">No academy applications recorded yet.</td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
-      <div class="glass-card rounded-3xl p-6 overflow-x-auto shadow-xl">
-        <table class="w-full text-left text-xs text-brand-50">
-          <thead class="bg-brand-950 text-brand-300 uppercase text-[10px] border-b border-brand-800">
-            <tr>
-              <th class="p-3">App ID</th>
-              <th class="p-3">Applicant Name</th>
-              <th class="p-3">Email</th>
-              <th class="p-3">Track / Service</th>
-              <th class="p-3">Status</th>
-              <th class="p-3 text-right">Admin Actions</th>
-            </tr>
-          </thead>
-          <tbody id="adminTableBody" class="divide-y divide-brand-800">
-            <tr><td colspan="6" class="p-4 text-center text-brand-400">No applications recorded yet.</td></tr>
-          </tbody>
-        </table>
+      <!-- SECTION 2: Professional Service Inquiries -->
+      <div class="space-y-4 pt-4 border-t border-brand-200">
+        <div>
+          <h2 class="text-2xl font-black text-brand-900">Professional Service Inquiries</h2>
+          <p class="text-xs text-brand-700">Review client requests for GovTech, AI Automation, Data Analytics, SMM, and IoT hardware.</p>
+        </div>
+
+        <div class="glass-card rounded-3xl p-6 overflow-x-auto shadow-xl">
+          <table class="w-full text-left text-xs text-brand-50">
+            <thead class="bg-brand-950 text-brand-300 uppercase text-[10px] border-b border-brand-800">
+              <tr>
+                <th class="p-3">Request ID</th>
+                <th class="p-3">Client / Organization</th>
+                <th class="p-3">Email</th>
+                <th class="p-3">Phone</th>
+                <th class="p-3">Service & Requirements</th>
+                <th class="p-3 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="servicesTableBody" class="divide-y divide-brand-800">
+              <tr><td colspan="6" class="p-4 text-center text-brand-400">No service inquiries recorded yet.</td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
+
     </main>
 
     <footer class="bg-brand-900 border-t border-brand-800 text-xs text-brand-300 py-8 text-center mt-auto">
@@ -119,7 +149,7 @@
         localStorage.setItem('iclick_admin_auth', 'true');
         openAdminDashboard();
       } else {
-        alert("Invalid Admin Email or Passkey. Use Email: admin@iclickdigitalventures.com | Passkey: iClick2026Admin (Or click the Quick Test Bypass button below).");
+        alert("Invalid Admin Email or Passkey. Use Email: admin@iclickdigitalventures.com | Passkey: iClick2026Admin");
       }
     }
 
@@ -131,7 +161,7 @@
     function openAdminDashboard() {
       document.getElementById('adminLoginGate').classList.add('hidden');
       document.getElementById('adminMainContent').classList.remove('hidden');
-      renderAdminTable();
+      renderAdminTables();
     }
 
     function adminLogout() {
@@ -145,72 +175,104 @@
       }
     };
 
-    function renderAdminTable() {
-      const tbody = document.getElementById('adminTableBody');
+    function renderAdminTables() {
+      // 1. Render Academy Admissions Table
+      const academyTbody = document.getElementById('academyTableBody');
       const apps = JSON.parse(localStorage.getItem('iclick_all_applications') || '[]');
-      if (apps.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-brand-400">No applications recorded yet.</td></tr>`;
-        return;
+      // Filter items starting with iC-STU-
+      const studentApps = apps.filter(a => a.appId && a.appId.startsWith('iC-STU'));
+
+      if (studentApps.length === 0) {
+        academyTbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-brand-400">No academy applications recorded yet.</td></tr>`;
+      } else {
+        academyTbody.innerHTML = '';
+        studentApps.forEach((app, idx) => {
+          academyTbody.innerHTML += `
+            <tr class="hover:bg-brand-900/50">
+              <td class="p-3 font-mono text-brand-300 font-bold">${app.appId}</td>
+              <td class="p-3 font-bold text-white">${app.fullName}</td>
+              <td class="p-3 text-brand-200">${app.email}</td>
+              <td class="p-3">${app.course}</td>
+              <td class="p-3"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-brand-800 text-brand-300">${app.status}</span></td>
+              <td class="p-3 text-right space-x-1 whitespace-nowrap">
+                <button onclick="approveStudent('${app.appId}')" class="px-2.5 py-1 bg-emerald-700 hover:bg-emerald-600 text-white rounded text-[10px] font-bold transition">Approve & Send Offer</button>
+                <button onclick="sendPasswordResetCode('${app.appId}')" class="px-2.5 py-1 bg-amber-700 hover:bg-amber-600 text-white rounded text-[10px] font-bold transition">Send Reset Code</button>
+                <button onclick="rejectStudent('${app.appId}')" class="px-2.5 py-1 bg-rose-800 hover:bg-rose-700 text-white rounded text-[10px] font-bold transition">Reject</button>
+              </td>
+            </tr>
+          `;
+        });
       }
-      tbody.innerHTML = '';
-      apps.forEach((app, idx) => {
-        tbody.innerHTML += `
-          <tr class="hover:bg-brand-900/50">
-            <td class="p-3 font-mono text-brand-300 font-bold">${app.appId}</td>
-            <td class="p-3 font-bold text-white">${app.fullName}</td>
-            <td class="p-3 text-brand-200">${app.email}</td>
-            <td class="p-3">${app.course}</td>
-            <td class="p-3"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-brand-800 text-brand-300">${app.status}</span></td>
-            <td class="p-3 text-right space-x-1 whitespace-nowrap">
-              <button onclick="approveAndDispatch(${idx})" class="px-2.5 py-1 bg-emerald-700 hover:bg-emerald-600 text-white rounded text-[10px] font-bold transition">Approve & Send Offer</button>
-              <button onclick="sendPasswordResetCode(${idx})" class="px-2.5 py-1 bg-amber-700 hover:bg-amber-600 text-white rounded text-[10px] font-bold transition">Send Reset Code</button>
-              <button onclick="acknowledgeClient(${idx})" class="px-2.5 py-1 bg-cyan-800 hover:bg-cyan-700 text-white rounded text-[10px] font-bold transition">Acknowledge</button>
-              <button onclick="rejectStudent(${idx})" class="px-2.5 py-1 bg-rose-800 hover:bg-rose-700 text-white rounded text-[10px] font-bold transition">Reject</button>
-            </td>
-          </tr>
-        `;
-      });
-    }
 
-    function approveAndDispatch(idx) {
-      let apps = JSON.parse(localStorage.getItem('iclick_all_applications') || '[]');
-      if (!apps[idx].tempPassword) {
-        apps[idx].tempPassword = "iC-Pass-" + Math.floor(1000 + Math.random() * 9000);
+      // 2. Render Service Inquiries Table
+      const servicesTbody = document.getElementById('servicesTableBody');
+      const serviceInquiries = JSON.parse(localStorage.getItem('iclick_service_inquiries') || '[]');
+
+      if (serviceInquiries.length === 0) {
+        servicesTbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-brand-400">No service inquiries recorded yet.</td></tr>`;
+      } else {
+        servicesTbody.innerHTML = '';
+        serviceInquiries.forEach((svc, idx) => {
+          servicesTbody.innerHTML += `
+            <tr class="hover:bg-brand-900/50">
+              <td class="p-3 font-mono text-cyan-400 font-bold">${svc.reqId}</td>
+              <td class="p-3 font-bold text-white">${svc.fullName}</td>
+              <td class="p-3 text-brand-200">${svc.email}</td>
+              <td class="p-3 text-brand-200">${svc.phone}</td>
+              <td class="p-3"><strong class="text-brand-300 block">${svc.service}</strong><span class="text-[11px] text-slate-300">${svc.scope}</span></td>
+              <td class="p-3 text-right whitespace-nowrap">
+                <button onclick="acknowledgeService('${svc.email}', '${svc.service}', '${svc.reqId}')" class="px-2.5 py-1 bg-cyan-800 hover:bg-cyan-700 text-white rounded text-[10px] font-bold transition">Acknowledge Client</button>
+              </td>
+            </tr>
+          `;
+        });
       }
-      apps[idx].status = "Accepted";
-      localStorage.setItem('iclick_all_applications', JSON.stringify(apps));
-      
-      const app = apps[idx];
-      alert(`Admission approved for ${app.fullName}! Temporary Password: ${app.tempPassword}. Opening email client to send official offer letter.`);
-      
-      window.location.href = `mailto:${app.email}?subject=Official Admission Offer & LMS Credentials - iClick Digital Academy (${app.appId})&body=Dear ${app.fullName},%0D%0A%0D%0AWe are pleased to offer you official admission into the ${app.course} cohort at iClick Digital Academy.%0D%0A%0D%0AStudent ID: ${app.appId}%0D%0ALMS Login Email: ${app.email}%0D%0ATemporary LMS Password: ${app.tempPassword}%0D%0A%0D%0APlease sign in at lms.html using these credentials to access your live lecture rooms.%0D%0A%0D%0ABest regards,%0D%0AAdmin Office, iClick Digital Ventures`;
-      renderAdminTable();
     }
 
-    function sendPasswordResetCode(idx) {
+    function approveStudent(appId) {
       let apps = JSON.parse(localStorage.getItem('iclick_all_applications') || '[]');
-      const newResetCode = "iC-Reset-" + Math.floor(1000 + Math.random() * 9000);
-      apps[idx].tempPassword = newResetCode;
-      localStorage.setItem('iclick_all_applications', JSON.stringify(apps));
-
-      const app = apps[idx];
-      alert(`Generated reset code for ${app.fullName}: ${newResetCode}. Opening email client to dispatch code.`);
-      window.location.href = `mailto:${app.email}?subject=Password Reset Code - iClick Digital Academy&body=Dear ${app.fullName},%0D%0A%0D%0AYour requested password reset code is: ${newResetCode}%0D%0A%0D%0APlease use this temporary password to sign in to your LMS portal at lms.html, and remember to update your password in your dashboard settings.%0D%0A%0D%0ABest regards,%0D%0AAdmin Office`;
+      let app = apps.find(a => a.appId === appId);
+      if (app) {
+        if (!app.tempPassword) {
+          app.tempPassword = "iC-Pass-" + Math.floor(1000 + Math.random() * 9000);
+        }
+        app.status = "Accepted";
+        localStorage.setItem('iclick_all_applications', JSON.stringify(apps));
+        
+        alert(`Admission approved for ${app.fullName}! Temporary Password: ${app.tempPassword}. Opening email client to send official offer letter.`);
+        window.location.href = `mailto:${app.email}?subject=Official Admission Offer & LMS Credentials - iClick Digital Academy (${app.appId})&body=Dear ${app.fullName},%0D%0A%0D%0AWe are pleased to offer you official admission into the ${app.course} cohort at iClick Digital Academy.%0D%0A%0D%0AStudent ID: ${app.appId}%0D%0ALMS Login Email: ${app.email}%0D%0ATemporary LMS Password: ${app.tempPassword}%0D%0A%0D%0APlease sign in at lms.html using these credentials to access your live lecture rooms.%0D%0A%0D%0ABest regards,%0D%0AAdmin Office, iClick Digital Ventures`;
+        renderAdminTables();
+      }
     }
 
-    function acknowledgeClient(idx) {
-      const app = JSON.parse(localStorage.getItem('iclick_all_applications') || '[]')[idx];
-      alert(`Opening email client to acknowledge submission from ${app.fullName}.`);
-      window.location.href = `mailto:${app.email}?subject=Acknowledgement of Submission - iClick Digital Ventures (${app.appId})&body=Dear ${app.fullName},%0D%0A%0D%0AWe have successfully received your submission regarding ${app.course}. Our team is reviewing your details and will revert shortly.%0D%0A%0D%0ABest regards,%0D%0AiClick Digital Ventures`;
-    }
-
-    function rejectStudent(idx) {
+    function sendPasswordResetCode(appId) {
       let apps = JSON.parse(localStorage.getItem('iclick_all_applications') || '[]');
-      apps[idx].status = "Rejected";
-      localStorage.setItem('iclick_all_applications', JSON.stringify(apps));
-      alert(`Application for ${apps[idx].fullName} has been rejected.`);
-      renderAdminTable();
+      let app = apps.find(a => a.appId === appId);
+      if (app) {
+        const newResetCode = "iC-Reset-" + Math.floor(1000 + Math.random() * 9000);
+        app.tempPassword = newResetCode;
+        localStorage.setItem('iclick_all_applications', JSON.stringify(apps));
+
+        alert(`Generated reset code for ${app.fullName}: ${newResetCode}. Opening email client to dispatch code.`);
+        window.location.href = `mailto:${app.email}?subject=Password Reset Code - iClick Digital Academy&body=Dear ${app.fullName},%0D%0A%0D%0AYour requested password reset code is: ${newResetCode}%0D%0A%0D%0APlease use this temporary password to sign in to your LMS portal at lms.html, and remember to update your password in your dashboard settings.%0D%0A%0D%0ABest regards,%0D%0AAdmin Office`;
+      }
+    }
+
+    function rejectStudent(appId) {
+      let apps = JSON.parse(localStorage.getItem('iclick_all_applications') || '[]');
+      let app = apps.find(a => a.appId === appId);
+      if (app) {
+        app.status = "Rejected";
+        localStorage.setItem('iclick_all_applications', JSON.stringify(apps));
+        alert(`Application for ${app.fullName} has been rejected.`);
+        renderAdminTables();
+      }
+    }
+
+    function acknowledgeService(email, service, reqId) {
+      alert(`Opening email client to acknowledge service inquiry from ${email}.`);
+      window.location.href = `mailto:${email}?subject=Acknowledgement of Service Inquiry - iClick Digital Ventures (${reqId})&body=Dear Client,%0D%0A%0D%0AWe have successfully received your request regarding ${service}. Our team is reviewing your project requirements and will contact you shortly.%0D%0A%0D%0ABest regards,%0D%0AiClick Digital Ventures`;
     }
   </script>
 </body>
-</html>
+  </html>
