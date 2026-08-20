@@ -100,11 +100,13 @@
     </div>
   </main>
 
+  <!-- Application Modal with Formspree Endpoint xwleaabe -->
   <div id="applyModal" class="hidden fixed inset-0 z-50 bg-brand-950/80 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="glass-card w-full max-w-lg p-8 rounded-3xl relative text-brand-50">
+    <div class="glass-card w-full max-w-lg p-8 rounded-3xl relative text-brand-50 shadow-2xl">
       <button onclick="closeApplyModal()" class="absolute top-4 right-4 text-brand-300 hover:text-white"><i data-lucide="x" class="w-6 h-6"></i></button>
       <h3 class="text-xl font-bold text-brand-50 mb-1">Service Engagement Application</h3>
       <p id="modalServiceName" class="text-xs text-brand-300 mb-6">Applying for: Selected Service</p>
+      
       <form action="https://formspree.io/f/xwleaabe" method="POST" class="space-y-4">
         <input type="hidden" id="selectedServiceInput" name="Selected_Service" value="">
         <div><label class="block text-xs font-medium text-brand-200 mb-1">Full Name / Official</label><input type="text" name="Full_Name" required class="w-full px-4 py-3 rounded-xl bg-brand-950 border border-brand-700 text-white text-xs focus:outline-none"></div>
@@ -139,4 +141,4 @@
     function closeApplyModal() { document.getElementById('applyModal').classList.add('hidden'); }
   </script>
 </body>
-        </html>
+</html>
