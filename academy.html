@@ -1,201 +1,304 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iclick Digital Academy</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css"> 
-    <link rel="stylesheet" href="academy.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iClick Digital Academy | Practical AI & Tech Talent Accelerator</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+          colors: {
+            brand: {
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              500: '#00a8cc',
+              600: '#0284c7',
+              700: '#0369a1',
+              dark: '#080e1a',
+              card: '#0f172a',
+              accent: '#38bdf8'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .glass-card {
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glow-cyan {
+      box-shadow: 0 0 40px -10px rgba(56, 189, 248, 0.25);
+    }
+    .glow-emerald {
+      box-shadow: 0 0 40px -10px rgba(16, 185, 129, 0.25);
+    }
+  </style>
 </head>
-<body class="academy-page">
+<body class="bg-[#050914] text-slate-100 min-h-screen flex flex-col antialiased">
 
-    <div id="auth-container" class="animate-on-scroll">
-        <div class="auth-modal-container">
-            <div class="auth-modal-logo">
-                <img src="images/logo.png" alt="i-Click Logo">
-            </div>
-            
-            <div class="auth-form-card active" id="initial-view">
-                <h3>Welcome!</h3>
-                <p style="text-align:center; margin-top: -15px; margin-bottom: 25px;">Sign in or create an account.</p>
-                <button type="button" id="google-signin-btn" class="btn btn-social">
-                    <svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18"><path d="M16.51 8.25H9.03V11.13H13.82C13.59 12.51 12.79 13.69 11.52 14.56V16.65H14.31C15.89 15.17 16.8 13.04 16.8 10.32C16.8 9.54 16.68 8.88 16.51 8.25Z" fill="#4285F4"></path><path d="M9.03 18C11.36 18 13.33 17.2 14.31 15.75L11.52 13.66C10.74 14.15 9.83 14.46 8.89 14.46C6.98 14.46 5.37 13.2 4.7 11.45L1.8 13.54C2.9 15.93 5.72 18 9.03 18Z" fill="#34A853"></path><path d="M4.7 11.45C4.5 10.9 4.43 10.32 4.43 9.73C4.43 9.14 4.5 8.56 4.7 8.01V5.92L1.8 3.83C0.66 6.02 0 8.57 0 11.23C0 13.89 0.66 16.44 1.8 18.63L4.7 16.54V11.45Z" fill="#FBBC05"></path><path d="M9.03 3.54C10.23 3.54 11.23 3.96 12.06 4.74L14.85 2C13.33 0.77 11.36 0 9.03 0C5.72 0 2.9 2.07 1.8 4.46L4.7 6.55C5.37 4.8 6.98 3.54 9.03 3.54Z" fill="#EA4335"></path></svg>
-                    Continue with Google
-                </button>
-                <button type="button" class="btn btn-secondary" data-show-view="phone-card">Continue with Phone</button>
-                <div class="form-divider"><span>or</span></div>
-                <p class="form-switcher-link">
-                    <button type="button" class="js-show-form" data-show-view="login-card">Continue with Email</button>
-                </p>
-            </div>
+  <!-- Top Announcement Bar -->
+  <div class="bg-[#080e1a] text-slate-300 text-xs py-2.5 px-4 border-b border-slate-800/80">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+      <div class="flex items-center space-x-3">
+        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-950/80 text-emerald-400 border border-emerald-800/60">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 mr-1.5 animate-pulse"></span> Cohort Admissions Open
+        </span>
+        <span class="hidden md:inline text-slate-400">• iClick Digital Academy • A Vertical of iClick Digital Ventures[cite: 1, 2]</span>
+      </div>
+      <div class="flex items-center space-x-4 text-xs">
+        <a href="mailto:iclickdigitalventures@gmail.com" class="hover:text-cyan-400 transition flex items-center gap-1.5 text-slate-300">
+          <i data-lucide="mail" class="w-3.5 h-3.5 text-cyan-400"></i> iclickdigitalventures@gmail.com[cite: 1, 2]
+        </a>
+      </div>
+    </div>
+  </div>
 
-            <div class="auth-form-card" id="login-card">
-                <h3>Login with Email</h3>
-                <form id="login-form" novalidate>
-                    <div class="form-group"><label for="login-email">Email</label><input type="email" id="login-email" required></div>
-                    <div class="form-group"><label for="login-password">Password</label><input type="password" id="login-password" required></div>
-                    <p class="form-link"><a href="#" id="forgot-password-link">Forgot password?</a></p>
-                    <button type="submit" class="btn btn-primary">Login</button>
-                    <p class="form-switcher-link">No account? <button type="button" class="js-show-form" data-show-view="signup-card">Sign Up</button></p>
-                    <p class="form-switcher-link" style="margin-top:10px;"><button type="button" class="js-show-form" data-show-view="initial-view">« Back to other options</button></p>
-                </form>
-            </div>
-            
-            <div class="auth-form-card" id="signup-card">
-                <h3>Create Account</h3>
-                <form id="signup-form" novalidate>
-                    <div class="form-group"><label for="signup-fullname">Full Name</label><input type="text" id="signup-fullname" required></div>
-                    <div class="form-group"><label for="signup-email">Email</label><input type="email" id="signup-email" required></div>
-                    <div class="form-group"><label for="signup-password">Password (min. 6 characters)</label><input type="password" id="signup-password" required></div>
-                    <button type="submit" class="btn btn-primary">Create Account</button>
-                    <p class="form-switcher-link">Already have an account? <button type="button" class="js-show-form" data-show-view="login-card">Log in</button></p>
-                </form>
-            </div>
-
-            <div class="auth-form-card" id="phone-card">
-                <h3>Enter Phone Number</h3>
-                <form id="phone-form">
-                    <div class="form-group"><label for="phone-number">Your number (e.g., +2348012345678)</label><input type="tel" id="phone-number" required></div>
-                    <button type="submit" class="btn btn-primary">Send Code</button>
-                    <p class="form-switcher-link"><button type="button" class="js-show-form" data-show-view="initial-view">Back</button></p>
-                    <div id="recaptcha-container"></div>
-                </form>
-            </div>
-
-            <div class="auth-form-card" id="code-card">
-                <h3>Enter Verification Code</h3>
-                <form id="code-form">
-                    <div class="form-group"><label for="verification-code">6-Digit Code</label><input type="text" id="verification-code" required></div>
-                    <button type="submit" class="btn btn-primary">Verify & Sign In</button>
-                </form>
-            </div>
+  <!-- Navigation -->
+  <nav class="bg-[#080e1a]/90 backdrop-blur-md sticky top-0 z-50 border-b border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
+      <a href="index.html" class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-500 to-cyan-600 flex items-center justify-center text-slate-950 font-black text-xl shadow-lg shadow-emerald-500/20">
+          iC
         </div>
+        <div>
+          <span class="text-xl font-extrabold text-white tracking-tight block leading-none">iClick</span>
+          <span class="text-[10px] font-bold text-emerald-400 tracking-widest uppercase block mt-0.5">Digital Academy[cite: 1, 2]</span>
+        </div>
+      </a>
+
+      <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
+        <a href="index.html" class="hover:text-cyan-400 transition">Holding Home</a>
+        <a href="#tracks" class="hover:text-emerald-400 transition">Tracks & Fees</a>
+        <a href="#curriculum" class="hover:text-emerald-400 transition">Curriculum</a>
+        <a href="#verify" class="hover:text-emerald-400 transition">Verify Certificate</a>
+        <a href="about.html" class="hover:text-cyan-400 transition">About</a>
+      </div>
+
+      <div class="flex items-center space-x-3">
+        <a href="#lms-login" onclick="openLoginModal()" class="hidden sm:inline-flex px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs font-semibold border border-slate-700 transition flex items-center gap-1.5">
+          <i data-lucide="lock" class="w-3.5 h-3.5 text-cyan-400"></i>
+          <span>Student LMS Login</span>
+        </a>
+        <a href="#enroll" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 font-bold text-xs uppercase tracking-wider shadow-lg shadow-emerald-500/20 transition flex items-center gap-1.5">
+          <span>Enroll Now</span>
+          <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="relative overflow-hidden py-20 sm:py-28 border-b border-slate-800/80 text-center">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_0%,rgba(16,185,129,0.15),transparent)]"></div>
+    <div class="relative max-w-5xl mx-auto px-4 z-10">
+      
+      <span class="px-4 py-1.5 rounded-full bg-emerald-950/70 border border-emerald-700/40 text-emerald-300 text-xs font-semibold uppercase tracking-wider inline-block mb-6">
+        🚀 High-Impact Practical Cohorts & Executive Upskilling[cite: 5, 20]
+      </span>
+
+      <h1 class="text-4xl sm:text-6xl font-black tracking-tight text-white leading-tight">
+        Master Real-World <span class="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-cyan-400 to-blue-400">No-Code & AI Systems</span>
+      </h1>
+
+      <p class="mt-6 text-base sm:text-lg text-slate-300 max-w-2xl mx-auto font-light leading-relaxed">
+        Bridge the gap between theoretical knowledge and practical market execution. Build functional client systems, automate business workflows, and qualify for live ecosystem projects[cite: 1, 2, 3].
+      </p>
+
+      <div class="mt-8 flex flex-wrap justify-center gap-4 text-xs font-medium text-slate-300">
+        <span class="flex items-center gap-1.5 bg-slate-900/60 px-3 py-1.5 rounded-lg border border-slate-800">
+          <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i> Zero Coding Required[cite: 24]
+        </span>
+        <span class="flex items-center gap-1.5 bg-slate-900/60 px-3 py-1.5 rounded-lg border border-slate-800">
+          <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i> 4 Capstone Portfolio Projects[cite: 24]
+        </span>
+        <span class="flex items-center gap-1.5 bg-slate-900/60 px-3 py-1.5 rounded-lg border border-slate-800">
+          <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i> Direct Ecosystem Internship Pathway[cite: 3, 20]
+        </span>
+      </div>
+
+      <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="#enroll" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 font-extrabold text-xs uppercase tracking-wider shadow-lg shadow-emerald-500/25 transition flex items-center justify-center gap-2">
+          <span>Apply for Next Cohort</span>
+          <i data-lucide="arrow-down" class="w-4 h-4"></i>
+        </a>
+        <a href="#curriculum" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs uppercase tracking-wider border border-slate-700 transition flex items-center justify-center gap-2">
+          <span>Download Syllabus Breakdown</span>
+          <i data-lucide="book-open" class="w-4 h-4 text-emerald-400"></i>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Value Highlights Bar -->
+  <section class="bg-[#080e1a]/60 border-b border-slate-800 py-10">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-6 text-left">
+      <div class="glass-card p-4 rounded-2xl">
+        <div class="text-emerald-400 mb-1"><i data-lucide="cpu" class="w-5 h-5"></i></div>
+        <div class="text-xs font-bold text-white">Make.com & Zapier[cite: 1, 2]</div>
+        <div class="text-[11px] text-slate-400">Automated Middleware[cite: 5, 20]</div>
+      </div>
+      <div class="glass-card p-4 rounded-2xl">
+        <div class="text-cyan-400 mb-1"><i data-lucide="database" class="w-5 h-5"></i></div>
+        <div class="text-xs font-bold text-white">Airtable & Notion[cite: 1, 2]</div>
+        <div class="text-[11px] text-slate-400">Relational Database Systems[cite: 5, 20]</div>
+      </div>
+      <div class="glass-card p-4 rounded-2xl">
+        <div class="text-emerald-400 mb-1"><i data-lucide="message-square" class="w-5 h-5"></i></div>
+        <div class="text-xs font-bold text-white">WhatsApp Cloud API[cite: 9, 20]</div>
+        <div class="text-[11px] text-slate-400">Conversational Business Bots[cite: 5, 20]</div>
+      </div>
+      <div class="glass-card p-4 rounded-2xl">
+        <div class="text-cyan-400 mb-1"><i data-lucide="award" class="w-5 h-5"></i></div>
+        <div class="text-xs font-bold text-white">Live Apprenticeship[cite: 5, 20]</div>
+        <div class="text-[11px] text-slate-400">Top 5% Cohort Placement[cite: 3, 20]</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Specialized Tracks Section -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 flex-1 space-y-20">
+
+    <div id="tracks">
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest">Certified Cohorts[cite: 24]</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-1">Select Your Learning Track[cite: 24]</h2>
+        <p class="text-xs sm:text-sm text-slate-400 mt-2">Choose between student accelerator bootcamps, institutional records mastery, or executive masterclasses[cite: 5, 20].</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Track 1: AI Automation & No-Code -->
+        <div class="glass-card rounded-3xl p-8 flex flex-col justify-between border border-slate-800 hover:border-emerald-500/40 transition glow-emerald">
+          <div>
+            <div class="flex justify-between items-center mb-3">
+              <span class="text-xs font-bold px-2.5 py-1 rounded bg-emerald-950 text-emerald-400 border border-emerald-800">Track 01[cite: 24]</span>
+              <span class="text-xs text-slate-400">6 Weeks[cite: 24]</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">AI Automation & No-Code Engineering[cite: 24]</h3>
+            <p class="text-xs text-slate-400 leading-relaxed mb-6">Build end-to-end automation pipelines, lead capture bots, and automated CRM architectures for commercial clients[cite: 5, 20].</p>
+            
+            <div class="space-y-2.5 text-xs text-slate-300 border-t border-slate-800/80 pt-4 mb-6">
+              <div class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Make.com & Webhook Automations[cite: 1, 2]</div>
+              <div class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Airtable CRM & Relational Databases[cite: 1, 2]</div>
+              <div class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> WhatsApp Business Cloud API Integration[cite: 5, 20]</div>
+              <div class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> 4 Real-World Client Projects[cite: 24]</div>
+            </div>
+          </div>
+          <div>
+            <div class="text-2xl font-black text-white mb-4">₦45,000 <span class="text-xs font-normal text-slate-400">/ cohort tuition[cite: 24]</span></div>
+            <button onclick="selectTrack('AI Automation & No-Code Engineering', '₦45,000')" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 font-black text-xs uppercase tracking-wider transition shadow-md">
+              Enroll This Track[cite: 24]
+            </button>
+          </div>
+        </div>
+
+        <!-- Track 2: Digital Office & Registry Records -->
+        <div class="glass-card rounded-3xl p-8 flex flex-col justify-between border border-slate-800 hover:border-cyan-500/40 transition">
+          <div>
+            <div class="flex justify-between items-center mb-3">
+              <span class="text-xs font-bold px-2.5 py-1 rounded bg-cyan-950 text-cyan-400 border border-cyan-800">Track 02[cite: 24]</span>
+              <span class="text-xs text-slate-400">4 Weeks[cite: 24]</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">Digital Office & Electronic Records[cite: 24]</h3>
+            <p class="text-xs text-slate-400 leading-relaxed mb-6">Designed for administrative officers and registry staff to transition legacy paper filing into secure digital registries[cite: 1, 2].</p>
+            
+            <div class="space-y-2.5 text-xs text-slate-300 border-t border-slate-800/80 pt-4 mb-6">
+              <div class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-cyan-400"></i> Archival Document Scanning & OCR[cite: 5, 20]</div>
+              <div class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-cyan-400"></i> QR Barcode Memo & File Tracking[cite: 5, 20]</div>
+              <div class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-cyan-400"></i> Cloud Records Compliance & Security[cite: 5, 20]</div>
+              <div class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-cyan-400"></i> Electronic Registry Certification[cite: 24]</div>
+            </div>
+          </div>
+          <div>
+            <div class="text-2xl font-black text-white mb-4">₦35,000 <span class="text-xs font-normal text-slate-400">/ cohort tuition[cite: 24]</span></div>
+            <button onclick="selectTrack('Digital Office & Electronic Records', '₦35,000')" class="w-full py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs uppercase tracking-wider border border-slate-700 transition">
+              Enroll This Track[cite: 24]
+            </button>
+          </div>
+        </div>
+
+        <!-- Track 3: Executive Enterprise AI Masterclass -->
+        <div class="glass-card rounded-3xl p-8 flex flex-col justify-between border border-slate-800 hover:border-purple-500/40 transition">
+          <div>
+            <div class="flex justify-between items-center mb-3">
+              <span class="text-xs font-bold px-2.5 py-1 rounded bg-purple-950 text-purple-400 border border-purple-800">Track 03[cite: 24]</span>
+              <span class="text-xs text-slate-400">3-Day Intensive[cite: 24]</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">Executive Enterprise AI Masterclass[cite: 24]</h3>
+            <p class="text-xs text-slate-400 leading-relaxed mb-6">Tailored for corporate executives, department heads, and managers to maximize institutional productivity with AI[cite: 1, 2, 24].</p>
+            
+            <div class="space-y-2.5 text-xs text-slate-300 border-t border-slate-800/80 pt-4 mb-6">
+              <div class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-purple-400"></i> AI Tools for Executive Strategy[cite: 1, 2, 24]</div>
+              <div class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-purple-400"></i> Organizational Workflow Auditing[cite: 5, 20]</div>
+              <div class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-purple-400"></i> 1-on-1 Systems Architecture Plan[cite: 24]</div>
+              <div class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-purple-400"></i> Executive Leadership Certification[cite: 1, 2, 24]</div>
+            </div>
+          </div>
+          <div>
+            <div class="text-2xl font-black text-white mb-4">₦75,000 <span class="text-xs font-normal text-slate-400">/ executive seat[cite: 24]</span></div>
+            <button onclick="selectTrack('Executive Enterprise AI Masterclass', '₦75,000')" class="w-full py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs uppercase tracking-wider border border-slate-700 transition">
+              Enroll This Track[cite: 24]
+            </button>
+          </div>
+        </div>
+
+      </div>
     </div>
 
-    <div id="user-profile" class="hidden">
+    <!-- Curriculum Syllabus Breakdown -->
+    <div id="curriculum" class="glass-card rounded-3xl p-8 sm:p-12 border border-slate-800">
+      <div class="text-center max-w-xl mx-auto mb-10">
+        <span class="text-xs font-bold text-cyan-400 uppercase tracking-widest">Outcome-Based Syllabus[cite: 1, 2]</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">6-Week Curriculum Blueprint[cite: 20]</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs">
+        <div class="p-5 rounded-2xl bg-slate-900/70 border border-slate-800">
+          <span class="text-emerald-400 font-bold block mb-1">Week 01–02: Foundation & Data</span>
+          <h4 class="text-white font-bold text-sm mb-2">Relational Architecture (Airtable)[cite: 1, 2]</h4>
+          <p class="text-slate-400 leading-relaxed">Designing production databases, entity relationships, views, formula fields, and role-based permissions[cite: 9, 20].</p>
         </div>
 
-    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
-    
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        const firebaseConfig = {
-            apiKey: "AIzaSyD2RlsEkK-mMGq4DpnOZxxO2ITE_Izptk4",
-            authDomain: "iclick-digital-academy-6d856.firebaseapp.com",
-            projectId: "iclick-digital-academy-6d856",
-            storageBucket: "iclick-digital-academy-6d856.appspot.com",
-            messagingSenderId: "1055517177266",
-            appId: "1:1055517177266:web:90b469d6b206f873ff60ab"
-        };
-        firebase.initializeApp(firebaseConfig);
-        const auth = firebase.auth();
-        const db = firebase.firestore();
+        <div class="p-5 rounded-2xl bg-slate-900/70 border border-slate-800">
+          <span class="text-cyan-400 font-bold block mb-1">Week 03–04: Workflow Middleware</span>
+          <h4 class="text-white font-bold text-sm mb-2">No-Code Pipelines (Make.com)[cite: 1, 2]</h4>
+          <p class="text-slate-400 leading-relaxed">Configuring webhooks, API modules, error routers, PDF generation engines, and automated billing notifications[cite: 5, 20].</p>
+        </div>
 
-        const authContainer = document.getElementById('auth-container');
-        const userProfileSection = document.getElementById('user-profile');
-        const formContainer = document.querySelector('.auth-modal-container');
-        
-        const showView = (viewId) => {
-            if (!formContainer) return;
-            formContainer.querySelectorAll('.auth-form-card').forEach(card => card.classList.remove('active'));
-            document.getElementById(viewId)?.classList.add('active');
-        };
+        <div class="p-5 rounded-2xl bg-slate-900/70 border border-slate-800">
+          <span class="text-purple-400 font-bold block mb-1">Week 05–06: AI Interfaces & Deployment</span>
+          <h4 class="text-white font-bold text-sm mb-2">WhatsApp Bots & Capstones[cite: 5, 20]</h4>
+          <p class="text-slate-400 leading-relaxed">Connecting OpenAI API to WhatsApp Cloud API, running 50-point UAT testing, and delivering live capstone client projects[cite: 9, 20].</p>
+        </div>
+      </div>
+    </div>
 
-        formContainer.addEventListener('click', (e) => {
-            const target = e.target.closest('[data-show-view]');
-            if(target) showView(target.dataset.showView);
-        });
+    <!-- Student Enrollment & Payment Form -->
+    <div id="enroll" class="max-w-3xl mx-auto glass-card rounded-3xl p-8 sm:p-12 border border-slate-700 glow-cyan">
+      <div class="text-center mb-8">
+        <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest">Student Intake Portal[cite: 24]</span>
+        <h3 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Complete Your Admission Registration[cite: 24]</h3>
+        <p class="text-xs text-slate-400 mt-2">Fill the admission form below. Your application is recorded instantly in the student database[cite: 24].</p>
+      </div>
 
-        auth.onAuthStateChanged(user => {
-            const isVerified = user ? (user.emailVerified || user.providerData.some(p => p.providerId !== 'password')) : false;
-            if (user && isVerified) {
-                authContainer.style.display = 'none';
-                userProfileSection.classList.remove('hidden');
-            } else {
-                authContainer.style.display = 'block';
-                userProfileSection.classList.add('hidden');
-                showView('initial-view');
-            }
-        });
-
-        // --- AUTHENTICATION LOGIC ---
-        // Email/Pass Sign-up
-        document.getElementById('signup-form').addEventListener('submit', e => {
-            e.preventDefault();
-            const fullName = document.getElementById('signup-fullname').value;
-            const email = document.getElementById('signup-email').value;
-            const password = document.getElementById('signup-password').value;
-            auth.createUserWithEmailAndPassword(email, password)
-                .then(cred => {
-                    cred.user.sendEmailVerification();
-                    db.collection('users').doc(cred.user.uid).set({ fullName, email });
-                    alert("Account created! Please check your email for a verification link.");
-                    showView('login-card');
-                }).catch(err => alert(err.message));
-        });
-
-        // Email/Pass Login
-        document.getElementById('login-form').addEventListener('submit', e => {
-            e.preventDefault();
-            const email = document.getElementById('login-email').value;
-            const password = document.getElementById('login-password').value;
-            auth.signInWithEmailAndPassword(email, password).then(cred => {
-                if (!cred.user.emailVerified) {
-                    auth.signOut();
-                    alert("Please verify your email before logging in.");
-                }
-            }).catch(err => alert(err.message));
-        });
-
-        // Google Sign-in
-        document.getElementById('google-signin-btn').addEventListener('click', () => {
-            const provider = new firebase.auth.GoogleAuthProvider();
-            auth.signInWithPopup(provider).then(result => {
-                if (result.additionalUserInfo.isNewUser) {
-                    db.collection('users').doc(result.user.uid).set({
-                        fullName: result.user.displayName, email: result.user.email
-                    });
-                }
-            }).catch(err => alert(err.message));
-        });
-
-        // Phone Sign-in
-        document.getElementById('phone-form').addEventListener('submit', e => {
-            e.preventDefault();
-            window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', { 'size': 'invisible' });
-            auth.signInWithPhoneNumber(document.getElementById('phone-number').value, window.recaptchaVerifier)
-                .then(confirmationResult => {
-                    window.confirmationResult = confirmationResult;
-                    showView('code-card');
-                }).catch(err => alert(err.message));
-        });
-
-        // Verify SMS Code
-        document.getElementById('code-form').addEventListener('submit', e => {
-            e.preventDefault();
-            window.confirmationResult.confirm(document.getElementById('verification-code').value)
-            .then(result => {
-                if (result.additionalUserInfo.isNewUser) {
-                    db.collection('users').doc(result.user.uid).set({
-                        fullName: "Phone User", phone: result.user.phoneNumber
-                    });
-                }
-            }).catch(err => alert("Invalid code."));
-        });
-
-        // Forgot Password
-        document.getElementById('forgot-password-link').addEventListener('click', (e) => {
-            e.preventDefault();
-            const email = document.getElementById('login-email').value;
-            if (!email) return alert("Please enter your email first.");
-            auth.sendPasswordResetEmail(email)
-                .then(() => alert("Password reset email sent!"))
-                .catch(err => alert(err.message));
-        });
-      });
-    </script>
-</body>
-</html>
+      <form id="enrollmentForm" onsubmit="handleEnrollment(event)" class="space-y-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-medium text-slate-300 mb-1">Full Legal Name</label>
+            <input id="studentName" type="text" required placeholder="Muhammad Yasin Ibrahim" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:ring-2 focus:ring-emerald-400 focus:outline-none placeholder-slate-500">
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-slate-300 mb-1">Official Email Address</label>
+            <input id="studentEmail" type="email" required placeholder="student@example.com" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:ring-2 focus:ring-emerald-400 focus:outline-none 
