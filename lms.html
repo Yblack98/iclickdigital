@@ -68,7 +68,7 @@
     <div id="lmsLoginCard" class="glass-card text-brand-50 rounded-3xl p-8 sm:p-10 shadow-xl space-y-6">
       <div class="text-center">
         <h3 class="text-xl font-bold mb-1">Student LMS Portal Sign In</h3>
-        <p class="text-xs text-brand-300">Enter your registered email and the temporary password sent with your admin acceptance offer.</p>
+        <p class="text-xs text-brand-300">Enter your registered email and temporary password sent with your admission offer.</p>
       </div>
       <form onsubmit="handleLmsLogin(event)" class="space-y-4">
         <div>
@@ -76,21 +76,22 @@
           <input type="email" id="lmsEmail" required class="w-full px-4 py-3 rounded-xl bg-brand-950 border border-brand-700 text-white text-xs focus:outline-none">
         </div>
         <div>
-          <label class="block text-xs font-medium text-brand-200 mb-1">Temporary Password (from Admin Offer Letter)</label>
+          <label class="block text-xs font-medium text-brand-200 mb-1">Password</label>
           <input type="password" id="lmsPassword" required class="w-full px-4 py-3 rounded-xl bg-brand-950 border border-brand-700 text-white text-xs focus:outline-none">
         </div>
         <button type="submit" class="w-full py-3.5 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold text-xs uppercase tracking-wider transition shadow-md">Sign In to LMS Dashboard</button>
       </form>
-      <div class="text-center">
-        <a href="academy.html" class="text-xs text-brand-400 hover:text-brand-200 transition">Don't have an account? Apply via Digital Academy →</a>
+      <div class="flex justify-between items-center text-xs pt-2 border-t border-brand-800">
+        <a href="#" onclick="openForgotPasswordModal()" class="text-brand-300 hover:underline">Forgot Password?</a>
+        <a href="academy.html" class="text-brand-400 hover:text-brand-200">Apply via Academy →</a>
       </div>
     </div>
 
-    <!-- Student Dashboard View (Initially Hidden, Unlocked Upon Valid Login) -->
-    <div id="lmsDashboardCard" class="hidden glass-card text-brand-50 rounded-3xl p-8 sm:p-10 text-center shadow-xl space-y-6">
+    <!-- Student Dashboard View (Unlocked Upon Valid Login) -->
+    <div id="lmsDashboardCard" class="hidden glass-card text-brand-50 rounded-3xl p-8 sm:p-10 shadow-xl space-y-6">
       <div>
         <h3 id="lmsGreeting" class="text-2xl font-bold mb-1">Welcome back!</h3>
-        <p id="lmsStatusMsg" class="text-xs text-brand-200">Your admission is approved. Access your live session and course modules below:</p>
+        <p class="text-xs text-brand-200">Access your live session, course materials, and account settings below:</p>
       </div>
       <div class="p-6 rounded-2xl bg-brand-950 border border-brand-800 text-left space-y-4">
         <div>
@@ -98,20 +99,50 @@
           <span id="studentAssignedCourse" class="text-white text-sm font-semibold"></span>
         </div>
         <div>
-          <strong class="text-brand-300 block text-xs uppercase">Active Live Zoom Link & Modules:</strong>
+          <strong class="text-brand-300 block text-xs uppercase">Active Live Zoom Link:</strong>
           <a href="https://zoom.us" target="_blank" class="text-brand-300 underline text-sm block mt-1 hover:text-white transition">Join Live Zoom Lecture Room →</a>
         </div>
       </div>
-      <button onclick="lmsLogout()" class="px-6 py-2.5 rounded-xl bg-brand-800 hover:bg-brand-700 text-brand-200 text-xs font-bold transition">Sign Out</button>
+
+      <!-- Update Password Section -->
+      <div class="p-6 rounded-2xl bg-brand-900 border border-brand-800 text-left space-y-4">
+        <h4 class="text-sm font-bold text-white">Update Your Account Password</h4>
+        <form onsubmit="handlePasswordUpdate(event)" class="space-y-3">
+          <div>
+            <label class="block text-xs font-medium text-brand-200 mb-1">New Password</label>
+            <input type="password" id="newPasswordInput" required placeholder="Enter new password" class="w-full px-4 py-2.5 rounded-xl bg-brand-950 border border-brand-700 text-white text-xs focus:outline-none">
+          </div>
+          <button type="submit" class="w-full py-2.5 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold text-xs uppercase transition">Save New Password</button>
+        </form>
+      </div>
+
+      <button onclick="lmsLogout()" class="w-full py-2.5 rounded-xl bg-brand-800 hover:bg-brand-700 text-brand-200 text-xs font-bold transition">Sign Out</button>
     </div>
 
   </main>
+
+  <!-- Forgot Password Request Modal -->
+  <div id="forgotPasswordModal" class="hidden fixed inset-0 z-50 bg-brand-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="glass-card w-full max-w-md p-8 rounded-3xl relative text-brand-50 shadow-2xl space-y-4">
+      <button onclick="closeForgotPasswordModal()" class="absolute top-4 right-4 text-brand-300 hover:text-white"><i data-lucide="x" class="w-6 h-6"></i></button>
+      <h3 class="text-xl font-bold text-brand-50 mb-1">Password Recovery</h3>
+      <p class="text-xs text-brand-300">Enter your registered Email or Phone Number. Since submissions are handled via direct dispatch, this will prompt an email request to admin for an auto-generated reset code.</p>
+      
+      <form onsubmit="submitPasswordRecovery(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-medium text-brand-200 mb-1">Registered Email or Phone</label>
+          <input type="text" id="recoveryIdentifier" required placeholder="email@domain.com or phone" class="w-full px-4 py-3 rounded-xl bg-brand-950 border border-brand-700 text-white text-xs focus:outline-none">
+        </div>
+        <button type="submit" class="w-full py-3.5 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold text-xs uppercase tracking-wider transition">Request Reset Code from Admin</button>
+      </form>
+    </div>
+  </div>
 
   <footer class="bg-brand-900 border-t border-brand-800 text-xs text-brand-300 py-10 mt-auto">
     <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
       <div>
         <span class="font-bold text-brand-50 text-sm">iClick Digital Ventures</span>
-        <p class="text-[11px] text-brand-400 mt-0.5">CAC Reg No: BN 9772940 • Abuja, Federal Capital Territory, Nigeria[cite: 1]</p>
+        <p class="text-[11px] text-brand-400 mt-0.5">CAC Reg No: BN 9772940 • Abuja, Federal Capital Territory, Nigeria</p>
       </div>
       <div class="flex flex-wrap justify-center gap-6 text-[11px]">
         <a href="index.html" class="hover:text-brand-100 transition">Home</a>
@@ -121,12 +152,14 @@
         <a href="about.html" class="hover:text-brand-100 transition">About</a>
       </div>
     </div>
-    <div class="max-w-7xl mx-auto px-4 mt-6 pt-4 border-t border-brand-950 text-center text-[10px] text-brand-500">&copy; 2026 iClick Digital Ventures. All rights reserved. • iclickdigitalventures@gmail.com[cite: 1]</div>
+    <div class="max-w-7xl mx-auto px-4 mt-6 pt-4 border-t border-brand-950 text-center text-[10px] text-brand-500">&copy; 2026 iClick Digital Ventures. All rights reserved. • iclickdigitalventures@gmail.com</div>
   </footer>
 
   <script>
     lucide.createIcons();
     function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('hidden'); }
+    function openForgotPasswordModal() { document.getElementById('forgotPasswordModal').classList.remove('hidden'); }
+    function closeForgotPasswordModal() { document.getElementById('forgotPasswordModal').classList.add('hidden'); }
 
     function handleLmsLogin(e) {
       e.preventDefault();
@@ -137,21 +170,46 @@
       const record = apps.find(a => a.email.toLowerCase() === email);
 
       if (!record) {
-        alert("No registration record found for this email address. Please apply via Academy first.");
+        alert("No registration record found for this email address.");
         return;
       }
       if (record.status !== "Accepted") {
-        alert("Your application is currently Pending Review or was not accepted. LMS access is locked until admin approval.");
+        alert("Your application is currently Pending Review. LMS access is locked until admin approval.");
         return;
       }
       if (record.tempPassword && pass !== record.tempPassword) {
-        alert("Incorrect temporary password. Please check the acceptance offer email sent by admin.");
+        alert("Incorrect password. Please check your acceptance offer or use password recovery.");
         return;
       }
 
-      // Valid Login
       localStorage.setItem('iclick_current_student', email);
       loadLmsDashboard(record);
+    }
+
+    function handlePasswordUpdate(e) {
+      e.preventDefault();
+      const newPass = document.getElementById('newPasswordInput').value;
+      const currentEmail = localStorage.getItem('iclick_current_student');
+
+      let apps = JSON.parse(localStorage.getItem('iclick_all_applications') || '[]');
+      const idx = apps.findIndex(a => a.email.toLowerCase() === currentEmail.toLowerCase());
+
+      if (idx !== -1) {
+        apps[idx].tempPassword = newPass;
+        localStorage.setItem('iclick_all_applications', JSON.stringify(apps));
+        alert("Password updated successfully! Your new password is now active.");
+        document.getElementById('newPasswordInput').value = "";
+      } else {
+        alert("Session error. Please log in again.");
+      }
+    }
+
+    function submitPasswordRecovery(e) {
+      e.preventDefault();
+      const val = document.getElementById('recoveryIdentifier').value.trim();
+      alert(`Password recovery request initiated for: ${val}. Opening your email client to notify admin for an auto-generated reset code.`);
+      window.location.href = `mailto:iclickdigitalventures@gmail.com?subject=Password Recovery Request - ${val}&body=Student Identifier: ${val}%0D%0APlease generate and send a reset code to this student.`;
+      closeForgotPasswordModal();
     }
 
     function loadLmsDashboard(record) {
@@ -178,4 +236,4 @@
     };
   </script>
 </body>
-      </html>
+</html>
