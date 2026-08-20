@@ -34,12 +34,11 @@
   <style>
     body { font-family: 'Plus Jakarta Sans', sans-serif; }
     .glass-card { background: #2d1810; border: 1px solid rgba(212, 163, 115, 0.2); }
-    .glow-brown { box-shadow: 0 10px 30px -10px rgba(45, 24, 16, 0.15); }
   </style>
 </head>
 <body class="bg-brand-50 text-brand-900 min-h-screen flex flex-col antialiased">
 
-  <!-- Navigation with Mobile Dropdown -->
+  <!-- Navigation -->
   <nav class="bg-brand-50/90 backdrop-blur-md sticky top-0 z-50 border-b border-brand-200 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
       <a href="index.html" class="flex items-center space-x-3">
@@ -81,11 +80,6 @@
       <a href="about.html" class="block px-3 py-2 rounded-lg text-sm hover:bg-brand-800">About</a>
       <a href="lms.html" class="block px-3 py-2 rounded-lg text-sm text-brand-300 font-semibold hover:bg-brand-800">Student LMS</a>
       <a href="admin.html" class="block px-3 py-2 rounded-lg text-sm text-brand-400 hover:bg-brand-800">Admin Portal</a>
-      <div class="pt-2">
-        <a href="services.html#contact" class="block text-center w-full py-3 rounded-xl bg-brand-300 text-brand-950 font-bold text-xs uppercase tracking-wider">
-          Request Audit
-        </a>
-      </div>
     </div>
   </nav>
 
@@ -112,7 +106,7 @@
     </div>
   </header>
 
-  <!-- Clean Single Footer -->
+  <!-- Footer -->
   <footer class="bg-brand-900 border-t border-brand-800 text-xs text-brand-300 py-10 mt-auto">
     <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
       <div>
@@ -134,9 +128,7 @@
 
   <script>
     lucide.createIcons();
-    function toggleMobileMenu() {
-      document.getElementById('mobileMenu').classList.toggle('hidden');
-    }
+    function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('hidden'); }
   </script>
 </body>
 </html>
