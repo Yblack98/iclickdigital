@@ -67,53 +67,52 @@
     </div>
   </nav>
 
-  <header class="py-20 border-b border-brand-200 text-center relative overflow-hidden">
+  <header class="py-20 border-b border-brand-200 text-center">
     <div class="max-w-4xl mx-auto px-4">
-      <span class="px-4 py-1.5 rounded-full bg-brand-200 text-brand-800 text-xs font-semibold uppercase tracking-wider inline-block mb-4">Capabilities & Subsidiary Offerings</span>
-      <h1 class="text-4xl sm:text-6xl font-black text-brand-900 tracking-tight leading-tight">Integrated Digital Solutions for <span class="text-brand-600">Scale & Governance</span></h1>
+      <span class="px-4 py-1.5 rounded-full bg-brand-200 text-brand-800 text-xs font-semibold uppercase tracking-wider inline-block mb-4">Our Offerings</span>
+      <h1 class="text-4xl sm:text-6xl font-black text-brand-900 tracking-tight leading-tight">Professional Services & Solutions</h1>
     </div>
   </header>
 
   <main class="max-w-6xl mx-auto px-4 py-16 space-y-12 flex-1 w-full">
-    <div id="govtech" class="glass-card text-brand-50 rounded-3xl p-8 sm:p-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+    <div class="glass-card text-brand-50 rounded-3xl p-8 sm:p-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
       <div>
         <h2 class="text-2xl font-bold text-brand-50 mb-2">iClick GovTech Solutions</h2>
-        <p class="text-xs sm:text-sm text-brand-200 max-w-2xl leading-relaxed">Modernizing judicial administrative workflows, registry paperwork, and inter-departmental memo tracking without disrupting statutory civil service procedures.</p>
+        <p class="text-xs sm:text-sm text-brand-200 max-w-2xl leading-relaxed">Modernizing judicial administrative workflows, registry paperwork, and inter-departmental memo tracking.</p>
       </div>
-      <button onclick="openApplyModal('GovTech Institutional Modernization')" class="px-5 py-3 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold text-xs uppercase tracking-wider transition whitespace-nowrap">Apply & Connect →</button>
+      <button onclick="openApplyModal('GovTech Institutional Modernization')" class="px-5 py-3 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold text-xs uppercase tracking-wider transition whitespace-nowrap">Request Service →</button>
     </div>
 
-    <div id="ai" class="glass-card text-brand-50 rounded-3xl p-8 sm:p-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+    <div class="glass-card text-brand-50 rounded-3xl p-8 sm:p-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
       <div>
         <h2 class="text-2xl font-bold text-brand-50 mb-2">iClick AI Automation</h2>
-        <p class="text-xs sm:text-sm text-brand-200 max-w-2xl leading-relaxed">Eliminating repetitive human tasks, manual spreadsheets, and customer delays with automated CRM architectures and API integrations.</p>
+        <p class="text-xs sm:text-sm text-brand-200 max-w-2xl leading-relaxed">Eliminating repetitive manual tasks with automated CRM architectures and WhatsApp Cloud API pipelines.</p>
       </div>
-      <button onclick="openApplyModal('AI Automation Pipeline')" class="px-5 py-3 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold text-xs uppercase tracking-wider transition whitespace-nowrap">Apply & Connect →</button>
+      <button onclick="openApplyModal('AI Automation Pipeline')" class="px-5 py-3 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold text-xs uppercase tracking-wider transition whitespace-nowrap">Request Service →</button>
     </div>
 
-    <div id="iot" class="glass-card text-brand-50 rounded-3xl p-8 sm:p-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+    <div class="glass-card text-brand-50 rounded-3xl p-8 sm:p-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
       <div>
-        <h2 class="text-2xl font-bold text-brand-50 mb-2">iClick IoT & Digital Accessories</h2>
-        <p class="text-xs sm:text-sm text-brand-200 max-w-2xl leading-relaxed">Direct wholesale supply of enterprise IT hardware, high-speed document scanners, and smart building automation systems.</p>
+        <h2 class="text-2xl font-bold text-brand-50 mb-2">iClick IoT & Hardware Accessories</h2>
+        <p class="text-xs sm:text-sm text-brand-200 max-w-2xl leading-relaxed">Direct wholesale supply of enterprise IT hardware, high-speed document scanners, and biometric access setups.</p>
       </div>
-      <button onclick="openApplyModal('IoT & Hardware Procurement')" class="px-5 py-3 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold text-xs uppercase tracking-wider transition whitespace-nowrap">Apply & Connect →</button>
+      <button onclick="openApplyModal('IoT & Hardware Procurement')" class="px-5 py-3 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold text-xs uppercase tracking-wider transition whitespace-nowrap">Request Service →</button>
     </div>
   </main>
 
-  <!-- Application Modal with Formspree Endpoint xwleaabe -->
+  <!-- Formspree Request Modal -->
   <div id="applyModal" class="hidden fixed inset-0 z-50 bg-brand-950/80 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="glass-card w-full max-w-lg p-8 rounded-3xl relative text-brand-50 shadow-2xl">
       <button onclick="closeApplyModal()" class="absolute top-4 right-4 text-brand-300 hover:text-white"><i data-lucide="x" class="w-6 h-6"></i></button>
-      <h3 class="text-xl font-bold text-brand-50 mb-1">Service Engagement Application</h3>
-      <p id="modalServiceName" class="text-xs text-brand-300 mb-6">Applying for: Selected Service</p>
-      
-      <form action="https://formspree.io/f/xwleaabe" method="POST" class="space-y-4">
+      <h3 class="text-xl font-bold text-brand-50 mb-1">Request Service Engagement</h3>
+      <p id="modalServiceName" class="text-xs text-brand-300 mb-6">Service: Selected</p>
+      <form action="https://formspree.io/f/xwleaabe" method="POST" onsubmit="handleServiceRequest(event)" class="space-y-4">
         <input type="hidden" id="selectedServiceInput" name="Selected_Service" value="">
-        <div><label class="block text-xs font-medium text-brand-200 mb-1">Full Name / Official</label><input type="text" name="Full_Name" required class="w-full px-4 py-3 rounded-xl bg-brand-950 border border-brand-700 text-white text-xs focus:outline-none"></div>
-        <div><label class="block text-xs font-medium text-brand-200 mb-1">Email Address</label><input type="email" name="_replyto" required class="w-full px-4 py-3 rounded-xl bg-brand-950 border border-brand-700 text-white text-xs focus:outline-none"></div>
+        <div><label class="block text-xs font-medium text-brand-200 mb-1">Full Name / Official</label><input type="text" id="reqName" name="Full_Name" required class="w-full px-4 py-3 rounded-xl bg-brand-950 border border-brand-700 text-white text-xs focus:outline-none"></div>
+        <div><label class="block text-xs font-medium text-brand-200 mb-1">Email Address</label><input type="email" id="reqEmail" name="_replyto" required class="w-full px-4 py-3 rounded-xl bg-brand-950 border border-brand-700 text-white text-xs focus:outline-none"></div>
         <div><label class="block text-xs font-medium text-brand-200 mb-1">Phone / WhatsApp</label><input type="tel" name="Phone" required class="w-full px-4 py-3 rounded-xl bg-brand-950 border border-brand-700 text-white text-xs focus:outline-none"></div>
         <div><label class="block text-xs font-medium text-brand-200 mb-1">Project Requirements</label><textarea name="Message" rows="3" required class="w-full px-4 py-3 rounded-xl bg-brand-950 border border-brand-700 text-white text-xs focus:outline-none"></textarea></div>
-        <button type="submit" class="w-full py-3.5 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold text-xs uppercase tracking-wider transition">Submit Application</button>
+        <button type="submit" class="w-full py-3.5 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold text-xs uppercase tracking-wider transition">Send Request via Formspree</button>
       </form>
     </div>
   </div>
@@ -137,8 +136,16 @@
   <script>
     lucide.createIcons();
     function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('hidden'); }
-    function openApplyModal(service) { document.getElementById('modalServiceName').innerText = "Applying for: " + service; document.getElementById('selectedServiceInput').value = service; document.getElementById('applyModal').classList.remove('hidden'); }
+    function openApplyModal(svc) { document.getElementById('modalServiceName').innerText = "Service: " + svc; document.getElementById('selectedServiceInput').value = svc; document.getElementById('applyModal').classList.remove('hidden'); }
     function closeApplyModal() { document.getElementById('applyModal').classList.add('hidden'); }
+    function handleServiceRequest(e) {
+      const name = document.getElementById('reqName').value;
+      const email = document.getElementById('reqEmail').value;
+      const svc = document.getElementById('selectedServiceInput').value;
+      let apps = JSON.parse(localStorage.getItem('iclick_all_applications') || '[]');
+      apps.push({ appId: "iC-REQ-" + Math.floor(1000 + Math.random() * 9000), fullName: name, email: email, course: svc, status: "Pending Review", date: new Date().toLocaleDateString() });
+      localStorage.setItem('iclick_all_applications', JSON.stringify(apps));
+    }
   </script>
 </body>
-</html>
+  </html>
