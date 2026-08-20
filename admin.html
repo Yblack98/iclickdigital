@@ -30,14 +30,14 @@
   <nav class="bg-brand-900 border-b border-brand-800 px-6 py-4 flex justify-between items-center sticky top-0 z-50 text-white">
     <div class="flex items-center space-x-3">
       <div class="w-9 h-9 rounded-lg bg-brand-300 text-brand-950 font-black flex items-center justify-center">iC</div>
-      <div><h1 class="text-base font-bold">iClick Admin Control Center</h1><span class="text-[10px] text-brand-300 font-mono">Admissions & Feedback Management</span></div>
+      <div><h1 class="text-base font-bold">iClick Admin Control Center</h1><span class="text-[10px] text-brand-300 font-mono">Admissions & Client Feedback Management</span></div>
     </div>
     <div class="flex items-center space-x-4 text-xs"><a href="index.html" class="text-brand-300 hover:underline">Home</a><a href="lms.html" class="text-brand-300 hover:underline">Student LMS</a></div>
   </nav>
 
   <main class="max-w-7xl mx-auto px-4 py-8 flex-1 w-full space-y-6">
     <div class="flex justify-between items-center">
-      <div><h2 class="text-2xl font-black text-brand-900">Student Admissions & Service Requests</h2><p class="text-xs text-brand-700">Approve applications to unlock student LMS access and dispatch feedback.</p></div>
+      <div><h2 class="text-2xl font-black text-brand-900">Student Admissions & Service Requests</h2><p class="text-xs text-brand-700">Approve applications to unlock student LMS access and dispatch client acknowledgement mails.</p></div>
       <button onclick="renderAdminTable()" class="px-4 py-2 rounded-xl bg-brand-900 text-brand-50 text-xs font-bold">Refresh Table</button>
     </div>
 
@@ -73,7 +73,8 @@
             <td class="p-3">${app.course}</td>
             <td class="p-3"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-brand-800 text-brand-300">${app.status}</span></td>
             <td class="p-3 text-right space-x-1">
-              <button onclick="approveStudent(${idx})" class="px-2.5 py-1 bg-emerald-700 text-white rounded text-[10px] font-bold">Approve & Send Details</button>
+              <button onclick="approveAndDispatch(${idx})" class="px-2.5 py-1 bg-emerald-700 text-white rounded text-[10px] font-bold">Approve & Send Offer</button>
+              <button onclick="acknowledgeClient(${idx})" class="px-2.5 py-1 bg-cyan-700 text-white rounded text-[10px] font-bold">Acknowledge Mail</button>
               <button onclick="rejectStudent(${idx})" class="px-2.5 py-1 bg-rose-700 text-white rounded text-[10px] font-bold">Reject</button>
             </td>
           </tr>
@@ -81,12 +82,21 @@
       });
     }
 
-    function approveStudent(idx) {
+    function approveAndDispatch(idx) {
       let apps = JSON.parse(localStorage.getItem('iclick_all_applications') || '[]');
       apps[idx].status = "Accepted";
       localStorage.setItem('iclick_all_applications', JSON.stringify(apps));
-      alert(`Admission approved for ${apps[idx].fullName} (${apps[idx].email}). LMS access and details unlocked.`);
+      
+      const app = apps[idx];
+      alert(`Admission approved for ${app.fullName}! Opening email client to send acceptance offer and LMS login details.`);
+      window.location.href = `mailto:${app.email}?subject=Admission Approved - iClick Digital Academy (${app.appId})&body=Dear ${app.fullName},%0D%0A%0D%0AWe are pleased to inform you that your application for ${app.course} (ID: ${app.appId}) has been accepted!%0D%0A%0D%0APlease sign in to the Student LMS portal at lms.html using this registered email address to access your live lectures and Zoom room credentials.%0D%0A%0D%0AWelcoming you to iClick Digital Ventures.%0D%0A%0D%0ABest regards,%0D%0AAdmin Office`;
       renderAdminTable();
+    }
+
+    function acknowledgeClient(idx) {
+      const app = JSON.parse(localStorage.getItem('iclick_all_applications') || '[]')[idx];
+      alert(`Opening email client to send acknowledgement to ${app.fullName} (${app.email}).`);
+      window.location.href = `mailto:${app.email}?subject=Acknowledgement of Inquiry - iClick Digital Ventures (${app.appId})&body=Dear ${app.fullName},%0D%0A%0D%0AWe have successfully received your submission regarding ${app.course}. Our team is reviewing your details and will get back to you shortly.%0D%0A%0D%0ABest regards,%0D%0AiClick Digital Ventures`;
     }
 
     function rejectStudent(idx) {
