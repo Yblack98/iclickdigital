@@ -73,7 +73,7 @@
       <div class="flex justify-between items-center">
         <div>
           <h2 class="text-2xl font-black text-brand-900">Student Admissions & Service Requests</h2>
-          <p class="text-xs text-brand-700">Approve applications to auto-generate login credentials, send offer letters, and manage client mail.</p>
+          <p class="text-xs text-brand-700">Approve applications, dispatch credentials, and manage password reset codes.</p>
         </div>
         <button onclick="renderAdminTable()" class="px-4 py-2 rounded-xl bg-brand-900 text-brand-50 text-xs font-bold shadow-md">Refresh Table</button>
       </div>
@@ -110,7 +110,6 @@
       const email = document.getElementById('adminEmailInput').value.trim();
       const pass = document.getElementById('adminPasswordInput').value;
       
-      // Admin Credentials: admin@iclickdigitalventures.com / iClick2026Admin
       if (email.toLowerCase() === "admin@iclickdigitalventures.com" && pass === "iClick2026Admin") {
         localStorage.setItem('iclick_admin_auth', 'true');
         document.getElementById('adminLoginGate').classList.add('hidden');
@@ -152,7 +151,8 @@
             <td class="p-3"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-brand-800 text-brand-300">${app.status}</span></td>
             <td class="p-3 text-right space-x-1 whitespace-nowrap">
               <button onclick="approveAndDispatch(${idx})" class="px-2.5 py-1 bg-emerald-700 hover:bg-emerald-600 text-white rounded text-[10px] font-bold transition">Approve & Send Offer</button>
-              <button onclick="acknowledgeClient(${idx})" class="px-2.5 py-1 bg-cyan-800 hover:bg-cyan-700 text-white rounded text-[10px] font-bold transition">Acknowledge Mail</button>
+              <button onclick="sendPasswordResetCode(${idx})" class="px-2.5 py-1 bg-amber-700 hover:bg-amber-600 text-white rounded text-[10px] font-bold transition">Send Reset Code</button>
+              <button onclick="acknowledgeClient(${idx})" class="px-2.5 py-1 bg-cyan-800 hover:bg-cyan-700 text-white rounded text-[10px] font-bold transition">Acknowledge</button>
               <button onclick="rejectStudent(${idx})" class="px-2.5 py-1 bg-rose-800 hover:bg-rose-700 text-white rounded text-[10px] font-bold transition">Reject</button>
             </td>
           </tr>
@@ -162,8 +162,6 @@
 
     function approveAndDispatch(idx) {
       let apps = JSON.parse(localStorage.getItem('iclick_all_applications') || '[]');
-      
-      // Auto-generate secure student password if not already generated
       if (!apps[idx].tempPassword) {
         apps[idx].tempPassword = "iC-Pass-" + Math.floor(1000 + Math.random() * 9000);
       }
@@ -171,10 +169,21 @@
       localStorage.setItem('iclick_all_applications', JSON.stringify(apps));
       
       const app = apps[idx];
-      alert(`Admission approved for ${app.fullName}! Auto-generated password: ${app.tempPassword}. Opening email client to send official offer letter.`);
+      alert(`Admission approved for ${app.fullName}! Temporary Password: ${app.tempPassword}. Opening email client to send official offer letter.`);
       
-      window.location.href = `mailto:${app.email}?subject=Official Admission Offer & LMS Credentials - iClick Digital Academy (${app.appId})&body=Dear ${app.fullName},%0D%0A%0D%0AWe are pleased to offer you official admission into the ${app.course} cohort at iClick Digital Academy.%0D%0A%0D%0AYaw Student ID: ${app.appId}%0D%0ALMS Login Email: ${app.email}%0D%0ATemporary LMS Password: ${app.tempPassword}%0D%0A%0D%0APlease sign in at lms.html using these credentials to access your live lecture rooms.%0D%0A%0D%0AWelcome aboard!%0D%0A%0D%0ABest regards,%0D%0AAdmin Office, iClick Digital Ventures`;
+      window.location.href = `mailto:${app.email}?subject=Official Admission Offer & LMS Credentials - iClick Digital Academy (${app.appId})&body=Dear ${app.fullName},%0D%0A%0D%0AWe are pleased to offer you official admission into the ${app.course} cohort at iClick Digital Academy.%0D%0A%0D%0AStudent ID: ${app.appId}%0D%0ALMS Login Email: ${app.email}%0D%0ATemporary LMS Password: ${app.tempPassword}%0D%0A%0D%0APlease sign in at lms.html using these credentials to access your live lecture rooms.%0D%0A%0D%0ABest regards,%0D%0AAdmin Office, iClick Digital Ventures`;
       renderAdminTable();
+    }
+
+    function sendPasswordResetCode(idx) {
+      let apps = JSON.parse(localStorage.getItem('iclick_all_applications') || '[]');
+      const newResetCode = "iC-Reset-" + Math.floor(1000 + Math.random() * 9000);
+      apps[idx].tempPassword = newResetCode; // Update password to the new reset code
+      localStorage.setItem('iclick_all_applications', JSON.stringify(apps));
+
+      const app = apps[idx];
+      alert(`Generated reset code for ${app.fullName}: ${newResetCode}. Opening email client to dispatch code.`);
+      window.location.href = `mailto:${app.email}?subject=Password Reset Code - iClick Digital Academy&body=Dear ${app.fullName},%0D%0A%0D%0AYour requested password reset code is: ${newResetCode}%0D%0A%0D%0APlease use this temporary password to sign in to your LMS portal at lms.html, and remember to update your password in your dashboard settings.%0D%0A%0D%0ABest regards,%0D%0AAdmin Office`;
     }
 
     function acknowledgeClient(idx) {
@@ -192,4 +201,4 @@
     }
   </script>
 </body>
-    </html>
+</html>
