@@ -40,11 +40,11 @@
 
   <!-- Top Announcement Bar -->
   <div class="bg-[#080e1a] text-slate-300 text-xs py-2 px-4 border-b border-slate-800 flex justify-between items-center max-w-7xl mx-auto w-full">
-    <span>🟢 CAC Reg No: BN 9772940 • SCUML (EFCC) Compliant • Abuja, Nigeria</span>
+    <span>CAC Reg No: BN 9772940 • SCUML (EFCC) Compliant • Abuja, Nigeria</span>
     <a href="mailto:iclickdigitalventures@gmail.com" class="text-cyan-400 hover:underline">iclickdigitalventures@gmail.com</a>
   </div>
 
-  <!-- Navigation (All main pages linked at the top) -->
+  <!-- Navigation with Mobile Dropdown Menu -->
   <nav class="bg-[#080e1a]/90 backdrop-blur-md sticky top-0 z-50 border-b border-slate-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
       <a href="index.html" class="flex items-center space-x-3">
@@ -57,7 +57,7 @@
         </div>
       </a>
 
-      <!-- Header links including Services, Portfolio, Academy, About, and LMS -->
+      <!-- Desktop Links -->
       <div class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-300">
         <a href="index.html" class="hover:text-cyan-400 transition">Home</a>
         <a href="services.html" class="hover:text-cyan-400 transition">Services</a>
@@ -68,9 +68,33 @@
         <a href="admin.html" class="text-slate-400 hover:text-white transition">Admin</a>
       </div>
 
-      <a href="services.html#contact" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-xs uppercase tracking-wider transition shadow-md">
-        Get in Touch
-      </a>
+      <!-- Desktop CTA -->
+      <div class="hidden md:block">
+        <a href="services.html#contact" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-xs uppercase tracking-wider transition shadow-md">
+          Get in Touch
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-xl bg-slate-800 text-slate-300 hover:text-white">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobileMenu" class="hidden md:hidden px-4 pt-2 pb-6 space-y-3 bg-[#080e1a] border-b border-slate-800">
+      <a href="index.html" class="block px-3 py-2 rounded-lg text-sm text-slate-300 hover:bg-slate-900">Home</a>
+      <a href="services.html" class="block px-3 py-2 rounded-lg text-sm text-slate-300 hover:bg-slate-900">Services</a>
+      <a href="portfolio.html" class="block px-3 py-2 rounded-lg text-sm text-slate-300 hover:bg-slate-900">Case Studies</a>
+      <a href="academy.html" class="block px-3 py-2 rounded-lg text-sm text-emerald-400 font-bold hover:bg-slate-900">Academy</a>
+      <a href="about.html" class="block px-3 py-2 rounded-lg text-sm text-white font-bold bg-slate-900">About</a>
+      <a href="lms.html" class="block px-3 py-2 rounded-lg text-sm text-emerald-400 font-semibold hover:bg-slate-900">Student LMS</a>
+      <a href="admin.html" class="block px-3 py-2 rounded-lg text-sm text-slate-400 hover:bg-slate-900">Admin Portal</a>
+      <div class="pt-2">
+        <a href="services.html#contact" class="block text-center w-full py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-bold text-xs uppercase tracking-wider">
+          Get in Touch
+        </a>
+      </div>
     </div>
   </nav>
 
@@ -110,6 +134,51 @@
         </div>
         <h3 class="text-xl font-bold text-white mb-3">Our Long-Term Vision</h3>
         <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+          To stand as Africa’s most trusted holding enterprise for public sector digitization, operational AI automation, and high-impact digital academies.
+        </p>
+      </div>
+    </div>
+
+    <!-- Leadership & Compliance -->
+    <div class="glass-card rounded-3xl p-8 sm:p-10 border border-slate-800 glow-cyan">
+      <h2 class="text-2xl font-bold text-white mb-4">Governance, Compliance & Leadership</h2>
+      <p class="text-xs sm:text-sm text-slate-400 leading-relaxed mb-6">
+        Led by executive management specializing in public sector systems analysis and digital architecture, iClick Digital Ventures operates with full statutory transparency.
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+        <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800">
+          <strong class="text-white block mb-1">CAC Incorporation</strong>
+          <span class="text-slate-400">Registered under the Companies and Allied Matters Act. <br><strong>Reg No: BN 9772940</strong></span>
+        </div>
+        <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800">
+          <strong class="text-white block mb-1">Regulatory Standards</strong>
+          <span class="text-slate-400">SCUML (EFCC) Anti-Money Laundering Compliant and FIRS Tax Compliant.</span>
+        </div>
+        <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800">
+          <strong class="text-white block mb-1">Headquarters</strong>
+          <span class="text-slate-400">Abuja, Federal Capital Territory, Federal Republic of Nigeria.</span>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Clean Footer -->
+  <footer class="bg-[#080e1a] border-t border-slate-800 py-8 text-center text-xs text-slate-500 mt-auto">
+    &copy; 2026 iClick Digital Ventures • CAC Reg No: BN 9772940 • www.iclickdigital.com • Abuja, Nigeria
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    // Mobile Menu Dropdown Toggle
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('hidden');
+    }
+  </script>
+</body>
+        </html>        <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
           To stand as Africa’s most trusted holding enterprise for public sector digitization, operational AI automation, and high-impact digital academies.
         </p>
       </div>
