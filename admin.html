@@ -36,13 +36,12 @@
 </head>
 <body class="bg-brand-50 text-brand-900 min-h-screen flex flex-col antialiased">
 
-  <!-- Nav -->
   <nav class="bg-brand-900 border-b border-brand-800 px-6 py-4 flex justify-between items-center sticky top-0 z-50 text-white">
     <div class="flex items-center space-x-3">
       <div class="w-9 h-9 rounded-lg bg-brand-300 text-brand-950 font-black flex items-center justify-center">iC</div>
       <div>
         <h1 class="text-base font-bold">iClick Admin Control Center</h1>
-        <span class="text-[10px] text-brand-300 font-mono">Admissions, Grading & Inbox Management</span>
+        <span class="text-[10px] text-brand-300 font-mono">Admissions & Feedback Management</span>
       </div>
     </div>
     <div class="flex items-center space-x-4 text-xs">
@@ -51,20 +50,82 @@
     </div>
   </nav>
 
-  <main class="max-w-7xl mx-auto px-4 py-8 flex-1 w-full space-y-8">
-    <div class="glass-card text-brand-50 p-6 rounded-3xl">
-      <h2 class="text-lg font-bold mb-2">Admin Dashboard Controls</h2>
-      <p class="text-xs text-brand-200">Manage student grades, LMS Zoom links, and incoming service engagement inquiries.</p>
+  <main class="max-w-7xl mx-auto px-4 py-8 flex-1 w-full space-y-6">
+    <div class="flex justify-between items-center">
+      <div>
+        <h2 class="text-2xl font-black text-brand-900">Student Admissions & Service Requests</h2>
+        <p class="text-xs text-brand-700">Approve applications to unlock student LMS access and dispatch feedback acknowledgements.</p>
+      </div>
+      <button onclick="renderAdminTable()" class="px-4 py-2 rounded-xl bg-brand-900 text-brand-50 text-xs font-bold">Refresh Table</button>
+    </div>
+
+    <div class="glass-card rounded-3xl p-6 overflow-x-auto">
+      <table class="w-full text-left text-xs text-brand-50">
+        <thead class="bg-brand-950 text-brand-300 uppercase text-[10px] border-b border-brand-800">
+          <tr>
+            <th class="p-3">App ID</th>
+            <th class="p-3">Applicant Name</th>
+            <th class="p-3">Email</th>
+            <th class="p-3">Track / Service</th>
+            <th class="p-3">Status</th>
+            <th class="p-3 text-right">Admin Action</th>
+          </tr>
+        </thead>
+        <tbody id="adminTableBody" class="divide-y divide-brand-800">
+          <tr><td colspan="6" class="p-4 text-center text-brand-400">No applications recorded yet.</td></tr>
+        </tbody>
+      </table>
     </div>
   </main>
 
-  <!-- Footer -->
   <footer class="bg-brand-900 border-t border-brand-800 text-xs text-brand-300 py-10 mt-auto">
-    <div class="max-w-7xl mx-auto px-4 text-center text-[10px] text-brand-500">
-      &copy; 2026 iClick Digital Ventures. All rights reserved. • iclickdigitalventures@gmail.com
-    </div>
+    <div class="max-w-7xl mx-auto px-4 text-center text-[10px] text-brand-500">&copy; 2026 iClick Digital Ventures. All rights reserved. • iclickdigitalventures@gmail.com</div>
   </footer>
 
-  <script>lucide.createIcons();</script>
+  <script>
+    lucide.createIcons();
+    function renderAdminTable() {
+      const tbody = document.getElementById('adminTableBody');
+      const apps = JSON.parse(localStorage.getItem('iclick_all_applications') || '[]');
+      if (apps.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-brand-400">No applications recorded yet.</td></tr>`;
+        return;
+      }
+      tbody.innerHTML = '';
+      apps.forEach((app, idx) => {
+        tbody.innerHTML += `
+          <tr class="hover:bg-brand-900/50">
+            <td class="p-3 font-mono text-brand-300 font-bold">${app.appId}</td>
+            <td class="p-3 font-bold text-white">${app.fullName}</td>
+            <td class="p-3 text-brand-200">${app.email}</td>
+            <td class="p-3">${app.course}</td>
+            <td class="p-3"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-brand-800 text-brand-300">${app.status}</span></td>
+            <td class="p-3 text-right space-x-1">
+              <button onclick="approveStudent(${idx})" class="px-2.5 py-1 bg-emerald-700 text-white rounded text-[10px] font-bold">Approve & Send Details</button>
+              <button onclick="rejectStudent(${idx})" class="px-2.5 py-1 bg-rose-700 text-white rounded text-[10px] font-bold">Reject</button>
+            </td>
+          </tr>
+        `;
+      });
+    }
+
+    function approveStudent(idx) {
+      let apps = JSON.parse(localStorage.getItem('iclick_all_applications') || '[]');
+      apps[idx].status = "Accepted";
+      localStorage.setItem('iclick_all_applications', JSON.stringify(apps));
+      alert(`Admission approved for ${apps[idx].fullName} (${apps[idx].email}). LMS access and details have been unlocked for their account.`);
+      renderAdminTable();
+    }
+
+    function rejectStudent(idx) {
+      let apps = JSON.parse(localStorage.getItem('iclick_all_applications') || '[]');
+      apps[idx].status = "Rejected";
+      localStorage.setItem('iclick_all_applications', JSON.stringify(apps));
+      alert(`Application for ${apps[idx].fullName} has been rejected.`);
+      renderAdminTable();
+    }
+
+    window.onload = renderAdminTable;
+  </script>
 </body>
 </html>
