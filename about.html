@@ -16,14 +16,15 @@
           fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
           colors: {
             brand: {
-              50: '#f0fdfa',
-              100: '#ccfbf1',
-              500: '#00a8cc',
-              600: '#0284c7',
-              700: '#0369a1',
-              dark: '#080e1a',
-              card: '#0f172a',
-              accent: '#38bdf8'
+              50: '#f9f8f6',
+              100: '#f0ece4',
+              200: '#e2d7c8',
+              300: '#d4a373',
+              400: '#b87d52',
+              600: '#8c5842',
+              800: '#4a2e2b',
+              900: '#2d1810',
+              950: '#1a0e0a'
             }
           }
         }
@@ -32,312 +33,108 @@
   </script>
   <style>
     body { font-family: 'Plus Jakarta Sans', sans-serif; }
-    .glass-card { background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); }
-    .glow-cyan { box-shadow: 0 0 35px -10px rgba(56, 189, 248, 0.25); }
+    .glass-card { background: #2d1810; border: 1px solid rgba(212, 163, 115, 0.2); }
   </style>
 </head>
-<body class="bg-[#050914] text-slate-100 min-h-screen flex flex-col antialiased">
+<body class="bg-brand-50 text-brand-900 min-h-screen flex flex-col antialiased">
 
-  <!-- Top Announcement Bar -->
-  <div class="bg-[#080e1a] text-slate-300 text-xs py-2 px-4 border-b border-slate-800 flex justify-between items-center max-w-7xl mx-auto w-full">
-    <span>CAC Reg No: BN 9772940 • SCUML (EFCC) Compliant • Abuja, Nigeria</span>
-    <a href="mailto:iclickdigitalventures@gmail.com" class="text-cyan-400 hover:underline">iclickdigitalventures@gmail.com</a>
-  </div>
-
-  <!-- Navigation with Mobile Dropdown Menu -->
-  <nav class="bg-[#080e1a]/90 backdrop-blur-md sticky top-0 z-50 border-b border-slate-800">
+  <!-- Navigation with Mobile Dropdown -->
+  <nav class="bg-brand-50/90 backdrop-blur-md sticky top-0 z-50 border-b border-brand-200 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
       <a href="index.html" class="flex items-center space-x-3">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-slate-950 font-black text-xl shadow-lg shadow-cyan-500/20">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-800 to-brand-600 flex items-center justify-center text-brand-50 font-black text-xl shadow-md">
           iC
         </div>
         <div>
-          <span class="text-lg font-extrabold text-white tracking-tight block leading-none">iClick</span>
-          <span class="text-[10px] font-bold text-cyan-400 tracking-widest uppercase block mt-0.5">Digital Ventures</span>
+          <span class="text-lg font-extrabold text-brand-900 tracking-tight block leading-none">iClick</span>
+          <span class="text-[10px] font-bold text-brand-600 tracking-widest uppercase block mt-0.5">Digital Ventures</span>
         </div>
       </a>
 
-      <!-- Desktop Links -->
-      <div class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-300">
-        <a href="index.html" class="hover:text-cyan-400 transition">Home</a>
-        <a href="services.html" class="hover:text-cyan-400 transition">Services</a>
-        <a href="portfolio.html" class="hover:text-cyan-400 transition">Case Studies</a>
-        <a href="academy.html" class="hover:text-emerald-400 transition">Academy</a>
-        <a href="about.html" class="text-white border-b-2 border-cyan-400 pb-1">About</a>
-        <a href="lms.html" class="text-emerald-400 font-bold hover:underline">Student LMS</a>
-        <a href="admin.html" class="text-slate-400 hover:text-white transition">Admin</a>
+      <div class="hidden md:flex items-center space-x-6 text-sm font-medium text-brand-800">
+        <a href="index.html" class="hover:text-brand-300 transition">Home</a>
+        <a href="services.html" class="hover:text-brand-300 transition">Services</a>
+        <a href="portfolio.html" class="hover:text-brand-300 transition">Case Studies</a>
+        <a href="academy.html" class="hover:text-brand-300 transition">Academy</a>
+        <a href="about.html" class="text-brand-600 border-b-2 border-brand-300 pb-1 font-semibold">About</a>
+        <a href="lms.html" class="text-brand-600 font-bold hover:underline">Student LMS</a>
+        <a href="admin.html" class="text-brand-500 hover:text-brand-900 transition">Admin</a>
       </div>
 
-      <!-- Desktop CTA -->
       <div class="hidden md:block">
-        <a href="services.html#contact" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-xs uppercase tracking-wider transition shadow-md">
-          Get in Touch
+        <a href="services.html#contact" class="px-5 py-2.5 rounded-xl bg-brand-900 hover:bg-brand-800 text-brand-50 font-bold text-xs uppercase tracking-wider transition shadow-md">
+          Request Audit
         </a>
       </div>
 
-      <!-- Mobile Menu Button -->
-      <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-xl bg-slate-800 text-slate-300 hover:text-white">
+      <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-xl bg-brand-200 text-brand-900 focus:outline-none">
         <i data-lucide="menu" class="w-6 h-6"></i>
       </button>
     </div>
 
-    <!-- Mobile Dropdown Menu -->
-    <div id="mobileMenu" class="hidden md:hidden px-4 pt-2 pb-6 space-y-3 bg-[#080e1a] border-b border-slate-800">
-      <a href="index.html" class="block px-3 py-2 rounded-lg text-sm text-slate-300 hover:bg-slate-900">Home</a>
-      <a href="services.html" class="block px-3 py-2 rounded-lg text-sm text-slate-300 hover:bg-slate-900">Services</a>
-      <a href="portfolio.html" class="block px-3 py-2 rounded-lg text-sm text-slate-300 hover:bg-slate-900">Case Studies</a>
-      <a href="academy.html" class="block px-3 py-2 rounded-lg text-sm text-emerald-400 font-bold hover:bg-slate-900">Academy</a>
-      <a href="about.html" class="block px-3 py-2 rounded-lg text-sm text-white font-bold bg-slate-900">About</a>
-      <a href="lms.html" class="block px-3 py-2 rounded-lg text-sm text-emerald-400 font-semibold hover:bg-slate-900">Student LMS</a>
-      <a href="admin.html" class="block px-3 py-2 rounded-lg text-sm text-slate-400 hover:bg-slate-900">Admin Portal</a>
+    <div id="mobileMenu" class="hidden md:hidden px-4 pt-3 pb-6 space-y-2 bg-brand-900 text-brand-100 border-b border-brand-800 shadow-xl">
+      <a href="index.html" class="block px-3 py-2 rounded-lg text-sm hover:bg-brand-800">Home</a>
+      <a href="services.html" class="block px-3 py-2 rounded-lg text-sm hover:bg-brand-800">Services</a>
+      <a href="portfolio.html" class="block px-3 py-2 rounded-lg text-sm hover:bg-brand-800">Case Studies</a>
+      <a href="academy.html" class="block px-3 py-2 rounded-lg text-sm hover:bg-brand-800">Academy</a>
+      <a href="about.html" class="block px-3 py-2 rounded-lg text-sm font-bold bg-brand-800 text-brand-300">About</a>
+      <a href="lms.html" class="block px-3 py-2 rounded-lg text-sm text-brand-300 font-semibold hover:bg-brand-800">Student LMS</a>
+      <a href="admin.html" class="block px-3 py-2 rounded-lg text-sm text-brand-400 hover:bg-brand-800">Admin Portal</a>
       <div class="pt-2">
-        <a href="services.html#contact" class="block text-center w-full py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-bold text-xs uppercase tracking-wider">
-          Get in Touch
+        <a href="services.html#contact" class="block text-center w-full py-3 rounded-xl bg-brand-300 text-brand-950 font-bold text-xs uppercase tracking-wider">
+          Request Audit
         </a>
       </div>
     </div>
   </nav>
 
-  <!-- About Header -->
-  <header class="py-20 border-b border-slate-800/80 relative overflow-hidden text-center">
+  <!-- Hero Header -->
+  <header class="py-20 border-b border-brand-200 text-center relative overflow-hidden">
     <div class="max-w-4xl mx-auto px-4">
-      <span class="px-3.5 py-1.5 rounded-full bg-cyan-950/80 border border-cyan-700/50 text-cyan-300 text-xs font-semibold uppercase tracking-wider inline-block mb-6">
+      <span class="px-4 py-1.5 rounded-full bg-brand-200 text-brand-800 text-xs font-semibold uppercase tracking-wider inline-block mb-4">
         Corporate Profile & Vision
       </span>
-      <h1 class="text-4xl sm:text-6xl font-black text-white leading-tight">
-        Building the Digital Backbone for <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-400">African Enterprise & Governance</span>
+      <h1 class="text-4xl sm:text-6xl font-black text-brand-900 tracking-tight leading-tight">
+        Building the Digital Backbone for <span class="text-brand-600">African Enterprise & Governance</span>
       </h1>
-      <p class="mt-6 text-base sm:text-lg text-slate-400 leading-relaxed font-light">
-        Headquartered in Abuja, Nigeria, iClick Digital Ventures is an integrated technology holding company driving seamless transformation across public institutions, commercial automation, and practical skill development.
-      </p>
     </div>
   </header>
 
   <!-- Main Content -->
-  <main class="max-w-5xl mx-auto px-4 py-16 space-y-16 flex-1">
-
-    <!-- Mission & Vision -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <div class="glass-card rounded-3xl p-8 border border-slate-800">
-        <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center mb-4">
-          <i data-lucide="target" class="w-6 h-6"></i>
-        </div>
-        <h3 class="text-xl font-bold text-white mb-3">Our Core Mission</h3>
-        <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
-          To eradicate administrative friction in government and commercial institutions through secure digital registries, low-code automation, and robust hardware infrastructure while empowering the next generation of African tech professionals.
-        </p>
-      </div>
-
-      <div class="glass-card rounded-3xl p-8 border border-slate-800">
-        <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-4">
-          <i data-lucide="eye" class="w-6 h-6"></i>
-        </div>
-        <h3 class="text-xl font-bold text-white mb-3">Our Long-Term Vision</h3>
-        <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
-          To stand as Africa’s most trusted holding enterprise for public sector digitization, operational AI automation, and high-impact digital academies.
-        </p>
-      </div>
-    </div>
-
-    <!-- Leadership & Compliance -->
-    <div class="glass-card rounded-3xl p-8 sm:p-10 border border-slate-800 glow-cyan">
-      <h2 class="text-2xl font-bold text-white mb-4">Governance, Compliance & Leadership</h2>
-      <p class="text-xs sm:text-sm text-slate-400 leading-relaxed mb-6">
-        Led by executive management specializing in public sector systems analysis and digital architecture, iClick Digital Ventures operates with full statutory transparency.
+  <main class="max-w-5xl mx-auto px-4 py-16 space-y-12 flex-1 w-full">
+    <div class="glass-card text-brand-50 rounded-3xl p-8 sm:p-10">
+      <h3 class="text-2xl font-bold text-brand-50 mb-3">Our Corporate Governance</h3>
+      <p class="text-xs sm:text-sm text-brand-200 leading-relaxed">
+        Headquartered in Abuja, Nigeria, iClick Digital Ventures (CAC Reg No: BN 9772940) is an integrated technology holding company driving seamless transformation across public institutions, commercial automation, and practical skill development.
       </p>
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
-        <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800">
-          <strong class="text-white block mb-1">CAC Incorporation</strong>
-          <span class="text-slate-400">Registered under the Companies and Allied Matters Act. <br><strong>Reg No: BN 9772940</strong></span>
-        </div>
-        <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800">
-          <strong class="text-white block mb-1">Regulatory Standards</strong>
-          <span class="text-slate-400">SCUML (EFCC) Anti-Money Laundering Compliant and FIRS Tax Compliant.</span>
-        </div>
-        <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800">
-          <strong class="text-white block mb-1">Headquarters</strong>
-          <span class="text-slate-400">Abuja, Federal Capital Territory, Federal Republic of Nigeria.</span>
-        </div>
-      </div>
     </div>
-
   </main>
 
-  <!-- Clean Footer -->
-  <footer class="bg-[#080e1a] border-t border-slate-800 py-8 text-center text-xs text-slate-500 mt-auto">
-    &copy; 2026 iClick Digital Ventures • CAC Reg No: BN 9772940 • www.iclickdigital.com • Abuja, Nigeria
+  <!-- Clean Single Footer -->
+  <footer class="bg-brand-900 border-t border-brand-800 text-xs text-brand-300 py-10 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+      <div>
+        <span class="font-bold text-brand-50 text-sm">iClick Digital Ventures</span>
+        <p class="text-[11px] text-brand-400 mt-0.5">CAC Reg No: BN 9772940 • Abuja, Federal Capital Territory, Nigeria</p>
+      </div>
+      <div class="flex flex-wrap justify-center gap-6 text-[11px]">
+        <a href="index.html" class="hover:text-brand-100 transition">Home</a>
+        <a href="services.html" class="hover:text-brand-100 transition">Services</a>
+        <a href="portfolio.html" class="hover:text-brand-100 transition">Case Studies</a>
+        <a href="academy.html" class="hover:text-brand-100 transition">Academy</a>
+        <a href="about.html" class="hover:text-brand-100 transition">About</a>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 mt-6 pt-4 border-t border-brand-950 text-center text-[10px] text-brand-500">
+      &copy; 2026 iClick Digital Ventures. All rights reserved. • iclickdigitalventures@gmail.com
+    </div>
   </footer>
 
   <script>
     lucide.createIcons();
-
-    // Mobile Menu Dropdown Toggle
     function toggleMobileMenu() {
-      const menu = document.getElementById('mobileMenu');
-      menu.classList.toggle('hidden');
+      document.getElementById('mobileMenu').classList.toggle('hidden');
     }
   </script>
-</body>
-        </html>        <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
-          To stand as Africa’s most trusted holding enterprise for public sector digitization, operational AI automation, and high-impact digital academies.
-        </p>
-      </div>
-    </div>
-
-    <!-- Leadership & Compliance -->
-    <div class="glass-card rounded-3xl p-8 sm:p-10 border border-slate-800 glow-cyan">
-      <h2 class="text-2xl font-bold text-white mb-4">Governance, Compliance & Leadership</h2>
-      <p class="text-xs sm:text-sm text-slate-400 leading-relaxed mb-6">
-        Led by executive management specializing in public sector systems analysis and digital architecture, iClick Digital Ventures operates with full statutory transparency.
-      </p>
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
-        <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800">
-          <strong class="text-white block mb-1">CAC Incorporation</strong>
-          <span class="text-slate-400">Registered under the Companies and Allied Matters Act. <br><strong>Reg No: BN 9772940</strong></span>
-        </div>
-        <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800">
-          <strong class="text-white block mb-1">Regulatory Standards</strong>
-          <span class="text-slate-400">SCUML (EFCC) Anti-Money Laundering Compliant and FIRS Tax Compliant.</span>
-        </div>
-        <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800">
-          <strong class="text-white block mb-1">Headquarters</strong>
-          <span class="text-slate-400">Abuja, Federal Capital Territory, Federal Republic of Nigeria.</span>
-        </div>
-      </div>
-    </div>
-
-  </main>
-
-  <!-- Footer -->
-  <footer class="bg-[#080e1a] border-t border-slate-800 py-8 text-center text-xs text-slate-500 mt-auto">
-    &copy; 2026 iClick Digital Ventures • CAC Reg No: BN 9772940 • www.iclickdigital.com • Abuja, Nigeria
-  </footer>
-
-  <script>lucide.createIcons();</script>
-</body>
-</html>  <!-- Main Content -->
-  <main class="max-w-6xl mx-auto px-4 py-16 space-y-16 flex-1">
-
-    <!-- Mission & Vision -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <div class="glass-card p-8 rounded-3xl border border-slate-800">
-        <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center mb-6">
-          <i data-lucide="eye" class="w-6 h-6"></i>
-        </div>
-        <h3 class="text-2xl font-bold text-white mb-3">Our Vision</h3>
-        <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
-          To become Africa’s standard-setting catalyst for institutional modernization, digital literacy, and automated business efficiency across public and private sectors.
-        </p>
-      </div>
-
-      <div class="glass-card p-8 rounded-3xl border border-slate-800">
-        <div class="w-12 h-12 rounded-2xl bg-blue-500/10 text-blue-400 flex items-center justify-center mb-6">
-          <i data-lucide="target" class="w-6 h-6"></i>
-        </div>
-        <h3 class="text-2xl font-bold text-white mb-3">Our Mission</h3>
-        <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
-          To deploy zero-disruption digital registries, eliminate manual operational overhead with AI pipelines, empower youths and civil servants with practical computing capabilities, and supply verified enterprise hardware.
-        </p>
-      </div>
-    </div>
-
-    <!-- Leadership & Founder Section -->
-    <div>
-      <div class="text-center max-w-xl mx-auto mb-10">
-        <span class="text-xs font-bold text-cyan-400 uppercase tracking-widest">Executive Leadership</span>
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Founder & Executive Profile</h2>
-      </div>
-
-      <div class="glass-card rounded-3xl p-8 sm:p-12 border border-slate-800 glow-cyan">
-        <div class="flex flex-col md:flex-row items-center gap-8">
-          
-          <!-- Founder Image -->
-          <div class="w-40 h-40 sm:w-48 sm:h-48 rounded-2xl overflow-hidden bg-gradient-to-tr from-slate-900 to-slate-800 border-2 border-cyan-500/40 flex-shrink-0 flex items-center justify-center shadow-xl">
-            <img src="images/yasin.jpg" alt="Muhammad Yasin Ibrahim - Founder" class="w-full h-full object-cover" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'text-center p-4\'><i data-lucide=\'user\' class=\'w-16 h-16 text-cyan-400 mx-auto mb-1\'></i><span class=\'text-[10px] text-slate-400 block font-semibold\'>Executive Founder</span></div>'; lucide.createIcons();">
-          </div>
-
-          <!-- Bio & Profile -->
-          <div class="flex-1 text-center md:text-left">
-            <div class="inline-block px-3 py-1 rounded-full bg-cyan-950 text-cyan-400 text-[11px] font-bold border border-cyan-800/80 mb-2">
-              Founder & Lead Visionary
-            </div>
-            <h3 class="text-2xl font-bold text-white mb-1">Muhammad Yasin Ibrahim</h3>
-            <p class="text-xs text-slate-400 mb-4 font-medium">Founder & Solutions Architect • iClick Digital Ventures</p>
-            
-            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
-              With a background in Computer Science and specialized experience in public sector ICT and judicial program analysis, Muhammad Yasin established iClick Digital Ventures to bridge the critical divide between complex technology and everyday administrative workflows in Nigeria and across the African continent[cite: 13].
-            </p>
-
-            <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
-              Under his technical leadership, iClick operates on a four-pillar framework—engineering audit-compliant registry systems for government institutions, high-yield automation pipelines for commercial enterprises, practical literacy bootcamps through iClick Digital Academy, and resilient smart building infrastructure.
-            </p>
-
-            <div class="mt-6 flex flex-wrap gap-4 justify-center md:justify-start text-xs font-semibold">
-              <span class="flex items-center gap-1 text-cyan-400"><i data-lucide="shield-check" class="w-4 h-4"></i> GovTech Solutions</span>
-              <span class="flex items-center gap-1 text-emerald-400"><i data-lucide="cpu" class="w-4 h-4"></i> Low-Code & AI Engineering</span>
-              <span class="flex items-center gap-1 text-purple-400"><i data-lucide="graduation-cap" class="w-4 h-4"></i> Digital Talent Development</span>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <!-- Corporate Identity & Legal Registration Card -->
-    <div class="glass-card p-8 rounded-3xl border border-slate-800">
-      <h3 class="text-lg font-bold text-white mb-6 flex items-center gap-2">
-        <i data-lucide="shield-check" class="w-5 h-5 text-emerald-400"></i> Corporate Governance & Compliance Details
-      </h3>
-      
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-xs">
-        <div class="p-4 rounded-xl bg-slate-900/70 border border-slate-800">
-          <strong class="text-slate-400 block mb-1">CAC Registration No.</strong>
-          <span class="text-white font-bold text-sm tracking-wide">BN 9772940</span>
-          <p class="text-[11px] text-slate-500 mt-1">Corporate Affairs Commission</p>
-        </div>
-
-        <div class="p-4 rounded-xl bg-slate-900/70 border border-slate-800">
-          <strong class="text-slate-400 block mb-1">SCUML AML Compliance</strong>
-          <span class="text-emerald-400 font-bold text-sm">Certified Compliant</span>
-          <p class="text-[11px] text-slate-500 mt-1">Special Control Unit Against Money Laundering (EFCC)[cite: 13]</p>
-        </div>
-
-        <div class="p-4 rounded-xl bg-slate-900/70 border border-slate-800">
-          <strong class="text-slate-400 block mb-1">Operational Base</strong>
-          <span class="text-white font-bold text-sm">Abuja, FCT[cite: 13]</span>
-          <p class="text-[11px] text-slate-500 mt-1">Federal Capital Territory, Nigeria[cite: 13]</p>
-        </div>
-
-        <div class="p-4 rounded-xl bg-slate-900/70 border border-slate-800">
-          <strong class="text-slate-400 block mb-1">Official Domain</strong>
-          <span class="text-cyan-400 font-mono font-bold text-sm">iclickdigital.com</span>
-          <p class="text-[11px] text-slate-500 mt-1">iclickdigitalventures@gmail.com[cite: 13]</p>
-        </div>
-      </div>
-    </div>
-
-  </main>
-
-  <!-- Footer -->
-  <footer class="bg-[#080e1a] border-t border-slate-800 text-xs text-slate-400 py-10 mt-auto">
-    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left">
-      <div>
-        <span class="font-bold text-white text-sm">iClick Digital Ventures[cite: 13]</span>
-        <p class="text-[11px] text-slate-500 mt-0.5">CAC Reg No: BN 9772940 • Abuja, Nigeria[cite: 13]</p>
-      </div>
-      <div class="flex space-x-6 text-[11px]">
-        <a href="index.html" class="hover:text-cyan-400">Home[cite: 13]</a>
-        <a href="services.html" class="hover:text-cyan-400">Services[cite: 13]</a>
-        <a href="portfolio.html" class="hover:text-cyan-400">Case Studies[cite: 13]</a>
-        <a href="academy.html" class="hover:text-emerald-400">Digital Academy[cite: 13]</a>
-        <a href="about.html" class="hover:text-cyan-400">About[cite: 13]</a>
-      </div>
-    </div>
-    <div class="max-w-7xl mx-auto px-4 mt-6 pt-4 border-t border-slate-900 text-center text-[10px] text-slate-500">
-      &copy; 2026 iClick Digital Ventures. All rights reserved.[cite: 13]
-    </div>
-  </footer>
-
-  <script>lucide.createIcons();</script>
 </body>
 </html>
