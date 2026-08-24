@@ -44,12 +44,7 @@
         <a href="portfolio.html" class="hover:text-brand-300 transition">Case Studies</a>
         <a href="academy.html" class="text-brand-600 border-b-2 border-brand-300 pb-1 font-semibold">Academy</a>
         <a href="about.html" class="hover:text-brand-300 transition">About</a>
-        <a href="lms.html" class="text-brand-600 font-bold hover:underline">Student LMS</a>
         <a href="admin.html" class="text-brand-500 hover:text-brand-900 transition">Admin</a>
-      </div>
-      <div class="hidden md:flex items-center space-x-3">
-        <button onclick="openLoginModal()" class="px-4 py-2 rounded-xl bg-brand-200 text-brand-900 font-bold text-xs uppercase">Sign In</button>
-        <button onclick="openSignupModal()" class="px-4 py-2 rounded-xl bg-brand-900 text-brand-50 font-bold text-xs uppercase shadow-md">Sign Up</button>
       </div>
       <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-xl bg-brand-200 text-brand-900 focus:outline-none"><i data-lucide="menu" class="w-6 h-6"></i></button>
     </div>
@@ -62,100 +57,19 @@
     </div>
   </nav>
 
-  <header class="py-20 border-b border-brand-200 text-center">
-    <div class="max-w-4xl mx-auto px-4">
-      <span class="px-4 py-1.5 rounded-full bg-brand-200 text-brand-800 text-xs font-semibold uppercase tracking-wider inline-block mb-4">iClick Digital Academy</span>
-      <h1 class="text-4xl sm:text-6xl font-black text-brand-900">Practical Cohort Programs & Upskilling</h1>
-    </div>
-  </header>
-
-  <main class="max-w-6xl mx-auto px-4 py-16 space-y-12 flex-1 w-full">
-    
-    <!-- Resume Application / Status Check Box -->
-    <div class="glass-card text-brand-50 rounded-3xl p-8 shadow-xl max-w-2xl mx-auto space-y-4 text-center">
-      <h3 class="text-xl font-bold">Resume or Check Application Status</h3>
-      <p class="text-xs text-brand-300">Already applied? Enter your generated Student ID (e.g., iC-STU-XXXX) to resume your application status.</p>
-      
-      <div class="flex flex-col sm:flex-row gap-2">
-        <input type="text" id="resumeAppIdInput" placeholder="Enter Application ID (e.g., iC-STU-1234)" class="flex-1 px-4 py-3 rounded-xl bg-brand-950 border border-brand-700 text-white text-xs uppercase focus:outline-none">
-        <button onclick="resumeApplicationById()" class="px-6 py-3 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold text-xs uppercase transition whitespace-nowrap shadow-md">Check Status</button>
-      </div>
-      <div id="resumeResultBox" class="hidden p-4 rounded-2xl bg-brand-950 border border-brand-800 text-left text-xs space-y-2"></div>
-    </div>
-
-    <!-- Courses Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <div class="glass-card text-brand-50 rounded-3xl p-8">
-        <span class="text-[11px] font-bold px-3 py-1 rounded-full bg-brand-800 text-brand-300">Track 01</span>
-        <h3 class="text-xl font-bold text-brand-50 mt-4 mb-2">No-Code & AI Engineering</h3>
-        <p class="text-xs sm:text-sm text-brand-200 leading-relaxed mb-6">Master Make.com workflows, Airtable relational databases, and conversational AI agents for enterprise automation.</p>
-        <button onclick="openSignupModalWithCourse('No-Code & AI Engineering')" class="px-4 py-2 rounded-xl bg-brand-300 text-brand-950 font-bold text-xs uppercase">Sign Up / Enroll →</button>
-      </div>
-
-      <div class="glass-card text-brand-50 rounded-3xl p-8">
-        <span class="text-[11px] font-bold px-3 py-1 rounded-full bg-brand-800 text-brand-300">Track 02</span>
-        <h3 class="text-xl font-bold text-brand-50 mt-4 mb-2">Digital Literacy & Workplace Productivity</h3>
-        <p class="text-xs sm:text-sm text-brand-200 leading-relaxed mb-6">Essential office computing, cloud collaboration tools, and professional digital execution.</p>
-        <button onclick="openSignupModalWithCourse('Digital Literacy & Workplace Productivity')" class="px-4 py-2 rounded-xl bg-brand-300 text-brand-950 font-bold text-xs uppercase">Sign Up / Enroll →</button>
-      </div>
-
-      <div class="glass-card text-brand-50 rounded-3xl p-8">
-        <span class="text-[11px] font-bold px-3 py-1 rounded-full bg-brand-800 text-brand-300">Track 03</span>
-        <h3 class="text-xl font-bold text-brand-50 mt-4 mb-2">AI Automation Agency (AAA) Blueprint</h3>
-        <p class="text-xs sm:text-sm text-brand-200 leading-relaxed mb-6">Complete operational mechanics on how to build, price, and run a client-facing AI automation agency from scratch.</p>
-        <button onclick="openSignupModalWithCourse('AI Automation Agency Blueprint')" class="px-4 py-2 rounded-xl bg-brand-300 text-brand-950 font-bold text-xs uppercase">Sign Up / Enroll →</button>
-      </div>
-
-      <div class="glass-card text-brand-50 rounded-3xl p-8">
-        <span class="text-[11px] font-bold px-3 py-1 rounded-full bg-brand-800 text-brand-300">Track 04</span>
-        <h3 class="text-xl font-bold text-brand-50 mt-4 mb-2">GovTech Systems Administration</h3>
-        <p class="text-xs sm:text-sm text-brand-200 leading-relaxed mb-6">Training for public sector personnel on managing electronic document archiving, OCR scanning, and QR file tracking.</p>
-        <button onclick="openSignupModalWithCourse('GovTech Systems Administration')" class="px-4 py-2 rounded-xl bg-brand-300 text-brand-950 font-bold text-xs uppercase">Sign Up / Enroll →</button>
+  <main class="max-w-4xl mx-auto px-4 py-24 flex-1 w-full flex items-center justify-center">
+    <div class="glass-card text-brand-50 rounded-3xl p-10 sm:p-14 text-center shadow-2xl space-y-6 w-full">
+      <div class="w-16 h-16 rounded-2xl bg-brand-300 text-brand-950 font-black text-2xl flex items-center justify-center mx-auto shadow-md">iC</div>
+      <span class="px-4 py-1.5 rounded-full bg-brand-800 text-brand-300 text-xs font-semibold uppercase tracking-wider inline-block">Portal Under Infrastructure Upgrade</span>
+      <h1 class="text-3xl sm:text-4xl font-black text-white">Digital Academy Admissions Temporarily Paused</h1>
+      <p class="text-xs sm:text-sm text-brand-200 max-w-xl mx-auto leading-relaxed">
+        We are currently upgrading our Learning Management System (LMS) and student authentication backend with an engineering team to ensure a secure, world-class experience. Cohort enrollment will resume shortly.
+      </p>
+      <div class="pt-4">
+        <a href="services.html" class="px-6 py-3 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold text-xs uppercase tracking-wider transition shadow-md inline-block">Explore Our Professional Services →</a>
       </div>
     </div>
   </main>
-
-  <!-- Academy Admissions Formspree Modal -->
-  <div id="signupModal" class="hidden fixed inset-0 z-50 bg-brand-950/80 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="glass-card w-full max-w-lg p-8 rounded-3xl relative text-brand-50 shadow-2xl">
-      <button onclick="closeSignupModal()" class="absolute top-4 right-4 text-brand-300 hover:text-white"><i data-lucide="x" class="w-6 h-6"></i></button>
-      <h3 class="text-xl font-bold text-brand-50 mb-1">Academy Sign Up & Application</h3>
-      <p class="text-xs text-brand-300 mb-6">Complete your registration details.</p>
-      
-      <form action="https://formspree.io/f/YOUR_ACADEMY_FORMSPREE_ID" method="POST" onsubmit="handleSignupSubmit(event)" class="space-y-4">
-        <div><label class="block text-xs font-medium text-brand-200 mb-1">Full Name</label><input type="text" id="sgnName" name="Full_Name" required class="w-full px-4 py-3 rounded-xl bg-brand-950 border border-brand-700 text-white text-xs"></div>
-        <div><label class="block text-xs font-medium text-brand-200 mb-1">Email Address</label><input type="email" id="sgnEmail" name="_replyto" required class="w-full px-4 py-3 rounded-xl bg-brand-950 border border-brand-700 text-white text-xs"></div>
-        <div>
-          <label class="block text-xs font-medium text-brand-200 mb-1">Select Course Track</label>
-          <select id="sgnCourse" name="Selected_Course" class="w-full px-4 py-3 rounded-xl bg-brand-950 border border-brand-700 text-white text-xs">
-            <option value="No-Code & AI Engineering">No-Code & AI Engineering</option>
-            <option value="Digital Literacy & Workplace Productivity">Digital Literacy & Workplace Productivity</option>
-            <option value="AI Automation Agency Blueprint">AI Automation Agency Blueprint</option>
-            <option value="GovTech Systems Administration">GovTech Systems Administration</option>
-          </select>
-        </div>
-        <div id="idPreviewBox" class="hidden p-3 rounded-xl bg-brand-900 border border-brand-300 text-xs text-brand-300">
-          Generated Student ID: <span id="generatedIdText" class="font-mono font-bold text-white"></span>
-          <input type="hidden" id="sgnAppId" name="Generated_Application_ID">
-        </div>
-        <button type="button" id="nextBtn" onclick="generateStudentIdPreview()" class="w-full py-3.5 rounded-xl bg-brand-200 text-brand-950 font-bold text-xs uppercase tracking-wider transition">Next (Generate ID)</button>
-        <button type="submit" id="submitBtn" class="hidden w-full py-3.5 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold text-xs uppercase tracking-wider transition">Submit Registration via Formspree</button>
-      </form>
-    </div>
-  </div>
-
-  <!-- Sign In Modal -->
-  <div id="loginModal" class="hidden fixed inset-0 z-50 bg-brand-950/80 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="glass-card w-full max-w-md p-8 rounded-3xl relative text-brand-50 shadow-2xl">
-      <button onclick="closeLoginModal()" class="absolute top-4 right-4 text-brand-300 hover:text-white"><i data-lucide="x" class="w-6 h-6"></i></button>
-      <h3 class="text-xl font-bold text-brand-50 mb-1">Student Sign In</h3>
-      <p class="text-xs text-brand-300 mb-6">Enter your registered email to unlock LMS access.</p>
-      <form onsubmit="handleStudentLogin(event)" class="space-y-4">
-        <div><label class="block text-xs font-medium text-brand-200 mb-1">Registered Student Email</label><input type="email" id="loginEmail" required class="w-full px-4 py-3 rounded-xl bg-brand-950 border border-brand-700 text-white text-xs"></div>
-        <button type="submit" class="w-full py-3.5 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold text-xs uppercase">Sign In to LMS</button>
-      </form>
-    </div>
-  </div>
 
   <footer class="bg-brand-900 border-t border-brand-800 text-xs text-brand-300 py-10 mt-auto">
     <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
@@ -167,7 +81,6 @@
         <a href="index.html" class="hover:text-brand-100 transition">Home</a>
         <a href="services.html" class="hover:text-brand-100 transition">Services</a>
         <a href="portfolio.html" class="hover:text-brand-100 transition">Case Studies</a>
-        <a href="academy.html" class="hover:text-brand-100 transition">Academy</a>
         <a href="about.html" class="hover:text-brand-100 transition">About</a>
       </div>
     </div>
@@ -176,63 +89,6 @@
   <script>
     lucide.createIcons();
     function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('hidden'); }
-    function openSignupModal() { document.getElementById('signupModal').classList.remove('hidden'); }
-    function closeSignupModal() { document.getElementById('signupModal').classList.add('hidden'); }
-    function openSignupModalWithCourse(c) { document.getElementById('sgnCourse').value = c; openSignupModal(); }
-    function openLoginModal() { document.getElementById('loginModal').classList.remove('hidden'); }
-    function closeLoginModal() { document.getElementById('loginModal').classList.add('hidden'); }
-
-    function generateStudentIdPreview() {
-      const name = document.getElementById('sgnName').value;
-      if (!name) { alert("Please enter your full name first."); return; }
-      const uniqueId = "iC-STU-" + Math.floor(1000 + Math.random() * 9000);
-      document.getElementById('generatedIdText').innerText = uniqueId;
-      document.getElementById('sgnAppId').value = uniqueId;
-      document.getElementById('idPreviewBox').classList.remove('hidden');
-      document.getElementById('nextBtn').classList.add('hidden');
-      document.getElementById('submitBtn').classList.remove('hidden');
-    }
-
-    function handleSignupSubmit(e) {
-      const name = document.getElementById('sgnName').value;
-      const email = document.getElementById('sgnEmail').value.trim().toLowerCase();
-      const course = document.getElementById('sgnCourse').value;
-      const appId = document.getElementById('sgnAppId').value;
-
-      let apps = JSON.parse(localStorage.getItem('iclick_all_applications') || '[]');
-      apps.push({ appId: appId, fullName: name, email: email, course: course, status: "Pending Review", date: new Date().toLocaleDateString() });
-      localStorage.setItem('iclick_all_applications', JSON.stringify(apps));
-    }
-
-    function resumeApplicationById() {
-      const searchId = document.getElementById('resumeAppIdInput').value.trim().toUpperCase();
-      const resultBox = document.getElementById('resumeResultBox');
-      if (!searchId) { alert("Please enter a valid Application ID."); return; }
-
-      const apps = JSON.parse(localStorage.getItem('iclick_all_applications') || '[]');
-      const record = apps.find(a => a.appId.toUpperCase() === searchId);
-
-      resultBox.classList.remove('hidden');
-      if (!record) {
-        resultBox.innerHTML = `<span class="text-rose-400 font-bold">No application found matching ID: ${searchId}</span>. Please verify your ID or submit a new application.`;
-      } else {
-        let statusColor = record.status === "Accepted" ? "text-emerald-400" : "text-amber-400";
-        resultBox.innerHTML = `
-          <div><strong>Applicant Name:</strong> ${record.fullName}</div>
-          <div><strong>Course Track:</strong> ${record.course}</div>
-          <div><strong>Application ID:</strong> <span class="font-mono">${record.appId}</span></div>
-          <div><strong>Status:</strong> <span class="${statusColor} font-bold">${record.status}</span></div>
-          ${record.status === "Accepted" ? `<div class="pt-2"><a href="lms.html" class="text-cyan-300 underline font-semibold">Proceed to Student LMS Sign In →</a></div>` : `<div class="text-[11px] text-slate-400 pt-1">Your application is currently under review by admin.</div>`}
-        `;
-      }
-    }
-
-    function handleStudentLogin(e) {
-      e.preventDefault();
-      const email = document.getElementById('loginEmail').value.trim().toLowerCase();
-      localStorage.setItem('iclick_current_student', email);
-      window.location.href = 'lms.html';
-    }
   </script>
 </body>
-  </html>
+</html>
