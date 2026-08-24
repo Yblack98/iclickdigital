@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="svg-full-lockup-dark" viewBox="0 0 320 80" class="w-full h-auto">
+                                <rect x="10" y="15" width="13" height="13" rx="3" fill="#FDFBF7"/>
+                                <rect x="27" y="15" width="13" height="13" rx="3" fill="#DFBA81"/>
+                                <rect x="10" y="32" width="13" height="13" rx="3" fill="#C28E68"/>
+                                <rect x="27" y="32" width="13" height="13" rx="3" fill="#FDFBF7"/>
+                                <circle cx="25" cy="30" r="4" fill="#19110B" stroke="#DFBA81" stroke-width="1.5"/>
+                                <text x="52" y="33" fill="#FDFBF7" font-family="'Outfit', sans-serif" font-weight="800" font-size="18" letter-spacing="-0.5">iClick Digital</text>
+                                <text x="52" y="50" fill="#C28E68" font-family="'Outfit', sans-serif" font-weight="600" font-size="12" letter-spacing="3">VENTURES</text>
+                            </svg>
