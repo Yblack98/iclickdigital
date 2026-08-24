@@ -28,7 +28,6 @@
 </head>
 <body class="bg-brand-50 text-brand-900 min-h-screen flex flex-col antialiased">
 
-  <!-- Admin Login Gate Overlay -->
   <div id="adminLoginGate" class="fixed inset-0 z-50 bg-brand-950 flex items-center justify-center p-4">
     <div class="glass-card w-full max-w-md p-8 rounded-3xl text-brand-50 shadow-2xl space-y-6">
       <div class="text-center">
@@ -57,7 +56,6 @@
     </div>
   </div>
 
-  <!-- Admin Control Panel -->
   <div id="adminMainContent" class="hidden flex flex-col min-h-screen">
     <nav class="bg-brand-900 border-b border-brand-800 px-6 py-4 flex justify-between items-center sticky top-0 z-40 text-white">
       <div class="flex items-center space-x-3">
@@ -74,8 +72,6 @@
     </nav>
 
     <main class="max-w-7xl mx-auto px-4 py-8 flex-1 w-full space-y-12">
-      
-      <!-- SECTION 1: Digital Academy Admissions -->
       <div class="space-y-4">
         <div class="flex justify-between items-center">
           <div>
@@ -104,7 +100,6 @@
         </div>
       </div>
 
-      <!-- SECTION 2: Professional Service Inquiries -->
       <div class="space-y-4 pt-4 border-t border-brand-200">
         <div>
           <h2 class="text-2xl font-black text-brand-900">Professional Service Inquiries</h2>
@@ -129,11 +124,10 @@
           </table>
         </div>
       </div>
-
     </main>
 
     <footer class="bg-brand-900 border-t border-brand-800 text-xs text-brand-300 py-8 text-center mt-auto">
-      &copy; 2026 iClick Digital Ventures. All rights reserved. • iclickdigitalventures@gmail.com
+      &copy; 2026 iClick Digital Ventures. All rights reserved. • enquiry@iclickdigitalventures.com
     </footer>
   </div>
 
@@ -176,17 +170,15 @@
     };
 
     function renderAdminTables() {
-      // 1. Render Academy Admissions Table
       const academyTbody = document.getElementById('academyTableBody');
       const apps = JSON.parse(localStorage.getItem('iclick_all_applications') || '[]');
-      // Filter items starting with iC-STU-
       const studentApps = apps.filter(a => a.appId && a.appId.startsWith('iC-STU'));
 
       if (studentApps.length === 0) {
         academyTbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-brand-400">No academy applications recorded yet.</td></tr>`;
       } else {
         academyTbody.innerHTML = '';
-        studentApps.forEach((app, idx) => {
+        studentApps.forEach((app) => {
           academyTbody.innerHTML += `
             <tr class="hover:bg-brand-900/50">
               <td class="p-3 font-mono text-brand-300 font-bold">${app.appId}</td>
@@ -204,7 +196,6 @@
         });
       }
 
-      // 2. Render Service Inquiries Table
       const servicesTbody = document.getElementById('servicesTableBody');
       const serviceInquiries = JSON.parse(localStorage.getItem('iclick_service_inquiries') || '[]');
 
@@ -212,7 +203,7 @@
         servicesTbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-brand-400">No service inquiries recorded yet.</td></tr>`;
       } else {
         servicesTbody.innerHTML = '';
-        serviceInquiries.forEach((svc, idx) => {
+        serviceInquiries.forEach((svc) => {
           servicesTbody.innerHTML += `
             <tr class="hover:bg-brand-900/50">
               <td class="p-3 font-mono text-cyan-400 font-bold">${svc.reqId}</td>
@@ -275,4 +266,4 @@
     }
   </script>
 </body>
-  </html>
+</html>
