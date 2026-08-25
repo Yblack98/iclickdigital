@@ -101,7 +101,6 @@
     </div>
   </main>
 
-  <!-- Service Request Modal with Web3Forms & LocalStorage Admin Logging -->
   <div id="serviceModal" class="hidden fixed inset-0 z-50 bg-brand-950/80 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="glass-card w-full max-w-lg p-8 rounded-3xl relative text-brand-50 shadow-2xl">
       <button onclick="closeServiceModal()" class="absolute top-4 right-4 text-brand-300 hover:text-white"><i data-lucide="x" class="w-6 h-6"></i></button>
@@ -109,7 +108,6 @@
       <p id="modalServiceName" class="text-xs text-brand-300 mb-6">Service: Selected</p>
       
       <form id="serviceForm" action="https://api.web3forms.com/submit" method="POST" onsubmit="handleServiceSubmit(event)" class="space-y-4">
-        <!-- Web3Forms Config -->
         <input type="hidden" name="access_key" value="4610e256-8551-4d35-b2e2-8bfd0c06dbb2">
         <input type="hidden" name="subject" value="New Service Engagement Request - iClick Portal">
         <input type="hidden" name="from_name" value="iClick Corporate Portal">
@@ -143,8 +141,19 @@
       <div>
         <span class="font-bold text-brand-50 text-sm">iClick Digital Ventures</span>
         <p class="text-[11px] text-brand-400 mt-0.5">Main Office: Sokoto State • Branch Office: Abuja, FCT, Nigeria</p>
-        <p class="text-[10px] text-brand-500 mt-1">CAC Reg No: BN 9772940 • SCUML & EFCC Compliant</p>
+        <p class="text-[10px] text-brand-500 mt-1">CAC Reg No: BN 9772940 • SCUML &amp; EFCC Compliant</p>
       </div>
+
+      <!-- Social Media Links -->
+      <div class="flex items-center space-x-4">
+        <a href="https://www.facebook.com/IclickDigitalventures" target="_blank" rel="noopener noreferrer" class="p-2 rounded-xl bg-brand-950 hover:bg-brand-800 text-brand-300 hover:text-white transition flex items-center gap-1.5">
+          <i data-lucide="facebook" class="w-4 h-4"></i> <span class="text-[11px] font-semibold">Facebook</span>
+        </a>
+        <a href="https://www.instagram.com/iclickdigitalventures" target="_blank" rel="noopener noreferrer" class="p-2 rounded-xl bg-brand-950 hover:bg-brand-800 text-brand-300 hover:text-white transition flex items-center gap-1.5">
+          <i data-lucide="instagram" class="w-4 h-4"></i> <span class="text-[11px] font-semibold">Instagram</span>
+        </a>
+      </div>
+
       <div class="flex flex-wrap justify-center gap-6 text-[11px]">
         <a href="index.html" class="hover:text-brand-100 transition">Home</a>
         <a href="services.html" class="hover:text-brand-100 transition">Services</a>
@@ -184,10 +193,7 @@
 
       fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: json
       }).then(async response => {
         let res = await response.json();
@@ -198,7 +204,6 @@
           statusMsg.style.color = "#d4a373";
           statusMsg.innerText = "✓ Thank you! Your request has been delivered to enquiry@iclickdigitalventures.com.";
           
-          // Log into browser localStorage for Admin Control Center (admin.html)
           const name = document.getElementById('svcName').value;
           const email = document.getElementById('svcEmail').value;
           const phone = document.getElementById('svcPhone').value;
@@ -225,4 +230,4 @@
     }
   </script>
 </body>
-  </html>
+        </html>
