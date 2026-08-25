@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Services & Solutions | iClick Digital Ventures</title>
+  <title>Services &amp; Solutions | iClick Digital Ventures</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -54,53 +54,158 @@
 
   <header class="py-20 border-b border-brand-200 text-center">
     <div class="max-w-4xl mx-auto px-4">
-      <span class="px-4 py-1.5 rounded-full bg-brand-200 text-brand-800 text-xs font-semibold uppercase tracking-wider inline-block mb-4">Organizational Subsidiaries & Verticals</span>
-      <h1 class="text-4xl sm:text-6xl font-black text-brand-900">Professional Services & Capabilities</h1>
+      <span class="px-4 py-1.5 rounded-full bg-brand-200 text-brand-800 text-xs font-semibold uppercase tracking-wider inline-block mb-4">Comprehensive Solutions &amp; Technical Capabilities</span>
+      <h1 class="text-4xl sm:text-6xl font-black text-brand-900">Institutional Services &amp; Verticals</h1>
+      <p class="text-xs sm:text-sm text-brand-700 max-w-2xl mx-auto mt-4 leading-relaxed">
+        Delivering end-to-end technology transformation across public administration, commercial enterprise systems, data intelligence, and campus infrastructure.
+      </p>
     </div>
   </header>
 
-  <main class="max-w-6xl mx-auto px-4 py-16 space-y-10 flex-1 w-full">
-    <div id="govtech" class="glass-card text-brand-50 rounded-3xl p-8 sm:p-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-      <div>
-        <h2 class="text-2xl font-bold text-brand-50 mb-2">iClick GovTech Solutions</h2>
-        <p class="text-xs sm:text-sm text-brand-200 max-w-2xl leading-relaxed">Registry digitization, workflow file tracking systems, and E-governance public portals.</p>
+  <main class="max-w-6xl mx-auto px-4 py-16 space-y-12 flex-1 w-full">
+    
+    <!-- 1. GovTech Solutions -->
+    <div id="govtech" class="glass-card text-brand-50 rounded-3xl p-8 sm:p-10 space-y-6">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <div>
+          <span class="px-3 py-1 rounded-full bg-brand-950 text-brand-300 text-[10px] font-mono font-bold uppercase border border-brand-800">Pillar 01 • Public Sector</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-brand-50 mt-2">iClick GovTech &amp; Judiciary Modernization</h2>
+        </div>
+        <button onclick="openServiceModal('GovTech Institutional Modernization')" class="px-5 py-3 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold text-xs uppercase transition whitespace-nowrap shadow-md">Request Service Engagement →</button>
       </div>
-      <button onclick="openServiceModal('GovTech Institutional Modernization')" class="px-5 py-3 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold text-xs uppercase transition whitespace-nowrap">Request Service →</button>
+      <p class="text-xs sm:text-sm text-brand-200 leading-relaxed">
+        Engineered specifically for court registries, state ministries, departments, and government agencies (MDAs). We eliminate physical paperwork backlogs and build secure, tamper-proof electronic filing and file tracking infrastructure.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+        <div class="p-4 rounded-2xl bg-brand-950/70 border border-brand-800/80 space-y-1.5">
+          <strong class="text-brand-300 text-xs font-mono block">Registry Archival &amp; OCR Scanning</strong>
+          <p class="text-[11px] text-brand-200 leading-relaxed">High-throughput conversion of physical case files, gazettes, and official records into searchable digital PDFs with OCR indexing.</p>
+        </div>
+        <div class="p-4 rounded-2xl bg-brand-950/70 border border-brand-800/80 space-y-1.5">
+          <strong class="text-brand-300 text-xs font-mono block">QR Custody &amp; File Tracking (EDMS)</strong>
+          <p class="text-[11px] text-brand-200 leading-relaxed">Unique QR-code custody tracking that logs every movement of physical and digital dockets across departments and chambers in real time.</p>
+        </div>
+        <div class="p-4 rounded-2xl bg-brand-950/70 border border-brand-800/80 space-y-1.5">
+          <strong class="text-brand-300 text-xs font-mono block">E-Governance &amp; Citizen Portals</strong>
+          <p class="text-[11px] text-brand-200 leading-relaxed">Custom public-facing web portals for citizen applications, certified document verification, and administrative clearance processing.</p>
+        </div>
+      </div>
     </div>
 
-    <div id="ai" class="glass-card text-brand-50 rounded-3xl p-8 sm:p-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-      <div>
-        <h2 class="text-2xl font-bold text-brand-50 mb-2">iClick AI Automation</h2>
-        <p class="text-xs sm:text-sm text-brand-200 max-w-2xl leading-relaxed">Business process automation, Make.com workflows, WhatsApp bots, and Airtable CRM pipelines.</p>
+    <!-- 2. AI Automation & Software -->
+    <div id="ai" class="glass-card text-brand-50 rounded-3xl p-8 sm:p-10 space-y-6">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <div>
+          <span class="px-3 py-1 rounded-full bg-brand-950 text-brand-300 text-[10px] font-mono font-bold uppercase border border-brand-800">Pillar 02 • Enterprise Systems</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-brand-50 mt-2">iClick AI Automation &amp; Custom Software</h2>
+        </div>
+        <button onclick="openServiceModal('AI Automation Pipeline')" class="px-5 py-3 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold text-xs uppercase transition whitespace-nowrap shadow-md">Request Service Engagement →</button>
       </div>
-      <button onclick="openServiceModal('AI Automation Pipeline')" class="px-5 py-3 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold text-xs uppercase transition whitespace-nowrap">Request Service →</button>
+      <p class="text-xs sm:text-sm text-brand-200 leading-relaxed">
+        Designing automated operational backbones that eliminate repetitive human tasks, connect disconnected software tools, and streamline customer communication channels.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+        <div class="p-4 rounded-2xl bg-brand-950/70 border border-brand-800/80 space-y-1.5">
+          <strong class="text-brand-300 text-xs font-mono block">Workflow Automation (Make / Webhooks)</strong>
+          <p class="text-[11px] text-brand-200 leading-relaxed">Connecting forms, accounting sheets, CRMs, and email dispatch into automated execution loops without manual data re-entry.</p>
+        </div>
+        <div class="p-4 rounded-2xl bg-brand-950/70 border border-brand-800/80 space-y-1.5">
+          <strong class="text-brand-300 text-xs font-mono block">WhatsApp Business API Bot Systems</strong>
+          <p class="text-[11px] text-brand-200 leading-relaxed">Intelligent 24/7 client conversational agents for booking, instant FAQ resolution, payment verification, and order processing.</p>
+        </div>
+        <div class="p-4 rounded-2xl bg-brand-950/70 border border-brand-800/80 space-y-1.5">
+          <strong class="text-brand-300 text-xs font-mono block">Custom Enterprise ERPs &amp; Airtable CRMs</strong>
+          <p class="text-[11px] text-brand-200 leading-relaxed">Tailor-made database applications for employee attendance, inventory control, payroll calculation, and vendor contract tracking.</p>
+        </div>
+      </div>
     </div>
 
-    <div class="glass-card text-brand-50 rounded-3xl p-8 sm:p-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-      <div>
-        <h2 class="text-2xl font-bold text-brand-50 mb-2">Data Analytics & Business Intelligence</h2>
-        <p class="text-xs sm:text-sm text-brand-200 max-w-2xl leading-relaxed">Transforming complex enterprise datasets into actionable visual dashboards and predictive business insights.</p>
+    <!-- 3. Data Analytics & BI -->
+    <div class="glass-card text-brand-50 rounded-3xl p-8 sm:p-10 space-y-6">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <div>
+          <span class="px-3 py-1 rounded-full bg-brand-950 text-brand-300 text-[10px] font-mono font-bold uppercase border border-brand-800">Pillar 03 • Intelligence</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-brand-50 mt-2">Data Analytics &amp; Business Intelligence</h2>
+        </div>
+        <button onclick="openServiceModal('Data Analytics & BI')" class="px-5 py-3 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold text-xs uppercase transition whitespace-nowrap shadow-md">Request Service Engagement →</button>
       </div>
-      <button onclick="openServiceModal('Data Analytics & BI')" class="px-5 py-3 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold text-xs uppercase transition whitespace-nowrap">Request Service →</button>
+      <p class="text-xs sm:text-sm text-brand-200 leading-relaxed">
+        Transforming raw operational metrics, sales logs, and administrative registries into clear, actionable executive dashboards and predictive financial insights.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+        <div class="p-4 rounded-2xl bg-brand-950/70 border border-brand-800/80 space-y-1.5">
+          <strong class="text-brand-300 text-xs font-mono block">Executive KPI Dashboards</strong>
+          <p class="text-[11px] text-brand-200 leading-relaxed">Interactive PowerBI and custom web dashboards displaying real-time financial health, cash flow velocity, and departmental output.</p>
+        </div>
+        <div class="p-4 rounded-2xl bg-brand-950/70 border border-brand-800/80 space-y-1.5">
+          <strong class="text-brand-300 text-xs font-mono block">Data Cleaning &amp; Pipeline Architecture</strong>
+          <p class="text-[11px] text-brand-200 leading-relaxed">Restructuring fragmented legacy spreadsheets and records into secure, unified relational databases with automated data ingestion.</p>
+        </div>
+        <div class="p-4 rounded-2xl bg-brand-950/70 border border-brand-800/80 space-y-1.5">
+          <strong class="text-brand-300 text-xs font-mono block">Predictive Modeling &amp; Demand Forecasting</strong>
+          <p class="text-[11px] text-brand-200 leading-relaxed">Historical trend analysis to project seasonal supply needs, revenue fluctuations, and operational staffing requirements.</p>
+        </div>
+      </div>
     </div>
 
-    <div class="glass-card text-brand-50 rounded-3xl p-8 sm:p-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-      <div>
-        <h2 class="text-2xl font-bold text-brand-50 mb-2">Social Media Management & Digital Brand Growth</h2>
-        <p class="text-xs sm:text-sm text-brand-200 max-w-2xl leading-relaxed">Strategic content planning, multi-platform audience engagement, paid digital campaigns, and brand visibility optimization.</p>
+    <!-- 4. Social Media & Digital Brand Growth -->
+    <div class="glass-card text-brand-50 rounded-3xl p-8 sm:p-10 space-y-6">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <div>
+          <span class="px-3 py-1 rounded-full bg-brand-950 text-brand-300 text-[10px] font-mono font-bold uppercase border border-brand-800">Pillar 04 • Growth &amp; Branding</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-brand-50 mt-2">Social Media Management &amp; Digital Brand Strategy</h2>
+        </div>
+        <button onclick="openServiceModal('Social Media Management')" class="px-5 py-3 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold text-xs uppercase transition whitespace-nowrap shadow-md">Request Service Engagement →</button>
       </div>
-      <button onclick="openServiceModal('Social Media Management')" class="px-5 py-3 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold text-xs uppercase transition whitespace-nowrap">Request Service →</button>
+      <p class="text-xs sm:text-sm text-brand-200 leading-relaxed">
+        Building authoritative, recognizable digital presence for corporate brands, executive leaders, and public institutions through data-driven content and targeted campaigns.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+        <div class="p-4 rounded-2xl bg-brand-950/70 border border-brand-800/80 space-y-1.5">
+          <strong class="text-brand-300 text-xs font-mono block">Multi-Platform Content Engineering</strong>
+          <p class="text-[11px] text-brand-200 leading-relaxed">High-converting graphic, video, and written positioning across Facebook, Instagram, LinkedIn, and corporate announcement networks.</p>
+        </div>
+        <div class="p-4 rounded-2xl bg-brand-950/70 border border-brand-800/80 space-y-1.5">
+          <strong class="text-brand-300 text-xs font-mono block">Paid Performance Advertising (Meta/Google)</strong>
+          <p class="text-[11px] text-brand-200 leading-relaxed">Hyper-targeted B2B and consumer ad campaigns engineered for maximum return on ad spend (ROAS) and qualified lead generation.</p>
+        </div>
+        <div class="p-4 rounded-2xl bg-brand-950/70 border border-brand-800/80 space-y-1.5">
+          <strong class="text-brand-300 text-xs font-mono block">Reputation &amp; Community Governance</strong>
+          <p class="text-[11px] text-brand-200 leading-relaxed">Active monitoring, executive public relations alignment, crisis communication safeguards, and prompt audience inquiry handling.</p>
+        </div>
+      </div>
     </div>
 
-    <div id="iot" class="glass-card text-brand-50 rounded-3xl p-8 sm:p-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-      <div>
-        <h2 class="text-2xl font-bold text-brand-50 mb-2">iClick IoT & Digital Accessories</h2>
-        <p class="text-xs sm:text-sm text-brand-200 max-w-2xl leading-relaxed">Smart office facility automation, biometric access control, and enterprise IT hardware supply.</p>
+    <!-- 5. IoT & Smart Office Infrastructure -->
+    <div id="iot" class="glass-card text-brand-50 rounded-3xl p-8 sm:p-10 space-y-6">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <div>
+          <span class="px-3 py-1 rounded-full bg-brand-950 text-brand-300 text-[10px] font-mono font-bold uppercase border border-brand-800">Pillar 05 • Campus Infrastructure</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-brand-50 mt-2">iClick IoT &amp; Smart Office Infrastructure</h2>
+        </div>
+        <button onclick="openServiceModal('IoT & Hardware Procurement')" class="px-5 py-3 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold text-xs uppercase transition whitespace-nowrap shadow-md">Request Service Engagement →</button>
       </div>
-      <button onclick="openServiceModal('IoT & Hardware Procurement')" class="px-5 py-3 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold text-xs uppercase transition whitespace-nowrap">Request Service →</button>
+      <p class="text-xs sm:text-sm text-brand-200 leading-relaxed">
+        Equipping physical headquarters, courtrooms, and business hubs with optical fiber backbones, smart biometric security, and modern hardware appliances.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+        <div class="p-4 rounded-2xl bg-brand-950/70 border border-brand-800/80 space-y-1.5">
+          <strong class="text-brand-300 text-xs font-mono block">Huawei-Grade Optical Fiber (Mini-FTTO)</strong>
+          <p class="text-[11px] text-brand-200 leading-relaxed">Future-proof full-fiber networking delivering symmetrical gigabit connectivity with zero signal degradation across corporate campuses.</p>
+        </div>
+        <div class="p-4 rounded-2xl bg-brand-950/70 border border-brand-800/80 space-y-1.5">
+          <strong class="text-brand-300 text-xs font-mono block">Biometric Turnstiles &amp; Access Control</strong>
+          <p class="text-[11px] text-brand-200 leading-relaxed">Facial recognition, fingerprint scanners, and RFID security gates integrated directly into automated employee attendance registers.</p>
+        </div>
+        <div class="p-4 rounded-2xl bg-brand-950/70 border border-brand-800/80 space-y-1.5">
+          <strong class="text-brand-300 text-xs font-mono block">Smart Boardrooms &amp; Video Conferencing</strong>
+          <p class="text-[11px] text-brand-200 leading-relaxed">Automated 4K presentation screens, multi-directional acoustic arrays, and remote hybrid meeting hubs for executive governance.</p>
+        </div>
+      </div>
     </div>
+
   </main>
-
+  <!-- Service Request Modal Container -->
   <div id="serviceModal" class="hidden fixed inset-0 z-50 bg-brand-950/80 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="glass-card w-full max-w-lg p-8 rounded-3xl relative text-brand-50 shadow-2xl">
       <button onclick="closeServiceModal()" class="absolute top-4 right-4 text-brand-300 hover:text-white"><i data-lucide="x" class="w-6 h-6"></i></button>
@@ -115,28 +220,29 @@
         <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
 
         <div>
-          <label class="block text-xs font-medium text-brand-200 mb-1">Full Name / Org</label>
+          <label class="block text-xs font-medium text-brand-200 mb-1">Full Name / Organization *</label>
           <input type="text" id="svcName" name="name" required class="w-full px-4 py-3 rounded-xl bg-brand-950 border border-brand-700 text-white text-xs outline-none focus:border-brand-300">
         </div>
         <div>
-          <label class="block text-xs font-medium text-brand-200 mb-1">Email Address</label>
+          <label class="block text-xs font-medium text-brand-200 mb-1">Official Email Address *</label>
           <input type="email" id="svcEmail" name="email" required class="w-full px-4 py-3 rounded-xl bg-brand-950 border border-brand-700 text-white text-xs outline-none focus:border-brand-300">
         </div>
         <div>
-          <label class="block text-xs font-medium text-brand-200 mb-1">Phone / WhatsApp</label>
+          <label class="block text-xs font-medium text-brand-200 mb-1">Phone / WhatsApp Number *</label>
           <input type="tel" id="svcPhone" name="phone" required class="w-full px-4 py-3 rounded-xl bg-brand-950 border border-brand-700 text-white text-xs outline-none focus:border-brand-300">
         </div>
         <div>
-          <label class="block text-xs font-medium text-brand-200 mb-1">Project Scope & Requirements</label>
-          <textarea id="svcMsg" name="message" rows="3" required class="w-full px-4 py-3 rounded-xl bg-brand-950 border border-brand-700 text-white text-xs outline-none focus:border-brand-300"></textarea>
+          <label class="block text-xs font-medium text-brand-200 mb-1">Project Scope &amp; Technical Requirements *</label>
+          <textarea id="svcMsg" name="message" rows="3" required placeholder="Describe your institutional objectives, timeline, or specifications..." class="w-full px-4 py-3 rounded-xl bg-brand-950 border border-brand-700 text-white text-xs outline-none focus:border-brand-300"></textarea>
         </div>
-        <button type="submit" id="submitBtn" class="w-full py-3.5 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold text-xs uppercase tracking-wider transition">Submit Request to enquiry@iclickdigitalventures.com</button>
+        <button type="submit" id="submitBtn" class="w-full py-3.5 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold text-xs uppercase tracking-wider transition">Transmit Request to enquiry@iclickdigitalventures.com</button>
       </form>
       <p id="formStatusMsg" class="mt-3 text-center text-xs font-medium"></p>
     </div>
   </div>
 
-  <footer class="bg-brand-900 border-t border-brand-800 text-xs text-brand-300 py-10 mt-auto">
+  <!-- Corporate Footer with Social Media Links -->
+  <footer class="bg-brand-900 border-t border-brand-800 text-xs text-brand-300 py-10 mt-auto w-full">
     <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
       <div>
         <span class="font-bold text-brand-50 text-sm">iClick Digital Ventures</span>
@@ -197,7 +303,7 @@
         body: json
       }).then(async response => {
         let res = await response.json();
-        submitBtn.innerText = "Submit Request to enquiry@iclickdigitalventures.com";
+        submitBtn.innerText = "Transmit Request to enquiry@iclickdigitalventures.com";
         submitBtn.disabled = false;
 
         if (response.status === 200) {
@@ -222,7 +328,7 @@
           statusMsg.innerText = res.message || "Problem submitting form. Please try again.";
         }
       }).catch(error => {
-        submitBtn.innerText = "Submit Request to enquiry@iclickdigitalventures.com";
+        submitBtn.innerText = "Transmit Request to enquiry@iclickdigitalventures.com";
         submitBtn.disabled = false;
         statusMsg.style.color = "#f87171";
         statusMsg.innerText = "Network error. Please check your connection and try again.";
