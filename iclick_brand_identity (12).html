@@ -1,0 +1,1807 @@
+<!DOCTYPE html>
+<html lang="en" class="dark"><head><script data-bard-client-injected="true">(function(firebaseConfig, initialAuthToken, appId) {
+        window.__firebase_config = firebaseConfig;
+        window.__initial_auth_token = initialAuthToken;
+        window.__app_id = appId;
+            })("\n{\n  \"apiKey\": \"AIzaSyCqyCcs2R2e7AegGjvFAwG98wlamtbHvZY\",\n  \"authDomain\": \"bard-frontend.firebaseapp.com\",\n  \"projectId\": \"bard-frontend\",\n  \"storageBucket\": \"bard-frontend.firebasestorage.app\",\n  \"messagingSenderId\": \"175205271074\",\n  \"appId\": \"1:175205271074:web:2b7bd4d34d33bf38e6ec7b\"\n}\n","eyJhbGciOiJSUzI1NiIsImtpZCI6IjExNjRiNzdiNDMzZDdhMDAyMWI4NjE4YjhjYTU3ZTMyZGI5MWUxMTMiLCJ0eXAiOiJKV1QifQ.eyJzdWIiOiJmaXJlYmFzZS1hZG1pbnNkay1mYnN2Y0BiYXJkLWZyb250ZW5kLmlhbS5nc2VydmljZWFjY291bnQuY29tIiwiYXVkIjoiaHR0cHM6Ly9pZGVudGl0eXRvb2xraXQuZ29vZ2xlYXBpcy5jb20vZ29vZ2xlLmlkZW50aXR5LmlkZW50aXR5dG9vbGtpdC52MS5JZGVudGl0eVRvb2xraXQiLCJ1aWQiOiIwNTI2NDAxMTM1NDczMDQwNTI4OSIsImlzcyI6ImZpcmViYXNlLWFkbWluc2RrLWZic3ZjQGJhcmQtZnJvbnRlbmQuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20iLCJjbGFpbXMiOnsiYXBwSWQiOiJjXzA4MDcwN2I5MDllNDk5ZmZfaWNsaWNrX2JyYW5kX2lkZW50aXR5Lmh0bWwtNTcwIn0sImV4cCI6MTc4NzQ0MzgzMywiaWF0IjoxNzg3NDQwMjMzLCJhbGciOiJSUzI1NiJ9.hRner-K5i1hPkja6hMB5GALN63GFEFcKtPEqVX3z5K0CC7kqneKVIzNavBHk7AXz8_s_7GUYf_7KolCl9vKk7QH8dtDuEzc4mr2JK1bnCYK8QNtMTA-PN0OiEw61NxZL3mBTJr915P9er4jXLv_TAEpVPKIEPzeqkOGI3igd9irjk7v8pfi8VicX1e9RaBP3HJAanUTXeYqqSyNVQ2Jni-lRh_qrHng-CxD0eqKHn03kkTHBhFDPIl4vw7CWJxxEp-JphP3cR2U8db7z29nfPuGi0XDsY-3mmMsS_Mh9zc1yUHsqsLFYm1KVo2TYtQk5_BwGNNkNGNyOqUmU4MmJ4Q","c_080707b909e499ff_iclick_brand_identity.html-570")</script><script data-bard-client-injected="true">(function(){'use strict';window.addEventListener("message",a=>{a.data&&a.data.type==="SUPPLEMENTAL_DATA_UPDATE"&&window.dispatchEvent(new CustomEvent("supplementaldataupdate",{detail:a.data.data}))});}).call(this);
+</script><script data-bard-client-injected="true">(function(){'use strict';var h=typeof Object.defineProperties=="function"?Object.defineProperty:function(a,b,d){if(a==Array.prototype||a==Object.prototype)return a;a[b]=d.value;return a};function l(a){a=["object"==typeof globalThis&&globalThis,a,"object"==typeof window&&window,"object"==typeof self&&self,"object"==typeof global&&global];for(var b=0;b<a.length;++b){var d=a[b];if(d&&d.Math==Math)return d}throw Error("Cannot find global object");}var n=l(this);
+function p(a,b){if(b)a:{var d=n;a=a.split(".");for(var c=0;c<a.length-1;c++){var e=a[c];if(!(e in d))break a;d=d[e]}a=a[a.length-1];c=d[a];b=b(c);b!=c&&b!=null&&h(d,a,{configurable:!0,writable:!0,value:b})}}function r(a){function b(c){return a.next(c)}function d(c){return a.throw(c)}return new Promise(function(c,e){function f(g){g.done?c(g.value):Promise.resolve(g.value).then(b,d).then(f,e)}f(a.next())})}function t(a){return r(a())}
+p("Object.values",function(a){return a?a:function(b){var d=[],c;for(c in b)Object.prototype.hasOwnProperty.call(b,c)&&d.push(b[c]);return d}});p("Array.prototype.includes",function(a){return a?a:function(b,d){var c=this;c instanceof String&&(c=String(c));var e=c.length;d=d||0;for(d<0&&(d=Math.max(d+e,0));d<e;d++){var f=c[d];if(f===b||Object.is(f,b))return!0}return!1}});/*
+
+ MIT License
+
+ Copyright (c) 2017-2023 W.Y.
+
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ SOFTWARE.
+
+*/
+function u(a,b){var d=a.style;b.backgroundColor&&(d.backgroundColor=b.backgroundColor);b.width&&(d.width=`${b.width}px`);b.height&&(d.height=`${b.height}px`);var c=b.style;c!=null&&Object.keys(c).forEach(e=>{d[e]=c[e]})};var v=(()=>{var a=0;return()=>{a+=1;return`u${`0000${(Math.random()*1679616<<0).toString(36)}`.slice(-4)}${a}`}})();function w(a){var b=[];for(let d=0,c=a.length;d<c;d++)b.push(a[d]);return b}let x=null;function y(a={}){return x?x:a.m?x=a.m:x=w(window.getComputedStyle(document.documentElement))}function z(a,b){return(a=(a.ownerDocument.defaultView||window).getComputedStyle(a).getPropertyValue(b))?parseFloat(a.replace("px","")):0}
+function A(a,b={}){var d;if(!(d=b.width)){d=z(a,"border-left-width");var c=z(a,"border-right-width");d=a.clientWidth+d+c}(b=b.height)||(b=z(a,"border-top-width"),c=z(a,"border-bottom-width"),b=a.clientHeight+b+c);return{width:d,height:b}}function B(a){return new Promise((b,d)=>{var c=new Image;c.onload=()=>{c.decode().then(()=>{requestAnimationFrame(()=>b(c))})};c.onerror=d;c.crossOrigin="anonymous";c.decoding="async";c.src=a})}
+function C(a){return t(function*(){return Promise.resolve().then(()=>(new XMLSerializer).serializeToString(a)).then(encodeURIComponent).then(b=>`data:image/svg+xml;charset=utf-8,${b}`)})}
+function D(a,b,d){return t(function*(){var c=document.createElementNS("http://www.w3.org/2000/svg","svg"),e=document.createElementNS("http://www.w3.org/2000/svg","foreignObject");c.setAttribute("width",`${b}`);c.setAttribute("height",`${d}`);c.setAttribute("viewBox",`0 0 ${b} ${d}`);e.setAttribute("width","100%");e.setAttribute("height","100%");e.setAttribute("x","0");e.setAttribute("y","0");e.setAttribute("externalResourcesRequired","true");c.appendChild(e);e.appendChild(a);return C(c)})}
+var E=(a,b)=>{if(a instanceof b)return!0;a=Object.getPrototypeOf(a);return a===null?!1:a.constructor.name===b.name||E(a,b)};function F(a,b){return y(b).map(d=>{var c=a.getPropertyValue(d),e=a.getPropertyPriority(d);return`${d}: ${c}${e?" !important":""};`}).join(" ")}
+function G(a,b,d,c){a=window.getComputedStyle(a,d);var e=a.getPropertyValue("content");if(e!==""&&e!=="none"){var f=v();try{b.className=`${b.className} ${f}`}catch(k){return}e=document.createElement("style");var g=e.appendChild;d=`.${f}:${d}`;a.cssText?(c=a.getPropertyValue("content"),c=`${a.cssText} content: '${c.replace(/'|"/g,"")}';`):c=F(a,c);g.call(e,document.createTextNode(`${d}{${c}}`));b.appendChild(e)}};function H(a){return a.search(/^(data:)/)!==-1}function I(a,b,d){return t(function*(){var c=yield fetch(a,b);if(c.status===404)throw Error(`Resource "${c.url}" not found`);var e=yield c.blob();return new Promise((f,g)=>{var k=new FileReader;k.onerror=g;k.onloadend=()=>{try{f(d({u:c,result:k.result}))}catch(m){g(m)}};k.readAsDataURL(e)})})}const J={};function K(a,b,d){var c=a.replace(/\?.*/,"");d&&(c=a);/ttf|otf|eot|woff2?/i.test(c)&&(c=c.replace(/.*\//,""));return b?`[${b}]${c}`:c}
+function L(a,b,d){return t(function*(){var c=K(a,b,d.D);if(J[c]!=null)return J[c];d.v&&(a+=(/\?/.test(a)?"&":"?")+(new Date).getTime());try{let f=yield I(a,d.j,({u:g,result:k})=>{b||(b=g.headers.get("Content-Type")||"");return k.split(/,/)[1]});var e=`data:${b};base64,${f}`}catch(f){e=d.C||""}return J[c]=e})};const M={R:"application/font-woff",S:"application/font-woff",O:"application/font-truetype",A:"application/vnd.ms-fontobject",I:"image/png",G:"image/jpeg",F:"image/jpeg",B:"image/gif",N:"image/tiff",M:"image/svg+xml",P:"image/webp"};function N(a){return(a=/\.([^./]*?)$/g.exec(a))?a[1]:""};function O(a){return t(function*(){var b=a.toDataURL();return b==="data:,"?a.cloneNode(!1):B(b)})}function aa(a,b){return t(function*(){if(a.currentSrc){var d=document.createElement("canvas");let c=d.getContext("2d");d.width=a.clientWidth;d.height=a.clientHeight;c==null||c.drawImage(a,0,0,d.width,d.height);d=d.toDataURL();return B(d)}d=a.poster;d=yield L(d,M[N(d).toLowerCase()]||"",b);return B(d)})}
+function ba(a,b){return t(function*(){try{let d;if(a==null?0:(d=a.contentDocument)==null?0:d.body)return yield P(a.contentDocument.body,b,!0)}catch(d){}return a.cloneNode(!1)})}function ca(a,b){return t(function*(){return E(a,HTMLCanvasElement)?O(a):E(a,HTMLVideoElement)?aa(a,b):E(a,HTMLIFrameElement)?ba(a,b):a.cloneNode(a.tagName!=null&&a.tagName.toUpperCase()==="SVG")})}
+function da(a,b,d){return t(function*(){if(b.tagName!=null&&b.tagName.toUpperCase()==="SVG")return b;var c=[];if(a.tagName!=null&&a.tagName.toUpperCase()==="SLOT"&&a.assignedNodes)c=w(a.assignedNodes());else{let e;if(E(a,HTMLIFrameElement)&&((e=a.contentDocument)==null?0:e.body))c=w(a.contentDocument.body.childNodes);else{let f;c=w(((f=a.shadowRoot)!=null?f:a).childNodes)}}if(c.length===0||E(a,HTMLVideoElement))return b;yield c.reduce((e,f)=>e.then(()=>P(f,d)).then(g=>{g&&b.appendChild(g)}),Promise.resolve());
+return b})}function ea(a,b,d){var c=b.style;if(c){var e=window.getComputedStyle(a);e.cssText?(c.cssText=e.cssText,c.transformOrigin=e.transformOrigin):y(d).forEach(f=>{var g=e.getPropertyValue(f);f==="font-size"&&g.endsWith("px")&&(g=`${Math.floor(parseFloat(g.substring(0,g.length-2)))-.1}px`);E(a,HTMLIFrameElement)&&f==="display"&&g==="inline"&&(g="block");f==="d"&&b.getAttribute("d")&&(g=`path(${b.getAttribute("d")})`);c.setProperty(f,g,e.getPropertyPriority(f))})}}
+function fa(a,b){E(a,HTMLSelectElement)&&(b=Array.from(b.children).find(d=>a.value===d.getAttribute("value")))&&b.setAttribute("selected","")}
+function ha(a,b){return t(function*(){var d=a.querySelectorAll?a.querySelectorAll("use"):[];if(d.length===0)return a;var c={};for(var e=0;e<d.length;e++){var f=d[e].getAttribute("xlink:href");if(f){let g=document.querySelector(f);a.querySelector(f)||!g||c[f]||(c[f]=yield P(g,b,!0))}}d=Object.values(c);if(d.length){c=document.createElementNS("http://www.w3.org/1999/xhtml","svg");c.setAttribute("xmlns","http://www.w3.org/1999/xhtml");c.style.position="absolute";c.style.width="0";c.style.height="0";
+c.style.overflow="hidden";c.style.display="none";e=document.createElementNS("http://www.w3.org/1999/xhtml","defs");c.appendChild(e);for(f=0;f<d.length;f++)e.appendChild(d[f]);a.appendChild(c)}return a})}
+function P(a,b,d){return t(function*(){return d||!b.filter||b.filter(a)?Promise.resolve(a).then(c=>ca(c,b)).then(c=>da(a,c,b)).then(c=>{E(c,Element)&&(ea(a,c,b),G(a,c,":before",b),G(a,c,":after",b),E(a,HTMLTextAreaElement)&&(c.textContent=a.value),E(a,HTMLInputElement)&&c.setAttribute("value",a.value),fa(a,c));return c}).then(c=>ha(c,b)):null})};const Q=/url\((['"]?)([^'"]+?)\1\)/g,ia=/url\([^)]+\)\s*format\((["']?)([^"']+)\1\)/g,ja=/src:\s*(?:url\([^)]+\)\s*format\([^)]+\)[,;]\s*)+/g;function ka(a){var b=[];a.replace(Q,(d,c,e)=>{b.push(e);return d});return b.filter(d=>!H(d))}
+function la(a,b,d,c){return t(function*(){try{let e=d?(new URL(b,d||void 0)).toString():b,f;f=yield L(e,M[N(b).toLowerCase()]||"",c);return a.replace(new RegExp(`(url\\(['"]?)(${b.replace(/([.*+?^${}()|\[\]\/\\])/g,"\\$1")})(['"]?\\))`,"g"),`$1${f}$3`)}catch(e){}return a})}function ma(a,{J:b}){return b?a.replace(ja,d=>{for(;;){let [c,,e]=ia.exec(d)||[];if(!e)return"";if(e===b)return`src: ${c};`}}):a}
+function R(a,b,d){return t(function*(){if(a.search(Q)===-1)return a;var c=ma(a,d);return ka(c).reduce((e,f)=>e.then(g=>la(g,f,b,d)),Promise.resolve(c))})};function S(a,b,d){return t(function*(){var c,e=(c=b.style)==null?void 0:c.getPropertyValue(a);return e?(c=yield R(e,null,d),b.style.setProperty(a,c,b.style.getPropertyPriority(a)),!0):!1})}function na(a,b){return t(function*(){(yield S("background",a,b))||(yield S("background-image",a,b));(yield S("mask",a,b))||(yield S("-webkit-mask",a,b))||(yield S("mask-image",a,b))||(yield S("-webkit-mask-image",a,b))})}
+function oa(a,b){return t(function*(){var d=E(a,HTMLImageElement);if(d&&!H(a.src)||E(a,SVGImageElement)&&!H(a.href.baseVal)){var c=d?a.src:a.href.baseVal,e=yield L(c,M[N(c).toLowerCase()]||"",b);yield new Promise((f,g)=>{a.onload=f;a.onerror=b.o?(...k)=>{try{f(b.o(...k))}catch(m){g(m)}}:g;a.decode&&(a.decode=f);a.loading==="lazy"&&(a.loading="eager");d?(a.srcset="",a.src=e):a.href.baseVal=e})}})}
+function pa(a,b){return t(function*(){var d=w(a.childNodes).map(c=>T(c,b));yield Promise.all(d).then(()=>a)})}function T(a,b){return t(function*(){E(a,Element)&&(yield na(a,b),yield oa(a,b),yield pa(a,b))})};const U={};function V(a){return t(function*(){var b=U[a];if(b!=null)return b;b=yield(yield fetch(a)).text();b={url:a,cssText:b};return U[a]=b})}function W(a,b){return t(function*(){var d=a.cssText,c=/url\(["']?([^"')]+)["']?\)/g,e=(d.match(/url\([^)]+\)/g)||[]).map(f=>t(function*(){var g=f.replace(c,"$1");g.startsWith("https://")||(g=(new URL(g,a.url)).href);return I(g,b.j,({result:k})=>{d=d.replace(f,`url(${k})`);return[f,k]})}));return Promise.all(e).then(()=>d)})}
+function X(a){if(a==null)return[];var b=[];a=a.replace(/(\/\*[\s\S]*?\*\/)/gi,"");for(var d=RegExp("((@.*?keyframes [\\s\\S]*?){([\\s\\S]*?}\\s*?)})","gi");;){var c=d.exec(a);if(c===null)break;b.push(c[0])}a=a.replace(d,"");d=/@import[\s\S]*?url\([^)]*\)[\s\S]*?;/gi;for(c=RegExp("((\\s*?(?:\\/\\*[\\s\\S]*?\\*\\/)?\\s*?@media[\\s\\S]*?){([\\s\\S]*?)}\\s*?})|(([\\s\\S]*?){([\\s\\S]*?)})","gi");;){let e=d.exec(a);if(e===null)if(e=c.exec(a),e===null)break;else d.lastIndex=c.lastIndex;else c.lastIndex=
+d.lastIndex;b.push(e[0])}return b}
+function qa(a,b){return t(function*(){var d=[],c=[];a.forEach(e=>{if("cssRules"in e)try{w(e.cssRules||[]).forEach((f,g)=>{if(f.type===CSSRule.IMPORT_RULE){let k=g+1;f=V(f.href).then(m=>W(m,b)).then(m=>X(m).forEach(q=>{try{e.insertRule(q,q.startsWith("@import")?k+=1:e.cssRules.length)}catch(Da){}})).catch(()=>{});c.push(f)}})}catch(f){let g=a.find(k=>k.href==null)||document.styleSheets[0];e.href!=null&&c.push(V(e.href).then(k=>W(k,b)).then(k=>X(k).forEach(m=>{g.insertRule(m,g.cssRules.length)})).catch(()=>
+{}))}});return Promise.all(c).then(()=>{a.forEach(e=>{if("cssRules"in e)try{w(e.cssRules||[]).forEach(f=>{d.push(f)})}catch(f){}});return d})})}function ra(a){return a.filter(b=>b.type===CSSRule.FONT_FACE_RULE).filter(b=>b.style.getPropertyValue("src").search(Q)!==-1)}function sa(a,b){return t(function*(){if(a.ownerDocument==null)throw Error("Provided element is not within a Document");var d=w(a.ownerDocument.styleSheets);d=yield qa(d,b);return ra(d)})}
+function ta(a){function b(c){(c.style.fontFamily||getComputedStyle(c).fontFamily).split(",").forEach(e=>{d.add(e.trim().replace(/["']/g,""))});Array.from(c.children).forEach(e=>{e instanceof HTMLElement&&b(e)})}var d=new Set;b(a);return d}function ua(a,b){return t(function*(){var d=yield sa(a,b),c=ta(a);return(yield Promise.all(d.filter(e=>c.has(e.style.fontFamily.trim().replace(/["']/g,""))).map(e=>R(e.cssText,e.parentStyleSheet?e.parentStyleSheet.href:null,b)))).join("\n")})}
+function va(a,b){return t(function*(){var d=b.l!=null?b.l:b.L?null:yield ua(a,b);if(d){let c=document.createElement("style");c.appendChild(document.createTextNode(d));a.firstChild?a.insertBefore(c,a.firstChild):a.appendChild(c)}})};function wa(a,b={}){return t(function*(){var {width:d,height:c}=A(a,b),e=yield P(a,b,!0);yield va(e,b);yield T(e,b);u(e,b);return yield D(e,d,c)})}
+function xa(a,b={}){return t(function*(){var {width:d,height:c}=A(a,b),e=yield wa(a,b);e=yield B(e);var f=document.createElement("canvas"),g=f.getContext("2d"),k=b.H||window.devicePixelRatio||1,m=b.i||d,q=b.h||c;f.width=m*k;f.height=q*k;!b.K&&(f.width>16384||f.height>16384)&&(f.width>16384&&f.height>16384?f.width>f.height?(f.height*=16384/f.width,f.width=16384):(f.width*=16384/f.height,f.height=16384):f.width>16384?(f.height*=16384/f.width,f.width=16384):(f.width*=16384/f.height,f.height=16384));
+f.style.width=`${m}`;f.style.height=`${q}`;b.backgroundColor&&(g.fillStyle=b.backgroundColor,g.fillRect(0,0,f.width,f.height));g.drawImage(e,0,0,f.width,f.height);return f})}function ya(a,b={}){return t(function*(){return(yield xa(a,b)).toDataURL()})};const za=["gemini.google.com","corp.google.com","proxy.googlers.com"];function Y(){return document.body.querySelectorAll('[class*="animate"]').length>0}function Z(a){return t(function*(){try{return yield ya(a,{i:a.offsetWidth,h:a.offsetHeight})}catch(d){var b=a.offsetHeight;let c=document.createElement("canvas");c.width=a.offsetWidth;c.height=b;return c.toDataURL("image/png")}})}
+function Aa(){return t(function*(){var a=document.body.offsetWidth,b=document.body.offsetHeight,d=document.body.cloneNode(!0);d.querySelectorAll('[class*="animate"]').forEach(c=>{c.classList.remove(...Array.from(c.classList).filter(e=>e.startsWith("animate")))});d.style.width=`${a}px`;d.style.height=`${b}px`;return d})}
+function Ba(a){return t(function*(){var b=document.body;if(Y()){var d=yield Aa();b=d;document.body.appendChild(d)}d=yield Z(b);Y()&&document.body.removeChild(b);window.parent.postMessage({type:"SEND_SCREENSHOT",image:d,topOffset:document.documentElement.scrollTop},a.origin)})}function Ca(a){return t(function*(){var b={type:"SEND_SCREENSHOT_FOR_DATA_VISUALIZATION",image:yield Z(document.body),topOffset:0};window.parent.postMessage(b,a.origin)})}
+window.addEventListener("message",a=>t(function*(){if(za.some(d=>a.origin.includes(d))){var b=a.data;b&&(b.type==="MAKE_SCREENSHOT"&&(yield Ba(a)),b.type==="MAKE_SCREENSHOT_FOR_DATA_VISUALIZATION"&&(yield Ca(a)))}}));
+})();</script><script data-bard-client-injected="true">(function() {
+  // Ensure this script is executed only once
+  if (window.firebaseAuthBridgeScriptLoaded) {
+    return;
+  }
+  window.firebaseAuthBridgeScriptLoaded = true;
+
+  let nextTokenPromiseId = 0;
+
+  // Stores { resolve, reject } for ongoing token requests
+  const pendingTokenPromises = {};
+
+  // Listen for messages from the Host Application
+  window.addEventListener('message', function(event) {
+
+    const messageData = event.data;
+
+  if (messageData && messageData.type === 'RESOLVE_NEW_FIREBASE_TOKEN') {
+      const { success, token, error, promiseId } = messageData ?? {};
+      if (pendingTokenPromises[promiseId]) {
+        if (success) {
+          pendingTokenPromises[promiseId].resolve(token);
+        } else {
+          pendingTokenPromises[promiseId].reject(new Error(error || 'Token refresh failed from host.'));
+        }
+        delete pendingTokenPromises[promiseId];
+      }
+    }
+  });
+
+  // Expose a function for the Generated App to request a new Firebase token
+  window.requestNewFirebaseToken = function() {
+    const currentPromiseId = nextTokenPromiseId++;
+    const promise = new Promise((resolve, reject) => {
+      pendingTokenPromises[currentPromiseId] = { resolve, reject };
+    });
+    if (window.parent && window.parent !== window) {
+      window.parent.postMessage({
+        type: 'REQUEST_NEW_FIREBASE_TOKEN',
+        promiseId: currentPromiseId
+      }, '*');
+    } else {
+      pendingTokenPromises[currentPromiseId].reject(new Error('No parent window to request token from.'));
+      delete pendingTokenPromises[currentPromiseId];
+    }
+    return promise;
+  };
+})();</script><script data-bard-client-injected="true">
+let realOriginalGetUserMedia = null;
+if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+  realOriginalGetUserMedia = navigator.mediaDevices.getUserMedia.bind(navigator.mediaDevices);
+}
+
+(function() {
+  if (navigator.mediaDevices && navigator.mediaDevices.__proto__) {
+    try {
+      Object.defineProperty(navigator.mediaDevices.__proto__, 'getUserMedia', {
+        get: function() {
+          return undefined; // Or throw an error
+        },
+        configurable: false
+      });
+    } catch (error) {
+      console.error("Error defining prototype getter:", error);
+    }
+  }
+})();
+
+(function() {
+  const pendingMediaResolvers = {};
+  let nextMediaPromiseId = 0;
+
+  function requestMediaPermissions(constraints) {
+    const mediaPromiseId = nextMediaPromiseId++;
+    const promise = new Promise((resolve, reject) => {
+      pendingMediaResolvers[mediaPromiseId] = (granted) => {
+        delete pendingMediaResolvers[mediaPromiseId];
+        resolve(granted);
+      };
+    });
+
+    window.parent.postMessage({
+      type: 'requestMediaPermission',
+      constraints: constraints,
+      promiseId: mediaPromiseId,
+    }, '*');
+
+    return promise;
+  }
+
+  let originalGetUserMedia = realOriginalGetUserMedia;
+
+  function interceptGetUserMedia() {
+    if (navigator.mediaDevices) {
+      Object.defineProperty(navigator.mediaDevices, 'getUserMedia', {
+        value: function(constraints) {
+          return requestMediaPermissions(constraints).then((granted) => {
+            if (granted) {
+              if (originalGetUserMedia) {
+                return originalGetUserMedia(constraints);
+              } else {
+                throw new Error("Original getUserMedia not available.");
+              }
+            } else {
+              throw new DOMException('Permission denied', 'NotAllowedError');
+            }
+          });
+        },
+        writable: false,
+        configurable: false
+      });
+    }
+  }
+
+  interceptGetUserMedia();
+
+  const observer = new MutationObserver(function(mutationsList, observer) {
+    for (const mutation of mutationsList) {
+      if (mutation.type === 'reconfigured' && mutation.name === 'getUserMedia' && mutation.object === navigator.mediaDevices) {
+        interceptGetUserMedia();
+      } else if (mutation.type === 'attributes' && mutation.attributeName === 'getUserMedia' && mutation.target === navigator.mediaDevices) {
+        interceptGetUserMedia();
+      } else if (mutation.type === 'childList' && mutation.addedNodes) {
+        mutation.addedNodes.forEach(node => {
+          if (node === navigator.mediaDevices) {
+            interceptGetUserMedia();
+          }
+        });
+      }
+    }
+  });
+
+  function interceptSpeechRecognition() {
+    if (!window.SpeechRecognition && !window.webkitSpeechRecognition) {
+      return;
+    }
+
+    const OriginalSpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    const SpeechRecognitionWrapper = function(...args) {
+      const recognizer = new OriginalSpeechRecognition(...args);
+      const originalStart = recognizer.start.bind(recognizer);
+
+      recognizer.start = function() {
+        requestMediaPermissions({ audio: true }).then(granted => {
+          if (granted) {
+            originalStart();
+          } else {
+            const errorEvent = new SpeechRecognitionErrorEvent('error');
+            errorEvent.error = 'not-allowed'; // This is the standard error for permission denial.
+            recognizer.dispatchEvent(errorEvent);
+          }
+        });
+      };
+
+      return recognizer;
+    };
+
+    SpeechRecognitionWrapper.prototype = OriginalSpeechRecognition.prototype;
+    SpeechRecognitionWrapper.prototype.constructor = SpeechRecognitionWrapper;
+
+    if (window.SpeechRecognition) {
+      window.SpeechRecognition = SpeechRecognitionWrapper;
+    }
+    if (window.webkitSpeechRecognition) {
+      window.webkitSpeechRecognition = SpeechRecognitionWrapper;
+    }
+  }
+
+  interceptSpeechRecognition();
+
+  window.addEventListener('message', function(event) {
+    if (event.data) {
+      if (event.data.type === 'resolveMediaPermission') {
+        const { promiseId, granted } = event.data;
+        if (pendingMediaResolvers[promiseId]) {
+          pendingMediaResolvers[promiseId](granted);
+        }
+      }
+    }
+  });
+
+})();</script><script ws-interception-config="{&quot;parentOrigin&quot;:&quot;https://gemini.google.com&quot;,&quot;proxiedDomains&quot;:[]}" data-bard-client-injected="true">(function(){'use strict';var u=typeof Object.defineProperties=="function"?Object.defineProperty:function(b,d,e){if(b==Array.prototype||b==Object.prototype)return b;b[d]=e.value;return b};function v(b){b=["object"==typeof globalThis&&globalThis,b,"object"==typeof window&&window,"object"==typeof self&&self,"object"==typeof global&&global];for(var d=0;d<b.length;++d){var e=b[d];if(e&&e.Math==Math)return e}throw Error("Cannot find global object");}var w=v(this);
+function y(b,d){if(d)a:{var e=w;b=b.split(".");for(var h=0;h<b.length-1;h++){var k=b[h];if(!(k in e))break a;e=e[k]}b=b[b.length-1];h=e[b];d=d(h);d!=h&&d!=null&&u(e,b,{configurable:!0,writable:!0,value:d})}}function z(b){function d(h){return b.next(h)}function e(h){return b.throw(h)}return new Promise(function(h,k){function m(n){n.done?h(n.value):Promise.resolve(n.value).then(d,e).then(m,k)}m(b.next())})}y("globalThis",function(b){return b||w});/*
+
+ Copyright The Closure Library Authors.
+ SPDX-License-Identifier: Apache-2.0
+*/
+function A(b,d){function e(){}e.prototype=d.prototype;b.j=d.prototype;b.prototype=new e;b.prototype.constructor=b;b.h=function(h,k,m){for(var n=Array(arguments.length-2),p=2;p<arguments.length;p++)n[p-2]=arguments[p];return d.prototype[k].apply(h,n)}};function B(b,d,e="*"){function h(a){if(typeof a==="string")return F.encode(a).buffer;if(a instanceof ArrayBuffer)return a.slice(0);if(ArrayBuffer.isView(a))return a.buffer.slice(a.byteOffset,a.byteOffset+a.byteLength);throw Error("Invalid data type");}function k(a){a=h(a);var f={type:"send",data:new Uint8Array(a)},g;(g=r)==null||g.postMessage(f,[a])}function m(){if(!r)throw Error("Data port not captured yet.");r.onmessage=a=>{if(a.data.type==="message"){a=new MessageEvent("message",{data:G.decode(a.data.data)});
+let f;(f=c.onmessage)==null||f.call(c,a);c.dispatchEvent(a)}}}function n(){if(!t)throw Error("Control port not captured yet.");t.onmessage=a=>{switch(a.data.type){case "open":l=1;var f=new Event("open"),g;(g=c.onopen)==null||g.call(c,f);c.dispatchEvent(f);q.forEach(H=>{k(H)});q=[];break;case "close":g=a.data;l=3;g=new CloseEvent("close",{code:g.code,reason:g.reason,wasClean:g.wasClean});(f=c.onclose)==null||f.call(c,g);c.dispatchEvent(g);break;case "error":l=3;f=new Event("error");let x;(x=c.onerror)==
+null||x.call(c,f);c.dispatchEvent(f)}}}function p(a){return z(function*(){var f=new MessageChannel;t=f.port1;var g=new MessageChannel;r=g.port1;n();m();window.parent.postMessage({type:"websocket_open",portOrdering:["control","data"],url:b,protocols:a||[],connectionId:I},e,[f.port2,g.port2])}())}var c=Reflect.construct(EventTarget,[],new.target);c.CONNECTING=0;c.OPEN=1;c.CLOSING=2;c.CLOSED=3;c.url=b;c.binaryType="arraybuffer";c.protocol="";c.i="";var l=0,t=null,r=null,q=[],F=new TextEncoder,G=new TextDecoder;
+c.onopen=null;c.onmessage=null;c.onclose=null;c.onerror=null;Object.defineProperty(c,"readyState",{get:()=>l,enumerable:!0,configurable:!0});Object.defineProperty(c,"bufferedAmount",{get:()=>{var a=0;q.forEach(f=>{a+=typeof f==="string"?f.length:f.byteLength});return a},enumerable:!0,configurable:!0});var I=function(){var a;return((a=globalThis.crypto)==null?0:a.randomUUID)?globalThis.crypto.randomUUID():"xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,f=>{var g=Math.random()*16|0;return(f===
+"x"?g:g&3|8).toString(16)})}();c.send=a=>{if(l===1)a instanceof Blob?a.arrayBuffer().then(f=>{k(f)}):k(a);else if(l===0)if(typeof a==="string")q.push(a);else if(a instanceof ArrayBuffer||ArrayBuffer.isView(a))q.push(h(a));else throw Error("Sending Blob is not supported before the connection is open.");else console.debug("WebSocket send called in CLOSING or CLOSED state; ignored.")};c.close=(a=1E3,f="")=>{if(l!==2&&l!==3){l=2;a={type:"close",code:a,reason:f,wasClean:a===1E3};var g;(g=t)==null||g.postMessage(a)}};
+Promise.resolve().then(()=>p(d));return c}A(B,EventTarget);var C=document.currentScript,D=C==null?void 0:C.getAttribute("ws-interception-config");if(!D)throw Error("WebSocket Interceptor: Missing ws-interception-config attribute in the script tag.");var E=JSON.parse(D);if(!E.parentOrigin||typeof E.parentOrigin!=="string")throw Error("WebSocket Interceptor: Invalid parentOrigin in ws-interception-config");
+(function(b){var d=Object.getOwnPropertyDescriptor(window,"WebSocket");if(!d||d.writable||d.configurable)d=Object.assign(function(e,h){try{let k=(new URL(e)).hostname;if(b.proxiedDomains.some(m=>k===m||k.endsWith(`.${m}`)))return new B(e,h,b.parentOrigin)}catch(k){throw window.parent.postMessage({type:"websocket_blocked",url:e,reason:"blocked_invalid_url"},b.parentOrigin),new DOMException(`WebSocket connection to '${e}' is not allowed in Canvas.`,"SecurityError");}window.parent.postMessage({type:"websocket_blocked",
+url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMException(`WebSocket connection to '${e}' is not allowed in Canvas.`,"SecurityError");},{CONNECTING:0,OPEN:1,CLOSING:2,CLOSED:3}),Object.defineProperty(window,"WebSocket",{value:d,writable:!1,configurable:!1})})({proxiedDomains:E.proxiedDomains||[],parentOrigin:E.parentOrigin});}).call(this);
+</script><script data-bard-client-injected="true">((function(modelInformation) {
+  const originalFetch = window.fetch;
+  // TODO: b/421908508 - Move these out of the script and match all generative AI model calls.
+  let googleLlmBaseApiUrls = [
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.textModelName + ':streamGenerateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.textModelName + ':generateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageModelName + ':predict',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageModelName + ':predictLongRunning',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageEditModelName + ':generateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageTransformModelName + ':generateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.videoModelName + ':predict',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.videoModelName + ':predictLongRunning',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.ttsModelName + ':generateContent',
+  ];
+  modelInformation.deprecatedTextModelNames.forEach((modelName) => {
+    googleLlmBaseApiUrls.push(
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':streamGenerateContent',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':generateContent',
+    );
+  });
+  modelInformation.deprecatedImageModelNames.forEach((modelName) => {
+    googleLlmBaseApiUrls.push(
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':predict',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':predictLongRunning',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':generateContent',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':streamGenerateContent',
+    );
+  });
+  modelInformation.deprecatedGenerateImageModelNames.forEach((modelName) => {
+    googleLlmBaseApiUrls.push(
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':generateContent',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':streamGenerateContent',
+    );
+  });
+  modelInformation.deprecatedImageTransformModelNames.forEach((modelName) => {
+    googleLlmBaseApiUrls.push(
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':generateContent',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':streamGenerateContent',
+    );
+  });
+
+  const pendingFetchResolvers = {};
+  let nextPromiseId = 0;
+
+  function handleStringInput(input, optionsArgument) {
+    const actualUrl = input;
+    const fetchCallArgs = [actualUrl, optionsArgument];
+    const effectiveOptions = optionsArgument || {};
+    const bodyForApiKeyCheck = effectiveOptions.body;
+    const bodyForPostMessage = effectiveOptions.body;
+    return { actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage };
+  }
+
+  function handleRequestInput(input, optionsArgument) {
+    const actualUrl = input.url;
+    const fetchCallArgs = [input, optionsArgument];
+    const effectiveOptions = { method: input.method, headers: new Headers(input.headers) };
+    let bodyForApiKeyCheck;
+    let bodyForPostMessage;
+
+    if (optionsArgument) {
+      if (optionsArgument.method) effectiveOptions.method = optionsArgument.method;
+      if (optionsArgument.headers) effectiveOptions.headers = new Headers(optionsArgument.headers);
+      if ('body' in optionsArgument) {
+        bodyForApiKeyCheck = optionsArgument.body;
+        bodyForPostMessage = optionsArgument.body;
+      } else {
+        bodyForApiKeyCheck = undefined;
+        bodyForPostMessage = input.body;
+      }
+    } else {
+      bodyForApiKeyCheck = undefined;
+      bodyForPostMessage = input.body;
+    }
+    return { actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage };
+  }
+
+  window.fetch = function(input, optionsArgument) {
+    let actualUrl;
+    let fetchCallArgs;
+    let effectiveOptions = {};
+    let bodyForApiKeyCheck;
+    let bodyForPostMessage;
+
+    if (typeof input === 'string') {
+      ({actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage} = handleStringInput(input, optionsArgument));
+    } else if (input instanceof Request) {
+      ({actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage} = handleRequestInput(input, optionsArgument));
+    } else {
+      return originalFetch.apply(window, [input, optionsArgument]);
+    }
+
+    effectiveOptions.method = effectiveOptions.method || 'GET';
+    if (!effectiveOptions.headers) {
+      effectiveOptions.headers = new Headers();
+    }
+
+
+    if (typeof actualUrl === 'string' && googleLlmBaseApiUrls.some((url) => actualUrl.startsWith(url))) {
+      let apiKeyIsNull = true;
+
+      const regex = new RegExp("models/([^:]+)");
+      const modelNameMatch = actualUrl.match(regex);
+      const modelName = modelNameMatch ? modelNameMatch[1] : 'unspecified';
+
+
+      try {
+        const urlObject = new URL(actualUrl);  // Use URL object for robust parsing
+        const apiKeyParam = urlObject.searchParams.get('key');
+        if (apiKeyParam) {
+          apiKeyIsNull = false;
+        }
+      } catch (e) {
+        // Continue checks even if URL parsing fails
+      }
+
+      if (apiKeyIsNull && effectiveOptions.headers) {
+        const h = new Headers(effectiveOptions.headers);
+        const apiKeyHeaderValue = h.get('X-API-Key') || h.get('x-api-key');
+        if (apiKeyHeaderValue) {
+          apiKeyIsNull = false;
+          return originalFetch.apply(window, fetchCallArgs);
+        }
+      }
+
+      if (apiKeyIsNull && effectiveOptions.method && ['POST', 'PUT', 'PATCH'].includes(effectiveOptions.method.toUpperCase()) && typeof bodyForApiKeyCheck === 'string') {
+        try {
+          const bodyData = JSON.parse(bodyForApiKeyCheck);
+          if (bodyData && bodyData.apiKey) {
+            apiKeyIsNull = false;
+            return originalFetch.apply(window, fetchCallArgs);
+          }
+        } catch (e) {
+          // Ignore JSON parsing errors
+        }
+      }
+
+      if(apiKeyIsNull) {
+        const promiseId = nextPromiseId++;
+        const promise = new Promise((resolve) => {
+          pendingFetchResolvers[promiseId] = (resolvedResponse) => {
+            delete pendingFetchResolvers[promiseId];
+            resolve(resolvedResponse);
+          };
+        });
+
+        let serializedBodyForPostMessage;
+        if (typeof bodyForPostMessage === 'string' || bodyForPostMessage == null) {
+            serializedBodyForPostMessage = bodyForPostMessage;
+        } else if (bodyForPostMessage instanceof ReadableStream) {
+            serializedBodyForPostMessage = null;
+        } else {
+            try {
+                serializedBodyForPostMessage = JSON.stringify(bodyForPostMessage);
+            } catch (e) {
+                serializedBodyForPostMessage = null;
+            }
+        }
+
+        const messageOptions = {
+            method: effectiveOptions.method,
+            headers: Object.fromEntries(new Headers(effectiveOptions.headers).entries()),
+            body: serializedBodyForPostMessage
+        };
+
+        window.parent.postMessage({
+          type: 'requestFetch',
+          url: actualUrl,
+          modelName: modelName,
+          options: messageOptions,
+          promiseId: promiseId,
+        }, '*');
+
+        return promise;
+      }
+      return originalFetch.apply(window, fetchCallArgs);
+    }
+    return originalFetch.apply(window, fetchCallArgs);
+  };
+
+  window.addEventListener('message', function(event) {
+    if (event.data && event.data.type === 'resolveFetch') {
+      const { promiseId, response } = event.data;
+      if (pendingFetchResolvers[promiseId]) {
+        try {
+          const reconstructedResponse = new Response(response.body, {
+            status: response.status,
+            statusText: response.statusText,
+            headers: new Headers(response.headers),
+          });
+          pendingFetchResolvers[promiseId](reconstructedResponse);
+        } catch (error) {
+          pendingFetchResolvers[promiseId](new Response(null, { status: 500, statusText: "Interceptor Response Reconstruction Error" }));
+        }
+      }
+    }
+  });
+
+}))({"textModelName":"gemini-3-flash-preview","imageModelName":"imagen-4.0-generate-001","imageEditModelName":"gemini-3.1-flash-image","imageTransformModelName":"gemini-3-pro-image","videoModelName":"veo-2.0-generate-001","ttsModelName":"gemini-2.5-flash-preview-tts","deprecatedTextModelNames":["gemini-2.0-flash","gemini-2.5-flash","gemini-2.5-flash-preview-04-17","gemini-2.5-flash-preview-05-20","gemini-2.5-flash-preview-09-2025"],"deprecatedImageModelNames":["imagen-3.0-generate-001","imagen-3.0-generate-002"],"deprecatedGenerateImageModelNames":["gemini-2.5-flash-image-preview","gemini-2.5-flash-image","gemini-3.1-flash-image-preview"],"deprecatedImageTransformModelNames":["gemini-3-pro-image-preview-11-2025"]})</script><script data-bard-client-injected="true">(function(){'use strict';function a(){window.parent.postMessage({type:"interaction"},"*")}window.addEventListener("click",a,{capture:!0,passive:!0});window.addEventListener("touchstart",a,{capture:!0,passive:!0});window.addEventListener("keydown",a,{capture:!0,passive:!0});}).call(this);
+</script><script data-bard-client-injected="true">(function() {
+  const originalConsoleLog = console.log;
+  const originalConsoleError = console.error;
+
+    /**
+   * Normalizes an error event or a promise rejection reason into a structured error object.
+   * @param {*} errorEventOrReason The error object or reason.
+   * @return {object} Structured error data { message, name, stack }.
+   */
+  function getErrorObject(errorEventOrReason) {
+    if (errorEventOrReason instanceof Error) {
+      return {
+        message: errorEventOrReason.message,
+        name: errorEventOrReason.name,
+        stack: errorEventOrReason.stack,
+      };
+    }
+    // Fallback for non-Error objects.
+    try {
+      return {
+        message: JSON.stringify(errorEventOrReason),
+        name: 'UnknownErrorType',
+        stack: null,
+      };
+    } catch (e) {
+      return {
+        message: String(errorEventOrReason),
+        name: 'UnknownErrorTypeNonStringifiable',
+        stack: null,
+      };
+    }
+  }
+
+  /**
+   * Converts an array of arguments (from log/error) into a single string.
+   * Handles Error objects specially to include their message and stack.
+   * @param {Array<*>} args - Arguments passed to console methods.
+   * @return {string} A string representation of the arguments.
+   */
+  function stringifyArgs(args) {
+    return args
+      .map((arg) => {
+        if (arg instanceof Error) {
+          const {message, stack} = arg;
+          return `Error: ${message}${stack ? ('\nStack: ' + stack) : ''}`;
+        }
+        if (typeof arg === 'object' && arg !== null) {
+          try {
+            return JSON.stringify(arg);
+          } catch (error) {
+            return '[Circular Object]';
+          }
+        } else {
+          return String(arg);
+        }
+      })
+      .join(' ');
+  }
+
+  console.log = function(...args) {
+    const logString = stringifyArgs(args);
+    window.parent.postMessage({ type: 'log', message: logString }, '*');
+    originalConsoleLog.apply(console, args);
+  };
+
+  console.error = function(...args) {
+    let errorData;
+    if (args.length > 0 && args[0] instanceof Error) {
+      const err = args[0];
+      // If the first arg is an Error, capture its details.
+      errorData = {
+        type: 'error',
+        source: 'CONSOLE_ERROR',
+        ...getErrorObject(err),
+        rawArgsString: stringifyArgs(args.slice(1)),
+        timestamp: new Date().toISOString(),
+      };
+    } else {
+      // If not an Error object, treat all args as a general error message.
+      errorData = {
+        type: 'error',
+        source: 'CONSOLE_ERROR',
+        message: stringifyArgs(args),
+        name: 'ConsoleLoggedError',
+        stack: null,
+        timestamp: new Date().toISOString(),
+      };
+    }
+    window.parent.postMessage(errorData, '*');
+    originalConsoleError.apply(console, args);
+  };
+
+  // Listen for global unhandled synchronous errors.
+  window.addEventListener('error', function(event) {
+    const errorDetails = event.error ? getErrorObject(event.error) : {
+      message: event.message,
+      name: 'GlobalError',
+      stack: null,
+      filename: event.filename,
+      lineno: event.lineno,
+      colno: event.colno,
+    };
+
+    window.parent.postMessage({
+      type: 'error',
+      source: 'global',
+      ...errorDetails,
+      message: errorDetails.message || event.message,
+      timestamp: new Date().toISOString(),
+    }, '*');
+  });
+
+  // Listen for unhandled promise rejections (asynchronous errors).
+  window.addEventListener('unhandledrejection', function(event) {
+    const errorDetails = getErrorObject(event.reason);
+
+    window.parent.postMessage({
+      type: 'error',
+      source: 'unhandledrejection',
+      ...errorDetails,
+      message: errorDetails.message || 'Unhandled Promise Rejection',
+      timestamp: new Date().toISOString(),
+    }, '*');
+  });
+
+})();</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iClick Digital Ventures - Logo, CEO ID Card, Business Card &amp; Brand Suite</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <!-- html2canvas for card PNG/PDF renders -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" crossorigin="anonymous"></script>
+    <!-- jsPDF for direct PDF exports -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" crossorigin="anonymous"></script>
+    <!-- JSZip for 1-click master ZIP package export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" crossorigin="anonymous"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        espresso: {
+                            900: '#19110B', // Primary deep brown background
+                            800: '#261911',
+                            700: '#2A1A10',
+                            600: '#3D271B',
+                        },
+                        terracotta: '#C28E68',
+                        warmgold: '#DFBA81',
+                        linen: '#FDFBF7',
+                        mochagray: '#59473C'
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #19110B;
+            color: #FDFBF7;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        /* Perspective and 3D Card Flip */
+        .card-perspective {
+            perspective: 1200px;
+        }
+
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+
+        .card-inner.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .card-back {
+            transform: rotateY(180deg);
+        }
+
+        /* Strict Print Styles preserving deep brown background on PDF export */
+        @media print {
+            body {
+                background-color: #19110B !important;
+                color: #FDFBF7 !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .print-area {
+                background-color: #19110B !important;
+                color: #FDFBF7 !important;
+                box-shadow: none !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                width: 100% !important;
+            }
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #19110B;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3D271B;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #C28E68;
+        }
+    </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:Plus Jakarta Sans, sans-serif;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.-bottom-2{bottom:-0.5rem}.-right-2{right:-0.5rem}.top-0{top:0px}.bottom-5{bottom:1.25rem}.right-5{right:1.25rem}.z-40{z-index:40}.z-50{z-index:50}.mx-auto{margin-left:auto;margin-right:auto}.my-auto{margin-top:auto;margin-bottom:auto}.my-6{margin-top:1.5rem;margin-bottom:1.5rem}.mb-2{margin-bottom:0.5rem}.mr-1\.5{margin-right:0.375rem}.mt-1{margin-top:0.25rem}.mt-3{margin-top:0.75rem}.mb-1{margin-bottom:0.25rem}.mr-1{margin-right:0.25rem}.mt-0\.5{margin-top:0.125rem}.mt-4{margin-top:1rem}.block{display:block}.inline-block{display:inline-block}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-10{height:2.5rem}.h-28{height:7rem}.h-32{height:8rem}.h-44{height:11rem}.h-7{height:1.75rem}.h-8{height:2rem}.h-\[520px\]{height:520px}.h-auto{height:auto}.h-full{height:100%}.h-12{height:3rem}.h-16{height:4rem}.h-\[240px\]{height:240px}.h-\[490px\]{height:490px}.min-h-screen{min-height:100vh}.min-h-\[900px\]{min-height:900px}.w-10{width:2.5rem}.w-16{width:4rem}.w-28{width:7rem}.w-32{width:8rem}.w-4{width:1rem}.w-7{width:1.75rem}.w-8{width:2rem}.w-\[340px\]{width:340px}.w-full{width:100%}.w-12{width:3rem}.w-3{width:0.75rem}.w-\[320px\]{width:320px}.w-\[420px\]{width:420px}.max-w-7xl{max-width:80rem}.max-w-\[700px\]{max-width:700px}.flex-grow{flex-grow:1}.translate-y-10{--tw-translate-y:2.5rem;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.cursor-pointer{cursor:pointer}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-start{align-items:flex-start}.items-end{align-items:flex-end}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:0.25rem}.gap-1\.5{gap:0.375rem}.gap-2{gap:0.5rem}.gap-2\.5{gap:0.625rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.space-y-0\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.125rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.125rem * var(--tw-space-y-reverse))}.space-y-1 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.25rem * var(--tw-space-y-reverse))}.space-y-1\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.375rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.375rem * var(--tw-space-y-reverse))}.space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.space-y-8 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(2rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(2rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.whitespace-pre-wrap{white-space:pre-wrap}.rounded{border-radius:0.25rem}.rounded-2xl{border-radius:1rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-2{border-width:2px}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-b-2{border-bottom-width:2px}.border-espresso-600{--tw-border-opacity:1;border-color:rgb(61 39 27 / var(--tw-border-opacity, 1))}.border-espresso-700{--tw-border-opacity:1;border-color:rgb(42 26 16 / var(--tw-border-opacity, 1))}.border-linen\/20{border-color:rgb(253 251 247 / 0.2)}.border-stone-300{--tw-border-opacity:1;border-color:rgb(214 211 209 / var(--tw-border-opacity, 1))}.border-terracotta\/30{border-color:rgb(194 142 104 / 0.3)}.border-terracotta\/40{border-color:rgb(194 142 104 / 0.4)}.border-terracotta\/60{border-color:rgb(194 142 104 / 0.6)}.border-warmgold\/50{border-color:rgb(223 186 129 / 0.5)}.border-emerald-500\/30{border-color:rgb(16 185 129 / 0.3)}.border-espresso-900{--tw-border-opacity:1;border-color:rgb(25 17 11 / var(--tw-border-opacity, 1))}.border-stone-400{--tw-border-opacity:1;border-color:rgb(168 162 158 / var(--tw-border-opacity, 1))}.border-terracotta\/50{border-color:rgb(194 142 104 / 0.5)}.border-emerald-500\/40{border-color:rgb(16 185 129 / 0.4)}.bg-espresso-700{--tw-bg-opacity:1;background-color:rgb(42 26 16 / var(--tw-bg-opacity, 1))}.bg-espresso-800{--tw-bg-opacity:1;background-color:rgb(38 25 17 / var(--tw-bg-opacity, 1))}.bg-espresso-900{--tw-bg-opacity:1;background-color:rgb(25 17 11 / var(--tw-bg-opacity, 1))}.bg-espresso-900\/90{background-color:rgb(25 17 11 / 0.9)}.bg-linen{--tw-bg-opacity:1;background-color:rgb(253 251 247 / var(--tw-bg-opacity, 1))}.bg-terracotta{--tw-bg-opacity:1;background-color:rgb(194 142 104 / var(--tw-bg-opacity, 1))}.bg-terracotta\/20{background-color:rgb(194 142 104 / 0.2)}.bg-warmgold{--tw-bg-opacity:1;background-color:rgb(223 186 129 / var(--tw-bg-opacity, 1))}.bg-emerald-500\/20{background-color:rgb(16 185 129 / 0.2)}.bg-gradient-to-r{background-image:linear-gradient(to right, var(--tw-gradient-stops))}.bg-gradient-to-tr{background-image:linear-gradient(to top right, var(--tw-gradient-stops))}.from-terracotta{--tw-gradient-from:#C28E68 var(--tw-gradient-from-position);--tw-gradient-to:rgb(194 142 104 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.via-warmgold{--tw-gradient-to:rgb(223 186 129 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), #DFBA81 var(--tw-gradient-via-position), var(--tw-gradient-to)}.to-espresso-600{--tw-gradient-to:#3D271B var(--tw-gradient-to-position)}.to-warmgold{--tw-gradient-to:#DFBA81 var(--tw-gradient-to-position)}.object-cover{object-fit:cover}.p-1{padding:0.25rem}.p-1\.5{padding:0.375rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.p-0\.5{padding:0.125rem}.p-2{padding:0.5rem}.p-8{padding:2rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-4{padding-left:1rem;padding-right:1rem}.py-0\.5{padding-top:0.125rem;padding-bottom:0.125rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.py-3\.5{padding-top:0.875rem;padding-bottom:0.875rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.py-8{padding-top:2rem;padding-bottom:2rem}.px-1\.5{padding-left:0.375rem;padding-right:0.375rem}.pb-1{padding-bottom:0.25rem}.pb-3{padding-bottom:0.75rem}.pb-6{padding-bottom:1.5rem}.pt-2{padding-top:0.5rem}.pt-3{padding-top:0.75rem}.pb-2{padding-bottom:0.5rem}.pb-2\.5{padding-bottom:0.625rem}.pb-4{padding-bottom:1rem}.pt-2\.5{padding-top:0.625rem}.pt-6{padding-top:1.5rem}.text-left{text-align:left}.text-center{text-align:center}.text-right{text-align:right}.text-justify{text-align:justify}.font-heading{font-family:Outfit, sans-serif}.font-mono{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}.font-serif{font-family:ui-serif, Georgia, Cambria, "Times New Roman", Times, serif}.font-sans{font-family:Plus Jakarta Sans, sans-serif}.text-2xl{font-size:1.5rem;line-height:2rem}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.text-\[8px\]{font-size:8px}.text-\[9px\]{font-size:9px}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.text-5xl{font-size:3rem;line-height:1}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.font-medium{font-weight:500}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.italic{font-style:italic}.leading-relaxed{line-height:1.625}.tracking-tight{letter-spacing:-0.025em}.tracking-wider{letter-spacing:0.05em}.tracking-widest{letter-spacing:0.1em}.text-emerald-400{--tw-text-opacity:1;color:rgb(52 211 153 / var(--tw-text-opacity, 1))}.text-espresso-900{--tw-text-opacity:1;color:rgb(25 17 11 / var(--tw-text-opacity, 1))}.text-linen{--tw-text-opacity:1;color:rgb(253 251 247 / var(--tw-text-opacity, 1))}.text-stone-200{--tw-text-opacity:1;color:rgb(231 229 228 / var(--tw-text-opacity, 1))}.text-stone-300{--tw-text-opacity:1;color:rgb(214 211 209 / var(--tw-text-opacity, 1))}.text-stone-400{--tw-text-opacity:1;color:rgb(168 162 158 / var(--tw-text-opacity, 1))}.text-terracotta{--tw-text-opacity:1;color:rgb(194 142 104 / var(--tw-text-opacity, 1))}.text-warmgold{--tw-text-opacity:1;color:rgb(223 186 129 / var(--tw-text-opacity, 1))}.text-espresso-700{--tw-text-opacity:1;color:rgb(42 26 16 / var(--tw-text-opacity, 1))}.text-stone-600{--tw-text-opacity:1;color:rgb(87 83 78 / var(--tw-text-opacity, 1))}.text-emerald-300{--tw-text-opacity:1;color:rgb(110 231 183 / var(--tw-text-opacity, 1))}.underline{-webkit-text-decoration-line:underline;text-decoration-line:underline}.opacity-0{opacity:0}.shadow{--tw-shadow:0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.outline-none{outline:2px solid transparent;outline-offset:2px}.backdrop-blur{--tw-backdrop-blur:blur(8px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-200{transition-duration:200ms}.duration-300{transition-duration:300ms}.selection\:bg-terracotta *::selection{--tw-bg-opacity:1;background-color:rgb(194 142 104 / var(--tw-bg-opacity, 1))}.selection\:text-linen *::selection{--tw-text-opacity:1;color:rgb(253 251 247 / var(--tw-text-opacity, 1))}.selection\:bg-terracotta::selection{--tw-bg-opacity:1;background-color:rgb(194 142 104 / var(--tw-bg-opacity, 1))}.selection\:text-linen::selection{--tw-text-opacity:1;color:rgb(253 251 247 / var(--tw-text-opacity, 1))}.hover\:border-terracotta\/50:hover{border-color:rgb(194 142 104 / 0.5)}.hover\:bg-espresso-600:hover{--tw-bg-opacity:1;background-color:rgb(61 39 27 / var(--tw-bg-opacity, 1))}.hover\:bg-terracotta\/90:hover{background-color:rgb(194 142 104 / 0.9)}.hover\:bg-warmgold\/90:hover{background-color:rgb(223 186 129 / 0.9)}.hover\:text-linen:hover{--tw-text-opacity:1;color:rgb(253 251 247 / var(--tw-text-opacity, 1))}.hover\:opacity-90:hover{opacity:0.9}.focus\:border-terracotta:focus{--tw-border-opacity:1;border-color:rgb(194 142 104 / var(--tw-border-opacity, 1))}@media (min-width: 768px){.md\:col-span-2{grid-column:span 2 / span 2}.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:flex-row{flex-direction:row}.md\:items-center{align-items:center}.md\:justify-start{justify-content:flex-start}.md\:p-8{padding:2rem}.md\:p-12{padding:3rem}.md\:text-3xl{font-size:1.875rem;line-height:2.25rem}}@media (min-width: 1024px){.lg\:col-span-4{grid-column:span 4 / span 4}.lg\:col-span-6{grid-column:span 6 / span 6}.lg\:col-span-8{grid-column:span 8 / span 8}.lg\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.lg\:grid-cols-12{grid-template-columns:repeat(12, minmax(0, 1fr))}.lg\:px-8{padding-left:2rem;padding-right:2rem}}</style><style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:Plus Jakarta Sans, sans-serif;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.-bottom-2{bottom:-0.5rem}.-right-2{right:-0.5rem}.top-0{top:0px}.bottom-5{bottom:1.25rem}.right-5{right:1.25rem}.z-40{z-index:40}.z-50{z-index:50}.mx-auto{margin-left:auto;margin-right:auto}.my-6{margin-top:1.5rem;margin-bottom:1.5rem}.my-auto{margin-top:auto;margin-bottom:auto}.mb-1{margin-bottom:0.25rem}.mb-2{margin-bottom:0.5rem}.mr-1\.5{margin-right:0.375rem}.mt-0\.5{margin-top:0.125rem}.mt-1{margin-top:0.25rem}.mt-3{margin-top:0.75rem}.mt-4{margin-top:1rem}.mr-1{margin-right:0.25rem}.block{display:block}.inline-block{display:inline-block}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-10{height:2.5rem}.h-12{height:3rem}.h-16{height:4rem}.h-28{height:7rem}.h-32{height:8rem}.h-44{height:11rem}.h-7{height:1.75rem}.h-8{height:2rem}.h-\[240px\]{height:240px}.h-\[490px\]{height:490px}.h-\[520px\]{height:520px}.h-auto{height:auto}.h-full{height:100%}.min-h-screen{min-height:100vh}.min-h-\[900px\]{min-height:900px}.w-10{width:2.5rem}.w-12{width:3rem}.w-16{width:4rem}.w-28{width:7rem}.w-3{width:0.75rem}.w-32{width:8rem}.w-4{width:1rem}.w-7{width:1.75rem}.w-8{width:2rem}.w-\[320px\]{width:320px}.w-\[340px\]{width:340px}.w-\[420px\]{width:420px}.w-full{width:100%}.max-w-7xl{max-width:80rem}.max-w-\[700px\]{max-width:700px}.flex-grow{flex-grow:1}.transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.cursor-pointer{cursor:pointer}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-start{align-items:flex-start}.items-end{align-items:flex-end}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:0.25rem}.gap-1\.5{gap:0.375rem}.gap-2{gap:0.5rem}.gap-2\.5{gap:0.625rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.space-y-0\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.125rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.125rem * var(--tw-space-y-reverse))}.space-y-1 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.25rem * var(--tw-space-y-reverse))}.space-y-1\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.375rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.375rem * var(--tw-space-y-reverse))}.space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.space-y-8 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(2rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(2rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.whitespace-pre-wrap{white-space:pre-wrap}.rounded{border-radius:0.25rem}.rounded-2xl{border-radius:1rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-2{border-width:2px}.border-b{border-bottom-width:1px}.border-b-2{border-bottom-width:2px}.border-t{border-top-width:1px}.border-espresso-600{--tw-border-opacity:1;border-color:rgb(61 39 27 / var(--tw-border-opacity, 1))}.border-espresso-700{--tw-border-opacity:1;border-color:rgb(42 26 16 / var(--tw-border-opacity, 1))}.border-espresso-900{--tw-border-opacity:1;border-color:rgb(25 17 11 / var(--tw-border-opacity, 1))}.border-linen\/20{border-color:rgb(253 251 247 / 0.2)}.border-stone-300{--tw-border-opacity:1;border-color:rgb(214 211 209 / var(--tw-border-opacity, 1))}.border-terracotta\/30{border-color:rgb(194 142 104 / 0.3)}.border-terracotta\/40{border-color:rgb(194 142 104 / 0.4)}.border-terracotta\/50{border-color:rgb(194 142 104 / 0.5)}.border-terracotta\/60{border-color:rgb(194 142 104 / 0.6)}.border-warmgold\/50{border-color:rgb(223 186 129 / 0.5)}.border-emerald-500\/30{border-color:rgb(16 185 129 / 0.3)}.border-emerald-500\/40{border-color:rgb(16 185 129 / 0.4)}.border-stone-400{--tw-border-opacity:1;border-color:rgb(168 162 158 / var(--tw-border-opacity, 1))}.bg-espresso-700{--tw-bg-opacity:1;background-color:rgb(42 26 16 / var(--tw-bg-opacity, 1))}.bg-espresso-800{--tw-bg-opacity:1;background-color:rgb(38 25 17 / var(--tw-bg-opacity, 1))}.bg-espresso-900{--tw-bg-opacity:1;background-color:rgb(25 17 11 / var(--tw-bg-opacity, 1))}.bg-espresso-900\/90{background-color:rgb(25 17 11 / 0.9)}.bg-linen{--tw-bg-opacity:1;background-color:rgb(253 251 247 / var(--tw-bg-opacity, 1))}.bg-terracotta{--tw-bg-opacity:1;background-color:rgb(194 142 104 / var(--tw-bg-opacity, 1))}.bg-terracotta\/20{background-color:rgb(194 142 104 / 0.2)}.bg-warmgold{--tw-bg-opacity:1;background-color:rgb(223 186 129 / var(--tw-bg-opacity, 1))}.bg-emerald-500\/20{background-color:rgb(16 185 129 / 0.2)}.bg-gradient-to-r{background-image:linear-gradient(to right, var(--tw-gradient-stops))}.bg-gradient-to-tr{background-image:linear-gradient(to top right, var(--tw-gradient-stops))}.from-terracotta{--tw-gradient-from:#C28E68 var(--tw-gradient-from-position);--tw-gradient-to:rgb(194 142 104 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.via-warmgold{--tw-gradient-to:rgb(223 186 129 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), #DFBA81 var(--tw-gradient-via-position), var(--tw-gradient-to)}.to-espresso-600{--tw-gradient-to:#3D271B var(--tw-gradient-to-position)}.to-warmgold{--tw-gradient-to:#DFBA81 var(--tw-gradient-to-position)}.object-cover{object-fit:cover}.p-0\.5{padding:0.125rem}.p-1{padding:0.25rem}.p-1\.5{padding:0.375rem}.p-2{padding:0.5rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.p-8{padding:2rem}.px-1\.5{padding-left:0.375rem;padding-right:0.375rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-4{padding-left:1rem;padding-right:1rem}.py-0\.5{padding-top:0.125rem;padding-bottom:0.125rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.py-3\.5{padding-top:0.875rem;padding-bottom:0.875rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.py-8{padding-top:2rem;padding-bottom:2rem}.pb-1{padding-bottom:0.25rem}.pb-2{padding-bottom:0.5rem}.pb-2\.5{padding-bottom:0.625rem}.pb-3{padding-bottom:0.75rem}.pb-4{padding-bottom:1rem}.pb-6{padding-bottom:1.5rem}.pt-2{padding-top:0.5rem}.pt-2\.5{padding-top:0.625rem}.pt-3{padding-top:0.75rem}.pt-6{padding-top:1.5rem}.text-left{text-align:left}.text-center{text-align:center}.text-right{text-align:right}.text-justify{text-align:justify}.font-heading{font-family:Outfit, sans-serif}.font-mono{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}.font-sans{font-family:Plus Jakarta Sans, sans-serif}.font-serif{font-family:ui-serif, Georgia, Cambria, "Times New Roman", Times, serif}.text-2xl{font-size:1.5rem;line-height:2rem}.text-5xl{font-size:3rem;line-height:1}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.text-\[8px\]{font-size:8px}.text-\[9px\]{font-size:9px}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.font-medium{font-weight:500}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.italic{font-style:italic}.leading-relaxed{line-height:1.625}.tracking-tight{letter-spacing:-0.025em}.tracking-wider{letter-spacing:0.05em}.tracking-widest{letter-spacing:0.1em}.text-emerald-400{--tw-text-opacity:1;color:rgb(52 211 153 / var(--tw-text-opacity, 1))}.text-espresso-700{--tw-text-opacity:1;color:rgb(42 26 16 / var(--tw-text-opacity, 1))}.text-espresso-900{--tw-text-opacity:1;color:rgb(25 17 11 / var(--tw-text-opacity, 1))}.text-linen{--tw-text-opacity:1;color:rgb(253 251 247 / var(--tw-text-opacity, 1))}.text-stone-200{--tw-text-opacity:1;color:rgb(231 229 228 / var(--tw-text-opacity, 1))}.text-stone-300{--tw-text-opacity:1;color:rgb(214 211 209 / var(--tw-text-opacity, 1))}.text-stone-400{--tw-text-opacity:1;color:rgb(168 162 158 / var(--tw-text-opacity, 1))}.text-stone-600{--tw-text-opacity:1;color:rgb(87 83 78 / var(--tw-text-opacity, 1))}.text-terracotta{--tw-text-opacity:1;color:rgb(194 142 104 / var(--tw-text-opacity, 1))}.text-warmgold{--tw-text-opacity:1;color:rgb(223 186 129 / var(--tw-text-opacity, 1))}.text-emerald-300{--tw-text-opacity:1;color:rgb(110 231 183 / var(--tw-text-opacity, 1))}.underline{-webkit-text-decoration-line:underline;text-decoration-line:underline}.shadow{--tw-shadow:0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.outline-none{outline:2px solid transparent;outline-offset:2px}.backdrop-blur{--tw-backdrop-blur:blur(8px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-200{transition-duration:200ms}.duration-300{transition-duration:300ms}.selection\:bg-terracotta *::selection{--tw-bg-opacity:1;background-color:rgb(194 142 104 / var(--tw-bg-opacity, 1))}.selection\:text-linen *::selection{--tw-text-opacity:1;color:rgb(253 251 247 / var(--tw-text-opacity, 1))}.selection\:bg-terracotta::selection{--tw-bg-opacity:1;background-color:rgb(194 142 104 / var(--tw-bg-opacity, 1))}.selection\:text-linen::selection{--tw-text-opacity:1;color:rgb(253 251 247 / var(--tw-text-opacity, 1))}.hover\:border-terracotta\/50:hover{border-color:rgb(194 142 104 / 0.5)}.hover\:bg-espresso-600:hover{--tw-bg-opacity:1;background-color:rgb(61 39 27 / var(--tw-bg-opacity, 1))}.hover\:bg-terracotta\/90:hover{background-color:rgb(194 142 104 / 0.9)}.hover\:bg-warmgold\/90:hover{background-color:rgb(223 186 129 / 0.9)}.hover\:text-linen:hover{--tw-text-opacity:1;color:rgb(253 251 247 / var(--tw-text-opacity, 1))}.hover\:opacity-90:hover{opacity:0.9}.focus\:border-terracotta:focus{--tw-border-opacity:1;border-color:rgb(194 142 104 / var(--tw-border-opacity, 1))}@media (min-width: 768px){.md\:col-span-2{grid-column:span 2 / span 2}.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:flex-row{flex-direction:row}.md\:items-center{align-items:center}.md\:justify-start{justify-content:flex-start}.md\:p-12{padding:3rem}.md\:p-8{padding:2rem}.md\:text-3xl{font-size:1.875rem;line-height:2.25rem}}@media (min-width: 1024px){.lg\:col-span-4{grid-column:span 4 / span 4}.lg\:col-span-6{grid-column:span 6 / span 6}.lg\:col-span-8{grid-column:span 8 / span 8}.lg\:grid-cols-12{grid-template-columns:repeat(12, minmax(0, 1fr))}.lg\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.lg\:px-8{padding-left:2rem;padding-right:2rem}}</style></head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-terracotta selection:text-linen">
+
+    <header class="no-print border-b border-espresso-600 bg-espresso-900/90 backdrop-blur sticky top-0 z-40 px-4 lg:px-8 py-3.5">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <!-- Quad Shield Vector Logo Mark -->
+                <div class="w-10 h-10 rounded-xl bg-terracotta/20 border border-terracotta/40 p-1.5 flex items-center justify-center shadow-lg">
+                    <svg viewBox="0 0 100 100" class="w-full h-full">
+                        <rect x="20" y="20" width="26" height="26" rx="6" fill="#FDFBF7"></rect>
+                        <rect x="54" y="20" width="26" height="26" rx="6" fill="#DFBA81"></rect>
+                        <rect x="20" y="54" width="26" height="26" rx="6" fill="#C28E68"></rect>
+                        <rect x="54" y="54" width="26" height="26" rx="6" fill="#FDFBF7"></rect>
+                        <circle cx="50" cy="50" r="8" fill="#19110B" stroke="#DFBA81" stroke-width="3"></circle>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="font-heading font-extrabold text-lg text-linen tracking-tight">iClick Digital Ventures</h1>
+                    <p class="text-xs text-terracotta font-medium">BN: 9772940 • CAC Registered &amp; SCUML Compliant</p>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-2">
+                <!-- Master Zip Download Button -->
+                <button onclick="downloadMasterZipPackage()" class="bg-gradient-to-r from-terracotta to-warmgold hover:opacity-90 text-espresso-900 font-extrabold px-4 py-2 rounded-xl text-xs transition flex items-center gap-2 shadow-lg border border-linen/20">
+                    <i class="fa-solid fa-file-zipper text-sm"></i> Download Everything (.ZIP Package)
+                </button>
+                <button onclick="downloadWebAppFile()" class="bg-espresso-700 hover:bg-espresso-600 text-linen font-semibold px-3 py-2 rounded-xl text-xs transition flex items-center gap-1.5 border border-espresso-600">
+                    <i class="fa-solid fa-download"></i> Save App (.html)
+                </button>
+            </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <div class="max-w-7xl mx-auto mt-3">
+            <nav class="flex flex-wrap items-center justify-center md:justify-start gap-1.5 bg-espresso-800 p-1.5 rounded-xl border border-espresso-600 text-xs font-semibold">
+                <button id="tab-btn-download-hub-tab" onclick="switchTab('download-hub-tab')" class="tab-btn px-3 py-2 rounded-lg transition-all duration-200 bg-terracotta text-linen shadow">
+                    <i class="fa-solid fa-box-archive mr-1.5"></i> Logo Asset Hub
+                </button>
+                <button id="tab-btn-ceo-id-tab" onclick="switchTab('ceo-id-tab')" class="tab-btn px-3 py-2 rounded-lg transition-all duration-200 text-stone-400 hover:text-linen">
+                    <i class="fa-solid fa-id-badge mr-1.5"></i> CEO ID Card
+                </button>
+                <button id="tab-btn-staff-id-tab" onclick="switchTab('staff-id-tab')" class="tab-btn px-3 py-2 rounded-lg transition-all duration-200 text-stone-400 hover:text-linen">
+                    <i class="fa-solid fa-users mr-1.5"></i> Staff ID Generator
+                </button>
+                <button id="tab-btn-biz-card-tab" onclick="switchTab('biz-card-tab')" class="tab-btn px-3 py-2 rounded-lg transition-all duration-200 text-stone-400 hover:text-linen">
+                    <i class="fa-solid fa-address-card mr-1.5"></i> Business Card
+                </button>
+                <button id="tab-btn-letterhead-tab" onclick="switchTab('letterhead-tab')" class="tab-btn px-3 py-2 rounded-lg transition-all duration-200 text-stone-400 hover:text-linen">
+                    <i class="fa-solid fa-file-signature mr-1.5"></i> Corporate Letterhead
+                </button>
+                <button id="tab-btn-cac-tab" onclick="switchTab('cac-tab')" class="tab-btn px-3 py-2 rounded-lg transition-all duration-200 text-stone-400 hover:text-linen">
+                    <i class="fa-solid fa-building-columns mr-1.5"></i> CAC Record
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-4 lg:px-8 py-8 flex-grow w-full">
+
+        <!-- ================= TAB 1: LOGO ASSET HUB ================= -->
+        <section id="download-hub-tab" class="tab-content space-y-8">
+            <div class="bg-espresso-800 border border-espresso-600 rounded-2xl p-6 md:p-8 space-y-6">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-espresso-600 pb-6">
+                    <div>
+                        <span class="inline-block px-3 py-1 rounded-full text-[11px] font-bold bg-terracotta/20 text-terracotta uppercase tracking-wider mb-2 border border-terracotta/30">Official Vector Suite</span>
+                        <h2 class="text-2xl md:text-3xl font-heading font-bold text-linen">Logo Download &amp; Vector Asset Hub</h2>
+                        <p class="text-sm text-stone-300 mt-1">High-resolution vector assets with transparent PNG, SVG, and HTML code exports.</p>
+                    </div>
+                    <button onclick="downloadMasterZipPackage()" class="bg-warmgold hover:bg-warmgold/90 text-espresso-900 font-extrabold px-4 py-2.5 rounded-xl text-xs transition flex items-center gap-2 shadow">
+                        <i class="fa-solid fa-download"></i> Download All Logos &amp; Assets (.ZIP)
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                    <!-- Asset 1: Quad Shield Dark BG -->
+                    <div class="bg-espresso-900 border border-espresso-600 rounded-xl p-5 flex flex-col justify-between space-y-4 hover:border-terracotta/50 transition-all">
+                        <div class="space-y-2">
+                            <span class="text-[10px] font-bold text-terracotta uppercase tracking-wider">Default Primary Emblem</span>
+                            <h3 class="font-heading font-semibold text-base text-linen">Quad Shield Emblem (Dark)</h3>
+                        </div>
+                        <div class="h-44 bg-espresso-900 rounded-lg border border-espresso-700 flex items-center justify-center p-6">
+                            <svg id="svg-quad-dark" viewBox="0 0 100 100" class="w-28 h-28">
+                                <rect x="20" y="20" width="26" height="26" rx="6" fill="#FDFBF7"></rect>
+                                <rect x="54" y="20" width="26" height="26" rx="6" fill="#DFBA81"></rect>
+                                <rect x="20" y="54" width="26" height="26" rx="6" fill="#C28E68"></rect>
+                                <rect x="54" y="54" width="26" height="26" rx="6" fill="#FDFBF7"></rect>
+                                <circle cx="50" cy="50" r="8" fill="#19110B" stroke="#DFBA81" stroke-width="3"></circle>
+                            </svg>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2 text-xs">
+                            <button onclick="downloadPNG('svg-quad-dark', 'iclick-quad-shield-dark.png')" class="bg-terracotta hover:bg-terracotta/90 text-linen font-semibold py-2 px-2 rounded-lg transition text-center flex items-center justify-center gap-1">
+                                <i class="fa-solid fa-download text-[10px]"></i> PNG
+                            </button>
+                            <button onclick="downloadSVG('svg-quad-dark', 'iclick-quad-shield-dark.svg')" class="bg-espresso-700 hover:bg-espresso-600 text-stone-200 font-semibold py-2 px-2 rounded-lg border border-espresso-600 transition text-center flex items-center justify-center gap-1">
+                                <i class="fa-solid fa-file-code text-[10px]"></i> SVG
+                            </button>
+                            <button onclick="copySVGCode('svg-quad-dark')" class="bg-espresso-700 hover:bg-espresso-600 text-stone-200 font-semibold py-2 px-2 rounded-lg border border-espresso-600 transition text-center flex items-center justify-center gap-1">
+                                <i class="fa-solid fa-copy text-[10px]"></i> Copy
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Asset 2: Quad Shield Light BG -->
+                    <div class="bg-espresso-900 border border-espresso-600 rounded-xl p-5 flex flex-col justify-between space-y-4 hover:border-terracotta/50 transition-all">
+                        <div class="space-y-2">
+                            <span class="text-[10px] font-bold text-warmgold uppercase tracking-wider">Light Background Mark</span>
+                            <h3 class="font-heading font-semibold text-base text-linen">Quad Shield Emblem (Light)</h3>
+                        </div>
+                        <div class="h-44 bg-linen rounded-lg border border-stone-300 flex items-center justify-center p-6">
+                            <svg id="svg-quad-light" viewBox="0 0 100 100" class="w-28 h-28">
+                                <rect x="20" y="20" width="26" height="26" rx="6" fill="#19110B"></rect>
+                                <rect x="54" y="20" width="26" height="26" rx="6" fill="#C28E68"></rect>
+                                <rect x="20" y="54" width="26" height="26" rx="6" fill="#3D271B"></rect>
+                                <rect x="54" y="54" width="26" height="26" rx="6" fill="#19110B"></rect>
+                                <circle cx="50" cy="50" r="8" fill="#FDFBF7" stroke="#C28E68" stroke-width="3"></circle>
+                            </svg>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2 text-xs">
+                            <button onclick="downloadPNG('svg-quad-light', 'iclick-quad-shield-light.png')" class="bg-terracotta hover:bg-terracotta/90 text-linen font-semibold py-2 px-2 rounded-lg transition text-center flex items-center justify-center gap-1">
+                                <i class="fa-solid fa-download text-[10px]"></i> PNG
+                            </button>
+                            <button onclick="downloadSVG('svg-quad-light', 'iclick-quad-shield-light.svg')" class="bg-espresso-700 hover:bg-espresso-600 text-stone-200 font-semibold py-2 px-2 rounded-lg border border-espresso-600 transition text-center flex items-center justify-center gap-1">
+                                <i class="fa-solid fa-file-code text-[10px]"></i> SVG
+                            </button>
+                            <button onclick="copySVGCode('svg-quad-light')" class="bg-espresso-700 hover:bg-espresso-600 text-stone-200 font-semibold py-2 px-2 rounded-lg border border-espresso-600 transition text-center flex items-center justify-center gap-1">
+                                <i class="fa-solid fa-copy text-[10px]"></i> Copy
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Asset 3: Full Horizontal Lockup Dark -->
+                    <div class="bg-espresso-900 border border-espresso-600 rounded-xl p-5 flex flex-col justify-between space-y-4 hover:border-terracotta/50 transition-all">
+                        <div class="space-y-2">
+                            <span class="text-[10px] font-bold text-terracotta uppercase tracking-wider">Website Header Lockup</span>
+                            <h3 class="font-heading font-semibold text-base text-linen">Full Horizontal Brand Lockup</h3>
+                        </div>
+                        <div class="h-44 bg-espresso-900 rounded-lg border border-espresso-700 flex items-center justify-center p-4">
+                            <svg id="svg-full-lockup-dark" viewBox="0 0 320 80" class="w-full h-auto">
+                                <rect x="10" y="15" width="13" height="13" rx="3" fill="#FDFBF7"></rect>
+                                <rect x="27" y="15" width="13" height="13" rx="3" fill="#DFBA81"></rect>
+                                <rect x="10" y="32" width="13" height="13" rx="3" fill="#C28E68"></rect>
+                                <rect x="27" y="32" width="13" height="13" rx="3" fill="#FDFBF7"></rect>
+                                <circle cx="25" cy="30" r="4" fill="#19110B" stroke="#DFBA81" stroke-width="1.5"></circle>
+                                <text x="52" y="33" fill="#FDFBF7" font-family="'Outfit', sans-serif" font-weight="800" font-size="18" letter-spacing="-0.5">iClick Digital</text>
+                                <text x="52" y="50" fill="#C28E68" font-family="'Outfit', sans-serif" font-weight="600" font-size="12" letter-spacing="3">VENTURES</text>
+                            </svg>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2 text-xs">
+                            <button onclick="downloadPNG('svg-full-lockup-dark', 'iclick-full-logo-dark.png', 1200, 300)" class="bg-terracotta hover:bg-terracotta/90 text-linen font-semibold py-2 px-2 rounded-lg transition text-center flex items-center justify-center gap-1">
+                                <i class="fa-solid fa-download text-[10px]"></i> PNG
+                            </button>
+                            <button onclick="downloadSVG('svg-full-lockup-dark', 'iclick-full-logo-dark.svg')" class="bg-espresso-700 hover:bg-espresso-600 text-stone-200 font-semibold py-2 px-2 rounded-lg border border-espresso-600 transition text-center flex items-center justify-center gap-1">
+                                <i class="fa-solid fa-file-code text-[10px]"></i> SVG
+                            </button>
+                            <button onclick="copySVGCode('svg-full-lockup-dark')" class="bg-espresso-700 hover:bg-espresso-600 text-stone-200 font-semibold py-2 px-2 rounded-lg border border-espresso-600 transition text-center flex items-center justify-center gap-1">
+                                <i class="fa-solid fa-copy text-[10px]"></i> Copy
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Asset 4: Concept 1 Tech Pointer Mark -->
+                    <div class="bg-espresso-900 border border-espresso-600 rounded-xl p-5 flex flex-col justify-between space-y-4 hover:border-terracotta/50 transition-all">
+                        <div class="space-y-2">
+                            <span class="text-[10px] font-bold text-stone-400 uppercase tracking-wider">Concept 1</span>
+                            <h3 class="font-heading font-semibold text-base text-linen">Tech Cursor Pointer Mark</h3>
+                        </div>
+                        <div class="h-44 bg-espresso-900 rounded-lg border border-espresso-700 flex items-center justify-center p-6">
+                            <svg id="svg-concept-1" viewBox="0 0 100 100" class="w-28 h-28">
+                                <path d="M22 22L78 50L48 56L34 84L22 22Z" fill="#FDFBF7" stroke="#C28E68" stroke-width="4" stroke-linejoin="round"></path>
+                                <circle cx="76" cy="24" r="10" fill="#DFBA81"></circle>
+                            </svg>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2 text-xs">
+                            <button onclick="downloadPNG('svg-concept-1', 'iclick-concept-1-pointer.png')" class="bg-terracotta hover:bg-terracotta/90 text-linen font-semibold py-2 px-2 rounded-lg transition text-center flex items-center justify-center gap-1">
+                                <i class="fa-solid fa-download text-[10px]"></i> PNG
+                            </button>
+                            <button onclick="downloadSVG('svg-concept-1', 'iclick-concept-1-pointer.svg')" class="bg-espresso-700 hover:bg-espresso-600 text-stone-200 font-semibold py-2 px-2 rounded-lg border border-espresso-600 transition text-center flex items-center justify-center gap-1">
+                                <i class="fa-solid fa-file-code text-[10px]"></i> SVG
+                            </button>
+                            <button onclick="copySVGCode('svg-concept-1')" class="bg-espresso-700 hover:bg-espresso-600 text-stone-200 font-semibold py-2 px-2 rounded-lg border border-espresso-600 transition text-center flex items-center justify-center gap-1">
+                                <i class="fa-solid fa-copy text-[10px]"></i> Copy
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Asset 5: Concept 3 Monogram -->
+                    <div class="bg-espresso-900 border border-espresso-600 rounded-xl p-5 flex flex-col justify-between space-y-4 hover:border-terracotta/50 transition-all">
+                        <div class="space-y-2">
+                            <span class="text-[10px] font-bold text-stone-400 uppercase tracking-wider">Concept 3</span>
+                            <h3 class="font-heading font-semibold text-base text-linen">Interlocking 'iC' Monogram</h3>
+                        </div>
+                        <div class="h-44 bg-espresso-900 rounded-lg border border-espresso-700 flex items-center justify-center p-6">
+                            <svg id="svg-concept-3" viewBox="0 0 100 100" class="w-28 h-28">
+                                <path d="M30 25 C30 15, 45 15, 45 25 L45 75 C45 85, 30 85, 30 75 Z" fill="#DFBA81"></path>
+                                <path d="M50 35 C50 20, 80 20, 80 35 L80 45 L65 45 L65 35 C65 30, 60 30, 60 35 L60 65 C60 70, 65 70, 65 65 L80 65 L80 75 C80 90, 50 90, 50 75 Z" fill="#FDFBF7"></path>
+                                <circle cx="37.5" cy="18" r="5" fill="#C28E68"></circle>
+                            </svg>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2 text-xs">
+                            <button onclick="downloadPNG('svg-concept-3', 'iclick-concept-3-monogram.png')" class="bg-terracotta hover:bg-terracotta/90 text-linen font-semibold py-2 px-2 rounded-lg transition text-center flex items-center justify-center gap-1">
+                                <i class="fa-solid fa-download text-[10px]"></i> PNG
+                            </button>
+                            <button onclick="downloadSVG('svg-concept-3', 'iclick-concept-3-monogram.svg')" class="bg-espresso-700 hover:bg-espresso-600 text-stone-200 font-semibold py-2 px-2 rounded-lg border border-espresso-600 transition text-center flex items-center justify-center gap-1">
+                                <i class="fa-solid fa-file-code text-[10px]"></i> SVG
+                            </button>
+                            <button onclick="copySVGCode('svg-concept-3')" class="bg-espresso-700 hover:bg-espresso-600 text-stone-200 font-semibold py-2 px-2 rounded-lg border border-espresso-600 transition text-center flex items-center justify-center gap-1">
+                                <i class="fa-solid fa-copy text-[10px]"></i> Copy
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 2: CEO ID CARD ================= -->
+        <section id="ceo-id-tab" class="tab-content hidden space-y-8">
+            <div class="bg-espresso-800 border border-espresso-600 rounded-2xl p-6 md:p-8 space-y-6">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-espresso-600 pb-6">
+                    <div>
+                        <span class="inline-block px-3 py-1 rounded-full text-[11px] font-bold bg-terracotta/20 text-terracotta uppercase tracking-wider mb-2 border border-terracotta/30">Executive Credentials</span>
+                        <h2 class="text-2xl md:text-3xl font-heading font-bold text-linen">CEO Official ID Card</h2>
+                        <p class="text-sm text-stone-300 mt-1">Official corporate identification badge for Muhammad Yasin Ibrahim (Chief Executive Officer).</p>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-3">
+                        <label class="cursor-pointer bg-espresso-700 hover:bg-espresso-600 text-linen text-xs font-semibold px-4 py-2.5 rounded-xl border border-espresso-600 transition flex items-center gap-2 shadow">
+                            <i class="fa-solid fa-upload text-terracotta"></i> Upload Founder Photo
+                            <input type="file" accept="image/*" class="hidden" onchange="handleCeoPhotoUpload(event)">
+                        </label>
+                        <button onclick="toggleCardFlip('ceo-card-container')" class="bg-espresso-700 hover:bg-espresso-600 text-linen text-xs font-semibold px-4 py-2.5 rounded-xl border border-espresso-600 transition flex items-center gap-2">
+                            <i class="fa-solid fa-rotate text-warmgold"></i> Flip Card View
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 3D Card Display Area -->
+                <div class="flex justify-center py-6">
+                    <div class="card-perspective w-[340px] h-[520px]">
+                        <div id="ceo-card-container" class="card-inner shadow-2xl">
+                            
+                            <!-- CEO ID FRONT -->
+                            <div id="ceo-id-card-front" class="card-front bg-espresso-900 border-2 border-terracotta/60 p-6 flex flex-col justify-between text-linen relative">
+                                <!-- Top Bar -->
+                                <div class="flex items-center justify-between border-b border-terracotta/30 pb-3">
+                                    <div class="flex items-center gap-2.5">
+                                        <div id="id-logo-icon-front" class="w-8 h-8">
+                                            <svg viewBox="0 0 100 100" class="w-full h-full">
+                                                <rect x="20" y="20" width="26" height="26" rx="6" fill="#FDFBF7"></rect>
+                                                <rect x="54" y="20" width="26" height="26" rx="6" fill="#DFBA81"></rect>
+                                                <rect x="20" y="54" width="26" height="26" rx="6" fill="#C28E68"></rect>
+                                                <rect x="54" y="54" width="26" height="26" rx="6" fill="#FDFBF7"></rect>
+                                                <circle cx="50" cy="50" r="8" fill="#19110B" stroke="#DFBA81" stroke-width="3"></circle>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-heading font-extrabold text-xs tracking-tight text-linen">iClick Digital</h4>
+                                            <p class="text-[9px] text-terracotta font-semibold uppercase tracking-widest">VENTURES</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-[9px] font-bold bg-terracotta text-linen px-2 py-0.5 rounded uppercase">EXECUTIVE</span>
+                                </div>
+
+                                <!-- Portrait Frame -->
+                                <div class="my-auto flex flex-col items-center space-y-3">
+                                    <div class="relative w-32 h-32 rounded-2xl p-1 bg-gradient-to-tr from-terracotta via-warmgold to-espresso-600 shadow-xl">
+                                        <div class="w-full h-full rounded-xl overflow-hidden bg-espresso-800">
+                                            <img id="ceo-photo-img" class="w-full h-full object-cover" src="data:image/svg+xml;utf8,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'&gt;&lt;rect width='200' height='200' fill='%23261911'/&gt;&lt;circle cx='100' cy='75' r='38' fill='%238C5E3C'/&gt;&lt;path d='M40 180 C40 120, 160 120, 160 180 Z' fill='%2319110B'/&gt;&lt;polygon points='100,115 85,180 115,180' fill='%23FDFBF7'/&gt;&lt;polygon points='100,125 93,180 107,180' fill='%23800020'/&gt;&lt;/svg&gt;" alt="CEO Photo">
+                                        </div>
+                                        <div class="absolute -bottom-2 -right-2 bg-warmgold text-espresso-900 rounded-full w-7 h-7 flex items-center justify-center text-xs font-bold shadow">
+                                            <i class="fa-solid fa-shield-check"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="text-center space-y-0.5">
+                                        <h3 class="font-heading font-bold text-lg text-linen">MUHAMMAD YASIN IBRAHIM</h3>
+                                        <p class="text-xs font-semibold text-warmgold uppercase tracking-wider">Chief Executive Officer / Proprietor</p>
+                                        <p class="text-[10px] text-stone-400">BN Number: 9772940</p>
+                                    </div>
+                                </div>
+
+                                <!-- Bottom Info -->
+                                <div class="border-t border-terracotta/30 pt-3 space-y-1.5 text-[10px]">
+                                    <div class="flex justify-between text-stone-300">
+                                        <span>ID NO: <strong class="text-linen">IDV-CEO-001</strong></span>
+                                        <span>STATUS: <strong class="text-emerald-400">ACTIVE</strong></span>
+                                    </div>
+                                    <div class="flex justify-between text-stone-300">
+                                        <span>ISSUE DATE: <strong class="text-linen">14 AUG 2026</strong></span>
+                                        <span>EXPIRES: <strong class="text-linen">PERMANENT</strong></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- CEO ID BACK -->
+                            <div id="ceo-id-card-back" class="card-back bg-espresso-900 border-2 border-terracotta/60 p-6 flex flex-col justify-between text-linen">
+                                <div class="text-center space-y-1 border-b border-terracotta/30 pb-3">
+                                    <p class="text-[10px] text-terracotta font-bold uppercase tracking-widest">Property of iClick Digital Ventures</p>
+                                    <p class="text-[9px] text-stone-400">If found, please return to any branch office or contact headquarters immediately.</p>
+                                </div>
+
+                                <!-- Security Bar -->
+                                <div class="space-y-3">
+                                    <div class="h-10 bg-espresso-800 rounded-lg border border-espresso-600 flex items-center justify-between px-3">
+                                        <span class="text-[9px] text-stone-400 font-mono">AUTH: CAC-BN-9772940</span>
+                                        <i class="fa-solid fa-qrcode text-warmgold text-xl"></i>
+                                    </div>
+
+                                    <div class="text-[10px] space-y-1.5 text-stone-300">
+                                        <p><i class="fa-solid fa-location-dot text-terracotta w-4"></i> Sokoto: 41C Sultan Bello Rd, Sokoto North</p>
+                                        <p><i class="fa-solid fa-building-columns text-terracotta w-4"></i> HQ: Federal Capital Territory, Abuja</p>
+                                        <p><i class="fa-solid fa-phone text-terracotta w-4"></i> +234 806 288 2839</p>
+                                        <p><i class="fa-solid fa-envelope text-terracotta w-4"></i> iclickdigitalventures@gmail.com</p>
+                                        <p><i class="fa-solid fa-globe text-terracotta w-4"></i> www.iclickdigital.com</p>
+                                    </div>
+                                </div>
+
+                                <!-- Signature -->
+                                <div class="border-t border-terracotta/30 pt-3 flex items-center justify-between">
+                                    <div class="text-[8px] text-stone-400">
+                                        <p class="font-bold text-linen">SCUML / EFCC COMPLIANT</p>
+                                        <p>AUTHORIZED SIGNATURE</p>
+                                    </div>
+                                    <div class="w-16 h-8 border-b border-warmgold/50 flex items-end justify-center pb-1">
+                                        <span class="font-serif italic text-xs text-warmgold">M.Y. Ibrahim</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Controls -->
+                <div class="flex flex-wrap justify-center gap-3 pt-2">
+                    <button onclick="downloadCardPNG('ceo-id-card-front', 'iclick-ceo-id-front.png')" class="bg-terracotta hover:bg-terracotta/90 text-linen text-xs font-semibold px-4 py-2.5 rounded-xl transition flex items-center gap-2 shadow">
+                        <i class="fa-solid fa-file-image"></i> Download Front PNG
+                    </button>
+                    <button onclick="downloadCardPNG('ceo-id-card-back', 'iclick-ceo-id-back.png')" class="bg-espresso-700 hover:bg-espresso-600 text-linen text-xs font-semibold px-4 py-2.5 rounded-xl border border-espresso-600 transition flex items-center gap-2">
+                        <i class="fa-solid fa-file-image"></i> Download Back PNG
+                    </button>
+                    <button onclick="downloadPDF('ceo-id-card-front', 'iclick-ceo-id.pdf')" class="bg-warmgold hover:bg-warmgold/90 text-espresso-900 text-xs font-bold px-4 py-2.5 rounded-xl transition flex items-center gap-2 shadow">
+                        <i class="fa-solid fa-file-pdf"></i> Download Direct PDF
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 3: STAFF ID EDITOR ================= -->
+        <section id="staff-id-tab" class="tab-content hidden space-y-8">
+            <div class="bg-espresso-800 border border-espresso-600 rounded-2xl p-6 md:p-8 space-y-6">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-espresso-600 pb-6">
+                    <div>
+                        <span class="inline-block px-3 py-1 rounded-full text-[11px] font-bold bg-terracotta/20 text-terracotta uppercase tracking-wider mb-2 border border-terracotta/30">Personnel Management</span>
+                        <h2 class="text-2xl md:text-3xl font-heading font-bold text-linen">Staff ID Card Generator</h2>
+                        <p class="text-sm text-stone-300 mt-1">Customize and issue official staff ID badges for all 4 subsidiaries in real time.</p>
+                    </div>
+                    <button onclick="toggleCardFlip('staff-card-container')" class="bg-espresso-700 hover:bg-espresso-600 text-linen text-xs font-semibold px-4 py-2.5 rounded-xl border border-espresso-600 transition flex items-center gap-2">
+                        <i class="fa-solid fa-rotate text-warmgold"></i> Flip Card View
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                    <!-- Form Editor -->
+                    <div class="lg:col-span-6 bg-espresso-900 border border-espresso-600 p-6 rounded-xl space-y-4">
+                        <h3 class="font-heading font-bold text-base text-linen border-b border-espresso-700 pb-2">Edit Staff Details</h3>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                            <div>
+                                <label class="block text-stone-400 mb-1">Staff Full Name</label>
+                                <input type="text" id="staff-input-name" value="Amina Bello Usman" oninput="updateStaffCardText()" class="w-full bg-espresso-800 border border-espresso-600 rounded-lg px-3 py-2 text-linen focus:border-terracotta outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-stone-400 mb-1">Job Designation</label>
+                                <input type="text" id="staff-input-title" value="Lead AI Automation Engineer" oninput="updateStaffCardText()" class="w-full bg-espresso-800 border border-espresso-600 rounded-lg px-3 py-2 text-linen focus:border-terracotta outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-stone-400 mb-1">Subsidiary / Department</label>
+                                <select id="staff-input-dept" onchange="updateStaffCardText()" class="w-full bg-espresso-800 border border-espresso-600 rounded-lg px-3 py-2 text-linen focus:border-terracotta outline-none">
+                                    <option value="iClick AI Automation">iClick AI Automation</option>
+                                    <option value="iClick GovTech">iClick GovTech</option>
+                                    <option value="iClick Digital Academy">iClick Digital Academy</option>
+                                    <option value="iClick IoT &amp; Hardware">iClick IoT &amp; Hardware</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-stone-400 mb-1">Staff ID Number</label>
+                                <input type="text" id="staff-input-id" value="IDV-STF-084" oninput="updateStaffCardText()" class="w-full bg-espresso-800 border border-espresso-600 rounded-lg px-3 py-2 text-linen focus:border-terracotta outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-stone-400 mb-1">Issue Date</label>
+                                <input type="text" id="staff-input-date" value="22 AUG 2026" oninput="updateStaffCardText()" class="w-full bg-espresso-800 border border-espresso-600 rounded-lg px-3 py-2 text-linen focus:border-terracotta outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-stone-400 mb-1">Phone Contact</label>
+                                <input type="text" id="staff-input-phone" value="+234 812 345 6789" oninput="updateStaffCardText()" class="w-full bg-espresso-800 border border-espresso-600 rounded-lg px-3 py-2 text-linen focus:border-terracotta outline-none">
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="block text-stone-400 mb-1">Email Address</label>
+                                <input type="text" id="staff-input-email" value="amina.usman@iclickdigital.com" oninput="updateStaffCardText()" class="w-full bg-espresso-800 border border-espresso-600 rounded-lg px-3 py-2 text-linen focus:border-terracotta outline-none">
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="block text-stone-400 mb-1">Staff Photo Upload</label>
+                                <input type="file" accept="image/*" onchange="handleStaffPhotoUpload(event)" class="w-full text-xs text-stone-300 bg-espresso-800 border border-espresso-600 rounded-lg p-2">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Staff ID Display -->
+                    <div class="lg:col-span-6 flex flex-col items-center">
+                        <div class="card-perspective w-[320px] h-[490px]">
+                            <div id="staff-card-container" class="card-inner shadow-2xl">
+                                
+                                <!-- FRONT STAFF CARD -->
+                                <div id="staff-id-card-front" class="card-front bg-espresso-900 border-2 border-terracotta/50 p-5 flex flex-col justify-between text-linen">
+                                    <div class="flex items-center justify-between border-b border-terracotta/30 pb-2.5">
+                                        <div class="flex items-center gap-2">
+                                            <div class="w-7 h-7">
+                                                <svg viewBox="0 0 100 100" class="w-full h-full">
+                                                    <rect x="20" y="20" width="26" height="26" rx="6" fill="#FDFBF7"></rect>
+                                                    <rect x="54" y="20" width="26" height="26" rx="6" fill="#DFBA81"></rect>
+                                                    <rect x="20" y="54" width="26" height="26" rx="6" fill="#C28E68"></rect>
+                                                    <rect x="54" y="54" width="26" height="26" rx="6" fill="#FDFBF7"></rect>
+                                                    <circle cx="50" cy="50" r="8" fill="#19110B" stroke="#DFBA81" stroke-width="3"></circle>
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <h4 class="font-heading font-extrabold text-xs text-linen">iClick Digital</h4>
+                                                <p id="staff-card-dept" class="text-[8px] text-terracotta font-semibold uppercase tracking-wider">iClick AI Automation</p>
+                                            </div>
+                                        </div>
+                                        <span class="text-[8px] font-bold bg-terracotta text-linen px-1.5 py-0.5 rounded">STAFF</span>
+                                    </div>
+
+                                    <div class="my-auto flex flex-col items-center space-y-2">
+                                        <div class="w-28 h-28 rounded-xl p-0.5 bg-terracotta overflow-hidden shadow">
+                                            <img id="staff-photo-img" class="w-full h-full object-cover rounded-lg" src="data:image/svg+xml;utf8,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'&gt;&lt;rect width='200' height='200' fill='%233D271B'/&gt;&lt;circle cx='100' cy='75' r='38' fill='%23C28E68'/&gt;&lt;path d='M40 180 C40 120, 160 120, 160 180 Z' fill='%2319110B'/&gt;&lt;/svg&gt;" alt="Staff Photo">
+                                        </div>
+
+                                        <div class="text-center">
+                                            <h3 id="staff-card-name" class="font-heading font-bold text-base text-linen">AMINA BELLO USMAN</h3>
+                                            <p id="staff-card-title" class="text-xs font-semibold text-warmgold">Lead AI Automation Engineer</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="border-t border-terracotta/30 pt-2.5 space-y-1 text-[9px] text-stone-300">
+                                        <div class="flex justify-between">
+                                            <span>STAFF ID: <strong id="staff-card-id" class="text-linen">IDV-STF-084</strong></span>
+                                            <span>ISSUED: <strong id="staff-card-date" class="text-linen">22 AUG 2026</strong></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- BACK STAFF CARD -->
+                                <div id="staff-id-card-back" class="card-back bg-espresso-900 border-2 border-terracotta/50 p-5 flex flex-col justify-between text-linen">
+                                    <div class="text-center text-[9px] text-stone-400 border-b border-terracotta/30 pb-2">
+                                        Official Staff Pass • iClick Digital Ventures
+                                    </div>
+                                    <div class="space-y-2 text-[9px] text-stone-300">
+                                        <p><i class="fa-solid fa-phone text-terracotta w-4"></i> <span id="staff-card-phone">+234 812 345 6789</span></p>
+                                        <p><i class="fa-solid fa-envelope text-terracotta w-4"></i> <span id="staff-card-email">amina.usman@iclickdigital.com</span></p>
+                                        <p><i class="fa-solid fa-globe text-terracotta w-4"></i> www.iclickdigital.com</p>
+                                    </div>
+                                    <div class="border-t border-terracotta/30 pt-2 text-[8px] text-stone-400 text-center">
+                                        CAC Registered • SCUML Compliant
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-2 mt-4 justify-center">
+                            <button onclick="downloadCardPNG('staff-id-card-front', 'iclick-staff-id-front.png')" class="bg-terracotta text-linen text-xs font-semibold px-3 py-2 rounded-lg">Front PNG</button>
+                            <button onclick="downloadCardPNG('staff-id-card-back', 'iclick-staff-id-back.png')" class="bg-espresso-700 text-linen text-xs font-semibold px-3 py-2 rounded-lg border border-espresso-600">Back PNG</button>
+                            <button onclick="downloadPDF('staff-id-card-front', 'iclick-staff-id.pdf')" class="bg-warmgold text-espresso-900 text-xs font-bold px-3 py-2 rounded-lg">Download Staff PDF</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 4: BUSINESS CARD ================= -->
+        <section id="biz-card-tab" class="tab-content hidden space-y-8">
+            <div class="bg-espresso-800 border border-espresso-600 rounded-2xl p-6 md:p-8 space-y-6">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-espresso-600 pb-6">
+                    <div>
+                        <span class="inline-block px-3 py-1 rounded-full text-[11px] font-bold bg-terracotta/20 text-terracotta uppercase tracking-wider mb-2 border border-terracotta/30">Executive Stationery</span>
+                        <h2 class="text-2xl md:text-3xl font-heading font-bold text-linen">CEO Business Card</h2>
+                        <p class="text-sm text-stone-300 mt-1">3.5" x 2.0" premium copper-accented business card layout.</p>
+                    </div>
+                    <button onclick="toggleCardFlip('biz-card-container')" class="bg-espresso-700 hover:bg-espresso-600 text-linen text-xs font-semibold px-4 py-2.5 rounded-xl border border-espresso-600 transition flex items-center gap-2">
+                        <i class="fa-solid fa-rotate text-warmgold"></i> Flip Card View
+                    </button>
+                </div>
+
+                <div class="flex justify-center py-6">
+                    <div class="card-perspective w-[420px] h-[240px]">
+                        <div id="biz-card-container" class="card-inner shadow-2xl">
+                            
+                            <!-- BIZ FRONT -->
+                            <div id="biz-card-front" class="card-front bg-espresso-900 border-2 border-terracotta/60 p-6 flex flex-col items-center justify-center text-center space-y-3">
+                                <div id="biz-logo-icon-front" class="w-12 h-12">
+                                    <svg viewBox="0 0 100 100" class="w-full h-full">
+                                        <rect x="20" y="20" width="26" height="26" rx="6" fill="#FDFBF7"></rect>
+                                        <rect x="54" y="20" width="26" height="26" rx="6" fill="#DFBA81"></rect>
+                                        <rect x="20" y="54" width="26" height="26" rx="6" fill="#C28E68"></rect>
+                                        <rect x="54" y="54" width="26" height="26" rx="6" fill="#FDFBF7"></rect>
+                                        <circle cx="50" cy="50" r="8" fill="#19110B" stroke="#DFBA81" stroke-width="3"></circle>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-heading font-extrabold text-xl tracking-tight text-linen">iClick Digital Ventures</h3>
+                                    <p class="text-[10px] text-terracotta font-semibold uppercase tracking-widest mt-0.5">GovTech • AI Automation • Academy • IoT</p>
+                                </div>
+                            </div>
+
+                            <!-- BIZ BACK -->
+                            <div id="biz-card-back" class="card-back bg-espresso-900 border-2 border-terracotta/60 p-6 flex justify-between items-center text-linen">
+                                <div class="space-y-1 text-left">
+                                    <h4 class="font-heading font-bold text-sm text-linen">MUHAMMAD YASIN IBRAHIM</h4>
+                                    <p class="text-[10px] text-warmgold font-semibold uppercase">CEO / Proprietor</p>
+                                    <div class="text-[9px] text-stone-300 space-y-0.5 pt-2">
+                                        <p><i class="fa-solid fa-phone text-terracotta w-3"></i> +234 806 288 2839</p>
+                                        <p><i class="fa-solid fa-envelope text-terracotta w-3"></i> iclickdigitalventures@gmail.com</p>
+                                        <p><i class="fa-solid fa-globe text-terracotta w-3"></i> www.iclickdigital.com</p>
+                                        <p><i class="fa-solid fa-location-dot text-terracotta w-3"></i> Abuja &amp; Sokoto, Nigeria</p>
+                                    </div>
+                                </div>
+                                <div class="w-16 h-16 bg-linen p-1 rounded-lg">
+                                    <i class="fa-solid fa-qrcode text-espresso-900 text-5xl flex items-center justify-center h-full"></i>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap justify-center gap-3">
+                    <button onclick="downloadCardPNG('biz-card-front', 'iclick-biz-card-front.png')" class="bg-terracotta text-linen text-xs font-semibold px-4 py-2.5 rounded-xl">Download Front PNG</button>
+                    <button onclick="downloadCardPNG('biz-card-back', 'iclick-biz-card-back.png')" class="bg-espresso-700 text-linen text-xs font-semibold px-4 py-2.5 rounded-xl border border-espresso-600">Download Back PNG</button>
+                    <button onclick="downloadPDF('biz-card-front', 'iclick-business-card.pdf')" class="bg-warmgold text-espresso-900 text-xs font-bold px-4 py-2.5 rounded-xl">Download PDF Card</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 5: LETTERHEAD & GOOGLE DOCS ================= -->
+        <section id="letterhead-tab" class="tab-content hidden space-y-8">
+            <div class="bg-espresso-800 border border-espresso-600 rounded-2xl p-6 md:p-8 space-y-6">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-espresso-600 pb-6">
+                    <div>
+                        <span class="inline-block px-3 py-1 rounded-full text-[11px] font-bold bg-terracotta/20 text-terracotta uppercase tracking-wider mb-2 border border-terracotta/30">Official Documentation</span>
+                        <h2 class="text-2xl md:text-3xl font-heading font-bold text-linen">Corporate Letterhead &amp; Google Docs Suite</h2>
+                        <p class="text-sm text-stone-300 mt-1">Export A4 letterhead documents as direct PDF files or download headers/footers for Google Docs.</p>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2">
+                        <button onclick="downloadHeaderFooterPNG()" class="bg-terracotta hover:bg-terracotta/90 text-linen text-xs font-semibold px-4 py-2.5 rounded-xl transition flex items-center gap-2 shadow">
+                            <i class="fa-solid fa-file-export"></i> Download Header PNG for Docs
+                        </button>
+                        <button onclick="copyLetterTextForDocs()" class="bg-espresso-700 hover:bg-espresso-600 text-stone-200 text-xs font-semibold px-4 py-2.5 rounded-xl border border-espresso-600 transition flex items-center gap-2">
+                            <i class="fa-solid fa-copy"></i> Copy Text for Docs
+                        </button>
+                        <button onclick="downloadPDF('letterhead-document', 'iclick-official-letterhead.pdf')" class="bg-warmgold hover:bg-warmgold/90 text-espresso-900 text-xs font-bold px-4 py-2.5 rounded-xl transition flex items-center gap-2 shadow">
+                            <i class="fa-solid fa-file-pdf"></i> Download PDF Document
+                        </button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                    <!-- Form Controls -->
+                    <div class="lg:col-span-4 bg-espresso-900 border border-espresso-600 p-5 rounded-xl space-y-3 text-xs">
+                        <h3 class="font-heading font-bold text-sm text-linen border-b border-espresso-700 pb-2">Customize Letter</h3>
+                        <div>
+                            <label class="block text-stone-400 mb-1">Ref Number</label>
+                            <input type="text" id="memo-input-ref" value="IDV/EXEC/2026/084" oninput="updateLetterheadText()" class="w-full bg-espresso-800 border border-espresso-600 rounded p-2 text-linen">
+                        </div>
+                        <div>
+                            <label class="block text-stone-400 mb-1">Date</label>
+                            <input type="text" id="memo-input-date" value="22 August 2026" oninput="updateLetterheadText()" class="w-full bg-espresso-800 border border-espresso-600 rounded p-2 text-linen">
+                        </div>
+                        <div>
+                            <label class="block text-stone-400 mb-1">Recipient</label>
+                            <input type="text" id="memo-input-recipient" value="The Director General, National Information Technology Development Agency (NITDA)" oninput="updateLetterheadText()" class="w-full bg-espresso-800 border border-espresso-600 rounded p-2 text-linen">
+                        </div>
+                        <div>
+                            <label class="block text-stone-400 mb-1">Subject</label>
+                            <input type="text" id="memo-input-subject" value="PROPOSAL FOR INSTITUTIONAL GOVTECH DIGITIZATION &amp; AI WORKFLOW AUTOMATION" oninput="updateLetterheadText()" class="w-full bg-espresso-800 border border-espresso-600 rounded p-2 text-linen">
+                        </div>
+                        <div>
+                            <label class="block text-stone-400 mb-1">Letter Content Body</label>
+                            <textarea id="memo-input-body" rows="6" oninput="updateLetterheadText()" class="w-full bg-espresso-800 border border-espresso-600 rounded p-2 text-linen">We write on behalf of iClick Digital Ventures (BN: 9772940) to present our corporate proposal for institutional registry digitization and e-governance workflow automation...</textarea>
+                        </div>
+                    </div>
+
+                    <!-- Letterhead Sheet Preview -->
+                    <div class="lg:col-span-8 flex justify-center">
+                        <div id="letterhead-document" class="w-full max-w-[700px] min-h-[900px] bg-linen text-espresso-900 p-8 md:p-12 shadow-2xl rounded-xl flex flex-col justify-between font-sans border border-stone-300">
+                            
+                            <!-- Header Block -->
+                            <div id="letterhead-header-block" class="border-b-2 border-espresso-900 pb-4 flex justify-between items-start">
+                                <div class="flex items-center gap-3">
+                                    <div id="letterhead-header-logo-svg" class="w-12 h-12">
+                                        <svg viewBox="0 0 100 100" class="w-full h-full">
+                                            <rect x="20" y="20" width="26" height="26" rx="6" fill="#19110B"></rect>
+                                            <rect x="54" y="20" width="26" height="26" rx="6" fill="#C28E68"></rect>
+                                            <rect x="20" y="54" width="26" height="26" rx="6" fill="#3D271B"></rect>
+                                            <rect x="54" y="54" width="26" height="26" rx="6" fill="#19110B"></rect>
+                                            <circle cx="50" cy="50" r="8" fill="#FDFBF7" stroke="#C28E68" stroke-width="3"></circle>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h2 class="font-heading font-extrabold text-xl text-espresso-900 tracking-tight">iClick Digital Ventures</h2>
+                                        <p class="text-[10px] text-terracotta font-bold uppercase tracking-widest">CAC Registered • BN: 9772940 • SCUML Compliant</p>
+                                    </div>
+                                </div>
+                                <div class="text-right text-[10px] text-espresso-700">
+                                    <p class="font-bold">www.iclickdigital.com</p>
+                                    <p>iclickdigitalventures@gmail.com</p>
+                                    <p>Abuja &amp; Sokoto, Nigeria</p>
+                                </div>
+                            </div>
+
+                            <!-- Body Block -->
+                            <div class="my-6 space-y-4 text-xs leading-relaxed text-espresso-900 flex-grow">
+                                <div class="flex justify-between text-[11px] font-semibold text-stone-600">
+                                    <span>REF: <span id="memo-target-ref">IDV/EXEC/2026/084</span></span>
+                                    <span>DATE: <span id="memo-target-date">22 August 2026</span></span>
+                                </div>
+
+                                <div class="font-bold text-sm" id="memo-target-recipient">The Director General, National Information Technology Development Agency (NITDA)</div>
+
+                                <div class="font-heading font-bold text-xs underline text-espresso-900 pt-2" id="memo-target-subject">
+                                    PROPOSAL FOR INSTITUTIONAL GOVTECH DIGITIZATION &amp; AI WORKFLOW AUTOMATION
+                                </div>
+
+                                <div id="memo-target-body" class="whitespace-pre-wrap text-justify">
+                                    We write on behalf of iClick Digital Ventures (BN: 9772940) to present our corporate proposal for institutional registry digitization and e-governance workflow automation.
+                                </div>
+
+                                <div class="pt-6 space-y-1">
+                                    <p>Sincerely,</p>
+                                    <div class="h-10 flex items-end">
+                                        <span class="font-serif italic font-bold text-terracotta text-sm">Muhammad Yasin Ibrahim</span>
+                                    </div>
+                                    <p class="font-bold">MUHAMMAD YASIN IBRAHIM</p>
+                                    <p class="text-[10px] text-stone-600">Chief Executive Officer / Proprietor</p>
+                                </div>
+                            </div>
+
+                            <!-- Footer Block -->
+                            <div class="border-t border-stone-400 pt-3 flex justify-between items-center text-[9px] text-stone-600">
+                                <div>
+                                    <p class="font-bold">iClick Digital Ventures Parent Holding</p>
+                                    <p>GovTech • AI Automation • Digital Academy • IoT Hardware</p>
+                                </div>
+                                <div class="text-right">
+                                    <p>HQ: Federal Capital Territory, Abuja, Nigeria</p>
+                                    <p>Official Portal: www.iclickdigital.com</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 6: CAC VERIFICATION ================= -->
+        <section id="cac-tab" class="tab-content hidden space-y-8">
+            <div class="bg-espresso-800 border border-espresso-600 rounded-2xl p-6 md:p-8 space-y-6">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-espresso-600 pb-6">
+                    <div>
+                        <span class="inline-block px-3 py-1 rounded-full text-[11px] font-bold bg-emerald-500/20 text-emerald-400 uppercase tracking-wider mb-2 border border-emerald-500/30">Verified Status</span>
+                        <h2 class="text-2xl md:text-3xl font-heading font-bold text-linen">Corporate Affairs Commission (CAC) Record</h2>
+                        <p class="text-sm text-stone-300 mt-1">Official registry status extract for iClick Digital Ventures.</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="downloadCardPNG('cac-profile-document', 'iclick-cac-record.png')" class="bg-terracotta text-linen text-xs font-semibold px-4 py-2.5 rounded-xl">
+                            <i class="fa-solid fa-download mr-1"></i> Export PNG
+                        </button>
+                        <button onclick="downloadPDF('cac-profile-document', 'iclick-cac-record.pdf')" class="bg-warmgold text-espresso-900 text-xs font-bold px-4 py-2.5 rounded-xl">
+                            <i class="fa-solid fa-file-pdf mr-1"></i> Export PDF Record
+                        </button>
+                    </div>
+                </div>
+
+                <div id="cac-profile-document" class="bg-espresso-900 border-2 border-emerald-500/40 rounded-xl p-6 md:p-8 space-y-6 text-xs text-stone-200">
+                    <div class="flex items-center justify-between border-b border-espresso-700 pb-4">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-building-columns text-emerald-400 text-2xl"></i>
+                            <div>
+                                <h3 class="font-heading font-bold text-lg text-linen">iClick Digital ventures</h3>
+                                <p class="text-emerald-400 font-semibold">CAC BN Number: 9772940 • ACTIVE</p>
+                            </div>
+                        </div>
+                        <span class="bg-emerald-500/20 text-emerald-300 font-bold px-3 py-1 rounded-full text-[10px] border border-emerald-500/30">CERTIFIED TRUE COPY</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <p class="text-stone-400">Proprietor Name:</p>
+                            <p class="font-bold text-linen text-sm">MUHAMMAD YASIN IBRAHIM</p>
+                            <p class="text-stone-400 pt-2">Registration Date:</p>
+                            <p class="font-semibold text-warmgold">14, August 2026</p>
+                        </div>
+                        <div class="space-y-2">
+                            <p class="text-stone-400">Principal Place of Business:</p>
+                            <p class="font-semibold text-linen">41C, Sultan Bello Road Sokoto, Sokoto North, Sokoto, NIGERIA</p>
+                            <p class="text-stone-400 pt-2">Official Email Addresses:</p>
+                            <p class="font-semibold text-linen">iclickdigitalventures@gmail.com / iclickdigitalacademy@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="no-print border-t border-espresso-600 py-6 text-center text-xs text-stone-400 bg-espresso-900">
+        <p>© 2026 iClick Digital Ventures (BN: 9772940). All Rights Reserved. • www.iclickdigital.com</p>
+    </footer>
+
+    <script>
+        function switchTab(tabId) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(el => el.classList.add('hidden'));
+            
+            const target = document.getElementById(tabId);
+            if (target) target.classList.remove('hidden');
+
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-terracotta', 'text-linen', 'shadow');
+                btn.classList.add('text-stone-400');
+            });
+
+            const activeBtn = document.getElementById('tab-btn-' + tabId);
+            if (activeBtn) {
+                activeBtn.classList.remove('text-stone-400');
+                activeBtn.classList.add('bg-terracotta', 'text-linen', 'shadow');
+            }
+        }
+
+        function toggleCardFlip(containerId) {
+            const container = document.getElementById(containerId);
+            if (container) {
+                container.classList.toggle('flipped');
+            }
+        }
+
+        function handleCeoPhotoUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.getElementById('ceo-photo-img');
+                    if (img) img.src = e.target.result;
+                    showNotification('CEO photo updated successfully!');
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function handleStaffPhotoUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.getElementById('staff-photo-img');
+                    if (img) img.src = e.target.result;
+                    showNotification('Staff photo updated successfully!');
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function updateLetterheadText() {
+            const ref = document.getElementById('memo-input-ref').value;
+            const date = document.getElementById('memo-input-date').value;
+            const recipient = document.getElementById('memo-input-recipient').value;
+            const subject = document.getElementById('memo-input-subject').value;
+            const body = document.getElementById('memo-input-body').value;
+
+            if (document.getElementById('memo-target-ref')) document.getElementById('memo-target-ref').innerText = ref;
+            if (document.getElementById('memo-target-date')) document.getElementById('memo-target-date').innerText = date;
+            if (document.getElementById('memo-target-recipient')) document.getElementById('memo-target-recipient').innerText = recipient;
+            if (document.getElementById('memo-target-subject')) document.getElementById('memo-target-subject').innerText = subject;
+            if (document.getElementById('memo-target-body')) document.getElementById('memo-target-body').innerText = body;
+        }
+
+        function updateStaffCardText() {
+            const name = document.getElementById('staff-input-name').value;
+            const title = document.getElementById('staff-input-title').value;
+            const dept = document.getElementById('staff-input-dept').value;
+            const idNo = document.getElementById('staff-input-id').value;
+            const date = document.getElementById('staff-input-date').value;
+            const phone = document.getElementById('staff-input-phone').value;
+            const email = document.getElementById('staff-input-email').value;
+
+            if (document.getElementById('staff-card-name')) document.getElementById('staff-card-name').innerText = name.toUpperCase();
+            if (document.getElementById('staff-card-title')) document.getElementById('staff-card-title').innerText = title;
+            if (document.getElementById('staff-card-dept')) document.getElementById('staff-card-dept').innerText = dept;
+            if (document.getElementById('staff-card-id')) document.getElementById('staff-card-id').innerText = idNo;
+            if (document.getElementById('staff-card-date')) document.getElementById('staff-card-date').innerText = date;
+            if (document.getElementById('staff-card-phone')) document.getElementById('staff-card-phone').innerText = phone;
+            if (document.getElementById('staff-card-email')) document.getElementById('staff-card-email').innerText = email;
+        }
+
+        function downloadSVG(svgId, filename) {
+            const svgEl = document.getElementById(svgId);
+            if (!svgEl) return;
+            const svgData = new XMLSerializer().serializeToString(svgEl);
+            const blob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const downloadLink = document.createElement('a');
+            downloadLink.href = url;
+            downloadLink.download = filename;
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+            URL.revokeObjectURL(url);
+            showNotification(`Downloaded ${filename}!`);
+        }
+
+        function copySVGCode(svgId) {
+            const svgEl = document.getElementById(svgId);
+            if (!svgEl) return;
+            const svgData = new XMLSerializer().serializeToString(svgEl);
+            
+            const textarea = document.createElement('textarea');
+            textarea.value = svgData;
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                showNotification('SVG Code copied to clipboard!');
+            } catch (err) {
+                console.error('Copy failed', err);
+            }
+            document.body.removeChild(textarea);
+        }
+
+        function downloadPNG(svgId, filename, width = 1000, height = 1000) {
+            const svgEl = document.getElementById(svgId);
+            if (!svgEl) return;
+
+            const svgData = new XMLSerializer().serializeToString(svgEl);
+            const canvas = document.createElement('canvas');
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext('2d');
+
+            const img = new Image();
+            const svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+            const url = URL.createObjectURL(svgBlob);
+
+            img.onload = function() {
+                ctx.drawImage(img, 0, 0, width, height);
+                const pngUrl = canvas.toDataURL('image/png');
+                const a = document.createElement('a');
+                a.href = pngUrl;
+                a.download = filename;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                showNotification(`Downloaded ${filename}!`);
+            };
+            img.src = url;
+        }
+
+        function renderElementToDataURL(elementId, isLight = false) {
+            return new Promise((resolve, reject) => {
+                const originalTarget = document.getElementById(elementId);
+                if (!originalTarget) return reject('Target not found');
+
+                const cloneWrapper = document.createElement('div');
+                cloneWrapper.style.position = 'fixed';
+                cloneWrapper.style.top = '-9999px';
+                cloneWrapper.style.left = '-9999px';
+                cloneWrapper.style.width = originalTarget.offsetWidth + 'px';
+                cloneWrapper.style.height = originalTarget.offsetHeight + 'px';
+                cloneWrapper.style.zIndex = '-9999';
+
+                const clone = originalTarget.cloneNode(true);
+                clone.style.transform = 'none';
+                clone.style.webkitTransform = 'none';
+                clone.style.position = 'relative';
+                clone.style.top = '0';
+                clone.style.left = '0';
+                clone.style.width = '100%';
+                clone.style.height = '100%';
+                clone.style.backfaceVisibility = 'visible';
+                clone.style.webkitBackfaceVisibility = 'visible';
+                clone.classList.remove('card-back', 'card-front');
+
+                const origImgs = originalTarget.querySelectorAll('img');
+                const cloneImgs = clone.querySelectorAll('img');
+                origImgs.forEach((img, idx) => {
+                    if (cloneImgs[idx]) cloneImgs[idx].src = img.src;
+                });
+
+                cloneWrapper.appendChild(clone);
+                document.body.appendChild(cloneWrapper);
+
+                html2canvas(clone, {
+                    scale: 2.5,
+                    useCORS: true,
+                    backgroundColor: isLight ? '#FDFBF7' : '#19110B',
+                    logging: false
+                }).then(canvas => {
+                    const dataUrl = canvas.toDataURL('image/png');
+                    document.body.removeChild(cloneWrapper);
+                    resolve({ dataUrl, width: canvas.width, height: canvas.height });
+                }).catch(err => {
+                    if (document.body.contains(cloneWrapper)) document.body.removeChild(cloneWrapper);
+                    reject(err);
+                });
+            });
+        }
+
+        function downloadCardPNG(elementId, filename) {
+            const isLight = (elementId === 'letterhead-document' || elementId === 'letterhead-header-block');
+            showNotification('Generating high-res PNG image...');
+            renderElementToDataURL(elementId, isLight).then(({ dataUrl }) => {
+                const a = document.createElement('a');
+                a.href = dataUrl;
+                a.download = filename;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                showNotification(`Downloaded ${filename} successfully!`);
+            }).catch(err => {
+                console.error(err);
+                showNotification('Export failed. Please try again.');
+            });
+        }
+
+        function downloadPDF(elementId, filename) {
+            const isLight = (elementId === 'letterhead-document' || elementId === 'letterhead-header-block');
+            showNotification('Generating high-resolution PDF...');
+            renderElementToDataURL(elementId, isLight).then(({ dataUrl, width, height }) => {
+                const { jsPDF } = window.jspdf;
+                let pdf;
+                if (elementId === 'letterhead-document') {
+                    pdf = new jsPDF('p', 'mm', 'a4');
+                    const pdfWidth = pdf.internal.pageSize.getWidth();
+                    const pdfHeight = (height * pdfWidth) / width;
+                    pdf.addImage(dataUrl, 'PNG', 0, 0, pdfWidth, pdfHeight);
+                } else {
+                    const orientation = width > height ? 'l' : 'p';
+                    pdf = new jsPDF(orientation, 'px', [width, height]);
+                    pdf.addImage(dataUrl, 'PNG', 0, 0, width, height);
+                }
+                const pdfName = filename.endsWith('.pdf') ? filename : filename + '.pdf';
+                pdf.save(pdfName);
+                showNotification(`Downloaded ${pdfName} successfully!`);
+            }).catch(err => {
+                console.error(err);
+                showNotification('PDF generation failed.');
+            });
+        }
+
+        function downloadHeaderFooterPNG() {
+            const headerBlock = document.getElementById('letterhead-header-block');
+            if (headerBlock) {
+                html2canvas(headerBlock, {
+                    scale: 3,
+                    backgroundColor: '#FDFBF7'
+                }).then(canvas => {
+                    const a = document.createElement('a');
+                    a.href = canvas.toDataURL('image/png');
+                    a.download = 'iclick-google-docs-header.png';
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    showNotification('Header PNG downloaded for Google Docs!');
+                });
+            }
+        }
+
+        function copyLetterTextForDocs() {
+            const ref = document.getElementById('memo-input-ref').value;
+            const date = document.getElementById('memo-input-date').value;
+            const recipient = document.getElementById('memo-input-recipient').value;
+            const subject = document.getElementById('memo-input-subject').value;
+            const body = document.getElementById('memo-input-body').value;
+
+            const fullText = `REF: ${ref}\nDATE: ${date}\n\n${recipient}\n\nSUBJECT: ${subject}\n\n${body}\n\nSincerely,\n\nMUHAMMAD YASIN IBRAHIM\nChief Executive Officer / Proprietor\niClick Digital Ventures (BN: 9772940)\nwww.iclickdigital.com`;
+
+            const textarea = document.createElement('textarea');
+            textarea.value = fullText;
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                showNotification('Letter text copied for Google Docs!');
+            } catch(err) {
+                console.error(err);
+            }
+            document.body.removeChild(textarea);
+        }
+
+        function downloadWebAppFile() {
+            const htmlContent = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+            const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'iclick_brand_identity.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showNotification('Downloaded complete web app file (iclick_brand_identity.html)!');
+        }
+
+        /* 1-CLICK MASTER ZIP DOWNLOAD ENGINE */
+        async function downloadMasterZipPackage() {
+            showNotification('Packaging Complete Master Brand Suite (.ZIP)... Please wait a few seconds.');
+
+            const zip = new JSZip();
+            const brandFolder = zip.folder("iClick_Digital_Ventures_Brand_Suite");
+
+            try {
+                // 1. App HTML
+                const htmlContent = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+                brandFolder.file("iClick_Brand_App.html", htmlContent);
+
+                // 2. CEO ID Cards
+                const ceoFront = await renderElementToDataURL('ceo-id-card-front');
+                brandFolder.file("CEO_ID_Front.png", ceoFront.dataUrl.split(',')[1], {base64: true});
+
+                const ceoBack = await renderElementToDataURL('ceo-id-card-back');
+                brandFolder.file("CEO_ID_Back.png", ceoBack.dataUrl.split(',')[1], {base64: true});
+
+                // 3. Business Cards
+                const bizFront = await renderElementToDataURL('biz-card-front');
+                brandFolder.file("Business_Card_Front.png", bizFront.dataUrl.split(',')[1], {base64: true});
+
+                const bizBack = await renderElementToDataURL('biz-card-back');
+                brandFolder.file("Business_Card_Back.png", bizBack.dataUrl.split(',')[1], {base64: true});
+
+                // 4. Letterhead
+                const letterhead = await renderElementToDataURL('letterhead-document', true);
+                brandFolder.file("Corporate_Letterhead.png", letterhead.dataUrl.split(',')[1], {base64: true});
+
+                // 5. CAC Record
+                const cacRecord = await renderElementToDataURL('cac-profile-document');
+                brandFolder.file("CAC_Verification_Record.png", cacRecord.dataUrl.split(',')[1], {base64: true});
+
+                // 6. SVGs
+                ['svg-quad-dark', 'svg-quad-light', 'svg-full-lockup-dark', 'svg-concept-1', 'svg-concept-3'].forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) {
+                        const svgData = new XMLSerializer().serializeToString(el);
+                        brandFolder.file(`${id}.svg`, svgData);
+                    }
+                });
+
+                // Generate ZIP and download
+                const content = await zip.generateAsync({type: "blob"});
+                const url = URL.createObjectURL(content);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = "iClick_Digital_Ventures_Master_Brand_Suite.zip";
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+
+                showNotification('Complete Master Brand Suite (.ZIP) Downloaded Successfully!');
+            } catch (err) {
+                console.error(err);
+                showNotification('ZIP packaging failed. Please download assets individually.');
+            }
+        }
+
+        function showNotification(msg) {
+            let toast = document.getElementById('toast-notification');
+            if (!toast) {
+                toast = document.createElement('div');
+                toast.id = 'toast-notification';
+                toast.className = 'fixed bottom-5 right-5 bg-terracotta text-linen px-4 py-2.5 rounded-xl shadow-2xl text-xs font-bold z-50 transition-all duration-300 transform translate-y-10 opacity-0 flex items-center gap-2 border border-linen/20';
+                document.body.appendChild(toast);
+            }
+            toast.innerHTML = `<i class="fa-solid fa-circle-check text-warmgold"></i> ${msg}`;
+            toast.classList.remove('translate-y-10', 'opacity-0');
+            
+            setTimeout(() => {
+                toast.classList.add('translate-y-10', 'opacity-0');
+            }, 3500);
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            switchTab('download-hub-tab');
+        });
+    </script>
+
+<div id="toast-notification" class="fixed bottom-5 right-5 bg-terracotta text-linen px-4 py-2.5 rounded-xl shadow-2xl text-xs font-bold z-50 transition-all duration-300 transform flex items-center gap-2 border border-linen/20"><i class="fa-solid fa-circle-check text-warmgold"></i> Packaging Complete Master Brand Suite (.ZIP)... Please wait a few seconds.</div></body></html>
