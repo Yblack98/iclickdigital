@@ -1,0 +1,2126 @@
+<!DOCTYPE html>
+<html lang="en" class="dark"><head><script data-bard-client-injected="true">(function(firebaseConfig, initialAuthToken, appId) {
+        window.__firebase_config = firebaseConfig;
+        window.__initial_auth_token = initialAuthToken;
+        window.__app_id = appId;
+            })("\n{\n  \"apiKey\": \"AIzaSyCqyCcs2R2e7AegGjvFAwG98wlamtbHvZY\",\n  \"authDomain\": \"bard-frontend.firebaseapp.com\",\n  \"projectId\": \"bard-frontend\",\n  \"storageBucket\": \"bard-frontend.firebasestorage.app\",\n  \"messagingSenderId\": \"175205271074\",\n  \"appId\": \"1:175205271074:web:2b7bd4d34d33bf38e6ec7b\"\n}\n","eyJhbGciOiJSUzI1NiIsImtpZCI6IjExNjRiNzdiNDMzZDdhMDAyMWI4NjE4YjhjYTU3ZTMyZGI5MWUxMTMiLCJ0eXAiOiJKV1QifQ.eyJzdWIiOiJmaXJlYmFzZS1hZG1pbnNkay1mYnN2Y0BiYXJkLWZyb250ZW5kLmlhbS5nc2VydmljZWFjY291bnQuY29tIiwiYXVkIjoiaHR0cHM6Ly9pZGVudGl0eXRvb2xraXQuZ29vZ2xlYXBpcy5jb20vZ29vZ2xlLmlkZW50aXR5LmlkZW50aXR5dG9vbGtpdC52MS5JZGVudGl0eVRvb2xraXQiLCJ1aWQiOiIwNTI2NDAxMTM1NDczMDQwNTI4OSIsImlzcyI6ImZpcmViYXNlLWFkbWluc2RrLWZic3ZjQGJhcmQtZnJvbnRlbmQuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20iLCJjbGFpbXMiOnsiYXBwSWQiOiJjXzA4MDcwN2I5MDllNDk5ZmZfaWNsaWNrX2JyYW5kX2lkZW50aXR5Lmh0bWwtMjM2In0sImV4cCI6MTc4NzYyMzQ1MCwiaWF0IjoxNzg3NjE5ODUwLCJhbGciOiJSUzI1NiJ9.nXVOjCU9aKYcC8Fh-zhj-lr9AIJiNgkyD6Kgb0YThzW8AazjtXhLDjaQ9CTDPdK3MygfNcxtmR9oucV-EsFG1jffBHVUOKWerskZO5uVh5QJ7_vaNe6u0OMkBWlghomxyKu7v0gNPe4BsselRTaGf_aGiPaRGX0obqhKJ2cidP5CL0eq8dTH6nPzN0Fv-f5LkiW-d8DSe9g6BafTXt8v2S_R8JFnVibHQ5D_UEhS0xzw5zRG4M-nxh9h0H2JL2skwyPwz9Vhh_iv0aRejhtYUAgFGfbc8-OQ0110Lr1eAX6EzH40b_-YomrSTR2j1PAD5Rx4yvJYZk4WRmGOorfiaA","c_080707b909e499ff_iclick_brand_identity.html-236")</script><script data-bard-client-injected="true">(function(){'use strict';window.addEventListener("message",a=>{a.data&&a.data.type==="SUPPLEMENTAL_DATA_UPDATE"&&window.dispatchEvent(new CustomEvent("supplementaldataupdate",{detail:a.data.data}))});}).call(this);
+</script><script data-bard-client-injected="true">(function(){'use strict';var h=typeof Object.defineProperties=="function"?Object.defineProperty:function(a,b,d){if(a==Array.prototype||a==Object.prototype)return a;a[b]=d.value;return a};function l(a){a=["object"==typeof globalThis&&globalThis,a,"object"==typeof window&&window,"object"==typeof self&&self,"object"==typeof global&&global];for(var b=0;b<a.length;++b){var d=a[b];if(d&&d.Math==Math)return d}throw Error("Cannot find global object");}var n=l(this);
+function p(a,b){if(b)a:{var d=n;a=a.split(".");for(var c=0;c<a.length-1;c++){var e=a[c];if(!(e in d))break a;d=d[e]}a=a[a.length-1];c=d[a];b=b(c);b!=c&&b!=null&&h(d,a,{configurable:!0,writable:!0,value:b})}}function r(a){function b(c){return a.next(c)}function d(c){return a.throw(c)}return new Promise(function(c,e){function f(g){g.done?c(g.value):Promise.resolve(g.value).then(b,d).then(f,e)}f(a.next())})}function t(a){return r(a())}
+p("Object.values",function(a){return a?a:function(b){var d=[],c;for(c in b)Object.prototype.hasOwnProperty.call(b,c)&&d.push(b[c]);return d}});p("Array.prototype.includes",function(a){return a?a:function(b,d){var c=this;c instanceof String&&(c=String(c));var e=c.length;d=d||0;for(d<0&&(d=Math.max(d+e,0));d<e;d++){var f=c[d];if(f===b||Object.is(f,b))return!0}return!1}});/*
+
+ MIT License
+
+ Copyright (c) 2017-2023 W.Y.
+
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ SOFTWARE.
+
+*/
+function u(a,b){var d=a.style;b.backgroundColor&&(d.backgroundColor=b.backgroundColor);b.width&&(d.width=`${b.width}px`);b.height&&(d.height=`${b.height}px`);var c=b.style;c!=null&&Object.keys(c).forEach(e=>{d[e]=c[e]})};var v=(()=>{var a=0;return()=>{a+=1;return`u${`0000${(Math.random()*1679616<<0).toString(36)}`.slice(-4)}${a}`}})();function w(a){var b=[];for(let d=0,c=a.length;d<c;d++)b.push(a[d]);return b}let x=null;function y(a={}){return x?x:a.m?x=a.m:x=w(window.getComputedStyle(document.documentElement))}function z(a,b){return(a=(a.ownerDocument.defaultView||window).getComputedStyle(a).getPropertyValue(b))?parseFloat(a.replace("px","")):0}
+function A(a,b={}){var d;if(!(d=b.width)){d=z(a,"border-left-width");var c=z(a,"border-right-width");d=a.clientWidth+d+c}(b=b.height)||(b=z(a,"border-top-width"),c=z(a,"border-bottom-width"),b=a.clientHeight+b+c);return{width:d,height:b}}function B(a){return new Promise((b,d)=>{var c=new Image;c.onload=()=>{c.decode().then(()=>{requestAnimationFrame(()=>b(c))})};c.onerror=d;c.crossOrigin="anonymous";c.decoding="async";c.src=a})}
+function C(a){return t(function*(){return Promise.resolve().then(()=>(new XMLSerializer).serializeToString(a)).then(encodeURIComponent).then(b=>`data:image/svg+xml;charset=utf-8,${b}`)})}
+function D(a,b,d){return t(function*(){var c=document.createElementNS("http://www.w3.org/2000/svg","svg"),e=document.createElementNS("http://www.w3.org/2000/svg","foreignObject");c.setAttribute("width",`${b}`);c.setAttribute("height",`${d}`);c.setAttribute("viewBox",`0 0 ${b} ${d}`);e.setAttribute("width","100%");e.setAttribute("height","100%");e.setAttribute("x","0");e.setAttribute("y","0");e.setAttribute("externalResourcesRequired","true");c.appendChild(e);e.appendChild(a);return C(c)})}
+var E=(a,b)=>{if(a instanceof b)return!0;a=Object.getPrototypeOf(a);return a===null?!1:a.constructor.name===b.name||E(a,b)};function F(a,b){return y(b).map(d=>{var c=a.getPropertyValue(d),e=a.getPropertyPriority(d);return`${d}: ${c}${e?" !important":""};`}).join(" ")}
+function G(a,b,d,c){a=window.getComputedStyle(a,d);var e=a.getPropertyValue("content");if(e!==""&&e!=="none"){var f=v();try{b.className=`${b.className} ${f}`}catch(k){return}e=document.createElement("style");var g=e.appendChild;d=`.${f}:${d}`;a.cssText?(c=a.getPropertyValue("content"),c=`${a.cssText} content: '${c.replace(/'|"/g,"")}';`):c=F(a,c);g.call(e,document.createTextNode(`${d}{${c}}`));b.appendChild(e)}};function H(a){return a.search(/^(data:)/)!==-1}function I(a,b,d){return t(function*(){var c=yield fetch(a,b);if(c.status===404)throw Error(`Resource "${c.url}" not found`);var e=yield c.blob();return new Promise((f,g)=>{var k=new FileReader;k.onerror=g;k.onloadend=()=>{try{f(d({u:c,result:k.result}))}catch(m){g(m)}};k.readAsDataURL(e)})})}const J={};function K(a,b,d){var c=a.replace(/\?.*/,"");d&&(c=a);/ttf|otf|eot|woff2?/i.test(c)&&(c=c.replace(/.*\//,""));return b?`[${b}]${c}`:c}
+function L(a,b,d){return t(function*(){var c=K(a,b,d.D);if(J[c]!=null)return J[c];d.v&&(a+=(/\?/.test(a)?"&":"?")+(new Date).getTime());try{let f=yield I(a,d.j,({u:g,result:k})=>{b||(b=g.headers.get("Content-Type")||"");return k.split(/,/)[1]});var e=`data:${b};base64,${f}`}catch(f){e=d.C||""}return J[c]=e})};const M={R:"application/font-woff",S:"application/font-woff",O:"application/font-truetype",A:"application/vnd.ms-fontobject",I:"image/png",G:"image/jpeg",F:"image/jpeg",B:"image/gif",N:"image/tiff",M:"image/svg+xml",P:"image/webp"};function N(a){return(a=/\.([^./]*?)$/g.exec(a))?a[1]:""};function O(a){return t(function*(){var b=a.toDataURL();return b==="data:,"?a.cloneNode(!1):B(b)})}function aa(a,b){return t(function*(){if(a.currentSrc){var d=document.createElement("canvas");let c=d.getContext("2d");d.width=a.clientWidth;d.height=a.clientHeight;c==null||c.drawImage(a,0,0,d.width,d.height);d=d.toDataURL();return B(d)}d=a.poster;d=yield L(d,M[N(d).toLowerCase()]||"",b);return B(d)})}
+function ba(a,b){return t(function*(){try{let d;if(a==null?0:(d=a.contentDocument)==null?0:d.body)return yield P(a.contentDocument.body,b,!0)}catch(d){}return a.cloneNode(!1)})}function ca(a,b){return t(function*(){return E(a,HTMLCanvasElement)?O(a):E(a,HTMLVideoElement)?aa(a,b):E(a,HTMLIFrameElement)?ba(a,b):a.cloneNode(a.tagName!=null&&a.tagName.toUpperCase()==="SVG")})}
+function da(a,b,d){return t(function*(){if(b.tagName!=null&&b.tagName.toUpperCase()==="SVG")return b;var c=[];if(a.tagName!=null&&a.tagName.toUpperCase()==="SLOT"&&a.assignedNodes)c=w(a.assignedNodes());else{let e;if(E(a,HTMLIFrameElement)&&((e=a.contentDocument)==null?0:e.body))c=w(a.contentDocument.body.childNodes);else{let f;c=w(((f=a.shadowRoot)!=null?f:a).childNodes)}}if(c.length===0||E(a,HTMLVideoElement))return b;yield c.reduce((e,f)=>e.then(()=>P(f,d)).then(g=>{g&&b.appendChild(g)}),Promise.resolve());
+return b})}function ea(a,b,d){var c=b.style;if(c){var e=window.getComputedStyle(a);e.cssText?(c.cssText=e.cssText,c.transformOrigin=e.transformOrigin):y(d).forEach(f=>{var g=e.getPropertyValue(f);f==="font-size"&&g.endsWith("px")&&(g=`${Math.floor(parseFloat(g.substring(0,g.length-2)))-.1}px`);E(a,HTMLIFrameElement)&&f==="display"&&g==="inline"&&(g="block");f==="d"&&b.getAttribute("d")&&(g=`path(${b.getAttribute("d")})`);c.setProperty(f,g,e.getPropertyPriority(f))})}}
+function fa(a,b){E(a,HTMLSelectElement)&&(b=Array.from(b.children).find(d=>a.value===d.getAttribute("value")))&&b.setAttribute("selected","")}
+function ha(a,b){return t(function*(){var d=a.querySelectorAll?a.querySelectorAll("use"):[];if(d.length===0)return a;var c={};for(var e=0;e<d.length;e++){var f=d[e].getAttribute("xlink:href");if(f){let g=document.querySelector(f);a.querySelector(f)||!g||c[f]||(c[f]=yield P(g,b,!0))}}d=Object.values(c);if(d.length){c=document.createElementNS("http://www.w3.org/1999/xhtml","svg");c.setAttribute("xmlns","http://www.w3.org/1999/xhtml");c.style.position="absolute";c.style.width="0";c.style.height="0";
+c.style.overflow="hidden";c.style.display="none";e=document.createElementNS("http://www.w3.org/1999/xhtml","defs");c.appendChild(e);for(f=0;f<d.length;f++)e.appendChild(d[f]);a.appendChild(c)}return a})}
+function P(a,b,d){return t(function*(){return d||!b.filter||b.filter(a)?Promise.resolve(a).then(c=>ca(c,b)).then(c=>da(a,c,b)).then(c=>{E(c,Element)&&(ea(a,c,b),G(a,c,":before",b),G(a,c,":after",b),E(a,HTMLTextAreaElement)&&(c.textContent=a.value),E(a,HTMLInputElement)&&c.setAttribute("value",a.value),fa(a,c));return c}).then(c=>ha(c,b)):null})};const Q=/url\((['"]?)([^'"]+?)\1\)/g,ia=/url\([^)]+\)\s*format\((["']?)([^"']+)\1\)/g,ja=/src:\s*(?:url\([^)]+\)\s*format\([^)]+\)[,;]\s*)+/g;function ka(a){var b=[];a.replace(Q,(d,c,e)=>{b.push(e);return d});return b.filter(d=>!H(d))}
+function la(a,b,d,c){return t(function*(){try{let e=d?(new URL(b,d||void 0)).toString():b,f;f=yield L(e,M[N(b).toLowerCase()]||"",c);return a.replace(new RegExp(`(url\\(['"]?)(${b.replace(/([.*+?^${}()|\[\]\/\\])/g,"\\$1")})(['"]?\\))`,"g"),`$1${f}$3`)}catch(e){}return a})}function ma(a,{J:b}){return b?a.replace(ja,d=>{for(;;){let [c,,e]=ia.exec(d)||[];if(!e)return"";if(e===b)return`src: ${c};`}}):a}
+function R(a,b,d){return t(function*(){if(a.search(Q)===-1)return a;var c=ma(a,d);return ka(c).reduce((e,f)=>e.then(g=>la(g,f,b,d)),Promise.resolve(c))})};function S(a,b,d){return t(function*(){var c,e=(c=b.style)==null?void 0:c.getPropertyValue(a);return e?(c=yield R(e,null,d),b.style.setProperty(a,c,b.style.getPropertyPriority(a)),!0):!1})}function na(a,b){return t(function*(){(yield S("background",a,b))||(yield S("background-image",a,b));(yield S("mask",a,b))||(yield S("-webkit-mask",a,b))||(yield S("mask-image",a,b))||(yield S("-webkit-mask-image",a,b))})}
+function oa(a,b){return t(function*(){var d=E(a,HTMLImageElement);if(d&&!H(a.src)||E(a,SVGImageElement)&&!H(a.href.baseVal)){var c=d?a.src:a.href.baseVal,e=yield L(c,M[N(c).toLowerCase()]||"",b);yield new Promise((f,g)=>{a.onload=f;a.onerror=b.o?(...k)=>{try{f(b.o(...k))}catch(m){g(m)}}:g;a.decode&&(a.decode=f);a.loading==="lazy"&&(a.loading="eager");d?(a.srcset="",a.src=e):a.href.baseVal=e})}})}
+function pa(a,b){return t(function*(){var d=w(a.childNodes).map(c=>T(c,b));yield Promise.all(d).then(()=>a)})}function T(a,b){return t(function*(){E(a,Element)&&(yield na(a,b),yield oa(a,b),yield pa(a,b))})};const U={};function V(a){return t(function*(){var b=U[a];if(b!=null)return b;b=yield(yield fetch(a)).text();b={url:a,cssText:b};return U[a]=b})}function W(a,b){return t(function*(){var d=a.cssText,c=/url\(["']?([^"')]+)["']?\)/g,e=(d.match(/url\([^)]+\)/g)||[]).map(f=>t(function*(){var g=f.replace(c,"$1");g.startsWith("https://")||(g=(new URL(g,a.url)).href);return I(g,b.j,({result:k})=>{d=d.replace(f,`url(${k})`);return[f,k]})}));return Promise.all(e).then(()=>d)})}
+function X(a){if(a==null)return[];var b=[];a=a.replace(/(\/\*[\s\S]*?\*\/)/gi,"");for(var d=RegExp("((@.*?keyframes [\\s\\S]*?){([\\s\\S]*?}\\s*?)})","gi");;){var c=d.exec(a);if(c===null)break;b.push(c[0])}a=a.replace(d,"");d=/@import[\s\S]*?url\([^)]*\)[\s\S]*?;/gi;for(c=RegExp("((\\s*?(?:\\/\\*[\\s\\S]*?\\*\\/)?\\s*?@media[\\s\\S]*?){([\\s\\S]*?)}\\s*?})|(([\\s\\S]*?){([\\s\\S]*?)})","gi");;){let e=d.exec(a);if(e===null)if(e=c.exec(a),e===null)break;else d.lastIndex=c.lastIndex;else c.lastIndex=
+d.lastIndex;b.push(e[0])}return b}
+function qa(a,b){return t(function*(){var d=[],c=[];a.forEach(e=>{if("cssRules"in e)try{w(e.cssRules||[]).forEach((f,g)=>{if(f.type===CSSRule.IMPORT_RULE){let k=g+1;f=V(f.href).then(m=>W(m,b)).then(m=>X(m).forEach(q=>{try{e.insertRule(q,q.startsWith("@import")?k+=1:e.cssRules.length)}catch(Da){}})).catch(()=>{});c.push(f)}})}catch(f){let g=a.find(k=>k.href==null)||document.styleSheets[0];e.href!=null&&c.push(V(e.href).then(k=>W(k,b)).then(k=>X(k).forEach(m=>{g.insertRule(m,g.cssRules.length)})).catch(()=>
+{}))}});return Promise.all(c).then(()=>{a.forEach(e=>{if("cssRules"in e)try{w(e.cssRules||[]).forEach(f=>{d.push(f)})}catch(f){}});return d})})}function ra(a){return a.filter(b=>b.type===CSSRule.FONT_FACE_RULE).filter(b=>b.style.getPropertyValue("src").search(Q)!==-1)}function sa(a,b){return t(function*(){if(a.ownerDocument==null)throw Error("Provided element is not within a Document");var d=w(a.ownerDocument.styleSheets);d=yield qa(d,b);return ra(d)})}
+function ta(a){function b(c){(c.style.fontFamily||getComputedStyle(c).fontFamily).split(",").forEach(e=>{d.add(e.trim().replace(/["']/g,""))});Array.from(c.children).forEach(e=>{e instanceof HTMLElement&&b(e)})}var d=new Set;b(a);return d}function ua(a,b){return t(function*(){var d=yield sa(a,b),c=ta(a);return(yield Promise.all(d.filter(e=>c.has(e.style.fontFamily.trim().replace(/["']/g,""))).map(e=>R(e.cssText,e.parentStyleSheet?e.parentStyleSheet.href:null,b)))).join("\n")})}
+function va(a,b){return t(function*(){var d=b.l!=null?b.l:b.L?null:yield ua(a,b);if(d){let c=document.createElement("style");c.appendChild(document.createTextNode(d));a.firstChild?a.insertBefore(c,a.firstChild):a.appendChild(c)}})};function wa(a,b={}){return t(function*(){var {width:d,height:c}=A(a,b),e=yield P(a,b,!0);yield va(e,b);yield T(e,b);u(e,b);return yield D(e,d,c)})}
+function xa(a,b={}){return t(function*(){var {width:d,height:c}=A(a,b),e=yield wa(a,b);e=yield B(e);var f=document.createElement("canvas"),g=f.getContext("2d"),k=b.H||window.devicePixelRatio||1,m=b.i||d,q=b.h||c;f.width=m*k;f.height=q*k;!b.K&&(f.width>16384||f.height>16384)&&(f.width>16384&&f.height>16384?f.width>f.height?(f.height*=16384/f.width,f.width=16384):(f.width*=16384/f.height,f.height=16384):f.width>16384?(f.height*=16384/f.width,f.width=16384):(f.width*=16384/f.height,f.height=16384));
+f.style.width=`${m}`;f.style.height=`${q}`;b.backgroundColor&&(g.fillStyle=b.backgroundColor,g.fillRect(0,0,f.width,f.height));g.drawImage(e,0,0,f.width,f.height);return f})}function ya(a,b={}){return t(function*(){return(yield xa(a,b)).toDataURL()})};const za=["gemini.google.com","corp.google.com","proxy.googlers.com"];function Y(){return document.body.querySelectorAll('[class*="animate"]').length>0}function Z(a){return t(function*(){try{return yield ya(a,{i:a.offsetWidth,h:a.offsetHeight})}catch(d){var b=a.offsetHeight;let c=document.createElement("canvas");c.width=a.offsetWidth;c.height=b;return c.toDataURL("image/png")}})}
+function Aa(){return t(function*(){var a=document.body.offsetWidth,b=document.body.offsetHeight,d=document.body.cloneNode(!0);d.querySelectorAll('[class*="animate"]').forEach(c=>{c.classList.remove(...Array.from(c.classList).filter(e=>e.startsWith("animate")))});d.style.width=`${a}px`;d.style.height=`${b}px`;return d})}
+function Ba(a){return t(function*(){var b=document.body;if(Y()){var d=yield Aa();b=d;document.body.appendChild(d)}d=yield Z(b);Y()&&document.body.removeChild(b);window.parent.postMessage({type:"SEND_SCREENSHOT",image:d,topOffset:document.documentElement.scrollTop},a.origin)})}function Ca(a){return t(function*(){var b={type:"SEND_SCREENSHOT_FOR_DATA_VISUALIZATION",image:yield Z(document.body),topOffset:0};window.parent.postMessage(b,a.origin)})}
+window.addEventListener("message",a=>t(function*(){if(za.some(d=>a.origin.includes(d))){var b=a.data;b&&(b.type==="MAKE_SCREENSHOT"&&(yield Ba(a)),b.type==="MAKE_SCREENSHOT_FOR_DATA_VISUALIZATION"&&(yield Ca(a)))}}));
+})();</script><script data-bard-client-injected="true">(function() {
+  // Ensure this script is executed only once
+  if (window.firebaseAuthBridgeScriptLoaded) {
+    return;
+  }
+  window.firebaseAuthBridgeScriptLoaded = true;
+
+  let nextTokenPromiseId = 0;
+
+  // Stores { resolve, reject } for ongoing token requests
+  const pendingTokenPromises = {};
+
+  // Listen for messages from the Host Application
+  window.addEventListener('message', function(event) {
+
+    const messageData = event.data;
+
+  if (messageData && messageData.type === 'RESOLVE_NEW_FIREBASE_TOKEN') {
+      const { success, token, error, promiseId } = messageData ?? {};
+      if (pendingTokenPromises[promiseId]) {
+        if (success) {
+          pendingTokenPromises[promiseId].resolve(token);
+        } else {
+          pendingTokenPromises[promiseId].reject(new Error(error || 'Token refresh failed from host.'));
+        }
+        delete pendingTokenPromises[promiseId];
+      }
+    }
+  });
+
+  // Expose a function for the Generated App to request a new Firebase token
+  window.requestNewFirebaseToken = function() {
+    const currentPromiseId = nextTokenPromiseId++;
+    const promise = new Promise((resolve, reject) => {
+      pendingTokenPromises[currentPromiseId] = { resolve, reject };
+    });
+    if (window.parent && window.parent !== window) {
+      window.parent.postMessage({
+        type: 'REQUEST_NEW_FIREBASE_TOKEN',
+        promiseId: currentPromiseId
+      }, '*');
+    } else {
+      pendingTokenPromises[currentPromiseId].reject(new Error('No parent window to request token from.'));
+      delete pendingTokenPromises[currentPromiseId];
+    }
+    return promise;
+  };
+})();</script><script data-bard-client-injected="true">
+let realOriginalGetUserMedia = null;
+if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+  realOriginalGetUserMedia = navigator.mediaDevices.getUserMedia.bind(navigator.mediaDevices);
+}
+
+(function() {
+  if (navigator.mediaDevices && navigator.mediaDevices.__proto__) {
+    try {
+      Object.defineProperty(navigator.mediaDevices.__proto__, 'getUserMedia', {
+        get: function() {
+          return undefined; // Or throw an error
+        },
+        configurable: false
+      });
+    } catch (error) {
+      console.error("Error defining prototype getter:", error);
+    }
+  }
+})();
+
+(function() {
+  const pendingMediaResolvers = {};
+  let nextMediaPromiseId = 0;
+
+  function requestMediaPermissions(constraints) {
+    const mediaPromiseId = nextMediaPromiseId++;
+    const promise = new Promise((resolve, reject) => {
+      pendingMediaResolvers[mediaPromiseId] = (granted) => {
+        delete pendingMediaResolvers[mediaPromiseId];
+        resolve(granted);
+      };
+    });
+
+    window.parent.postMessage({
+      type: 'requestMediaPermission',
+      constraints: constraints,
+      promiseId: mediaPromiseId,
+    }, '*');
+
+    return promise;
+  }
+
+  let originalGetUserMedia = realOriginalGetUserMedia;
+
+  function interceptGetUserMedia() {
+    if (navigator.mediaDevices) {
+      Object.defineProperty(navigator.mediaDevices, 'getUserMedia', {
+        value: function(constraints) {
+          return requestMediaPermissions(constraints).then((granted) => {
+            if (granted) {
+              if (originalGetUserMedia) {
+                return originalGetUserMedia(constraints);
+              } else {
+                throw new Error("Original getUserMedia not available.");
+              }
+            } else {
+              throw new DOMException('Permission denied', 'NotAllowedError');
+            }
+          });
+        },
+        writable: false,
+        configurable: false
+      });
+    }
+  }
+
+  interceptGetUserMedia();
+
+  const observer = new MutationObserver(function(mutationsList, observer) {
+    for (const mutation of mutationsList) {
+      if (mutation.type === 'reconfigured' && mutation.name === 'getUserMedia' && mutation.object === navigator.mediaDevices) {
+        interceptGetUserMedia();
+      } else if (mutation.type === 'attributes' && mutation.attributeName === 'getUserMedia' && mutation.target === navigator.mediaDevices) {
+        interceptGetUserMedia();
+      } else if (mutation.type === 'childList' && mutation.addedNodes) {
+        mutation.addedNodes.forEach(node => {
+          if (node === navigator.mediaDevices) {
+            interceptGetUserMedia();
+          }
+        });
+      }
+    }
+  });
+
+  function interceptSpeechRecognition() {
+    if (!window.SpeechRecognition && !window.webkitSpeechRecognition) {
+      return;
+    }
+
+    const OriginalSpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    const SpeechRecognitionWrapper = function(...args) {
+      const recognizer = new OriginalSpeechRecognition(...args);
+      const originalStart = recognizer.start.bind(recognizer);
+
+      recognizer.start = function() {
+        requestMediaPermissions({ audio: true }).then(granted => {
+          if (granted) {
+            originalStart();
+          } else {
+            const errorEvent = new SpeechRecognitionErrorEvent('error');
+            errorEvent.error = 'not-allowed'; // This is the standard error for permission denial.
+            recognizer.dispatchEvent(errorEvent);
+          }
+        });
+      };
+
+      return recognizer;
+    };
+
+    SpeechRecognitionWrapper.prototype = OriginalSpeechRecognition.prototype;
+    SpeechRecognitionWrapper.prototype.constructor = SpeechRecognitionWrapper;
+
+    if (window.SpeechRecognition) {
+      window.SpeechRecognition = SpeechRecognitionWrapper;
+    }
+    if (window.webkitSpeechRecognition) {
+      window.webkitSpeechRecognition = SpeechRecognitionWrapper;
+    }
+  }
+
+  interceptSpeechRecognition();
+
+  window.addEventListener('message', function(event) {
+    if (event.data) {
+      if (event.data.type === 'resolveMediaPermission') {
+        const { promiseId, granted } = event.data;
+        if (pendingMediaResolvers[promiseId]) {
+          pendingMediaResolvers[promiseId](granted);
+        }
+      }
+    }
+  });
+
+})();</script><script ws-interception-config="{&quot;parentOrigin&quot;:&quot;https://gemini.google.com&quot;,&quot;proxiedDomains&quot;:[]}" data-bard-client-injected="true">(function(){'use strict';var u=typeof Object.defineProperties=="function"?Object.defineProperty:function(b,d,e){if(b==Array.prototype||b==Object.prototype)return b;b[d]=e.value;return b};function v(b){b=["object"==typeof globalThis&&globalThis,b,"object"==typeof window&&window,"object"==typeof self&&self,"object"==typeof global&&global];for(var d=0;d<b.length;++d){var e=b[d];if(e&&e.Math==Math)return e}throw Error("Cannot find global object");}var w=v(this);
+function y(b,d){if(d)a:{var e=w;b=b.split(".");for(var h=0;h<b.length-1;h++){var k=b[h];if(!(k in e))break a;e=e[k]}b=b[b.length-1];h=e[b];d=d(h);d!=h&&d!=null&&u(e,b,{configurable:!0,writable:!0,value:d})}}function z(b){function d(h){return b.next(h)}function e(h){return b.throw(h)}return new Promise(function(h,k){function m(n){n.done?h(n.value):Promise.resolve(n.value).then(d,e).then(m,k)}m(b.next())})}y("globalThis",function(b){return b||w});/*
+
+ Copyright The Closure Library Authors.
+ SPDX-License-Identifier: Apache-2.0
+*/
+function A(b,d){function e(){}e.prototype=d.prototype;b.j=d.prototype;b.prototype=new e;b.prototype.constructor=b;b.h=function(h,k,m){for(var n=Array(arguments.length-2),p=2;p<arguments.length;p++)n[p-2]=arguments[p];return d.prototype[k].apply(h,n)}};function B(b,d,e="*"){function h(a){if(typeof a==="string")return F.encode(a).buffer;if(a instanceof ArrayBuffer)return a.slice(0);if(ArrayBuffer.isView(a))return a.buffer.slice(a.byteOffset,a.byteOffset+a.byteLength);throw Error("Invalid data type");}function k(a){a=h(a);var f={type:"send",data:new Uint8Array(a)},g;(g=r)==null||g.postMessage(f,[a])}function m(){if(!r)throw Error("Data port not captured yet.");r.onmessage=a=>{if(a.data.type==="message"){a=new MessageEvent("message",{data:G.decode(a.data.data)});
+let f;(f=c.onmessage)==null||f.call(c,a);c.dispatchEvent(a)}}}function n(){if(!t)throw Error("Control port not captured yet.");t.onmessage=a=>{switch(a.data.type){case "open":l=1;var f=new Event("open"),g;(g=c.onopen)==null||g.call(c,f);c.dispatchEvent(f);q.forEach(H=>{k(H)});q=[];break;case "close":g=a.data;l=3;g=new CloseEvent("close",{code:g.code,reason:g.reason,wasClean:g.wasClean});(f=c.onclose)==null||f.call(c,g);c.dispatchEvent(g);break;case "error":l=3;f=new Event("error");let x;(x=c.onerror)==
+null||x.call(c,f);c.dispatchEvent(f)}}}function p(a){return z(function*(){var f=new MessageChannel;t=f.port1;var g=new MessageChannel;r=g.port1;n();m();window.parent.postMessage({type:"websocket_open",portOrdering:["control","data"],url:b,protocols:a||[],connectionId:I},e,[f.port2,g.port2])}())}var c=Reflect.construct(EventTarget,[],new.target);c.CONNECTING=0;c.OPEN=1;c.CLOSING=2;c.CLOSED=3;c.url=b;c.binaryType="arraybuffer";c.protocol="";c.i="";var l=0,t=null,r=null,q=[],F=new TextEncoder,G=new TextDecoder;
+c.onopen=null;c.onmessage=null;c.onclose=null;c.onerror=null;Object.defineProperty(c,"readyState",{get:()=>l,enumerable:!0,configurable:!0});Object.defineProperty(c,"bufferedAmount",{get:()=>{var a=0;q.forEach(f=>{a+=typeof f==="string"?f.length:f.byteLength});return a},enumerable:!0,configurable:!0});var I=function(){var a;return((a=globalThis.crypto)==null?0:a.randomUUID)?globalThis.crypto.randomUUID():"xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,f=>{var g=Math.random()*16|0;return(f===
+"x"?g:g&3|8).toString(16)})}();c.send=a=>{if(l===1)a instanceof Blob?a.arrayBuffer().then(f=>{k(f)}):k(a);else if(l===0)if(typeof a==="string")q.push(a);else if(a instanceof ArrayBuffer||ArrayBuffer.isView(a))q.push(h(a));else throw Error("Sending Blob is not supported before the connection is open.");else console.debug("WebSocket send called in CLOSING or CLOSED state; ignored.")};c.close=(a=1E3,f="")=>{if(l!==2&&l!==3){l=2;a={type:"close",code:a,reason:f,wasClean:a===1E3};var g;(g=t)==null||g.postMessage(a)}};
+Promise.resolve().then(()=>p(d));return c}A(B,EventTarget);var C=document.currentScript,D=C==null?void 0:C.getAttribute("ws-interception-config");if(!D)throw Error("WebSocket Interceptor: Missing ws-interception-config attribute in the script tag.");var E=JSON.parse(D);if(!E.parentOrigin||typeof E.parentOrigin!=="string")throw Error("WebSocket Interceptor: Invalid parentOrigin in ws-interception-config");
+(function(b){var d=Object.getOwnPropertyDescriptor(window,"WebSocket");if(!d||d.writable||d.configurable)d=Object.assign(function(e,h){try{let k=(new URL(e)).hostname;if(b.proxiedDomains.some(m=>k===m||k.endsWith(`.${m}`)))return new B(e,h,b.parentOrigin)}catch(k){throw window.parent.postMessage({type:"websocket_blocked",url:e,reason:"blocked_invalid_url"},b.parentOrigin),new DOMException(`WebSocket connection to '${e}' is not allowed in Canvas.`,"SecurityError");}window.parent.postMessage({type:"websocket_blocked",
+url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMException(`WebSocket connection to '${e}' is not allowed in Canvas.`,"SecurityError");},{CONNECTING:0,OPEN:1,CLOSING:2,CLOSED:3}),Object.defineProperty(window,"WebSocket",{value:d,writable:!1,configurable:!1})})({proxiedDomains:E.proxiedDomains||[],parentOrigin:E.parentOrigin});}).call(this);
+</script><script data-bard-client-injected="true">((function(modelInformation) {
+  const originalFetch = window.fetch;
+  // TODO: b/421908508 - Move these out of the script and match all generative AI model calls.
+  let googleLlmBaseApiUrls = [
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.textModelName + ':streamGenerateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.textModelName + ':generateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageModelName + ':predict',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageModelName + ':predictLongRunning',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageEditModelName + ':generateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageTransformModelName + ':generateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.videoModelName + ':predict',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.videoModelName + ':predictLongRunning',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.ttsModelName + ':generateContent',
+  ];
+  modelInformation.deprecatedTextModelNames.forEach((modelName) => {
+    googleLlmBaseApiUrls.push(
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':streamGenerateContent',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':generateContent',
+    );
+  });
+  modelInformation.deprecatedImageModelNames.forEach((modelName) => {
+    googleLlmBaseApiUrls.push(
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':predict',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':predictLongRunning',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':generateContent',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':streamGenerateContent',
+    );
+  });
+  modelInformation.deprecatedGenerateImageModelNames.forEach((modelName) => {
+    googleLlmBaseApiUrls.push(
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':generateContent',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':streamGenerateContent',
+    );
+  });
+  modelInformation.deprecatedImageTransformModelNames.forEach((modelName) => {
+    googleLlmBaseApiUrls.push(
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':generateContent',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':streamGenerateContent',
+    );
+  });
+
+  const pendingFetchResolvers = {};
+  let nextPromiseId = 0;
+
+  function handleStringInput(input, optionsArgument) {
+    const actualUrl = input;
+    const fetchCallArgs = [actualUrl, optionsArgument];
+    const effectiveOptions = optionsArgument || {};
+    const bodyForApiKeyCheck = effectiveOptions.body;
+    const bodyForPostMessage = effectiveOptions.body;
+    return { actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage };
+  }
+
+  function handleRequestInput(input, optionsArgument) {
+    const actualUrl = input.url;
+    const fetchCallArgs = [input, optionsArgument];
+    const effectiveOptions = { method: input.method, headers: new Headers(input.headers) };
+    let bodyForApiKeyCheck;
+    let bodyForPostMessage;
+
+    if (optionsArgument) {
+      if (optionsArgument.method) effectiveOptions.method = optionsArgument.method;
+      if (optionsArgument.headers) effectiveOptions.headers = new Headers(optionsArgument.headers);
+      if ('body' in optionsArgument) {
+        bodyForApiKeyCheck = optionsArgument.body;
+        bodyForPostMessage = optionsArgument.body;
+      } else {
+        bodyForApiKeyCheck = undefined;
+        bodyForPostMessage = input.body;
+      }
+    } else {
+      bodyForApiKeyCheck = undefined;
+      bodyForPostMessage = input.body;
+    }
+    return { actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage };
+  }
+
+  window.fetch = function(input, optionsArgument) {
+    let actualUrl;
+    let fetchCallArgs;
+    let effectiveOptions = {};
+    let bodyForApiKeyCheck;
+    let bodyForPostMessage;
+
+    if (typeof input === 'string') {
+      ({actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage} = handleStringInput(input, optionsArgument));
+    } else if (input instanceof Request) {
+      ({actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage} = handleRequestInput(input, optionsArgument));
+    } else {
+      return originalFetch.apply(window, [input, optionsArgument]);
+    }
+
+    effectiveOptions.method = effectiveOptions.method || 'GET';
+    if (!effectiveOptions.headers) {
+      effectiveOptions.headers = new Headers();
+    }
+
+
+    if (typeof actualUrl === 'string' && googleLlmBaseApiUrls.some((url) => actualUrl.startsWith(url))) {
+      let apiKeyIsNull = true;
+
+      const regex = new RegExp("models/([^:]+)");
+      const modelNameMatch = actualUrl.match(regex);
+      const modelName = modelNameMatch ? modelNameMatch[1] : 'unspecified';
+
+
+      try {
+        const urlObject = new URL(actualUrl);  // Use URL object for robust parsing
+        const apiKeyParam = urlObject.searchParams.get('key');
+        if (apiKeyParam) {
+          apiKeyIsNull = false;
+        }
+      } catch (e) {
+        // Continue checks even if URL parsing fails
+      }
+
+      if (apiKeyIsNull && effectiveOptions.headers) {
+        const h = new Headers(effectiveOptions.headers);
+        const apiKeyHeaderValue = h.get('X-API-Key') || h.get('x-api-key');
+        if (apiKeyHeaderValue) {
+          apiKeyIsNull = false;
+          return originalFetch.apply(window, fetchCallArgs);
+        }
+      }
+
+      if (apiKeyIsNull && effectiveOptions.method && ['POST', 'PUT', 'PATCH'].includes(effectiveOptions.method.toUpperCase()) && typeof bodyForApiKeyCheck === 'string') {
+        try {
+          const bodyData = JSON.parse(bodyForApiKeyCheck);
+          if (bodyData && bodyData.apiKey) {
+            apiKeyIsNull = false;
+            return originalFetch.apply(window, fetchCallArgs);
+          }
+        } catch (e) {
+          // Ignore JSON parsing errors
+        }
+      }
+
+      if(apiKeyIsNull) {
+        const promiseId = nextPromiseId++;
+        const promise = new Promise((resolve) => {
+          pendingFetchResolvers[promiseId] = (resolvedResponse) => {
+            delete pendingFetchResolvers[promiseId];
+            resolve(resolvedResponse);
+          };
+        });
+
+        let serializedBodyForPostMessage;
+        if (typeof bodyForPostMessage === 'string' || bodyForPostMessage == null) {
+            serializedBodyForPostMessage = bodyForPostMessage;
+        } else if (bodyForPostMessage instanceof ReadableStream) {
+            serializedBodyForPostMessage = null;
+        } else {
+            try {
+                serializedBodyForPostMessage = JSON.stringify(bodyForPostMessage);
+            } catch (e) {
+                serializedBodyForPostMessage = null;
+            }
+        }
+
+        const messageOptions = {
+            method: effectiveOptions.method,
+            headers: Object.fromEntries(new Headers(effectiveOptions.headers).entries()),
+            body: serializedBodyForPostMessage
+        };
+
+        window.parent.postMessage({
+          type: 'requestFetch',
+          url: actualUrl,
+          modelName: modelName,
+          options: messageOptions,
+          promiseId: promiseId,
+        }, '*');
+
+        return promise;
+      }
+      return originalFetch.apply(window, fetchCallArgs);
+    }
+    return originalFetch.apply(window, fetchCallArgs);
+  };
+
+  window.addEventListener('message', function(event) {
+    if (event.data && event.data.type === 'resolveFetch') {
+      const { promiseId, response } = event.data;
+      if (pendingFetchResolvers[promiseId]) {
+        try {
+          const reconstructedResponse = new Response(response.body, {
+            status: response.status,
+            statusText: response.statusText,
+            headers: new Headers(response.headers),
+          });
+          pendingFetchResolvers[promiseId](reconstructedResponse);
+        } catch (error) {
+          pendingFetchResolvers[promiseId](new Response(null, { status: 500, statusText: "Interceptor Response Reconstruction Error" }));
+        }
+      }
+    }
+  });
+
+}))({"textModelName":"gemini-3-flash-preview","imageModelName":"imagen-4.0-generate-001","imageEditModelName":"gemini-3.1-flash-image","imageTransformModelName":"gemini-3-pro-image","videoModelName":"veo-2.0-generate-001","ttsModelName":"gemini-2.5-flash-preview-tts","deprecatedTextModelNames":["gemini-2.0-flash","gemini-2.5-flash","gemini-2.5-flash-preview-04-17","gemini-2.5-flash-preview-05-20","gemini-2.5-flash-preview-09-2025"],"deprecatedImageModelNames":["imagen-3.0-generate-001","imagen-3.0-generate-002"],"deprecatedGenerateImageModelNames":["gemini-2.5-flash-image-preview","gemini-2.5-flash-image","gemini-3.1-flash-image-preview"],"deprecatedImageTransformModelNames":["gemini-3-pro-image-preview-11-2025"]})</script><script data-bard-client-injected="true">(function(){'use strict';function a(){window.parent.postMessage({type:"interaction"},"*")}window.addEventListener("click",a,{capture:!0,passive:!0});window.addEventListener("touchstart",a,{capture:!0,passive:!0});window.addEventListener("keydown",a,{capture:!0,passive:!0});}).call(this);
+</script><script data-bard-client-injected="true">(function() {
+  const originalConsoleLog = console.log;
+  const originalConsoleError = console.error;
+
+    /**
+   * Normalizes an error event or a promise rejection reason into a structured error object.
+   * @param {*} errorEventOrReason The error object or reason.
+   * @return {object} Structured error data { message, name, stack }.
+   */
+  function getErrorObject(errorEventOrReason) {
+    if (errorEventOrReason instanceof Error) {
+      return {
+        message: errorEventOrReason.message,
+        name: errorEventOrReason.name,
+        stack: errorEventOrReason.stack,
+      };
+    }
+    // Fallback for non-Error objects.
+    try {
+      return {
+        message: JSON.stringify(errorEventOrReason),
+        name: 'UnknownErrorType',
+        stack: null,
+      };
+    } catch (e) {
+      return {
+        message: String(errorEventOrReason),
+        name: 'UnknownErrorTypeNonStringifiable',
+        stack: null,
+      };
+    }
+  }
+
+  /**
+   * Converts an array of arguments (from log/error) into a single string.
+   * Handles Error objects specially to include their message and stack.
+   * @param {Array<*>} args - Arguments passed to console methods.
+   * @return {string} A string representation of the arguments.
+   */
+  function stringifyArgs(args) {
+    return args
+      .map((arg) => {
+        if (arg instanceof Error) {
+          const {message, stack} = arg;
+          return `Error: ${message}${stack ? ('\nStack: ' + stack) : ''}`;
+        }
+        if (typeof arg === 'object' && arg !== null) {
+          try {
+            return JSON.stringify(arg);
+          } catch (error) {
+            return '[Circular Object]';
+          }
+        } else {
+          return String(arg);
+        }
+      })
+      .join(' ');
+  }
+
+  console.log = function(...args) {
+    const logString = stringifyArgs(args);
+    window.parent.postMessage({ type: 'log', message: logString }, '*');
+    originalConsoleLog.apply(console, args);
+  };
+
+  console.error = function(...args) {
+    let errorData;
+    if (args.length > 0 && args[0] instanceof Error) {
+      const err = args[0];
+      // If the first arg is an Error, capture its details.
+      errorData = {
+        type: 'error',
+        source: 'CONSOLE_ERROR',
+        ...getErrorObject(err),
+        rawArgsString: stringifyArgs(args.slice(1)),
+        timestamp: new Date().toISOString(),
+      };
+    } else {
+      // If not an Error object, treat all args as a general error message.
+      errorData = {
+        type: 'error',
+        source: 'CONSOLE_ERROR',
+        message: stringifyArgs(args),
+        name: 'ConsoleLoggedError',
+        stack: null,
+        timestamp: new Date().toISOString(),
+      };
+    }
+    window.parent.postMessage(errorData, '*');
+    originalConsoleError.apply(console, args);
+  };
+
+  // Listen for global unhandled synchronous errors.
+  window.addEventListener('error', function(event) {
+    const errorDetails = event.error ? getErrorObject(event.error) : {
+      message: event.message,
+      name: 'GlobalError',
+      stack: null,
+      filename: event.filename,
+      lineno: event.lineno,
+      colno: event.colno,
+    };
+
+    window.parent.postMessage({
+      type: 'error',
+      source: 'global',
+      ...errorDetails,
+      message: errorDetails.message || event.message,
+      timestamp: new Date().toISOString(),
+    }, '*');
+  });
+
+  // Listen for unhandled promise rejections (asynchronous errors).
+  window.addEventListener('unhandledrejection', function(event) {
+    const errorDetails = getErrorObject(event.reason);
+
+    window.parent.postMessage({
+      type: 'error',
+      source: 'unhandledrejection',
+      ...errorDetails,
+      message: errorDetails.message || 'Unhandled Promise Rejection',
+      timestamp: new Date().toISOString(),
+    }, '*');
+  });
+
+})();</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iClick Digital Ventures - Brand Identity, HR, Project Governance &amp; Financial System</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    
+    <!-- Export Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" crossorigin="anonymous"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        espresso: {
+                            900: '#19110B',
+                            800: '#2A1A10',
+                            700: '#3D271B',
+                            600: '#523726'
+                        },
+                        terracotta: '#C28E68',
+                        warmgold: '#D4AF37',
+                        linen: '#FDFBF7'
+                    },
+                    fontFamily: {
+                        heading: ['Outfit', 'sans-serif'],
+                        body: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #19110B;
+            color: #FDFBF7;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+        .transform-style-3d {
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .backface-hidden {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        @media print {
+            body {
+                background-color: white !important;
+                color: black !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .print-exact {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+        }
+    </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.pointer-events-none{pointer-events:none}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.inset-0{inset:0px}.right-5{right:1.25rem}.top-0{top:0px}.top-5{top:1.25rem}.z-40{z-index:40}.z-50{z-index:50}.mx-auto{margin-left:auto;margin-right:auto}.my-auto{margin-top:auto;margin-bottom:auto}.my-0\.5{margin-top:0.125rem;margin-bottom:0.125rem}.mb-1{margin-bottom:0.25rem}.mb-1\.5{margin-bottom:0.375rem}.mr-1{margin-right:0.25rem}.mt-0\.5{margin-top:0.125rem}.mt-1{margin-top:0.25rem}.mb-4{margin-bottom:1rem}.mt-2{margin-top:0.5rem}.mr-1\.5{margin-right:0.375rem}.block{display:block}.inline-block{display:inline-block}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-10{height:2.5rem}.h-12{height:3rem}.h-6{height:1.5rem}.h-7{height:1.75rem}.h-full{height:100%}.h-32{height:8rem}.h-8{height:2rem}.h-\[500px\]{height:500px}.h-44{height:11rem}.min-h-screen{min-height:100vh}.min-h-\[960px\]{min-height:960px}.w-10{width:2.5rem}.w-12{width:3rem}.w-7{width:1.75rem}.w-\[750px\]{width:750px}.w-full{width:100%}.w-px{width:1px}.w-28{width:7rem}.w-72{width:18rem}.w-\[320px\]{width:320px}.w-\[720px\]{width:720px}.w-32{width:8rem}.w-36{width:9rem}.max-w-7xl{max-width:80rem}.max-w-\[750px\]{max-width:750px}.max-w-lg{max-width:32rem}.max-w-md{max-width:28rem}.flex-shrink-0{flex-shrink:0}.flex-grow{flex-grow:1}.border-collapse{border-collapse:collapse}.cursor-crosshair{cursor:crosshair}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-start{align-items:flex-start}.items-end{align-items:flex-end}.items-center{align-items:center}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:0.25rem}.gap-1\.5{gap:0.375rem}.gap-2{gap:0.5rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.space-x-1 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.25rem * var(--tw-space-x-reverse));margin-left:calc(0.25rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-0\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.125rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.125rem * var(--tw-space-y-reverse))}.space-y-1 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.25rem * var(--tw-space-y-reverse))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.25rem * var(--tw-space-y-reverse))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.space-y-1\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.375rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.375rem * var(--tw-space-y-reverse))}.space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}.space-y-3\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.875rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.875rem * var(--tw-space-y-reverse))}.divide-y > :not([hidden]) ~ :not([hidden]){--tw-divide-y-reverse:0;border-top-width:calc(1px * calc(1 - var(--tw-divide-y-reverse)));border-bottom-width:calc(1px * var(--tw-divide-y-reverse))}.divide-espresso-800 > :not([hidden]) ~ :not([hidden]){--tw-divide-opacity:1;border-color:rgb(42 26 16 / var(--tw-divide-opacity, 1))}.divide-stone-200 > :not([hidden]) ~ :not([hidden]){--tw-divide-opacity:1;border-color:rgb(231 229 228 / var(--tw-divide-opacity, 1))}.overflow-hidden{overflow:hidden}.overflow-x-auto{overflow-x:auto}.whitespace-nowrap{white-space:nowrap}.rounded{border-radius:0.25rem}.rounded-2xl{border-radius:1rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-2{border-width:2px}.border-b{border-bottom-width:1px}.border-b-2{border-bottom-width:2px}.border-t{border-top-width:1px}.border-t-2{border-top-width:2px}.border-espresso-600{--tw-border-opacity:1;border-color:rgb(82 55 38 / var(--tw-border-opacity, 1))}.border-espresso-700{--tw-border-opacity:1;border-color:rgb(61 39 27 / var(--tw-border-opacity, 1))}.border-espresso-700\/60{border-color:rgb(61 39 27 / 0.6)}.border-espresso-900{--tw-border-opacity:1;border-color:rgb(25 17 11 / var(--tw-border-opacity, 1))}.border-stone-300{--tw-border-opacity:1;border-color:rgb(214 211 209 / var(--tw-border-opacity, 1))}.border-terracotta\/30{border-color:rgb(194 142 104 / 0.3)}.border-warmgold\/30{border-color:rgb(212 175 55 / 0.3)}.border-warmgold\/40{border-color:rgb(212 175 55 / 0.4)}.border-warmgold\/60{border-color:rgb(212 175 55 / 0.6)}.border-emerald-500\/30{border-color:rgb(16 185 129 / 0.3)}.border-terracotta{--tw-border-opacity:1;border-color:rgb(194 142 104 / var(--tw-border-opacity, 1))}.border-warmgold\/50{border-color:rgb(212 175 55 / 0.5)}.border-amber-500\/30{border-color:rgb(245 158 11 / 0.3)}.border-blue-500\/30{border-color:rgb(59 130 246 / 0.3)}.border-blue-600\/40{border-color:rgb(37 99 235 / 0.4)}.border-warmgold{--tw-border-opacity:1;border-color:rgb(212 175 55 / var(--tw-border-opacity, 1))}.border-blue-500\/40{border-color:rgb(59 130 246 / 0.4)}.bg-espresso-700{--tw-bg-opacity:1;background-color:rgb(61 39 27 / var(--tw-bg-opacity, 1))}.bg-espresso-800{--tw-bg-opacity:1;background-color:rgb(42 26 16 / var(--tw-bg-opacity, 1))}.bg-espresso-800\/95{background-color:rgb(42 26 16 / 0.95)}.bg-espresso-900{--tw-bg-opacity:1;background-color:rgb(25 17 11 / var(--tw-bg-opacity, 1))}.bg-linen{--tw-bg-opacity:1;background-color:rgb(253 251 247 / var(--tw-bg-opacity, 1))}.bg-stone-100{--tw-bg-opacity:1;background-color:rgb(245 245 244 / var(--tw-bg-opacity, 1))}.bg-terracotta{--tw-bg-opacity:1;background-color:rgb(194 142 104 / var(--tw-bg-opacity, 1))}.bg-terracotta\/20{background-color:rgb(194 142 104 / 0.2)}.bg-warmgold{--tw-bg-opacity:1;background-color:rgb(212 175 55 / var(--tw-bg-opacity, 1))}.bg-warmgold\/20{background-color:rgb(212 175 55 / 0.2)}.bg-warmgold\/5{background-color:rgb(212 175 55 / 0.05)}.bg-emerald-500\/20{background-color:rgb(16 185 129 / 0.2)}.bg-stone-50{--tw-bg-opacity:1;background-color:rgb(250 250 249 / var(--tw-bg-opacity, 1))}.bg-amber-500\/20{background-color:rgb(245 158 11 / 0.2)}.bg-black\/85{background-color:rgb(0 0 0 / 0.85)}.bg-blue-500\/20{background-color:rgb(59 130 246 / 0.2)}.bg-blue-900\/60{background-color:rgb(30 58 138 / 0.6)}.bg-emerald-600{--tw-bg-opacity:1;background-color:rgb(5 150 105 / var(--tw-bg-opacity, 1))}.bg-gradient-to-r{background-image:linear-gradient(to right, var(--tw-gradient-stops))}.from-warmgold{--tw-gradient-from:#D4AF37 var(--tw-gradient-from-position);--tw-gradient-to:rgb(212 175 55 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.to-amber-600{--tw-gradient-to:#d97706 var(--tw-gradient-to-position)}.object-contain{object-fit:contain}.object-cover{object-fit:cover}.p-1\.5{padding:0.375rem}.p-2{padding:0.5rem}.p-2\.5{padding:0.625rem}.p-3{padding:0.75rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.p-8{padding:2rem}.p-1{padding:0.25rem}.p-12{padding:3rem}.p-3\.5{padding:0.875rem}.p-6{padding:1.5rem}.px-1\.5{padding-left:0.375rem;padding-right:0.375rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-2\.5{padding-left:0.625rem;padding-right:0.625rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-3\.5{padding-left:0.875rem;padding-right:0.875rem}.px-4{padding-left:1rem;padding-right:1rem}.py-0\.5{padding-top:0.125rem;padding-bottom:0.125rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-1\.5{padding-top:0.375rem;padding-bottom:0.375rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.pb-3{padding-bottom:0.75rem}.pb-5{padding-bottom:1.25rem}.pb-1{padding-bottom:0.25rem}.pb-2{padding-bottom:0.5rem}.pb-4{padding-bottom:1rem}.pt-1{padding-top:0.25rem}.pt-2{padding-top:0.5rem}.text-left{text-align:left}.text-center{text-align:center}.text-right{text-align:right}.font-heading{font-family:Outfit, sans-serif}.font-mono{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}.font-serif{font-family:ui-serif, Georgia, Cambria, "Times New Roman", Times, serif}.text-\[10\.5px\]{font-size:10.5px}.text-\[10px\]{font-size:10px}.text-\[11\.5px\]{font-size:11.5px}.text-\[11px\]{font-size:11px}.text-\[9\.5px\]{font-size:9.5px}.text-\[9px\]{font-size:9px}.text-base{font-size:1rem;line-height:1.5rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.text-2xl{font-size:1.5rem;line-height:2rem}.text-\[8\.5px\]{font-size:8.5px}.text-\[8px\]{font-size:8px}.text-lg{font-size:1.125rem;line-height:1.75rem}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.font-semibold{font-weight:600}.font-normal{font-weight:400}.uppercase{text-transform:uppercase}.italic{font-style:italic}.leading-none{line-height:1}.leading-relaxed{line-height:1.625}.leading-tight{line-height:1.25}.tracking-tight{letter-spacing:-0.025em}.tracking-wider{letter-spacing:0.05em}.tracking-\[0\.5em\]{letter-spacing:0.5em}.text-blue-400{--tw-text-opacity:1;color:rgb(96 165 250 / var(--tw-text-opacity, 1))}.text-emerald-400{--tw-text-opacity:1;color:rgb(52 211 153 / var(--tw-text-opacity, 1))}.text-espresso-900{--tw-text-opacity:1;color:rgb(25 17 11 / var(--tw-text-opacity, 1))}.text-linen{--tw-text-opacity:1;color:rgb(253 251 247 / var(--tw-text-opacity, 1))}.text-stone-300{--tw-text-opacity:1;color:rgb(214 211 209 / var(--tw-text-opacity, 1))}.text-stone-400{--tw-text-opacity:1;color:rgb(168 162 158 / var(--tw-text-opacity, 1))}.text-stone-500{--tw-text-opacity:1;color:rgb(120 113 108 / var(--tw-text-opacity, 1))}.text-stone-600{--tw-text-opacity:1;color:rgb(87 83 78 / var(--tw-text-opacity, 1))}.text-stone-700{--tw-text-opacity:1;color:rgb(68 64 60 / var(--tw-text-opacity, 1))}.text-stone-800{--tw-text-opacity:1;color:rgb(41 37 36 / var(--tw-text-opacity, 1))}.text-terracotta{--tw-text-opacity:1;color:rgb(194 142 104 / var(--tw-text-opacity, 1))}.text-warmgold{--tw-text-opacity:1;color:rgb(212 175 55 / var(--tw-text-opacity, 1))}.text-amber-300{--tw-text-opacity:1;color:rgb(252 211 77 / var(--tw-text-opacity, 1))}.text-amber-400{--tw-text-opacity:1;color:rgb(251 191 36 / var(--tw-text-opacity, 1))}.text-blue-300{--tw-text-opacity:1;color:rgb(147 197 253 / var(--tw-text-opacity, 1))}.text-stone-200{--tw-text-opacity:1;color:rgb(231 229 228 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.shadow{--tw-shadow:0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.outline-none{outline:2px solid transparent;outline-offset:2px}.backdrop-blur-md{--tw-backdrop-blur:blur(12px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.\[transform\:rotateY\(180deg\)\]{transform:rotateY(180deg)}.selection\:bg-terracotta *::selection{--tw-bg-opacity:1;background-color:rgb(194 142 104 / var(--tw-bg-opacity, 1))}.selection\:text-linen *::selection{--tw-text-opacity:1;color:rgb(253 251 247 / var(--tw-text-opacity, 1))}.selection\:bg-terracotta::selection{--tw-bg-opacity:1;background-color:rgb(194 142 104 / var(--tw-bg-opacity, 1))}.selection\:text-linen::selection{--tw-text-opacity:1;color:rgb(253 251 247 / var(--tw-text-opacity, 1))}.hover\:bg-amber-400:hover{--tw-bg-opacity:1;background-color:rgb(251 191 36 / var(--tw-bg-opacity, 1))}.hover\:bg-espresso-600:hover{--tw-bg-opacity:1;background-color:rgb(82 55 38 / var(--tw-bg-opacity, 1))}.hover\:bg-espresso-700:hover{--tw-bg-opacity:1;background-color:rgb(61 39 27 / var(--tw-bg-opacity, 1))}.hover\:bg-terracotta\/90:hover{background-color:rgb(194 142 104 / 0.9)}.hover\:bg-emerald-500:hover{--tw-bg-opacity:1;background-color:rgb(16 185 129 / var(--tw-bg-opacity, 1))}.hover\:from-amber-500:hover{--tw-gradient-from:#f59e0b var(--tw-gradient-from-position);--tw-gradient-to:rgb(245 158 11 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.hover\:to-amber-700:hover{--tw-gradient-to:#b45309 var(--tw-gradient-to-position)}.hover\:text-linen:hover{--tw-text-opacity:1;color:rgb(253 251 247 / var(--tw-text-opacity, 1))}.focus\:border-terracotta:focus{--tw-border-opacity:1;border-color:rgb(194 142 104 / var(--tw-border-opacity, 1))}.focus\:border-warmgold:focus{--tw-border-opacity:1;border-color:rgb(212 175 55 / var(--tw-border-opacity, 1))}@media (min-width: 640px){.sm\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.sm\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}}@media (min-width: 768px){.md\:flex-row{flex-direction:row}.md\:items-center{align-items:center}.md\:p-6{padding:1.5rem}.md\:text-2xl{font-size:1.5rem;line-height:2rem}.md\:text-lg{font-size:1.125rem;line-height:1.75rem}}@media (min-width: 1024px){.lg\:col-span-3{grid-column:span 3 / span 3}.lg\:col-span-4{grid-column:span 4 / span 4}.lg\:col-span-8{grid-column:span 8 / span 8}.lg\:grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}.lg\:grid-cols-5{grid-template-columns:repeat(5, minmax(0, 1fr))}.lg\:grid-cols-12{grid-template-columns:repeat(12, minmax(0, 1fr))}.lg\:px-8{padding-left:2rem;padding-right:2rem}}</style></head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-terracotta selection:text-linen">
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="fixed top-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+    <header class="bg-espresso-800/95 border-b border-espresso-600 sticky top-0 z-40 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col md:flex-row md:items-center justify-between gap-3">
+            
+            <div class="flex items-center gap-3">
+                <!-- Approved Quad Mark Logo Icon -->
+                <div class="w-10 h-10 bg-espresso-900 border border-warmgold/40 rounded-xl flex items-center justify-center p-1.5 shadow-lg flex-shrink-0">
+                    <svg viewBox="0 0 100 100" class="w-full h-full">
+                        <rect x="20" y="20" width="26" height="26" rx="6" fill="#19110B"></rect>
+                        <rect x="54" y="20" width="26" height="26" rx="6" fill="#C28E68"></rect>
+                        <rect x="20" y="54" width="26" height="26" rx="6" fill="#C28E68"></rect>
+                        <rect x="54" y="54" width="26" height="26" rx="6" fill="#19110B"></rect>
+                        <circle cx="50" cy="50" r="8" fill="#D4AF37" stroke="#19110B" stroke-width="2"></circle>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="font-heading font-extrabold text-base md:text-lg text-linen tracking-tight flex items-center gap-2">
+                        iClick Digital Ventures
+                        <span class="text-[9px] bg-warmgold/20 text-warmgold px-2 py-0.5 rounded-full border border-warmgold/30 uppercase font-mono">BN: 9772940</span>
+                    </h1>
+                    <p class="text-[11px] text-stone-400">Enterprise Governance, Financial Disbursement &amp; Security Suite</p>
+                </div>
+            </div>
+
+            <!-- Active Account Info & Global Downloads -->
+            <div class="flex items-center gap-3 bg-espresso-900 px-3 py-1.5 rounded-xl border border-espresso-700 text-xs">
+                <div class="flex items-center gap-2">
+                    <div id="user-avatar-badge" class="w-7 h-7 rounded-full bg-warmgold text-espresso-900 font-bold flex items-center justify-center font-mono">CEO</div>
+                    <div>
+                        <div class="flex items-center gap-1.5">
+                            <span id="session-user-name" class="font-bold text-linen">Muhammad Yasin Ibrahim</span>
+                            <span id="session-role-badge" class="bg-warmgold/20 text-warmgold px-1.5 py-0.2 rounded text-[9px] font-mono border border-warmgold/30">CEO</span>
+                        </div>
+                        <p id="session-user-id" class="text-[10px] text-stone-400 font-mono">ID: IDV-CEO-001 • Limit: UNLIMITED</p>
+                    </div>
+                </div>
+                <div class="h-6 w-px bg-espresso-700 my-auto"></div>
+                <button onclick="openLoginModal()" class="bg-espresso-800 hover:bg-espresso-700 text-warmgold px-2.5 py-1 rounded-lg border border-espresso-600 font-semibold transition flex items-center gap-1">
+                    <i class="fa-solid fa-right-to-bracket"></i> Switch Account
+                </button>
+                <button onclick="downloadMasterZipPackage()" class="bg-gradient-to-r from-warmgold to-amber-600 hover:from-amber-500 hover:to-amber-700 text-espresso-900 font-extrabold text-xs px-3 py-1.5 rounded-xl transition shadow flex items-center gap-1.5">
+                    <i class="fa-solid fa-file-zipper"></i> ZIP
+                </button>
+                <button onclick="downloadWebAppFile()" class="bg-espresso-700 hover:bg-espresso-600 text-linen text-xs px-2.5 py-1.5 rounded-xl border border-espresso-600 font-semibold transition" title="Save HTML Web App File">
+                    <i class="fa-solid fa-download"></i> Save App
+                </button>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-espresso-700/60 overflow-x-auto no-scrollbar">
+            <nav class="flex space-x-1 py-2 text-xs font-semibold whitespace-nowrap" aria-label="Tabs">
+                <button id="tab-btn-project-tab" onclick="switchTab('project-tab')" class="tab-btn px-3.5 py-2 rounded-lg flex items-center gap-1.5 bg-terracotta text-linen shadow">
+                    <i class="fa-solid fa-diagram-project"></i> 1. Projects &amp; Disbursement
+                </button>
+                <button id="tab-btn-invoice-tab" onclick="switchTab('invoice-tab')" class="tab-btn px-3.5 py-2 rounded-lg text-stone-400 hover:text-linen transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-file-invoice-dollar"></i> 2. Invoice &amp; Billing
+                </button>
+                <button id="tab-btn-finances-tab" onclick="switchTab('finances-tab')" class="tab-btn px-3.5 py-2 rounded-lg text-stone-400 hover:text-linen transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-money-check-dollar"></i> 3. Payroll &amp; Payslips
+                </button>
+                <button id="tab-btn-hr-suite-tab" onclick="switchTab('hr-suite-tab')" class="tab-btn px-3.5 py-2 rounded-lg text-stone-400 hover:text-linen transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-file-signature"></i> 4. HR Onboarding Suite
+                </button>
+                <button id="tab-btn-ceo-id-tab" onclick="switchTab('ceo-id-tab')" class="tab-btn px-3.5 py-2 rounded-lg text-stone-400 hover:text-linen transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-id-badge"></i> 5. CEO Credentials
+                </button>
+                <button id="tab-btn-staff-id-tab" onclick="switchTab('staff-id-tab')" class="tab-btn px-3.5 py-2 rounded-lg text-stone-400 hover:text-linen transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-users-gear"></i> 6. Staff Badges
+                </button>
+                <button id="tab-btn-letterhead-tab" onclick="switchTab('letterhead-tab')" class="tab-btn px-3.5 py-2 rounded-lg text-stone-400 hover:text-linen transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-file-contract"></i> 7. Letterhead
+                </button>
+                <button id="tab-btn-download-hub-tab" onclick="switchTab('download-hub-tab')" class="tab-btn px-3.5 py-2 rounded-lg text-stone-400 hover:text-linen transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-layer-group"></i> 8. Logo Suite
+                </button>
+                <button id="tab-btn-cac-tab" onclick="switchTab('cac-tab')" class="tab-btn px-3.5 py-2 rounded-lg text-stone-400 hover:text-linen transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-shield-halved"></i> 9. CAC Record
+                </button>
+                <button id="tab-btn-it-admin-tab" onclick="switchTab('it-admin-tab')" class="tab-btn px-3.5 py-2 rounded-lg text-stone-400 hover:text-linen transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-laptop-code text-warmgold"></i> 10. IT Admin &amp; Security
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+        <section id="project-tab" class="tab-content space-y-6">
+            <div class="bg-espresso-800 border border-espresso-600 rounded-2xl p-5 md:p-6 space-y-6">
+                
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-espresso-600 pb-5">
+                    <div>
+                        <span class="inline-block px-3 py-1 rounded-full text-[10px] font-bold bg-warmgold/20 text-warmgold uppercase tracking-wider mb-1.5 border border-warmgold/30">Hierarchical Governance Engine</span>
+                        <h2 class="text-xl md:text-2xl font-heading font-bold text-linen">Project Requests &amp; Fund Disbursement Workflow</h2>
+                        <p class="text-xs text-stone-300 mt-0.5">Hierarchical Approval Chain: Staff ➔ Supervisor ➔ Audit ➔ Director ➔ CEO Mandatory Clearance with Security PIN &amp; Touchscreen Signatures.</p>
+                    </div>
+                    
+                    <div class="flex items-center gap-2 bg-espresso-900 p-2 rounded-xl border border-espresso-700 text-xs">
+                        <i class="fa-solid fa-shield-halved text-warmgold text-sm"></i>
+                        <div>
+                            <span class="text-stone-400 block text-[10px]">Active Verified Sign-off:</span>
+                            <span id="workflow-active-user-disp" class="font-bold text-linen">Muhammad Yasin Ibrahim (CEO)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hierarchy Cards -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 text-xs">
+                    <div class="bg-espresso-900 border border-espresso-700 rounded-xl p-3 space-y-1">
+                        <div class="flex items-center justify-between text-stone-400 text-[10px]">
+                            <span>1. Staff Officer</span>
+                            <span class="font-mono text-terracotta">Requisition</span>
+                        </div>
+                        <p class="font-bold text-linen text-sm">Limit: ₦50,000</p>
+                        <p class="text-[10px] text-stone-400">Petty Operational Expenses</p>
+                    </div>
+
+                    <div class="bg-espresso-900 border border-espresso-700 rounded-xl p-3 space-y-1">
+                        <div class="flex items-center justify-between text-stone-400 text-[10px]">
+                            <span>2. Supervisor / HOD</span>
+                            <span class="font-mono text-warmgold">Approval</span>
+                        </div>
+                        <p class="font-bold text-linen text-sm">Limit: ₦250,000</p>
+                        <p class="text-[10px] text-stone-400">Unit Activity Approvals</p>
+                    </div>
+
+                    <div class="bg-espresso-900 border border-espresso-700 rounded-xl p-3 space-y-1">
+                        <div class="flex items-center justify-between text-stone-400 text-[10px]">
+                            <span>3. Chief Accountant</span>
+                            <span class="font-mono text-blue-400">Tax &amp; Audit</span>
+                        </div>
+                        <p class="font-bold text-linen text-sm">Limit: ₦1,000,000</p>
+                        <p class="text-[10px] text-stone-400">Invoice &amp; Budget Clearance</p>
+                    </div>
+
+                    <div class="bg-espresso-900 border border-espresso-700 rounded-xl p-3 space-y-1">
+                        <div class="flex items-center justify-between text-stone-400 text-[10px]">
+                            <span>4. Finance Director</span>
+                            <span class="font-mono text-emerald-400">Executive</span>
+                        </div>
+                        <p class="font-bold text-linen text-sm">Limit: ₦2,500,000</p>
+                        <p class="text-[10px] text-stone-400">Corporate Budget Approval</p>
+                    </div>
+
+                    <div class="bg-espresso-900 border-2 border-warmgold/60 rounded-xl p-3 space-y-1 bg-warmgold/5">
+                        <div class="flex items-center justify-between text-warmgold text-[10px]">
+                            <span class="font-bold"><i class="fa-solid fa-crown mr-1"></i>5. CEO Final Approval</span>
+                            <span class="font-mono text-emerald-400">Mandatory</span>
+                        </div>
+                        <p class="font-bold text-warmgold text-sm">UNLIMITED SIGN-OFF</p>
+                        <p class="text-[10px] text-stone-300">Disbursement Clearance</p>
+                    </div>
+                </div>
+
+                <!-- Create Requisition Form -->
+                <div class="bg-espresso-900 border border-espresso-700 rounded-xl p-4 space-y-4">
+                    <h3 class="font-heading font-bold text-sm text-warmgold flex items-center gap-2">
+                        <i class="fa-solid fa-plus-circle"></i> Create New Project Request / Fund Requisition
+                    </h3>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+                        <div>
+                            <label class="block text-stone-300 font-semibold mb-1">Project / Request Title</label>
+                            <input type="text" id="req-title" value="Court Registry Digitization Hardware Sourcing" class="w-full bg-espresso-800 border border-espresso-600 rounded-xl p-2 text-linen outline-none focus:border-terracotta">
+                        </div>
+                        <div>
+                            <label class="block text-stone-300 font-semibold mb-1">Target Subsidiary</label>
+                            <select id="req-subsidiary" class="w-full bg-espresso-800 border border-espresso-600 rounded-xl p-2 text-linen outline-none focus:border-terracotta">
+                                <option value="iClick GovTech">iClick GovTech</option>
+                                <option value="iClick AI Automation">iClick AI Automation</option>
+                                <option value="iClick Digital Academy">iClick Digital Academy</option>
+                                <option value="iClick IoT &amp; Hardware">iClick IoT &amp; Hardware</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-stone-300 font-semibold mb-1">Requested Amount (₦)</label>
+                            <input type="number" id="req-amount" value="1850000" class="w-full bg-espresso-800 border border-espresso-600 rounded-xl p-2 text-linen outline-none focus:border-terracotta">
+                        </div>
+                        <div>
+                            <label class="block text-stone-300 font-semibold mb-1">Initiating Staff Officer</label>
+                            <input type="text" id="req-staff" value="Amina Bello Usman (IDV-STF-084)" class="w-full bg-espresso-800 border border-espresso-600 rounded-xl p-2 text-linen outline-none focus:border-terracotta" readonly="">
+                        </div>
+                        <div class="lg:col-span-3">
+                            <label class="block text-stone-300 font-semibold mb-1">Justification &amp; Scope of Work</label>
+                            <input type="text" id="req-scope" value="Procurement of high-grade document scanners and networking peripherals for judicial registry file digitization." class="w-full bg-espresso-800 border border-espresso-600 rounded-xl p-2 text-linen outline-none focus:border-terracotta">
+                        </div>
+                        <div class="flex items-end">
+                            <button onclick="createNewProjectRequest()" class="w-full bg-terracotta hover:bg-terracotta/90 text-linen font-bold py-2 rounded-xl transition shadow flex items-center justify-center gap-1.5">
+                                <i class="fa-solid fa-paper-plane"></i> Submit Requisition
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Requests Table -->
+                <div class="bg-espresso-900 border border-espresso-700 rounded-xl overflow-hidden text-xs">
+                    <div class="bg-espresso-700 px-4 py-3 font-heading font-bold text-linen flex justify-between items-center border-b border-espresso-600">
+                        <span>ACTIVE PROJECT REQUESTS &amp; APPROVAL AUDIT TIMELINE</span>
+                        <span id="role-badge" class="bg-warmgold/20 text-warmgold px-2.5 py-0.5 rounded-full border border-warmgold/30 text-[10px]">Active User: CEO</span>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-espresso-800 text-stone-400 border-b border-espresso-700 text-[11px]">
+                                    <th class="p-3">Ref ID</th>
+                                    <th class="p-3">Project Title</th>
+                                    <th class="p-3">Subsidiary</th>
+                                    <th class="p-3">Amount (₦)</th>
+                                    <th class="p-3">Initiated By</th>
+                                    <th class="p-3">Hierarchy Status</th>
+                                    <th class="p-3 text-right">Actions (Requires Security PIN + Touch Signature)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="project-requests-tbody" class="divide-y divide-espresso-800 text-stone-300">
+                    <tr>
+                        <td class="p-3 font-mono font-bold text-warmgold">PRJ-2026-001</td>
+                        <td class="p-3 font-bold text-linen">
+                            Court Registry File Digitization Scanners<br>
+                            <span class="text-[10px] text-stone-400 font-normal">Procurement of high-grade document scanners and networking peripherals.</span>
+                            <ul class="mt-1 space-y-0.5"><li class="text-[10px] text-stone-400">• 23 Aug 2026, 01:10 WAT - Submitted into Governance Workflow</li><li class="text-[10px] text-stone-400">• 23 Aug 2026, 02:15 WAT - Approved by HOD Hajia Fatima Kyari (PIN Verified)</li><li class="text-[10px] text-stone-400">• 23 Aug 2026, 03:00 WAT - Audited by Chief Accountant Usman Danfodio</li><li class="text-[10px] text-stone-400">• 23 Aug 2026, 03:45 WAT - Executive Clearance by Director Dr. Farouk Aliyu</li></ul>
+                        </td>
+                        <td class="p-3">iClick GovTech</td>
+                        <td class="p-3 font-mono font-bold text-linen">₦1,850,000.00</td>
+                        <td class="p-3 text-stone-400">Amina Bello Usman (IDV-STF-084)</td>
+                        <td class="p-3"><span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 font-mono font-bold">4. Director Cleared</span></td>
+                        <td class="p-3 text-right whitespace-nowrap"><button onclick="initiateWorkflowStep('PRJ-2026-001', 'ceo_disburse')" class="bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold px-3 py-1 rounded text-[10px] shadow">CEO Authorize &amp; Disburse</button></td>
+                    </tr>
+                
+                    <tr>
+                        <td class="p-3 font-mono font-bold text-warmgold">PRJ-2026-002</td>
+                        <td class="p-3 font-bold text-linen">
+                            WhatsApp API Bot Server Renewal<br>
+                            <span class="text-[10px] text-stone-400 font-normal">Yearly cloud server license for AI chatbot integrations.</span>
+                            <ul class="mt-1 space-y-0.5"><li class="text-[10px] text-stone-400">• 23 Aug 2026, 03:30 WAT - Submitted into Governance Workflow</li><li class="text-[10px] text-stone-400">• 23 Aug 2026, 04:00 WAT - Approved by HOD Hajia Fatima Kyari (Within ₦250k Limit)</li></ul>
+                        </td>
+                        <td class="p-3">iClick AI Automation</td>
+                        <td class="p-3 font-mono font-bold text-linen">₦220,000.00</td>
+                        <td class="p-3 text-stone-400">Abubakar Datti Mahmud</td>
+                        <td class="p-3"><span class="px-2 py-0.5 rounded bg-warmgold/20 text-warmgold font-mono">2. HOD Approved</span></td>
+                        <td class="p-3 text-right whitespace-nowrap"><button onclick="initiateWorkflowStep('PRJ-2026-002', 'accountant_audit')" class="bg-blue-500/20 text-blue-300 border border-blue-500/40 px-2 py-1 rounded text-[10px] font-bold">Pass Audit</button></td>
+                    </tr>
+                </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="invoice-tab" class="tab-content hidden space-y-6">
+            <div class="bg-espresso-800 border border-espresso-600 rounded-2xl p-5 md:p-6 space-y-6">
+                
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-espresso-600 pb-5">
+                    <div>
+                        <span class="inline-block px-3 py-1 rounded-full text-[10px] font-bold bg-terracotta/20 text-terracotta uppercase tracking-wider mb-1.5 border border-terracotta/30">Billing &amp; Commercial Suite</span>
+                        <h2 class="text-xl md:text-2xl font-heading font-bold text-linen">Corporate Invoice &amp; Billing Engine</h2>
+                        <p class="text-xs text-stone-300 mt-0.5">Generate formal client invoices with 7.5% VAT, auto-calculated totals, Naira words, and bank payment instructions.</p>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2">
+                        <button onclick="downloadPDF('invoice-paper', 'iclick-official-invoice.pdf')" class="bg-warmgold hover:bg-amber-400 text-espresso-900 font-extrabold text-xs px-4 py-2.5 rounded-xl transition shadow flex items-center gap-1.5">
+                            <i class="fa-solid fa-file-pdf"></i> Export Invoice PDF
+                        </button>
+                        <button onclick="downloadCardPNG('invoice-paper', 'iclick-invoice.png')" class="bg-terracotta hover:bg-terracotta/90 text-linen text-xs font-semibold px-3.5 py-2.5 rounded-xl transition flex items-center gap-1.5 shadow">
+                            <i class="fa-solid fa-file-image"></i> Export PNG
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-espresso-900 border border-espresso-700 rounded-xl p-4 space-y-3 text-xs">
+                    <h3 class="font-heading font-bold text-sm text-warmgold flex items-center gap-2">
+                        <i class="fa-solid fa-file-pen"></i> Invoice Details &amp; Client Information
+                    </h3>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                        <div>
+                            <label class="block text-stone-300 font-semibold mb-1">Client Business Name</label>
+                            <input type="text" id="inv-input-client" value="Ministry of Technology &amp; Digital Economy" oninput="updateInvoiceCalculations()" class="w-full bg-espresso-800 border border-espresso-600 rounded-xl p-2 text-linen outline-none focus:border-terracotta">
+                        </div>
+                        <div>
+                            <label class="block text-stone-300 font-semibold mb-1">Client Billing Address</label>
+                            <input type="text" id="inv-input-address" value="State Secretariat Complex, Sokoto &amp; Abuja" oninput="updateInvoiceCalculations()" class="w-full bg-espresso-800 border border-espresso-600 rounded-xl p-2 text-linen outline-none focus:border-terracotta">
+                        </div>
+                        <div>
+                            <label class="block text-stone-300 font-semibold mb-1">Invoice Ref</label>
+                            <input type="text" id="inv-input-ref" value="IDV/INV/2026/092" oninput="updateInvoiceCalculations()" class="w-full bg-espresso-800 border border-espresso-600 rounded-xl p-2 text-linen outline-none focus:border-terracotta">
+                        </div>
+                        <div>
+                            <label class="block text-stone-300 font-semibold mb-1">Invoice Date</label>
+                            <input type="text" id="inv-input-date" value="23 August 2026" oninput="updateInvoiceCalculations()" class="w-full bg-espresso-800 border border-espresso-600 rounded-xl p-2 text-linen outline-none focus:border-terracotta">
+                        </div>
+                        <div>
+                            <label class="block text-stone-300 font-semibold mb-1">Item 1 Description</label>
+                            <input type="text" id="inv-item1-desc" value="Enterprise Registry Digitization &amp; Document Indexing" oninput="updateInvoiceCalculations()" class="w-full bg-espresso-800 border border-espresso-600 rounded-xl p-2 text-linen outline-none focus:border-terracotta">
+                        </div>
+                        <div>
+                            <label class="block text-stone-300 font-semibold mb-1">Item 1 Amount (₦)</label>
+                            <input type="number" id="inv-item1-amount" value="1500000" oninput="updateInvoiceCalculations()" class="w-full bg-espresso-800 border border-espresso-600 rounded-xl p-2 text-linen outline-none focus:border-terracotta">
+                        </div>
+                        <div>
+                            <label class="block text-stone-300 font-semibold mb-1">Item 2 Description</label>
+                            <input type="text" id="inv-item2-desc" value="WhatsApp Conversational AI Support Agent Deployment" oninput="updateInvoiceCalculations()" class="w-full bg-espresso-800 border border-espresso-600 rounded-xl p-2 text-linen outline-none focus:border-terracotta">
+                        </div>
+                        <div>
+                            <label class="block text-stone-300 font-semibold mb-1">Item 2 Amount (₦)</label>
+                            <input type="number" id="inv-item2-amount" value="750000" oninput="updateInvoiceCalculations()" class="w-full bg-espresso-800 border border-espresso-600 rounded-xl p-2 text-linen outline-none focus:border-terracotta">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-center overflow-x-auto p-2">
+                    <div id="invoice-paper" class="w-[750px] bg-linen text-espresso-900 p-8 rounded-xl border border-stone-300 shadow-2xl print-exact relative space-y-5">
+                        
+                        <!-- Header -->
+                        <div class="flex items-start justify-between border-b-2 border-espresso-900 pb-3">
+                            <div class="flex items-center gap-3">
+                                <svg viewBox="0 0 100 100" class="w-12 h-12 flex-shrink-0">
+                                    <rect x="20" y="20" width="26" height="26" rx="6" fill="#19110B"></rect>
+                                    <rect x="54" y="20" width="26" height="26" rx="6" fill="#C28E68"></rect>
+                                    <rect x="20" y="54" width="26" height="26" rx="6" fill="#C28E68"></rect>
+                                    <rect x="54" y="54" width="26" height="26" rx="6" fill="#19110B"></rect>
+                                    <circle cx="50" cy="50" r="8" fill="#D4AF37" stroke="#19110B" stroke-width="2"></circle>
+                                </svg>
+                                <div>
+                                    <h2 class="font-heading font-extrabold text-xl text-espresso-900 tracking-tight leading-none">iCLICK DIGITAL VENTURES</h2>
+                                    <p class="text-[9.5px] font-bold text-terracotta uppercase tracking-wider mt-0.5">GovTech • AI Automation • Digital Academy • IoT Systems</p>
+                                    <p class="text-[9px] text-stone-600 font-mono">CAC BN: 9772940 • SCUML &amp; EFCC Compliant Enterprise</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <span class="bg-espresso-900 text-warmgold text-xs font-bold px-3 py-1 rounded-lg uppercase tracking-wider">OFFICIAL INVOICE</span>
+                                <p id="inv-disp-ref" class="text-[10.5px] font-bold text-espresso-900 mt-1 font-mono">REF: IDV/INV/2026/092</p>
+                                <p id="inv-disp-date" class="text-[10px] text-stone-600">Date: 23 August 2026</p>
+                            </div>
+                        </div>
+
+                        <!-- Client Details -->
+                        <div class="bg-stone-100 p-3 rounded-lg border border-stone-300 text-[11px] space-y-0.5">
+                            <p class="text-stone-500 uppercase font-bold text-[9px] tracking-wider">BILLED TO:</p>
+                            <p id="inv-disp-client" class="font-bold text-espresso-900 text-sm">Ministry of Technology &amp; Digital Economy</p>
+                            <p id="inv-disp-address" class="text-stone-700">State Secretariat Complex, Sokoto &amp; Abuja</p>
+                        </div>
+
+                        <!-- Table -->
+                        <div class="border border-stone-300 rounded-lg overflow-hidden text-[11.5px]">
+                            <table class="w-full text-left">
+                                <thead class="bg-espresso-800 text-linen font-heading font-bold text-xs">
+                                    <tr>
+                                        <th class="p-2.5">ITEM DESCRIPTION</th>
+                                        <th class="p-2.5 text-right">AMOUNT (₦)</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-stone-200 text-stone-800">
+                                    <tr>
+                                        <td id="inv-disp-item1-desc" class="p-2.5">Enterprise Registry Digitization &amp; Document Indexing</td>
+                                        <td id="inv-disp-item1-amount" class="p-2.5 text-right font-mono font-semibold">1,500,000.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="inv-disp-item2-desc" class="p-2.5">WhatsApp Conversational AI Support Agent Deployment</td>
+                                        <td id="inv-disp-item2-amount" class="p-2.5 text-right font-mono font-semibold">750,000.00</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Calculations -->
+                        <div class="flex justify-end text-[11.5px]">
+                            <div class="w-72 space-y-1.5 border border-stone-300 p-3 rounded-lg bg-stone-50">
+                                <div class="flex justify-between text-stone-600"><span>SUBTOTAL:</span><span id="inv-val-subtotal" class="font-mono">₦2,250,000.00</span></div>
+                                <div class="flex justify-between text-stone-600"><span>VAT (7.5%):</span><span id="inv-val-vat" class="font-mono">₦168,750.00</span></div>
+                                <div class="flex justify-between font-bold text-espresso-900 text-sm pt-1 border-t border-stone-300"><span>TOTAL DUE:</span><span id="inv-val-total" class="font-mono text-terracotta">₦2,418,750.00</span></div>
+                            </div>
+                        </div>
+
+                        <!-- Payment Box -->
+                        <div class="bg-espresso-900 text-linen rounded-xl p-3.5 space-y-2 border border-warmgold/40 shadow">
+                            <div class="flex justify-between items-center">
+                                <span class="text-[9.5px] uppercase font-bold text-warmgold tracking-wider">TOTAL AMOUNT IN WORDS:</span>
+                                <span class="text-[9px] font-mono text-emerald-400">STATUS: PAYMENT DUE</span>
+                            </div>
+                            <p id="inv-val-words" class="text-[11px] text-stone-300 italic font-semibold">Two Million Four Hundred and Eighteen Thousand Seven Hundred and Fifty Naira Only</p>
+                            
+                            <div class="pt-2 border-t border-espresso-700 grid grid-cols-2 gap-2 text-[9.5px] text-stone-300">
+                                <div>
+                                    <p class="font-bold text-warmgold">BANK PAYMENT DETAILS:</p>
+                                    <p>Bank: First Bank Nigeria</p>
+                                    <p>Account Name: iClick Digital Ventures</p>
+                                    <p>Account Number: 3120984521</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="font-bold text-warmgold">CORRESPONDENCE:</p>
+                                    <p>Email: iclickdigitalventures@gmail.com</p>
+                                    <p>Phone: +234 708 492 0844</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Signatures -->
+                        <div class="pt-2 border-t-2 border-espresso-900 flex justify-between items-end text-[9.5px]">
+                            <div>
+                                <p class="text-stone-500">Issued By:</p>
+                                <p class="font-bold text-espresso-900">Finance &amp; Billing Department</p>
+                                <p class="text-stone-600">iClick Digital Ventures</p>
+                            </div>
+                            <div class="text-right">
+                                <div class="h-8 flex justify-end items-center my-0.5">
+                                    <img src="" class="ceo-sig-target h-full object-contain hidden" alt="CEO Signature">
+                                    <span class="font-serif italic text-espresso-900 font-bold text-sig-fallback">M. Y. Ibrahim</span>
+                                </div>
+                                <p class="font-bold text-espresso-900">MUHAMMAD YASIN IBRAHIM</p>
+                                <p class="text-stone-600">Chief Executive Officer / Proprietor</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="finances-tab" class="tab-content hidden space-y-6">
+            <div class="bg-espresso-800 border border-espresso-600 rounded-2xl p-5 md:p-6 space-y-6">
+                
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-espresso-600 pb-5">
+                    <div>
+                        <span class="inline-block px-3 py-1 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-400 uppercase tracking-wider mb-1.5 border border-emerald-500/30">Financial Governance Engine</span>
+                        <h2 class="text-xl md:text-2xl font-heading font-bold text-linen">Salary Onboarding Suite &amp; Payslip Authorization</h2>
+                        <p class="text-xs text-stone-300 mt-0.5">Strict multi-stage financial workflow with role salary limits and mandatory CEO sign-off.</p>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2">
+                        <button onclick="downloadPDF('payslip-paper', 'iclick-official-payslip.pdf')" class="bg-warmgold hover:bg-amber-400 text-espresso-900 font-extrabold text-xs px-4 py-2.5 rounded-xl transition shadow flex items-center gap-1.5">
+                            <i class="fa-solid fa-file-pdf"></i> Export Payslip PDF
+                        </button>
+                        <button onclick="downloadCardPNG('payslip-paper', 'iclick-payslip.png')" class="bg-terracotta hover:bg-terracotta/90 text-linen text-xs font-semibold px-3.5 py-2.5 rounded-xl transition flex items-center gap-1.5 shadow">
+                            <i class="fa-solid fa-file-image"></i> Export PNG
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-espresso-900 border border-espresso-700 rounded-xl p-4 space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+                        <div>
+                            <label class="block text-stone-300 font-semibold mb-1">Employee Name</label>
+                            <input type="text" id="pay-input-name" value="Abubakar Datti Mahmud" oninput="updatePayslipCalculations()" class="w-full bg-espresso-800 border border-espresso-600 rounded-xl p-2 text-linen outline-none focus:border-terracotta">
+                        </div>
+                        <div>
+                            <label class="block text-stone-300 font-semibold mb-1">Staff ID Code</label>
+                            <input type="text" id="pay-input-id" value="IDV-STF-084" oninput="updatePayslipCalculations()" class="w-full bg-espresso-800 border border-espresso-600 rounded-xl p-2 text-linen outline-none focus:border-terracotta">
+                        </div>
+                        <div>
+                            <label class="block text-stone-300 font-semibold mb-1">Basic Salary (₦)</label>
+                            <input type="number" id="pay-input-basic" value="150000" oninput="updatePayslipCalculations()" class="w-full bg-espresso-800 border border-espresso-600 rounded-xl p-2 text-linen outline-none focus:border-terracotta">
+                        </div>
+                        <div>
+                            <label class="block text-stone-300 font-semibold mb-1">PAYE Tax Deduction (₦)</label>
+                            <input type="number" id="pay-input-tax" value="12000" oninput="updatePayslipCalculations()" class="w-full bg-espresso-800 border border-espresso-600 rounded-xl p-2 text-linen outline-none focus:border-terracotta">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-center overflow-x-auto p-2">
+                    <div id="payslip-paper" class="w-[750px] bg-linen text-espresso-900 p-8 rounded-xl border border-stone-300 shadow-2xl print-exact relative space-y-5">
+                        <div class="flex items-start justify-between border-b-2 border-espresso-900 pb-3">
+                            <div class="flex items-center gap-3">
+                                <svg viewBox="0 0 100 100" class="w-12 h-12 flex-shrink-0">
+                                    <rect x="20" y="20" width="26" height="26" rx="6" fill="#19110B"></rect>
+                                    <rect x="54" y="20" width="26" height="26" rx="6" fill="#C28E68"></rect>
+                                    <rect x="20" y="54" width="26" height="26" rx="6" fill="#C28E68"></rect>
+                                    <rect x="54" y="54" width="26" height="26" rx="6" fill="#19110B"></rect>
+                                    <circle cx="50" cy="50" r="8" fill="#D4AF37" stroke="#19110B" stroke-width="2"></circle>
+                                </svg>
+                                <div>
+                                    <h2 class="font-heading font-extrabold text-xl text-espresso-900 tracking-tight leading-none">iCLICK DIGITAL VENTURES</h2>
+                                    <p class="text-[9.5px] font-bold text-terracotta uppercase tracking-wider mt-0.5">GovTech • AI Automation • Digital Academy • IoT Systems</p>
+                                </div>
+                            </div>
+                            <span class="bg-espresso-900 text-warmgold text-xs font-bold px-3 py-1 rounded-lg uppercase tracking-wider">OFFICIAL PAYSLIP</span>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4 text-[11px] bg-stone-100 p-3 rounded-lg border border-stone-300">
+                            <div><span class="text-stone-500 font-semibold">Employee:</span> <strong id="slip-display-name">Abubakar Datti Mahmud</strong></div>
+                            <div><span class="text-stone-500 font-semibold">Staff ID:</span> <strong id="slip-display-id" class="font-mono text-terracotta">IDV-STF-084</strong></div>
+                        </div>
+
+                        <div class="bg-espresso-900 text-linen rounded-xl p-3.5 flex justify-between items-center">
+                            <div>
+                                <span class="text-[9.5px] uppercase font-bold text-warmgold tracking-wider">NET TAKE-HOME PAY</span>
+                                <p id="slip-val-words" class="text-[10.5px] text-stone-300 italic">One Hundred and Thirty-Eight Thousand Naira Only</p>
+                            </div>
+                            <div id="slip-val-net" class="text-2xl font-mono font-extrabold text-warmgold">₦138,000.00</div>
+                        </div>
+
+                        <div class="pt-2 border-t-2 border-espresso-900 flex justify-between items-end text-[9.5px]">
+                            <div>
+                                <p class="text-stone-500">Payroll Officer:</p>
+                                <p class="font-bold text-espresso-900">Finance &amp; Payroll Unit</p>
+                            </div>
+                            <div class="text-right">
+                                <div class="h-8 flex justify-end items-center my-0.5">
+                                    <img src="" class="ceo-sig-target h-full object-contain hidden" alt="CEO Signature">
+                                    <span class="font-serif italic text-espresso-900 font-bold text-sig-fallback">M. Y. Ibrahim</span>
+                                </div>
+                                <p class="font-bold text-espresso-900">MUHAMMAD YASIN IBRAHIM</p>
+                                <p class="text-stone-600">Chief Executive Officer / Proprietor</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="hr-suite-tab" class="tab-content hidden space-y-6">
+            <div class="bg-espresso-800 border border-espresso-600 rounded-2xl p-5 md:p-6 space-y-5">
+                <div class="flex justify-between items-center border-b border-espresso-600 pb-4">
+                    <h2 class="text-xl font-heading font-bold text-linen">HR Onboarding Suite &amp; Document Engine</h2>
+                    <div class="flex gap-2">
+                        <button onclick="downloadPDF('hr-letterhead-paper', 'iclick-hr-document.pdf')" class="bg-warmgold text-espresso-900 font-extrabold text-xs px-4 py-2 rounded-xl">Download PDF</button>
+                        <button onclick="downloadCardPNG('hr-letterhead-paper', 'iclick-hr-document.png')" class="bg-terracotta text-linen text-xs font-semibold px-3 py-2 rounded-xl">Export PNG</button>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-2 text-xs">
+                    <button id="hr-type-btn-appointment" onclick="setHrDocType('appointment')" class="hr-type-btn px-3.5 py-2 rounded-xl font-bold bg-terracotta text-linen">Offer Letter</button>
+                    <button id="hr-type-btn-acceptance" onclick="setHrDocType('acceptance')" class="hr-type-btn px-3.5 py-2 rounded-xl font-bold bg-espresso-900 text-stone-300">Acceptance</button>
+                    <button id="hr-type-btn-posting" onclick="setHrDocType('posting')" class="hr-type-btn px-3.5 py-2 rounded-xl font-bold bg-espresso-900 text-stone-300">Posting Memo</button>
+                    <button id="hr-type-btn-assumption" onclick="setHrDocType('assumption')" class="hr-type-btn px-3.5 py-2 rounded-xl font-bold bg-espresso-900 text-stone-300">Assumption of Duty</button>
+                </div>
+
+                <div class="flex justify-center overflow-x-auto p-2">
+                    <div id="hr-letterhead-paper" class="w-[720px] min-h-[960px] bg-linen text-espresso-900 p-8 rounded-xl shadow-2xl flex flex-col justify-between border border-stone-300">
+                        <div>
+                            <div class="flex items-center justify-between border-b-2 border-espresso-900 pb-3 mb-4">
+                                <div class="flex items-center gap-3">
+                                    <svg viewBox="0 0 100 100" class="w-10 h-10">
+                                        <rect x="20" y="20" width="26" height="26" rx="6" fill="#19110B"></rect>
+                                        <rect x="54" y="20" width="26" height="26" rx="6" fill="#C28E68"></rect>
+                                        <rect x="20" y="54" width="26" height="26" rx="6" fill="#C28E68"></rect>
+                                        <rect x="54" y="54" width="26" height="26" rx="6" fill="#19110B"></rect>
+                                        <circle cx="50" cy="50" r="8" fill="#D4AF37" stroke="#19110B" stroke-width="2"></circle>
+                                    </svg>
+                                    <div>
+                                        <h2 class="font-heading font-extrabold text-lg text-espresso-900">iCLICK DIGITAL VENTURES</h2>
+                                        <p class="text-[9px] font-bold text-terracotta uppercase">BN: 9772940 • SCUML COMPLIANT</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="hr-doc-content-container" class="text-xs space-y-3">
+                    <div class="flex justify-between font-bold border-b border-stone-300 pb-2">
+                        <span>REF: IDV/HR/APP/2026/084</span>
+                        <span>DATE: 23 August 2026</span>
+                    </div>
+                    <p class="font-bold text-sm text-espresso-900">OFFER OF EMPLOYMENT</p>
+                    <p>Dear Amina Bello Usman,</p>
+                    <p>We are pleased to offer you the position of <strong>Lead AI Automation Engineer</strong> under <strong>iClick AI Automation</strong> at iClick Digital Ventures (BN: 9772940).</p>
+                    <div class="bg-stone-100 p-2.5 rounded border border-stone-300 space-y-1">
+                        <p>• <strong>Monthly Gross Salary:</strong> ₦450,000.00 (Four Hundred &amp; Fifty Thousand Naira Only)</p>
+                        <p>• <strong>Resumption Date:</strong> 01 September 2026</p>
+                        <p>• <strong>Duty Location:</strong> Sokoto &amp; Abuja Headquarters, Nigeria</p>
+                    </div>
+                    <p>Kindly sign and return the acceptance slip within 7 days.</p>
+                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ceo-id-tab" class="tab-content hidden space-y-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                <div class="lg:col-span-4 bg-espresso-800 border border-espresso-600 rounded-2xl p-5 space-y-4">
+                    <h2 class="text-xl font-heading font-bold text-linen">CEO Official ID Card</h2>
+                    <button onclick="toggleCardFlip('ceo-card-inner')" class="w-full bg-espresso-700 text-linen py-2 rounded-xl text-xs font-bold">Flip ID Card (Front / Back)</button>
+                    <button onclick="openSignatureModal('ceo')" class="w-full bg-warmgold text-espresso-900 py-2 rounded-xl text-xs font-bold">Sign On Touchscreen / Stylus</button>
+                    <div class="grid grid-cols-2 gap-2">
+                        <button onclick="downloadCardPNG('ceo-id-front', 'iclick-ceo-id-front.png')" class="bg-terracotta text-linen py-2 rounded-xl text-xs font-bold">Front PNG</button>
+                        <button onclick="downloadCardPNG('ceo-id-back', 'iclick-ceo-id-back.png')" class="bg-terracotta text-linen py-2 rounded-xl text-xs font-bold">Back PNG</button>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-8 flex justify-center p-4">
+                    <div id="ceo-id-container" class="perspective-1000 w-[320px] h-[500px]">
+                        <div id="ceo-card-inner" class="transform-style-3d relative w-full h-full rounded-2xl shadow-2xl">
+                            <!-- CEO ID FRONT -->
+                            <div id="ceo-id-front" class="backface-hidden absolute inset-0 bg-espresso-900 border-2 border-warmgold/50 rounded-2xl p-5 flex flex-col justify-between">
+                                <div class="flex items-center justify-between border-b border-espresso-700 pb-2">
+                                    <span class="text-linen font-bold text-xs">iCLICK DIGITAL VENTURES</span>
+                                    <span class="text-[8.5px] font-mono text-warmgold">BN: 9772940</span>
+                                </div>
+                                <div class="text-center space-y-1">
+                                    <div class="w-28 h-32 mx-auto bg-espresso-800 border border-terracotta rounded-xl overflow-hidden p-1">
+                                        <img id="ceo-portrait-img" src="https://placehold.co/300x350/2A1A10/FDFBF7?text=CEO+Photo" alt="Muhammad Yasin Ibrahim" class="w-full h-full object-cover rounded-lg">
+                                    </div>
+                                    <h3 class="font-heading font-bold text-sm text-linen mt-2">MUHAMMAD YASIN IBRAHIM</h3>
+                                    <p class="text-[11px] text-terracotta font-semibold">Chief Executive Officer / Proprietor</p>
+                                </div>
+                                <div class="border-t border-espresso-700 pt-2 flex justify-between text-[8.5px] text-stone-400">
+                                    <span>IDV-CEO-001</span>
+                                    <span class="text-emerald-400 font-bold">UNLIMITED SIGN-OFF</span>
+                                </div>
+                            </div>
+                            <!-- CEO ID BACK -->
+                            <div id="ceo-id-back" class="backface-hidden absolute inset-0 bg-espresso-900 border-2 border-warmgold/50 rounded-2xl p-5 flex flex-col justify-between [transform:rotateY(180deg)]">
+                                <div class="text-center border-b border-espresso-700 pb-1">
+                                    <p class="text-[9.5px] font-bold text-linen">iClick Digital Ventures</p>
+                                </div>
+                                <div class="text-center pt-1">
+                                    <p class="text-[8.5px] text-stone-400 mb-1">Authorized Holder Signature:</p>
+                                    <div class="h-10 bg-espresso-800 rounded flex items-center justify-center p-1 border border-espresso-700">
+                                        <img src="" class="ceo-sig-target h-full object-contain hidden" alt="CEO Signature">
+                                        <span class="text-xs font-serif italic text-warmgold font-bold text-sig-fallback">M. Y. Ibrahim</span>
+                                    </div>
+                                </div>
+                                <p class="text-[8px] font-mono text-stone-400 text-center">IDV-EXEC-VERIFIED-CREDENTIAL</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="staff-id-tab" class="tab-content hidden space-y-6">
+            <div class="bg-espresso-800 border border-espresso-600 rounded-2xl p-5 space-y-4">
+                <h2 class="text-xl font-heading font-bold text-linen">Staff ID Generator &amp; Badge Editor</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+                    <input type="text" id="staff-input-name" value="Amina Bello Usman" class="bg-espresso-900 border border-espresso-600 rounded-xl p-2 text-linen">
+                    <input type="text" id="staff-input-title" value="Lead AI Automation Engineer" class="bg-espresso-900 border border-espresso-600 rounded-xl p-2 text-linen">
+                    <input type="text" id="staff-input-id" value="IDV-STF-084" class="bg-espresso-900 border border-espresso-600 rounded-xl p-2 text-linen">
+                </div>
+            </div>
+        </section>
+
+        <section id="letterhead-tab" class="tab-content hidden space-y-6">
+            <div id="a4-letterhead-paper" class="a4-paper bg-linen text-espresso-900 p-12 mx-auto rounded-xl border border-stone-300 space-y-6 max-w-[750px]">
+                <div class="flex justify-between items-start border-b-2 border-espresso-900 pb-4">
+                    <div class="flex items-center gap-3">
+                        <svg viewBox="0 0 100 100" class="w-12 h-12 flex-shrink-0">
+                            <rect x="20" y="20" width="26" height="26" rx="6" fill="#19110B"></rect>
+                            <rect x="54" y="20" width="26" height="26" rx="6" fill="#C28E68"></rect>
+                            <rect x="20" y="54" width="26" height="26" rx="6" fill="#C28E68"></rect>
+                            <rect x="54" y="54" width="26" height="26" rx="6" fill="#19110B"></rect>
+                            <circle cx="50" cy="50" r="8" fill="#D4AF37" stroke="#19110B" stroke-width="2"></circle>
+                        </svg>
+                        <div>
+                            <h2 class="font-heading font-extrabold text-2xl tracking-tight leading-tight text-espresso-900">iClick Digital Ventures</h2>
+                            <p class="text-[10px] font-bold text-terracotta uppercase tracking-wider">CAC REGISTERED • BN: 9772940 • SCUML COMPLIANT</p>
+                        </div>
+                    </div>
+                    <div class="text-right text-xs text-stone-600">
+                        <p class="font-bold text-espresso-900">www.iclickdigitalventures.com</p>
+                        <p>iclickdigitalventures@gmail.com</p>
+                        <p>Abuja &amp; Sokoto, Nigeria</p>
+                        <p>+234 708 492 0844</p>
+                    </div>
+                </div>
+                <p class="text-xs leading-relaxed">Official memorandum stationery for corporate correspondence, partnership tenders, and government transformation mandates.</p>
+            </div>
+        </section>
+
+        <section id="download-hub-tab" class="tab-content hidden space-y-6">
+            <div class="bg-espresso-800 border border-espresso-600 rounded-2xl p-6 space-y-4 text-center">
+                <h2 class="text-2xl font-heading font-bold text-linen">Approved Quad Tech Shield Vector Mark</h2>
+                <div class="w-32 h-32 mx-auto bg-espresso-900 border-2 border-warmgold rounded-2xl p-4 flex items-center justify-center shadow-2xl">
+                    <svg id="svg-logo-quad-dark" viewBox="0 0 100 100" class="w-full h-full">
+                        <rect x="20" y="20" width="26" height="26" rx="6" fill="#FDFBF7"></rect>
+                        <rect x="54" y="20" width="26" height="26" rx="6" fill="#D4AF37"></rect>
+                        <rect x="20" y="54" width="26" height="26" rx="6" fill="#C28E68"></rect>
+                        <rect x="54" y="54" width="26" height="26" rx="6" fill="#FDFBF7"></rect>
+                        <circle cx="50" cy="50" r="8" fill="#19110B" stroke="#D4AF37" stroke-width="2"></circle>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <section id="cac-tab" class="tab-content hidden space-y-6">
+            <div id="cac-record-sheet" class="bg-espresso-800 border border-espresso-600 rounded-2xl p-6 space-y-4">
+                <h2 class="text-xl font-bold text-linen">CAC Registration Extract (BN: 9772940)</h2>
+                <p class="text-xs text-stone-300">Proprietor: Muhammad Yasin Ibrahim | Registered: 14 August 2026 | Active Business Status</p>
+            </div>
+        </section>
+
+        <section id="it-admin-tab" class="tab-content hidden space-y-6">
+            <div class="bg-espresso-800 border border-espresso-600 rounded-2xl p-5 md:p-6 space-y-6">
+                
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-espresso-600 pb-5">
+                    <div>
+                        <span class="inline-block px-3 py-1 rounded-full text-[10px] font-bold bg-blue-500/20 text-blue-400 uppercase tracking-wider mb-1.5 border border-blue-500/30">IT Administration &amp; Security Desk</span>
+                        <h2 class="text-xl md:text-2xl font-heading font-bold text-linen">Staff Credential Management &amp; PIN Reset Approvals</h2>
+                        <p class="text-xs text-stone-300 mt-0.5">Manage employee access keys, security codes, and process PIN recreation requests co-authorized by CEO.</p>
+                    </div>
+                    <span class="bg-blue-900/60 text-blue-300 text-xs px-3 py-1 rounded-lg font-mono border border-blue-600/40"><i class="fa-solid fa-lock mr-1"></i> Admin Console Active</span>
+                </div>
+
+                <div class="bg-espresso-900 border border-espresso-700 rounded-xl p-4 space-y-3">
+                    <h3 class="font-heading font-bold text-sm text-warmgold flex items-center justify-between">
+                        <span><i class="fa-solid fa-key text-amber-400 mr-1.5"></i> Pending PIN Recreation &amp; Reset Requests</span>
+                        <span class="text-[10px] bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded border border-amber-500/30 font-mono">Requires CEO Co-Authorization</span>
+                    </h3>
+
+                    <div class="overflow-x-auto text-xs">
+                        <table class="w-full text-left">
+                            <thead class="bg-espresso-800 text-stone-400 border-b border-espresso-700">
+                                <tr>
+                                    <th class="p-2.5">Staff ID</th>
+                                    <th class="p-2.5">Employee Name</th>
+                                    <th class="p-2.5">Designation</th>
+                                    <th class="p-2.5">Requested Date</th>
+                                    <th class="p-2.5">CEO Status</th>
+                                    <th class="p-2.5 text-right">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="pin-reset-tbody" class="divide-y divide-espresso-800 text-stone-300">
+                <tr>
+                    <td class="p-2.5 font-mono font-bold text-warmgold">IDV-STF-084</td>
+                    <td class="p-2.5 font-bold text-linen">Amina Bello Usman</td>
+                    <td class="p-2.5">Staff Officer</td>
+                    <td class="p-2.5">23 Aug 2026, 04:21 WAT</td>
+                    <td class="p-2.5"><span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 font-mono">Pending CEO Approval</span></td>
+                    <td class="p-2.5 text-right whitespace-nowrap">
+                        <button onclick="approvePinResetByCeo('IDV-STF-084')" class="bg-warmgold text-espresso-900 font-bold px-2 py-1 rounded text-[10px]">CEO Approve</button>
+                    </td>
+                </tr>
+            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="bg-espresso-900 border border-espresso-700 rounded-xl p-4 space-y-3 text-xs">
+                    <h3 class="font-heading font-bold text-sm text-linen flex items-center gap-2">
+                        <i class="fa-solid fa-users-gear text-terracotta"></i> Corporate Personnel Directory &amp; Access Credentials
+                    </h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead class="bg-espresso-800 text-stone-400 border-b border-espresso-700">
+                                <tr>
+                                    <th class="p-2.5">User ID</th>
+                                    <th class="p-2.5">Name</th>
+                                    <th class="p-2.5">Role / Designation</th>
+                                    <th class="p-2.5">Hierarchy Tier</th>
+                                    <th class="p-2.5">Approval Limit</th>
+                                    <th class="p-2.5">PIN Status</th>
+                                    <th class="p-2.5 text-right">Admin Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="user-directory-tbody" class="divide-y divide-espresso-800 text-stone-300">
+                <tr>
+                    <td class="p-2.5 font-mono font-bold text-warmgold">IDV-CEO-001</td>
+                    <td class="p-2.5 font-bold text-linen">Muhammad Yasin Ibrahim</td>
+                    <td class="p-2.5">Chief Executive Officer / Proprietor</td>
+                    <td class="p-2.5 uppercase font-mono text-terracotta">ceo</td>
+                    <td class="p-2.5 font-mono">UNLIMITED</td>
+                    <td class="p-2.5 font-mono text-emerald-400">Security PIN Set</td>
+                    <td class="p-2.5 text-right"><button onclick="requestPinReset('IDV-CEO-001')" class="bg-espresso-800 hover:bg-espresso-700 text-amber-300 border border-espresso-600 px-2 py-1 rounded text-[10px]">Request PIN Reset</button></td>
+                </tr>
+            
+                <tr>
+                    <td class="p-2.5 font-mono font-bold text-warmgold">IDV-DIR-002</td>
+                    <td class="p-2.5 font-bold text-linen">Dr. Farouk Aliyu</td>
+                    <td class="p-2.5">Finance &amp; Operations Director</td>
+                    <td class="p-2.5 uppercase font-mono text-terracotta">director</td>
+                    <td class="p-2.5 font-mono">₦2,500,000</td>
+                    <td class="p-2.5 font-mono text-emerald-400">Security PIN Set</td>
+                    <td class="p-2.5 text-right"><button onclick="requestPinReset('IDV-DIR-002')" class="bg-espresso-800 hover:bg-espresso-700 text-amber-300 border border-espresso-600 px-2 py-1 rounded text-[10px]">Request PIN Reset</button></td>
+                </tr>
+            
+                <tr>
+                    <td class="p-2.5 font-mono font-bold text-warmgold">IDV-ACT-003</td>
+                    <td class="p-2.5 font-bold text-linen">Usman Danfodio</td>
+                    <td class="p-2.5">Chief Accountant</td>
+                    <td class="p-2.5 uppercase font-mono text-terracotta">accountant</td>
+                    <td class="p-2.5 font-mono">₦1,000,000</td>
+                    <td class="p-2.5 font-mono text-emerald-400">Security PIN Set</td>
+                    <td class="p-2.5 text-right"><button onclick="requestPinReset('IDV-ACT-003')" class="bg-espresso-800 hover:bg-espresso-700 text-amber-300 border border-espresso-600 px-2 py-1 rounded text-[10px]">Request PIN Reset</button></td>
+                </tr>
+            
+                <tr>
+                    <td class="p-2.5 font-mono font-bold text-warmgold">IDV-HOD-012</td>
+                    <td class="p-2.5 font-bold text-linen">Hajia Fatima Kyari</td>
+                    <td class="p-2.5">Head of Operations</td>
+                    <td class="p-2.5 uppercase font-mono text-terracotta">supervisor</td>
+                    <td class="p-2.5 font-mono">₦250,000</td>
+                    <td class="p-2.5 font-mono text-emerald-400">Security PIN Set</td>
+                    <td class="p-2.5 text-right"><button onclick="requestPinReset('IDV-HOD-012')" class="bg-espresso-800 hover:bg-espresso-700 text-amber-300 border border-espresso-600 px-2 py-1 rounded text-[10px]">Request PIN Reset</button></td>
+                </tr>
+            
+                <tr>
+                    <td class="p-2.5 font-mono font-bold text-warmgold">IDV-STF-084</td>
+                    <td class="p-2.5 font-bold text-linen">Amina Bello Usman</td>
+                    <td class="p-2.5">Lead AI Automation Engineer</td>
+                    <td class="p-2.5 uppercase font-mono text-terracotta">staff</td>
+                    <td class="p-2.5 font-mono">₦50,000</td>
+                    <td class="p-2.5 font-mono text-emerald-400">Security PIN Set</td>
+                    <td class="p-2.5 text-right"><button onclick="requestPinReset('IDV-STF-084')" class="bg-espresso-800 hover:bg-espresso-700 text-amber-300 border border-espresso-600 px-2 py-1 rounded text-[10px]">Request PIN Reset</button></td>
+                </tr>
+            
+                <tr>
+                    <td class="p-2.5 font-mono font-bold text-warmgold">IDV-IT-001</td>
+                    <td class="p-2.5 font-bold text-linen">Ahmad Sani</td>
+                    <td class="p-2.5">IT Systems Administrator</td>
+                    <td class="p-2.5 uppercase font-mono text-terracotta">it_admin</td>
+                    <td class="p-2.5 font-mono">₦0</td>
+                    <td class="p-2.5 font-mono text-emerald-400">Security PIN Set</td>
+                    <td class="p-2.5 text-right"><button onclick="requestPinReset('IDV-IT-001')" class="bg-espresso-800 hover:bg-espresso-700 text-amber-300 border border-espresso-600 px-2 py-1 rounded text-[10px]">Request PIN Reset</button></td>
+                </tr>
+            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <div id="pin-auth-modal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-espresso-800 border-2 border-warmgold/60 w-full max-w-md rounded-2xl p-6 space-y-4 shadow-2xl text-linen relative">
+            <div class="flex items-center justify-between border-b border-espresso-600 pb-3">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-shield-halved text-warmgold text-lg"></i>
+                    <div>
+                        <h3 id="pin-modal-title" class="font-heading font-bold text-sm">Security Verification Required</h3>
+                        <p class="text-[10px] text-stone-400">Step 1: Enter Personal PIN • Step 2: Touch Signature</p>
+                    </div>
+                </div>
+                <button onclick="closePinAuthModal()" class="text-stone-400 hover:text-linen text-lg"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <!-- PIN Input Block -->
+            <div class="space-y-3 text-center py-2">
+                <p id="pin-modal-target-action" class="text-xs text-warmgold font-semibold">Authorizing Request</p>
+                
+                <div class="flex justify-center gap-2">
+                    <input type="password" id="pin-input" maxlength="4" placeholder="••••" class="w-36 text-center text-2xl tracking-[0.5em] font-mono bg-espresso-900 border-2 border-terracotta rounded-xl p-2 text-warmgold outline-none focus:border-warmgold">
+                </div>
+                <p class="text-[10px] text-stone-400">Default PINs for Testing: CEO (0000), Director (2222), Accountant (3333), HOD (4444), Staff (8888)</p>
+            </div>
+
+            <div class="flex items-center justify-between pt-2 border-t border-espresso-600 text-xs">
+                <button onclick="closePinAuthModal()" class="bg-espresso-700 text-stone-300 px-4 py-2 rounded-xl">Cancel</button>
+                <button onclick="verifySecurityPinAndProceed()" class="bg-warmgold hover:bg-amber-400 text-espresso-900 font-extrabold px-5 py-2 rounded-xl transition shadow flex items-center gap-1.5">
+                    <i class="fa-solid fa-arrow-right"></i> Verify PIN &amp; Sign
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Touch Signature Modal -->
+    <div id="sig-modal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-espresso-800 border border-espresso-600 w-full max-w-lg rounded-2xl p-5 space-y-3.5 text-linen">
+            <div class="flex items-center justify-between border-b border-espresso-600 pb-2">
+                <h3 id="sig-modal-title" class="font-heading font-bold text-sm">Touchscreen Signature Pad</h3>
+                <button onclick="closeSignatureModal()" class="text-stone-400 hover:text-linen"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <p class="text-[10px] text-stone-300">PIN Verified! Draw signature on your screen to complete formal authorization.</p>
+            <div class="bg-linen rounded-xl p-2 border-2 border-terracotta relative overflow-hidden" style="touch-action: none;">
+                <canvas id="signature-pad" width="450" height="200" class="w-full h-44 bg-linen cursor-crosshair rounded-lg"></canvas>
+            </div>
+            <div class="flex items-center justify-between text-xs pt-1">
+                <button onclick="clearSignature()" class="bg-espresso-700 text-stone-200 px-3 py-1.5 rounded-lg border border-espresso-600">Clear</button>
+                <button onclick="saveSignatureAndCompleteWorkflow()" class="bg-terracotta text-linen px-4 py-1.5 rounded-lg font-bold">Authorize &amp; Attach Signature</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Login Modal -->
+    <div id="login-modal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-espresso-800 border-2 border-warmgold/60 w-full max-w-md rounded-2xl p-6 space-y-4 shadow-2xl text-linen">
+            <div class="flex items-center justify-between border-b border-espresso-600 pb-3">
+                <h3 class="font-heading font-bold text-base text-warmgold flex items-center gap-2">
+                    <i class="fa-solid fa-user-lock"></i> Corporate Employee Sign-In
+                </h3>
+                <button onclick="closeLoginModal()" class="text-stone-400 hover:text-linen"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <div class="space-y-3 text-xs">
+                <div>
+                    <label class="block text-stone-300 font-semibold mb-1">Select Account / User ID</label>
+                    <select id="login-user-select" class="w-full bg-espresso-900 border border-espresso-600 rounded-xl p-2 text-linen font-mono font-bold outline-none">
+                        <option value="IDV-CEO-001">IDV-CEO-001 • Muhammad Yasin Ibrahim (CEO - Unlimited)</option>
+                        <option value="IDV-DIR-002">IDV-DIR-002 • Dr. Farouk Aliyu (Director - ₦2.5M Limit)</option>
+                        <option value="IDV-ACT-003">IDV-ACT-003 • Usman Danfodio (Chief Accountant - ₦1.0M Limit)</option>
+                        <option value="IDV-HOD-012">IDV-HOD-012 • Hajia Fatima Kyari (Supervisor - ₦250k Limit)</option>
+                        <option value="IDV-STF-084">IDV-STF-084 • Amina Bello Usman (Field Staff - ₦50k Limit)</option>
+                        <option value="IDV-IT-001">IDV-IT-001 • Ahmad Sani (IT Systems Administrator)</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-stone-300 font-semibold mb-1">Personal Security PIN Code</label>
+                    <input type="password" id="login-pin-input" maxlength="4" placeholder="Enter 4-digit PIN" class="w-full bg-espresso-900 border border-espresso-600 rounded-xl p-2 text-center text-lg font-mono text-warmgold outline-none">
+                </div>
+
+                <div class="bg-espresso-900 p-2.5 rounded-xl border border-espresso-700 text-[10px] text-stone-300 space-y-0.5">
+                    <p class="font-bold text-warmgold">TEST CREDENTIALS PIN LIST:</p>
+                    <p>• CEO PIN: <span class="font-mono text-linen">0000</span> | Director PIN: <span class="font-mono text-linen">2222</span></p>
+                    <p>• Accountant PIN: <span class="font-mono text-linen">3333</span> | Supervisor PIN: <span class="font-mono text-linen">4444</span></p>
+                    <p>• Staff PIN: <span class="font-mono text-linen">8888</span> | IT Admin PIN: <span class="font-mono text-linen">9999</span></p>
+                </div>
+            </div>
+
+            <div class="flex justify-end gap-2 pt-2 border-t border-espresso-600 text-xs">
+                <button onclick="closeLoginModal()" class="bg-espresso-700 text-stone-300 px-3 py-2 rounded-xl">Cancel</button>
+                <button onclick="performUserLogin()" class="bg-warmgold text-espresso-900 font-extrabold px-5 py-2 rounded-xl">Sign In to Dashboard</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Custom Toast Notification Engine
+        window.showToast = function(message, type = 'info') {
+            const container = document.getElementById('toast-container');
+            if (!container) return;
+            const toast = document.createElement('div');
+            toast.className = `pointer-events-auto px-4 py-3 rounded-xl shadow-2xl text-xs font-semibold flex items-center gap-2 border transition-all duration-300 transform translate-y-2 opacity-0 ${
+                type === 'success' ? 'bg-emerald-900/90 text-emerald-200 border-emerald-600' :
+                type === 'error' ? 'bg-rose-900/90 text-rose-200 border-rose-600' :
+                'bg-espresso-800/95 text-warmgold border-warmgold/40'
+            }`;
+            const icon = type === 'success' ? 'fa-circle-check' : type === 'error' ? 'fa-triangle-exclamation' : 'fa-circle-info';
+            toast.innerHTML = `<i class="fa-solid ${icon}"></i> <span>${message}</span>`;
+            container.appendChild(toast);
+            setTimeout(() => toast.classList.remove('translate-y-2', 'opacity-0'), 10);
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-2');
+                setTimeout(() => toast.remove(), 300);
+            }, 3500);
+        };
+
+        // Navigation Switcher
+        window.switchTab = function(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-terracotta', 'text-linen', 'shadow');
+                btn.classList.add('text-stone-400', 'hover:text-linen');
+            });
+            const targetTab = document.getElementById(tabId);
+            if (targetTab) targetTab.classList.remove('hidden');
+            const activeBtn = document.getElementById('tab-btn-' + tabId);
+            if (activeBtn) {
+                activeBtn.classList.remove('text-stone-400', 'hover:text-linen');
+                activeBtn.classList.add('bg-terracotta', 'text-linen', 'shadow');
+            }
+        };
+
+        // System Accounts Database
+        let users = [
+            { id: 'IDV-CEO-001', name: 'Muhammad Yasin Ibrahim', role: 'ceo', pin: '0000', limit: Infinity, title: 'Chief Executive Officer / Proprietor' },
+            { id: 'IDV-DIR-002', name: 'Dr. Farouk Aliyu', role: 'director', pin: '2222', limit: 2500000, title: 'Finance & Operations Director' },
+            { id: 'IDV-ACT-003', name: 'Usman Danfodio', role: 'accountant', pin: '3333', limit: 1000000, title: 'Chief Accountant' },
+            { id: 'IDV-HOD-012', name: 'Hajia Fatima Kyari', role: 'supervisor', pin: '4444', limit: 250000, title: 'Head of Operations' },
+            { id: 'IDV-STF-084', name: 'Amina Bello Usman', role: 'staff', pin: '8888', limit: 50000, title: 'Lead AI Automation Engineer' },
+            { id: 'IDV-IT-001', name: 'Ahmad Sani', role: 'it_admin', pin: '9999', limit: 0, title: 'IT Systems Administrator' }
+        ];
+
+        let currentUser = users[0]; // Default CEO
+        let pinResetRequests = [
+            { staffId: 'IDV-STF-084', name: 'Amina Bello Usman', date: '23 Aug 2026, 04:21 WAT', ceoApproved: false, status: 'Pending CEO Approval' }
+        ];
+
+        let pendingWorkflowItem = null;
+        let pendingWorkflowAction = null;
+
+        // User Login Handlers
+        window.openLoginModal = function() { document.getElementById('login-modal')?.classList.remove('hidden'); };
+        window.closeLoginModal = function() { document.getElementById('login-modal')?.classList.add('hidden'); };
+
+        window.performUserLogin = function() {
+            const userId = document.getElementById('login-user-select').value;
+            const inputPin = document.getElementById('login-pin-input').value;
+            const targetUser = users.find(u => u.id === userId);
+            if (!targetUser) return;
+
+            if (inputPin !== targetUser.pin) {
+                showToast('Invalid Security PIN Code for ' + targetUser.name, 'error');
+                return;
+            }
+
+            currentUser = targetUser;
+            updateSessionUI();
+            closeLoginModal();
+            renderProjectRequestsTable();
+            renderUserDirectoryTable();
+            renderPinResetTable();
+            showToast(`Signed in successfully as ${currentUser.name} (${currentUser.role.toUpperCase()})`, 'success');
+        };
+
+        function updateSessionUI() {
+            document.getElementById('session-user-name').innerText = currentUser.name;
+            document.getElementById('session-role-badge').innerText = currentUser.role.toUpperCase();
+            document.getElementById('session-user-id').innerText = `ID: ${currentUser.id} • Limit: ` + (currentUser.limit === Infinity ? 'UNLIMITED' : '₦' + currentUser.limit.toLocaleString());
+            document.getElementById('user-avatar-badge').innerText = currentUser.role.toUpperCase().substring(0, 3);
+            
+            const reqStaffInput = document.getElementById('req-staff');
+            if (reqStaffInput) reqStaffInput.value = `${currentUser.name} (${currentUser.id})`;
+
+            const workflowDisp = document.getElementById('workflow-active-user-disp');
+            if (workflowDisp) workflowDisp.innerText = `${currentUser.name} (${currentUser.role.toUpperCase()})`;
+        }
+
+        // Project Requests Database
+        let projectRequests = [
+            {
+                id: 'PRJ-2026-001',
+                title: 'Court Registry File Digitization Scanners',
+                subsidiary: 'iClick GovTech',
+                amount: 1850000,
+                staff: 'Amina Bello Usman (IDV-STF-084)',
+                scope: 'Procurement of high-grade document scanners and networking peripherals.',
+                stage: 'director_cleared',
+                history: [
+                    '23 Aug 2026, 01:10 WAT - Submitted into Governance Workflow',
+                    '23 Aug 2026, 02:15 WAT - Approved by HOD Hajia Fatima Kyari (PIN Verified)',
+                    '23 Aug 2026, 03:00 WAT - Audited by Chief Accountant Usman Danfodio',
+                    '23 Aug 2026, 03:45 WAT - Executive Clearance by Director Dr. Farouk Aliyu'
+                ]
+            },
+            {
+                id: 'PRJ-2026-002',
+                title: 'WhatsApp API Bot Server Renewal',
+                subsidiary: 'iClick AI Automation',
+                amount: 220000,
+                staff: 'Abubakar Datti Mahmud',
+                scope: 'Yearly cloud server license for AI chatbot integrations.',
+                stage: 'supervisor_approved',
+                history: [
+                    '23 Aug 2026, 03:30 WAT - Submitted into Governance Workflow',
+                    '23 Aug 2026, 04:00 WAT - Approved by HOD Hajia Fatima Kyari (Within ₦250k Limit)'
+                ]
+            }
+        ];
+
+        window.createNewProjectRequest = function() {
+            const title = document.getElementById('req-title').value;
+            const subsidiary = document.getElementById('req-subsidiary').value;
+            const amount = parseFloat(document.getElementById('req-amount').value || 0);
+            const scope = document.getElementById('req-scope').value;
+
+            if (!title || amount <= 0) {
+                showToast('Please enter a valid request title and amount.', 'error');
+                return;
+            }
+
+            const timestamp = new Date().toLocaleString('en-NG', { dateStyle: 'medium', timeStyle: 'short' }) + ' WAT';
+            const newReq = {
+                id: 'PRJ-2026-00' + (projectRequests.length + 1),
+                title: title,
+                subsidiary: subsidiary,
+                amount: amount,
+                staff: `${currentUser.name} (${currentUser.id})`,
+                scope: scope,
+                stage: 'draft',
+                history: [`${timestamp} - Submitted into Governance Workflow by ${currentUser.name}`]
+            };
+
+            projectRequests.unshift(newReq);
+            renderProjectRequestsTable();
+            showToast(`New Project Request ${newReq.id} submitted!`, 'success');
+        };
+
+        window.initiateWorkflowStep = function(reqId, action) {
+            const req = projectRequests.find(r => r.id === reqId);
+            if (!req) return;
+
+            if (action === 'supervisor_approve' && currentUser.role !== 'supervisor' && currentUser.role !== 'ceo') {
+                showToast('Only Supervisors (HODs) or CEO can approve at this stage.', 'error');
+                return;
+            }
+            if (action === 'accountant_audit' && currentUser.role !== 'accountant' && currentUser.role !== 'ceo') {
+                showToast('Only Chief Accountant or CEO can pass Audit.', 'error');
+                return;
+            }
+            if (action === 'director_clear' && currentUser.role !== 'director' && currentUser.role !== 'ceo') {
+                showToast('Only Finance Director or CEO can grant executive clearance.', 'error');
+                return;
+            }
+            if (action === 'ceo_disburse' && currentUser.role !== 'ceo') {
+                showToast('ONLY CEO MUHAMMAD YASIN IBRAHIM CAN AUTHORIZE FINAL DISBURSEMENT!', 'error');
+                return;
+            }
+
+            if (currentUser.role !== 'ceo' && req.amount > currentUser.limit) {
+                showToast(`Amount (₦${req.amount.toLocaleString()}) exceeds your approval limit (₦${currentUser.limit.toLocaleString()}). Request escalated to higher tier!`, 'error');
+                return;
+            }
+
+            pendingWorkflowItem = req;
+            pendingWorkflowAction = action;
+
+            document.getElementById('pin-modal-target-action').innerText = `Authorizing ${action.toUpperCase()} for ${req.id} (₦${req.amount.toLocaleString()})`;
+            document.getElementById('pin-input').value = '';
+            document.getElementById('pin-auth-modal').classList.remove('hidden');
+        };
+
+        window.closePinAuthModal = function() { document.getElementById('pin-auth-modal').classList.add('hidden'); };
+
+        window.verifySecurityPinAndProceed = function() {
+            const pinInput = document.getElementById('pin-input').value;
+            if (pinInput !== currentUser.pin) {
+                showToast('SECURITY PIN FAILED! Authorization Denied.', 'error');
+                return;
+            }
+
+            closePinAuthModal();
+            showToast('PIN Verified! Please draw touchscreen signature.', 'info');
+            openSignatureModal('approval');
+        };
+
+        let activeSigType = 'ceo';
+        let ceoSignatureDataUrl = null;
+
+        window.openSignatureModal = function(type) {
+            activeSigType = type;
+            const modal = document.getElementById('sig-modal');
+            if (modal) modal.classList.remove('hidden');
+            initSignatureCanvas();
+        };
+
+        window.closeSignatureModal = function() {
+            const modal = document.getElementById('sig-modal');
+            if (modal) modal.classList.add('hidden');
+        };
+
+        let sigCanvas, sigCtx, isDrawing = false;
+        function initSignatureCanvas() {
+            sigCanvas = document.getElementById('signature-pad');
+            if (!sigCanvas) return;
+            sigCtx = sigCanvas.getContext('2d');
+            sigCtx.strokeStyle = '#19110B';
+            sigCtx.lineWidth = 2.5;
+            sigCtx.lineCap = 'round';
+
+            function getPos(e) {
+                const rect = sigCanvas.getBoundingClientRect();
+                let clientX = e.clientX, clientY = e.clientY;
+                if (e.touches && e.touches.length > 0) {
+                    clientX = e.touches[0].clientX;
+                    clientY = e.touches[0].clientY;
+                }
+                return { x: clientX - rect.left, y: clientY - rect.top };
+            }
+
+            sigCanvas.onmousedown = function(e) { isDrawing = true; const p = getPos(e); sigCtx.beginPath(); sigCtx.moveTo(p.x, p.y); };
+            sigCanvas.onmousemove = function(e) { if (!isDrawing) return; const p = getPos(e); sigCtx.lineTo(p.x, p.y); sigCtx.stroke(); };
+            sigCanvas.onmouseup = function() { isDrawing = false; };
+
+            sigCanvas.ontouchstart = function(e) { e.preventDefault(); isDrawing = true; const p = getPos(e); sigCtx.beginPath(); sigCtx.moveTo(p.x, p.y); };
+            sigCanvas.ontouchmove = function(e) { e.preventDefault(); if (!isDrawing) return; const p = getPos(e); sigCtx.lineTo(p.x, p.y); sigCtx.stroke(); };
+            sigCanvas.ontouchend = function(e) { e.preventDefault(); isDrawing = false; };
+        }
+
+        window.clearSignature = function() {
+            if (sigCanvas && sigCtx) sigCtx.clearRect(0, 0, sigCanvas.width, sigCanvas.height);
+        };
+
+        window.saveSignatureAndCompleteWorkflow = function() {
+            if (!sigCanvas) return;
+            const sigData = sigCanvas.toDataURL('image/png');
+            const timestamp = new Date().toLocaleString('en-NG', { dateStyle: 'medium', timeStyle: 'short' }) + ' WAT';
+
+            if (pendingWorkflowItem && pendingWorkflowAction) {
+                if (pendingWorkflowAction === 'supervisor_approve') {
+                    pendingWorkflowItem.stage = 'supervisor_approved';
+                    pendingWorkflowItem.history.push(`${timestamp} - Approved by HOD ${currentUser.name} (PIN Verified)`);
+                } else if (pendingWorkflowAction === 'accountant_audit') {
+                    pendingWorkflowItem.stage = 'audit_passed';
+                    pendingWorkflowItem.history.push(`${timestamp} - Audited by Chief Accountant ${currentUser.name}`);
+                } else if (pendingWorkflowAction === 'director_clear') {
+                    pendingWorkflowItem.stage = 'director_cleared';
+                    pendingWorkflowItem.history.push(`${timestamp} - Cleared by Director ${currentUser.name}`);
+                } else if (pendingWorkflowAction === 'ceo_disburse') {
+                    pendingWorkflowItem.stage = 'ceo_disbursed';
+                    pendingWorkflowItem.history.push(`${timestamp} - AUTHORIZED & DISBURSED BY CEO MUHAMMAD YASIN IBRAHIM`);
+                }
+
+                showToast(`AUTHORIZATION SUCCESSFUL for ${pendingWorkflowItem.id}!`, 'success');
+                pendingWorkflowItem = null;
+                pendingWorkflowAction = null;
+            } else {
+                ceoSignatureDataUrl = sigData;
+                document.querySelectorAll('.ceo-sig-target').forEach(img => {
+                    img.src = sigData;
+                    img.classList.remove('hidden');
+                });
+                showToast('Signature saved across all official credentials!', 'success');
+            }
+
+            closeSignatureModal();
+            renderProjectRequestsTable();
+        };
+
+        function renderProjectRequestsTable() {
+            const tbody = document.getElementById('project-requests-tbody');
+            if (!tbody) return;
+
+            tbody.innerHTML = projectRequests.map(r => {
+                let statusBadge = '';
+                if (r.stage === 'draft') statusBadge = `<span class="px-2 py-0.5 rounded bg-stone-700 text-stone-300 font-mono">1. Submitted</span>`;
+                else if (r.stage === 'supervisor_approved') statusBadge = `<span class="px-2 py-0.5 rounded bg-warmgold/20 text-warmgold font-mono">2. HOD Approved</span>`;
+                else if (r.stage === 'audit_passed') statusBadge = `<span class="px-2 py-0.5 rounded bg-blue-500/20 text-blue-400 font-mono">3. Audit Passed</span>`;
+                else if (r.stage === 'director_cleared') statusBadge = `<span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 font-mono font-bold">4. Director Cleared</span>`;
+                else if (r.stage === 'ceo_disbursed') statusBadge = `<span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-mono font-bold"><i class="fa-solid fa-check-double mr-1"></i> CEO Disbursed</span>`;
+
+                let actionBtn = '';
+                if (r.stage === 'draft') actionBtn = `<button onclick="initiateWorkflowStep('${r.id}', 'supervisor_approve')" class="bg-warmgold/20 text-warmgold border border-warmgold/40 px-2 py-1 rounded text-[10px] font-bold">Approve (HOD)</button>`;
+                else if (r.stage === 'supervisor_approved') actionBtn = `<button onclick="initiateWorkflowStep('${r.id}', 'accountant_audit')" class="bg-blue-500/20 text-blue-300 border border-blue-500/40 px-2 py-1 rounded text-[10px] font-bold">Pass Audit</button>`;
+                else if (r.stage === 'audit_passed') actionBtn = `<button onclick="initiateWorkflowStep('${r.id}', 'director_clear')" class="bg-amber-500/20 text-amber-300 border border-amber-500/40 px-2 py-1 rounded text-[10px] font-bold">Clear (Director)</button>`;
+                else if (r.stage === 'director_cleared') actionBtn = `<button onclick="initiateWorkflowStep('${r.id}', 'ceo_disburse')" class="bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold px-3 py-1 rounded text-[10px] shadow">CEO Authorize & Disburse</button>`;
+
+                const historyList = r.history.map(h => `<li class="text-[10px] text-stone-400">• ${h}</li>`).join('');
+
+                return `
+                    <tr>
+                        <td class="p-3 font-mono font-bold text-warmgold">${r.id}</td>
+                        <td class="p-3 font-bold text-linen">
+                            ${r.title}<br>
+                            <span class="text-[10px] text-stone-400 font-normal">${r.scope}</span>
+                            <ul class="mt-1 space-y-0.5">${historyList}</ul>
+                        </td>
+                        <td class="p-3">${r.subsidiary}</td>
+                        <td class="p-3 font-mono font-bold text-linen">₦${r.amount.toLocaleString('en-NG', {minimumFractionDigits: 2})}</td>
+                        <td class="p-3 text-stone-400">${r.staff}</td>
+                        <td class="p-3">${statusBadge}</td>
+                        <td class="p-3 text-right whitespace-nowrap">${actionBtn || '<span class="text-stone-500 italic">Fully Disbursed</span>'}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        // HR Document Renderer Engine
+        let currentHrDocType = 'appointment';
+        window.setHrDocType = function(type) {
+            currentHrDocType = type;
+            document.querySelectorAll('.hr-type-btn').forEach(btn => {
+                btn.classList.remove('bg-terracotta', 'text-linen');
+                btn.classList.add('bg-espresso-900', 'text-stone-300');
+            });
+            const activeBtn = document.getElementById('hr-type-btn-' + type);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-espresso-900', 'text-stone-300');
+                activeBtn.classList.add('bg-terracotta', 'text-linen');
+            }
+            renderHrDocTemplate();
+        };
+
+        function renderHrDocTemplate() {
+            const container = document.getElementById('hr-doc-content-container');
+            if (!container) return;
+
+            if (currentHrDocType === 'appointment') {
+                container.innerHTML = `
+                    <div class="flex justify-between font-bold border-b border-stone-300 pb-2">
+                        <span>REF: IDV/HR/APP/2026/084</span>
+                        <span>DATE: 23 August 2026</span>
+                    </div>
+                    <p class="font-bold text-sm text-espresso-900">OFFER OF EMPLOYMENT</p>
+                    <p>Dear Amina Bello Usman,</p>
+                    <p>We are pleased to offer you the position of <strong>Lead AI Automation Engineer</strong> under <strong>iClick AI Automation</strong> at iClick Digital Ventures (BN: 9772940).</p>
+                    <div class="bg-stone-100 p-2.5 rounded border border-stone-300 space-y-1">
+                        <p>• <strong>Monthly Gross Salary:</strong> ₦450,000.00 (Four Hundred & Fifty Thousand Naira Only)</p>
+                        <p>• <strong>Resumption Date:</strong> 01 September 2026</p>
+                        <p>• <strong>Duty Location:</strong> Sokoto & Abuja Headquarters, Nigeria</p>
+                    </div>
+                    <p>Kindly sign and return the acceptance slip within 7 days.</p>
+                `;
+            } else if (currentHrDocType === 'acceptance') {
+                container.innerHTML = `
+                    <div class="flex justify-between font-bold border-b border-stone-300 pb-2">
+                        <span>REF: IDV/HR/ACC/2026/084</span>
+                        <span>DATE: 23 August 2026</span>
+                    </div>
+                    <p class="font-bold text-sm text-espresso-900">LETTER OF ACCEPTANCE</p>
+                    <p>I, <strong>Amina Bello Usman</strong>, hereby accept the offer of appointment as Lead AI Automation Engineer under iClick AI Automation in accordance with the terms stated in the appointment letter.</p>
+                `;
+            } else if (currentHrDocType === 'posting') {
+                container.innerHTML = `
+                    <div class="bg-espresso-900 text-linen p-2 rounded font-bold flex justify-between">
+                        <span>INTERNAL DEPLOYMENT MEMO</span>
+                        <span>REF: IDV/HR/PST/2026/084</span>
+                    </div>
+                    <p>Management hereby approves the posting of <strong>Amina Bello Usman (IDV-STF-084)</strong> to <strong>iClick AI Automation</strong> as Lead AI Automation Engineer.</p>
+                `;
+            } else if (currentHrDocType === 'assumption') {
+                container.innerHTML = `
+                    <p class="font-bold text-sm text-center border-b border-stone-300 pb-1">ASSUMPTION OF DUTY FORM</p>
+                    <p>Employee: <strong>Amina Bello Usman</strong> (IDV-STF-084)</p>
+                    <p>Resumption Confirmed on 01 September 2026.</p>
+                `;
+            }
+        }
+
+        // IT Admin & PIN Reset Functions
+        window.requestPinReset = function(staffId) {
+            const existing = pinResetRequests.find(p => p.staffId === staffId && !p.ceoApproved);
+            if (existing) {
+                showToast('A PIN Reset Request is already pending CEO authorization.', 'info');
+                return;
+            }
+            const user = users.find(u => u.id === staffId);
+            const timestamp = new Date().toLocaleString('en-NG', { dateStyle: 'medium', timeStyle: 'short' }) + ' WAT';
+            pinResetRequests.push({
+                staffId: staffId,
+                name: user ? user.name : 'Staff Member',
+                date: timestamp,
+                ceoApproved: false,
+                status: 'Pending CEO Approval'
+            });
+            renderPinResetTable();
+            showToast('PIN Reset Request submitted. Awaiting CEO Authorization!', 'success');
+        };
+
+        window.approvePinResetByCeo = function(staffId) {
+            if (currentUser.role !== 'ceo') {
+                showToast('ONLY CEO CAN APPROVE PIN RECREATION REQUESTS!', 'error');
+                return;
+            }
+            const req = pinResetRequests.find(p => p.staffId === staffId);
+            if (req) {
+                req.ceoApproved = true;
+                req.status = 'CEO Approved - Ready for IT Reset';
+                showToast(`PIN Reset Request for ${req.name} Approved by CEO!`, 'success');
+                renderPinResetTable();
+            }
+        };
+
+        window.executeItPinReset = function(staffId) {
+            if (currentUser.role !== 'it_admin' && currentUser.role !== 'ceo') {
+                showToast('Only IT Admin or CEO can execute PIN recreation.', 'error');
+                return;
+            }
+            const req = pinResetRequests.find(p => p.staffId === staffId && p.ceoApproved);
+            if (!req) {
+                showToast('Cannot reset PIN without prior CEO Approval!', 'error');
+                return;
+            }
+            const user = users.find(u => u.id === staffId);
+            if (user) {
+                user.pin = '1234';
+                req.status = 'PIN Reset Executed (New PIN: 1234)';
+                showToast(`PIN for ${user.name} recreated successfully to '1234'`, 'success');
+                renderPinResetTable();
+                renderUserDirectoryTable();
+            }
+        };
+
+        function renderPinResetTable() {
+            const tbody = document.getElementById('pin-reset-tbody');
+            if (!tbody) return;
+            tbody.innerHTML = pinResetRequests.map(p => `
+                <tr>
+                    <td class="p-2.5 font-mono font-bold text-warmgold">${p.staffId}</td>
+                    <td class="p-2.5 font-bold text-linen">${p.name}</td>
+                    <td class="p-2.5">Staff Officer</td>
+                    <td class="p-2.5">${p.date}</td>
+                    <td class="p-2.5"><span class="px-2 py-0.5 rounded ${p.ceoApproved ? 'bg-emerald-500/20 text-emerald-400' : 'bg-amber-500/20 text-amber-300'} font-mono">${p.status}</span></td>
+                    <td class="p-2.5 text-right whitespace-nowrap">
+                        ${!p.ceoApproved ? `<button onclick="approvePinResetByCeo('${p.staffId}')" class="bg-warmgold text-espresso-900 font-bold px-2 py-1 rounded text-[10px]">CEO Approve</button>` : `<button onclick="executeItPinReset('${p.staffId}')" class="bg-blue-600 text-white font-bold px-2 py-1 rounded text-[10px]">IT Reset PIN</button>`}
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function renderUserDirectoryTable() {
+            const tbody = document.getElementById('user-directory-tbody');
+            if (!tbody) return;
+            tbody.innerHTML = users.map(u => `
+                <tr>
+                    <td class="p-2.5 font-mono font-bold text-warmgold">${u.id}</td>
+                    <td class="p-2.5 font-bold text-linen">${u.name}</td>
+                    <td class="p-2.5">${u.title}</td>
+                    <td class="p-2.5 uppercase font-mono text-terracotta">${u.role}</td>
+                    <td class="p-2.5 font-mono">${u.limit === Infinity ? 'UNLIMITED' : '₦' + u.limit.toLocaleString()}</td>
+                    <td class="p-2.5 font-mono text-emerald-400">Security PIN Set</td>
+                    <td class="p-2.5 text-right"><button onclick="requestPinReset('${u.id}')" class="bg-espresso-800 hover:bg-espresso-700 text-amber-300 border border-espresso-600 px-2 py-1 rounded text-[10px]">Request PIN Reset</button></td>
+                </tr>
+            `).join('');
+        }
+
+        window.updateInvoiceCalculations = function() {
+            const item1Amt = parseFloat(document.getElementById('inv-item1-amount')?.value || 0);
+            const item2Amt = parseFloat(document.getElementById('inv-item2-amount')?.value || 0);
+            const subtotal = item1Amt + item2Amt;
+            const vat = subtotal * 0.075;
+            const total = subtotal + vat;
+
+            document.getElementById('inv-val-subtotal').innerText = '₦' + subtotal.toLocaleString('en-NG', {minimumFractionDigits: 2});
+            document.getElementById('inv-val-vat').innerText = '₦' + vat.toLocaleString('en-NG', {minimumFractionDigits: 2});
+            document.getElementById('inv-val-total').innerText = '₦' + total.toLocaleString('en-NG', {minimumFractionDigits: 2});
+        };
+
+        window.updatePayslipCalculations = function() {
+            const basic = parseFloat(document.getElementById('pay-input-basic')?.value || 0);
+            const tax = parseFloat(document.getElementById('pay-input-tax')?.value || 0);
+            const net = Math.max(0, basic - tax);
+            document.getElementById('slip-val-net').innerText = '₦' + net.toLocaleString('en-NG', {minimumFractionDigits: 2});
+        };
+
+        window.toggleCardFlip = function(id) { document.getElementById(id)?.classList.toggle('[transform:rotateY(180deg)]'); };
+
+        window.downloadCardPNG = function(elementId, filename) {
+            const element = document.getElementById(elementId);
+            if (!element) return;
+            html2canvas(element, { scale: 2.5, useCORS: true }).then(canvas => {
+                const a = document.createElement('a');
+                a.href = canvas.toDataURL('image/png');
+                a.download = filename;
+                a.click();
+            });
+        };
+
+        window.downloadPDF = function(elementId, filename) {
+            const element = document.getElementById(elementId);
+            if (!element) return;
+            html2canvas(element, { scale: 3, useCORS: true, backgroundColor: '#FDFBF7' }).then(canvas => {
+                const imgData = canvas.toDataURL('image/png');
+                const { jsPDF } = window.jspdf;
+                const pdf = new jsPDF('p', 'mm', 'a4');
+                pdf.addImage(imgData, 'PNG', 0, 0, 210, 297);
+                pdf.save(filename);
+            });
+        };
+
+        window.downloadMasterZipPackage = function() {
+            const zip = new JSZip();
+            zip.file('README.txt', 'iClick Digital Ventures Governance Suite\nBN: 9772940\nwww.iclickdigitalventures.com');
+            zip.generateAsync({ type: 'blob' }).then(function(content) {
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(content);
+                a.download = 'iClick_Digital_Ventures_Master_Suite.zip';
+                a.click();
+            });
+        };
+
+        window.downloadWebAppFile = function() {
+            const htmlContent = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+            const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'iclick_brand_identity.html';
+            a.click();
+        };
+
+        window.addEventListener('DOMContentLoaded', () => {
+            window.switchTab('project-tab');
+            updateSessionUI();
+            renderProjectRequestsTable();
+            renderUserDirectoryTable();
+            renderPinResetTable();
+            renderHrDocTemplate();
+        });
+    </script>
+
+</body></html>
