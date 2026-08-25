@@ -28,41 +28,56 @@
 </head>
 <body class="bg-brand-50 text-brand-900 min-h-screen flex flex-col antialiased">
 
+  <!-- Secure 2FA / OTP Authentication Gate -->
   <div id="adminLoginGate" class="fixed inset-0 z-50 bg-brand-950 flex items-center justify-center p-4">
     <div class="glass-card w-full max-w-md p-8 rounded-3xl text-brand-50 shadow-2xl space-y-6">
       <div class="text-center">
         <div class="w-12 h-12 rounded-2xl bg-brand-300 text-brand-950 font-black text-xl flex items-center justify-center mx-auto mb-3 shadow-md">iC</div>
         <h2 class="text-xl font-bold">Admin Restricted Access</h2>
-        <p class="text-xs text-brand-300 mt-1">Sign in with your admin credentials to manage applications.</p>
+        <p class="text-xs text-brand-300 mt-1">Authorized corporate authentication portal.</p>
       </div>
-      
-      <form onsubmit="handleAdminLogin(event)" class="space-y-4">
-        <div>
-          <label class="block text-xs font-medium text-brand-200 mb-1">Admin Email</label>
-          <input type="text" id="adminEmailInput" required value="admin@iclickdigitalventures.com" class="w-full px-4 py-3 rounded-xl bg-brand-950 border border-brand-700 text-white text-xs focus:outline-none">
-        </div>
-        <div>
-          <label class="block text-xs font-medium text-brand-200 mb-1">Admin Passkey</label>
-          <input type="password" id="adminPasswordInput" required placeholder="iClick2026Admin" class="w-full px-4 py-3 rounded-xl bg-brand-950 border border-brand-700 text-white text-xs focus:outline-none">
-        </div>
-        <button type="submit" class="w-full py-3.5 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold text-xs uppercase tracking-wider transition shadow-md">Authenticate Admin</button>
-      </form>
 
-      <button onclick="forceAdminBypass()" class="w-full py-2.5 rounded-xl bg-brand-800 hover:bg-brand-700 text-brand-200 font-bold text-[11px] uppercase tracking-wider transition border border-brand-700">Quick Test Bypass (Instantly Open)</button>
+      <!-- Step 1: Request Login Token -->
+      <div id="stepRequestOtp" class="space-y-4">
+        <div>
+          <label class="block text-xs font-medium text-brand-200 mb-1">Corporate Admin Email</label>
+          <input type="email" id="authEmailInput" required value="admin@iclickdigitalventures.com" readonly class="w-full px-4 py-3 rounded-xl bg-brand-950 border border-brand-700 text-brand-300 text-xs focus:outline-none font-mono">
+        </div>
+        <button onclick="dispatchAdminOtp()" id="requestOtpBtn" class="w-full py-3.5 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold text-xs uppercase tracking-wider transition shadow-md">
+          Send Verification Token to Admin Mail
+        </button>
+        <p id="otpSendStatus" class="text-center text-xs font-medium"></p>
+      </div>
 
-      <div class="text-center">
+      <!-- Step 2: Validate Login Token -->
+      <div id="stepVerifyOtp" class="space-y-4 hidden">
+        <div>
+          <label class="block text-xs font-medium text-brand-200 mb-1">Enter 6-Digit Token</label>
+          <input type="text" id="otpCodeInput" maxlength="6" placeholder="e.g. 849201" class="w-full px-4 py-3 rounded-xl bg-brand-950 border border-brand-700 text-white text-center text-lg font-mono tracking-widest focus:border-brand-300 outline-none">
+          <span class="text-[10px] text-brand-400 block mt-1 text-center">Token sent to admin@iclickdigitalventures.com</span>
+        </div>
+        <button onclick="verifyAdminOtp()" class="w-full py-3.5 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold text-xs uppercase tracking-wider transition shadow-md">
+          Verify &amp; Enter Control Center
+        </button>
+        <div class="text-center">
+          <button onclick="resetOtpFlow()" class="text-xs text-brand-400 hover:text-brand-200 underline">Resend Token</button>
+        </div>
+      </div>
+
+      <div class="text-center pt-2 border-t border-brand-900">
         <a href="index.html" class="text-xs text-brand-400 hover:text-brand-200 transition">← Return to Public Homepage</a>
       </div>
     </div>
   </div>
 
+  <!-- Admin Main Dashboard Content -->
   <div id="adminMainContent" class="hidden flex flex-col min-h-screen">
     <nav class="bg-brand-900 border-b border-brand-800 px-6 py-4 flex justify-between items-center sticky top-0 z-40 text-white">
       <div class="flex items-center space-x-3">
         <img src="images/iclick-full-logo-dark (2).svg" alt="iClick Digital Ventures Logo" class="h-9 w-auto object-contain">
         <div>
           <h1 class="text-base font-bold">iClick Admin Control Center</h1>
-          <span class="text-[10px] text-brand-300 font-mono">Admissions & Client Feedback Management</span>
+          <span class="text-[10px] text-brand-300 font-mono">Admissions &amp; Client Feedback Management</span>
         </div>
       </div>
       <div class="flex items-center space-x-4 text-xs">
@@ -72,6 +87,7 @@
     </nav>
 
     <main class="max-w-7xl mx-auto px-4 py-8 flex-1 w-full space-y-12">
+      <!-- Digital Academy Admissions Section -->
       <div class="space-y-4">
         <div class="flex justify-between items-center">
           <div>
@@ -100,6 +116,7 @@
         </div>
       </div>
 
+      <!-- Professional Service Inquiries Section -->
       <div class="space-y-4 pt-4 border-t border-brand-200">
         <div>
           <h2 class="text-2xl font-black text-brand-900">Professional Service Inquiries</h2>
@@ -114,7 +131,7 @@
                 <th class="p-3">Client / Organization</th>
                 <th class="p-3">Email</th>
                 <th class="p-3">Phone</th>
-                <th class="p-3">Service & Requirements</th>
+                <th class="p-3">Service &amp; Requirements</th>
                 <th class="p-3 text-right">Actions</th>
               </tr>
             </thead>
@@ -134,22 +151,86 @@
   <script>
     lucide.createIcons();
 
-    function handleAdminLogin(e) {
-      e.preventDefault();
-      const emailField = document.getElementById('adminEmailInput').value.trim().toLowerCase();
-      const passField = document.getElementById('adminPasswordInput').value.trim();
+    let sessionOtp = null;
+    let otpExpiry = null;
+
+    function dispatchAdminOtp() {
+      const btn = document.getElementById('requestOtpBtn');
+      const statusMsg = document.getElementById('otpSendStatus');
       
-      if (emailField === "admin@iclickdigitalventures.com" && passField === "iClick2026Admin") {
-        localStorage.setItem('iclick_admin_auth', 'true');
+      btn.disabled = true;
+      btn.innerText = "Transmitting Verification Code...";
+      statusMsg.style.color = "#d4a373";
+      statusMsg.innerText = "Generating authentication token...";
+
+      // Generate 6-digit OTP
+      sessionOtp = Math.floor(100000 + Math.random() * 900000).toString();
+      otpExpiry = Date.now() + (10 * 60 * 1000); // 10 minutes expiry
+
+      // Transmit OTP to admin inbox via Web3Forms
+      const payload = {
+        access_key: "4610e256-8551-4d35-b2e2-8bfd0c06dbb2",
+        subject: "iClick Admin Login Verification Code",
+        from_name: "iClick Security Gateway",
+        email: "admin@iclickdigitalventures.com",
+        message: `Your One-Time Passcode (OTP) to access the iClick Admin Control Center is:\n\n${sessionOtp}\n\nThis code expires in 10 minutes. If you did not request this, please verify your server security immediately.`
+      };
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+      .then(async (res) => {
+        const data = await res.json();
+        if (res.status === 200) {
+          statusMsg.style.color = "#d4a373";
+          statusMsg.innerText = "✓ 6-Digit code dispatched to admin@iclickdigitalventures.com";
+          document.getElementById('stepRequestOtp').classList.add('hidden');
+          document.getElementById('stepVerifyOtp').classList.remove('hidden');
+        } else {
+          statusMsg.style.color = "#f87171";
+          statusMsg.innerText = data.message || "Failed to dispatch token. Try again.";
+          btn.disabled = false;
+          btn.innerText = "Send Verification Token to Admin Mail";
+        }
+      })
+      .catch(() => {
+        statusMsg.style.color = "#f87171";
+        statusMsg.innerText = "Network error communicating with mail relay.";
+        btn.disabled = false;
+        btn.innerText = "Send Verification Token to Admin Mail";
+      });
+    }
+
+    function verifyAdminOtp() {
+      const enteredOtp = document.getElementById('otpCodeInput').value.trim();
+
+      if (!sessionOtp || Date.now() > otpExpiry) {
+        alert("Security token has expired. Please request a new one.");
+        resetOtpFlow();
+        return;
+      }
+
+      if (enteredOtp === sessionOtp) {
+        sessionStorage.setItem('iclick_admin_session', 'active_' + Date.now());
+        sessionOtp = null; // Clear OTP from memory
         openAdminDashboard();
       } else {
-        alert("Invalid Admin Email or Passkey. Use Email: admin@iclickdigitalventures.com | Passkey: iClick2026Admin");
+        alert("Incorrect verification code. Please check your admin inbox.");
       }
     }
 
-    function forceAdminBypass() {
-      localStorage.setItem('iclick_admin_auth', 'true');
-      openAdminDashboard();
+    function resetOtpFlow() {
+      sessionOtp = null;
+      otpExpiry = null;
+      document.getElementById('stepVerifyOtp').classList.add('hidden');
+      document.getElementById('stepRequestOtp').classList.remove('hidden');
+      const btn = document.getElementById('requestOtpBtn');
+      btn.disabled = false;
+      btn.innerText = "Send Verification Token to Admin Mail";
+      document.getElementById('otpSendStatus').innerText = "";
+      document.getElementById('otpCodeInput').value = "";
     }
 
     function openAdminDashboard() {
@@ -159,12 +240,12 @@
     }
 
     function adminLogout() {
-      localStorage.removeItem('iclick_admin_auth');
+      sessionStorage.removeItem('iclick_admin_session');
       location.reload();
     }
 
     window.onload = function() {
-      if (localStorage.getItem('iclick_admin_auth') === 'true') {
+      if (sessionStorage.getItem('iclick_admin_session')) {
         openAdminDashboard();
       }
     };
@@ -187,7 +268,7 @@
               <td class="p-3">${app.course}</td>
               <td class="p-3"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-brand-800 text-brand-300">${app.status}</span></td>
               <td class="p-3 text-right space-x-1 whitespace-nowrap">
-                <button onclick="approveStudent('${app.appId}')" class="px-2.5 py-1 bg-emerald-700 hover:bg-emerald-600 text-white rounded text-[10px] font-bold transition">Approve & Send Offer</button>
+                <button onclick="approveStudent('${app.appId}')" class="px-2.5 py-1 bg-emerald-700 hover:bg-emerald-600 text-white rounded text-[10px] font-bold transition">Approve &amp; Send Offer</button>
                 <button onclick="sendPasswordResetCode('${app.appId}')" class="px-2.5 py-1 bg-amber-700 hover:bg-amber-600 text-white rounded text-[10px] font-bold transition">Send Reset Code</button>
                 <button onclick="rejectStudent('${app.appId}')" class="px-2.5 py-1 bg-rose-800 hover:bg-rose-700 text-white rounded text-[10px] font-bold transition">Reject</button>
               </td>
@@ -230,8 +311,8 @@
         app.status = "Accepted";
         localStorage.setItem('iclick_all_applications', JSON.stringify(apps));
         
-        alert(`Admission approved for ${app.fullName}! Temporary Password: ${app.tempPassword}. Opening email client to send official offer letter.`);
-        window.location.href = `mailto:${app.email}?subject=Official Admission Offer & LMS Credentials - iClick Digital Academy (${app.appId})&body=Dear ${app.fullName},%0D%0A%0D%0AWe are pleased to offer you official admission into the ${app.course} cohort at iClick Digital Academy.%0D%0A%0D%0AStudent ID: ${app.appId}%0D%0ALMS Login Email: ${app.email}%0D%0ATemporary LMS Password: ${app.tempPassword}%0D%0A%0D%0APlease sign in at lms.html using these credentials to access your live lecture rooms.%0D%0A%0D%0ABest regards,%0D%0AAdmin Office, iClick Digital Ventures`;
+        alert(`Admission approved for ${app.fullName}! Opening email client to dispatch offer.`);
+        window.location.href = `mailto:${app.email}?subject=Official Admission Offer & LMS Credentials - iClick Digital Academy (${app.appId})&body=Dear ${app.fullName},%0D%0A%0D%0AWe are pleased to offer you official admission into the ${app.course} cohort at iClick Digital Academy.%0D%0A%0D%0AStudent ID: ${app.appId}%0D%0ALMS Login Email: ${app.email}%0D%0ATemporary LMS Password: ${app.tempPassword}%0D%0A%0D%0APlease sign in to access your course materials.%0D%0A%0D%0ABest regards,%0D%0AAdmin Office, iClick Digital Ventures`;
         renderAdminTables();
       }
     }
@@ -244,8 +325,8 @@
         app.tempPassword = newResetCode;
         localStorage.setItem('iclick_all_applications', JSON.stringify(apps));
 
-        alert(`Generated reset code for ${app.fullName}: ${newResetCode}. Opening email client to dispatch code.`);
-        window.location.href = `mailto:${app.email}?subject=Password Reset Code - iClick Digital Academy&body=Dear ${app.fullName},%0D%0A%0D%0AYour requested password reset code is: ${newResetCode}%0D%0A%0D%0APlease use this temporary password to sign in to your LMS portal at lms.html, and remember to update your password in your dashboard settings.%0D%0A%0D%0ABest regards,%0D%0AAdmin Office`;
+        alert(`Generated reset code for ${app.fullName}: ${newResetCode}. Opening email client.`);
+        window.location.href = `mailto:${app.email}?subject=Password Reset Code - iClick Digital Academy&body=Dear ${app.fullName},%0D%0A%0D%0AYour requested password reset code is: ${newResetCode}%0D%0A%0D%0APlease use this temporary password to sign in and update your account.%0D%0A%0D%0ABest regards,%0D%0AAdmin Office`;
       }
     }
 
@@ -255,15 +336,15 @@
       if (app) {
         app.status = "Rejected";
         localStorage.setItem('iclick_all_applications', JSON.stringify(apps));
-        alert(`Application for ${app.fullName} has been rejected.`);
+        alert(`Application for ${app.fullName} has been marked as rejected.`);
         renderAdminTables();
       }
     }
 
     function acknowledgeService(email, service, reqId) {
       alert(`Opening email client to acknowledge service inquiry from ${email}.`);
-      window.location.href = `mailto:${email}?subject=Acknowledgement of Service Inquiry - iClick Digital Ventures (${reqId})&body=Dear Client,%0D%0A%0D%0AWe have successfully received your request regarding ${service}. Our team is reviewing your project requirements and will contact you shortly.%0D%0A%0D%0ABest regards,%0D%0AiClick Digital Ventures`;
+      window.location.href = `mailto:${email}?subject=Acknowledgement of Service Inquiry - iClick Digital Ventures (${reqId})&body=Dear Client,%0D%0A%0D%0AWe have received your request regarding ${service}. Our team is reviewing your requirements and will contact you shortly.%0D%0A%0D%0ABest regards,%0D%0AiClick Digital Ventures`;
     }
   </script>
 </body>
-  </html>
+</html>
