@@ -6,6 +6,8 @@
   <title>Case Studies & Portfolio | iClick Digital Ventures</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Chart.js CDN for interactive visual analytics -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -54,16 +56,161 @@
 
   <header class="py-20 border-b border-brand-200 text-center">
     <div class="max-w-4xl mx-auto px-4">
-      <span class="px-4 py-1.5 rounded-full bg-brand-200 text-brand-800 text-xs font-semibold uppercase tracking-wider inline-block mb-4">Proven Impact & Executed Projects</span>
+      <span class="px-4 py-1.5 rounded-full bg-brand-200 text-brand-800 text-xs font-semibold uppercase tracking-wider inline-block mb-4">Proven Impact &amp; Executed Projects</span>
       <h1 class="text-4xl sm:text-6xl font-black text-brand-900">Demonstrated Deployments Across Africa</h1>
+      <p class="text-xs sm:text-sm text-brand-700 max-w-2xl mx-auto mt-4 leading-relaxed">
+        Explore how our multi-disciplinary verticals deliver measurable operational efficiency, data intelligence, and infrastructure resilience.
+      </p>
     </div>
   </header>
 
-  <main class="max-w-6xl mx-auto px-4 py-16 space-y-10 flex-1 w-full">
-    <div class="glass-card text-brand-50 rounded-3xl p-8 sm:p-10">
-      <h2 class="text-2xl font-extrabold text-brand-50 mb-3">Court Registry Archival Digitization & QR File Tracking</h2>
-      <p class="text-xs sm:text-sm text-brand-200 leading-relaxed">Modernized high-volume court registries with high-speed optical scanning (OCR) and unique QR barcode custody tags, reducing file retrieval time from 45 minutes to under 15 seconds.</p>
+  <main class="max-w-6xl mx-auto px-4 py-16 space-y-12 flex-1 w-full">
+    
+    <!-- Case 1: GovTech with Chart -->
+    <div class="glass-card text-brand-50 rounded-3xl p-8 sm:p-10 space-y-6">
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <span class="px-3 py-1 rounded-full bg-brand-950 text-brand-300 text-[11px] font-mono font-bold uppercase border border-brand-800">GovTech &amp; Public Sector</span>
+        <span class="text-xs text-brand-300 font-mono">Judiciary &amp; MDA Registries</span>
+      </div>
+      <div>
+        <h2 class="text-2xl font-extrabold text-brand-50">Court Registry Archival Digitization &amp; QR File Tracking</h2>
+        <p class="text-xs sm:text-sm text-brand-200 leading-relaxed mt-2">
+          Modernized high-volume court registries with high-speed optical scanning (OCR) and unique QR barcode custody tags, reducing file retrieval latency from 45 minutes down to under 15 seconds.
+        </p>
+      </div>
+
+      <!-- Interactive Chart Area -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+        <div class="lg:col-span-7 bg-brand-950/70 p-5 rounded-2xl border border-brand-800/80">
+          <span class="text-[11px] font-bold text-brand-300 font-mono block mb-3">File Retrieval Latency Comparison (Minutes)</span>
+          <div class="h-48 relative">
+            <canvas id="govtechChart"></canvas>
+          </div>
+        </div>
+        <div class="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3 font-mono text-xs">
+          <div class="p-3.5 bg-brand-950/60 rounded-xl border border-brand-800/80">
+            <span class="text-brand-300 font-bold block text-base">99.8%</span>
+            <span class="text-brand-200 text-[11px]">OCR Archival Accuracy</span>
+          </div>
+          <div class="p-3.5 bg-brand-950/60 rounded-xl border border-brand-800/80">
+            <span class="text-brand-300 font-bold block text-base">&lt; 15 Sec</span>
+            <span class="text-brand-200 text-[11px]">Digital Retrieval Time</span>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <!-- Case 2: AI Automation with Chart -->
+    <div class="glass-card text-brand-50 rounded-3xl p-8 sm:p-10 space-y-6">
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <span class="px-3 py-1 rounded-full bg-brand-950 text-brand-300 text-[11px] font-mono font-bold uppercase border border-brand-800">AI &amp; Workflow Automation</span>
+        <span class="text-xs text-brand-300 font-mono">Enterprise Operations</span>
+      </div>
+      <div>
+        <h2 class="text-2xl font-extrabold text-brand-50">Automated Multi-Channel CRM &amp; WhatsApp Workflow Pipelines</h2>
+        <p class="text-xs sm:text-sm text-brand-200 leading-relaxed mt-2">
+          Engineered integrated webhook systems synchronizing customer communications, automated ticketing, and structured database pipelines to resolve client inquiries in real time.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+        <div class="lg:col-span-7 bg-brand-950/70 p-5 rounded-2xl border border-brand-800/80">
+          <span class="text-[11px] font-bold text-brand-300 font-mono block mb-3">Weekly Client Inquiries Handled Autonomously (%)</span>
+          <div class="h-48 relative">
+            <canvas id="automationChart"></canvas>
+          </div>
+        </div>
+        <div class="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3 font-mono text-xs">
+          <div class="p-3.5 bg-brand-950/60 rounded-xl border border-brand-800/80">
+            <span class="text-brand-300 font-bold block text-base">70%</span>
+            <span class="text-brand-200 text-[11px]">Reduction in Response Time</span>
+          </div>
+          <div class="p-3.5 bg-brand-950/60 rounded-xl border border-brand-800/80">
+            <span class="text-brand-300 font-bold block text-base">24/7</span>
+            <span class="text-brand-200 text-[11px]">Uninterrupted Capture</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Case 3: Data Analytics & BI -->
+    <div class="glass-card text-brand-50 rounded-3xl p-8 sm:p-10 space-y-4">
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <span class="px-3 py-1 rounded-full bg-brand-950 text-brand-300 text-[11px] font-mono font-bold uppercase border border-brand-800">Business Intelligence</span>
+        <span class="text-xs text-brand-300 font-mono">Data Analytics &amp; Forecasting</span>
+      </div>
+      <h2 class="text-2xl font-extrabold text-brand-50">Executive Revenue &amp; Operational Analytics Dashboards</h2>
+      <p class="text-xs sm:text-sm text-brand-200 leading-relaxed">
+        Consolidated disparate operational datasets into real-time interactive business intelligence dashboards, delivering granular visibility over cash flow, inventory levels, and departmental KPIs.
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2 text-xs font-mono">
+        <div class="p-3 bg-brand-950/60 rounded-xl border border-brand-800/80">
+          <span class="text-brand-300 font-bold block text-sm">Interactive</span>
+          <span class="text-brand-200 text-[11px]">Dynamic KPI Dashboards</span>
+        </div>
+        <div class="p-3 bg-brand-950/60 rounded-xl border border-brand-800/80">
+          <span class="text-brand-300 font-bold block text-sm">Real-Time</span>
+          <span class="text-brand-200 text-[11px]">Automated Ingestion</span>
+        </div>
+        <div class="p-3 bg-brand-950/60 rounded-xl border border-brand-800/80">
+          <span class="text-brand-300 font-bold block text-sm">Predictive</span>
+          <span class="text-brand-200 text-[11px]">Executive Forecasting</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Case 4: Social Media & Brand Growth -->
+    <div class="glass-card text-brand-50 rounded-3xl p-8 sm:p-10 space-y-4">
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <span class="px-3 py-1 rounded-full bg-brand-950 text-brand-300 text-[11px] font-mono font-bold uppercase border border-brand-800">Digital Brand Growth</span>
+        <span class="text-xs text-brand-300 font-mono">Audience Engagement</span>
+      </div>
+      <h2 class="text-2xl font-extrabold text-brand-50">Enterprise Digital Positioning &amp; Cross-Platform Campaigns</h2>
+      <p class="text-xs sm:text-sm text-brand-200 leading-relaxed">
+        Orchestrated data-backed digital campaigns and strategic multi-channel brand positioning across Facebook, Instagram, and corporate networks, scaling organic reach and B2B engagement.
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2 text-xs font-mono">
+        <div class="p-3 bg-brand-950/60 rounded-xl border border-brand-800/80">
+          <span class="text-brand-300 font-bold block text-sm">3.5x</span>
+          <span class="text-brand-200 text-[11px]">Organic Reach Growth</span>
+        </div>
+        <div class="p-3 bg-brand-950/60 rounded-xl border border-brand-800/80">
+          <span class="text-brand-300 font-bold block text-sm">Multi-Channel</span>
+          <span class="text-brand-200 text-[11px]">Unified Brand Identity</span>
+        </div>
+        <div class="p-3 bg-brand-950/60 rounded-xl border border-brand-800/80">
+          <span class="text-brand-300 font-bold block text-sm">High-Intent</span>
+          <span class="text-brand-200 text-[11px]">B2B / B2G Inquiries</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Case 5: IoT & Smart Office -->
+    <div class="glass-card text-brand-50 rounded-3xl p-8 sm:p-10 space-y-4">
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <span class="px-3 py-1 rounded-full bg-brand-950 text-brand-300 text-[11px] font-mono font-bold uppercase border border-brand-800">IoT &amp; Hardware Infrastructure</span>
+        <span class="text-xs text-brand-300 font-mono">Smart Campus &amp; Boardrooms</span>
+      </div>
+      <h2 class="text-2xl font-extrabold text-brand-50">Smart Office Facility Automation &amp; Biometric Security Network</h2>
+      <p class="text-xs sm:text-sm text-brand-200 leading-relaxed">
+        Designed and deployed fiber-ready enterprise networking, high-speed Wi-Fi 7 access zones, centralized biometric turnstiles, and automated boardroom media hubs for institutional headquarters.
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2 text-xs font-mono">
+        <div class="p-3 bg-brand-950/60 rounded-xl border border-brand-800/80">
+          <span class="text-brand-300 font-bold block text-sm">Enterprise</span>
+          <span class="text-brand-200 text-[11px]">High-Density Wi-Fi 7</span>
+        </div>
+        <div class="p-3 bg-brand-950/60 rounded-xl border border-brand-800/80">
+          <span class="text-brand-300 font-bold block text-sm">Biometric</span>
+          <span class="text-brand-200 text-[11px]">Access Verification</span>
+        </div>
+        <div class="p-3 bg-brand-950/60 rounded-xl border border-brand-800/80">
+          <span class="text-brand-300 font-bold block text-sm">Integrated</span>
+          <span class="text-brand-200 text-[11px]">Smart Boardroom Hub</span>
+        </div>
+      </div>
+    </div>
+
   </main>
 
   <footer class="bg-brand-900 border-t border-brand-800 text-xs text-brand-300 py-10 mt-auto">
@@ -94,6 +241,95 @@
     </div>
     <div class="max-w-7xl mx-auto px-4 mt-6 pt-4 border-t border-brand-950 text-center text-[10px] text-brand-500">&copy; 2026 iClick Digital Ventures. All rights reserved. • enquiry@iclickdigitalventures.com</div>
   </footer>
-  <script>lucide.createIcons(); function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('hidden'); }</script>
+
+  <script>
+    lucide.createIcons();
+    function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('hidden'); }
+
+    // Initialize Interactive Charts
+    window.addEventListener('DOMContentLoaded', () => {
+      // 1. GovTech Latency Chart
+      const ctxGov = document.getElementById('govtechChart').getContext('2d');
+      new Chart(ctxGov, {
+        type: 'bar',
+        data: {
+          labels: ['Legacy Physical Archive', 'iClick OCR & QR Tracking'],
+          datasets: [{
+            label: 'Retrieval Time (Minutes)',
+            data: [45, 0.25],
+            backgroundColor: ['#8c5842', '#d4a373'],
+            borderRadius: 8,
+            borderWidth: 0
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: (ctx) => `${ctx.raw} Minutes retrieval latency`
+              }
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              grid: { color: 'rgba(212, 163, 115, 0.1)' },
+              ticks: { color: '#e2d7c8', font: { size: 10 } }
+            },
+            x: {
+              grid: { display: false },
+              ticks: { color: '#e2d7c8', font: { size: 10 } }
+            }
+          }
+        }
+      });
+
+      // 2. Automation Growth Chart
+      const ctxAuto = document.getElementById('automationChart').getContext('2d');
+      new Chart(ctxAuto, {
+        type: 'line',
+        data: {
+          labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6'],
+          datasets: [{
+            label: 'Autonomous Resolutions (%)',
+            data: [20, 38, 55, 72, 84, 91],
+            borderColor: '#d4a373',
+            backgroundColor: 'rgba(212, 163, 115, 0.15)',
+            fill: true,
+            tension: 0.4,
+            pointRadius: 4,
+            pointBackgroundColor: '#d4a373'
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: (ctx) => `${ctx.raw}% inquiries resolved without human intervention`
+              }
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              max: 100,
+              grid: { color: 'rgba(212, 163, 115, 0.1)' },
+              ticks: { color: '#e2d7c8', font: { size: 10 } }
+            },
+            x: {
+              grid: { display: false },
+              ticks: { color: '#e2d7c8', font: { size: 10 } }
+            }
+          }
+        }
+      });
+    });
+  </script>
 </body>
   </html>
