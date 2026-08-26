@@ -3,16 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iClick Digital Ventures - Brand, ID, Signature &amp; Dispatch Studio</title>
-    <!-- Tailwind CSS CDN -->
+    <title>iClick Digital Ventures - Brand &amp; ID Studio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- html2canvas & jsPDF -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script>
@@ -60,25 +56,22 @@
                 </div>
                 <div>
                     <h1 class="font-heading font-extrabold text-lg text-linen tracking-tight">iClick Digital Ventures</h1>
-                    <p class="text-xs text-terracotta font-medium">BN: 9772940 • Brand, ID &amp; Dispatch Studio</p>
+                    <p class="text-xs text-terracotta font-medium">BN: 9772940 • Brand, ID &amp; Signature Studio</p>
                 </div>
             </div>
             <div class="flex items-center gap-2">
-                <a href="staff-portal.html" class="bg-espresso-800 hover:bg-espresso-700 text-warmgold font-semibold px-3 py-2 rounded-xl text-xs transition flex items-center gap-1.5 border border-espresso-600">
-                    <i class="fa-solid fa-users-viewfinder"></i> Staff Retrieval Portal
-                </a>
-                <a href="admin.html" class="bg-espresso-700 hover:bg-espresso-600 text-linen font-semibold px-3 py-2 rounded-xl text-xs transition flex items-center gap-1.5 border border-espresso-600">
-                    <i class="fa-solid fa-arrow-left"></i> Return to Admin
+                <a href="admin.html" class="bg-espresso-700 hover:bg-espresso-600 text-linen font-semibold px-4 py-2 rounded-xl text-xs transition flex items-center gap-1.5 border border-espresso-600">
+                    <i class="fa-solid fa-arrow-left"></i> Return to Admin Control Center
                 </a>
             </div>
         </div>
 
         <div class="max-w-7xl mx-auto mt-3">
             <nav class="flex flex-wrap items-center justify-center md:justify-start gap-1.5 bg-espresso-800 p-1.5 rounded-xl border border-espresso-600 text-xs font-semibold">
-                <button id="tab-btn-ceo-id-tab" onclick="switchTab('ceo-id-tab')" class="tab-btn px-3 py-2 rounded-lg transition bg-terracotta text-linen shadow">
+                <button id="tab-btn-ceo-tab" onclick="switchTab('ceo-tab')" class="tab-btn px-3 py-2 rounded-lg transition bg-terracotta text-linen shadow">
                     <i class="fa-solid fa-id-badge mr-1.5"></i> CEO ID Card
                 </button>
-                <button id="tab-btn-staff-id-tab" onclick="switchTab('staff-id-tab')" class="tab-btn px-3 py-2 rounded-lg transition text-stone-400 hover:text-linen">
+                <button id="tab-btn-staff-tab" onclick="switchTab('staff-tab')" class="tab-btn px-3 py-2 rounded-lg transition text-stone-400 hover:text-linen">
                     <i class="fa-solid fa-users mr-1.5"></i> Staff ID Generator
                 </button>
                 <button id="tab-btn-letterhead-tab" onclick="switchTab('letterhead-tab')" class="tab-btn px-3 py-2 rounded-lg transition text-stone-400 hover:text-linen">
@@ -87,7 +80,7 @@
                 <button id="tab-btn-signature-tab" onclick="switchTab('signature-tab')" class="tab-btn px-3 py-2 rounded-lg transition text-stone-400 hover:text-linen">
                     <i class="fa-solid fa-pen-nib mr-1.5"></i> Touch Signature Pad
                 </button>
-                <button id="tab-btn-biz-card-tab" onclick="switchTab('biz-card-tab')" class="tab-btn px-3 py-2 rounded-lg transition text-stone-400 hover:text-linen">
+                <button id="tab-btn-biz-tab" onclick="switchTab('biz-tab')" class="tab-btn px-3 py-2 rounded-lg transition text-stone-400 hover:text-linen">
                     <i class="fa-solid fa-address-card mr-1.5"></i> Business Card Editor
                 </button>
             </nav>
@@ -95,8 +88,8 @@
     </header>
 
     <main class="max-w-7xl mx-auto px-4 lg:px-8 py-8 flex-grow w-full">
-        <!-- TAB 1: CEO ID CARD WITH SHARE / DISPATCH ACTION -->
-        <section id="ceo-id-tab" class="tab-content space-y-8">
+        <!-- TAB 1: CEO ID CARD -->
+        <section id="ceo-tab" class="tab-content space-y-8">
             <div class="bg-espresso-800 border border-espresso-600 rounded-2xl p-6 md:p-8 space-y-6">
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-espresso-600 pb-6">
                     <div>
@@ -110,10 +103,7 @@
                             <input type="file" accept="image/*" class="hidden" onchange="handleCeoPhotoUpload(event)">
                         </label>
                         <button onclick="toggleCardFlip('ceo-card-container')" class="bg-espresso-700 hover:bg-espresso-600 text-linen text-xs font-semibold px-3.5 py-2.5 rounded-xl border border-espresso-600 transition flex items-center gap-1.5">
-                            <i class="fa-solid fa-rotate text-warmgold"></i> Flip
-                        </button>
-                        <button onclick="openShareModal('ceo-id-card-front', 'CEO ID Badge (Muhammad Yasin Ibrahim)')" class="bg-warmgold hover:bg-amber-400 text-espresso-900 font-extrabold text-xs px-4 py-2.5 rounded-xl transition shadow flex items-center gap-1.5">
-                            <i class="fa-solid fa-paper-plane"></i> Share / Dispatch
+                            <i class="fa-solid fa-rotate text-warmgold"></i> Flip Card View
                         </button>
                     </div>
                 </div>
@@ -139,16 +129,12 @@
                                 <input type="text" id="ceo-input-date" value="AUG 2026" oninput="updateCeoCardText()" class="w-full bg-espresso-800 border border-espresso-600 rounded-lg px-3 py-2 text-linen outline-none">
                             </div>
                             <div>
-                                <label class="block text-stone-400 mb-1">Official Email (Front of Card)</label>
+                                <label class="block text-stone-400 mb-1">Official Email (Front)</label>
                                 <input type="text" id="ceo-input-email" value="yasin@iclickdigitalventures.com" oninput="updateCeoCardText()" class="w-full bg-espresso-800 border border-espresso-600 rounded-lg px-3 py-2 text-linen outline-none">
                             </div>
                             <div>
-                                <label class="block text-stone-400 mb-1 text-warmgold">Phone Number (Back of Card)</label>
+                                <label class="block text-stone-400 mb-1 text-warmgold">Phone Number (Back)</label>
                                 <input type="text" id="ceo-input-phone" value="+234 806 288 2839" oninput="updateCeoCardText()" class="w-full bg-espresso-800 border border-espresso-600 rounded-lg px-3 py-2 text-linen outline-none">
-                            </div>
-                            <div class="md:col-span-2">
-                                <label class="block text-stone-400 mb-1">Lost Notice / Headquarters Text (Back)</label>
-                                <input type="text" id="ceo-input-notice" value="Property of iClick Digital Ventures. If found, return to corporate headquarters." oninput="updateCeoCardText()" class="w-full bg-espresso-800 border border-espresso-600 rounded-lg px-3 py-2 text-linen outline-none">
                             </div>
                         </div>
                     </div>
@@ -156,8 +142,6 @@
                     <div class="lg:col-span-6 flex flex-col items-center">
                         <div class="card-perspective w-[340px] h-[530px]">
                             <div id="ceo-card-container" class="card-inner shadow-2xl">
-                                
-                                <!-- FRONT -->
                                 <div id="ceo-id-card-front" class="card-front bg-espresso-900 border-2 border-terracotta/60 p-6 flex flex-col justify-between text-linen relative">
                                     <div class="flex items-center justify-between border-b border-terracotta/30 pb-3">
                                         <div class="flex items-center gap-2.5">
@@ -184,7 +168,6 @@
                                                 <img id="ceo-photo-img" class="w-full h-full object-cover" src="images/yasin.jpg" alt="CEO Photo">
                                             </div>
                                         </div>
-
                                         <div class="text-center space-y-0.5">
                                             <h3 id="ceo-card-name" class="font-heading font-bold text-base text-linen">MUHAMMAD YASIN IBRAHIM</h3>
                                             <p id="ceo-card-title" class="text-xs font-semibold text-warmgold uppercase tracking-wider">Chief Executive Officer / Founder</p>
@@ -204,27 +187,22 @@
                                     </div>
                                 </div>
 
-                                <!-- BACK -->
                                 <div id="ceo-id-card-back" class="card-back bg-espresso-900 border-2 border-terracotta/60 p-6 flex flex-col justify-between text-linen">
                                     <div class="text-center space-y-1 border-b border-terracotta/30 pb-3">
                                         <p class="text-[10px] text-terracotta font-bold uppercase tracking-widest">Property of iClick Digital Ventures</p>
-                                        <p id="ceo-card-notice" class="text-[9px] text-stone-400">If found, return to corporate headquarters.</p>
+                                        <p class="text-[9px] text-stone-400">If found, return to corporate headquarters.</p>
                                     </div>
-
                                     <div class="space-y-3">
                                         <div class="h-10 bg-espresso-800 rounded-lg border border-espresso-600 flex items-center justify-between px-3">
                                             <span class="text-[9px] text-stone-400 font-mono">AUTH: CAC-BN-9772940</span>
                                             <i class="fa-solid fa-qrcode text-warmgold text-xl"></i>
                                         </div>
-
                                         <div class="text-[10px] space-y-1.5 text-stone-300">
                                             <p><i class="fa-solid fa-phone text-terracotta w-4"></i> Phone: <span id="ceo-card-phone">+234 806 288 2839</span></p>
                                             <p><i class="fa-solid fa-envelope text-terracotta w-4"></i> Company: enquiry@iclickdigitalventures.com</p>
                                             <p><i class="fa-solid fa-globe text-terracotta w-4"></i> Portal: www.iclickdigitalventures.com</p>
-                                            <p><i class="fa-solid fa-building-columns text-terracotta w-4"></i> Dual HQ: Abuja &amp; Sokoto, Nigeria</p>
                                         </div>
                                     </div>
-
                                     <div class="border-t border-terracotta/30 pt-3 flex items-center justify-between">
                                         <div class="text-[8px] text-stone-400">
                                             <p class="font-bold text-linen">SCUML / EFCC COMPLIANT</p>
@@ -235,7 +213,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
 
@@ -247,32 +224,26 @@
                     </div>
                 </div>
             </div>
-                                </section>
-        <!-- TAB 2: STAFF ID GENERATOR WITH SHARE / DISPATCH ACTION -->
-        <section id="staff-id-tab" class="tab-content hidden space-y-8">
+        </section>
+
+        <!-- TAB 2: STAFF ID GENERATOR -->
+        <section id="staff-tab" class="tab-content hidden space-y-8">
             <div class="bg-espresso-800 border border-espresso-600 rounded-2xl p-6 md:p-8 space-y-6">
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-espresso-600 pb-6">
                     <div>
                         <span class="inline-block px-3 py-1 rounded-full text-[11px] font-bold bg-terracotta/20 text-terracotta uppercase tracking-wider mb-2 border border-terracotta/30">Personnel Management</span>
                         <h2 class="text-2xl md:text-3xl font-heading font-bold text-linen">Staff ID Card Generator</h2>
-                        <p class="text-sm text-stone-300 mt-1">Full control over front credentials and back metadata with 1-click dispatch to secretary/staff inbox.</p>
+                        <p class="text-sm text-stone-300 mt-1">Full control over front credentials and back metadata.</p>
                     </div>
-                    <div class="flex flex-wrap items-center gap-2">
-                        <button onclick="toggleCardFlip('staff-card-container')" class="bg-espresso-700 hover:bg-espresso-600 text-linen text-xs font-semibold px-3.5 py-2.5 rounded-xl border border-espresso-600 transition flex items-center gap-1.5">
-                            <i class="fa-solid fa-rotate text-warmgold"></i> Flip
-                        </button>
-                        <button onclick="openShareModal('staff-id-card-front', 'Staff ID Badge (' + document.getElementById('staff-input-name').value + ')')" class="bg-warmgold hover:bg-amber-400 text-espresso-900 font-extrabold text-xs px-4 py-2.5 rounded-xl transition shadow flex items-center gap-1.5">
-                            <i class="fa-solid fa-paper-plane"></i> Share to Staff / Secretary
-                        </button>
-                    </div>
+                    <button onclick="toggleCardFlip('staff-card-container')" class="bg-espresso-700 hover:bg-espresso-600 text-linen text-xs font-semibold px-3.5 py-2.5 rounded-xl border border-espresso-600 transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-rotate text-warmgold"></i> Flip Card View
+                    </button>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                     <div class="lg:col-span-6 bg-espresso-900 border border-espresso-600 p-6 rounded-xl space-y-4 text-xs">
                         <h3 class="font-heading font-bold text-base text-linen border-b border-espresso-700 pb-2">Staff Front &amp; Back Controls</h3>
-                        
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div class="md:col-span-2 text-warmgold font-mono font-bold border-b border-espresso-800 pb-1">1. Front Badge Details:</div>
                             <div>
                                 <label class="block text-stone-400 mb-1">Staff Full Name</label>
                                 <input type="text" id="staff-input-name" value="Amina Bello Usman" oninput="updateStaffCardText()" class="w-full bg-espresso-800 border border-espresso-600 rounded-lg px-3 py-2 text-linen outline-none">
@@ -295,42 +266,28 @@
                                 <input type="text" id="staff-input-id" value="IDV-STF-084" oninput="updateStaffCardText()" class="w-full bg-espresso-800 border border-espresso-600 rounded-lg px-3 py-2 text-linen outline-none">
                             </div>
                             <div>
-                                <label class="block text-stone-400 mb-1">Issue Date (Month &amp; Year)</label>
+                                <label class="block text-stone-400 mb-1">Issue Date</label>
                                 <input type="text" id="staff-input-date" value="AUG 2026" oninput="updateStaffCardText()" class="w-full bg-espresso-800 border border-espresso-600 rounded-lg px-3 py-2 text-linen outline-none">
                             </div>
                             <div>
-                                <label class="block text-stone-400 mb-1 text-warmgold font-semibold">Expiry Date (Month &amp; Year) *</label>
+                                <label class="block text-stone-400 mb-1 text-warmgold font-semibold">Expiry Date *</label>
                                 <input type="text" id="staff-input-expiry" value="AUG 2028" oninput="updateStaffCardText()" class="w-full bg-espresso-800 border border-warmgold/50 rounded-lg px-3 py-2 text-warmgold font-bold outline-none">
                             </div>
                             <div class="md:col-span-2">
-                                <label class="block text-stone-400 mb-1">Employee Email (Front of Card)</label>
+                                <label class="block text-stone-400 mb-1">Employee Email (Front)</label>
                                 <input type="text" id="staff-input-email" value="amina.usman@iclickdigitalventures.com" oninput="updateStaffCardText()" class="w-full bg-espresso-800 border border-espresso-600 rounded-lg px-3 py-2 text-linen outline-none">
                             </div>
-                            <div class="md:col-span-2">
-                                <label class="block text-stone-400 mb-1">Upload Staff Photo</label>
-                                <input type="file" accept="image/*" onchange="handleStaffPhotoUpload(event)" class="w-full text-xs text-stone-300 bg-espresso-800 border border-espresso-600 rounded-lg p-2">
-                            </div>
-
-                            <div class="md:col-span-2 text-warmgold font-mono font-bold border-b border-espresso-800 pt-2 pb-1">2. Back of Card Metadata:</div>
                             <div>
-                                <label class="block text-stone-400 mb-1">Staff Phone Number</label>
+                                <label class="block text-stone-400 mb-1">Staff Phone (Back)</label>
                                 <input type="text" id="staff-input-phone" value="+234 812 345 6789" oninput="updateStaffCardText()" class="w-full bg-espresso-800 border border-espresso-600 rounded-lg px-3 py-2 text-linen outline-none">
                             </div>
                             <div>
                                 <label class="block text-stone-400 mb-1">Company Office Line</label>
                                 <input type="text" id="staff-input-officephone" value="+234 806 288 2839" oninput="updateStaffCardText()" class="w-full bg-espresso-800 border border-espresso-600 rounded-lg px-3 py-2 text-linen outline-none">
                             </div>
-                            <div>
-                                <label class="block text-stone-400 mb-1">Company General Email</label>
-                                <input type="text" id="staff-input-companyemail" value="enquiry@iclickdigitalventures.com" oninput="updateStaffCardText()" class="w-full bg-espresso-800 border border-espresso-600 rounded-lg px-3 py-2 text-linen outline-none">
-                            </div>
-                            <div>
-                                <label class="block text-stone-400 mb-1">Portal Website URL</label>
-                                <input type="text" id="staff-input-companyurl" value="www.iclickdigitalventures.com" oninput="updateStaffCardText()" class="w-full bg-espresso-800 border border-espresso-600 rounded-lg px-3 py-2 text-linen outline-none">
-                            </div>
                             <div class="md:col-span-2">
-                                <label class="block text-stone-400 mb-1">Lost Notice Message (Back)</label>
-                                <input type="text" id="staff-input-lossmsg" value="If found, please return to any iClick branch office or headquarters." oninput="updateStaffCardText()" class="w-full bg-espresso-800 border border-espresso-600 rounded-lg px-3 py-2 text-linen outline-none">
+                                <label class="block text-stone-400 mb-1">Upload Staff Photo</label>
+                                <input type="file" accept="image/*" onchange="handleStaffPhotoUpload(event)" class="w-full text-xs text-stone-300 bg-espresso-800 border border-espresso-600 rounded-lg p-2">
                             </div>
                         </div>
                     </div>
@@ -338,8 +295,6 @@
                     <div class="lg:col-span-6 flex flex-col items-center">
                         <div class="card-perspective w-[320px] h-[510px]">
                             <div id="staff-card-container" class="card-inner shadow-2xl">
-                                
-                                <!-- FRONT -->
                                 <div id="staff-id-card-front" class="card-front bg-espresso-900 border-2 border-terracotta/50 p-5 flex flex-col justify-between text-linen">
                                     <div class="flex items-center justify-between border-b border-terracotta/30 pb-2.5">
                                         <div class="flex items-center gap-2">
@@ -347,93 +302,18 @@
                                                 <svg viewBox="0 0 100 100" class="w-full h-full">
                                                     <rect x="20" y="20" width="26" height="26" rx="6" fill="#FDFBF7"></rect>
                                                     <rect x="54" y="20" width="26" height="26" rx="6" fill="#DFBA81"></rect>
-                                                    <rect x="20" y="54" width="26" height="26" rx="6" fill="#C28E68"></rect>
-                                                    <rect x="54" y="54" width="26" height="26" rx="6" fill="#FDFBF7"></rect>
-                                                    <circle cx="50" cy="50" r="8" fill="#19110B" stroke="#DFBA81" stroke-width="3"></circle>
-                                                </svg>
-                                            </div>
-                                            <div>
-                                                <h4 class="font-heading font-extrabold text-xs text-linen">iClick Digital</h4>
-                                                <p id="staff-card-dept" class="text-[8px] text-terracotta font-semibold uppercase tracking-wider">iClick AI Automation</p>
-                                            </div>
-                                        </div>
-                                        <span class="text-[8px] font-bold bg-terracotta text-linen px-1.5 py-0.5 rounded">STAFF</span>
-                                    </div>
-
-                                    <div class="my-auto flex flex-col items-center space-y-2">
-                                        <div class="w-28 h-28 rounded-xl p-0.5 bg-terracotta overflow-hidden shadow">
-                                            <img id="staff-photo-img" class="w-full h-full object-cover rounded-lg" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><rect width='200' height='200' fill='%233D271B'/><circle cx='100' cy='75' r='38' fill='%23C28E68'/><path d='M40 180 C40 120, 160 120, 160 180 Z' fill='%2319110B'/></svg>" alt="Staff Photo">
-                                        </div>
-                                        <div class="text-center">
-                                            <h3 id="staff-card-name" class="font-heading font-bold text-base text-linen">AMINA BELLO USMAN</h3>
-                                            <p id="staff-card-title" class="text-xs font-semibold text-warmgold">Lead AI Automation Engineer</p>
-                                            <p id="staff-card-email" class="text-[10px] text-stone-300 font-mono mt-0.5">amina.usman@iclickdigitalventures.com</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="border-t border-terracotta/30 pt-2.5 space-y-1 text-[9px] text-stone-300 font-mono">
-                                        <div class="flex justify-between">
-                                            <span>ID: <strong id="staff-card-id" class="text-linen">IDV-STF-084</strong></span>
-                                            <span>ISSUED: <strong id="staff-card-date" class="text-linen">AUG 2026</strong></span>
-                                        </div>
-                                        <div class="flex justify-between text-stone-400">
-                                            <span>STATUS: <strong class="text-emerald-400">ACTIVE</strong></span>
-                                            <span>EXPIRES: <strong id="staff-card-expiry" class="text-warmgold">AUG 2028</strong></span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- BACK -->
-                                <div id="staff-id-card-back" class="card-back bg-espresso-900 border-2 border-terracotta/50 p-5 flex flex-col justify-between text-linen">
-                                    <div class="text-center space-y-0.5 border-b border-terracotta/30 pb-2">
-                                        <p class="text-[9px] text-stone-300 font-bold uppercase">Official Staff Pass • iClick Digital Ventures</p>
-                                        <p id="staff-card-lossmsg" class="text-[8px] text-stone-400">If found, please return to any iClick branch office or headquarters.</p>
-                                    </div>
-                                    
-                                    <div class="space-y-1.5 text-[9px] text-stone-300">
-                                        <p><i class="fa-solid fa-phone text-terracotta w-4"></i> Staff: <span id="staff-card-phone">+234 812 345 6789</span></p>
-                                        <p><i class="fa-solid fa-building-circle-check text-terracotta w-4"></i> Office: <span id="staff-card-officephone">+234 806 288 2839</span></p>
-                                        <p><i class="fa-solid fa-envelope text-terracotta w-4"></i> Company: <span id="staff-card-companyemail">enquiry@iclickdigitalventures.com</span></p>
-                                        <p><i class="fa-solid fa-globe text-terracotta w-4"></i> Portal: <span id="staff-card-companyurl">www.iclickdigitalventures.com</span></p>
-                                    </div>
-                                    
-                                    <div class="border-t border-terracotta/30 pt-2 flex items-center justify-between">
-                                        <span class="text-[8px] text-stone-400 font-bold">AUTHORIZED SIGNATURE</span>
-                                        <div class="w-16 h-7 border-b border-warmgold/50 flex items-end justify-center pb-0.5">
-                                            <img class="signature-render-target max-h-5 max-w-full object-contain" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 35'><text x='5' y='25' fill='%23DFBA81' font-family='cursive' font-size='18' font-style='italic'>M.Y. Ibrahim</text></svg>" alt="Signature">
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="flex flex-wrap gap-2 mt-4 justify-center">
-                            <button onclick="downloadCardPNG('staff-id-card-front', 'iclick-staff-id-front.png')" class="bg-terracotta text-linen text-xs font-semibold px-3 py-2 rounded-lg">Front PNG</button>
-                            <button onclick="downloadCardPNG('staff-id-card-back', 'iclick-staff-id-back.png')" class="bg-espresso-700 text-linen text-xs font-semibold px-3 py-2 rounded-lg border border-espresso-600">Back PNG</button>
-                            <button onclick="downloadPDF('staff-id-card-front', 'iclick-staff-id.pdf')" class="bg-warmgold text-espresso-900 text-xs font-bold px-3 py-2 rounded-lg">Staff PDF</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    </section>
-        <!-- TAB 3: CORPORATE LETTERHEAD SUITE WITH SHARE ACTION -->
+                                                    <!-- TAB 3: CORPORATE LETTERHEAD SUITE -->
         <section id="letterhead-tab" class="tab-content hidden space-y-8">
             <div class="bg-espresso-800 border border-espresso-600 rounded-2xl p-6 md:p-8 space-y-6">
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-espresso-600 pb-6">
                     <div>
                         <span class="inline-block px-3 py-1 rounded-full text-[11px] font-bold bg-terracotta/20 text-terracotta uppercase tracking-wider mb-2 border border-terracotta/30">Official Documentation</span>
                         <h2 class="text-2xl md:text-3xl font-heading font-bold text-linen">Corporate Letterhead Studio</h2>
-                        <p class="text-sm text-stone-300 mt-1">Draft official institutional memos with your active touch signature and share to secretary/recipient via email.</p>
+                        <p class="text-sm text-stone-300 mt-1">Draft institutional memos and export official A4 PDFs with your active touch signature.</p>
                     </div>
-                    <div class="flex flex-wrap gap-2">
-                        <button onclick="openShareModal('letterhead-document', 'Official Corporate Letterhead (' + document.getElementById('memo-input-ref').value + ')')" class="bg-warmgold hover:bg-amber-400 text-espresso-900 font-extrabold text-xs px-4 py-2.5 rounded-xl transition shadow flex items-center gap-1.5">
-                            <i class="fa-solid fa-paper-plane"></i> Share / Send Letter
-                        </button>
-                        <button onclick="downloadPDF('letterhead-document', 'iclick-official-letterhead.pdf')" class="bg-terracotta hover:bg-terracotta/90 text-linen text-xs font-bold px-4 py-2.5 rounded-xl transition flex items-center gap-1.5">
-                            <i class="fa-solid fa-file-pdf"></i> Download PDF
-                        </button>
-                    </div>
+                    <button onclick="downloadPDF('letterhead-document', 'iclick-official-letterhead.pdf')" class="bg-warmgold hover:bg-amber-400 text-espresso-900 text-xs font-bold px-4 py-2.5 rounded-xl transition flex items-center gap-2 shadow">
+                        <i class="fa-solid fa-file-pdf"></i> Download Letterhead PDF
+                    </button>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
@@ -463,7 +343,6 @@
 
                     <div class="lg:col-span-7 flex justify-center">
                         <div id="letterhead-document" class="w-full max-w-[700px] min-h-[900px] bg-linen text-espresso-900 p-8 md:p-12 shadow-2xl rounded-xl flex flex-col justify-between font-sans border border-stone-300">
-                            
                             <div class="border-b-2 border-espresso-900 pb-4 flex justify-between items-start">
                                 <div class="flex items-center gap-3">
                                     <div class="w-12 h-12">
@@ -492,17 +371,9 @@
                                     <span>REF: <span id="memo-target-ref">IDV/EXEC/2026/084</span></span>
                                     <span>DATE: <span id="memo-target-date">26 August 2026</span></span>
                                 </div>
-
                                 <div class="font-bold text-sm" id="memo-target-recipient">The Director General, National Information Technology Development Agency (NITDA)</div>
-
-                                <div class="font-heading font-bold text-xs underline text-espresso-900 pt-2" id="memo-target-subject">
-                                    PROPOSAL FOR INSTITUTIONAL GOVTECH DIGITIZATION &amp; AI WORKFLOW AUTOMATION
-                                </div>
-
-                                <div id="memo-target-body" class="whitespace-pre-wrap text-justify">
-                                    We write on behalf of iClick Digital Ventures (BN: 9772940) to present our corporate proposal for institutional registry digitization and e-governance workflow automation.
-                                </div>
-
+                                <div class="font-heading font-bold text-xs underline text-espresso-900 pt-2" id="memo-target-subject">PROPOSAL FOR INSTITUTIONAL GOVTECH DIGITIZATION &amp; AI WORKFLOW AUTOMATION</div>
+                                <div id="memo-target-body" class="whitespace-pre-wrap text-justify">We write on behalf of iClick Digital Ventures (BN: 9772940) to present our corporate proposal for institutional registry digitization and e-governance workflow automation.</div>
                                 <div class="pt-6 space-y-1">
                                     <p>Sincerely,</p>
                                     <div class="h-10 flex items-end">
@@ -523,7 +394,6 @@
                                     <p>Official Portal: www.iclickdigitalventures.com</p>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -540,21 +410,13 @@
                         <p class="text-sm text-stone-300 mt-1">Sign directly with finger, phone screen, or mouse to stamp all cards and letterheads.</p>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <button onclick="clearSignatureCanvas()" class="bg-espresso-700 hover:bg-espresso-600 text-stone-200 text-xs font-semibold px-4 py-2.5 rounded-xl border border-espresso-600 transition flex items-center gap-1.5">
-                            <i class="fa-solid fa-eraser"></i> Clear
-                        </button>
-                        <button onclick="applySignatureToSuite()" class="bg-warmgold hover:bg-amber-400 text-espresso-900 text-xs font-bold px-4 py-2.5 rounded-xl transition shadow flex items-center gap-1.5">
-                            <i class="fa-solid fa-check"></i> Save &amp; Apply Everywhere
-                        </button>
+                        <button onclick="clearSignatureCanvas()" class="bg-espresso-700 hover:bg-espresso-600 text-stone-200 text-xs font-semibold px-4 py-2.5 rounded-xl border border-espresso-600 transition">Clear</button>
+                        <button onclick="applySignatureToSuite()" class="bg-warmgold hover:bg-amber-400 text-espresso-900 text-xs font-bold px-4 py-2.5 rounded-xl transition shadow">Save &amp; Apply Everywhere</button>
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
                     <div class="md:col-span-8 bg-espresso-900 border-2 border-dashed border-terracotta/50 rounded-2xl p-4 flex flex-col items-center shadow-inner">
-                        <div class="flex justify-between items-center w-full px-2 mb-2 text-xs text-stone-400 font-mono">
-                            <span><i class="fa-solid fa-hand-pointer text-warmgold mr-1"></i> Sign with finger or mouse below:</span>
-                            <span class="text-emerald-400 font-bold">Touch Active</span>
-                        </div>
                         <canvas id="signatureCanvas" width="500" height="200" class="w-full bg-espresso-950 rounded-xl border border-espresso-700 cursor-crosshair touch-none shadow-2xl"></canvas>
                     </div>
                     <div class="md:col-span-4 space-y-4 text-xs bg-espresso-900 p-6 rounded-2xl border border-espresso-700">
@@ -562,36 +424,28 @@
                         <div class="h-24 bg-espresso-950 border border-espresso-600 rounded-xl flex items-center justify-center p-3 shadow-inner">
                             <img id="sigPreviewImg" class="max-h-20 max-w-full object-contain" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 35'><text x='5' y='25' fill='%23DFBA81' font-family='cursive' font-size='18' font-style='italic'>M.Y. Ibrahim</text></svg>" alt="Signature Output">
                         </div>
-                        <p class="text-[11px] text-stone-400 leading-relaxed">
-                            Clicking <strong>Save &amp; Apply</strong> updates the authorized signature across the CEO badge, staff badges, and executive letterheads.
-                        </p>
                     </div>
                 </div>
             </div>
-                                    </section>
-        <!-- TAB 5: BUSINESS CARD EDITOR (STANDARD 3.5" x 2.0" RATIO) -->
-        <section id="biz-card-tab" class="tab-content hidden space-y-8">
+    </section>
+                                                    <!-- TAB 5: BUSINESS CARD EDITOR -->
+        <section id="biz-tab" class="tab-content hidden space-y-8">
             <div class="bg-espresso-800 border border-espresso-600 rounded-2xl p-6 md:p-8 space-y-6">
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-espresso-600 pb-6">
                     <div>
                         <span class="inline-block px-3 py-1 rounded-full text-[11px] font-bold bg-terracotta/20 text-terracotta uppercase tracking-wider mb-2 border border-terracotta/30">Executive Stationery</span>
                         <h2 class="text-2xl md:text-3xl font-heading font-bold text-linen">Business Card Studio (Standard 3.5" × 2.0")</h2>
-                        <p class="text-sm text-stone-300 mt-1">Accurately proportioned executive business card with live customization.</p>
+                        <p class="text-sm text-stone-300 mt-1">Accurately proportioned executive business card.</p>
                     </div>
-                    <div class="flex flex-wrap gap-2">
-                        <button onclick="toggleCardFlip('biz-card-container')" class="bg-espresso-700 hover:bg-espresso-600 text-linen text-xs font-semibold px-4 py-2.5 rounded-xl border border-espresso-600 transition flex items-center gap-2">
-                            <i class="fa-solid fa-rotate text-warmgold"></i> Flip View
-                        </button>
-                        <button onclick="openShareModal('biz-card-front', 'CEO Business Card (' + document.getElementById('biz-input-name').value + ')')" class="bg-warmgold hover:bg-amber-400 text-espresso-900 font-extrabold text-xs px-4 py-2.5 rounded-xl transition shadow flex items-center gap-1.5">
-                            <i class="fa-solid fa-paper-plane"></i> Share Card
-                        </button>
-                    </div>
+                    <button onclick="toggleCardFlip('biz-card-container')" class="bg-espresso-700 hover:bg-espresso-600 text-linen text-xs font-semibold px-4 py-2.5 rounded-xl border border-espresso-600 transition flex items-center gap-2">
+                        <i class="fa-solid fa-rotate text-warmgold"></i> Flip View
+                    </button>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                    <div class="lg:col-span-5 bg-espresso-900 border border-espresso-600 p-6 rounded-xl space-y-4">
+                    <div class="lg:col-span-5 bg-espresso-900 border border-espresso-600 p-6 rounded-xl space-y-4 text-xs">
                         <h3 class="font-heading font-bold text-base text-linen border-b border-espresso-700 pb-2">Customize Business Card</h3>
-                        <div class="space-y-3 text-xs">
+                        <div class="space-y-3">
                             <div>
                                 <label class="block text-stone-400 mb-1">Executive Name</label>
                                 <input type="text" id="biz-input-name" value="MUHAMMAD YASIN IBRAHIM" oninput="updateBizCardText()" class="w-full bg-espresso-800 border border-espresso-600 rounded-lg px-3 py-2 text-linen outline-none">
@@ -601,11 +455,11 @@
                                 <input type="text" id="biz-input-title" value="CEO / Founder" oninput="updateBizCardText()" class="w-full bg-espresso-800 border border-espresso-600 rounded-lg px-3 py-2 text-linen outline-none">
                             </div>
                             <div>
-                                <label class="block text-stone-400 mb-1">Corporate Email Address</label>
+                                <label class="block text-stone-400 mb-1">Corporate Email</label>
                                 <input type="text" id="biz-input-email" value="enquiry@iclickdigitalventures.com" oninput="updateBizCardText()" class="w-full bg-espresso-800 border border-espresso-600 rounded-lg px-3 py-2 text-linen outline-none">
                             </div>
                             <div>
-                                <label class="block text-stone-400 mb-1">Corporate Contact Line</label>
+                                <label class="block text-stone-400 mb-1">Contact Line</label>
                                 <input type="text" id="biz-input-phone" value="+234 806 288 2839" oninput="updateBizCardText()" class="w-full bg-espresso-800 border border-espresso-600 rounded-lg px-3 py-2 text-linen outline-none">
                             </div>
                         </div>
@@ -614,8 +468,6 @@
                     <div class="lg:col-span-7 flex flex-col items-center">
                         <div class="card-perspective w-[350px] h-[200px] shadow-2xl">
                             <div id="biz-card-container" class="card-inner">
-                                
-                                <!-- FRONT -->
                                 <div id="biz-card-front" class="card-front bg-espresso-900 border-2 border-terracotta/60 p-5 flex flex-col items-center justify-center text-center space-y-2">
                                     <div class="w-10 h-10">
                                         <svg viewBox="0 0 100 100" class="w-full h-full">
@@ -632,7 +484,6 @@
                                     </div>
                                 </div>
 
-                                <!-- BACK -->
                                 <div id="biz-card-back" class="card-back bg-espresso-900 border-2 border-terracotta/60 p-5 flex justify-between items-center text-linen">
                                     <div class="space-y-1 text-left">
                                         <h4 id="biz-card-name" class="font-heading font-bold text-xs text-linen">MUHAMMAD YASIN IBRAHIM</h4>
@@ -648,7 +499,6 @@
                                         <i class="fa-solid fa-qrcode text-espresso-900 text-3xl"></i>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
 
@@ -664,54 +514,18 @@
 
     </main>
 
-    <!-- EMAIL SHARE / DISPATCH MODAL -->
-    <div id="shareModal" class="hidden fixed inset-0 z-50 bg-espresso-900/90 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-espresso-800 border-2 border-warmgold/40 rounded-3xl p-6 md:p-8 w-full max-w-md shadow-2xl space-y-4 text-xs">
-            <div class="flex justify-between items-center border-b border-espresso-600 pb-3">
-                <div>
-                    <h3 class="font-heading font-extrabold text-base text-linen">Dispatch File to Email</h3>
-                    <p id="shareFileLabel" class="text-[11px] text-warmgold font-mono">File: Selected Document</p>
-                </div>
-                <button onclick="closeShareModal()" class="text-stone-400 hover:text-white text-lg"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-
-            <div class="space-y-3">
-                <div>
-                    <label class="block text-stone-300 mb-1">Recipient Email (Secretary, Staff or Client) *</label>
-                    <input type="email" id="shareRecipientInput" required placeholder="secretary@iclickdigitalventures.com" class="w-full bg-espresso-900 border border-espresso-600 rounded-xl p-3 text-linen outline-none focus:border-warmgold">
-                </div>
-                <div>
-                    <label class="block text-stone-300 mb-1">Transmittal Note / Message (Optional)</label>
-                    <textarea id="shareNoteInput" rows="2" placeholder="Please find the attached corporate credential for your records..." class="w-full bg-espresso-900 border border-espresso-600 rounded-xl p-3 text-linen outline-none focus:border-warmgold"></textarea>
-                </div>
-                
-                <button onclick="executeFileDispatch()" id="shareSubmitBtn" class="w-full bg-gradient-to-r from-terracotta to-warmgold text-espresso-900 font-extrabold py-3.5 rounded-xl transition shadow">
-                    Transmit Document &amp; Notify Recipient
-                </button>
-                <div id="shareStatusMsg" class="text-center font-semibold mt-2 hidden"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
     <footer class="border-t border-espresso-600 py-6 text-center text-xs text-stone-400 bg-espresso-900">
         <p>© 2026 iClick Digital Ventures (BN: 9772940). All Rights Reserved. • www.iclickdigitalventures.com</p>
     </footer>
 
-    <!-- Complete JavaScript & Canvas Engine -->
+    <!-- Master Switch & Event Scripts -->
     <script>
-        let currentShareElementId = null;
-        let currentShareTitle = "";
-
         function switchTab(tabId) {
-            const contents = document.querySelectorAll('.tab-content');
-            contents.forEach(el => el.classList.add('hidden'));
-            
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
             const target = document.getElementById(tabId);
             if (target) target.classList.remove('hidden');
 
-            const buttons = document.querySelectorAll('.tab-btn');
-            buttons.forEach(btn => {
+            document.querySelectorAll('.tab-btn').forEach(btn => {
                 btn.classList.remove('bg-terracotta', 'text-linen', 'shadow');
                 btn.classList.add('text-stone-400');
             });
@@ -735,7 +549,6 @@
                 reader.onload = function(e) {
                     const img = document.getElementById('ceo-photo-img');
                     if (img) img.src = e.target.result;
-                    alert('CEO photo updated!');
                 };
                 reader.readAsDataURL(file);
             }
@@ -748,216 +561,80 @@
                 reader.onload = function(e) {
                     const img = document.getElementById('staff-photo-img');
                     if (img) img.src = e.target.result;
-                    alert('Staff photo updated!');
                 };
                 reader.readAsDataURL(file);
             }
         }
 
         function updateCeoCardText() {
-            const name = document.getElementById('ceo-input-name').value;
-            const title = document.getElementById('ceo-input-title').value;
-            const idNo = document.getElementById('ceo-input-id').value;
-            const date = document.getElementById('ceo-input-date').value;
-            const email = document.getElementById('ceo-input-email').value;
-            const phone = document.getElementById('ceo-input-phone').value;
-            const notice = document.getElementById('ceo-input-notice').value;
-
-            if (document.getElementById('ceo-card-name')) document.getElementById('ceo-card-name').innerText = name.toUpperCase();
-            if (document.getElementById('ceo-card-title')) document.getElementById('ceo-card-title').innerText = title;
-            if (document.getElementById('ceo-card-id')) document.getElementById('ceo-card-id').innerText = idNo;
-            if (document.getElementById('ceo-card-date')) document.getElementById('ceo-card-date').innerText = date;
-            if (document.getElementById('ceo-card-email')) document.getElementById('ceo-card-email').innerText = email;
-            if (document.getElementById('ceo-card-phone')) document.getElementById('ceo-card-phone').innerText = phone;
-            if (document.getElementById('ceo-card-notice')) document.getElementById('ceo-card-notice').innerText = notice;
+            document.getElementById('ceo-card-name').innerText = document.getElementById('ceo-input-name').value.toUpperCase();
+            document.getElementById('ceo-card-title').innerText = document.getElementById('ceo-input-title').value;
+            document.getElementById('ceo-card-id').innerText = document.getElementById('ceo-input-id').value;
+            document.getElementById('ceo-card-date').innerText = document.getElementById('ceo-input-date').value;
+            document.getElementById('ceo-card-email').innerText = document.getElementById('ceo-input-email').value;
+            document.getElementById('ceo-card-phone').innerText = document.getElementById('ceo-input-phone').value;
         }
 
         function updateStaffCardText() {
-            const name = document.getElementById('staff-input-name').value;
-            const title = document.getElementById('staff-input-title').value;
-            const dept = document.getElementById('staff-input-dept').value;
-            const idNo = document.getElementById('staff-input-id').value;
-            const date = document.getElementById('staff-input-date').value;
-            const expiry = document.getElementById('staff-input-expiry').value;
-            const email = document.getElementById('staff-input-email').value;
-            const phone = document.getElementById('staff-input-phone').value;
-            const officePhone = document.getElementById('staff-input-officephone').value;
-            const companyEmail = document.getElementById('staff-input-companyemail').value;
-            const companyUrl = document.getElementById('staff-input-companyurl').value;
-            const lossMsg = document.getElementById('staff-input-lossmsg').value;
-
-            if (document.getElementById('staff-card-name')) document.getElementById('staff-card-name').innerText = name.toUpperCase();
-            if (document.getElementById('staff-card-title')) document.getElementById('staff-card-title').innerText = title;
-            if (document.getElementById('staff-card-dept')) document.getElementById('staff-card-dept').innerText = dept;
-            if (document.getElementById('staff-card-id')) document.getElementById('staff-card-id').innerText = idNo;
-            if (document.getElementById('staff-card-date')) document.getElementById('staff-card-date').innerText = date;
-            if (document.getElementById('staff-card-expiry')) document.getElementById('staff-card-expiry').innerText = expiry;
-            if (document.getElementById('staff-card-email')) document.getElementById('staff-card-email').innerText = email;
-            if (document.getElementById('staff-card-phone')) document.getElementById('staff-card-phone').innerText = phone;
-            if (document.getElementById('staff-card-officephone')) document.getElementById('staff-card-officephone').innerText = officePhone;
-            if (document.getElementById('staff-card-companyemail')) document.getElementById('staff-card-companyemail').innerText = companyEmail;
-            if (document.getElementById('staff-card-companyurl')) document.getElementById('staff-card-companyurl').innerText = companyUrl;
-            if (document.getElementById('staff-card-lossmsg')) document.getElementById('staff-card-lossmsg').innerText = lossMsg;
+            document.getElementById('staff-card-name').innerText = document.getElementById('staff-input-name').value.toUpperCase();
+            document.getElementById('staff-card-title').innerText = document.getElementById('staff-input-title').value;
+            document.getElementById('staff-card-dept').innerText = document.getElementById('staff-input-dept').value;
+            document.getElementById('staff-card-id').innerText = document.getElementById('staff-input-id').value;
+            document.getElementById('staff-card-date').innerText = document.getElementById('staff-input-date').value;
+            document.getElementById('staff-card-expiry').innerText = document.getElementById('staff-input-expiry').value;
+            document.getElementById('staff-card-email').innerText = document.getElementById('staff-input-email').value;
+            document.getElementById('staff-card-phone').innerText = document.getElementById('staff-input-phone').value;
+            document.getElementById('staff-card-officephone').innerText = document.getElementById('staff-input-officephone').value;
         }
 
         function updateLetterheadText() {
-            const ref = document.getElementById('memo-input-ref').value;
-            const date = document.getElementById('memo-input-date').value;
-            const recipient = document.getElementById('memo-input-recipient').value;
-            const subject = document.getElementById('memo-input-subject').value;
-            const body = document.getElementById('memo-input-body').value;
-
-            if (document.getElementById('memo-target-ref')) document.getElementById('memo-target-ref').innerText = ref;
-            if (document.getElementById('memo-target-date')) document.getElementById('memo-target-date').innerText = date;
-            if (document.getElementById('memo-target-recipient')) document.getElementById('memo-target-recipient').innerText = recipient;
-            if (document.getElementById('memo-target-subject')) document.getElementById('memo-target-subject').innerText = subject;
-            if (document.getElementById('memo-target-body')) document.getElementById('memo-target-body').innerText = body;
+            document.getElementById('memo-target-ref').innerText = document.getElementById('memo-input-ref').value;
+            document.getElementById('memo-target-date').innerText = document.getElementById('memo-input-date').value;
+            document.getElementById('memo-target-recipient').innerText = document.getElementById('memo-input-recipient').value;
+            document.getElementById('memo-target-subject').innerText = document.getElementById('memo-input-subject').value;
+            document.getElementById('memo-target-body').innerText = document.getElementById('memo-input-body').value;
         }
 
         function updateBizCardText() {
-            const name = document.getElementById('biz-input-name').value;
-            const title = document.getElementById('biz-input-title').value;
-            const email = document.getElementById('biz-input-email').value;
-            const phone = document.getElementById('biz-input-phone').value;
-
-            if (document.getElementById('biz-card-name')) document.getElementById('biz-card-name').innerText = name.toUpperCase();
-            if (document.getElementById('biz-card-title')) document.getElementById('biz-card-title').innerText = title;
-            if (document.getElementById('biz-card-email')) document.getElementById('biz-card-email').innerText = email;
-            if (document.getElementById('biz-card-phone')) document.getElementById('biz-card-phone').innerText = phone;
+            document.getElementById('biz-card-name').innerText = document.getElementById('biz-input-name').value.toUpperCase();
+            document.getElementById('biz-card-title').innerText = document.getElementById('biz-input-title').value;
+            document.getElementById('biz-card-email').innerText = document.getElementById('biz-input-email').value;
+            document.getElementById('biz-card-phone').innerText = document.getElementById('biz-input-phone').value;
         }
 
-        /* TOUCH & MOUSE SIGNATURE PAD ENGINE */
+        /* Touch & Mouse Signature Pad */
         const canvas = document.getElementById('signatureCanvas');
         const ctx = canvas.getContext('2d');
         let isDrawing = false;
-
         ctx.strokeStyle = '#DFBA81';
         ctx.lineWidth = 3;
         ctx.lineCap = 'round';
-        ctx.lineJoin = 'round';
 
         function getCanvasPos(e) {
             const rect = canvas.getBoundingClientRect();
             const clientX = e.touches ? e.touches[0].clientX : e.clientX;
             const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-            return {
-                x: (clientX - rect.left) * (canvas.width / rect.width),
-                y: (clientY - rect.top) * (canvas.height / rect.height)
-            };
+            return { x: (clientX - rect.left) * (canvas.width / rect.width), y: (clientY - rect.top) * (canvas.height / rect.height) };
         }
-
-        function startDraw(e) {
-            isDrawing = true;
-            const pos = getCanvasPos(e);
-            ctx.beginPath();
-            ctx.moveTo(pos.x, pos.y);
-            if (e.cancelable) e.preventDefault();
-        }
-
-        function draw(e) {
-            if (!isDrawing) return;
-            const pos = getCanvasPos(e);
-            ctx.lineTo(pos.x, pos.y);
-            ctx.stroke();
-            if (e.cancelable) e.preventDefault();
-        }
-
+        function startDraw(e) { isDrawing = true; const pos = getCanvasPos(e); ctx.beginPath(); ctx.moveTo(pos.x, pos.y); if (e.cancelable) e.preventDefault(); }
+        function draw(e) { if (!isDrawing) return; const pos = getCanvasPos(e); ctx.lineTo(pos.x, pos.y); ctx.stroke(); if (e.cancelable) e.preventDefault(); }
         function stopDraw() { isDrawing = false; }
 
-        canvas.addEventListener(canvas.addEventListener('mousedown', startDraw);
+        canvas.addEventListener('mousedown', startDraw);
         canvas.addEventListener('mousemove', draw);
         window.addEventListener('mouseup', stopDraw);
-
         canvas.addEventListener('touchstart', startDraw, { passive: false });
         canvas.addEventListener('touchmove', draw, { passive: false });
         window.addEventListener('touchend', stopDraw);
 
-        function clearSignatureCanvas() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-        }
+        function clearSignatureCanvas() { ctx.clearRect(0, 0, canvas.width, canvas.height); }
 
         function applySignatureToSuite() {
             const dataUrl = canvas.toDataURL('image/png');
-            document.querySelectorAll('.signature-render-target').forEach(img => {
-                img.src = dataUrl;
-            });
+            document.querySelectorAll('.signature-render-target').forEach(img => { img.src = dataUrl; });
             document.getElementById('sigPreviewImg').src = dataUrl;
             localStorage.setItem('iclick_saved_signature', dataUrl);
             alert('✓ Signature successfully stamped onto ID cards & letterheads!');
-        }
-
-        /* EMAIL SHARE & DISPATCH DISPATCHER */
-        function openShareModal(elementId, title) {
-            currentShareElementId = elementId;
-            currentShareTitle = title;
-            document.getElementById('shareFileLabel').innerText = `File: ${title}`;
-            document.getElementById('shareModal').classList.remove('hidden');
-            document.getElementById('shareStatusMsg').classList.add('hidden');
-        }
-
-        function closeShareModal() {
-            document.getElementById('shareModal').classList.add('hidden');
-        }
-
-        async function executeFileDispatch() {
-            const recipient = document.getElementById('shareRecipientInput').value.trim();
-            const note = document.getElementById('shareNoteInput').value.trim();
-            const btn = document.getElementById('shareSubmitBtn');
-            const status = document.getElementById('shareStatusMsg');
-
-            if (!recipient) {
-                alert('Please enter a recipient email address.');
-                return;
-            }
-
-            btn.disabled = true;
-            btn.innerText = "Transmitting File via Corporate Relay...";
-            status.classList.remove('hidden', 'text-emerald-400', 'text-rose-400');
-            status.classList.add('text-warmgold');
-            status.innerText = "Connecting to mail server...";
-
-            let dispatches = JSON.parse(localStorage.getItem('iclick_dispatched_files') || '[]');
-            dispatches.unshift({
-                id: 'DISP-' + Math.floor(1000 + Math.random() * 9000),
-                title: currentShareTitle,
-                recipient: recipient,
-                note: note || 'Official corporate asset',
-                date: new Date().toLocaleDateString('en-GB')
-            });
-            localStorage.setItem('iclick_dispatched_files', JSON.stringify(dispatches));
-
-            const payload = {
-                access_key: "4610e256-8551-4d35-b2e2-8bfd0c06dbb2",
-                subject: `Official Corporate Asset Dispatch: ${currentShareTitle}`,
-                from_name: "iClick Executive Dispatch",
-                email: recipient,
-                message: `Dear Colleague / Partner,\n\nYou have been dispatched the following official document by iClick Digital Ventures Executive Office:\n\nDocument: ${currentShareTitle}\nTransmittal Note: ${note || 'None'}\nDate Dispatched: ${new Date().toLocaleDateString()}\n\nYou can access and download this file directly from the iClick Staff Retrieval Portal (www.iclickdigitalventures.com/staff-portal.html).\n\nBest regards,\nExecutive Management\niClick Digital Ventures (BN: 9772940)`
-            };
-
-            fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                body: JSON.stringify(payload)
-            })
-            .then(async (res) => {
-                if (res.status === 200) {
-                    status.classList.remove('text-warmgold');
-                    status.classList.add('text-emerald-400');
-                    status.innerText = `✓ File successfully dispatched to ${recipient}! Record logged on Staff Portal.`;
-                    setTimeout(() => { closeShareModal(); }, 2500);
-                } else {
-                    status.classList.add('text-rose-400');
-                    status.innerText = "Failed to dispatch email. Please try again.";
-                }
-            })
-            .catch(() => {
-                status.classList.add('text-rose-400');
-                status.innerText = "Network error. Please try again.";
-            })
-            .finally(() => {
-                btn.disabled = false;
-                btn.innerText = "Transmit Document & Notify Recipient";
-            });
         }
 
         function renderElementToDataURL(elementId, isLight = false) {
@@ -985,19 +662,13 @@
 
                 const origImgs = originalTarget.querySelectorAll('img');
                 const cloneImgs = clone.querySelectorAll('img');
-                origImgs.forEach((img, idx) => {
-                    if (cloneImgs[idx]) cloneImgs[idx].src = img.src;
-                });
+                origImgs.forEach((img, idx) => { if (cloneImgs[idx]) cloneImgs[idx].src = img.src; });
 
                 cloneWrapper.appendChild(clone);
                 document.body.appendChild(cloneWrapper);
 
-                html2canvas(clone, {
-                    scale: 2.5,
-                    useCORS: true,
-                    backgroundColor: isLight ? '#FDFBF7' : '#19110B',
-                    logging: false
-                }).then(canvas => {
+                html2canvas(clone, { scale: 2.5, useCORS: true, backgroundColor: isLight ? '#FDFBF7' : '#19110B', logging: false })
+                .then(canvas => {
                     const dataUrl = canvas.toDataURL('image/png');
                     document.body.removeChild(cloneWrapper);
                     resolve({ dataUrl, width: canvas.width, height: canvas.height });
@@ -1040,7 +711,7 @@
         }
 
         window.addEventListener('DOMContentLoaded', () => {
-            switchTab('ceo-id-tab');
+            switchTab('ceo-tab');
             const savedSig = localStorage.getItem('iclick_saved_signature');
             if (savedSig) {
                 document.querySelectorAll('.signature-render-target').forEach(img => { img.src = savedSig; });
@@ -1049,5 +720,5 @@
         });
     </script>
 </body>
-</html>
-                                
+                                                                                                            </html>
+            
