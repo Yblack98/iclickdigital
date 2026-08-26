@@ -1,226 +1,475 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Staff &amp; Secretary Dispatch Portal | iClick Digital Ventures</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome 6 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        espresso: { 900: '#19110B', 800: '#261911', 700: '#2A1A10', 600: '#3D271B' },
-                        terracotta: '#C28E68',
-                        warmgold: '#DFBA81',
-                        linen: '#FDFBF7'
-                    },
-                    fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
-                        heading: ['Outfit', 'sans-serif']
-                    }
-                }
-            }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secretary Operational Desk | iClick Digital Ventures</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+          colors: {
+            brand: { 50: '#f9f8f6', 100: '#f0ece4', 200: '#e2d7c8', 300: '#d4a373', 400: '#b87d52', 600: '#8c5842', 800: '#4a2e2b', 900: '#2d1810', 950: '#1a0e0a' }
+          }
         }
-    </script>
-    <style>body { background-color: #19110B; color: #FDFBF7; font-family: 'Plus Jakarta Sans', sans-serif; }</style>
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .glass-card { background: #2d1810; border: 1px solid rgba(212, 163, 115, 0.2); }
+  </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between selection:bg-terracotta selection:text-linen">
+<body class="bg-brand-50 text-brand-900 min-h-screen flex flex-col antialiased">
 
-    <!-- Navbar -->
-    <header class="border-b border-espresso-600 bg-espresso-900/90 backdrop-blur sticky top-0 z-40 px-6 py-4">
-        <div class="max-w-7xl mx-auto flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <a href="index.html" class="w-10 h-10 rounded-xl bg-terracotta/20 border border-terracotta/40 p-1.5 flex items-center justify-center shadow text-warmgold hover:bg-espresso-700 transition">
-                    <i class="fa-solid fa-arrow-left"></i>
-                </a>
-                <div>
-                    <h1 class="font-heading font-extrabold text-base text-linen">Staff &amp; Secretary Dispatch Portal</h1>
-                    <p class="text-[11px] text-stone-400">iClick Digital Ventures • Internal Document Retrieval Hub</p>
-                </div>
-            </div>
-            <a href="index.html" class="text-xs text-brand-300 hover:text-white transition">Public Homepage</a>
+  <!-- 1. Secretary Restricted Login Gate -->
+  <div id="secLoginGate" class="fixed inset-0 z-50 bg-brand-950 flex items-center justify-center p-4">
+    <div class="glass-card w-full max-w-md p-8 rounded-3xl text-brand-50 shadow-2xl space-y-6">
+      <div class="text-center">
+        <div class="w-12 h-12 rounded-2xl bg-brand-300 text-brand-950 font-black text-xl flex items-center justify-center mx-auto mb-3 shadow-md">iC</div>
+        <h2 class="text-xl font-bold">Secretary Operational Desk</h2>
+        <p class="text-xs text-brand-300 mt-1">Authorized internal correspondence portal.</p>
+      </div>
+
+      <!-- Password Login View -->
+      <form id="secLoginForm" onsubmit="handleSecLogin(event)" class="space-y-4 text-xs">
+        <div>
+          <label class="block font-medium text-brand-200 mb-1">Secretary Email</label>
+          <input type="email" id="secEmailInput" required placeholder="secretary@iclickdigitalventures.com" class="w-full px-4 py-3 rounded-xl bg-brand-950 border border-brand-700 text-white text-xs focus:border-brand-300 outline-none">
         </div>
-    </header>
+        <div>
+          <label class="block font-medium text-brand-200 mb-1">Secretary Passkey</label>
+          <input type="password" id="secPassInput" required placeholder="••••••••" class="w-full px-4 py-3 rounded-xl bg-brand-950 border border-brand-700 text-white text-xs focus:border-brand-300 outline-none">
+        </div>
+        <button type="submit" class="w-full py-3.5 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold text-xs uppercase tracking-wider transition shadow-md">
+          Authenticate &amp; Open Desk
+        </button>
+        <div class="flex justify-between items-center pt-2">
+          <button type="button" onclick="showSecReset()" class="text-xs text-brand-300 hover:text-white underline">First-Time Setup / Reset Passkey</button>
+          <a href="index.html" class="text-xs text-brand-400 hover:text-brand-200">Public Site</a>
+        </div>
+      </form>
 
-    <!-- Main Content -->
-    <main class="max-w-7xl mx-auto px-6 py-10 flex-grow w-full space-y-10">
+      <!-- Password Reset & Setup View -->
+      <div id="secResetView" class="space-y-4 text-xs hidden">
+        <p class="text-[11px] text-brand-300 leading-relaxed">Enter your official secretary email. An OTP recovery token will be dispatched to your inbox to configure your custom passkey.</p>
+        <div>
+          <label class="block font-medium text-brand-200 mb-1">Confirm Secretary Email</label>
+          <input type="email" id="secResetEmailInput" value="secretary@iclickdigitalventures.com" class="w-full px-4 py-3 rounded-xl bg-brand-950 border border-brand-700 text-white text-xs focus:border-brand-300 outline-none font-mono">
+        </div>
+        <button onclick="dispatchSecToken()" id="secOtpBtn" class="w-full py-3 rounded-xl bg-brand-300 text-brand-950 font-bold uppercase transition">Send Verification Code</button>
         
-        <!-- Welcome Hero -->
-        <div class="bg-espresso-800 border border-espresso-600 rounded-3xl p-8 space-y-3">
-            <span class="px-3 py-1 rounded-full text-[10px] font-bold bg-warmgold/20 text-warmgold uppercase tracking-wider border border-warmgold/30">Secretary &amp; Operational Desk</span>
-            <h2 class="text-3xl font-heading font-extrabold text-linen">Dispatched Documents &amp; Executive Direct Line</h2>
-            <p class="text-xs sm:text-sm text-stone-300 max-w-3xl leading-relaxed">
-                Review documents issued by Executive Management (Letterheads, Staff Badges, Business Cards) and transmit urgent internal communications directly to the CEO/Admin.
-            </p>
+        <div id="secNewPassFields" class="space-y-3 pt-2 border-t border-brand-800 hidden">
+          <input type="text" id="secOtpInput" placeholder="Enter 6-Digit Code" class="w-full px-4 py-2.5 rounded-xl bg-brand-950 border border-brand-700 text-white text-center font-mono">
+          <input type="password" id="secNewPass1" placeholder="New Secret Passkey" class="w-full px-4 py-2.5 rounded-xl bg-brand-950 border border-brand-700 text-white">
+          <input type="password" id="secNewPass2" placeholder="Confirm New Passkey" class="w-full px-4 py-2.5 rounded-xl bg-brand-950 border border-brand-700 text-white">
+          <button onclick="commitSecNewPass()" class="w-full py-3 rounded-xl bg-emerald-700 text-white font-bold uppercase transition">Update &amp; Log In</button>
+        </div>
+        <button onclick="showSecLogin()" class="w-full text-center text-brand-400 hover:text-white block pt-1">← Back to Login</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Secretary Main Workspace -->
+  <div id="secMainWorkspace" class="hidden flex flex-col min-h-screen">
+    <nav class="bg-brand-900 border-b border-brand-800 px-6 py-4 flex justify-between items-center sticky top-0 z-40 text-white">
+      <div class="flex items-center space-x-3">
+        <img src="images/iclick-full-logo-dark (2).svg" alt="iClick Logo" class="h-9 w-auto object-contain">
+        <div>
+          <h1 class="text-base font-bold">Secretary Operational Desk</h1>
+          <span class="text-[10px] text-brand-300 font-mono">Inward/Outward Registers, Letterheads &amp; Executive Memo Desk</span>
+        </div>
+      </div>
+      <div class="flex items-center space-x-3 text-xs">
+        <a href="index.html" class="px-3 py-2 text-brand-300 hover:text-white transition">Public Site</a>
+        <button onclick="secLogout()" class="px-3.5 py-2 rounded-xl bg-rose-900/80 hover:bg-rose-800 text-white font-bold transition flex items-center gap-1.5">
+          <i data-lucide="lock" class="w-3.5 h-3.5"></i> Lock Session
+        </button>
+      </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 py-8 flex-1 w-full space-y-10">
+      
+      <!-- Outward & Inward Official Correspondence Registry -->
+      <div class="space-y-4">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+          <div>
+            <h2 class="text-2xl font-black text-brand-900">Official Correspondence Registry</h2>
+            <p class="text-xs text-brand-700">Track outward dispatched memos, ministry proposals, and incoming institutional communications.</p>
+          </div>
+          <button onclick="openAddMailModal()" class="px-4 py-2 rounded-xl bg-brand-900 text-brand-50 text-xs font-bold shadow flex items-center gap-1.5">
+            <i data-lucide="plus" class="w-4 h-4"></i> Log New Memo / Letter
+          </button>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            
-            <!-- Left 7 Cols: Dispatched Documents List -->
-            <div class="lg:col-span-7 space-y-4">
-                <div class="flex justify-between items-center">
-                    <h3 class="font-heading font-bold text-lg text-linen flex items-center gap-2">
-                        <i class="fa-solid fa-folder-open text-warmgold"></i> Executive Dispatched Files
-                    </h3>
-                    <button onclick="renderDispatches()" class="bg-espresso-700 hover:bg-espresso-600 text-xs px-3 py-1.5 rounded-xl border border-espresso-600 text-stone-300 font-semibold">
-                        <i class="fa-solid fa-rotate-right mr-1"></i> Refresh
-                    </button>
-                </div>
+        <div class="glass-card rounded-3xl p-6 overflow-x-auto shadow-xl">
+          <table class="w-full text-left text-xs text-brand-50">
+            <thead class="bg-brand-950 text-brand-300 uppercase text-[10px] border-b border-brand-800">
+              <tr>
+                <th class="p-3">Ref Number</th>
+                <th class="p-3">Type</th>
+                <th class="p-3">Recipient / Sender</th>
+                <th class="p-3">Subject</th>
+                <th class="p-3">Date</th>
+                <th class="p-3">Status</th>
+              </tr>
+            </thead>
+            <tbody id="mailRegistryBody" class="divide-y divide-brand-800">
+              <tr><td colspan="6" class="p-4 text-center text-brand-400">Loading correspondence records...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
 
-                <div class="bg-espresso-800 border border-espresso-600 rounded-2xl p-4 overflow-x-auto shadow-xl">
-                    <table class="w-full text-left text-xs text-linen">
-                        <thead class="bg-espresso-900 text-stone-400 uppercase text-[10px] border-b border-espresso-700">
-                            <tr>
-                                <th class="p-3">Dispatch ID</th>
-                                <th class="p-3">Document Title</th>
-                                <th class="p-3">Recipient</th>
-                                <th class="p-3">Date</th>
-                                <th class="p-3 text-right">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody id="dispatchTableBody" class="divide-y divide-espresso-700 text-xs">
-                            <tr><td colspan="5" class="p-4 text-center text-stone-400">Loading dispatched records...</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- Template Letterhead Download Card for Secretary -->
-                <div class="bg-espresso-800 border border-espresso-600 rounded-2xl p-5 flex items-center justify-between gap-4">
-                    <div class="space-y-1">
-                        <h4 class="font-heading font-bold text-sm text-linen flex items-center gap-2">
-                            <i class="fa-solid fa-file-pdf text-terracotta"></i> Standard Executive Blank Letterhead
-                        </h4>
-                        <p class="text-xs text-stone-400">Download the official pre-signed letterhead template for office memos and correspondence.</p>
-                    </div>
-                    <a href="brand-suite.html" class="bg-terracotta hover:bg-terracotta/90 text-linen font-bold text-xs px-4 py-2.5 rounded-xl transition whitespace-nowrap shadow">
-                        Open Studio
-                    </a>
-                </div>
+      <!-- Two-Column Operational Layout -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Left: Quick Letterhead Draft Desk -->
+        <div class="lg:col-span-7 glass-card text-brand-50 rounded-3xl p-6 space-y-4 shadow-xl text-xs">
+          <div class="border-b border-brand-800 pb-3 flex justify-between items-center">
+            <div>
+              <h3 class="font-bold text-base text-brand-50">Quick Corporate Letterhead Generator</h3>
+              <p class="text-[11px] text-brand-300">Draft official memos with standard corporate headers for immediate download.</p>
             </div>
+            <button onclick="downloadSecLetterheadPDF()" class="px-3.5 py-2 rounded-xl bg-brand-300 text-brand-950 font-bold uppercase transition shadow">Export PDF</button>
+          </div>
 
-            <!-- Right 5 Cols: Direct Message to CEO / Admin -->
-            <div class="lg:col-span-5 bg-espresso-800 border border-espresso-600 rounded-3xl p-6 space-y-4 shadow-2xl">
+          <div class="space-y-3">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-brand-300 mb-1">Ref Number</label>
+                <input type="text" id="secMemoRef" value="IDV/SEC/2026/012" oninput="updateSecLetterPreview()" class="w-full bg-brand-950 border border-brand-700 rounded-lg p-2.5 text-white">
+              </div>
+              <div>
+                <label class="block text-brand-300 mb-1">Date</label>
+                <input type="text" id="secMemoDate" value="26 August 2026" oninput="updateSecLetterPreview()" class="w-full bg-brand-950 border border-brand-700 rounded-lg p-2.5 text-white">
+              </div>
+            </div>
+            <div>
+              <label class="block text-brand-300 mb-1">Recipient Organization</label>
+              <input type="text" id="secMemoRecipient" value="Office of the Permanent Secretary, Ministry of Science and Technology" oninput="updateSecLetterPreview()" class="w-full bg-brand-950 border border-brand-700 rounded-lg p-2.5 text-white">
+            </div>
+            <div>
+              <label class="block text-brand-300 mb-1">Subject</label>
+              <input type="text" id="secMemoSubject" value="TRANSMITTAL OF TECHNICAL PROPOSAL &amp; ADVISORY" oninput="updateSecLetterPreview()" class="w-full bg-brand-950 border border-brand-700 rounded-lg p-2.5 text-white">
+            </div>
+            <div>
+              <label class="block text-brand-300 mb-1">Message Body</label>
+              <textarea id="secMemoBody" rows="4" oninput="updateSecLetterPreview()" class="w-full bg-brand-950 border border-brand-700 rounded-lg p-2.5 text-white">We hereby transmit the attached project documentation on behalf of executive management for your official review and consideration...</textarea>
+            </div>
+          </div>
+
+          <!-- Live Hidden A4 Container for PDF Export -->
+          <div class="hidden">
+            <div id="secA4LetterSheet" class="w-[700px] min-h-[900px] bg-white text-brand-950 p-10 flex flex-col justify-between font-sans">
+              <div class="border-b-2 border-brand-950 pb-4 flex justify-between items-start">
                 <div>
-                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-terracotta/20 text-terracotta uppercase border border-terracotta/30">Direct Priority Line</span>
-                    <h3 class="font-heading font-extrabold text-lg text-linen mt-1">Direct Message to CEO (Admin)</h3>
-                    <p class="text-xs text-stone-400">Transmits directly to <code class="text-warmgold">admin@iclickdigitalventures.com</code>[cite: 4].</p>
+                  <h2 class="font-black text-xl text-brand-950">iClick Digital Ventures</h2>
+                  <p class="text-[10px] text-brand-600 font-bold uppercase">CAC Registered • BN: 9772940 • SCUML Compliant</p>
                 </div>
-
-                <form id="ceoMsgForm" action="https://api.web3forms.com/submit" method="POST" class="space-y-3 text-xs">
-                    <input type="hidden" name="access_key" value="4610e256-8551-4d35-b2e2-8bfd0c06dbb2">
-                    <input type="hidden" name="subject" value="URGENT: Internal Secretary / Staff Message to CEO">
-                    <input type="hidden" name="from_name" value="iClick Staff Dispatch Desk">
-                    <input type="hidden" name="to" value="admin@iclickdigitalventures.com">
-                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-
-                    <div>
-                        <label class="block text-stone-300 mb-1 font-semibold">Your Name &amp; Designation *</label>
-                        <input type="text" name="sender_name" required placeholder="e.g. Fatima Lawal (Executive Secretary)" class="w-full bg-espresso-900 border border-espresso-600 rounded-xl p-3 text-linen outline-none focus:border-warmgold">
-                    </div>
-                    <div>
-                        <label class="block text-stone-300 mb-1 font-semibold">Your Official Email *</label>
-                        <input type="email" name="sender_email" required placeholder="secretary@iclickdigitalventures.com" class="w-full bg-espresso-900 border border-espresso-600 rounded-xl p-3 text-linen outline-none focus:border-warmgold">
-                    </div>
-                    <div>
-                        <label class="block text-stone-300 mb-1 font-semibold">Message / Urgent Dispatch to CEO *</label>
-                        <textarea name="message" rows="4" required placeholder="Type operational brief, document approval request, or update for CEO..." class="w-full bg-espresso-900 border border-espresso-600 rounded-xl p-3 text-linen outline-none focus:border-warmgold"></textarea>
-                    </div>
-
-                    <button type="submit" id="ceoMsgSubmitBtn" class="w-full bg-gradient-to-r from-terracotta to-warmgold text-espresso-900 font-extrabold py-3 rounded-xl transition shadow hover:opacity-90">
-                        Dispatch Message to CEO
-                    </button>
-                    <div id="ceoMsgStatus" class="text-center font-semibold mt-1 hidden text-xs"></div>
-                </form>
+                <div class="text-right text-[10px] text-brand-800">
+                  <p class="font-bold">www.iclickdigitalventures.com</p>
+                  <p>enquiry@iclickdigitalventures.com</p>
+                  <p>+234 806 288 2839 • Dual HQ: Abuja &amp; Sokoto</p>
+                </div>
+              </div>
+              <div class="my-6 space-y-4 text-xs leading-relaxed flex-grow">
+                <div class="flex justify-between font-bold text-gray-700">
+                  <span>REF: <span id="secTargetRef">IDV/SEC/2026/012</span></span>
+                  <span>DATE: <span id="secTargetDate">26 August 2026</span></span>
+                </div>
+                <div class="font-bold text-sm" id="secTargetRecipient">Office of the Permanent Secretary</div>
+                <div class="font-bold text-xs underline pt-2" id="secTargetSubject">TRANSMITTAL OF TECHNICAL PROPOSAL &amp; ADVISORY</div>
+                <div id="secTargetBody" class="whitespace-pre-wrap text-justify">We hereby transmit the attached project documentation...</div>
+                <div class="pt-6">
+                  <p>Sincerely,</p>
+                  <p class="font-bold pt-8">Office of the Secretary</p>
+                  <p class="text-[10px] text-gray-600">iClick Digital Ventures</p>
+                </div>
+              </div>
+              <div class="border-t border-gray-400 pt-3 text-[9px] text-gray-600 text-center">
+                Dual HQ: Abuja &amp; Sokoto, Nigeria • Official Portal: www.iclickdigitalventures.com
+              </div>
             </div>
-
+          </div>
         </div>
+
+        <!-- Right: Direct Message to CEO Terminal -->
+        <div class="lg:col-span-5 glass-card text-brand-50 rounded-3xl p-6 space-y-4 shadow-xl text-xs">
+          <div>
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-brand-800 text-brand-300 uppercase">Executive Direct Line</span>
+            <h3 class="font-bold text-base text-brand-50 mt-1">Direct Message to CEO (Admin)</h3>
+            <p class="text-brand-300 text-[11px]">Transmits directly to <code class="text-brand-200">admin@iclickdigitalventures.com</code>.</p>
+          </div>
+
+          <form id="secCeoMsgForm" onsubmit="handleSendCeoMsg(event)" class="space-y-3">
+            <input type="hidden" name="access_key" value="4610e256-8551-4d35-b2e2-8bfd0c06dbb2">
+            <input type="hidden" name="subject" value="URGENT: Operational Briefing from Secretary Desk">
+            <input type="hidden" name="from_name" value="Secretary Desk">
+            <input type="hidden" name="to" value="admin@iclickdigitalventures.com">
+
+            <div>
+              <label class="block text-brand-200 mb-1">Your Name / Title *</label>
+              <input type="text" name="sender_name" required value="Executive Secretary" class="w-full bg-brand-950 border border-brand-700 rounded-xl p-3 text-white">
+            </div>
+            <div>
+              <label class="block text-brand-200 mb-1">Message Subject / Briefing Title *</label>
+              <input type="text" name="brief_subject" required placeholder="e.g. Schedule Update / Ministry Transmittal" class="w-full bg-brand-950 border border-brand-700 rounded-xl p-3 text-white">
+            </div>
+            <div>
+              <label class="block text-brand-200 mb-1">Urgent Message Body *</label>
+              <textarea name="message" rows="4" required placeholder="Type operational brief or approval request for the CEO..." class="w-full bg-brand-950 border border-brand-700 rounded-xl p-3 text-white"></textarea>
+            </div>
+            <button type="submit" id="secCeoBtn" class="w-full py-3.5 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold uppercase tracking-wider transition">Transmit to CEO Mail</button>
+            <p id="secCeoStatus" class="text-center font-bold mt-2"></p>
+          </form>
+        </div>
+
+      </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="border-t border-espresso-600 py-6 text-center text-xs text-stone-400 bg-espresso-900">
-        <p>© 2026 iClick Digital Ventures (BN: 9772940). All Rights Reserved. • enquiry@iclickdigitalventures.com</p>
+    <footer class="bg-brand-900 border-t border-brand-800 text-xs text-brand-300 py-6 text-center mt-auto">
+      &copy; 2026 iClick Digital Ventures. All rights reserved. • secretary@iclickdigitalventures.com
     </footer>
+  </div>
 
-    <script>
-        function renderDispatches() {
-            const tbody = document.getElementById('dispatchTableBody');
-            const dispatches = JSON.parse(localStorage.getItem('iclick_dispatched_files') || '[]');
+  <!-- Modal for Logging Memos -->
+  <div id="addMailModal" class="hidden fixed inset-0 z-50 bg-brand-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="glass-card w-full max-w-md p-6 rounded-3xl text-brand-50 space-y-4 text-xs">
+      <div class="flex justify-between items-center border-b border-brand-800 pb-2">
+        <h3 class="font-bold text-sm">Log New Official Correspondence</h3>
+        <button onclick="closeAddMailModal()" class="text-brand-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+      </div>
+      <div class="space-y-3">
+        <div>
+          <label class="block text-brand-200 mb-1">Reference Number</label>
+          <input type="text" id="logRef" placeholder="e.g. IDV/OUT/2026/044" class="w-full bg-brand-950 border border-brand-700 rounded-lg p-2 text-white">
+        </div>
+        <div>
+          <label class="block text-brand-200 mb-1">Type</label>
+          <select id="logType" class="w-full bg-brand-950 border border-brand-700 rounded-lg p-2 text-white">
+            <option value="Outward Memo">Outward Memo</option>
+            <option value="Inward Letter">Inward Letter</option>
+            <option value="Proposal Transmittal">Proposal Transmittal</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-brand-200 mb-1">Recipient / Sender</label>
+          <input type="text" id="logParty" placeholder="e.g. Ministry of ICT / NITDA" class="w-full bg-brand-950 border border-brand-700 rounded-lg p-2 text-white">
+        </div>
+        <div>
+          <label class="block text-brand-200 mb-1">Subject</label>
+          <input type="text" id="logSubject" placeholder="e.g. Workflow Automation Proposal" class="w-full bg-brand-950 border border-brand-700 rounded-lg p-2 text-white">
+        </div>
+        <button onclick="saveLogEntry()" class="w-full py-3 bg-brand-300 text-brand-950 font-bold rounded-xl uppercase">Save to Official Register</button>
+      </div>
+    </div>
+  </div>
 
-            if (dispatches.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-stone-400">No dispatched documents on record yet. Files sent from the Brand Studio will appear here automatically.</td></tr>`;
-            } else {
-                tbody.innerHTML = '';
-                dispatches.forEach((item) => {
-                    tbody.innerHTML += `
-                        <tr class="hover:bg-espresso-900/60 transition">
-                            <td class="p-3 font-mono font-bold text-warmgold">${item.id}</td>
-                            <td class="p-3 font-bold text-linen">${item.title}</td>
-                            <td class="p-3 text-stone-300 font-mono">${item.recipient}</td>
-                            <td class="p-3 text-stone-400">${item.date}</td>
-                            <td class="p-3 text-right">
-                                <a href="brand-suite.html" class="bg-espresso-700 hover:bg-espresso-600 text-warmgold px-2.5 py-1 rounded text-[10px] font-bold border border-espresso-600">Open Studio</a>
-                            </td>
-                        </tr>
-                    `;
-                });
-            }
+  <script>
+    lucide.createIcons();
+
+    const SEC_EMAIL = "secretary@iclickdigitalventures.com";
+    const SECURITY_ACCESS_KEY = "93f249e4-0f14-4643-8e32-4af9619ffe32"; // Dedicated Security Relay
+    let activeSecOtp = null;
+    let secOtpExpiry = null;
+
+    function showSecReset() {
+      document.getElementById('secLoginForm').classList.add('hidden');
+      document.getElementById('secResetView').classList.remove('hidden');
+    }
+
+    function showSecLogin() {
+      document.getElementById('secResetView').classList.add('hidden');
+      document.getElementById('secLoginForm').classList.remove('hidden');
+    }
+
+    function handleSecLogin(e) {
+      e.preventDefault();
+      const email = document.getElementById('secEmailInput').value.trim().toLowerCase();
+      const pass = document.getElementById('secPassInput').value.trim();
+      const currentPass = localStorage.getItem('iclick_sec_pass') || 'Secretary2026!';
+
+      if (email === SEC_EMAIL && pass === currentPass) {
+        sessionStorage.setItem('iclick_sec_session', 'active_' + Date.now());
+        openSecWorkspace();
+      } else {
+        alert("Access Denied: Invalid email or passkey.");
+      }
+    }
+
+    function dispatchSecToken() {
+      const email = document.getElementById('secResetEmailInput').value.trim().toLowerCase();
+      const btn = document.getElementById('secOtpBtn');
+
+      if (email !== SEC_EMAIL) {
+        alert("Unauthorized email address.");
+        return;
+      }
+
+      btn.disabled = true;
+      btn.innerText = "Transmitting OTP...";
+
+      activeSecOtp = Math.floor(100000 + Math.random() * 900000).toString();
+      secOtpExpiry = Date.now() + (10 * 60 * 1000);
+
+      const payload = {
+        access_key: SECURITY_ACCESS_KEY,
+        subject: "Secretary Desk Access Code",
+        from_name: "iClick Security Gateway",
+        email: SEC_EMAIL,
+        message: `Your one-time access verification code for the Secretary Desk is:\n\n${activeSecOtp}\n\nExpires in 10 minutes.`
+      };
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      }).then(() => {
+        alert("Verification code sent to security mailbox for secretary@iclickdigitalventures.com");
+        document.getElementById('secNewPassFields').classList.remove('hidden');
+      }).finally(() => {
+        btn.disabled = false;
+        btn.innerText = "Send Verification Code";
+      });
+    }
+
+    function commitSecNewPass() {
+      const code = document.getElementById('secOtpInput').value.trim();
+      const p1 = document.getElementById('secNewPass1').value.trim();
+    const p2 = document.getElementById('secNewPass2').value.trim();
+
+      if (code !== activeSecOtp || Date.now() > secOtpExpiry) {
+        alert("Invalid or expired verification code.");
+        return;
+      }
+      if (!p1 || p1.length < 6 || p1 !== p2) {
+        alert("Passwords do not match or are shorter than 6 characters.");
+        return;
+      }
+
+      localStorage.setItem('iclick_sec_pass', p1);
+      sessionStorage.setItem('iclick_sec_session', 'active_' + Date.now());
+      alert("Passkey successfully updated!");
+      openSecWorkspace();
+    }
+
+    function openSecWorkspace() {
+      document.getElementById('secLoginGate').classList.add('hidden');
+      document.getElementById('secMainWorkspace').classList.remove('hidden');
+      renderRegistryTable();
+    }
+
+    function secLogout() {
+      sessionStorage.removeItem('iclick_sec_session');
+      location.reload();
+    }
+
+    window.onload = function() {
+      if (sessionStorage.getItem('iclick_sec_session')) {
+        openSecWorkspace();
+      }
+    };
+
+    function updateSecLetterPreview() {
+      document.getElementById('secTargetRef').innerText = document.getElementById('secMemoRef').value;
+      document.getElementById('secTargetDate').innerText = document.getElementById('secMemoDate').value;
+      document.getElementById('secTargetRecipient').innerText = document.getElementById('secMemoRecipient').value;
+      document.getElementById('secTargetSubject').innerText = document.getElementById('secMemoSubject').value;
+      document.getElementById('secTargetBody').innerText = document.getElementById('secMemoBody').value;
+    }
+
+    function downloadSecLetterheadPDF() {
+      const sheet = document.getElementById('secA4LetterSheet');
+      sheet.parentElement.classList.remove('hidden');
+
+      html2canvas(sheet, { scale: 2.5, backgroundColor: '#ffffff' }).then(canvas => {
+        sheet.parentElement.classList.add('hidden');
+        const { jsPDF } = window.jspdf;
+        const pdf = new jsPDF('p', 'mm', 'a4');
+        const imgData = canvas.toDataURL('image/png');
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+        pdf.save('iclick-secretary-letterhead.pdf');
+      });
+    }
+
+    function handleSendCeoMsg(e) {
+      e.preventDefault();
+      const btn = document.getElementById('secCeoBtn');
+      const status = document.getElementById('secCeoStatus');
+      const form = document.getElementById('secCeoMsgForm');
+
+      btn.disabled = true;
+      btn.innerText = "Delivering to CEO Mail...";
+      status.style.color = "#d4a373";
+      status.innerText = "Transmitting message...";
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(Object.fromEntries(new FormData(form)))
+      }).then(res => {
+        if (res.status === 200) {
+          status.style.color = "#34d399";
+          status.innerText = "✓ Dispatched directly to admin@iclickdigitalventures.com";
+          form.reset();
+        } else {
+          status.style.color = "#f87171";
+          status.innerText = "Failed to transmit message.";
         }
+      }).finally(() => {
+        btn.disabled = false;
+        btn.innerText = "Transmit to CEO Mail";
+      });
+    }
 
-        // Handle CEO Message Dispatch
-        const form = document.getElementById('ceoMsgForm');
-        const status = document.getElementById('ceoMsgStatus');
-        const btn = document.getElementById('ceoMsgSubmitBtn');
+    function openAddMailModal() { document.getElementById('addMailModal').classList.remove('hidden'); }
+    function closeAddMailModal() { document.getElementById('addMailModal').classList.add('hidden'); }
 
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            btn.disabled = true;
-            btn.innerText = "Transmitting to CEO Inbox...";
-            status.classList.remove('hidden', 'text-emerald-400', 'text-rose-400');
-            status.classList.add('text-warmgold');
-            status.innerText = "Connecting to mail relay...";
+    function saveLogEntry() {
+      const ref = document.getElementById('logRef').value.trim() || `IDV/REG/2026/${Math.floor(100+Math.random()*900)}`;
+      const type = document.getElementById('logType').value;
+      const party = document.getElementById('logParty').value.trim() || 'Ministry / Agency';
+      const subject = document.getElementById('logSubject').value.trim() || 'General Transmittal';
 
-            const formData = new FormData(form);
-            const json = JSON.stringify(Object.fromEntries(formData));
+      let registry = JSON.parse(localStorage.getItem('iclick_correspondence_register') || '[]');
+      registry.unshift({ ref, type, party, subject, date: new Date().toLocaleDateString('en-GB'), status: 'Dispatched' });
+      localStorage.setItem('iclick_correspondence_register', JSON.stringify(registry));
+      
+      closeAddMailModal();
+      renderRegistryTable();
+    }
 
-            fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                body: json
-            })
-            .then(async (res) => {
-                if (res.status === 200) {
-                    status.classList.remove('text-warmgold');
-                    status.classList.add('text-emerald-400');
-                    status.innerHTML = `✓ Message successfully delivered to <strong>admin@iclickdigitalventures.com</strong>!`;
-                    form.reset();
-                } else {
-                    status.classList.add('text-rose-400');
-                    status.innerText = "Failed to transmit message. Please try again.";
-                }
-            })
-            .catch(() => {
-                status.classList.add('text-rose-400');
-                status.innerText = "Network error. Please try again.";
-            })
-            .finally(() => {
-                btn.disabled = false;
-                btn.innerText = "Dispatch Message to CEO";
-                setTimeout(() => { status.classList.add('hidden'); }, 7000);
-            });
-        });
+    function renderRegistryTable() {
+      const tbody = document.getElementById('mailRegistryBody');
+      const defaultRecords = [
+        { ref: 'IDV/OUT/2026/001', type: 'Outward Memo', party: 'Shari\'a Court Registry', subject: 'Archival Modernization Proposal', date: '20/08/2026', status: 'Delivered' },
+        { ref: 'IDV/OUT/2026/002', type: 'Proposal Transmittal', party: 'National IT Development Agency', subject: 'Digital Transformation Tender', date: '22/08/2026', status: 'In Review' }
+      ];
+      let registry = JSON.parse(localStorage.getItem('iclick_correspondence_register') || JSON.stringify(defaultRecords));
 
-        window.addEventListener('DOMContentLoaded', () => {
-            renderDispatches();
-        });
-    </script>
+      tbody.innerHTML = '';
+      registry.forEach(r => {
+        tbody.innerHTML += `
+          <tr class="hover:bg-brand-900/60">
+            <td class="p-3 font-mono font-bold text-brand-300">${r.ref}</td>
+            <td class="p-3"><span class="px-2 py-0.5 rounded bg-brand-800 text-[10px] text-brand-200">${r.type}</span></td>
+            <td class="p-3 text-white font-bold">${r.party}</td>
+            <td class="p-3 text-brand-200">${r.subject}</td>
+            <td class="p-3 text-brand-400 font-mono">${r.date}</td>
+            <td class="p-3"><span class="px-2 py-0.5 rounded-full bg-emerald-950 text-emerald-300 font-bold text-[10px]">${r.status}</span></td>
+          </tr>
+        `;
+      });
+    }
+  </script>
 </body>
-              </html>
+</html>
