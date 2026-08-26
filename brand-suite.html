@@ -146,7 +146,7 @@
                     <div class="lg:col-span-6 flex flex-col items-center">
                         <div class="card-perspective w-[340px] h-[530px]">
                             <div id="ceo-card-container" class="card-inner shadow-2xl">
-                                <!-- CEO FRONT -->
+                                <!-- FRONT -->
                                 <div id="ceo-id-card-front" class="card-front bg-espresso-900 border-2 border-terracotta/60 p-6 flex flex-col justify-between text-linen relative">
                                     <div class="flex items-center justify-between border-b border-terracotta/30 pb-3">
                                         <div class="flex items-center gap-2.5">
@@ -192,7 +192,7 @@
                                     </div>
                                 </div>
 
-                                <!-- CEO BACK -->
+                                <!-- BACK -->
                                 <div id="ceo-id-card-back" class="card-back bg-espresso-900 border-2 border-terracotta/60 p-6 flex flex-col justify-between text-linen">
                                     <div class="text-center space-y-1 border-b border-terracotta/30 pb-2">
                                         <p class="text-[9px] text-terracotta font-bold uppercase tracking-widest">Official Property of iClick Digital Ventures</p>
@@ -225,8 +225,8 @@
                     </div>
                 </div>
             </div>
-    </section>
-    <!-- TAB 2: STAFF ID GENERATOR -->
+                                    </section>
+                                    <!-- TAB 2: STAFF ID GENERATOR -->
         <section id="staff-tab" class="tab-content hidden space-y-8">
             <div class="bg-espresso-800 border border-espresso-600 rounded-2xl p-6 md:p-8 space-y-6">
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-espresso-600 pb-6">
@@ -362,6 +362,9 @@
                         </div>
 
                         <div class="flex flex-wrap gap-2 mt-4 justify-center">
+                            <button onclick="shareStaffIdToSecretary()" class="bg-gradient-to-r from-terracotta to-warmgold text-espresso-900 font-extrabold text-xs px-3.5 py-2 rounded-lg shadow flex items-center gap-1.5">
+                                <i class="fa-solid fa-share-nodes"></i> Send ID to Secretary
+                            </button>
                             <button onclick="downloadCardPNG('staff-id-card-front', 'iclick-staff-id-front.png')" class="bg-terracotta text-linen text-xs font-semibold px-3 py-2 rounded-lg">Front PNG</button>
                             <button onclick="downloadCardPNG('staff-id-card-back', 'iclick-staff-id-back.png')" class="bg-espresso-700 text-linen text-xs font-semibold px-3 py-2 rounded-lg border border-espresso-600">Back PNG</button>
                             <button onclick="downloadPDF('staff-id-card-front', 'iclick-staff-id.pdf')" class="bg-warmgold text-espresso-900 text-xs font-bold px-3 py-2 rounded-lg">Staff PDF</button>
@@ -369,8 +372,8 @@
                     </div>
                 </div>
             </div>
-                                    </section>
-                                    <!-- TAB 3: CORPORATE LETTERHEAD & MEMO DISPATCH STUDIO -->
+    </section>
+    <!-- TAB 3: CORPORATE LETTERHEAD & MEMO DISPATCH STUDIO -->
         <section id="letterhead-tab" class="tab-content hidden space-y-8">
             <div class="bg-espresso-800 border border-espresso-600 rounded-2xl p-6 md:p-8 space-y-6">
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-espresso-600 pb-6">
@@ -590,7 +593,6 @@
     <footer class="border-t border-espresso-600 py-6 text-center text-xs text-stone-400 bg-espresso-900">
         <p>© 2026 iClick Digital Ventures (BN: 9772940). All Rights Reserved. • www.iclickdigitalventures.com</p>
     </footer>
-
     <!-- Master Switch & Event Scripts -->
     <script>
         function switchTab(tabId) {
@@ -711,33 +713,58 @@
             alert('✓ Signature successfully stamped onto ID cards & letterheads!');
         }
 
+        /* Internal Client-Side Dispatch (Zero Email Spam) */
         function dispatchMemoToSecretary() {
             const ref = document.getElementById('memo-input-ref').value;
+            const date = document.getElementById('memo-input-date').value;
             const recipient = document.getElementById('memo-input-recipient').value;
             const subject = document.getElementById('memo-input-subject').value;
             const body = document.getElementById('memo-input-body').value;
-            const btn = document.getElementById('memoDispatchBtn');
 
-            btn.disabled = true;
-            btn.innerText = "Transmitting to Secretary...";
+            let dispatches = JSON.parse(localStorage.getItem('iclick_sec_inbox') || '[]');
+            dispatches.unshift({
+                id: 'MEMO-' + Math.floor(1000 + Math.random() * 9000),
+                type: 'Executive Memo',
+                ref: ref,
+                date: date,
+                recipient: recipient,
+                subject: subject,
+                body: body,
+                status: 'Ready for Outward Dispatch',
+                timestamp: new Date().toLocaleDateString('en-GB')
+            });
+            localStorage.setItem('iclick_sec_inbox', JSON.stringify(dispatches));
+            alert(`✓ Memo ${ref} successfully dispatched to Secretary Desk workspace!`);
+        }
 
-            const payload = {
-                access_key: "4610e256-8551-4d35-b2e2-8bfd0c06dbb2",
-                subject: `OFFICIAL MEMO DISPATCH: ${ref} - ${subject}`,
-                from_name: "Executive Management",
-                email: "secretary@iclickdigitalventures.com",
-                message: `OFFICIAL EXECUTIVE MEMO FOR DISPATCH\n\nREF: ${ref}\nDATE: ${document.getElementById('memo-input-date').value}\nRECIPIENT: ${recipient}\nSUBJECT: ${subject}\n\nBODY:\n${body}\n\nPlease register this communication in the official correspondence log and execute outward dispatch.\n\nSigned,\nMuhammad Yasin Ibrahim\nCEO / Founder, iClick Digital Ventures`
-            };
+        function shareStaffIdToSecretary() {
+            const name = document.getElementById('staff-input-name').value;
+            const title = document.getElementById('staff-input-title').value;
+            const dept = document.getElementById('staff-input-dept').value;
+            const idNo = document.getElementById('staff-input-id').value;
+            const expiry = document.getElementById('staff-input-expiry').value;
+            const email = document.getElementById('staff-input-email').value;
 
-            fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                body: JSON.stringify(payload)
-            }).then(() => {
-                alert(`✓ Memo ${ref} successfully dispatched to secretary@iclickdigitalventures.com!`);
-            }).finally(() => {
-                btn.disabled = false;
-                btn.innerText = "Dispatch Memo to Secretary";
+            renderElementToDataURL('staff-id-card-front').then(({ dataUrl: frontUrl }) => {
+                renderElementToDataURL('staff-id-card-back').then(({ dataUrl: backUrl }) => {
+                    let dispatches = JSON.parse(localStorage.getItem('iclick_sec_inbox') || '[]');
+                    dispatches.unshift({
+                        id: 'ID-' + Math.floor(1000 + Math.random() * 9000),
+                        type: 'Staff ID Card',
+                        ref: idNo,
+                        name: name,
+                        title: title,
+                        dept: dept,
+                        expiry: expiry,
+                        email: email,
+                        frontImg: frontUrl,
+                        backImg: backUrl,
+                        status: 'Ready for Issuance',
+                        timestamp: new Date().toLocaleDateString('en-GB')
+                    });
+                    localStorage.setItem('iclick_sec_inbox', JSON.stringify(dispatches));
+                    alert(`✓ Staff Badge for ${name} (${idNo}) sent directly to Secretary Desk!`);
+                });
             });
         }
 
@@ -809,7 +836,7 @@
                     const orientation = width > height ? 'l' : 'p';
                     pdf = new jsPDF(orientation, 'px', [width, height]);
                     pdf.addImage(dataUrl, 'PNG', 0, 0, width, height);
-            }
+                }
                 pdf.save(filename);
             }).catch(() => alert('PDF export failed.'));
         }
