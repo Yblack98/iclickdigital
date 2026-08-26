@@ -66,7 +66,7 @@
           <input type="email" id="resetEmailInput" required placeholder="admin@iclickdigitalventures.com" class="w-full px-4 py-3 rounded-xl bg-brand-950 border border-brand-700 text-white text-xs focus:border-brand-300 outline-none">
         </div>
         <button onclick="dispatchResetToken()" id="sendResetBtn" class="w-full py-3.5 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold text-xs uppercase tracking-wider transition shadow-md">
-          Send Recovery Code to Admin Inbox
+          Send Recovery Code to Security Mail
         </button>
         <p id="resetStatusMsg" class="text-center text-xs font-medium"></p>
         <div class="text-center">
@@ -100,7 +100,6 @@
   <!-- Admin Main Dashboard Content -->
   <div id="adminMainContent" class="hidden flex flex-col min-h-screen">
     
-    <!-- Top Bar with Direct Link to Brand Suite -->
     <nav class="bg-brand-900 border-b border-brand-800 px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4 sticky top-0 z-40 text-white">
       <div class="flex items-center space-x-3">
         <img src="images/iclick-full-logo-dark (2).svg" alt="iClick Digital Ventures Logo" class="h-9 w-auto object-contain">
@@ -111,7 +110,6 @@
       </div>
       
       <div class="flex items-center space-x-3 text-xs">
-        <!-- Direct Launch Button to Brand & ID Suite -->
         <a href="brand-suite.html" class="px-3.5 py-2 rounded-xl bg-brand-800 hover:bg-brand-700 text-brand-300 hover:text-white font-bold transition flex items-center gap-2 border border-brand-700 shadow">
           <i data-lucide="id-card" class="w-4 h-4 text-brand-300"></i> Open Brand &amp; ID Suite
         </a>
@@ -189,12 +187,11 @@
   <script>
     lucide.createIcons();
 
-    // Security & State Engine
     const CORPORATE_ADMIN_EMAIL = "admin@iclickdigitalventures.com";
+    const SECURITY_ACCESS_KEY = "93f249e4-0f14-4643-8e32-4af9619ffe32"; // Dedicated Security Relay
     let activeResetCode = null;
     let resetExpiry = null;
 
-    // View Switching
     function showStandardLogin() {
       document.getElementById('viewStandardLogin').classList.remove('hidden');
       document.getElementById('viewResetStep1').classList.add('hidden');
@@ -208,13 +205,10 @@
       document.getElementById('resetStatusMsg').innerText = "";
     }
 
-    // 1. Password Login
     function handleAdminPasswordLogin(e) {
       e.preventDefault();
       const enteredEmail = document.getElementById('loginEmailInput').value.trim().toLowerCase();
       const enteredPass = document.getElementById('loginPassInput').value.trim();
-
-      // Retrieve saved custom password or fallback to initial master key
       const currentMasterPass = localStorage.getItem('iclick_master_pass') || 'iClick2026Admin';
 
       if (enteredEmail === CORPORATE_ADMIN_EMAIL && enteredPass === currentMasterPass) {
@@ -225,7 +219,6 @@
       }
     }
 
-    // 2. Dispatch Reset Code to Corporate Admin Inbox
     function dispatchResetToken() {
       const inputEmail = document.getElementById('resetEmailInput').value.trim().toLowerCase();
       const statusMsg = document.getElementById('resetStatusMsg');
@@ -239,15 +232,15 @@
       btn.disabled = true;
       btn.innerText = "Transmitting Code...";
       statusMsg.style.color = "#d4a373";
-      statusMsg.innerText = "Connecting to secure relay...";
+      statusMsg.innerText = "Connecting to security relay...";
 
       activeResetCode = Math.floor(100000 + Math.random() * 900000).toString();
       resetExpiry = Date.now() + (10 * 60 * 1000); // 10 minutes
 
       const payload = {
-        access_key: "4610e256-8551-4d35-b2e2-8bfd0c06dbb2",
+        access_key: SECURITY_ACCESS_KEY,
         subject: "Admin Passkey Recovery Code - iClick Control Center",
-        from_name: "iClick Security System",
+        from_name: "iClick Security Gateway",
         email: CORPORATE_ADMIN_EMAIL,
         message: `Your one-time recovery code to set a new admin passkey is:\n\n${activeResetCode}\n\nThis code expires in 10 minutes. If you did not request this, please verify your server security immediately.`
       };
@@ -266,18 +259,17 @@
           statusMsg.style.color = "#f87171";
           statusMsg.innerText = "Failed to dispatch recovery code. Please try again.";
           btn.disabled = false;
-          btn.innerText = "Send Recovery Code to Admin Inbox";
+          btn.innerText = "Send Recovery Code to Security Mail";
         }
       })
       .catch(() => {
         statusMsg.style.color = "#f87171";
         statusMsg.innerText = "Network error communicating with mail relay.";
         btn.disabled = false;
-        btn.innerText = "Send Recovery Code to Admin Inbox";
+        btn.innerText = "Send Recovery Code to Security Mail";
       });
     }
 
-    // 3. Commit New Custom Password
     function commitPasswordUpdate() {
       const code = document.getElementById('resetCodeInput').value.trim();
       const p1 = document.getElementById('newPassInput').value.trim();
@@ -304,7 +296,6 @@
         return;
       }
 
-      // Save new custom passkey and activate session
       localStorage.setItem('iclick_master_pass', p1);
       sessionStorage.setItem('iclick_admin_session', 'active_' + Date.now());
       activeResetCode = null;
