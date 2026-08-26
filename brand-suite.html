@@ -870,34 +870,32 @@
         }
 
         /* Staff ID Card Dispatch */
-        function shareStaffIdToSecretary() {
-            const name = document.getElementById('staff-input-name').value;
-            const title = document.getElementById('staff-input-title').value;
-            const dept = document.getElementById('staff-input-dept').value;
-            const idNo = document.getElementById('staff-input-id').value;
-            const expiry = document.getElementById('staff-input-expiry').value;
+        function shareCeoIdToSecretary() {
+            const name = document.getElementById('ceo-input-name').value;
+            const title = document.getElementById('ceo-input-title').value;
+            const idNo = document.getElementById('ceo-input-id').value;
 
-            renderElementToDataURL('staff-id-card-front').then(({ dataUrl: frontUrl }) => {
-                renderElementToDataURL('staff-id-card-back').then(({ dataUrl: backUrl }) => {
+            renderElementToDataURL('ceo-id-card-front').then(({ dataUrl: frontUrl, width, height }) => {
+                renderElementToDataURL('ceo-id-card-back').then(({ dataUrl: backUrl }) => {
                     let dispatches = JSON.parse(localStorage.getItem('iclick_sec_inbox') || '[]');
                     dispatches.unshift({
-                        id: 'ID-STF-' + Math.floor(100 + Math.random() * 900),
-                        type: 'Staff ID Card',
+                        id: 'ID-CEO-' + Math.floor(100 + Math.random() * 900),
+                        type: 'CEO Official Pass (2-Sided)',
                         ref: idNo,
                         name: name,
                         title: title,
-                        dept: dept,
-                        expiry: expiry,
                         frontImg: frontUrl,
                         backImg: backUrl,
+                        cardWidth: width,
+                        cardHeight: height,
                         status: 'Pending Issuance',
                         timestamp: new Date().toLocaleDateString('en-GB')
                     });
                     localStorage.setItem('iclick_sec_inbox', JSON.stringify(dispatches));
-                    alert(`✓ Staff Badge for ${name} (${idNo}) sent to Secretary Desk!`);
+                    alert(`✓ Complete 2-Sided Executive CEO ID (${idNo}) sent to Secretary Desk!`);
                 });
             });
-        }
+                        }
 
         function renderElementToDataURL(elementId, isLight = false) {
             return new Promise((resolve, reject) => {
@@ -941,18 +939,51 @@
             });
         }
 
-        function downloadCardPNG(elementId, filename) {
+         async function downloadPDF(elementId, filename) {
             const isLight = (elementId === 'letterhead-document');
-            renderElementToDataURL(elementId, isLight).then(({ dataUrl }) => {
-                const a = document.createElement('a');
-                a.href = dataUrl;
-                a.download = filename;
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-            }).catch(() => alert('PNG export failed.'));
-        }
+            const { jsPDF } = window.jspdf;
 
+            // If Letterhead, export single A4
+            if (elementId === 'letterhead-document') {
+                const { dataUrl, width, height } = await renderElementToDataURL(elementId, true);
+                const pdf = new jsPDF('p', 'mm', 'a4');
+                const pdfWidth = pdf.internal.pageSize.getWidth();
+                const pdfHeight = (height * pdfWidth) / width;
+                pdf.addImage(dataUrl, 'PNG', 0, 0, pdfWidth, pdfHeight);
+                pdf.save(filename);
+                return;
+            }
+
+            // If ID Card (CEO or Staff), capture BOTH Front and Back into a 2-Page PDF
+            let frontId = 'ceo-id-card-front';
+            let backId = 'ceo-id-card-back';
+
+            if (elementId.includes('staff')) {
+                frontId = 'staff-id-card-front';
+                backId = 'staff-id-card-back';
+            }
+
+            try {
+                const front = await renderElementToDataURL(frontId, false);
+                const back = await renderElementToDataURL(backId, false);
+
+                // Create PDF with card dimensions
+                const pdf = new jsPDF('p', 'px', [front.width, front.height]);
+                
+                // Page 1: Front
+                pdf.addImage(front.dataUrl, 'PNG', 0, 0, front.width, front.height);
+                
+                // Page 2: Back
+                pdf.addPage([back.width, back.height], 'p');
+                pdf.addImage(back.dataUrl, 'PNG', 0, 0, back.width, back.height);
+
+                pdf.save(filename);
+                alert('✓ Full 2-Sided ID Card PDF generated (Front + Back)!');
+            } catch (err) {
+                console.error(err);
+                alert('Failed to generate full ID Card PDF.');
+            }
+         }
         function downloadPDF(elementId, filename) {
             const isLight = (elementId === 'letterhead-document');
             renderElementToDataURL(elementId, isLight).then(({ dataUrl, width, height }) => {
