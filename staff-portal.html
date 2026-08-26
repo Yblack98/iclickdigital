@@ -188,36 +188,34 @@
     </footer>
   </div>
 
-  <!-- Modal for Viewing & Downloading CEO Memos -->
+  <!-- Modal for Viewing Exact Signed A4 CEO Memos -->
   <div id="viewMemoModal" class="hidden fixed inset-0 z-50 bg-brand-950/90 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="bg-white text-brand-950 w-full max-w-2xl rounded-2xl p-6 md:p-8 space-y-4 shadow-2xl max-h-[90vh] overflow-y-auto">
-      <div class="flex justify-between items-center border-b pb-3">
+    <div class="bg-brand-900 border border-brand-700 text-brand-50 w-full max-w-3xl rounded-3xl p-6 space-y-4 shadow-2xl max-h-[92vh] flex flex-col justify-between">
+      <div class="flex justify-between items-center border-b border-brand-800 pb-3">
         <div>
-          <h3 class="font-bold text-lg text-brand-950" id="modalMemoTitle">Executive Memo</h3>
-          <p class="text-xs text-gray-500" id="modalMemoRef">REF: IDV/EXEC/2026/084</p>
+          <h3 class="font-bold text-base text-brand-50" id="modalMemoTitle">Executive Memo Preview</h3>
+          <p class="text-xs text-brand-300 font-mono" id="modalMemoRef">REF: IDV/EXEC/2026/084</p>
         </div>
-        <button onclick="closeMemoModal()" class="text-gray-400 hover:text-black"><i data-lucide="x" class="w-5 h-5"></i></button>
+        <button onclick="closeMemoModal()" class="text-brand-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
       </div>
 
-      <div id="memoPrintArea" class="p-6 border rounded-xl bg-brand-50 space-y-4 font-sans text-xs">
-        <div class="flex justify-between items-start border-b pb-3">
-          <div>
-            <h4 class="font-black text-sm text-brand-950">iClick Digital Ventures</h4>
-            <p class="text-[10px] text-gray-600">CAC Registered • BN: 9772940</p>
-          </div>
-          <div class="text-right text-[10px] text-gray-600 font-mono" id="modalMemoDate">Date: 26/08/2026</div>
-        </div>
-        <div class="font-bold text-sm" id="modalMemoRecipient">Recipient: ...</div>
-        <div class="font-bold underline" id="modalMemoSubject">Subject: ...</div>
-        <div class="whitespace-pre-wrap leading-relaxed" id="modalMemoBody">Body content...</div>
-        <div class="pt-4 border-t flex justify-between items-end">
-          <div>
-            <p class="font-bold">Muhammad Yasin Ibrahim</p>
-            <p class="text-[10px] text-gray-600">Chief Executive Officer / Founder</p>
-          </div>
-          <span class="text-[10px] font-mono text-emerald-700 font-bold">DIGITALLY SIGNED &amp; CERTIFIED</span>
+      <!-- Live Exact Rendered Container -->
+      <div class="flex-1 overflow-y-auto rounded-2xl bg-brand-950 border border-brand-800 p-3 flex justify-center">
+        <img id="modalMemoRenderImg" class="max-w-full h-auto rounded-lg shadow-2xl border border-stone-300" src="" alt="Exact Signed A4 Memo">
+      </div>
+
+      <div class="flex flex-wrap justify-between items-center gap-2 pt-2 border-t border-brand-800 text-xs">
+        <span class="text-emerald-400 font-bold flex items-center gap-1.5"><i data-lucide="check-circle" class="w-4 h-4"></i> Verified Executive Signature</span>
+        <div class="flex gap-2">
+          <button onclick="downloadActiveMemoPDF()" class="px-4 py-2.5 bg-brand-300 hover:bg-brand-400 text-brand-950 rounded-xl font-bold uppercase transition shadow">
+            <i data-lucide="download" class="w-3.5 h-3.5 inline mr-1"></i> Download A4 PDF &amp; Mark Dispatched
+          </button>
         </div>
       </div>
+    </div>
+  </div>
+
+      
 
       <div class="flex justify-end gap-2 pt-2">
         <button onclick="downloadActiveMemoPDF()" class="px-4 py-2 bg-brand-900 text-white rounded-xl text-xs font-bold shadow">
@@ -259,7 +257,7 @@
     lucide.createIcons();
 
     const SEC_EMAIL = "secretary@iclickdigitalventures.com";
-    const SECURITY_ACCESS_KEY = "93f249e4-0f14-4643-8e32-4af9619ffe32"; // Routes strictly to password@iclickdigitalventures.com
+    const SECURITY_ACCESS_KEY = "93f249e4-0f14-4643-8e32-4af9619ffe32"; // Dedicated Security Relay
     let activeSecOtp = null;
     let secOtpExpiry = null;
 
@@ -367,42 +365,46 @@
       const inbox = JSON.parse(localStorage.getItem('iclick_sec_inbox') || '[]');
 
       if (inbox.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-brand-400">No dispatched files from CEO yet. Memos and staff ID cards sent from Brand Studio will appear here automatically.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-brand-400">No pending dispatches. All received memos and ID cards have been processed and moved to the registry log.</td></tr>`;
       } else {
         tbody.innerHTML = '';
         inbox.forEach((item, idx) => {
           if (item.type === 'Executive Memo') {
             tbody.innerHTML += `
               <tr class="hover:bg-brand-900/60">
-                <td class="p-3 font-mono font-bold text-brand-300">${item.id}</td>
+                <td class="p-3 font-mono font-bold text-brand-300">${item.ref}</td>
                 <td class="p-3"><span class="px-2 py-0.5 rounded bg-brand-800 text-[10px] text-brand-200 font-bold">${item.type}</span></td>
                 <td class="p-3 font-bold text-white">${item.subject}</td>
                 <td class="p-3 text-brand-200">${item.recipient}</td>
                 <td class="p-3 text-brand-400 font-mono">${item.date}</td>
                 <td class="p-3 text-right">
-                  <button onclick="viewMemo(${idx})" class="px-2.5 py-1 bg-brand-300 hover:bg-brand-400 text-brand-950 rounded text-[10px] font-bold shadow">
-                    View &amp; Download Memo
+                  <button onclick="viewMemo(${idx})" class="px-3 py-1.5 bg-brand-300 hover:bg-brand-400 text-brand-950 rounded-xl text-[11px] font-bold shadow">
+                    View Exact A4 &amp; Dispatch
                   </button>
                 </td>
               </tr>
             `;
-          } else if (item.type === 'Staff ID Card') {
+          } else {
+            const isCeo = item.type.includes('CEO');
+            const tagColor = isCeo ? 'bg-amber-950 text-amber-300' : 'bg-emerald-950 text-emerald-300';
             tbody.innerHTML += `
               <tr class="hover:bg-brand-900/60">
-                <td class="p-3 font-mono font-bold text-emerald-400">${item.id}</td>
-                <td class="p-3"><span class="px-2 py-0.5 rounded bg-emerald-950 text-[10px] text-emerald-300 font-bold">${item.type}</span></td>
-                <td class="p-3 font-bold text-white">Badge for ${item.name}</td>
-                <td class="p-3 text-brand-200">${item.title} (${item.ref})</td>
+                <td class="p-3 font-mono font-bold text-warmgold">${item.ref}</td>
+                <td class="p-3"><span class="px-2 py-0.5 rounded ${tagColor} text-[10px] font-bold">${item.type}</span></td>
+                <td class="p-3 font-bold text-white">${item.name}</td>
+                <td class="p-3 text-brand-200">${item.title}</td>
                 <td class="p-3 text-brand-400 font-mono">${item.timestamp}</td>
-                <td class="p-3 text-right space-x-1">
-                  <button onclick="downloadInboxStaffId(${idx}, 'front')" class="px-2 py-1 bg-brand-300 text-brand-950 rounded text-[10px] font-bold shadow">Front Badge</button>
-                  <button onclick="downloadInboxStaffId(${idx}, 'back')" class="px-2 py-1 bg-brand-800 text-white rounded text-[10px] font-bold shadow">Back Badge</button>
+                <td class="p-3 text-right space-x-1 whitespace-nowrap">
+                  <button onclick="downloadAndLogId(${idx}, 'front')" class="px-2.5 py-1 bg-brand-300 text-brand-950 rounded-lg text-[10px] font-bold shadow">Front PNG</button>
+                  <button onclick="downloadAndLogId(${idx}, 'back')" class="px-2.5 py-1 bg-brand-800 text-white rounded-lg text-[10px] font-bold shadow">Back PNG</button>
+                  <button onclick="markIdDispatched(${idx})" class="px-2.5 py-1 bg-emerald-800 hover:bg-emerald-700 text-white rounded-lg text-[10px] font-bold shadow">Complete Dispatch</button>
                 </td>
               </tr>
             `;
           }
         });
       }
+      lucide.createIcons();
     }
 
     let activeMemoIndex = null;
@@ -413,11 +415,8 @@
 
       activeMemoIndex = idx;
       document.getElementById('modalMemoTitle').innerText = memo.subject;
-      document.getElementById('modalMemoRef').innerText = `REF: ${memo.ref}`;
-      document.getElementById('modalMemoDate').innerText = `Date: ${memo.date}`;
-      document.getElementById('modalMemoRecipient').innerText = `Recipient: ${memo.recipient}`;
-      document.getElementById('modalMemoSubject').innerText = `Subject: ${memo.subject}`;
-      document.getElementById('modalMemoBody').innerText = memo.body;
+      document.getElementById('modalMemoRef').innerText = `REF: ${memo.ref} • ${memo.recipient}`;
+      document.getElementById('modalMemoRenderImg').src = memo.renderedSheet;
 
       document.getElementById('viewMemoModal').classList.remove('hidden');
     }
@@ -426,20 +425,44 @@
       document.getElementById('viewMemoModal').classList.add('hidden');
     }
 
+    /* Download Standard A4 PDF & Move Memo to Log as Dispatched */
     function downloadActiveMemoPDF() {
-      const el = document.getElementById('memoPrintArea');
-      html2canvas(el, { scale: 2.5, backgroundColor: '#ffffff' }).then(canvas => {
-        const { jsPDF } = window.jspdf;
-        const pdf = new jsPDF('p', 'mm', 'a4');
-        const imgData = canvas.toDataURL('image/png');
-        const pdfWidth = pdf.internal.pageSize.getWidth();
-        const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
-        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-        pdf.save('iclick-dispatched-memo.pdf');
+      if (activeMemoIndex === null) return;
+      let inbox = JSON.parse(localStorage.getItem('iclick_sec_inbox') || '[]');
+      const memo = inbox[activeMemoIndex];
+      if (!memo) return;
+
+      const { jsPDF } = window.jspdf;
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (memo.sheetHeight * pdfWidth) / memo.sheetWidth;
+
+      pdf.addImage(memo.renderedSheet, 'PNG', 0, 0, pdfWidth, pdfHeight);
+      pdf.save(`iClick_Memo_${memo.ref.replace(/[\/\\]/g, '_')}.pdf`);
+
+      // Archive to Registry Log
+      let registry = JSON.parse(localStorage.getItem('iclick_correspondence_register') || '[]');
+      registry.unshift({
+        ref: memo.ref,
+        type: 'Outward Memo (A4)',
+        party: memo.recipient,
+        date: new Date().toLocaleDateString('en-GB'),
+        status: 'Dispatched'
       });
+      localStorage.setItem('iclick_correspondence_register', JSON.stringify(registry));
+
+      // Remove from inbox
+      inbox.splice(activeMemoIndex, 1);
+      localStorage.setItem('iclick_sec_inbox', JSON.stringify(inbox));
+
+      closeMemoModal();
+      renderExecutiveInbox();
+      renderRegistryTable();
+      alert(`✓ Memo ${memo.ref} downloaded and moved to Official Registry as DISPATCHED!`);
     }
 
-    function downloadInboxStaffId(idx, side) {
+    /* Download ID Card Badge & Auto-Log */
+    function downloadAndLogId(idx, side) {
       const inbox = JSON.parse(localStorage.getItem('iclick_sec_inbox') || '[]');
       const item = inbox[idx];
       if (!item) return;
@@ -447,10 +470,35 @@
       const imgUrl = side === 'front' ? item.frontImg : item.backImg;
       const a = document.createElement('a');
       a.href = imgUrl;
-      a.download = `${item.name.replace(/\s+/g, '_')}_ID_${side}.png`;
+      a.download = `${item.name.replace(/\s+/g, '_')}_${item.ref}_${side}.png`;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
+    }
+
+    function markIdDispatched(idx) {
+      let inbox = JSON.parse(localStorage.getItem('iclick_sec_inbox') || '[]');
+      const item = inbox[idx];
+      if (!item) return;
+
+      // Add to Registry Log
+      let registry = JSON.parse(localStorage.getItem('iclick_correspondence_register') || '[]');
+      registry.unshift({
+        ref: item.ref,
+        type: item.type,
+        party: `${item.name} (${item.title})`,
+        date: new Date().toLocaleDateString('en-GB'),
+        status: 'Dispatched'
+      });
+      localStorage.setItem('iclick_correspondence_register', JSON.stringify(registry));
+
+      // Remove from active inbox
+      inbox.splice(idx, 1);
+      localStorage.setItem('iclick_sec_inbox', JSON.stringify(inbox));
+
+      renderExecutiveInbox();
+      renderRegistryTable();
+      alert(`✓ ${item.name}'s badge successfully marked as DISPATCHED and logged!`);
     }
 
     function handleSendCeoMsg(e) {
