@@ -478,6 +478,39 @@
                 </div>
             </div>
         </section>
+            <!-- Secretary Inward Dispatches & Acknowledgments -->
+      <section class="bg-espresso-800 border border-espresso-600 rounded-2xl p-6 space-y-4 shadow-xl">
+        <div class="flex justify-between items-center border-b border-espresso-600 pb-3">
+          <div>
+            <h3 class="font-heading font-bold text-lg text-linen flex items-center gap-2">
+              <i class="fa-solid fa-inbox text-terracotta"></i> Inward Dispatches from Secretary Desk
+            </h3>
+            <p class="text-xs text-stone-300">Official acknowledgments, inward memos, and briefs received from Secretary Desk.</p>
+          </div>
+          <button onclick="renderCeoSecretaryInbox()" class="px-3 py-1.5 bg-espresso-700 hover:bg-espresso-600 border border-espresso-600 text-linen rounded-xl text-xs font-bold transition flex items-center gap-1.5">
+            <i class="fa-solid fa-arrows-rotate text-warmgold"></i> Refresh
+          </button>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs text-linen">
+            <thead class="bg-espresso-900 text-stone-400 uppercase text-[10px] border-b border-espresso-700">
+              <tr>
+                <th class="p-3">Reference ID</th>
+                <th class="p-3">Sender</th>
+                <th class="p-3">Subject / Brief</th>
+                <th class="p-3">Message Content</th>
+                <th class="p-3">Date &amp; Time</th>
+                <th class="p-3 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="ceoSecretaryInboxBody" class="divide-y divide-espresso-700">
+              <tr><td colspan="6" class="p-4 text-center text-stone-400">Loading incoming messages from Secretary Desk...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+        
 
         <!-- TAB 4: TOUCH SIGNATURE PAD STUDIO -->
         <section id="signature-tab" class="tab-content hidden space-y-8">
@@ -753,6 +786,52 @@
                 btn.innerText = "Dispatch Memo to Secretary";
             });
         }
+    function renderCeoSecretaryInbox() {
+      const tbody = document.getElementById('ceoSecretaryInboxBody');
+      if (!tbody) return;
+
+      const inbox = JSON.parse(localStorage.getItem('iclick_admin_inbox') || '[]');
+
+      if (inbox.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-stone-400">No inward messages or acknowledgments received from the Secretary yet.</td></tr>`;
+      } else {
+        tbody.innerHTML = '';
+        inbox.forEach((item, idx) => {
+          tbody.innerHTML += `
+            <tr class="hover:bg-espresso-900/60">
+              <td class="p-3 font-mono font-bold text-warmgold">${item.id || 'SEC-MSG'}</td>
+              <td class="p-3 font-semibold text-terracotta">${item.sender}</td>
+              <td class="p-3 font-bold text-linen">${item.subject}</td>
+              <td class="p-3 text-stone-300 max-w-xs truncate">${item.message}</td>
+              <td class="p-3 text-stone-400 font-mono text-[11px]">${item.date}</td>
+              <td class="p-3 text-right space-x-1 whitespace-nowrap">
+                <button onclick="readCeoSecMsg(${idx})" class="px-2.5 py-1 bg-espresso-700 hover:bg-espresso-600 border border-espresso-600 text-linen rounded-lg text-[10px] font-bold">View Full</button>
+                <button onclick="dismissCeoSecMsg(${idx})" class="px-2.5 py-1 bg-rose-900/60 hover:bg-rose-800 text-stone-200 rounded-lg text-[10px] font-bold">Dismiss</button>
+              </td>
+            </tr>
+          `;
+        });
+      }
+    }
+
+    function readCeoSecMsg(idx) {
+      const inbox = JSON.parse(localStorage.getItem('iclick_admin_inbox') || '[]');
+      const item = inbox[idx];
+      if (!item) return;
+      alert(`[INWARD BRIEF FROM SECRETARY DESK]\n\nRef: ${item.id}\nFrom: ${item.sender}\nDate: ${item.date}\nSubject: ${item.subject}\n\nMessage:\n${item.message}`);
+    }
+
+    function dismissCeoSecMsg(idx) {
+      let inbox = JSON.parse(localStorage.getItem('iclick_admin_inbox') || '[]');
+      inbox.splice(idx, 1);
+      localStorage.setItem('iclick_admin_inbox', JSON.stringify(inbox));
+      renderCeoSecretaryInbox();
+    }
+
+    // Call on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      renderCeoSecretaryInbox();
+    });
 
         /* CEO ID Card Dispatch */
         function shareCeoIdToSecretary() {
