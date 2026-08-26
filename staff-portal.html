@@ -490,27 +490,36 @@
       renderRegistryTable();
       alert(`✓ ${item.name}'s badge successfully marked as DISPATCHED and logged!`);
     }
-
-    function handleSendCeoMsg(e) {
+function handleSendCeoMsg(e) {
       e.preventDefault();
       const status = document.getElementById('secCeoStatus');
-      const sender = document.getElementById('secSenderName').value;
-      const subject = document.getElementById('secBriefSubject').value;
-      const msg = document.getElementById('secBriefMessage').value;
+      const sender = document.getElementById('secSenderName').value.trim();
+      const subject = document.getElementById('secBriefSubject').value.trim();
+      const msg = document.getElementById('secBriefMessage').value.trim();
 
+      // Dispatch directly to CEO Admin Local Queue with reference ID and timestamp
       let adminInbox = JSON.parse(localStorage.getItem('iclick_admin_inbox') || '[]');
-      adminInbox.unshift({
-        sender: sender,
+      const newEntry = {
+        id: 'SEC-MSG-' + Math.floor(1000 + Math.random() * 9000),
+        sender: sender || 'Executive Secretary',
         subject: subject,
         message: msg,
-        date: new Date().toLocaleDateString('en-GB')
-      });
+        date: new Date().toLocaleDateString('en-GB') + ' ' + new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }),
+        status: 'Unread'
+      };
+      
+      adminInbox.unshift(newEntry);
       localStorage.setItem('iclick_admin_inbox', JSON.stringify(adminInbox));
 
       status.style.color = "#34d399";
-      status.innerText = "✓ Dispatched to CEO Control Center Workspace!";
+      status.innerText = "✓ Dispatched directly to CEO Control Center!";
       document.getElementById('secCeoMsgForm').reset();
-    }
+      
+      setTimeout(() => {
+        status.innerText = "";
+      }, 4000);
+}
+  
 
     function openAddMailModal() { document.getElementById('addMailModal').classList.remove('hidden'); }
     function closeAddMailModal() { document.getElementById('addMailModal').classList.add('hidden'); }
