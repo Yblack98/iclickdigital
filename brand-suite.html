@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+7<!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
@@ -182,6 +182,32 @@
                                             <div class="w-full h-full rounded-xl overflow-hidden bg-espresso-800">
                                                 <img id="ceo-photo-img" class="w-full h-full object-cover" src="images/yasin.jpg" alt="CEO Photo">
                                             </div>
+<!-- CEO FRONT -->
+                                <div id="ceo-id-card-front" class="card-front bg-espresso-900 border-2 border-terracotta/60 p-6 flex flex-col justify-between text-linen relative">
+                                    <div class="flex items-center justify-between border-b border-terracotta/30 pb-3">
+                                        <div class="flex items-center gap-2.5">
+                                            <div class="w-8 h-8">
+                                                <svg viewBox="0 0 100 100" class="w-full h-full">
+                                                    <rect x="20" y="20" width="26" height="26" rx="6" fill="#FDFBF7"></rect>
+                                                    <rect x="54" y="20" width="26" height="26" rx="6" fill="#DFBA81"></rect>
+                                                    <rect x="20" y="54" width="26" height="26" rx="6" fill="#C28E68"></rect>
+                                                    <rect x="54" y="54" width="26" height="26" rx="6" fill="#FDFBF7"></rect>
+                                                    <circle cx="50" cy="50" r="8" fill="#19110B" stroke="#DFBA81" stroke-width="3"></circle>
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <h4 class="font-heading font-extrabold text-xs text-linen leading-tight">iClick Digital</h4>
+                                                <p class="text-[8px] text-terracotta font-bold uppercase tracking-wider">BN: 9772940 • EXECUTIVE</p>
+                                            </div>
+                                        </div>
+                                        <span class="text-[9px] font-bold bg-terracotta text-linen px-2 py-0.5 rounded uppercase">EXECUTIVE</span>
+                                    </div>
+
+                                    <div class="my-auto flex flex-col items-center space-y-2">
+                                        <div class="relative w-32 h-32 rounded-2xl p-1 bg-gradient-to-tr from-terracotta via-warmgold to-espresso-600 shadow-xl">
+                                            <div class="w-full h-full rounded-xl overflow-hidden bg-espresso-800">
+                                                <img id="ceo-photo-img" class="w-full h-full object-cover" src="images/yasin.jpg" alt="CEO Photo">
+                                            </div>
                                         </div>
                                         <div class="text-center space-y-0.5">
                                             <h3 id="ceo-card-name" class="font-heading font-bold text-base text-linen">MUHAMMAD YASIN IBRAHIM</h3>
@@ -196,17 +222,17 @@
                                             <span>ISSUED: <strong id="ceo-card-date" class="text-linen">AUG 2026</strong></span>
                                         </div>
                                         <div class="flex justify-between text-stone-400">
-                                            <span>STATUS: <strong class="text-emerald-400">ACTIVE</strong></span>
-                                            <span>EXPIRES: <strong class="text-warmgold font-bold">PERMANENT</strong></span>
+                                            <span>CAC BN: <strong class="text-warmgold font-bold">9772940</strong></span>
+                                            <span>STATUS: <strong class="text-emerald-400 font-bold">ACTIVE</strong></span>
                                         </div>
                                     </div>
                                 </div>
 
-                                <!-- BACK -->
+                                <!-- CEO BACK -->
                                 <div id="ceo-id-card-back" class="card-back bg-espresso-900 border-2 border-terracotta/60 p-6 flex flex-col justify-between text-linen">
                                     <div class="text-center space-y-1 border-b border-terracotta/30 pb-2">
-                                        <p class="text-[9px] text-terracotta font-bold uppercase tracking-widest">Official Property of iClick Digital Ventures</p>
-                                        <p id="ceo-card-notice" class="text-[8px] text-stone-400">Property of iClick Digital Ventures. If found, please return to any branch office or headquarters.</p>
+                                        <p class="text-[9px] text-terracotta font-bold uppercase tracking-widest">Property of iClick Digital Ventures (BN: 9772940)</p>
+                                        <p id="ceo-card-notice" class="text-[8px] text-stone-400">If found, please return to any branch office or headquarters.</p>
                                     </div>
                                     <div class="space-y-2 text-[9px] text-stone-300">
                                         <p><i class="fa-solid fa-phone text-terracotta w-4"></i> Phone: <span id="ceo-card-phone">+234 806 288 2839</span></p>
@@ -216,7 +242,7 @@
                                     </div>
                                     <div class="border-t border-terracotta/30 pt-2 flex items-center justify-between">
                                         <div class="text-[8px] text-stone-400">
-                                            <p class="font-bold text-linen">SCUML / EFCC COMPLIANT</p>
+                                            <p class="font-bold text-linen">CAC: BN 9772940 • SCUML COMPLIANT</p>
                                             <p>AUTHORIZED SIGNATURE</p>
                                         </div>
                                         <div class="w-20 h-8 border-b border-warmgold/50 flex items-end justify-center pb-0.5">
@@ -224,8 +250,6 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
 
                         <div class="flex flex-wrap justify-center gap-2 mt-4">
                             <button onclick="shareCeoIdToSecretary()" class="bg-gradient-to-r from-terracotta to-warmgold text-espresso-900 font-extrabold text-xs px-3.5 py-2 rounded-lg shadow flex items-center gap-1.5">
@@ -308,7 +332,7 @@
                     <div class="lg:col-span-6 flex flex-col items-center">
                         <div class="card-perspective w-[320px] h-[510px]">
                             <div id="staff-card-container" class="card-inner shadow-2xl">
-                                <!-- FRONT -->
+                                <!-- STAFF FRONT -->
                                 <div id="staff-id-card-front" class="card-front bg-espresso-900 border-2 border-terracotta/50 p-5 flex flex-col justify-between text-linen">
                                     <div class="flex items-center justify-between border-b border-terracotta/30 pb-2.5">
                                         <div class="flex items-center gap-2">
@@ -346,16 +370,16 @@
                                             <span>ISSUED: <strong id="staff-card-date" class="text-linen">AUG 2026</strong></span>
                                         </div>
                                         <div class="flex justify-between text-stone-400">
-                                            <span>STATUS: <strong class="text-emerald-400">ACTIVE</strong></span>
+                                            <span>CAC BN: <strong class="text-warmgold font-bold">9772940</strong></span>
                                             <span>EXPIRES: <strong id="staff-card-expiry" class="text-warmgold">AUG 2028</strong></span>
                                         </div>
                                     </div>
                                 </div>
 
-                                <!-- BACK -->
+                                <!-- STAFF BACK -->
                                 <div id="staff-id-card-back" class="card-back bg-espresso-900 border-2 border-terracotta/50 p-5 flex flex-col justify-between text-linen">
                                     <div class="text-center space-y-0.5 border-b border-terracotta/30 pb-2">
-                                        <p class="text-[9px] text-stone-300 font-bold uppercase">Official Staff Pass • iClick Digital Ventures</p>
+                                        <p class="text-[9px] text-stone-300 font-bold uppercase">Staff Pass • iClick Digital Ventures (BN: 9772940)</p>
                                         <p id="staff-card-lossmsg" class="text-[8px] text-stone-400">If found, please return to any iClick branch office.</p>
                                     </div>
                                     <div class="space-y-1.5 text-[9px] text-stone-300">
@@ -365,14 +389,12 @@
                                         <p><i class="fa-solid fa-globe text-terracotta w-4"></i> Portal: www.iclickdigitalventures.com</p>
                                     </div>
                                     <div class="border-t border-terracotta/30 pt-2 flex items-center justify-between">
-                                        <span class="text-[8px] text-stone-400 font-bold">AUTHORIZED SIGNATURE</span>
+                                        <span class="text-[8px] text-stone-400 font-bold">CAC REGISTERED • BN: 9772940</span>
                                         <div class="w-16 h-7 border-b border-warmgold/50 flex items-end justify-center pb-0.5">
                                             <img class="signature-render-target max-h-5 max-w-full object-contain" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 35'><text x='5' y='25' fill='%23DFBA81' font-family='cursive' font-size='18' font-style='italic'>M.Y. Ibrahim</text></svg>" alt="Signature">
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
 
                         <div class="flex flex-wrap gap-2 mt-4 justify-center">
                             <button onclick="shareStaffIdToSecretary()" class="bg-gradient-to-r from-terracotta to-warmgold text-espresso-900 font-extrabold text-xs px-3.5 py-2 rounded-lg shadow flex items-center gap-1.5">
@@ -550,14 +572,14 @@
                 </div>
             </div>
     </section>
-    <!-- TAB 5: BUSINESS CARD EDITOR -->
+<!-- TAB 5: BUSINESS CARD EDITOR -->
         <section id="biz-tab" class="tab-content hidden space-y-8">
             <div class="bg-espresso-800 border border-espresso-600 rounded-2xl p-6 md:p-8 space-y-6">
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-espresso-600 pb-6">
                     <div>
                         <span class="inline-block px-3 py-1 rounded-full text-[11px] font-bold bg-terracotta/20 text-terracotta uppercase tracking-wider mb-2 border border-terracotta/30">Executive Stationery</span>
                         <h2 class="text-2xl md:text-3xl font-heading font-bold text-linen">Business Card Studio (Standard 3.5" × 2.0")</h2>
-                        <p class="text-sm text-stone-300 mt-1">Accurately proportioned executive business card.</p>
+                        <p class="text-sm text-stone-300 mt-1">Accurately proportioned executive business card with dual-sided PDF and PNG export.</p>
                     </div>
                     <button onclick="toggleCardFlip('biz-card-container')" class="bg-espresso-700 hover:bg-espresso-600 text-linen text-xs font-semibold px-4 py-2.5 rounded-xl border border-espresso-600 transition flex items-center gap-2">
                         <i class="fa-solid fa-rotate text-warmgold"></i> Flip Card View
@@ -602,7 +624,7 @@
                                     </div>
                                     <div>
                                         <h3 class="font-heading font-extrabold text-base tracking-tight text-linen">iClick Digital Ventures</h3>
-                                        <p class="text-[8px] text-terracotta font-semibold uppercase tracking-widest mt-0.5">GovTech • AI Automation • Academy • IoT</p>
+                                        <p class="text-[8px] text-terracotta font-semibold uppercase tracking-widest mt-0.5">CAC BN: 9772940 • GovTech • AI • IoT</p>
                                     </div>
                                 </div>
 
@@ -624,17 +646,18 @@
                             </div>
                         </div>
 
-                        <div class="flex flex-wrap gap-2 mt-4 justify-center">
-                            <button onclick="downloadCardPNG('biz-card-front', 'iclick-biz-card-front.png')" class="bg-terracotta text-linen text-xs font-semibold px-3 py-2 rounded-lg">Front PNG</button>
-                            <button onclick="downloadCardPNG('biz-card-back', 'iclick-biz-card-back.png')" class="bg-espresso-700 text-linen text-xs font-semibold px-3 py-2 rounded-lg border border-espresso-600">Back PNG</button>
-                            <button onclick="downloadPDF('biz-card-front', 'iclick-business-card.pdf')" class="bg-warmgold text-espresso-900 text-xs font-bold px-3 py-2 rounded-lg">Card PDF</button>
+                        <!-- Action Download Buttons -->
+                        <div class="flex flex-wrap gap-2 mt-6 justify-center">
+                            <button onclick="downloadBizCardPNG('front')" class="bg-terracotta hover:bg-amber-700 text-linen text-xs font-semibold px-3.5 py-2 rounded-lg transition shadow">Front PNG</button>
+                            <button onclick="downloadBizCardPNG('back')" class="bg-espresso-700 hover:bg-espresso-600 text-linen text-xs font-semibold px-3.5 py-2 rounded-lg border border-espresso-600 transition">Back PNG</button>
+                            <button onclick="downloadBizCardPDF()" class="bg-warmgold hover:bg-amber-400 text-espresso-900 text-xs font-bold px-3.5 py-2 rounded-lg transition shadow">2-Sided Card PDF</button>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-    </main>
+
 
     <footer class="border-t border-espresso-600 py-6 text-center text-xs text-stone-400 bg-espresso-900">
         <p>© 2026 iClick Digital Ventures (BN: 9772940). All Rights Reserved. • www.iclickdigitalventures.com</p>
@@ -661,6 +684,34 @@
         function toggleCardFlip(containerId) {
             const container = document.getElementById(containerId);
             if (container) container.classList.toggle('flipped');
+        }
+        function downloadBizCardPNG(side) {
+            const targetId = side === 'front' ? 'biz-card-front' : 'biz-card-back';
+            downloadCardPNG(targetId, `iclick-business-card-${side}.png`);
+        }
+
+        async function downloadBizCardPDF() {
+            try {
+                const front = await renderElementToDataURL('biz-card-front', false);
+                const back = await renderElementToDataURL('biz-card-back', false);
+                const { jsPDF } = window.jspdf;
+
+                // Standard landscape business card ratio
+                const pdf = new jsPDF('l', 'px', [front.width, front.height]);
+                
+                // Page 1: Front
+                pdf.addImage(front.dataUrl, 'PNG', 0, 0, front.width, front.height);
+                
+                // Page 2: Back
+                pdf.addPage([back.width, back.height], 'l');
+                pdf.addImage(back.dataUrl, 'PNG', 0, 0, back.width, back.height);
+
+                pdf.save('iclick-business-card-complete.pdf');
+                alert('✓ Full 2-Sided Business Card PDF downloaded!');
+            } catch (err) {
+                console.error(err);
+                alert('Failed to generate Business Card PDF.');
+            }
         }
 
         function handleCeoPhotoUpload(event) {
