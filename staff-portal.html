@@ -37,7 +37,6 @@
         <p class="text-xs text-brand-300 mt-1">Authorized internal correspondence portal.</p>
       </div>
 
-      <!-- Password Login View -->
       <form id="secLoginForm" onsubmit="handleSecLogin(event)" class="space-y-4 text-xs">
         <div>
           <label class="block font-medium text-brand-200 mb-1">Secretary Email</label>
@@ -56,9 +55,8 @@
         </div>
       </form>
 
-      <!-- Password Reset & Setup View -->
       <div id="secResetView" class="space-y-4 text-xs hidden">
-        <p class="text-[11px] text-brand-300 leading-relaxed">Enter your official secretary email. An OTP recovery token will be dispatched to your inbox to configure your custom passkey.</p>
+        <p class="text-[11px] text-brand-300 leading-relaxed">Enter your official secretary email. An OTP verification code will be sent to the security inbox (<code class="text-brand-200">password@iclickdigitalventures.com</code>).</p>
         <div>
           <label class="block font-medium text-brand-200 mb-1">Confirm Secretary Email</label>
           <input type="email" id="secResetEmailInput" value="secretary@iclickdigitalventures.com" class="w-full px-4 py-3 rounded-xl bg-brand-950 border border-brand-700 text-white text-xs focus:border-brand-300 outline-none font-mono">
@@ -75,7 +73,6 @@
       </div>
     </div>
   </div>
-
   <!-- 2. Secretary Main Workspace -->
   <div id="secMainWorkspace" class="hidden flex flex-col min-h-screen">
     <nav class="bg-brand-900 border-b border-brand-800 px-6 py-4 flex justify-between items-center sticky top-0 z-40 text-white">
@@ -83,7 +80,7 @@
         <img src="images/iclick-full-logo-dark (2).svg" alt="iClick Logo" class="h-9 w-auto object-contain">
         <div>
           <h1 class="text-base font-bold">Secretary Operational Desk</h1>
-          <span class="text-[10px] text-brand-300 font-mono">Inward/Outward Registers, Letterheads &amp; Executive Memo Desk</span>
+          <span class="text-[10px] text-brand-300 font-mono">Executive Inbox, Outward Registers &amp; Memo Downloads</span>
         </div>
       </div>
       <div class="flex items-center space-x-3 text-xs">
@@ -96,15 +93,17 @@
 
     <main class="max-w-7xl mx-auto px-4 py-8 flex-1 w-full space-y-10">
       
-      <!-- Outward & Inward Official Correspondence Registry -->
+      <!-- Executive Incoming Dispatches (Memos & ID Cards from CEO) -->
       <div class="space-y-4">
-        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+        <div class="flex justify-between items-center">
           <div>
-            <h2 class="text-2xl font-black text-brand-900">Official Correspondence Registry</h2>
-            <p class="text-xs text-brand-700">Track outward dispatched memos, ministry proposals, and incoming institutional communications.</p>
+            <h2 class="text-2xl font-black text-brand-900 flex items-center gap-2">
+              <i data-lucide="inbox" class="w-6 h-6 text-brand-600"></i> Executive Inbox (Dispatches from CEO)
+            </h2>
+            <p class="text-xs text-brand-700">Official memos, letters, and employee ID cards sent directly by CEO for dispatch and issuance.</p>
           </div>
-          <button onclick="openAddMailModal()" class="px-4 py-2 rounded-xl bg-brand-900 text-brand-50 text-xs font-bold shadow flex items-center gap-1.5">
-            <i data-lucide="plus" class="w-4 h-4"></i> Log New Memo / Letter
+          <button onclick="renderExecutiveInbox()" class="px-3.5 py-2 bg-brand-900 text-brand-50 rounded-xl text-xs font-bold shadow flex items-center gap-1.5">
+            <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i> Refresh Inbox
           </button>
         </div>
 
@@ -112,16 +111,16 @@
           <table class="w-full text-left text-xs text-brand-50">
             <thead class="bg-brand-950 text-brand-300 uppercase text-[10px] border-b border-brand-800">
               <tr>
-                <th class="p-3">Ref Number</th>
+                <th class="p-3">Item ID</th>
                 <th class="p-3">Type</th>
-                <th class="p-3">Recipient / Sender</th>
-                <th class="p-3">Subject</th>
+                <th class="p-3">Title / Subject</th>
+                <th class="p-3">Recipient / Employee</th>
                 <th class="p-3">Date</th>
-                <th class="p-3">Status</th>
+                <th class="p-3 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody id="mailRegistryBody" class="divide-y divide-brand-800">
-              <tr><td colspan="6" class="p-4 text-center text-brand-400">Loading correspondence records...</td></tr>
+            <tbody id="secInboxBody" class="divide-y divide-brand-800">
+              <tr><td colspan="6" class="p-4 text-center text-brand-400">Loading incoming executive files...</td></tr>
             </tbody>
           </table>
         </div>
@@ -130,104 +129,54 @@
       <!-- Two-Column Operational Layout -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         
-        <!-- Left: Quick Letterhead Draft Desk -->
+        <!-- Left: Correspondence Log -->
         <div class="lg:col-span-7 glass-card text-brand-50 rounded-3xl p-6 space-y-4 shadow-xl text-xs">
           <div class="border-b border-brand-800 pb-3 flex justify-between items-center">
             <div>
-              <h3 class="font-bold text-base text-brand-50">Quick Corporate Letterhead Generator</h3>
-              <p class="text-[11px] text-brand-300">Draft official memos with standard corporate headers for immediate download.</p>
+              <h3 class="font-bold text-base text-brand-50">Official Registry Log</h3>
+              <p class="text-[11px] text-brand-300">Outgoing memos and proposal deliveries record.</p>
             </div>
-            <button onclick="downloadSecLetterheadPDF()" class="px-3.5 py-2 rounded-xl bg-brand-300 text-brand-950 font-bold uppercase transition shadow">Export PDF</button>
+            <button onclick="openAddMailModal()" class="px-3 py-1.5 rounded-lg bg-brand-300 text-brand-950 font-bold uppercase transition text-[10px]">Log Record</button>
           </div>
 
-          <div class="space-y-3">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <div>
-                <label class="block text-brand-300 mb-1">Ref Number</label>
-                <input type="text" id="secMemoRef" value="IDV/SEC/2026/012" oninput="updateSecLetterPreview()" class="w-full bg-brand-950 border border-brand-700 rounded-lg p-2.5 text-white">
-              </div>
-              <div>
-                <label class="block text-brand-300 mb-1">Date</label>
-                <input type="text" id="secMemoDate" value="26 August 2026" oninput="updateSecLetterPreview()" class="w-full bg-brand-950 border border-brand-700 rounded-lg p-2.5 text-white">
-              </div>
-            </div>
-            <div>
-              <label class="block text-brand-300 mb-1">Recipient Organization</label>
-              <input type="text" id="secMemoRecipient" value="Office of the Permanent Secretary, Ministry of Science and Technology" oninput="updateSecLetterPreview()" class="w-full bg-brand-950 border border-brand-700 rounded-lg p-2.5 text-white">
-            </div>
-            <div>
-              <label class="block text-brand-300 mb-1">Subject</label>
-              <input type="text" id="secMemoSubject" value="TRANSMITTAL OF TECHNICAL PROPOSAL &amp; ADVISORY" oninput="updateSecLetterPreview()" class="w-full bg-brand-950 border border-brand-700 rounded-lg p-2.5 text-white">
-            </div>
-            <div>
-              <label class="block text-brand-300 mb-1">Message Body</label>
-              <textarea id="secMemoBody" rows="4" oninput="updateSecLetterPreview()" class="w-full bg-brand-950 border border-brand-700 rounded-lg p-2.5 text-white">We hereby transmit the attached project documentation on behalf of executive management for your official review and consideration...</textarea>
-            </div>
-          </div>
-
-          <!-- Live Hidden A4 Container for PDF Export -->
-          <div class="hidden">
-            <div id="secA4LetterSheet" class="w-[700px] min-h-[900px] bg-white text-brand-950 p-10 flex flex-col justify-between font-sans">
-              <div class="border-b-2 border-brand-950 pb-4 flex justify-between items-start">
-                <div>
-                  <h2 class="font-black text-xl text-brand-950">iClick Digital Ventures</h2>
-                  <p class="text-[10px] text-brand-600 font-bold uppercase">CAC Registered • BN: 9772940 • SCUML Compliant</p>
-                </div>
-                <div class="text-right text-[10px] text-brand-800">
-                  <p class="font-bold">www.iclickdigitalventures.com</p>
-                  <p>enquiry@iclickdigitalventures.com</p>
-                  <p>+234 806 288 2839 • Dual HQ: Abuja &amp; Sokoto</p>
-                </div>
-              </div>
-              <div class="my-6 space-y-4 text-xs leading-relaxed flex-grow">
-                <div class="flex justify-between font-bold text-gray-700">
-                  <span>REF: <span id="secTargetRef">IDV/SEC/2026/012</span></span>
-                  <span>DATE: <span id="secTargetDate">26 August 2026</span></span>
-                </div>
-                <div class="font-bold text-sm" id="secTargetRecipient">Office of the Permanent Secretary</div>
-                <div class="font-bold text-xs underline pt-2" id="secTargetSubject">TRANSMITTAL OF TECHNICAL PROPOSAL &amp; ADVISORY</div>
-                <div id="secTargetBody" class="whitespace-pre-wrap text-justify">We hereby transmit the attached project documentation...</div>
-                <div class="pt-6">
-                  <p>Sincerely,</p>
-                  <p class="font-bold pt-8">Office of the Secretary</p>
-                  <p class="text-[10px] text-gray-600">iClick Digital Ventures</p>
-                </div>
-              </div>
-              <div class="border-t border-gray-400 pt-3 text-[9px] text-gray-600 text-center">
-                Dual HQ: Abuja &amp; Sokoto, Nigeria • Official Portal: www.iclickdigitalventures.com
-              </div>
-            </div>
-          </div>
+          <table class="w-full text-left text-xs text-brand-50">
+            <thead class="bg-brand-950 text-brand-300 uppercase text-[9px] border-b border-brand-800">
+              <tr>
+                <th class="p-2">Ref</th>
+                <th class="p-2">Type</th>
+                <th class="p-2">Party</th>
+                <th class="p-2">Status</th>
+              </tr>
+            </thead>
+            <tbody id="mailRegistryBody" class="divide-y divide-brand-800 text-[11px]">
+              <tr><td colspan="4" class="p-3 text-center text-brand-400">Loading records...</td></tr>
+            </tbody>
+          </table>
         </div>
 
         <!-- Right: Direct Message to CEO Terminal -->
         <div class="lg:col-span-5 glass-card text-brand-50 rounded-3xl p-6 space-y-4 shadow-xl text-xs">
           <div>
             <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-brand-800 text-brand-300 uppercase">Executive Direct Line</span>
-            <h3 class="font-bold text-base text-brand-50 mt-1">Direct Message to CEO (Admin)</h3>
-            <p class="text-brand-300 text-[11px]">Transmits directly to <code class="text-brand-200">admin@iclickdigitalventures.com</code>.</p>
+            <h3 class="font-bold text-base text-brand-50 mt-1">Direct Message to CEO</h3>
+            <p class="text-brand-300 text-[11px]">Internal executive messenger terminal.</p>
           </div>
 
           <form id="secCeoMsgForm" onsubmit="handleSendCeoMsg(event)" class="space-y-3">
-            <input type="hidden" name="access_key" value="4610e256-8551-4d35-b2e2-8bfd0c06dbb2">
-            <input type="hidden" name="subject" value="URGENT: Operational Briefing from Secretary Desk">
-            <input type="hidden" name="from_name" value="Secretary Desk">
-            <input type="hidden" name="to" value="admin@iclickdigitalventures.com">
-
             <div>
-              <label class="block text-brand-200 mb-1">Your Name / Title *</label>
-              <input type="text" name="sender_name" required value="Executive Secretary" class="w-full bg-brand-950 border border-brand-700 rounded-xl p-3 text-white">
+              <label class="block text-brand-200 mb-1">Sender *</label>
+              <input type="text" id="secSenderName" required value="Executive Secretary" class="w-full bg-brand-950 border border-brand-700 rounded-xl p-2.5 text-white">
             </div>
             <div>
-              <label class="block text-brand-200 mb-1">Message Subject / Briefing Title *</label>
-              <input type="text" name="brief_subject" required placeholder="e.g. Schedule Update / Ministry Transmittal" class="w-full bg-brand-950 border border-brand-700 rounded-xl p-3 text-white">
+              <label class="block text-brand-200 mb-1">Briefing Subject *</label>
+              <input type="text" id="secBriefSubject" required placeholder="e.g. Dispatched Memo #084 Confirmation" class="w-full bg-brand-950 border border-brand-700 rounded-xl p-2.5 text-white">
             </div>
             <div>
-              <label class="block text-brand-200 mb-1">Urgent Message Body *</label>
-              <textarea name="message" rows="4" required placeholder="Type operational brief or approval request for the CEO..." class="w-full bg-brand-950 border border-brand-700 rounded-xl p-3 text-white"></textarea>
+              <label class="block text-brand-200 mb-1">Message Body *</label>
+              <textarea id="secBriefMessage" rows="3" required placeholder="Type operational brief for CEO..." class="w-full bg-brand-950 border border-brand-700 rounded-xl p-2.5 text-white"></textarea>
             </div>
-            <button type="submit" id="secCeoBtn" class="w-full py-3.5 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold uppercase tracking-wider transition">Transmit to CEO Mail</button>
-            <p id="secCeoStatus" class="text-center font-bold mt-2"></p>
+            <button type="submit" id="secCeoBtn" class="w-full py-3 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold uppercase tracking-wider transition">Transmit to CEO</button>
+            <p id="secCeoStatus" class="text-center font-bold mt-1 text-xs"></p>
           </form>
         </div>
 
@@ -237,6 +186,45 @@
     <footer class="bg-brand-900 border-t border-brand-800 text-xs text-brand-300 py-6 text-center mt-auto">
       &copy; 2026 iClick Digital Ventures. All rights reserved. • secretary@iclickdigitalventures.com
     </footer>
+  </div>
+
+  <!-- Modal for Viewing & Downloading CEO Memos -->
+  <div id="viewMemoModal" class="hidden fixed inset-0 z-50 bg-brand-950/90 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white text-brand-950 w-full max-w-2xl rounded-2xl p-6 md:p-8 space-y-4 shadow-2xl max-h-[90vh] overflow-y-auto">
+      <div class="flex justify-between items-center border-b pb-3">
+        <div>
+          <h3 class="font-bold text-lg text-brand-950" id="modalMemoTitle">Executive Memo</h3>
+          <p class="text-xs text-gray-500" id="modalMemoRef">REF: IDV/EXEC/2026/084</p>
+        </div>
+        <button onclick="closeMemoModal()" class="text-gray-400 hover:text-black"><i data-lucide="x" class="w-5 h-5"></i></button>
+      </div>
+
+      <div id="memoPrintArea" class="p-6 border rounded-xl bg-brand-50 space-y-4 font-sans text-xs">
+        <div class="flex justify-between items-start border-b pb-3">
+          <div>
+            <h4 class="font-black text-sm text-brand-950">iClick Digital Ventures</h4>
+            <p class="text-[10px] text-gray-600">CAC Registered • BN: 9772940</p>
+          </div>
+          <div class="text-right text-[10px] text-gray-600 font-mono" id="modalMemoDate">Date: 26/08/2026</div>
+        </div>
+        <div class="font-bold text-sm" id="modalMemoRecipient">Recipient: ...</div>
+        <div class="font-bold underline" id="modalMemoSubject">Subject: ...</div>
+        <div class="whitespace-pre-wrap leading-relaxed" id="modalMemoBody">Body content...</div>
+        <div class="pt-4 border-t flex justify-between items-end">
+          <div>
+            <p class="font-bold">Muhammad Yasin Ibrahim</p>
+            <p class="text-[10px] text-gray-600">Chief Executive Officer / Founder</p>
+          </div>
+          <span class="text-[10px] font-mono text-emerald-700 font-bold">DIGITALLY SIGNED &amp; CERTIFIED</span>
+        </div>
+      </div>
+
+      <div class="flex justify-end gap-2 pt-2">
+        <button onclick="downloadActiveMemoPDF()" class="px-4 py-2 bg-brand-900 text-white rounded-xl text-xs font-bold shadow">
+          Download PDF Document
+        </button>
+      </div>
+    </div>
   </div>
 
   <!-- Modal for Logging Memos -->
@@ -263,20 +251,15 @@
           <label class="block text-brand-200 mb-1">Recipient / Sender</label>
           <input type="text" id="logParty" placeholder="e.g. Ministry of ICT / NITDA" class="w-full bg-brand-950 border border-brand-700 rounded-lg p-2 text-white">
         </div>
-        <div>
-          <label class="block text-brand-200 mb-1">Subject</label>
-          <input type="text" id="logSubject" placeholder="e.g. Workflow Automation Proposal" class="w-full bg-brand-950 border border-brand-700 rounded-lg p-2 text-white">
-        </div>
         <button onclick="saveLogEntry()" class="w-full py-3 bg-brand-300 text-brand-950 font-bold rounded-xl uppercase">Save to Official Register</button>
       </div>
     </div>
-  </div>
-
-  <script>
+                </div>
+                <script>
     lucide.createIcons();
 
     const SEC_EMAIL = "secretary@iclickdigitalventures.com";
-    const SECURITY_ACCESS_KEY = "93f249e4-0f14-4643-8e32-4af9619ffe32"; // Dedicated Security Relay
+    const SECURITY_ACCESS_KEY = "93f249e4-0f14-4643-8e32-4af9619ffe32"; // Routes strictly to password@iclickdigitalventures.com
     let activeSecOtp = null;
     let secOtpExpiry = null;
 
@@ -323,7 +306,7 @@
         access_key: SECURITY_ACCESS_KEY,
         subject: "Secretary Desk Access Code",
         from_name: "iClick Security Gateway",
-        email: SEC_EMAIL,
+        email: "password@iclickdigitalventures.com",
         message: `Your one-time access verification code for the Secretary Desk is:\n\n${activeSecOtp}\n\nExpires in 10 minutes.`
       };
 
@@ -332,7 +315,7 @@
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify(payload)
       }).then(() => {
-        alert("Verification code sent to security mailbox for secretary@iclickdigitalventures.com");
+        alert("Verification code sent to password@iclickdigitalventures.com");
         document.getElementById('secNewPassFields').classList.remove('hidden');
       }).finally(() => {
         btn.disabled = false;
@@ -343,7 +326,7 @@
     function commitSecNewPass() {
       const code = document.getElementById('secOtpInput').value.trim();
       const p1 = document.getElementById('secNewPass1').value.trim();
-    const p2 = document.getElementById('secNewPass2').value.trim();
+      const p2 = document.getElementById('secNewPass2').value.trim();
 
       if (code !== activeSecOtp || Date.now() > secOtpExpiry) {
         alert("Invalid or expired verification code.");
@@ -363,6 +346,7 @@
     function openSecWorkspace() {
       document.getElementById('secLoginGate').classList.add('hidden');
       document.getElementById('secMainWorkspace').classList.remove('hidden');
+      renderExecutiveInbox();
       renderRegistryTable();
     }
 
@@ -377,58 +361,117 @@
       }
     };
 
-    function updateSecLetterPreview() {
-      document.getElementById('secTargetRef').innerText = document.getElementById('secMemoRef').value;
-      document.getElementById('secTargetDate').innerText = document.getElementById('secMemoDate').value;
-      document.getElementById('secTargetRecipient').innerText = document.getElementById('secMemoRecipient').value;
-      document.getElementById('secTargetSubject').innerText = document.getElementById('secMemoSubject').value;
-      document.getElementById('secTargetBody').innerText = document.getElementById('secMemoBody').value;
+    /* RENDER EXECUTIVE INBOX */
+    function renderExecutiveInbox() {
+      const tbody = document.getElementById('secInboxBody');
+      const inbox = JSON.parse(localStorage.getItem('iclick_sec_inbox') || '[]');
+
+      if (inbox.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-brand-400">No dispatched files from CEO yet. Memos and staff ID cards sent from Brand Studio will appear here automatically.</td></tr>`;
+      } else {
+        tbody.innerHTML = '';
+        inbox.forEach((item, idx) => {
+          if (item.type === 'Executive Memo') {
+            tbody.innerHTML += `
+              <tr class="hover:bg-brand-900/60">
+                <td class="p-3 font-mono font-bold text-brand-300">${item.id}</td>
+                <td class="p-3"><span class="px-2 py-0.5 rounded bg-brand-800 text-[10px] text-brand-200 font-bold">${item.type}</span></td>
+                <td class="p-3 font-bold text-white">${item.subject}</td>
+                <td class="p-3 text-brand-200">${item.recipient}</td>
+                <td class="p-3 text-brand-400 font-mono">${item.date}</td>
+                <td class="p-3 text-right">
+                  <button onclick="viewMemo(${idx})" class="px-2.5 py-1 bg-brand-300 hover:bg-brand-400 text-brand-950 rounded text-[10px] font-bold shadow">
+                    View &amp; Download Memo
+                  </button>
+                </td>
+              </tr>
+            `;
+          } else if (item.type === 'Staff ID Card') {
+            tbody.innerHTML += `
+              <tr class="hover:bg-brand-900/60">
+                <td class="p-3 font-mono font-bold text-emerald-400">${item.id}</td>
+                <td class="p-3"><span class="px-2 py-0.5 rounded bg-emerald-950 text-[10px] text-emerald-300 font-bold">${item.type}</span></td>
+                <td class="p-3 font-bold text-white">Badge for ${item.name}</td>
+                <td class="p-3 text-brand-200">${item.title} (${item.ref})</td>
+                <td class="p-3 text-brand-400 font-mono">${item.timestamp}</td>
+                <td class="p-3 text-right space-x-1">
+                  <button onclick="downloadInboxStaffId(${idx}, 'front')" class="px-2 py-1 bg-brand-300 text-brand-950 rounded text-[10px] font-bold shadow">Front Badge</button>
+                  <button onclick="downloadInboxStaffId(${idx}, 'back')" class="px-2 py-1 bg-brand-800 text-white rounded text-[10px] font-bold shadow">Back Badge</button>
+                </td>
+              </tr>
+            `;
+          }
+        });
+      }
     }
 
-    function downloadSecLetterheadPDF() {
-      const sheet = document.getElementById('secA4LetterSheet');
-      sheet.parentElement.classList.remove('hidden');
+    let activeMemoIndex = null;
+    function viewMemo(idx) {
+      const inbox = JSON.parse(localStorage.getItem('iclick_sec_inbox') || '[]');
+      const memo = inbox[idx];
+      if (!memo) return;
 
-      html2canvas(sheet, { scale: 2.5, backgroundColor: '#ffffff' }).then(canvas => {
-        sheet.parentElement.classList.add('hidden');
+      activeMemoIndex = idx;
+      document.getElementById('modalMemoTitle').innerText = memo.subject;
+      document.getElementById('modalMemoRef').innerText = `REF: ${memo.ref}`;
+      document.getElementById('modalMemoDate').innerText = `Date: ${memo.date}`;
+      document.getElementById('modalMemoRecipient').innerText = `Recipient: ${memo.recipient}`;
+      document.getElementById('modalMemoSubject').innerText = `Subject: ${memo.subject}`;
+      document.getElementById('modalMemoBody').innerText = memo.body;
+
+      document.getElementById('viewMemoModal').classList.remove('hidden');
+    }
+
+    function closeMemoModal() {
+      document.getElementById('viewMemoModal').classList.add('hidden');
+    }
+
+    function downloadActiveMemoPDF() {
+      const el = document.getElementById('memoPrintArea');
+      html2canvas(el, { scale: 2.5, backgroundColor: '#ffffff' }).then(canvas => {
         const { jsPDF } = window.jspdf;
         const pdf = new jsPDF('p', 'mm', 'a4');
         const imgData = canvas.toDataURL('image/png');
         const pdfWidth = pdf.internal.pageSize.getWidth();
         const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
         pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-        pdf.save('iclick-secretary-letterhead.pdf');
+        pdf.save('iclick-dispatched-memo.pdf');
       });
+    }
+
+    function downloadInboxStaffId(idx, side) {
+      const inbox = JSON.parse(localStorage.getItem('iclick_sec_inbox') || '[]');
+      const item = inbox[idx];
+      if (!item) return;
+
+      const imgUrl = side === 'front' ? item.frontImg : item.backImg;
+      const a = document.createElement('a');
+      a.href = imgUrl;
+      a.download = `${item.name.replace(/\s+/g, '_')}_ID_${side}.png`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
     }
 
     function handleSendCeoMsg(e) {
       e.preventDefault();
-      const btn = document.getElementById('secCeoBtn');
       const status = document.getElementById('secCeoStatus');
-      const form = document.getElementById('secCeoMsgForm');
+      const sender = document.getElementById('secSenderName').value;
+      const subject = document.getElementById('secBriefSubject').value;
+      const msg = document.getElementById('secBriefMessage').value;
 
-      btn.disabled = true;
-      btn.innerText = "Delivering to CEO Mail...";
-      status.style.color = "#d4a373";
-      status.innerText = "Transmitting message...";
-
-      fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(Object.fromEntries(new FormData(form)))
-      }).then(res => {
-        if (res.status === 200) {
-          status.style.color = "#34d399";
-          status.innerText = "✓ Dispatched directly to admin@iclickdigitalventures.com";
-          form.reset();
-        } else {
-          status.style.color = "#f87171";
-          status.innerText = "Failed to transmit message.";
-        }
-      }).finally(() => {
-        btn.disabled = false;
-        btn.innerText = "Transmit to CEO Mail";
+      let adminInbox = JSON.parse(localStorage.getItem('iclick_admin_inbox') || '[]');
+      adminInbox.unshift({
+        sender: sender,
+        subject: subject,
+        message: msg,
+        date: new Date().toLocaleDateString('en-GB')
       });
+      localStorage.setItem('iclick_admin_inbox', JSON.stringify(adminInbox));
+
+      status.style.color = "#34d399";
+      status.innerText = "✓ Dispatched to CEO Control Center Workspace!";
+      document.getElementById('secCeoMsgForm').reset();
     }
 
     function openAddMailModal() { document.getElementById('addMailModal').classList.remove('hidden'); }
@@ -438,10 +481,9 @@
       const ref = document.getElementById('logRef').value.trim() || `IDV/REG/2026/${Math.floor(100+Math.random()*900)}`;
       const type = document.getElementById('logType').value;
       const party = document.getElementById('logParty').value.trim() || 'Ministry / Agency';
-      const subject = document.getElementById('logSubject').value.trim() || 'General Transmittal';
 
       let registry = JSON.parse(localStorage.getItem('iclick_correspondence_register') || '[]');
-      registry.unshift({ ref, type, party, subject, date: new Date().toLocaleDateString('en-GB'), status: 'Dispatched' });
+      registry.unshift({ ref, type, party, date: new Date().toLocaleDateString('en-GB'), status: 'Dispatched' });
       localStorage.setItem('iclick_correspondence_register', JSON.stringify(registry));
       
       closeAddMailModal();
@@ -451,8 +493,8 @@
     function renderRegistryTable() {
       const tbody = document.getElementById('mailRegistryBody');
       const defaultRecords = [
-        { ref: 'IDV/OUT/2026/001', type: 'Outward Memo', party: 'Shari\'a Court Registry', subject: 'Archival Modernization Proposal', date: '20/08/2026', status: 'Delivered' },
-        { ref: 'IDV/OUT/2026/002', type: 'Proposal Transmittal', party: 'National IT Development Agency', subject: 'Digital Transformation Tender', date: '22/08/2026', status: 'In Review' }
+        { ref: 'IDV/OUT/2026/001', type: 'Outward Memo', party: 'Shari\'a Court Registry', status: 'Delivered' },
+        { ref: 'IDV/OUT/2026/002', type: 'Proposal Transmittal', party: 'NITDA', status: 'In Review' }
       ];
       let registry = JSON.parse(localStorage.getItem('iclick_correspondence_register') || JSON.stringify(defaultRecords));
 
@@ -460,12 +502,10 @@
       registry.forEach(r => {
         tbody.innerHTML += `
           <tr class="hover:bg-brand-900/60">
-            <td class="p-3 font-mono font-bold text-brand-300">${r.ref}</td>
-            <td class="p-3"><span class="px-2 py-0.5 rounded bg-brand-800 text-[10px] text-brand-200">${r.type}</span></td>
-            <td class="p-3 text-white font-bold">${r.party}</td>
-            <td class="p-3 text-brand-200">${r.subject}</td>
-            <td class="p-3 text-brand-400 font-mono">${r.date}</td>
-            <td class="p-3"><span class="px-2 py-0.5 rounded-full bg-emerald-950 text-emerald-300 font-bold text-[10px]">${r.status}</span></td>
+            <td class="p-2 font-mono text-brand-300 font-bold">${r.ref}</td>
+            <td class="p-2 text-brand-200">${r.type}</td>
+            <td class="p-2 text-white font-bold">${r.party}</td>
+            <td class="p-2 text-emerald-400 font-bold">${r.status}</td>
           </tr>
         `;
       });
