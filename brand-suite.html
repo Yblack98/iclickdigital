@@ -75,7 +75,7 @@
                     <i class="fa-solid fa-users mr-1.5"></i> Staff ID Generator
                 </button>
                 <button id="tab-btn-letterhead-tab" onclick="switchTab('letterhead-tab')" class="tab-btn px-3 py-2 rounded-lg transition text-stone-400 hover:text-linen">
-                    <i class="fa-solid fa-file-signature mr-1.5"></i> Corporate Letterhead
+                    <i class="fa-solid fa-file-signature mr-1.5"></i> Corporate Letterhead &amp; Memo
                 </button>
                 <button id="tab-btn-signature-tab" onclick="switchTab('signature-tab')" class="tab-btn px-3 py-2 rounded-lg transition text-stone-400 hover:text-linen">
                     <i class="fa-solid fa-pen-nib mr-1.5"></i> Touch Signature Pad
@@ -95,7 +95,7 @@
                     <div>
                         <span class="inline-block px-3 py-1 rounded-full text-[11px] font-bold bg-terracotta/20 text-terracotta uppercase tracking-wider mb-2 border border-terracotta/30">Executive Credentials</span>
                         <h2 class="text-2xl md:text-3xl font-heading font-bold text-linen">CEO Official ID Card Studio</h2>
-                        <p class="text-sm text-stone-300 mt-1">Full customization for front identity, executive email, phone contact, and card back metadata.</p>
+                        <p class="text-sm text-stone-300 mt-1">Full customization for front identity, executive email, phone contact, and card back return notice.</p>
                     </div>
                     <div class="flex flex-wrap items-center gap-2">
                         <label class="cursor-pointer bg-espresso-700 hover:bg-espresso-600 text-linen text-xs font-semibold px-3.5 py-2.5 rounded-xl border border-espresso-600 transition flex items-center gap-1.5">
@@ -136,12 +136,17 @@
                                 <label class="block text-stone-400 mb-1 text-warmgold">Phone Number (Back)</label>
                                 <input type="text" id="ceo-input-phone" value="+234 806 288 2839" oninput="updateCeoCardText()" class="w-full bg-espresso-800 border border-espresso-600 rounded-lg px-3 py-2 text-linen outline-none">
                             </div>
+                            <div class="md:col-span-2">
+                                <label class="block text-stone-400 mb-1">Lost &amp; Found Message (Back of Card)</label>
+                                <input type="text" id="ceo-input-notice" value="Property of iClick Digital Ventures. If found, please return to any branch office or headquarters." oninput="updateCeoCardText()" class="w-full bg-espresso-800 border border-espresso-600 rounded-lg px-3 py-2 text-linen outline-none">
+                            </div>
                         </div>
                     </div>
 
                     <div class="lg:col-span-6 flex flex-col items-center">
                         <div class="card-perspective w-[340px] h-[530px]">
                             <div id="ceo-card-container" class="card-inner shadow-2xl">
+                                <!-- CEO FRONT -->
                                 <div id="ceo-id-card-front" class="card-front bg-espresso-900 border-2 border-terracotta/60 p-6 flex flex-col justify-between text-linen relative">
                                     <div class="flex items-center justify-between border-b border-terracotta/30 pb-3">
                                         <div class="flex items-center gap-2.5">
@@ -187,29 +192,25 @@
                                     </div>
                                 </div>
 
+                                <!-- CEO BACK -->
                                 <div id="ceo-id-card-back" class="card-back bg-espresso-900 border-2 border-terracotta/60 p-6 flex flex-col justify-between text-linen">
-                                    <div class="text-center space-y-1 border-b border-terracotta/30 pb-3">
-                                        <p class="text-[10px] text-terracotta font-bold uppercase tracking-widest">Property of iClick Digital Ventures</p>
-                                        <p class="text-[9px] text-stone-400">If found, return to corporate headquarters.</p>
+                                    <div class="text-center space-y-1 border-b border-terracotta/30 pb-2">
+                                        <p class="text-[9px] text-terracotta font-bold uppercase tracking-widest">Official Property of iClick Digital Ventures</p>
+                                        <p id="ceo-card-notice" class="text-[8px] text-stone-400">Property of iClick Digital Ventures. If found, please return to any branch office or headquarters.</p>
                                     </div>
-                                    <div class="space-y-3">
-                                        <div class="h-10 bg-espresso-800 rounded-lg border border-espresso-600 flex items-center justify-between px-3">
-                                            <span class="text-[9px] text-stone-400 font-mono">AUTH: CAC-BN-9772940</span>
-                                            <i class="fa-solid fa-qrcode text-warmgold text-xl"></i>
-                                        </div>
-                                        <div class="text-[10px] space-y-1.5 text-stone-300">
-                                            <p><i class="fa-solid fa-phone text-terracotta w-4"></i> Phone: <span id="ceo-card-phone">+234 806 288 2839</span></p>
-                                            <p><i class="fa-solid fa-envelope text-terracotta w-4"></i> Company: enquiry@iclickdigitalventures.com</p>
-                                            <p><i class="fa-solid fa-globe text-terracotta w-4"></i> Portal: www.iclickdigitalventures.com</p>
-                                        </div>
+                                    <div class="space-y-2 text-[9px] text-stone-300">
+                                        <p><i class="fa-solid fa-phone text-terracotta w-4"></i> Phone: <span id="ceo-card-phone">+234 806 288 2839</span></p>
+                                        <p><i class="fa-solid fa-envelope text-terracotta w-4"></i> Company: enquiry@iclickdigitalventures.com</p>
+                                        <p><i class="fa-solid fa-globe text-terracotta w-4"></i> Portal: www.iclickdigitalventures.com</p>
+                                        <p><i class="fa-solid fa-building-columns text-terracotta w-4"></i> Dual HQ: Abuja &amp; Sokoto, Nigeria</p>
                                     </div>
-                                    <div class="border-t border-terracotta/30 pt-3 flex items-center justify-between">
+                                    <div class="border-t border-terracotta/30 pt-2 flex items-center justify-between">
                                         <div class="text-[8px] text-stone-400">
                                             <p class="font-bold text-linen">SCUML / EFCC COMPLIANT</p>
                                             <p>AUTHORIZED SIGNATURE</p>
                                         </div>
-                                        <div class="w-20 h-9 border-b border-warmgold/50 flex items-end justify-center pb-1">
-                                            <img class="signature-render-target max-h-7 max-w-full object-contain" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 35'><text x='5' y='25' fill='%23DFBA81' font-family='cursive' font-size='18' font-style='italic'>M.Y. Ibrahim</text></svg>" alt="Signature">
+                                        <div class="w-20 h-8 border-b border-warmgold/50 flex items-end justify-center pb-0.5">
+                                            <img class="signature-render-target max-h-6 max-w-full object-contain" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 35'><text x='5' y='25' fill='%23DFBA81' font-family='cursive' font-size='18' font-style='italic'>M.Y. Ibrahim</text></svg>" alt="Signature">
                                         </div>
                                     </div>
                                 </div>
@@ -224,16 +225,15 @@
                     </div>
                 </div>
             </div>
-        </section>
-
-        <!-- TAB 2: STAFF ID GENERATOR -->
+    </section>
+    <!-- TAB 2: STAFF ID GENERATOR -->
         <section id="staff-tab" class="tab-content hidden space-y-8">
             <div class="bg-espresso-800 border border-espresso-600 rounded-2xl p-6 md:p-8 space-y-6">
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-espresso-600 pb-6">
                     <div>
                         <span class="inline-block px-3 py-1 rounded-full text-[11px] font-bold bg-terracotta/20 text-terracotta uppercase tracking-wider mb-2 border border-terracotta/30">Personnel Management</span>
                         <h2 class="text-2xl md:text-3xl font-heading font-bold text-linen">Staff ID Card Generator</h2>
-                        <p class="text-sm text-stone-300 mt-1">Full control over front credentials and back metadata.</p>
+                        <p class="text-sm text-stone-300 mt-1">Full control over front credentials (with employee email) and back metadata.</p>
                     </div>
                     <button onclick="toggleCardFlip('staff-card-container')" class="bg-espresso-700 hover:bg-espresso-600 text-linen text-xs font-semibold px-3.5 py-2.5 rounded-xl border border-espresso-600 transition flex items-center gap-1.5">
                         <i class="fa-solid fa-rotate text-warmgold"></i> Flip Card View
@@ -274,7 +274,7 @@
                                 <input type="text" id="staff-input-expiry" value="AUG 2028" oninput="updateStaffCardText()" class="w-full bg-espresso-800 border border-warmgold/50 rounded-lg px-3 py-2 text-warmgold font-bold outline-none">
                             </div>
                             <div class="md:col-span-2">
-                                <label class="block text-stone-400 mb-1">Employee Email (Front)</label>
+                                <label class="block text-stone-400 mb-1">Employee Email (Front of Card)</label>
                                 <input type="text" id="staff-input-email" value="amina.usman@iclickdigitalventures.com" oninput="updateStaffCardText()" class="w-full bg-espresso-800 border border-espresso-600 rounded-lg px-3 py-2 text-linen outline-none">
                             </div>
                             <div>
@@ -295,6 +295,7 @@
                     <div class="lg:col-span-6 flex flex-col items-center">
                         <div class="card-perspective w-[320px] h-[510px]">
                             <div id="staff-card-container" class="card-inner shadow-2xl">
+                                <!-- FRONT -->
                                 <div id="staff-id-card-front" class="card-front bg-espresso-900 border-2 border-terracotta/50 p-5 flex flex-col justify-between text-linen">
                                     <div class="flex items-center justify-between border-b border-terracotta/30 pb-2.5">
                                         <div class="flex items-center gap-2">
@@ -302,23 +303,95 @@
                                                 <svg viewBox="0 0 100 100" class="w-full h-full">
                                                     <rect x="20" y="20" width="26" height="26" rx="6" fill="#FDFBF7"></rect>
                                                     <rect x="54" y="20" width="26" height="26" rx="6" fill="#DFBA81"></rect>
-                                                    <!-- TAB 3: CORPORATE LETTERHEAD SUITE -->
+                                                    <rect x="20" y="54" width="26" height="26" rx="6" fill="#C28E68"></rect>
+                                                    <rect x="54" y="54" width="26" height="26" rx="6" fill="#FDFBF7"></rect>
+                                                    <circle cx="50" cy="50" r="8" fill="#19110B" stroke="#DFBA81" stroke-width="3"></circle>
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <h4 class="font-heading font-extrabold text-xs text-linen">iClick Digital</h4>
+                                                <p id="staff-card-dept" class="text-[8px] text-terracotta font-semibold uppercase tracking-wider">iClick AI Automation</p>
+                                            </div>
+                                        </div>
+                                        <span class="text-[8px] font-bold bg-terracotta text-linen px-1.5 py-0.5 rounded">STAFF</span>
+                                    </div>
+
+                                    <div class="my-auto flex flex-col items-center space-y-2">
+                                        <div class="w-28 h-28 rounded-xl p-0.5 bg-terracotta overflow-hidden shadow">
+                                            <img id="staff-photo-img" class="w-full h-full object-cover rounded-lg" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><rect width='200' height='200' fill='%233D271B'/><circle cx='100' cy='75' r='38' fill='%23C28E68'/><path d='M40 180 C40 120, 160 120, 160 180 Z' fill='%2319110B'/></svg>" alt="Staff Photo">
+                                        </div>
+                                        <div class="text-center">
+                                            <h3 id="staff-card-name" class="font-heading font-bold text-base text-linen">AMINA BELLO USMAN</h3>
+                                            <p id="staff-card-title" class="text-xs font-semibold text-warmgold">Lead AI Automation Engineer</p>
+                                            <p id="staff-card-email" class="text-[10px] text-stone-300 font-mono mt-0.5">amina.usman@iclickdigitalventures.com</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="border-t border-terracotta/30 pt-2.5 space-y-1 text-[9px] text-stone-300 font-mono">
+                                        <div class="flex justify-between">
+                                            <span>ID: <strong id="staff-card-id" class="text-linen">IDV-STF-084</strong></span>
+                                            <span>ISSUED: <strong id="staff-card-date" class="text-linen">AUG 2026</strong></span>
+                                        </div>
+                                        <div class="flex justify-between text-stone-400">
+                                            <span>STATUS: <strong class="text-emerald-400">ACTIVE</strong></span>
+                                            <span>EXPIRES: <strong id="staff-card-expiry" class="text-warmgold">AUG 2028</strong></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- BACK -->
+                                <div id="staff-id-card-back" class="card-back bg-espresso-900 border-2 border-terracotta/50 p-5 flex flex-col justify-between text-linen">
+                                    <div class="text-center space-y-0.5 border-b border-terracotta/30 pb-2">
+                                        <p class="text-[9px] text-stone-300 font-bold uppercase">Official Staff Pass • iClick Digital Ventures</p>
+                                        <p id="staff-card-lossmsg" class="text-[8px] text-stone-400">If found, please return to any iClick branch office.</p>
+                                    </div>
+                                    <div class="space-y-1.5 text-[9px] text-stone-300">
+                                        <p><i class="fa-solid fa-phone text-terracotta w-4"></i> Staff: <span id="staff-card-phone">+234 812 345 6789</span></p>
+                                        <p><i class="fa-solid fa-building-circle-check text-terracotta w-4"></i> Office: <span id="staff-card-officephone">+234 806 288 2839</span></p>
+                                        <p><i class="fa-solid fa-envelope text-terracotta w-4"></i> Company: enquiry@iclickdigitalventures.com</p>
+                                        <p><i class="fa-solid fa-globe text-terracotta w-4"></i> Portal: www.iclickdigitalventures.com</p>
+                                    </div>
+                                    <div class="border-t border-terracotta/30 pt-2 flex items-center justify-between">
+                                        <span class="text-[8px] text-stone-400 font-bold">AUTHORIZED SIGNATURE</span>
+                                        <div class="w-16 h-7 border-b border-warmgold/50 flex items-end justify-center pb-0.5">
+                                            <img class="signature-render-target max-h-5 max-w-full object-contain" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 35'><text x='5' y='25' fill='%23DFBA81' font-family='cursive' font-size='18' font-style='italic'>M.Y. Ibrahim</text></svg>" alt="Signature">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-2 mt-4 justify-center">
+                            <button onclick="downloadCardPNG('staff-id-card-front', 'iclick-staff-id-front.png')" class="bg-terracotta text-linen text-xs font-semibold px-3 py-2 rounded-lg">Front PNG</button>
+                            <button onclick="downloadCardPNG('staff-id-card-back', 'iclick-staff-id-back.png')" class="bg-espresso-700 text-linen text-xs font-semibold px-3 py-2 rounded-lg border border-espresso-600">Back PNG</button>
+                            <button onclick="downloadPDF('staff-id-card-front', 'iclick-staff-id.pdf')" class="bg-warmgold text-espresso-900 text-xs font-bold px-3 py-2 rounded-lg">Staff PDF</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                                    </section>
+                                    <!-- TAB 3: CORPORATE LETTERHEAD & MEMO DISPATCH STUDIO -->
         <section id="letterhead-tab" class="tab-content hidden space-y-8">
             <div class="bg-espresso-800 border border-espresso-600 rounded-2xl p-6 md:p-8 space-y-6">
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-espresso-600 pb-6">
                     <div>
                         <span class="inline-block px-3 py-1 rounded-full text-[11px] font-bold bg-terracotta/20 text-terracotta uppercase tracking-wider mb-2 border border-terracotta/30">Official Documentation</span>
-                        <h2 class="text-2xl md:text-3xl font-heading font-bold text-linen">Corporate Letterhead Studio</h2>
-                        <p class="text-sm text-stone-300 mt-1">Draft institutional memos and export official A4 PDFs with your active touch signature.</p>
+                        <h2 class="text-2xl md:text-3xl font-heading font-bold text-linen">Corporate Letterhead &amp; Executive Memo Studio</h2>
+                        <p class="text-sm text-stone-300 mt-1">Draft institutional memos, apply your live touch signature, export A4 PDFs, or dispatch directly to the Secretary Desk.</p>
                     </div>
-                    <button onclick="downloadPDF('letterhead-document', 'iclick-official-letterhead.pdf')" class="bg-warmgold hover:bg-amber-400 text-espresso-900 text-xs font-bold px-4 py-2.5 rounded-xl transition flex items-center gap-2 shadow">
-                        <i class="fa-solid fa-file-pdf"></i> Download Letterhead PDF
-                    </button>
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="dispatchMemoToSecretary()" id="memoDispatchBtn" class="bg-gradient-to-r from-terracotta to-warmgold text-espresso-900 font-extrabold text-xs px-4 py-2.5 rounded-xl transition shadow flex items-center gap-1.5">
+                            <i class="fa-solid fa-paper-plane"></i> Dispatch Memo to Secretary
+                        </button>
+                        <button onclick="downloadPDF('letterhead-document', 'iclick-official-letterhead.pdf')" class="bg-espresso-700 hover:bg-espresso-600 text-linen text-xs font-bold px-4 py-2.5 rounded-xl transition flex items-center gap-1.5 border border-espresso-600">
+                            <i class="fa-solid fa-file-pdf"></i> Download PDF
+                        </button>
+                    </div>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                     <div class="lg:col-span-5 bg-espresso-900 border border-espresso-600 p-6 rounded-xl space-y-3 text-xs">
-                        <h3 class="font-heading font-bold text-sm text-linen border-b border-espresso-700 pb-2">Customize Letterhead Content</h3>
+                        <h3 class="font-heading font-bold text-sm text-linen border-b border-espresso-700 pb-2">Draft Official Memo</h3>
                         <div>
                             <label class="block text-stone-400 mb-1">Reference Number</label>
                             <input type="text" id="memo-input-ref" value="IDV/EXEC/2026/084" oninput="updateLetterheadText()" class="w-full bg-espresso-800 border border-espresso-600 rounded-lg p-2 text-linen outline-none">
@@ -362,7 +435,7 @@
                                 <div class="text-right text-[10px] text-espresso-700">
                                     <p class="font-bold">www.iclickdigitalventures.com</p>
                                     <p>enquiry@iclickdigitalventures.com</p>
-                                    <p>+234 806 288 2839 • Abuja &amp; Sokoto</p>
+                                    <p>+234 806 288 2839 • Dual HQ: Abuja &amp; Sokoto</p>
                                 </div>
                             </div>
 
@@ -428,7 +501,7 @@
                 </div>
             </div>
     </section>
-                                                    <!-- TAB 5: BUSINESS CARD EDITOR -->
+    <!-- TAB 5: BUSINESS CARD EDITOR -->
         <section id="biz-tab" class="tab-content hidden space-y-8">
             <div class="bg-espresso-800 border border-espresso-600 rounded-2xl p-6 md:p-8 space-y-6">
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-espresso-600 pb-6">
@@ -438,7 +511,7 @@
                         <p class="text-sm text-stone-300 mt-1">Accurately proportioned executive business card.</p>
                     </div>
                     <button onclick="toggleCardFlip('biz-card-container')" class="bg-espresso-700 hover:bg-espresso-600 text-linen text-xs font-semibold px-4 py-2.5 rounded-xl border border-espresso-600 transition flex items-center gap-2">
-                        <i class="fa-solid fa-rotate text-warmgold"></i> Flip View
+                        <i class="fa-solid fa-rotate text-warmgold"></i> Flip Card View
                     </button>
                 </div>
 
@@ -573,6 +646,7 @@
             document.getElementById('ceo-card-date').innerText = document.getElementById('ceo-input-date').value;
             document.getElementById('ceo-card-email').innerText = document.getElementById('ceo-input-email').value;
             document.getElementById('ceo-card-phone').innerText = document.getElementById('ceo-input-phone').value;
+            document.getElementById('ceo-card-notice').innerText = document.getElementById('ceo-input-notice').value;
         }
 
         function updateStaffCardText() {
@@ -635,6 +709,36 @@
             document.getElementById('sigPreviewImg').src = dataUrl;
             localStorage.setItem('iclick_saved_signature', dataUrl);
             alert('✓ Signature successfully stamped onto ID cards & letterheads!');
+        }
+
+        function dispatchMemoToSecretary() {
+            const ref = document.getElementById('memo-input-ref').value;
+            const recipient = document.getElementById('memo-input-recipient').value;
+            const subject = document.getElementById('memo-input-subject').value;
+            const body = document.getElementById('memo-input-body').value;
+            const btn = document.getElementById('memoDispatchBtn');
+
+            btn.disabled = true;
+            btn.innerText = "Transmitting to Secretary...";
+
+            const payload = {
+                access_key: "4610e256-8551-4d35-b2e2-8bfd0c06dbb2",
+                subject: `OFFICIAL MEMO DISPATCH: ${ref} - ${subject}`,
+                from_name: "Executive Management",
+                email: "secretary@iclickdigitalventures.com",
+                message: `OFFICIAL EXECUTIVE MEMO FOR DISPATCH\n\nREF: ${ref}\nDATE: ${document.getElementById('memo-input-date').value}\nRECIPIENT: ${recipient}\nSUBJECT: ${subject}\n\nBODY:\n${body}\n\nPlease register this communication in the official correspondence log and execute outward dispatch.\n\nSigned,\nMuhammad Yasin Ibrahim\nCEO / Founder, iClick Digital Ventures`
+            };
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify(payload)
+            }).then(() => {
+                alert(`✓ Memo ${ref} successfully dispatched to secretary@iclickdigitalventures.com!`);
+            }).finally(() => {
+                btn.disabled = false;
+                btn.innerText = "Dispatch Memo to Secretary";
+            });
         }
 
         function renderElementToDataURL(elementId, isLight = false) {
@@ -705,7 +809,7 @@
                     const orientation = width > height ? 'l' : 'p';
                     pdf = new jsPDF(orientation, 'px', [width, height]);
                     pdf.addImage(dataUrl, 'PNG', 0, 0, width, height);
-                }
+            }
                 pdf.save(filename);
             }).catch(() => alert('PDF export failed.'));
         }
@@ -720,5 +824,4 @@
         });
     </script>
 </body>
-                                                                                                            </html>
-            
+</html>
