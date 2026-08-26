@@ -218,6 +218,9 @@
                         </div>
 
                         <div class="flex flex-wrap justify-center gap-2 mt-4">
+                            <button onclick="shareCeoIdToSecretary()" class="bg-gradient-to-r from-terracotta to-warmgold text-espresso-900 font-extrabold text-xs px-3.5 py-2 rounded-lg shadow flex items-center gap-1.5">
+                                <i class="fa-solid fa-share-nodes"></i> Send CEO ID to Secretary
+                            </button>
                             <button onclick="downloadCardPNG('ceo-id-card-front', 'iclick-ceo-id-front.png')" class="bg-terracotta text-linen text-xs font-semibold px-3 py-2 rounded-lg">Front PNG</button>
                             <button onclick="downloadCardPNG('ceo-id-card-back', 'iclick-ceo-id-back.png')" class="bg-espresso-700 text-linen text-xs font-semibold px-3 py-2 rounded-lg border border-espresso-600">Back PNG</button>
                             <button onclick="downloadPDF('ceo-id-card-front', 'iclick-ceo-id.pdf')" class="bg-warmgold text-espresso-900 text-xs font-bold px-3 py-2 rounded-lg">CEO PDF</button>
@@ -225,8 +228,8 @@
                     </div>
                 </div>
             </div>
-                                    </section>
-                                    <!-- TAB 2: STAFF ID GENERATOR -->
+                </section>
+                <!-- TAB 2: STAFF ID GENERATOR -->
         <section id="staff-tab" class="tab-content hidden space-y-8">
             <div class="bg-espresso-800 border border-espresso-600 rounded-2xl p-6 md:p-8 space-y-6">
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-espresso-600 pb-6">
@@ -372,8 +375,8 @@
                     </div>
                 </div>
             </div>
-    </section>
-    <!-- TAB 3: CORPORATE LETTERHEAD & MEMO DISPATCH STUDIO -->
+                                    </section>
+                                    <!-- TAB 3: CORPORATE LETTERHEAD & MEMO DISPATCH STUDIO -->
         <section id="letterhead-tab" class="tab-content hidden space-y-8">
             <div class="bg-espresso-800 border border-espresso-600 rounded-2xl p-6 md:p-8 space-y-6">
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-espresso-600 pb-6">
@@ -713,57 +716,96 @@
             alert('✓ Signature successfully stamped onto ID cards & letterheads!');
         }
 
-        /* Internal Client-Side Dispatch (Zero Email Spam) */
+        /* Capture Exact Signed A4 Sheet and Send to Secretary */
         function dispatchMemoToSecretary() {
             const ref = document.getElementById('memo-input-ref').value;
             const date = document.getElementById('memo-input-date').value;
             const recipient = document.getElementById('memo-input-recipient').value;
             const subject = document.getElementById('memo-input-subject').value;
             const body = document.getElementById('memo-input-body').value;
+            const btn = document.getElementById('memoDispatchBtn');
 
-            let dispatches = JSON.parse(localStorage.getItem('iclick_sec_inbox') || '[]');
-            dispatches.unshift({
-                id: 'MEMO-' + Math.floor(1000 + Math.random() * 9000),
-                type: 'Executive Memo',
-                ref: ref,
-                date: date,
-                recipient: recipient,
-                subject: subject,
-                body: body,
-                status: 'Ready for Outward Dispatch',
-                timestamp: new Date().toLocaleDateString('en-GB')
+            btn.disabled = true;
+            btn.innerText = "Packaging Exact A4 Memo...";
+
+            renderElementToDataURL('letterhead-document', true).then(({ dataUrl: memoImgUrl, width, height }) => {
+                let dispatches = JSON.parse(localStorage.getItem('iclick_sec_inbox') || '[]');
+                dispatches.unshift({
+                    id: 'MEMO-' + Math.floor(1000 + Math.random() * 9000),
+                    type: 'Executive Memo',
+                    ref: ref,
+                    date: date,
+                    recipient: recipient,
+                    subject: subject,
+                    body: body,
+                    renderedSheet: memoImgUrl,
+                    sheetWidth: width,
+                    sheetHeight: height,
+                    status: 'Pending Secretary Dispatch',
+                    timestamp: new Date().toLocaleDateString('en-GB')
+                });
+                localStorage.setItem('iclick_sec_inbox', JSON.stringify(dispatches));
+                alert(`✓ Exact signed A4 Memo (${ref}) dispatched to Secretary Desk!`);
+            }).catch(() => {
+                alert("Failed to render memo sheet.");
+            }).finally(() => {
+                btn.disabled = false;
+                btn.innerText = "Dispatch Memo to Secretary";
             });
-            localStorage.setItem('iclick_sec_inbox', JSON.stringify(dispatches));
-            alert(`✓ Memo ${ref} successfully dispatched to Secretary Desk workspace!`);
         }
 
+        /* CEO ID Card Dispatch */
+        function shareCeoIdToSecretary() {
+            const name = document.getElementById('ceo-input-name').value;
+            const title = document.getElementById('ceo-input-title').value;
+            const idNo = document.getElementById('ceo-input-id').value;
+
+            renderElementToDataURL('ceo-id-card-front').then(({ dataUrl: frontUrl }) => {
+                renderElementToDataURL('ceo-id-card-back').then(({ dataUrl: backUrl }) => {
+                    let dispatches = JSON.parse(localStorage.getItem('iclick_sec_inbox') || '[]');
+                    dispatches.unshift({
+                        id: 'ID-CEO-' + Math.floor(100 + Math.random() * 900),
+                        type: 'CEO Official Pass',
+                        ref: idNo,
+                        name: name,
+                        title: title,
+                        frontImg: frontUrl,
+                        backImg: backUrl,
+                        status: 'Pending Issuance',
+                        timestamp: new Date().toLocaleDateString('en-GB')
+                    });
+                    localStorage.setItem('iclick_sec_inbox', JSON.stringify(dispatches));
+                    alert(`✓ Executive CEO ID (${idNo}) sent to Secretary Desk!`);
+                });
+            });
+        }
+
+        /* Staff ID Card Dispatch */
         function shareStaffIdToSecretary() {
             const name = document.getElementById('staff-input-name').value;
             const title = document.getElementById('staff-input-title').value;
             const dept = document.getElementById('staff-input-dept').value;
             const idNo = document.getElementById('staff-input-id').value;
             const expiry = document.getElementById('staff-input-expiry').value;
-            const email = document.getElementById('staff-input-email').value;
 
             renderElementToDataURL('staff-id-card-front').then(({ dataUrl: frontUrl }) => {
                 renderElementToDataURL('staff-id-card-back').then(({ dataUrl: backUrl }) => {
                     let dispatches = JSON.parse(localStorage.getItem('iclick_sec_inbox') || '[]');
                     dispatches.unshift({
-                        id: 'ID-' + Math.floor(1000 + Math.random() * 9000),
+                        id: 'ID-STF-' + Math.floor(100 + Math.random() * 900),
                         type: 'Staff ID Card',
                         ref: idNo,
                         name: name,
                         title: title,
                         dept: dept,
                         expiry: expiry,
-                        email: email,
                         frontImg: frontUrl,
                         backImg: backUrl,
-                        status: 'Ready for Issuance',
+                        status: 'Pending Issuance',
                         timestamp: new Date().toLocaleDateString('en-GB')
                     });
                     localStorage.setItem('iclick_sec_inbox', JSON.stringify(dispatches));
-                    alert(`✓ Staff Badge for ${name} (${idNo}) sent directly to Secretary Desk!`);
+                    alert(`✓ Staff Badge for ${name} (${idNo}) sent to Secretary Desk!`);
                 });
             });
         }
@@ -851,4 +893,4 @@
         });
     </script>
 </body>
-</html>
+    </html>
