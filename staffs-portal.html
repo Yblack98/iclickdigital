@@ -202,24 +202,24 @@
   <main class="max-w-7xl mx-auto px-4 lg:px-8 py-8 flex-grow w-full">
     <!-- ================= 1. MERGED CEO ADMIN COMMAND ================= -->
     <div id="workspace-admin" class="role-workspace hidden space-y-8">
-      
+     
       <!-- Top CEO Sub-Navigation Tabs -->
-      <div class="glass-card rounded-2xl p-2.5 flex flex-wrap items-center justify-between gap-3 border border-espresso-600">
-        <div class="flex flex-wrap gap-2">
-          <button onclick="switchCeoTab('overview')" id="ceoTabBtn-overview" class="ceo-tab-btn px-4 py-2 rounded-xl text-xs font-bold bg-gradient-to-r from-terracotta to-warmgold text-espresso-950 shadow transition flex items-center gap-1.5">
-            <i class="fa-solid fa-gauge-high"></i> Inquiries &amp; Academy Admissions
-          </button>
-          <button onclick="switchCeoTab('letterhead')" id="ceoTabBtn-letterhead" class="ceo-tab-btn px-4 py-2 rounded-xl text-xs font-semibold bg-espresso-900 text-stone-300 hover:text-linen hover:bg-espresso-800 transition flex items-center gap-1.5">
-            <i class="fa-solid fa-file-signature text-warmgold"></i> Brand Suite &amp; Letterhead
-          </button>
-          <button onclick="switchCeoTab('idstudio')" id="ceoTabBtn-idstudio" class="ceo-tab-btn px-4 py-2 rounded-xl text-xs font-semibold bg-espresso-900 text-stone-300 hover:text-linen hover:bg-espresso-800 transition flex items-center gap-1.5">
-            <i class="fa-solid fa-id-card text-terracotta"></i> Executive ID Studio
-          </button>
-        </div>
-        <span class="text-[11px] text-warmgold font-mono px-3 py-1 bg-espresso-950 rounded-lg border border-espresso-700">
-          CAC BN: 9772940 • CEO Desk Active
-        </span>
-      </div>
+<div class="glass-card rounded-2xl p-2.5 flex flex-wrap items-center justify-between gap-3 border border-espresso-600">
+  <div class="flex flex-wrap gap-2">
+    <button onclick="switchCeoTab('overview')" id="ceoTabBtn-overview" class="ceo-tab-btn px-4 py-2 rounded-xl text-xs font-bold bg-gradient-to-r from-terracotta to-warmgold text-espresso-950 shadow transition flex items-center gap-1.5">
+      <i class="fa-solid fa-gauge-high"></i> Inquiries &amp; Academy Admissions
+    </button>
+    <a href="brand-suite.html?return=staffs-portal.html" class="px-4 py-2 rounded-xl text-xs font-semibold bg-espresso-900 text-stone-300 hover:text-linen hover:bg-espresso-800 transition flex items-center gap-1.5">
+      <i class="fa-solid fa-stamp text-warmgold"></i> Open Brand Suite Studio
+    </a>
+    <button onclick="openCeoIdStudioModal()" class="px-4 py-2 rounded-xl text-xs font-semibold bg-espresso-900 text-stone-300 hover:text-linen hover:bg-espresso-800 transition flex items-center gap-1.5">
+      <i class="fa-solid fa-id-card text-terracotta"></i> Executive ID Studio
+    </button>
+  </div>
+  <span class="text-[11px] text-warmgold font-mono px-3 py-1 bg-espresso-950 rounded-lg border border-espresso-700">
+    CAC BN: 9772940 • CEO Desk Active
+  </span>
+</div>
 
       <!-- TAB 1: EXACT ADMISSIONS & INQUIRIES TABLES -->
       <div id="ceoView-overview" class="ceo-tab-content space-y-8">
