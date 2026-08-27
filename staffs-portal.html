@@ -122,14 +122,14 @@
             <label class="block font-medium text-stone-300 mb-1">Role Type *</label>
             <select id="signupRole" class="w-full px-3 py-2.5 rounded-xl bg-espresso-950 border border-espresso-600 text-linen outline-none font-semibold">
               <option value="staff">Staff Specialist</option>
-              <option value="lead">Department Superior</option>
+              <option value="lead">Department Director / Lead</option>
             </select>
           </div>
         </div>
 
         <div>
           <label class="block font-medium text-stone-300 mb-1">Designation / Title *</label>
-          <input type="text" id="signupTitle" required placeholder="e.g. Senior Systems Analyst" class="w-full px-3.5 py-2.5 rounded-xl bg-espresso-950 border border-espresso-600 text-linen outline-none">
+          <input type="text" id="signupTitle" required placeholder="e.g. Director of Systems Engineering" class="w-full px-3.5 py-2.5 rounded-xl bg-espresso-950 border border-espresso-600 text-linen outline-none">
         </div>
 
         <div>
@@ -157,7 +157,7 @@
         </div>
       </form>
 
-      <!-- 3. DIRECT PASSWORD RECOVERY (SENT DIRECT TO USER'S REGISTERED EMAIL) -->
+      <!-- 3. DIRECT PASSWORD RECOVERY DISPATCH -->
       <div id="universalResetView" class="space-y-4 text-xs hidden">
         <p class="text-[11px] text-stone-300 leading-relaxed">Enter your registered email address. The system will dispatch your existing passkey directly to your inbox.</p>
         <div>
@@ -171,7 +171,6 @@
       </div>
     </div>
   </section>
-
   <!-- Top App Header for Logged-In Sessions -->
   <header id="universalHeader" class="hidden border-b border-espresso-600 bg-espresso-900/90 backdrop-blur sticky top-0 z-40 px-4 lg:px-8 py-3.5">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
@@ -200,28 +199,32 @@
   </header>
 
   <main class="max-w-7xl mx-auto px-4 lg:px-8 py-8 flex-grow w-full">
-    <!-- ================= 1. MERGED CEO ADMIN COMMAND ================= -->
-    <div id="workspace-admin" class="role-workspace hidden space-y-8">
-     
-      <!-- Top CEO Sub-Navigation Tabs -->
-<div class="glass-card rounded-2xl p-2.5 flex flex-wrap items-center justify-between gap-3 border border-espresso-600">
-  <div class="flex flex-wrap gap-2">
-    <button onclick="switchCeoTab('overview')" id="ceoTabBtn-overview" class="ceo-tab-btn px-4 py-2 rounded-xl text-xs font-bold bg-gradient-to-r from-terracotta to-warmgold text-espresso-950 shadow transition flex items-center gap-1.5">
-      <i class="fa-solid fa-gauge-high"></i> Inquiries &amp; Academy Admissions
-    </button>
-    <a href="brand-suite.html?return=staffs-portal.html" class="px-4 py-2 rounded-xl text-xs font-semibold bg-espresso-900 text-stone-300 hover:text-linen hover:bg-espresso-800 transition flex items-center gap-1.5">
-      <i class="fa-solid fa-stamp text-warmgold"></i> Open Brand Suite Studio
-    </a>
-    <button onclick="openCeoIdStudioModal()" class="px-4 py-2 rounded-xl text-xs font-semibold bg-espresso-900 text-stone-300 hover:text-linen hover:bg-espresso-800 transition flex items-center gap-1.5">
-      <i class="fa-solid fa-id-card text-terracotta"></i> Executive ID Studio
-    </button>
-  </div>
-  <span class="text-[11px] text-warmgold font-mono px-3 py-1 bg-espresso-950 rounded-lg border border-espresso-700">
-    CAC BN: 9772940 • CEO Desk Active
-  </span>
-</div>
 
-      <!-- TAB 1: EXACT ADMISSIONS & INQUIRIES TABLES -->
+    <!-- ================= WORKSPACE 1: CEO EXECUTIVE COMMAND ================= -->
+    <div id="workspace-admin" class="role-workspace hidden space-y-8">
+      
+      <!-- Top CEO Navigation & Brand Suite Connector -->
+      <div class="glass-card rounded-2xl p-2.5 flex flex-wrap items-center justify-between gap-3 border border-espresso-600">
+        <div class="flex flex-wrap gap-2">
+          <button onclick="switchCeoTab('overview')" id="ceoTabBtn-overview" class="ceo-tab-btn px-4 py-2 rounded-xl text-xs font-bold bg-gradient-to-r from-terracotta to-warmgold text-espresso-950 shadow transition flex items-center gap-1.5">
+            <i class="fa-solid fa-gauge-high"></i> Inquiries &amp; Admissions
+          </button>
+          <button onclick="switchCeoTab('escalations')" id="ceoTabBtn-escalations" class="ceo-tab-btn px-4 py-2 rounded-xl text-xs font-semibold bg-espresso-900 text-stone-300 hover:text-linen hover:bg-espresso-800 transition flex items-center gap-1.5">
+            <i class="fa-solid fa-bell text-amber-400"></i> Escalated Briefs &amp; Appointments
+          </button>
+          <button onclick="switchCeoTab('letterhead')" id="ceoTabBtn-letterhead" class="ceo-tab-btn px-4 py-2 rounded-xl text-xs font-semibold bg-espresso-900 text-stone-300 hover:text-linen hover:bg-espresso-800 transition flex items-center gap-1.5">
+            <i class="fa-solid fa-file-signature text-warmgold"></i> Letterhead &amp; Memo Studio
+          </button>
+          <a href="brand-suite.html?return=staffs-portal.html" class="px-4 py-2 rounded-xl text-xs font-semibold bg-espresso-900 text-stone-300 hover:text-linen hover:bg-espresso-800 transition flex items-center gap-1.5 border border-espresso-700">
+            <i class="fa-solid fa-stamp text-warmgold"></i> Open Brand Suite &amp; Signature Studio
+          </a>
+        </div>
+        <span class="text-[11px] text-warmgold font-mono px-3 py-1 bg-espresso-950 rounded-lg border border-espresso-700">
+          CAC BN: 9772940 • CEO Desk Active
+        </span>
+      </div>
+
+      <!-- TAB 1: ADMISSIONS & INQUIRIES -->
       <div id="ceoView-overview" class="ceo-tab-content space-y-8">
         
         <!-- Digital Academy Admissions Table -->
@@ -284,17 +287,90 @@
           </div>
         </div>
 
+              </div>
+              <!-- TAB 2: ESCALATED BRIEFS & SECRETARY APPOINTMENTS -->
+      <div id="ceoView-escalations" class="ceo-tab-content hidden space-y-6">
+        
+        <!-- Appointments Card -->
+        <div class="glass-card rounded-3xl p-6 space-y-4 shadow-xl">
+          <div class="border-b border-espresso-700 pb-3 flex justify-between items-center">
+            <div>
+              <h3 class="font-heading font-bold text-base text-linen flex items-center gap-2">
+                <i class="fa-solid fa-calendar-check text-warmgold"></i> Executive Schedule &amp; Booked Appointments
+              </h3>
+              <p class="text-xs text-stone-400">Appointments scheduled by Executive Secretary with automatic notifications.</p>
+            </div>
+            <button onclick="renderCeoAppointments()" class="px-3 py-1.5 bg-espresso-800 border border-espresso-600 text-stone-300 rounded-xl text-xs font-bold">
+              Refresh Calendar
+            </button>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs text-linen">
+              <thead class="bg-espresso-950 text-stone-400 uppercase text-[9px] border-b border-espresso-800">
+                <tr>
+                  <th class="p-2.5">Date &amp; Time</th>
+                  <th class="p-2.5">Dignitary / Party</th>
+                  <th class="p-2.5">Purpose / Agenda</th>
+                  <th class="p-2.5">Location / Venue</th>
+                  <th class="p-2.5 text-right">Status</th>
+                </tr>
+              </thead>
+              <tbody id="ceoAppointmentsBody" class="divide-y divide-espresso-800 text-[11px]">
+                <tr><td colspan="5" class="p-3 text-center text-stone-400">No appointments scheduled for this week.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Direct Secretary Messages & Escalated Department Briefs -->
+        <div class="glass-card rounded-3xl p-6 space-y-4 shadow-xl">
+          <div class="border-b border-espresso-700 pb-3 flex justify-between items-center">
+            <div>
+              <h3 class="font-heading font-bold text-base text-linen flex items-center gap-2">
+                <i class="fa-solid fa-envelope-open-text text-terracotta"></i> Direct Secretary Briefs &amp; Escalated Memos
+              </h3>
+              <p class="text-xs text-stone-400">Direct inward messages dispatched from the Secretary Operational Desk.</p>
+            </div>
+            <button onclick="renderCeoInbox()" class="px-3 py-1.5 bg-espresso-800 border border-espresso-600 text-stone-300 rounded-xl text-xs font-bold">
+              Refresh Briefs
+            </button>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs text-linen">
+              <thead class="bg-espresso-950 text-stone-400 uppercase text-[9px] border-b border-espresso-800">
+                <tr>
+                  <th class="p-2.5">Ref ID</th>
+                  <th class="p-2.5">Sender</th>
+                  <th class="p-2.5">Briefing Subject</th>
+                  <th class="p-2.5">Timestamp</th>
+                  <th class="p-2.5 text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="ceoInboxBody" class="divide-y divide-espresso-800 text-[11px]">
+                <tr><td colspan="5" class="p-4 text-center text-stone-400">No urgent CEO briefings pending.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
       </div>
 
-      <!-- TAB 2: BRAND SUITE LETTERHEAD & SIGNED MEMO STUDIO -->
+      <!-- TAB 3: LETTERHEAD & MEMO STUDIO -->
       <div id="ceoView-letterhead" class="ceo-tab-content hidden space-y-6">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
           
-          <!-- Letterhead Form -->
           <div class="lg:col-span-5 glass-card rounded-3xl p-6 space-y-3 text-xs">
             <div class="border-b border-espresso-700 pb-2 flex justify-between items-center">
               <h3 class="font-heading font-bold text-sm text-warmgold">Executive Letterhead &amp; Memo Studio</h3>
               <span class="text-[10px] font-mono text-terracotta">CAC: BN 9772940</span>
+            </div>
+
+            <div>
+              <label class="block text-stone-400 mb-1">Document Classification *</label>
+              <select id="ceomemoType" onchange="syncCeoMemoLive()" class="w-full bg-espresso-950 border border-espresso-600 rounded-xl p-2.5 text-warmgold font-semibold outline-none">
+                <option value="INTERNAL MEMO">Internal Corporate Memo</option>
+                <option value="EXTERNAL TRANSMITTAL">External Official Transmittal Letter</option>
+              </select>
             </div>
 
             <div>
@@ -329,7 +405,7 @@ Our pilot rollout integrates local on-premise neural parsing with zero internet 
             </div>
           </div>
 
-          <!-- Live A4 Render Sheet -->
+          <!-- Live A4 Stamped Sheet -->
           <div class="lg:col-span-7 flex flex-col items-center">
             <div id="ceoMemoRenderA4" class="w-full max-w-[550px] bg-[#FDFBF7] text-[#19110B] p-8 rounded-2xl shadow-2xl border border-stone-300 space-y-6 text-xs min-h-[680px] flex flex-col justify-between">
               <div class="border-b-2 border-[#19110B] pb-4 flex justify-between items-start">
@@ -349,6 +425,7 @@ Our pilot rollout integrates local on-premise neural parsing with zero internet 
                   </div>
                 </div>
                 <div class="text-right text-[8px] text-stone-600 font-mono">
+                  <span id="liveMemoTypeBadge" class="inline-block px-2 py-0.5 rounded bg-stone-200 text-stone-800 font-bold uppercase mb-1">INTERNAL MEMO</span>
                   <p id="liveMemoRefDisplay">REF: IDV/EXEC/2026/084</p>
                   <p>DATE: 27 AUG 2026</p>
                 </div>
@@ -377,8 +454,8 @@ Our pilot rollout integrates local on-premise neural parsing with zero internet 
                   <p>Web: www.iclickdigitalventures.com</p>
                 </div>
                 <div class="text-right">
-                  <div class="w-24 h-8 border-b border-[#C28E68] flex items-end justify-center pb-1 ml-auto">
-                    <img class="max-h-7 max-w-full object-contain" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 35'><text x='5' y='25' fill='%2319110B' font-family='cursive' font-size='18' font-style='italic'>M.Y. Ibrahim</text></svg>" alt="CEO Signature">
+                  <div class="w-28 h-8 border-b border-[#C28E68] flex items-end justify-center pb-1 ml-auto">
+                    <img id="ceoLetterheadSignImg" class="max-h-7 max-w-full object-contain" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 35'><text x='5' y='25' fill='%2319110B' font-family='cursive' font-size='18' font-style='italic'>M.Y. Ibrahim</text></svg>" alt="CEO Signature">
                   </div>
                   <p class="font-bold text-[9px] mt-0.5 text-[#19110B]">Muhammad Yasin Ibrahim</p>
                   <p class="text-[8px] text-[#C28E68] uppercase font-semibold">Chief Executive Officer</p>
@@ -389,21 +466,8 @@ Our pilot rollout integrates local on-premise neural parsing with zero internet 
         </div>
       </div>
 
-      <!-- TAB 3: EXECUTIVE & STAFF ID STUDIO -->
-      <div id="ceoView-idstudio" class="ceo-tab-content hidden space-y-6">
-        <div class="glass-card rounded-3xl p-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div>
-            <h3 class="font-heading font-bold text-base text-linen">Executive Dual-Sided ID Generator</h3>
-            <p class="text-xs text-stone-300">Generate executive cards or produce staff credentials stamped with CEO verification.</p>
-          </div>
-          <button onclick="openCeoIdStudioModal()" class="px-5 py-3 bg-gradient-to-r from-terracotta to-warmgold text-espresso-950 font-bold rounded-xl text-xs uppercase tracking-wider shadow">
-            <i class="fa-solid fa-id-card-clip mr-1.5"></i> Open Live ID Designer
-          </button>
-        </div>
-      </div>
-
   </div>
-  <!-- ================= 2. SECRETARY / PA WORKSPACE ================= -->
+    <!-- ================= WORKSPACE 2: SECRETARY / PA WORKSPACE ================= -->
     <div id="workspace-secretary" class="role-workspace hidden space-y-10">
       
       <!-- Operational Inbox -->
@@ -439,6 +503,74 @@ Our pilot rollout integrates local on-premise neural parsing with zero internet 
         </div>
       </section>
 
+      <!-- Calendar & Appointment Scheduler -->
+      <section class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        
+        <!-- Schedule Appointment Form -->
+        <div class="lg:col-span-5 glass-card rounded-3xl p-6 space-y-3 text-xs">
+          <div class="border-b border-espresso-700 pb-2">
+            <span class="text-[10px] font-bold text-warmgold uppercase tracking-wider">Executive Protocol</span>
+            <h3 class="font-heading font-bold text-base text-linen">Schedule CEO Appointment</h3>
+            <p class="text-[11px] text-stone-400">Automatically posts to CEO Calendar &amp; dispatches instant alert.</p>
+          </div>
+
+          <form id="secAppointmentForm" onsubmit="handleScheduleAppointment(event)" class="space-y-3">
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label class="block text-stone-400 mb-1">Date *</label>
+                <input type="date" id="appDate" required class="w-full bg-espresso-950 border border-espresso-600 rounded-xl p-2.5 text-linen outline-none font-mono">
+              </div>
+              <div>
+                <label class="block text-stone-400 mb-1">Time *</label>
+                <input type="time" id="appTime" required class="w-full bg-espresso-950 border border-espresso-600 rounded-xl p-2.5 text-linen outline-none font-mono">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-stone-400 mb-1">Dignitary / Organization *</label>
+              <input type="text" id="appParty" required placeholder="e.g. Director, Ministry of Science & Tech" class="w-full bg-espresso-950 border border-espresso-600 rounded-xl p-2.5 text-linen outline-none">
+            </div>
+
+            <div>
+              <label class="block text-stone-400 mb-1">Purpose / Meeting Agenda *</label>
+              <input type="text" id="appPurpose" required placeholder="e.g. GovTech Registry Pilot Deliberation" class="w-full bg-espresso-950 border border-espresso-600 rounded-xl p-2.5 text-linen outline-none">
+            </div>
+
+            <div>
+              <label class="block text-stone-400 mb-1">Location / Platform *</label>
+              <input type="text" id="appLocation" required value="CEO Executive Boardroom / Virtual" class="w-full bg-espresso-950 border border-espresso-600 rounded-xl p-2.5 text-linen outline-none">
+            </div>
+
+            <button type="submit" id="secAppBtn" class="w-full py-3 rounded-xl bg-gradient-to-r from-terracotta to-warmgold text-espresso-950 font-bold uppercase tracking-wider transition shadow">
+              Confirm &amp; Notify CEO
+            </button>
+          </form>
+        </div>
+
+        <!-- Appointment Schedule List -->
+        <div class="lg:col-span-7 glass-card rounded-3xl p-6 space-y-3 text-xs">
+          <div class="border-b border-espresso-700 pb-2 flex justify-between items-center">
+            <h3 class="font-heading font-bold text-base text-linen">Executive Calendar Ledger</h3>
+            <span class="text-[10px] text-warmgold font-mono">Active Calendar Schedule</span>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs text-linen">
+              <thead class="bg-espresso-950 text-stone-400 uppercase text-[9px] border-b border-espresso-700">
+                <tr>
+                  <th class="p-2">Date &amp; Time</th>
+                  <th class="p-2">Party</th>
+                  <th class="p-2">Agenda</th>
+                  <th class="p-2 text-right">Action</th>
+                </tr>
+              </thead>
+              <tbody id="secAppointmentsBody" class="divide-y divide-espresso-700 text-[11px]">
+                <tr><td colspan="4" class="p-3 text-center text-stone-400">Loading appointments...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+                      </section>
       <!-- Searchable Archive & Direct Escalation Line -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         
@@ -456,7 +588,6 @@ Our pilot rollout integrates local on-premise neural parsing with zero internet 
             </button>
           </div>
 
-          <!-- Real-Time Search Bar -->
           <div class="relative">
             <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-stone-400"></i>
             <input type="text" id="memoSearchInput" oninput="filterRegistryArchive()" placeholder="Search archive by Ref No, Agency/Recipient, Subject, or Keyword..." class="w-full bg-espresso-950 border border-espresso-600 rounded-xl pl-9 pr-4 py-2.5 text-linen outline-none focus:border-terracotta text-xs font-mono">
@@ -507,8 +638,9 @@ Our pilot rollout integrates local on-premise neural parsing with zero internet 
         </section>
 
       </div>
-                </div>
-                <!-- ================= 3. SUBSIDIARY WORKSPACES ================= -->
+    </div>
+
+    <!-- ================= 3. FUNCTIONAL SUBSIDIARY WORKSPACES ================= -->
     <!-- GOVTECH -->
     <div id="workspace-govtech" class="role-workspace dept-workspace hidden space-y-6">
       <div class="glass-card rounded-3xl p-6 md:p-8 space-y-6">
@@ -520,7 +652,7 @@ Our pilot rollout integrates local on-premise neural parsing with zero internet 
           </div>
           <div class="flex flex-wrap gap-2">
             <button onclick="openLeadMemoModal('iClick GovTech')" class="lead-only-action bg-gradient-to-r from-terracotta to-warmgold text-espresso-950 font-extrabold text-xs px-4 py-2.5 rounded-xl transition shadow flex items-center gap-1.5">
-              <i class="fa-solid fa-file-pen"></i> Dispatch Department Memo
+              <i class="fa-solid fa-file-pen"></i> Dispatch Letterhead Memo
             </button>
             <button onclick="openIdRequestModal('iClick GovTech')" class="bg-espresso-800 hover:bg-espresso-700 text-linen text-xs font-semibold px-4 py-2.5 rounded-xl border border-espresso-600 transition flex items-center gap-1.5">
               <i class="fa-solid fa-id-card-clip text-warmgold"></i> Request Official ID Badge
@@ -541,7 +673,7 @@ Our pilot rollout integrates local on-premise neural parsing with zero internet 
           </div>
           <div class="flex flex-wrap gap-2">
             <button onclick="openLeadMemoModal('iClick AI Automation')" class="lead-only-action bg-gradient-to-r from-terracotta to-warmgold text-espresso-950 font-extrabold text-xs px-4 py-2.5 rounded-xl transition shadow flex items-center gap-1.5">
-              <i class="fa-solid fa-file-pen"></i> Dispatch Department Memo
+              <i class="fa-solid fa-file-pen"></i> Dispatch Letterhead Memo
             </button>
             <button onclick="openIdRequestModal('iClick AI Automation')" class="bg-espresso-800 hover:bg-espresso-700 text-linen text-xs font-semibold px-4 py-2.5 rounded-xl border border-espresso-600 transition flex items-center gap-1.5">
               <i class="fa-solid fa-id-card-clip text-warmgold"></i> Request Official ID Badge
@@ -562,7 +694,7 @@ Our pilot rollout integrates local on-premise neural parsing with zero internet 
           </div>
           <div class="flex flex-wrap gap-2">
             <button onclick="openLeadMemoModal('iClick IoT & Hardware')" class="lead-only-action bg-gradient-to-r from-terracotta to-warmgold text-espresso-950 font-extrabold text-xs px-4 py-2.5 rounded-xl transition shadow flex items-center gap-1.5">
-              <i class="fa-solid fa-file-pen"></i> Dispatch Department Memo
+              <i class="fa-solid fa-file-pen"></i> Dispatch Letterhead Memo
             </button>
             <button onclick="openIdRequestModal('iClick IoT & Hardware')" class="bg-espresso-800 hover:bg-espresso-700 text-linen text-xs font-semibold px-4 py-2.5 rounded-xl border border-espresso-600 transition flex items-center gap-1.5">
               <i class="fa-solid fa-id-card-clip text-warmgold"></i> Request Official ID Badge
@@ -583,7 +715,7 @@ Our pilot rollout integrates local on-premise neural parsing with zero internet 
           </div>
           <div class="flex flex-wrap gap-2">
             <button onclick="openLeadMemoModal('iClick Digital Academy')" class="lead-only-action bg-gradient-to-r from-terracotta to-warmgold text-espresso-950 font-extrabold text-xs px-4 py-2.5 rounded-xl transition shadow flex items-center gap-1.5">
-              <i class="fa-solid fa-file-pen"></i> Dispatch Department Memo
+              <i class="fa-solid fa-file-pen"></i> Dispatch Letterhead Memo
             </button>
             <button onclick="openIdRequestModal('iClick Digital Academy')" class="bg-espresso-800 hover:bg-espresso-700 text-linen text-xs font-semibold px-4 py-2.5 rounded-xl border border-espresso-600 transition flex items-center gap-1.5">
               <i class="fa-solid fa-id-card-clip text-warmgold"></i> Request Official ID Badge
@@ -597,9 +729,8 @@ Our pilot rollout integrates local on-premise neural parsing with zero internet 
 
   <footer class="border-t border-espresso-600 py-6 text-center text-xs text-stone-400 bg-espresso-950">
     <p>© 2026 iClick Digital Ventures (BN: 9772940). All Rights Reserved. • portal@iclickdigitalventures.com</p>
-  </footer>
-
-  <!-- ================= MODALS & ID PRODUCTION STUDIO ================= -->
+      </footer>
+  <!-- ================= MODALS & PRODUCTION ENGINES ================= -->
 
   <!-- HISTORICAL MEMO CONTENT INSPECTOR MODAL -->
   <div id="archiveViewModal" class="hidden fixed inset-0 z-50 bg-espresso-950/90 backdrop-blur-sm flex items-center justify-center p-4">
@@ -646,13 +777,13 @@ Our pilot rollout integrates local on-premise neural parsing with zero internet 
     </div>
   </div>
 
-  <!-- MODAL 1: AUTONOMOUS ID STUDIO WITH CEO SIGNATURE EMBEDDED -->
+  <!-- MODAL 1: AUTONOMOUS ID STUDIO WITH SYNCED CEO SIGNATURE -->
   <div id="secIdGenModal" class="hidden fixed inset-0 z-50 bg-espresso-950/90 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
     <div class="bg-espresso-900 border border-espresso-600 text-linen w-full max-w-4xl rounded-3xl p-6 md:p-8 space-y-6 shadow-2xl">
       <div class="flex justify-between items-center border-b border-espresso-700 pb-3">
         <div>
           <h3 class="font-heading font-bold text-lg text-linen">Staff ID Production Studio</h3>
-          <p class="text-xs text-stone-300">Executive Signature &amp; CAC (BN: 9772940) Auto-Stamped</p>
+          <p class="text-xs text-stone-300">Live Executive Signature &amp; CAC (BN: 9772940) Stamped Automatically</p>
         </div>
         <button onclick="closeSecIdGenModal()" class="text-stone-400 hover:text-linen text-lg font-bold">✕</button>
       </div>
@@ -736,7 +867,7 @@ Our pilot rollout integrates local on-premise neural parsing with zero internet 
                     <span class="text-[8px] text-stone-400">CAC BN: <strong class="text-warmgold font-bold">9772940</strong></span>
                     <div class="flex items-center gap-1">
                       <span class="text-[7.5px] text-terracotta italic">Auth:</span>
-                      <img class="h-4 w-auto object-contain" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 35'><text x='5' y='25' fill='%23DFBA81' font-family='cursive' font-size='18' font-style='italic'>M.Y. Ibrahim</text></svg>" alt="CEO Sign">
+                      <img id="secCardFrontCeoSign" class="h-4 w-auto object-contain" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 35'><text x='5' y='25' fill='%23DFBA81' font-family='cursive' font-size='18' font-style='italic'>M.Y. Ibrahim</text></svg>" alt="CEO Sign">
                     </div>
                   </div>
                 </div>
@@ -763,7 +894,7 @@ Our pilot rollout integrates local on-premise neural parsing with zero internet 
                   </div>
                   <div class="text-right">
                     <div class="w-20 h-6 border-b border-warmgold/50 flex items-end justify-center pb-0.5 ml-auto">
-                      <img class="max-h-5 max-w-full object-contain" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 35'><text x='5' y='25' fill='%23DFBA81' font-family='cursive' font-size='18' font-style='italic'>M.Y. Ibrahim</text></svg>" alt="CEO Signature">
+                      <img id="secCardBackCeoSign" class="max-h-5 max-w-full object-contain" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 35'><text x='5' y='25' fill='%23DFBA81' font-family='cursive' font-size='18' font-style='italic'>M.Y. Ibrahim</text></svg>" alt="CEO Signature">
                     </div>
                     <span class="text-[7px] text-stone-400 uppercase tracking-tight block mt-0.5">M.Y. Ibrahim, CEO</span>
                   </div>
@@ -783,11 +914,8 @@ Our pilot rollout integrates local on-premise neural parsing with zero internet 
         </div>
       </div>
     </div>
-  </div>
-
-  <!-- ================= MODALS ================= -->
-
-  <!-- MODAL: A4 EXECUTIVE MEMO PREVIEW -->
+              </div>
+  <!-- MODAL 2: A4 EXECUTIVE MEMO PREVIEW -->
   <div id="viewMemoModal" class="hidden fixed inset-0 z-50 bg-espresso-950/90 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="bg-espresso-900 border border-espresso-600 text-linen w-full max-w-3xl rounded-3xl p-6 space-y-4 shadow-2xl max-h-[92vh] flex flex-col justify-between">
       <div class="flex justify-between items-center border-b border-espresso-700 pb-3">
@@ -799,11 +927,11 @@ Our pilot rollout integrates local on-premise neural parsing with zero internet 
       </div>
 
       <div class="flex-1 overflow-y-auto rounded-2xl bg-espresso-950 border border-espresso-700 p-3 flex justify-center">
-        <img id="modalMemoRenderImg" class="max-w-full h-auto rounded-lg shadow-2xl border border-stone-300" src="" alt="Signed A4 Memo">
+        <img id="modalMemoRenderImg" class="max-w-full h-auto rounded-lg shadow-2xl border border-stone-300" src="" alt="Exact Signed A4 Memo">
       </div>
 
       <div class="flex flex-wrap justify-between items-center gap-2 pt-2 border-t border-espresso-700 text-xs">
-        <span class="text-emerald-400 font-bold">✓ Verified Executive Signature Stamped</span>
+        <span class="text-emerald-400 font-bold">✓ Verified Company Letterhead (BN: 9772940)</span>
         <button onclick="downloadActiveMemoPDF()" class="px-4 py-2.5 bg-warmgold text-espresso-950 rounded-xl font-bold uppercase transition shadow">
           Download A4 PDF &amp; Mark Dispatched
         </button>
@@ -811,25 +939,35 @@ Our pilot rollout integrates local on-premise neural parsing with zero internet 
     </div>
   </div>
 
-  <!-- MODAL: DEPARTMENT LEAD MEMO DISPATCH -->
+  <!-- MODAL 3: DEPARTMENT DIRECTOR / STAFF LETTERHEAD MEMO DISPATCH -->
   <div id="leadMemoModal" class="hidden fixed inset-0 z-50 bg-espresso-950/90 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="glass-card w-full max-w-xl rounded-3xl p-6 md:p-8 space-y-4 shadow-2xl text-xs text-linen">
       <div class="flex justify-between items-center border-b border-espresso-600 pb-3">
         <div>
-          <h3 class="font-heading font-extrabold text-base text-linen">Dispatch Department Operational Memo</h3>
+          <h3 class="font-heading font-extrabold text-base text-linen">Dispatch Official Letterhead Memo</h3>
           <p class="text-[11px] text-terracotta" id="memoModalDeptLabel">iClick Digital Ventures</p>
         </div>
         <button onclick="closeLeadMemoModal()" class="text-stone-400 hover:text-linen text-base font-bold">✕</button>
       </div>
 
       <form id="leadMemoForm" onsubmit="handleLeadMemoSubmit(event)" class="space-y-3">
-        <div>
-          <label class="block text-stone-400 mb-1">Target Destination *</label>
-          <select id="leadMemoTarget" class="w-full bg-espresso-900 border border-espresso-600 rounded-xl p-2.5 text-linen outline-none font-semibold">
-            <option value="Secretary Desk">Executive Secretary Desk (Standard Registry)</option>
-            <option value="Direct to CEO">CEO Control Center Desk (High Priority)</option>
-          </select>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-stone-400 mb-1">Target Destination *</label>
+            <select id="leadMemoTarget" class="w-full bg-espresso-900 border border-espresso-600 rounded-xl p-2.5 text-linen outline-none font-semibold">
+              <option value="Secretary Desk">Executive Secretary Desk</option>
+              <option value="Direct to CEO">CEO Control Center (High Priority)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-stone-400 mb-1">Classification *</label>
+            <select id="leadMemoClassification" class="w-full bg-espresso-900 border border-espresso-600 rounded-xl p-2.5 text-warmgold outline-none font-semibold">
+              <option value="INTERNAL MEMO">Internal Memo</option>
+              <option value="EXTERNAL TRANSMITTAL">External Memo / Letter</option>
+            </select>
+          </div>
         </div>
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
           <div>
             <label class="block text-stone-400 mb-1">Reference Number *</label>
@@ -837,7 +975,7 @@ Our pilot rollout integrates local on-premise neural parsing with zero internet 
           </div>
           <div>
             <label class="block text-stone-400 mb-1">Officer In Charge *</label>
-            <input type="text" id="leadMemoOfficer" required value="Department Superior" class="w-full bg-espresso-900 border border-espresso-600 rounded-xl p-2.5 text-linen outline-none">
+            <input type="text" id="leadMemoOfficer" required value="Department Director" class="w-full bg-espresso-900 border border-espresso-600 rounded-xl p-2.5 text-linen outline-none">
           </div>
         </div>
         <div>
@@ -845,17 +983,17 @@ Our pilot rollout integrates local on-premise neural parsing with zero internet 
           <input type="text" id="leadMemoSubject" required placeholder="e.g. Q3 Deployment Progress Brief" class="w-full bg-espresso-900 border border-espresso-600 rounded-xl p-2.5 text-linen outline-none">
         </div>
         <div>
-          <label class="block text-stone-400 mb-1">Memo Body Content *</label>
-          <textarea id="leadMemoBody" rows="4" required placeholder="Type operational brief..." class="w-full bg-espresso-900 border border-espresso-600 rounded-xl p-2.5 text-linen outline-none"></textarea>
+          <label class="block text-stone-400 mb-1">Memo Content Body *</label>
+          <textarea id="leadMemoBody" rows="4" required placeholder="Type formal memo content..." class="w-full bg-espresso-900 border border-espresso-600 rounded-xl p-2.5 text-linen outline-none"></textarea>
         </div>
         <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-terracotta to-warmgold text-espresso-950 font-heading font-extrabold uppercase tracking-wider transition shadow">
-          Transmit Memo Direct
+          Render Company Letterhead &amp; Dispatch
         </button>
       </form>
     </div>
   </div>
 
-  <!-- MODAL: STAFF ID BADGE REQUEST -->
+  <!-- MODAL 4: STAFF ID BADGE REQUEST -->
   <div id="idRequestModal" class="hidden fixed inset-0 z-50 bg-espresso-950/90 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="glass-card w-full max-w-lg rounded-3xl p-6 md:p-8 space-y-4 shadow-2xl text-xs text-linen">
       <div class="flex justify-between items-center border-b border-espresso-600 pb-3">
@@ -902,7 +1040,7 @@ Our pilot rollout integrates local on-premise neural parsing with zero internet 
     </div>
   </div>
 
-  <!-- MODAL: MANUAL LOG ENTRY -->
+  <!-- MODAL 5: MANUAL LOG ENTRY -->
   <div id="addMailModal" class="hidden fixed inset-0 z-50 bg-espresso-950/90 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="glass-card w-full max-w-md p-6 rounded-3xl text-linen space-y-4 text-xs">
       <div class="flex justify-between items-center border-b border-espresso-700 pb-2">
@@ -917,10 +1055,9 @@ Our pilot rollout integrates local on-premise neural parsing with zero internet 
         <div>
           <label class="block text-stone-400 mb-1">Type</label>
           <select id="logType" class="w-full bg-espresso-950 border border-espresso-600 rounded-lg p-2 text-linen outline-none">
-            <option value="Outward Memo">Outward Memo</option>
-            <option value="Inward Letter">Inward Letter</option>
+            <option value="Internal Memo">Internal Memo</option>
+            <option value="External Transmittal">External Transmittal</option>
             <option value="Staff ID Pass">Staff ID Pass</option>
-            <option value="Proposal Transmittal">Proposal Transmittal</option>
           </select>
         </div>
         <div>
@@ -933,10 +1070,9 @@ Our pilot rollout integrates local on-premise neural parsing with zero internet 
   </div>
   <!-- ================= UNIFIED JAVASCRIPT LOGIC ENGINE ================= -->
   <script>
-    const SYSTEM_DISPATCH_KEY = "93f249e4-0f14-4643-8e32-4af9619ffe32";
+    const SYSTEM_DISPATCH_KEY = "a22b9bf3-cb2c-4293-9dba-87dbce4b650d";
     let currentSessionUser = null;
 
-    // Hardcoded System Directory
     const SYSTEM_ACCOUNTS = {
       "admin@iclickdigitalventures.com": { pass: "Admin2026!", roleType: "admin", dept: "admin", name: "Muhammad Yasin Ibrahim", title: "Chief Executive Officer", deptName: "Executive Command" },
       "ceo@iclickdigitalventures.com": { pass: "Admin2026!", roleType: "admin", dept: "admin", name: "Muhammad Yasin Ibrahim", title: "Chief Executive Officer", deptName: "Executive Command" },
@@ -1015,7 +1151,7 @@ Our pilot rollout integrates local on-premise neural parsing with zero internet 
         subject: "Your iClick Corporate Passkey Recovery",
         from_name: "iClick Security System",
         email: email,
-        message: `Hello ${targetName},\n\nYour existing login passkey for the iClick Corporate Portal (${email}) is:\n\n${targetPass}\n\nYou can use this passkey to sign in immediately.\n\nPortal: https://iclickdigitalventures.com/staffs-portal.html`
+        message: `Hello ${targetName},\n\nYour login passkey for the iClick Corporate Terminal (${email}) is:\n\n${targetPass}\n\nPortal: https://iclickdigitalventures.com/staffs-portal.html`
       };
 
       fetch('https://api.web3forms.com/submit', {
@@ -1025,8 +1161,6 @@ Our pilot rollout integrates local on-premise neural parsing with zero internet 
       }).then(() => {
         alert(`✓ Your passkey has been sent directly to ${email}.\n\nPlease check your inbox/spam folder.`);
         showLoginView();
-      }).catch(() => {
-        alert("Error dispatching password email. Please try again.");
       }).finally(() => {
         btn.disabled = false;
         btn.innerText = "Send Password to My Email";
@@ -1143,6 +1277,7 @@ Our pilot rollout integrates local on-premise neural parsing with zero internet 
         alert("Access Denied: Incorrect passkey.");
       }
     }
+
     function mountUserWorkspace(user) {
       currentSessionUser = user;
 
@@ -1152,21 +1287,30 @@ Our pilot rollout integrates local on-premise neural parsing with zero internet 
       document.getElementById('portalUserBadge').innerText = `${user.name} (${user.email})`;
       document.querySelectorAll('.role-workspace').forEach(el => el.classList.add('hidden'));
 
+      // Apply Live Saved Signature
+      const liveCeoSign = localStorage.getItem('iclick_ceo_signature') || "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 35'><text x='5' y='25' fill='%23DFBA81' font-family='cursive' font-size='18' font-style='italic'>M.Y. Ibrahim</text></svg>";
+      if (document.getElementById('ceoLetterheadSignImg')) document.getElementById('ceoLetterheadSignImg').src = liveCeoSign;
+      if (document.getElementById('secCardFrontCeoSign')) document.getElementById('secCardFrontCeoSign').src = liveCeoSign;
+      if (document.getElementById('secCardBackCeoSign')) document.getElementById('secCardBackCeoSign').src = liveCeoSign;
+
       if (user.roleType === 'admin') {
         document.getElementById('portalHeaderTitle').innerText = "iClick Admin Control Center";
         document.getElementById('portalHeaderSubtitle').innerText = "Operations, Admissions & Brand Studio";
         document.getElementById('workspace-admin').classList.remove('hidden');
         renderAcademyAdmissionsTable();
         renderServiceInquiriesTable();
+        renderCeoInbox();
+        renderCeoAppointments();
       } else if (user.roleType === 'secretary') {
         document.getElementById('portalHeaderTitle').innerText = "Executive Secretary Operational Desk";
-        document.getElementById('portalHeaderSubtitle').innerText = "Registry Log, Memos & Autonomous Staff ID Production";
+        document.getElementById('portalHeaderSubtitle').innerText = "Registry Log, Appointments & Staff ID Production";
         document.getElementById('workspace-secretary').classList.remove('hidden');
         renderSecretaryInbox();
+        renderSecretaryAppointments();
         renderRegistryTable();
       } else {
         document.getElementById('portalHeaderTitle').innerText = `${user.deptName} Operations Workspace`;
-        document.getElementById('portalHeaderSubtitle').innerText = `${user.role === 'lead' ? 'Department Lead Session' : 'Staff Specialist Session'} • CAC BN: 9772940`;
+        document.getElementById('portalHeaderSubtitle').innerText = `${user.role === 'lead' ? 'Director Workspace' : 'Staff Specialist Workspace'} • CAC BN: 9772940`;
         const ws = document.getElementById(`workspace-${user.dept}`);
         if (ws) ws.classList.remove('hidden');
 
@@ -1201,7 +1345,6 @@ Our pilot rollout integrates local on-premise neural parsing with zero internet 
         activeBtn.classList.add('bg-gradient-to-r', 'from-terracotta', 'to-warmgold', 'text-espresso-950');
       }
     }
-
     function renderServiceInquiriesTable() {
       const tbody = document.getElementById('adminInquiriesBody');
       if (!tbody) return;
@@ -1264,15 +1407,14 @@ Our pilot rollout integrates local on-premise neural parsing with zero internet 
         });
       }
     }
-    function openCeoIdStudioModal() {
-      document.getElementById('secGenName').value = "MUHAMMAD YASIN IBRAHIM";
-      document.getElementById('secGenTitle').value = "Chief Executive Officer";
-      document.getElementById('secGenDept').value = "Executive Directorate";
-      document.getElementById('secGenIdNo').value = "IDV-EXEC-001";
-      document.getElementById('secGenEmail').value = "ceo@iclickdigitalventures.com";
-      document.getElementById('secGenPhone').value = "+234 806 288 2839";
-      syncSecIdCardLive();
-      document.getElementById('secIdGenModal').classList.remove('hidden');
+
+    function syncCeoMemoLive() {
+      const type = document.getElementById('ceomemoType').value;
+      document.getElementById('liveMemoTypeBadge').innerText = type;
+      document.getElementById('liveMemoRefDisplay').innerText = `REF: ${document.getElementById('ceomemoRef').value}`;
+      document.getElementById('liveMemoRecipientDisplay').innerText = document.getElementById('ceomemoRecipient').value;
+      document.getElementById('liveMemoSubjectDisplay').innerText = document.getElementById('ceomemoSubject').value;
+      document.getElementById('liveMemoBodyDisplay').innerText = document.getElementById('ceomemoBody').value;
     }
 
     function downloadDirectCeoMemoPDF() {
@@ -1284,21 +1426,208 @@ Our pilot rollout integrates local on-premise neural parsing with zero internet 
         const pdfWidth = pdf.internal.pageSize.getWidth();
         const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
         pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, pdfWidth, pdfHeight);
-        pdf.save(`iClick_Executive_Memo_${ref.replace(/[\/\\]/g, '_')}.pdf`);
+        pdf.save(`iClick_Memo_${ref.replace(/[\/\\]/g, '_')}.pdf`);
       });
     }
 
-    function syncCeoMemoLive() {
-      document.getElementById('liveMemoRefDisplay').innerText = `REF: ${document.getElementById('ceomemoRef').value}`;
-      document.getElementById('liveMemoRecipientDisplay').innerText = document.getElementById('ceomemoRecipient').value;
-      document.getElementById('liveMemoSubjectDisplay').innerText = document.getElementById('ceomemoSubject').value;
-      document.getElementById('liveMemoBodyDisplay').innerText = document.getElementById('ceomemoBody').value;
+    function dispatchCeoMemoToSecretary() {
+      const renderEl = document.getElementById('ceoMemoRenderA4');
+      const ref = document.getElementById('ceomemoRef').value;
+      const type = document.getElementById('ceomemoType').value;
+      const recipient = document.getElementById('ceomemoRecipient').value;
+      const subject = document.getElementById('ceomemoSubject').value;
+      const body = document.getElementById('ceomemoBody').value;
+
+      html2canvas(renderEl, { scale: 2.5, backgroundColor: '#FDFBF7' }).then(canvas => {
+        const sheetImg = canvas.toDataURL('image/png');
+
+        let secInbox = JSON.parse(localStorage.getItem('iclick_sec_inbox') || '[]');
+        secInbox.unshift({
+          id: ref,
+          type: type,
+          ref: ref,
+          recipient: recipient,
+          subject: subject,
+          body: body,
+          date: new Date().toLocaleDateString('en-GB'),
+          renderedSheet: sheetImg,
+          sheetWidth: canvas.width,
+          sheetHeight: canvas.height
+        });
+        localStorage.setItem('iclick_sec_inbox', JSON.stringify(secInbox));
+
+        let registry = JSON.parse(localStorage.getItem('iclick_correspondence_register') || '[]');
+        registry.unshift({
+          ref: ref,
+          type: type,
+          party: recipient,
+          subject: subject,
+          body: body,
+          renderedSheet: sheetImg,
+          date: new Date().toLocaleDateString('en-GB'),
+          status: 'Dispatched to Secretary'
+        });
+        localStorage.setItem('iclick_correspondence_register', JSON.stringify(registry));
+
+        renderRegistryTable();
+        alert(`✓ ${type} (${ref}) dispatched to Secretary Desk & saved to Archive!`);
+      });
+    }
+
+    function handleScheduleAppointment(e) {
+      e.preventDefault();
+      const date = document.getElementById('appDate').value;
+      const time = document.getElementById('appTime').value;
+      const party = document.getElementById('appParty').value;
+      const purpose = document.getElementById('appPurpose').value;
+      const location = document.getElementById('appLocation').value;
+      const btn = document.getElementById('secAppBtn');
+
+      btn.disabled = true;
+      btn.innerText = "Transmitting to CEO...";
+
+      let appointments = JSON.parse(localStorage.getItem('iclick_appointments') || '[]');
+      const newApp = {
+        id: 'APP-' + Math.floor(1000 + Math.random() * 9000),
+        dateTime: `${date} at ${time}`,
+        party: party,
+        purpose: purpose,
+        location: location,
+        status: 'Confirmed'
+      };
+      appointments.unshift(newApp);
+      localStorage.setItem('iclick_appointments', JSON.stringify(appointments));
+
+      let adminInbox = JSON.parse(localStorage.getItem('iclick_admin_inbox') || '[]');
+      adminInbox.unshift({
+        id: newApp.id,
+        sender: 'Executive Secretary / PA',
+        subject: `[APPOINTMENT SCHEDULED] ${party}`,
+        message: `An official appointment has been scheduled with ${party}.\n\nDate & Time: ${date} at ${time}\nPurpose: ${purpose}\nLocation: ${location}`,
+        date: new Date().toLocaleDateString('en-GB') + ' ' + new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }),
+        status: 'Unread'
+      });
+      localStorage.setItem('iclick_admin_inbox', JSON.stringify(adminInbox));
+
+      const payload = {
+        access_key: SYSTEM_DISPATCH_KEY,
+        subject: `New CEO Appointment: ${party}`,
+        from_name: "Executive Secretary Protocol",
+        email: "secretary@iclickdigitalventures.com",
+        message: `CEO APPOINTMENT NOTIFICATION:\n\nDignitary/Party: ${party}\nDate & Time: ${date} at ${time}\nAgenda: ${purpose}\nVenue: ${location}\nScheduled by: Executive Secretary Desk`
+      };
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      }).finally(() => {
+        alert(`✓ Appointment with ${party} confirmed, logged on CEO Schedule, and alert transmitted!`);
+        document.getElementById('secAppointmentForm').reset();
+        btn.disabled = false;
+        btn.innerText = "Confirm & Notify CEO";
+        renderSecretaryAppointments();
+        renderCeoAppointments();
+      });
+    }
+
+    function renderSecretaryAppointments() {
+      const tbody = document.getElementById('secAppointmentsBody');
+      if (!tbody) return;
+      const appointments = JSON.parse(localStorage.getItem('iclick_appointments') || '[]');
+      if (appointments.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="4" class="p-3 text-center text-stone-400">No appointments scheduled.</td></tr>`;
+      } else {
+        tbody.innerHTML = '';
+        appointments.forEach(a => {
+          tbody.innerHTML += `
+            <tr class="hover:bg-espresso-900/60">
+              <td class="p-2 font-mono text-warmgold font-bold whitespace-nowrap">${a.dateTime}</td>
+              <td class="p-2 text-linen font-bold">${a.party}</td>
+              <td class="p-2 text-stone-300">${a.purpose}</td>
+              <td class="p-2 text-right"><span class="px-2 py-0.5 rounded bg-emerald-950 text-emerald-400 font-bold text-[9px]">${a.status}</span></td>
+            </tr>
+          `;
+        });
+      }
+    }
+
+    function renderCeoAppointments() {
+      const tbody = document.getElementById('ceoAppointmentsBody');
+      if (!tbody) return;
+      const appointments = JSON.parse(localStorage.getItem('iclick_appointments') || '[]');
+      if (appointments.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="5" class="p-3 text-center text-stone-400">No appointments scheduled for this week.</td></tr>`;
+      } else {
+        tbody.innerHTML = '';
+        appointments.forEach(a => {
+          tbody.innerHTML += `
+            <tr class="hover:bg-espresso-900/60">
+              <td class="p-2.5 font-mono text-warmgold font-bold whitespace-nowrap">${a.dateTime}</td>
+              <td class="p-2.5 text-linen font-bold">${a.party}</td>
+              <td class="p-2.5 text-stone-300">${a.purpose}</td>
+              <td class="p-2.5 text-stone-400">${a.location}</td>
+              <td class="p-2.5 text-right"><span class="px-2 py-0.5 rounded bg-emerald-950 text-emerald-400 font-bold text-[9px]">${a.status}</span></td>
+            </tr>
+          `;
+        });
+      }
+    }
+
+    function handleSendCeoMsg(e) {
+      if (e && e.preventDefault) e.preventDefault();
+      const status = document.getElementById('secCeoStatus');
+      const sender = document.getElementById('secSenderName').value.trim();
+      const subject = document.getElementById('secBriefSubject').value.trim();
+      const msg = document.getElementById('secBriefMessage').value.trim();
+
+      let adminInbox = JSON.parse(localStorage.getItem('iclick_admin_inbox') || '[]');
+      adminInbox.unshift({
+        id: 'SEC-MSG-' + Math.floor(1000 + Math.random() * 9000),
+        sender: sender || 'Executive Secretary',
+        subject: subject,
+        message: msg,
+        date: new Date().toLocaleDateString('en-GB') + ' ' + new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }),
+        status: 'Unread'
+      });
+      localStorage.setItem('iclick_admin_inbox', JSON.stringify(adminInbox));
+
+      status.style.color = "#34d399";
+      status.innerText = "✓ Dispatched directly to CEO Control Center!";
+      document.getElementById('secCeoMsgForm').reset();
+      setTimeout(() => { status.innerText = ""; }, 4000);
+      renderCeoInbox();
+    }
+
+    function renderCeoInbox() {
+      const tbody = document.getElementById('ceoInboxBody');
+      if (!tbody) return;
+      const inbox = JSON.parse(localStorage.getItem('iclick_admin_inbox') || '[]');
+
+      if (inbox.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-stone-400">No urgent CEO briefings pending.</td></tr>`;
+      } else {
+        tbody.innerHTML = '';
+        inbox.forEach((item) => {
+          tbody.innerHTML += `
+            <tr class="hover:bg-espresso-900/60">
+              <td class="p-2.5 font-mono text-warmgold font-bold">${item.id}</td>
+              <td class="p-2.5 text-stone-300 font-bold">${item.sender}</td>
+              <td class="p-2.5 text-linen">${item.subject}</td>
+              <td class="p-2.5 text-stone-400 font-mono">${item.date}</td>
+              <td class="p-2.5 text-right">
+                <button onclick="alert('BRIEF CONTENT:\\n\\n' + '${item.message.replace(/'/g, "\\'")}')" class="px-2.5 py-1 bg-terracotta text-espresso-950 rounded-lg text-[10px] font-bold">Read Brief</button>
+              </td>
+            </tr>
+          `;
+        });
+      }
     }
 
     const DEFAULT_REGISTRY_ARCHIVE = [
       {
         ref: 'IDV/EXEC/2026/084',
-        type: 'Outward Executive Memo',
+        type: 'INTERNAL MEMO',
         party: 'The Executive Secretary, State Judicial Council',
         subject: 'PROPOSAL TRANSMITTAL: DIGITIZATION OF SHARI\'A COURT REGISTRIES',
         body: 'Following our technical consultations, iClick Digital Ventures is pleased to transmit this operational proposal for the full e-registry digitization framework.\n\nOur pilot rollout integrates local on-premise neural parsing with zero internet dependency, complying fully with judicial archiving security protocols.',
@@ -1307,7 +1636,7 @@ Our pilot rollout integrates local on-premise neural parsing with zero internet 
       },
       {
         ref: 'IDV/GOV/2026/001',
-        type: 'Outward Memo',
+        type: 'EXTERNAL TRANSMITTAL',
         party: 'NITDA Zonal Directorate',
         subject: 'Institutional Framework Alignment Brief',
         body: 'Formal transmittal of technical architecture for state e-governance deployment and local government automation integration.',
@@ -1389,52 +1718,7 @@ Our pilot rollout integrates local on-premise neural parsing with zero internet 
       document.getElementById('archiveViewModal').classList.remove('hidden');
     }
 
-    function closeArchiveModal() {
-      document.getElementById('archiveViewModal').classList.add('hidden');
-    }
-
-    function dispatchCeoMemoToSecretary() {
-      const renderEl = document.getElementById('ceoMemoRenderA4');
-      const ref = document.getElementById('ceomemoRef').value;
-      const recipient = document.getElementById('ceomemoRecipient').value;
-      const subject = document.getElementById('ceomemoSubject').value;
-      const body = document.getElementById('ceomemoBody').value;
-
-      html2canvas(renderEl, { scale: 2.5, backgroundColor: '#FDFBF7' }).then(canvas => {
-        const sheetImg = canvas.toDataURL('image/png');
-
-        let secInbox = JSON.parse(localStorage.getItem('iclick_sec_inbox') || '[]');
-        secInbox.unshift({
-          id: ref,
-          type: 'Executive Memo',
-          ref: ref,
-          recipient: recipient,
-          subject: subject,
-          body: body,
-          date: new Date().toLocaleDateString('en-GB'),
-          renderedSheet: sheetImg,
-          sheetWidth: canvas.width,
-          sheetHeight: canvas.height
-        });
-        localStorage.setItem('iclick_sec_inbox', JSON.stringify(secInbox));
-
-        let registry = JSON.parse(localStorage.getItem('iclick_correspondence_register') || '[]');
-        registry.unshift({
-          ref: ref,
-          type: 'Outward Executive Memo',
-          party: recipient,
-          subject: subject,
-          body: body,
-          renderedSheet: sheetImg,
-          date: new Date().toLocaleDateString('en-GB'),
-          status: 'Dispatched to Secretary'
-        });
-        localStorage.setItem('iclick_correspondence_register', JSON.stringify(registry));
-
-        renderRegistryTable();
-        alert(`✓ Signed Memo ${ref} transmitted to Secretary Desk & saved permanently to Searchable Archive!`);
-      });
-    }
+    function closeArchiveModal() { document.getElementById('archiveViewModal').classList.add('hidden'); }
 
     function renderSecretaryInbox() {
       const tbody = document.getElementById('secInboxBody');
@@ -1446,32 +1730,19 @@ Our pilot rollout integrates local on-premise neural parsing with zero internet 
       } else {
         tbody.innerHTML = '';
         inbox.forEach((item, idx) => {
-          if (item.type === 'Executive Memo') {
+          if (item.type.includes('MEMO') || item.type.includes('TRANSMITTAL') || item.type.includes('Memo')) {
             tbody.innerHTML += `
               <tr class="hover:bg-espresso-900/60">
                 <td class="p-3 font-mono font-bold text-warmgold">${item.ref}</td>
                 <td class="p-3"><span class="px-2 py-0.5 rounded bg-terracotta/20 text-terracotta text-[10px] font-bold">${item.type}</span></td>
                 <td class="p-3 font-bold text-linen">${item.subject}</td>
-                <td class="p-3 text-stone-300">${item.recipient}</td>
-                <td class="p-3 text-stone-400 font-mono">${item.date}</td>
-                <td class="p-3 text-right">
+                <td class="p-3 text-stone-300">${item.recipient || item.name}</td>
+                <td class="p-3 text-stone-400 font-mono">${item.date || item.timestamp}</td>
+                <td class="p-3 text-right"
+  <td class="p-3 text-right">
                   <button onclick="viewMemo(${idx})" class="px-3 py-1.5 bg-terracotta hover:bg-amber-700 text-linen rounded-xl text-[11px] font-bold shadow">
-                    View Exact A4 &amp; Dispatch
+                    View Exact Letterhead &amp; Dispatch
                   </button>
-                </td>
-              </tr>
-            `;
-          } else if (item.type === 'Department Memo') {
-            tbody.innerHTML += `
-              <tr class="hover:bg-espresso-900/60">
-                <td class="p-3 font-mono font-bold text-blue-400">${item.ref}</td>
-                <td class="p-3"><span class="px-2 py-0.5 rounded bg-blue-950 text-[10px] text-blue-300 font-bold">${item.type}</span></td>
-                <td class="p-3 font-bold text-linen">${item.subject}</td>
-                <td class="p-3 text-stone-300">${item.name} (${item.title})</td>
-                <td class="p-3 text-stone-400 font-mono">${item.timestamp}</td>
-                <td class="p-3 text-right space-x-1 whitespace-nowrap">
-                  <button onclick="escalateDeptMemoToCeo(${idx})" class="px-2.5 py-1.5 bg-warmgold text-espresso-950 rounded-lg text-[10px] font-bold shadow">Transfer to CEO</button>
-                  <button onclick="archiveDeptMemo(${idx})" class="px-2.5 py-1.5 bg-espresso-800 text-linen rounded-lg text-[10px] font-bold shadow">Archive</button>
                 </td>
               </tr>
             `;
@@ -1501,7 +1772,7 @@ Our pilot rollout integrates local on-premise neural parsing with zero internet 
 
       activeMemoIndex = idx;
       document.getElementById('modalMemoTitle').innerText = memo.subject;
-      document.getElementById('modalMemoRef').innerText = `REF: ${memo.ref} • ${memo.recipient}`;
+      document.getElementById('modalMemoRef').innerText = `REF: ${memo.ref} • ${memo.recipient || memo.name}`;
       document.getElementById('modalMemoRenderImg').src = memo.renderedSheet;
       document.getElementById('viewMemoModal').classList.remove('hidden');
     }
@@ -1525,8 +1796,8 @@ Our pilot rollout integrates local on-premise neural parsing with zero internet 
       let registry = JSON.parse(localStorage.getItem('iclick_correspondence_register') || '[]');
       registry.unshift({
         ref: memo.ref,
-        type: 'Outward Memo (A4)',
-        party: memo.recipient,
+        type: memo.type || 'Official Memo',
+        party: memo.recipient || memo.name,
         subject: memo.subject,
         body: memo.body || 'Dispatched official executive correspondence.',
         renderedSheet: memo.renderedSheet,
@@ -1544,50 +1815,15 @@ Our pilot rollout integrates local on-premise neural parsing with zero internet 
       alert(`✓ Memo ${memo.ref} downloaded and marked as DISPATCHED!`);
     }
 
-    function escalateDeptMemoToCeo(idx) {
-      let inbox = JSON.parse(localStorage.getItem('iclick_sec_inbox') || '[]');
-      const item = inbox[idx];
-      if (!item) return;
-
-      let adminInbox = JSON.parse(localStorage.getItem('iclick_admin_inbox') || '[]');
-      adminInbox.unshift({
-        id: item.ref,
-        sender: `${item.name} (via Secretary Desk)`,
-        subject: `[ESCALATED FROM DEPT] ${item.subject}`,
-        message: item.body,
-        date: new Date().toLocaleDateString('en-GB') + ' ' + new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }),
-        status: 'Unread'
-      });
-      localStorage.setItem('iclick_admin_inbox', JSON.stringify(adminInbox));
-
-      inbox.splice(idx, 1);
-      localStorage.setItem('iclick_sec_inbox', JSON.stringify(inbox));
-
-      renderSecretaryInbox();
-      alert(`✓ Memo ${item.ref} transferred directly to CEO Control Center!`);
-    }
-
-    function archiveDeptMemo(idx) {
-      let inbox = JSON.parse(localStorage.getItem('iclick_sec_inbox') || '[]');
-      const item = inbox[idx];
-      if (!item) return;
-
-      let registry = JSON.parse(localStorage.getItem('iclick_correspondence_register') || '[]');
-      registry.unshift({ ref: item.ref, type: 'Internal Memo', party: item.name, date: new Date().toLocaleDateString('en-GB'), status: 'Processed & Archived' });
-      localStorage.setItem('iclick_correspondence_register', JSON.stringify(registry));
-
-      inbox.splice(idx, 1);
-      localStorage.setItem('iclick_sec_inbox', JSON.stringify(inbox));
-
-      renderSecretaryInbox();
-      renderRegistryTable();
-    }
-
     let activeSecIdReqIdx = null;
     function openSecIdGenModal(idx) {
       activeSecIdReqIdx = idx;
       const inbox = JSON.parse(localStorage.getItem('iclick_sec_inbox') || '[]');
       const item = inbox ? inbox[idx] : null;
+
+      const liveCeoSign = localStorage.getItem('iclick_ceo_signature') || "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 35'><text x='5' y='25' fill='%23DFBA81' font-family='cursive' font-size='18' font-style='italic'>M.Y. Ibrahim</text></svg>";
+      document.getElementById('secCardFrontCeoSign').src = liveCeoSign;
+      document.getElementById('secCardBackCeoSign').src = liveCeoSign;
 
       if (item) {
         document.getElementById('secGenName').value = item.name;
@@ -1643,33 +1879,9 @@ Our pilot rollout integrates local on-premise neural parsing with zero internet 
           closeSecIdGenModal();
           renderSecretaryInbox();
           renderRegistryTable();
-          alert(`✓ Official Staff Badge for ${name} (${idNo}) with CEO signature produced and logged as ACTIVE!`);
+          alert(`✓ Official Staff Badge for ${name} (${idNo}) with live CEO signature produced and logged as ACTIVE!`);
         });
       });
-    }
-
-    function handleSendCeoMsg(e) {
-      if (e && e.preventDefault) e.preventDefault();
-      const status = document.getElementById('secCeoStatus');
-      const sender = document.getElementById('secSenderName').value.trim();
-      const subject = document.getElementById('secBriefSubject').value.trim();
-      const msg = document.getElementById('secBriefMessage').value.trim();
-
-      let adminInbox = JSON.parse(localStorage.getItem('iclick_admin_inbox') || '[]');
-      adminInbox.unshift({
-        id: 'SEC-MSG-' + Math.floor(1000 + Math.random() * 9000),
-        sender: sender || 'Executive Secretary',
-        subject: subject,
-        message: msg,
-        date: new Date().toLocaleDateString('en-GB') + ' ' + new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }),
-        status: 'Unread'
-      });
-      localStorage.setItem('iclick_admin_inbox', JSON.stringify(adminInbox));
-
-      status.style.color = "#34d399";
-      status.innerText = "✓ Dispatched directly to CEO Control Center!";
-      document.getElementById('secCeoMsgForm').reset();
-      setTimeout(() => { status.innerText = ""; }, 4000);
     }
 
     function openAddMailModal() { document.getElementById('addMailModal').classList.remove('hidden'); }
@@ -1700,44 +1912,78 @@ Our pilot rollout integrates local on-premise neural parsing with zero internet 
     function handleLeadMemoSubmit(e) {
       e.preventDefault();
       const target = document.getElementById('leadMemoTarget').value;
+      const classification = document.getElementById('leadMemoClassification').value;
       const ref = document.getElementById('leadMemoRef').value;
       const officer = document.getElementById('leadMemoOfficer').value;
       const subject = document.getElementById('leadMemoSubject').value;
       const body = document.getElementById('leadMemoBody').value;
       const deptName = currentSessionUser ? currentSessionUser.deptName : 'Subsidiary';
 
-      if (target === 'Direct to CEO') {
-        let adminInbox = JSON.parse(localStorage.getItem('iclick_admin_inbox') || '[]');
-        adminInbox.unshift({
-          id: ref,
-          sender: `${officer} (${deptName})`,
-          subject: `[DIRECT DEPT MEMO] ${subject}`,
-          message: body,
-          date: new Date().toLocaleDateString('en-GB') + ' ' + new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }),
-          status: 'Unread'
-        });
-        localStorage.setItem('iclick_admin_inbox', JSON.stringify(adminInbox));
-        alert(`✓ Memo ${ref} routed DIRECTLY to CEO Control Center Workspace!`);
-      } else {
-        let secInbox = JSON.parse(localStorage.getItem('iclick_sec_inbox') || '[]');
-        secInbox.unshift({
-          id: ref,
-          type: 'Department Memo',
-          ref: ref,
-          name: officer,
-          title: deptName,
-          subject: subject,
-          body: body,
-          recipient: 'Executive Secretary / CEO',
-          status: 'Received from Dept Superior',
-          timestamp: new Date().toLocaleDateString('en-GB')
-        });
-        localStorage.setItem('iclick_sec_inbox', JSON.stringify(secInbox));
-        alert(`✓ Memo ${ref} successfully dispatched to Executive Secretary Desk!`);
-      }
+      const tempDiv = document.createElement('div');
+      tempDiv.style.position = 'absolute';
+      tempDiv.style.left = '-9999px';
+      tempDiv.style.width = '700px';
+      tempDiv.className = 'bg-[#FDFBF7] text-[#19110B] p-8 text-xs font-sans';
+      tempDiv.innerHTML = `
+        <div class="border-b-2 border-[#19110B] pb-4 flex justify-between items-start">
+          <div>
+            <h2 class="font-bold text-sm tracking-tight text-[#19110B]">iClick Digital Ventures</h2>
+            <p class="text-[9px] text-[#C28E68] font-bold uppercase">${deptName} • CAC BN: 9772940</p>
+          </div>
+          <div class="text-right text-[8px] font-mono">
+            <span class="inline-block px-2 py-0.5 rounded bg-stone-200 text-stone-800 font-bold uppercase mb-1">${classification}</span>
+            <p>REF: ${ref}</p>
+            <p>DATE: ${new Date().toLocaleDateString('en-GB')}</p>
+          </div>
+        </div>
+        <div class="space-y-3 pt-4">
+          <p class="text-[9px] text-stone-500 uppercase font-bold">FROM: ${officer} (${deptName})</p>
+          <p class="text-[9px] text-stone-500 uppercase font-bold">TO: ${target}</p>
+          <h4 class="font-bold text-xs uppercase pt-1">${subject}</h4>
+          <p class="text-[10px] leading-relaxed text-stone-800 whitespace-pre-wrap pt-2">${body}</p>
+        </div>
+      `;
+      document.body.appendChild(tempDiv);
 
-      closeLeadMemoModal();
-      document.getElementById('leadMemoForm').reset();
+      html2canvas(tempDiv, { scale: 2 }).then(canvas => {
+        const sheetImg = canvas.toDataURL('image/png');
+        document.body.removeChild(tempDiv);
+
+        if (target === 'Direct to CEO') {
+          let adminInbox = JSON.parse(localStorage.getItem('iclick_admin_inbox') || '[]');
+          adminInbox.unshift({
+            id: ref,
+            sender: `${officer} (${deptName})`,
+            subject: `[${classification}] ${subject}`,
+            message: body,
+            date: new Date().toLocaleDateString('en-GB') + ' ' + new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }),
+            status: 'Unread'
+          });
+          localStorage.setItem('iclick_admin_inbox', JSON.stringify(adminInbox));
+          alert(`✓ Memo ${ref} routed DIRECTLY to CEO Control Center!`);
+        } else {
+          let secInbox = JSON.parse(localStorage.getItem('iclick_sec_inbox') || '[]');
+          secInbox.unshift({
+            id: ref,
+            type: classification,
+            ref: ref,
+            name: officer,
+            title: deptName,
+            subject: subject,
+            body: body,
+            recipient: target,
+            renderedSheet: sheetImg,
+            sheetWidth: canvas.width,
+            sheetHeight: canvas.height,
+            date: new Date().toLocaleDateString('en-GB')
+          });
+          localStorage.setItem('iclick_sec_inbox', JSON.stringify(secInbox));
+          alert(`✓ Memo ${ref} rendered on Letterhead and dispatched to Secretary Desk!`);
+        }
+
+        closeLeadMemoModal();
+        document.getElementById('leadMemoForm').reset();
+      });
     }
 
     function openIdRequestModal(deptName) {
