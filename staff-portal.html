@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Secretary Operational Desk | iClick Digital Ventures</title>
+  <title>Secretary / PA Operational Desk | iClick Digital Ventures</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+          fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'], heading: ['"Outfit"', 'sans-serif'] },
           colors: {
             brand: { 50: '#f9f8f6', 100: '#f0ece4', 200: '#e2d7c8', 300: '#d4a373', 400: '#b87d52', 600: '#8c5842', 800: '#4a2e2b', 900: '#2d1810', 950: '#1a0e0a' },
             warmgold: '#DFBA81',
@@ -26,8 +26,8 @@
     }
   </script>
   <style>
-    body { font-family: 'Plus Jakarta Sans', sans-serif; }
-    .glass-card { background: #2d1810; border: 1px solid rgba(212, 163, 115, 0.2); }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #120B07; color: #FDFBF7; }
+    .glass-card { background: rgba(38, 25, 17, 0.9); backdrop-filter: blur(12px); border: 1px solid rgba(194, 142, 104, 0.25); }
     .card-perspective { perspective: 1200px; width: 320px; height: 510px; position: relative; }
     .card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1); transform-style: preserve-3d; }
     .card-inner.flipped { transform: rotateY(180deg); }
@@ -45,90 +45,109 @@
     .card-back { transform: rotateY(180deg); }
   </style>
 </head>
-<body class="bg-brand-50 text-brand-900 min-h-screen flex flex-col antialiased">
+<body class="min-h-screen flex flex-col justify-between selection:bg-terracotta selection:text-linen">
 
-  <!-- 1. Secretary Restricted Login Gate -->
-  <div id="secLoginGate" class="fixed inset-0 z-50 bg-brand-950 flex items-center justify-center p-4">
-    <div class="glass-card w-full max-w-md p-8 rounded-3xl text-brand-50 shadow-2xl space-y-6">
+  <!-- Secretary Authentication Gate -->
+  <div id="secLoginGate" class="fixed inset-0 z-50 bg-espresso-950 flex items-center justify-center p-4">
+    <div class="glass-card w-full max-w-md p-8 rounded-3xl text-linen shadow-2xl space-y-6">
       <div class="text-center">
-        <div class="w-12 h-12 rounded-2xl bg-brand-300 text-brand-950 font-black text-xl flex items-center justify-center mx-auto mb-3 shadow-md">iC</div>
-        <h2 class="text-xl font-bold">Secretary Operational Desk</h2>
-        <p class="text-xs text-brand-300 mt-1">Authorized internal correspondence portal.</p>
+        <div class="w-14 h-14 rounded-2xl bg-terracotta/20 border border-terracotta/40 p-2 flex items-center justify-center mx-auto mb-3 shadow">
+          <svg viewBox="0 0 100 100" class="w-full h-full">
+            <rect x="20" y="20" width="26" height="26" rx="6" fill="#FDFBF7"></rect>
+            <rect x="54" y="20" width="26" height="26" rx="6" fill="#DFBA81"></rect>
+            <rect x="20" y="54" width="26" height="26" rx="6" fill="#C28E68"></rect>
+            <rect x="54" y="54" width="26" height="26" rx="6" fill="#FDFBF7"></rect>
+            <circle cx="50" cy="50" r="8" fill="#19110B" stroke="#DFBA81" stroke-width="3"></circle>
+          </svg>
+        </div>
+        <span class="inline-block px-3 py-0.5 rounded-full text-[10px] font-bold bg-terracotta/20 text-terracotta uppercase tracking-wider mb-1 border border-terracotta/30">Executive Administration</span>
+        <h2 class="text-2xl font-heading font-extrabold text-linen">Secretary Operational Desk</h2>
+        <p class="text-xs text-stone-300 mt-1">Official Registry, Outward Transmittals &amp; ID Studio</p>
       </div>
 
       <form id="secLoginForm" onsubmit="handleSecLogin(event)" class="space-y-4 text-xs">
         <div>
-          <label class="block font-medium text-brand-200 mb-1">Secretary Email</label>
-          <input type="email" id="secEmailInput" required placeholder="secretary@iclickdigitalventures.com" class="w-full px-4 py-3 rounded-xl bg-brand-950 border border-brand-700 text-white text-xs focus:border-brand-300 outline-none">
+          <label class="block font-medium text-stone-300 mb-1">Corporate Email</label>
+          <input type="email" id="secEmailInput" required value="secretary@iclickdigitalventures.com" class="w-full px-4 py-3 rounded-xl bg-espresso-950 border border-espresso-600 text-linen text-xs focus:border-terracotta outline-none">
         </div>
         <div>
-          <label class="block font-medium text-brand-200 mb-1">Secretary Passkey</label>
-          <input type="password" id="secPassInput" required placeholder="••••••••" class="w-full px-4 py-3 rounded-xl bg-brand-950 border border-brand-700 text-white text-xs focus:border-brand-300 outline-none">
+          <label class="block font-medium text-stone-300 mb-1">Passkey</label>
+          <input type="password" id="secPassInput" required placeholder="Enter Secret Passkey" class="w-full px-4 py-3 rounded-xl bg-espresso-950 border border-espresso-600 text-linen text-xs focus:border-terracotta outline-none">
         </div>
-        <button type="submit" class="w-full py-3.5 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold text-xs uppercase tracking-wider transition shadow-md">
+        <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-terracotta to-warmgold hover:from-amber-600 hover:to-amber-500 text-espresso-950 font-heading font-extrabold text-xs uppercase tracking-wider transition shadow-lg flex items-center justify-center gap-2">
           Authenticate &amp; Open Desk
         </button>
-        <div class="flex justify-between items-center pt-2">
-          <button type="button" onclick="showSecReset()" class="text-xs text-brand-300 hover:text-white underline">First-Time Setup / Reset Passkey</button>
-          <a href="index.html" class="text-xs text-brand-400 hover:text-brand-200">Public Site</a>
+        <div class="flex justify-between items-center pt-2 text-[11px]">
+          <button type="button" onclick="showSecReset()" class="text-warmgold hover:underline">Reset Passkey / Setup</button>
+          <a href="index.html" class="text-stone-400 hover:text-linen">Public Site</a>
         </div>
       </form>
 
       <div id="secResetView" class="space-y-4 text-xs hidden">
-        <p class="text-[11px] text-brand-300 leading-relaxed">Enter your official secretary email. An OTP verification code will be sent to the security inbox (<code class="text-brand-200">password@iclickdigitalventures.com</code>).</p>
+        <p class="text-[11px] text-stone-300 leading-relaxed">Enter your registered email. An OTP will be dispatched to <code class="text-warmgold">password@iclickdigitalventures.com</code>.</p>
         <div>
-          <label class="block font-medium text-brand-200 mb-1">Confirm Secretary Email</label>
-          <input type="email" id="secResetEmailInput" value="secretary@iclickdigitalventures.com" class="w-full px-4 py-3 rounded-xl bg-brand-950 border border-brand-700 text-white text-xs focus:border-brand-300 outline-none font-mono">
+          <label class="block font-medium text-stone-300 mb-1">Confirm Secretary Email</label>
+          <input type="email" id="secResetEmailInput" value="secretary@iclickdigitalventures.com" class="w-full px-4 py-3 rounded-xl bg-espresso-950 border border-espresso-600 text-linen text-xs font-mono">
         </div>
-        <button onclick="dispatchSecToken()" id="secOtpBtn" class="w-full py-3 rounded-xl bg-brand-300 text-brand-950 font-bold uppercase transition">Send Verification Code</button>
+        <button onclick="dispatchSecToken()" id="secOtpBtn" class="w-full py-3 rounded-xl bg-terracotta hover:bg-amber-700 text-linen font-bold uppercase transition">Send Verification Code</button>
         
-        <div id="secNewPassFields" class="space-y-3 pt-2 border-t border-brand-800 hidden">
-          <input type="text" id="secOtpInput" placeholder="Enter 6-Digit Code" class="w-full px-4 py-2.5 rounded-xl bg-brand-950 border border-brand-700 text-white text-center font-mono">
-          <input type="password" id="secNewPass1" placeholder="New Secret Passkey" class="w-full px-4 py-2.5 rounded-xl bg-brand-950 border border-brand-700 text-white">
-          <input type="password" id="secNewPass2" placeholder="Confirm New Passkey" class="w-full px-4 py-2.5 rounded-xl bg-brand-950 border border-brand-700 text-white">
+        <div id="secNewPassFields" class="space-y-3 pt-2 border-t border-espresso-700 hidden">
+          <input type="text" id="secOtpInput" placeholder="Enter 6-Digit Code" class="w-full px-4 py-2.5 rounded-xl bg-espresso-950 border border-espresso-600 text-linen text-center font-mono">
+          <input type="password" id="secNewPass1" placeholder="New Secret Passkey" class="w-full px-4 py-2.5 rounded-xl bg-espresso-950 border border-espresso-600 text-linen">
+          <input type="password" id="secNewPass2" placeholder="Confirm New Passkey" class="w-full px-4 py-2.5 rounded-xl bg-espresso-950 border border-espresso-600 text-linen">
           <button onclick="commitSecNewPass()" class="w-full py-3 rounded-xl bg-emerald-700 text-white font-bold uppercase transition">Update &amp; Log In</button>
         </div>
-        <button onclick="showSecLogin()" class="w-full text-center text-brand-400 hover:text-white block pt-1">← Back to Login</button>
+        <button onclick="showSecLogin()" class="w-full text-center text-stone-400 hover:text-linen block pt-1 text-[11px]">← Back to Login</button>
       </div>
     </div>
   </div>
-  <!-- 2. Secretary Main Workspace -->
-  <div id="secMainWorkspace" class="hidden flex flex-col min-h-screen">
-    <nav class="bg-brand-900 border-b border-brand-800 px-6 py-4 flex justify-between items-center sticky top-0 z-40 text-white">
-      <div class="flex items-center space-x-3">
-        <img src="images/iclick-full-logo-dark (2).svg" alt="iClick Logo" class="h-9 w-auto object-contain">
-        <div>
-          <h1 class="text-base font-bold">Secretary Operational Desk</h1>
-          <span class="text-[10px] text-brand-300 font-mono">Executive Inbox, Autonomous Staff ID Studio &amp; Outward Registers</span>
+  <!-- Main Secretary Workspace -->
+  <div id="secMainWorkspace" class="hidden flex-col min-h-screen">
+    <header class="border-b border-espresso-600 bg-espresso-900/90 backdrop-blur sticky top-0 z-40 px-4 lg:px-8 py-3.5">
+      <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-terracotta/20 border border-terracotta/40 p-1.5 flex items-center justify-center shadow">
+            <svg viewBox="0 0 100 100" class="w-full h-full">
+              <rect x="20" y="20" width="26" height="26" rx="6" fill="#FDFBF7"></rect>
+              <rect x="54" y="20" width="26" height="26" rx="6" fill="#DFBA81"></rect>
+              <rect x="20" y="54" width="26" height="26" rx="6" fill="#C28E68"></rect>
+              <rect x="54" y="54" width="26" height="26" rx="6" fill="#FDFBF7"></rect>
+              <circle cx="50" cy="50" r="8" fill="#19110B" stroke="#DFBA81" stroke-width="3"></circle>
+            </svg>
+          </div>
+          <div>
+            <h1 class="font-heading font-extrabold text-base text-linen tracking-tight">Executive Secretary Operational Desk</h1>
+            <p class="text-[11px] text-terracotta font-medium">BN: 9772940 • Inward Dispatches, Outward Registers &amp; Autonomous Staff Badges</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-xs text-stone-300 font-semibold bg-espresso-800 px-3 py-1.5 rounded-lg border border-espresso-600">Secretary Active</span>
+          <button onclick="secLogout()" class="bg-rose-900/80 hover:bg-rose-800 text-stone-200 text-xs font-bold px-3.5 py-2 rounded-xl transition shadow flex items-center gap-1.5">
+            Lock Session
+          </button>
         </div>
       </div>
-      <div class="flex items-center space-x-3 text-xs">
-        <a href="index.html" class="px-3 py-2 text-brand-300 hover:text-white transition">Public Site</a>
-        <button onclick="secLogout()" class="px-3.5 py-2 rounded-xl bg-rose-900/80 hover:bg-rose-800 text-white font-bold transition flex items-center gap-1.5">
-          <i data-lucide="lock" class="w-3.5 h-3.5"></i> Lock Session
-        </button>
-      </div>
-    </nav>
+    </header>
 
-    <main class="max-w-7xl mx-auto px-4 py-8 flex-1 w-full space-y-10">
+    <main class="max-w-7xl mx-auto px-4 lg:px-8 py-8 flex-grow w-full space-y-10">
       
-      <!-- Unified Secretary Inbox (CEO Memos, Staff Passes & Department ID Requests) -->
-      <div class="space-y-4">
+      <!-- Unified Secretary Inbox -->
+      <section class="space-y-4">
         <div class="flex justify-between items-center">
           <div>
-            <h2 class="text-2xl font-black text-brand-900 flex items-center gap-2">
-              <i data-lucide="inbox" class="w-6 h-6 text-brand-600"></i> Corporate Operational Inbox
+            <h2 class="text-xl md:text-2xl font-heading font-extrabold text-linen flex items-center gap-2">
+              Corporate Operational Inbox
             </h2>
-            <p class="text-xs text-brand-700">Official memos, executive badges, and incoming department staff ID requests awaiting production or outward transmission.</p>
+            <p class="text-xs text-stone-300">Executive memos, outward transmittals, and staff ID issuance queues.</p>
           </div>
-          <button onclick="renderExecutiveInbox()" class="px-3.5 py-2 bg-brand-900 text-brand-50 rounded-xl text-xs font-bold shadow flex items-center gap-1.5">
-            <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i> Refresh Inbox
+          <button onclick="renderExecutiveInbox()" class="px-3.5 py-2 bg-espresso-800 hover:bg-espresso-700 border border-espresso-600 text-linen rounded-xl text-xs font-bold shadow flex items-center gap-1.5">
+            Refresh Inbox
           </button>
         </div>
 
         <div class="glass-card rounded-3xl p-6 overflow-x-auto shadow-xl">
-          <table class="w-full text-left text-xs text-brand-50">
-            <thead class="bg-brand-950 text-brand-300 uppercase text-[10px] border-b border-brand-800">
+          <table class="w-full text-left text-xs text-linen">
+            <thead class="bg-espresso-950 text-stone-400 uppercase text-[10px] border-b border-espresso-700">
               <tr>
                 <th class="p-3">Ref ID</th>
                 <th class="p-3">Type</th>
@@ -138,28 +157,28 @@
                 <th class="p-3 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody id="secInboxBody" class="divide-y divide-brand-800">
-              <tr><td colspan="6" class="p-4 text-center text-brand-400">Loading incoming dispatches...</td></tr>
+            <tbody id="secInboxBody" class="divide-y divide-espresso-700">
+              <tr><td colspan="6" class="p-4 text-center text-stone-400">Loading incoming dispatches...</td></tr>
             </tbody>
           </table>
         </div>
-      </div>
+      </section>
 
       <!-- Two-Column Operational Layout -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         
-        <!-- Left: Official Correspondence Register -->
-        <div class="lg:col-span-7 glass-card text-brand-50 rounded-3xl p-6 space-y-4 shadow-xl text-xs">
-          <div class="border-b border-brand-800 pb-3 flex justify-between items-center">
+        <!-- Left: Correspondence Registry -->
+        <section class="lg:col-span-7 glass-card rounded-3xl p-6 space-y-4 shadow-xl text-xs">
+          <div class="border-b border-espresso-700 pb-3 flex justify-between items-center">
             <div>
-              <h3 class="font-bold text-base text-brand-50">Official Correspondence Registry Log</h3>
-              <p class="text-[11px] text-brand-300">Permanent record of outward memos, proposals, and issued ID passes.</p>
+              <h3 class="font-heading font-bold text-base text-linen">Official Correspondence Registry Log</h3>
+              <p class="text-[11px] text-stone-400">Permanent record of outward memos, institutional letters, and issued passes.</p>
             </div>
-            <button onclick="openAddMailModal()" class="px-3 py-1.5 rounded-lg bg-brand-300 text-brand-950 font-bold uppercase transition text-[10px]">Log Record</button>
+            <button onclick="openAddMailModal()" class="px-3 py-1.5 rounded-lg bg-terracotta hover:bg-amber-700 text-linen font-bold uppercase transition text-[10px]">Log Record</button>
           </div>
 
-          <table class="w-full text-left text-xs text-brand-50">
-            <thead class="bg-brand-950 text-brand-300 uppercase text-[9px] border-b border-brand-800">
+          <table class="w-full text-left text-xs text-linen">
+            <thead class="bg-espresso-950 text-stone-400 uppercase text-[9px] border-b border-espresso-700">
               <tr>
                 <th class="p-2">Ref</th>
                 <th class="p-2">Type</th>
@@ -167,120 +186,115 @@
                 <th class="p-2">Status</th>
               </tr>
             </thead>
-            <tbody id="mailRegistryBody" class="divide-y divide-brand-800 text-[11px]">
-              <tr><td colspan="4" class="p-3 text-center text-brand-400">Loading records...</td></tr>
+            <tbody id="mailRegistryBody" class="divide-y divide-espresso-700 text-[11px]">
+              <tr><td colspan="4" class="p-3 text-center text-stone-400">Loading records...</td></tr>
             </tbody>
           </table>
-        </div>
+        </section>
 
         <!-- Right: Direct Message to CEO Terminal -->
-        <div class="lg:col-span-5 glass-card text-brand-50 rounded-3xl p-6 space-y-4 shadow-xl text-xs">
+        <section class="lg:col-span-5 glass-card rounded-3xl p-6 space-y-4 shadow-xl text-xs">
           <div>
-            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-brand-800 text-brand-300 uppercase">Executive Direct Line</span>
-            <h3 class="font-bold text-base text-brand-50 mt-1">Direct Message / Escalation to CEO</h3>
-            <p class="text-brand-300 text-[11px]">Send briefings or escalate department letters directly to CEO Admin Desk.</p>
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-terracotta/20 text-terracotta uppercase border border-terracotta/30">Executive Direct Line</span>
+            <h3 class="font-heading font-bold text-base text-linen mt-1">Direct Message / Escalation to CEO</h3>
+            <p class="text-stone-300 text-[11px]">Internal terminal to brief or route communications to the CEO Desk.</p>
           </div>
 
           <form id="secCeoMsgForm" onsubmit="handleSendCeoMsg(event)" class="space-y-3">
             <div>
-              <label class="block text-brand-200 mb-1">Sender *</label>
-              <input type="text" id="secSenderName" required value="Executive Secretary" class="w-full bg-brand-950 border border-brand-700 rounded-xl p-2.5 text-white">
+              <label class="block text-stone-300 mb-1">Sender *</label>
+              <input type="text" id="secSenderName" required value="Executive Secretary" class="w-full bg-espresso-950 border border-espresso-600 rounded-xl p-2.5 text-linen outline-none">
             </div>
             <div>
-              <label class="block text-brand-200 mb-1">Briefing Subject *</label>
-              <input type="text" id="secBriefSubject" required placeholder="e.g. Dispatched Memo #084 Confirmation" class="w-full bg-brand-950 border border-brand-700 rounded-xl p-2.5 text-white">
+              <label class="block text-stone-300 mb-1">Briefing Subject *</label>
+              <input type="text" id="secBriefSubject" required placeholder="e.g. Dispatched Memo #084 Confirmation" class="w-full bg-espresso-950 border border-espresso-600 rounded-xl p-2.5 text-linen outline-none">
             </div>
             <div>
-              <label class="block text-brand-200 mb-1">Message Body *</label>
-              <textarea id="secBriefMessage" rows="3" required placeholder="Type operational brief for CEO..." class="w-full bg-brand-950 border border-brand-700 rounded-xl p-2.5 text-white"></textarea>
+              <label class="block text-stone-300 mb-1">Message Body *</label>
+              <textarea id="secBriefMessage" rows="3" required placeholder="Type operational brief for CEO..." class="w-full bg-espresso-950 border border-espresso-600 rounded-xl p-2.5 text-linen outline-none"></textarea>
             </div>
-            <button type="submit" id="secCeoBtn" class="w-full py-3 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold uppercase tracking-wider transition">Transmit to CEO</button>
+            <button type="submit" id="secCeoBtn" class="w-full py-3 rounded-xl bg-gradient-to-r from-terracotta to-warmgold text-espresso-950 font-bold uppercase tracking-wider transition">Transmit to CEO</button>
             <p id="secCeoStatus" class="text-center font-bold mt-1 text-xs"></p>
           </form>
-        </div>
+        </section>
 
       </div>
     </main>
 
-    <footer class="bg-brand-900 border-t border-brand-800 text-xs text-brand-300 py-6 text-center mt-auto">
+    <footer class="border-t border-espresso-600 py-6 text-center text-xs text-stone-400 bg-espresso-950">
       &copy; 2026 iClick Digital Ventures (BN: 9772940). All rights reserved. • secretary@iclickdigitalventures.com
     </footer>
   </div>
-
   <!-- MODAL 1: EXACT SIGNED A4 CEO MEMO PREVIEW -->
-  <div id="viewMemoModal" class="hidden fixed inset-0 z-50 bg-brand-950/90 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="bg-brand-900 border border-brand-700 text-brand-50 w-full max-w-3xl rounded-3xl p-6 space-y-4 shadow-2xl max-h-[92vh] flex flex-col justify-between">
-      <div class="flex justify-between items-center border-b border-brand-800 pb-3">
+  <div id="viewMemoModal" class="hidden fixed inset-0 z-50 bg-espresso-950/90 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-espresso-900 border border-espresso-600 text-linen w-full max-w-3xl rounded-3xl p-6 space-y-4 shadow-2xl max-h-[92vh] flex flex-col justify-between">
+      <div class="flex justify-between items-center border-b border-espresso-700 pb-3">
         <div>
-          <h3 class="font-bold text-base text-brand-50" id="modalMemoTitle">Executive Memo Preview</h3>
-          <p class="text-xs text-brand-300 font-mono" id="modalMemoRef">REF: IDV/EXEC/2026/084</p>
+          <h3 class="font-heading font-bold text-base text-linen" id="modalMemoTitle">Executive Memo Preview</h3>
+          <p class="text-xs text-stone-400 font-mono" id="modalMemoRef">REF: IDV/EXEC/2026/084</p>
         </div>
-        <button onclick="closeMemoModal()" class="text-brand-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+        <button onclick="closeMemoModal()" class="text-stone-400 hover:text-linen text-lg font-bold">✕</button>
       </div>
 
-      <div class="flex-1 overflow-y-auto rounded-2xl bg-brand-950 border border-brand-800 p-3 flex justify-center">
+      <div class="flex-1 overflow-y-auto rounded-2xl bg-espresso-950 border border-espresso-700 p-3 flex justify-center">
         <img id="modalMemoRenderImg" class="max-w-full h-auto rounded-lg shadow-2xl border border-stone-300" src="" alt="Exact Signed A4 Memo">
       </div>
 
-      <div class="flex flex-wrap justify-between items-center gap-2 pt-2 border-t border-brand-800 text-xs">
-        <span class="text-emerald-400 font-bold flex items-center gap-1.5"><i data-lucide="check-circle" class="w-4 h-4"></i> Verified Executive Signature</span>
-        <div class="flex gap-2">
-          <button onclick="downloadActiveMemoPDF()" class="px-4 py-2.5 bg-brand-300 hover:bg-brand-400 text-brand-950 rounded-xl font-bold uppercase transition shadow">
-            <i data-lucide="download" class="w-3.5 h-3.5 inline mr-1"></i> Download A4 PDF &amp; Mark Dispatched
-          </button>
-        </div>
+      <div class="flex flex-wrap justify-between items-center gap-2 pt-2 border-t border-espresso-700 text-xs">
+        <span class="text-emerald-400 font-bold">✓ Verified Executive Signature Stamped</span>
+        <button onclick="downloadActiveMemoPDF()" class="px-4 py-2.5 bg-warmgold text-espresso-950 rounded-xl font-bold uppercase transition shadow">
+          Download A4 PDF &amp; Mark Dispatched
+        </button>
       </div>
     </div>
   </div>
 
   <!-- MODAL 2: AUTONOMOUS SECRETARY STAFF ID GENERATOR -->
-  <div id="secIdGenModal" class="hidden fixed inset-0 z-50 bg-brand-950/90 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
-    <div class="bg-brand-900 border border-brand-700 text-brand-50 w-full max-w-4xl rounded-3xl p-6 md:p-8 space-y-6 shadow-2xl">
-      <div class="flex justify-between items-center border-b border-brand-800 pb-3">
+  <div id="secIdGenModal" class="hidden fixed inset-0 z-50 bg-espresso-950/90 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-espresso-900 border border-espresso-600 text-linen w-full max-w-4xl rounded-3xl p-6 md:p-8 space-y-6 shadow-2xl">
+      <div class="flex justify-between items-center border-b border-espresso-700 pb-3">
         <div>
-          <h3 class="font-bold text-lg text-brand-50">Secretary Staff ID Production Desk</h3>
-          <p class="text-xs text-brand-300">Generate, certify with CAC (BN: 9772940), and issue staff badges immediately.</p>
+          <h3 class="font-heading font-bold text-lg text-linen">Secretary Staff ID Production Studio</h3>
+          <p class="text-xs text-stone-300">Generate, certify with CAC (BN: 9772940), and issue staff badges immediately.</p>
         </div>
-        <button onclick="closeSecIdGenModal()" class="text-brand-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+        <button onclick="closeSecIdGenModal()" class="text-stone-400 hover:text-linen text-lg font-bold">✕</button>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start text-xs">
-        <!-- Input Form -->
-        <div class="lg:col-span-6 bg-brand-950 p-5 rounded-2xl border border-brand-800 space-y-3">
-          <h4 class="font-bold text-brand-300 border-b border-brand-800 pb-2">Staff Credentials</h4>
+        <div class="lg:col-span-6 bg-espresso-950 p-5 rounded-2xl border border-espresso-700 space-y-3">
+          <h4 class="font-heading font-bold text-warmgold border-b border-espresso-800 pb-2">Staff Credentials</h4>
           <div>
-            <label class="block text-brand-400 mb-1">Staff Full Name</label>
-            <input type="text" id="secGenName" oninput="syncSecIdCardLive()" class="w-full bg-brand-900 border border-brand-700 rounded-lg p-2 text-white">
+            <label class="block text-stone-400 mb-1">Staff Full Name</label>
+            <input type="text" id="secGenName" oninput="syncSecIdCardLive()" class="w-full bg-espresso-900 border border-espresso-700 rounded-lg p-2 text-linen outline-none">
           </div>
           <div>
-            <label class="block text-brand-400 mb-1">Job Designation</label>
-            <input type="text" id="secGenTitle" oninput="syncSecIdCardLive()" class="w-full bg-brand-900 border border-brand-700 rounded-lg p-2 text-white">
+            <label class="block text-stone-400 mb-1">Job Designation</label>
+            <input type="text" id="secGenTitle" oninput="syncSecIdCardLive()" class="w-full bg-espresso-900 border border-espresso-700 rounded-lg p-2 text-linen outline-none">
           </div>
           <div>
-            <label class="block text-brand-400 mb-1">Subsidiary / Unit</label>
-            <input type="text" id="secGenDept" oninput="syncSecIdCardLive()" class="w-full bg-brand-900 border border-brand-700 rounded-lg p-2 text-white">
+            <label class="block text-stone-400 mb-1">Subsidiary / Unit</label>
+            <input type="text" id="secGenDept" oninput="syncSecIdCardLive()" class="w-full bg-espresso-900 border border-espresso-700 rounded-lg p-2 text-linen outline-none">
           </div>
           <div class="grid grid-cols-2 gap-3">
             <div>
-              <label class="block text-brand-400 mb-1">Staff ID Number</label>
-              <input type="text" id="secGenIdNo" oninput="syncSecIdCardLive()" class="w-full bg-brand-900 border border-brand-700 rounded-lg p-2 text-white font-mono">
+              <label class="block text-stone-400 mb-1">Staff ID Number</label>
+              <input type="text" id="secGenIdNo" oninput="syncSecIdCardLive()" class="w-full bg-espresso-900 border border-espresso-700 rounded-lg p-2 text-linen font-mono outline-none">
             </div>
             <div>
-              <label class="block text-brand-400 mb-1">Expiry Date</label>
-              <input type="text" id="secGenExpiry" value="AUG 2028" oninput="syncSecIdCardLive()" class="w-full bg-brand-900 border border-brand-700 rounded-lg p-2 text-warmgold font-bold">
+              <label class="block text-stone-400 mb-1">Expiry Date</label>
+              <input type="text" id="secGenExpiry" value="AUG 2028" oninput="syncSecIdCardLive()" class="w-full bg-espresso-900 border border-espresso-700 rounded-lg p-2 text-warmgold font-bold outline-none">
             </div>
           </div>
           <div>
-            <label class="block text-brand-400 mb-1">Employee Email</label>
-            <input type="text" id="secGenEmail" oninput="syncSecIdCardLive()" class="w-full bg-brand-900 border border-brand-700 rounded-lg p-2 text-white">
+            <label class="block text-stone-400 mb-1">Employee Email</label>
+            <input type="text" id="secGenEmail" oninput="syncSecIdCardLive()" class="w-full bg-espresso-900 border border-espresso-700 rounded-lg p-2 text-linen outline-none">
           </div>
           <div>
-            <label class="block text-brand-400 mb-1">Staff Contact Phone</label>
-            <input type="text" id="secGenPhone" oninput="syncSecIdCardLive()" class="w-full bg-brand-900 border border-brand-700 rounded-lg p-2 text-white">
+            <label class="block text-stone-400 mb-1">Staff Contact Phone</label>
+            <input type="text" id="secGenPhone" oninput="syncSecIdCardLive()" class="w-full bg-espresso-900 border border-espresso-700 rounded-lg p-2 text-linen outline-none">
           </div>
         </div>
 
-        <!-- Live 3D Card Preview -->
         <div class="lg:col-span-6 flex flex-col items-center">
           <div class="card-perspective">
             <div id="secPreviewCardInner" class="card-inner shadow-2xl">
@@ -298,7 +312,7 @@
                       </svg>
                     </div>
                     <div>
-                      <h4 class="font-bold text-xs text-linen">iClick Digital</h4>
+                      <h4 class="font-heading font-extrabold text-xs text-linen">iClick Digital</h4>
                       <p id="secCardLiveDept" class="text-[8px] text-terracotta font-semibold uppercase tracking-wider">iClick GovTech</p>
                     </div>
                   </div>
@@ -310,7 +324,7 @@
                     <img id="secCardLivePhoto" class="w-full h-full object-cover rounded-lg" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><rect width='200' height='200' fill='%233D271B'/><circle cx='100' cy='75' r='38' fill='%23C28E68'/><path d='M40 180 C40 120, 160 120, 160 180 Z' fill='%2319110B'/></svg>" alt="Photo">
                   </div>
                   <div class="text-center">
-                    <h3 id="secCardLiveName" class="font-bold text-base text-linen">STAFF NAME</h3>
+                    <h3 id="secCardLiveName" class="font-heading font-bold text-base text-linen">STAFF NAME</h3>
                     <p id="secCardLiveTitle" class="text-xs font-semibold text-warmgold">Designation</p>
                     <p id="secCardLiveEmail" class="text-[10px] text-stone-300 font-mono mt-0.5">email@iclickdigitalventures.com</p>
                   </div>
@@ -335,10 +349,10 @@
                   <p class="text-[8px] text-stone-400">If found, please return to any iClick branch office.</p>
                 </div>
                 <div class="space-y-1.5 text-[9px] text-stone-300">
-                  <p><i class="fa-solid fa-phone text-terracotta w-4"></i> Staff: <span id="secCardLivePhone">+234 000 000 0000</span></p>
-                  <p><i class="fa-solid fa-building-circle-check text-terracotta w-4"></i> Office: +234 806 288 2839</p>
-                  <p><i class="fa-solid fa-envelope text-terracotta w-4"></i> Company: enquiry@iclickdigitalventures.com</p>
-                  <p><i class="fa-solid fa-globe text-terracotta w-4"></i> Portal: www.iclickdigitalventures.com</p>
+                  <p>Staff: <span id="secCardLivePhone">+234 000 000 0000</span></p>
+                  <p>Office: +234 806 288 2839</p>
+                  <p>Company: enquiry@iclickdigitalventures.com</p>
+                  <p>Portal: www.iclickdigitalventures.com</p>
                 </div>
                 <div class="border-t border-terracotta/30 pt-2 flex items-center justify-between">
                   <span class="text-[8px] text-stone-400 font-bold">CAC REGISTERED • BN: 9772940</span>
@@ -351,11 +365,11 @@
           </div>
 
           <div class="flex gap-2 mt-4">
-            <button onclick="document.getElementById('secPreviewCardInner').classList.toggle('flipped')" class="px-3 py-2 bg-brand-800 rounded-xl text-xs font-bold text-white shadow">
-              Flip View
+            <button onclick="document.getElementById('secPreviewCardInner').classList.toggle('flipped')" class="px-3.5 py-2 bg-espresso-800 border border-espresso-600 rounded-xl text-xs font-bold text-linen shadow">
+              Flip Card View
             </button>
-            <button onclick="generateAndIssueStaffBadgePDF()" class="px-4 py-2 bg-brand-300 text-brand-950 rounded-xl text-xs font-bold shadow uppercase tracking-wider">
-              Produce 2-Sided PDF &amp; Mark Issued
+            <button onclick="generateAndIssueStaffBadgePDF()" class="px-4 py-2 bg-warmgold text-espresso-950 rounded-xl text-xs font-bold shadow uppercase tracking-wider">
+              Produce 2-Sided PDF &amp; Issue Pass
             </button>
           </div>
         </div>
@@ -364,20 +378,20 @@
   </div>
 
   <!-- MODAL 3: MANUAL LOG ENTRY -->
-  <div id="addMailModal" class="hidden fixed inset-0 z-50 bg-brand-950/80 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="glass-card w-full max-w-md p-6 rounded-3xl text-brand-50 space-y-4 text-xs">
-      <div class="flex justify-between items-center border-b border-brand-800 pb-2">
-        <h3 class="font-bold text-sm">Log New Official Correspondence</h3>
-        <button onclick="closeAddMailModal()" class="text-brand-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+  <div id="addMailModal" class="hidden fixed inset-0 z-50 bg-espresso-950/90 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="glass-card w-full max-w-md p-6 rounded-3xl text-linen space-y-4 text-xs">
+      <div class="flex justify-between items-center border-b border-espresso-700 pb-2">
+        <h3 class="font-heading font-bold text-sm">Log New Official Correspondence</h3>
+        <button onclick="closeAddMailModal()" class="text-stone-400 hover:text-linen text-base font-bold">✕</button>
       </div>
       <div class="space-y-3">
         <div>
-          <label class="block text-brand-200 mb-1">Reference Number</label>
-          <input type="text" id="logRef" placeholder="e.g. IDV/OUT/2026/044" class="w-full bg-brand-950 border border-brand-700 rounded-lg p-2 text-white">
+          <label class="block text-stone-400 mb-1">Reference Number</label>
+          <input type="text" id="logRef" placeholder="e.g. IDV/OUT/2026/044" class="w-full bg-espresso-950 border border-espresso-600 rounded-lg p-2 text-linen outline-none font-mono">
         </div>
         <div>
-          <label class="block text-brand-200 mb-1">Type</label>
-          <select id="logType" class="w-full bg-brand-950 border border-brand-700 rounded-lg p-2 text-white">
+          <label class="block text-stone-400 mb-1">Type</label>
+          <select id="logType" class="w-full bg-espresso-950 border border-espresso-600 rounded-lg p-2 text-linen outline-none">
             <option value="Outward Memo">Outward Memo</option>
             <option value="Inward Letter">Inward Letter</option>
             <option value="Staff ID Pass">Staff ID Pass</option>
@@ -385,17 +399,14 @@
           </select>
         </div>
         <div>
-          <label class="block text-brand-200 mb-1">Recipient / Personnel</label>
-          <input type="text" id="logParty" placeholder="e.g. Ministry of ICT / Amina Bello" class="w-full bg-brand-950 border border-brand-700 rounded-lg p-2 text-white">
+          <label class="block text-stone-400 mb-1">Recipient / Personnel</label>
+          <input type="text" id="logParty" placeholder="e.g. Ministry of ICT / Amina Bello" class="w-full bg-espresso-950 border border-espresso-600 rounded-lg p-2 text-linen outline-none">
         </div>
-        <button onclick="saveLogEntry()" class="w-full py-3 bg-brand-300 text-brand-950 font-bold rounded-xl uppercase">Save to Official Register</button>
+        <button onclick="saveLogEntry()" class="w-full py-3 bg-gradient-to-r from-terracotta to-warmgold text-espresso-950 font-bold rounded-xl uppercase">Save to Registry</button>
       </div>
     </div>
-              </div>
-           
-    <script>
-    if (window.lucide) { lucide.createIcons(); }
-
+                </div>
+                <script>
     const SEC_EMAIL = "secretary@iclickdigitalventures.com";
     const SECURITY_ACCESS_KEY = "93f249e4-0f14-4643-8e32-4af9619ffe32";
     let activeSecOtp = null;
@@ -412,14 +423,14 @@
     }
 
     function handleSecLogin(e) {
-      e.preventDefault();
+      if (e && e.preventDefault) e.preventDefault();
       const email = document.getElementById('secEmailInput').value.trim().toLowerCase();
       const pass = document.getElementById('secPassInput').value.trim();
 
-      const savedPass = localStorage.getItem('iclick_sec_pass') || 'Secretary2026!';
+      const customPass = localStorage.getItem('iclick_sec_pass') || 'Secretary2026!';
 
-      // Accepts either the current saved passkey OR default passkey
-      if (email === SEC_EMAIL && (pass === savedPass || pass === 'Secretary2026!')) {
+      // Validates either custom password, default Secretary2026!, or short fallback
+      if (email === SEC_EMAIL && (pass === customPass || pass === 'Secretary2026!' || pass === 'Secretary2026')) {
         sessionStorage.setItem('iclick_sec_session', 'active_' + Date.now());
         openSecWorkspace();
       } else {
@@ -486,9 +497,9 @@
     function openSecWorkspace() {
       document.getElementById('secLoginGate').classList.add('hidden');
       document.getElementById('secMainWorkspace').classList.remove('hidden');
+      document.getElementById('secMainWorkspace').classList.add('flex');
       renderExecutiveInbox();
       renderRegistryTable();
-      if (window.lucide) { lucide.createIcons(); }
     }
 
     function secLogout() {
@@ -496,27 +507,26 @@
       location.reload();
     }
 
-    /* INBOX RENDERER */
     function renderExecutiveInbox() {
       const tbody = document.getElementById('secInboxBody');
       if (!tbody) return;
       const inbox = JSON.parse(localStorage.getItem('iclick_sec_inbox') || '[]');
 
       if (inbox.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-brand-400">No pending dispatches or ID requests.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-stone-400">No pending dispatches or ID requests.</td></tr>`;
       } else {
         tbody.innerHTML = '';
         inbox.forEach((item, idx) => {
           if (item.type === 'Executive Memo') {
             tbody.innerHTML += `
-              <tr class="hover:bg-brand-900/60">
-                <td class="p-3 font-mono font-bold text-brand-300">${item.ref}</td>
-                <td class="p-3"><span class="px-2 py-0.5 rounded bg-brand-800 text-[10px] text-brand-200 font-bold">${item.type}</span></td>
-                <td class="p-3 font-bold text-white">${item.subject}</td>
-                <td class="p-3 text-brand-200">${item.recipient}</td>
-                <td class="p-3 text-brand-400 font-mono">${item.date}</td>
+              <tr class="hover:bg-espresso-900/60">
+                <td class="p-3 font-mono font-bold text-warmgold">${item.ref}</td>
+                <td class="p-3"><span class="px-2 py-0.5 rounded bg-terracotta/20 text-terracotta text-[10px] font-bold">${item.type}</span></td>
+                <td class="p-3 font-bold text-linen">${item.subject}</td>
+                <td class="p-3 text-stone-300">${item.recipient}</td>
+                <td class="p-3 text-stone-400 font-mono">${item.date}</td>
                 <td class="p-3 text-right">
-                  <button onclick="viewMemo(${idx})" class="px-3 py-1.5 bg-brand-300 hover:bg-brand-400 text-brand-950 rounded-xl text-[11px] font-bold shadow">
+                  <button onclick="viewMemo(${idx})" class="px-3 py-1.5 bg-terracotta hover:bg-amber-700 text-linen rounded-xl text-[11px] font-bold shadow">
                     View Exact A4 &amp; Dispatch
                   </button>
                 </td>
@@ -524,49 +534,48 @@
             `;
           } else if (item.type === 'Department Memo') {
             tbody.innerHTML += `
-              <tr class="hover:bg-brand-900/60">
+              <tr class="hover:bg-espresso-900/60">
                 <td class="p-3 font-mono font-bold text-blue-400">${item.ref}</td>
                 <td class="p-3"><span class="px-2 py-0.5 rounded bg-blue-950 text-[10px] text-blue-300 font-bold">${item.type}</span></td>
-                <td class="p-3 font-bold text-white">${item.subject}</td>
-                <td class="p-3 text-brand-200">${item.name} (${item.title})</td>
-                <td class="p-3 text-brand-400 font-mono">${item.timestamp}</td>
+                <td class="p-3 font-bold text-linen">${item.subject}</td>
+                <td class="p-3 text-stone-300">${item.name} (${item.title})</td>
+                <td class="p-3 text-stone-400 font-mono">${item.timestamp}</td>
                 <td class="p-3 text-right space-x-1 whitespace-nowrap">
-                  <button onclick="escalateDeptMemoToCeo(${idx})" class="px-2.5 py-1.5 bg-amber-600 hover:bg-amber-500 text-white rounded-lg text-[10px] font-bold shadow">Transfer to CEO</button>
-                  <button onclick="archiveDeptMemo(${idx})" class="px-2.5 py-1.5 bg-brand-800 hover:bg-brand-700 text-white rounded-lg text-[10px] font-bold shadow">Archive</button>
+                  <button onclick="escalateDeptMemoToCeo(${idx})" class="px-2.5 py-1.5 bg-warmgold text-espresso-950 rounded-lg text-[10px] font-bold shadow">Transfer to CEO</button>
+                  <button onclick="archiveDeptMemo(${idx})" class="px-2.5 py-1.5 bg-espresso-800 text-linen rounded-lg text-[10px] font-bold shadow">Archive</button>
                 </td>
               </tr>
             `;
           } else if (item.type === 'ID Issuance Request') {
             tbody.innerHTML += `
-              <tr class="hover:bg-brand-900/60">
+              <tr class="hover:bg-espresso-900/60">
                 <td class="p-3 font-mono font-bold text-emerald-400">${item.ref}</td>
                 <td class="p-3"><span class="px-2 py-0.5 rounded bg-purple-950 text-[10px] text-purple-300 font-bold">${item.type}</span></td>
-                <td class="p-3 font-bold text-white">Staff Pass for ${item.name}</td>
-                <td class="p-3 text-brand-200">${item.title} (${item.dept})</td>
-                <td class="p-3 text-brand-400 font-mono">${item.timestamp}</td>
+                <td class="p-3 font-bold text-linen">Staff Pass for ${item.name}</td>
+                <td class="p-3 text-stone-300">${item.title} (${item.dept})</td>
+                <td class="p-3 text-stone-400 font-mono">${item.timestamp}</td>
                 <td class="p-3 text-right">
-                  <button onclick="openSecIdGenModal(${idx})" class="px-3 py-1.5 bg-gradient-to-r from-terracotta to-warmgold text-brand-950 rounded-xl text-[11px] font-bold shadow">Produce &amp; Issue ID</button>
+                  <button onclick="openSecIdGenModal(${idx})" class="px-3 py-1.5 bg-gradient-to-r from-terracotta to-warmgold text-espresso-950 rounded-xl text-[11px] font-bold shadow">Produce &amp; Issue ID</button>
                 </td>
               </tr>
             `;
           } else {
             tbody.innerHTML += `
-              <tr class="hover:bg-brand-900/60">
+              <tr class="hover:bg-espresso-900/60">
                 <td class="p-3 font-mono font-bold text-warmgold">${item.ref}</td>
                 <td class="p-3"><span class="px-2 py-0.5 rounded bg-amber-950 text-amber-300 text-[10px] font-bold">${item.type}</span></td>
-                <td class="p-3 font-bold text-white">${item.name}</td>
-                <td class="p-3 text-brand-200">${item.title}</td>
-                <td class="p-3 text-brand-400 font-mono">${item.timestamp}</td>
+                <td class="p-3 font-bold text-linen">${item.name}</td>
+                <td class="p-3 text-stone-300">${item.title}</td>
+                <td class="p-3 text-stone-400 font-mono">${item.timestamp}</td>
                 <td class="p-3 text-right space-x-1 whitespace-nowrap">
-                  <button onclick="downloadCompleteIdPDF(${idx})" class="px-2.5 py-1 bg-warmgold text-brand-950 rounded-lg text-[10px] font-bold shadow">2-Sided PDF</button>
-                  <button onclick="markIdDispatched(${idx})" class="px-2.5 py-1 bg-emerald-800 hover:bg-emerald-700 text-white rounded-lg text-[10px] font-bold shadow">Complete</button>
+                  <button onclick="downloadCompleteIdPDF(${idx})" class="px-2.5 py-1 bg-warmgold text-espresso-950 rounded-lg text-[10px] font-bold shadow">2-Sided PDF</button>
+                  <button onclick="markIdDispatched(${idx})" class="px-2.5 py-1 bg-emerald-800 text-white rounded-lg text-[10px] font-bold shadow">Complete</button>
                 </td>
               </tr>
             `;
           }
         });
       }
-      if (window.lucide) { lucide.createIcons(); }
     }
 
     let activeMemoIndex = null;
@@ -746,7 +755,7 @@
     }
 
     function handleSendCeoMsg(e) {
-      e.preventDefault();
+      if (e && e.preventDefault) e.preventDefault();
       const status = document.getElementById('secCeoStatus');
       const sender = document.getElementById('secSenderName').value.trim();
       const subject = document.getElementById('secBriefSubject').value.trim();
@@ -797,21 +806,21 @@
       tbody.innerHTML = '';
       registry.forEach(r => {
         tbody.innerHTML += `
-          <tr class="hover:bg-brand-900/60">
-            <td class="p-2 font-mono text-brand-300 font-bold">${r.ref}</td>
-            <td class="p-2 text-brand-200">${r.type}</td>
-            <td class="p-2 text-white font-bold">${r.party}</td>
+          <tr class="hover:bg-espresso-900/60">
+            <td class="p-2 font-mono text-warmgold font-bold">${r.ref}</td>
+            <td class="p-2 text-stone-300">${r.type}</td>
+            <td class="p-2 text-linen font-bold">${r.party}</td>
             <td class="p-2 text-emerald-400 font-bold">${r.status}</td>
           </tr>
         `;
       });
     }
 
-    window.onload = function() {
+    window.addEventListener('DOMContentLoaded', () => {
       if (sessionStorage.getItem('iclick_sec_session')) {
         openSecWorkspace();
       }
-    };
+    });
   </script>
 </body>
 </html>
