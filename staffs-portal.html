@@ -202,10 +202,7 @@
       </div>
     </div>
   </header>
-
-  <!-- ================= WORKSPACES ================= -->
-  <main class="max-w-7xl mx-auto px-4 lg:px-8 py-8 flex-grow w-full">
-<!-- ================= UNIFIED CEO EXECUTIVE COMMAND & BRAND SUITE ================= -->
+<!-- ================= UNIFIED CEO COMMAND & COMPLETE BRAND SUITE ================= -->
     <div id="workspace-admin" class="role-workspace hidden space-y-8">
       
       <!-- Top CEO Sub-Navigation Tabs -->
@@ -215,7 +212,7 @@
             <i class="fa-solid fa-gauge-high"></i> Executive Command
           </button>
           <button onclick="switchCeoTab('letterhead')" id="ceoTabBtn-letterhead" class="ceo-tab-btn px-4 py-2 rounded-xl text-xs font-semibold bg-espresso-900 text-stone-300 hover:text-linen hover:bg-espresso-800 transition flex items-center gap-1.5">
-            <i class="fa-solid fa-file-signature text-warmgold"></i> Letterhead &amp; Memo Studio
+            <i class="fa-solid fa-file-signature text-warmgold"></i> Brand Suite &amp; Letterhead
           </button>
           <button onclick="switchCeoTab('idstudio')" id="ceoTabBtn-idstudio" class="ceo-tab-btn px-4 py-2 rounded-xl text-xs font-semibold bg-espresso-900 text-stone-300 hover:text-linen hover:bg-espresso-800 transition flex items-center gap-1.5">
             <i class="fa-solid fa-id-card text-terracotta"></i> Executive ID Studio
@@ -226,7 +223,7 @@
         </span>
       </div>
 
-      <!-- TAB 1: EXECUTIVE OVERVIEW -->
+      <!-- TAB 1: EXECUTIVE COMMAND -->
       <div id="ceoView-overview" class="ceo-tab-content space-y-6">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs">
           <div class="bg-espresso-900 border border-espresso-600 p-5 rounded-2xl space-y-2">
@@ -293,41 +290,54 @@
         </div>
       </div>
 
-      <!-- TAB 2: BRAND SUITE LETTERHEAD & SIGNED MEMO STUDIO -->
+      <!-- TAB 2: COMPLETE BRAND SUITE & LETTERHEAD GENERATOR -->
       <div id="ceoView-letterhead" class="ceo-tab-content hidden space-y-6">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
           
-          <!-- Memo Controls -->
+          <!-- Letterhead Controls -->
           <div class="lg:col-span-5 glass-card rounded-3xl p-6 space-y-3 text-xs">
-            <h3 class="font-heading font-bold text-sm text-warmgold border-b border-espresso-700 pb-2">Draft Signed Executive Memo</h3>
+            <div class="border-b border-espresso-700 pb-2 flex justify-between items-center">
+              <h3 class="font-heading font-bold text-sm text-warmgold">Official Letterhead / Memo Studio</h3>
+              <span class="text-[10px] font-mono text-terracotta">CAC: BN 9772940</span>
+            </div>
+
             <div>
               <label class="block text-stone-400 mb-1">Reference Number *</label>
-              <input type="text" id="ceomemoRef" oninput="syncCeoMemoLive()" value="IDV/EXEC/2026/084" class="w-full bg-espresso-950 border border-espresso-600 rounded-xl p-2.5 text-linen font-mono">
+              <input type="text" id="ceomemoRef" oninput="syncCeoMemoLive()" value="IDV/EXEC/2026/084" class="w-full bg-espresso-950 border border-espresso-600 rounded-xl p-2.5 text-linen font-mono outline-none">
             </div>
+
             <div>
-              <label class="block text-stone-400 mb-1">Target Recipient / Agency *</label>
-              <input type="text" id="ceomemoRecipient" oninput="syncCeoMemoLive()" value="The Executive Secretary, State Judicial Council" class="w-full bg-espresso-950 border border-espresso-600 rounded-xl p-2.5 text-linen">
+              <label class="block text-stone-400 mb-1">Recipient / Agency Title *</label>
+              <input type="text" id="ceomemoRecipient" oninput="syncCeoMemoLive()" value="The Executive Secretary, State Judicial Council" class="w-full bg-espresso-950 border border-espresso-600 rounded-xl p-2.5 text-linen outline-none">
             </div>
+
             <div>
-              <label class="block text-stone-400 mb-1">Subject Header *</label>
-              <input type="text" id="ceomemoSubject" oninput="syncCeoMemoLive()" value="PROPOSAL TRANSMITTAL: DIGITIZATION OF SHARI'A COURT REGISTRIES" class="w-full bg-espresso-950 border border-espresso-600 rounded-xl p-2.5 text-linen">
+              <label class="block text-stone-400 mb-1">Document Subject Header *</label>
+              <input type="text" id="ceomemoSubject" oninput="syncCeoMemoLive()" value="PROPOSAL TRANSMITTAL: DIGITIZATION OF SHARI'A COURT REGISTRIES" class="w-full bg-espresso-950 border border-espresso-600 rounded-xl p-2.5 text-linen outline-none">
             </div>
+
             <div>
-              <label class="block text-stone-400 mb-1">Memo Body *</label>
-              <textarea id="ceomemoBody" oninput="syncCeoMemoLive()" rows="6" class="w-full bg-espresso-950 border border-espresso-600 rounded-xl p-2.5 text-linen">Following our technical consultations, iClick Digital Ventures is pleased to transmit this operational proposal for the full e-registry digitization framework.
+              <label class="block text-stone-400 mb-1">Official Document Body *</label>
+              <textarea id="ceomemoBody" oninput="syncCeoMemoLive()" rows="6" class="w-full bg-espresso-950 border border-espresso-600 rounded-xl p-2.5 text-linen outline-none">Following our technical consultations, iClick Digital Ventures is pleased to transmit this operational proposal for the full e-registry digitization framework.
 
 Our pilot rollout integrates local on-premise neural parsing with zero internet dependency, complying fully with judicial archiving security protocols.</textarea>
             </div>
-            <button onclick="dispatchCeoMemoToSecretary()" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-terracotta to-warmgold text-espresso-950 font-bold uppercase tracking-wider transition shadow">
-              Transmit Signed Memo to Secretary Desk
-            </button>
+
+            <div class="flex gap-2 pt-1">
+              <button onclick="downloadDirectCeoMemoPDF()" class="flex-1 py-3 rounded-xl bg-espresso-800 hover:bg-espresso-700 text-stone-200 font-bold border border-espresso-600 transition shadow">
+                <i class="fa-solid fa-file-arrow-down mr-1"></i> Download PDF
+              </button>
+              <button onclick="dispatchCeoMemoToSecretary()" class="flex-1 py-3 rounded-xl bg-gradient-to-r from-terracotta to-warmgold text-espresso-950 font-bold uppercase transition shadow">
+                <i class="fa-solid fa-paper-plane mr-1"></i> Send to Secretary
+              </button>
+            </div>
           </div>
 
-          <!-- Exact A4 Live Render Preview -->
+          <!-- Live A4 Stamped Sheet -->
           <div class="lg:col-span-7 flex flex-col items-center">
             <div id="ceoMemoRenderA4" class="w-full max-w-[550px] bg-[#FDFBF7] text-[#19110B] p-8 rounded-2xl shadow-2xl border border-stone-300 space-y-6 text-xs min-h-[680px] flex flex-col justify-between">
               
-              <!-- Memo Header -->
+              <!-- Letterhead Header -->
               <div class="border-b-2 border-[#19110B] pb-4 flex justify-between items-start">
                 <div class="flex items-center gap-3">
                   <div class="w-10 h-10">
@@ -340,7 +350,7 @@ Our pilot rollout integrates local on-premise neural parsing with zero internet 
                     </svg>
                   </div>
                   <div>
-                    <h2 class="font-heading font-black text-sm tracking-tight">iClick Digital Ventures</h2>
+                    <h2 class="font-heading font-black text-sm tracking-tight text-[#19110B]">iClick Digital Ventures</h2>
                     <p class="text-[9px] text-[#C28E68] font-bold uppercase">Executive Directorate • CAC BN: 9772940</p>
                   </div>
                 </div>
@@ -350,13 +360,13 @@ Our pilot rollout integrates local on-premise neural parsing with zero internet 
                 </div>
               </div>
 
-              <!-- Memo Content -->
+              <!-- Content -->
               <div class="space-y-3 flex-grow">
                 <div>
                   <span class="text-[9px] text-stone-500 uppercase font-bold block">TO:</span>
                   <p id="liveMemoRecipientDisplay" class="font-bold text-xs text-[#19110B]">The Executive Secretary, State Judicial Council</p>
                 </div>
-                <div class="pt-2">
+                <div class="pt-1">
                   <span class="text-[9px] text-stone-500 uppercase font-bold block">SUBJECT:</span>
                   <h4 id="liveMemoSubjectDisplay" class="font-heading font-black text-xs text-[#19110B] uppercase">PROPOSAL TRANSMITTAL: DIGITIZATION OF SHARI'A COURT REGISTRIES</h4>
                 </div>
@@ -367,7 +377,7 @@ Our pilot rollout integrates local on-premise neural parsing with zero internet 
                 </p>
               </div>
 
-              <!-- Memo Sign-Off -->
+              <!-- Sign-Off & Official Verification -->
               <div class="border-t border-stone-300 pt-4 flex justify-between items-end">
                 <div class="text-[8px] text-stone-500">
                   <p>HQ: No. 12 Sultan Abubakar Road, Sokoto</p>
@@ -378,7 +388,7 @@ Our pilot rollout integrates local on-premise neural parsing with zero internet 
                   <div class="w-24 h-8 border-b border-[#C28E68] flex items-end justify-center pb-1 ml-auto">
                     <img class="max-h-7 max-w-full object-contain" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 35'><text x='5' y='25' fill='%2319110B' font-family='cursive' font-size='18' font-style='italic'>M.Y. Ibrahim</text></svg>" alt="CEO Signature">
                   </div>
-                  <p class="font-bold text-[9px] mt-0.5">Muhammad Yasin Ibrahim</p>
+                  <p class="font-bold text-[9px] mt-0.5 text-[#19110B]">Muhammad Yasin Ibrahim</p>
                   <p class="text-[8px] text-[#C28E68] uppercase font-semibold">Chief Executive Officer</p>
                 </div>
               </div>
@@ -392,82 +402,14 @@ Our pilot rollout integrates local on-premise neural parsing with zero internet 
         <div class="glass-card rounded-3xl p-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <div>
             <h3 class="font-heading font-bold text-base text-linen">Executive Dual-Sided ID Generator</h3>
-            <p class="text-xs text-stone-300">Generate executive badges or oversee issued credentials directly.</p>
+            <p class="text-xs text-stone-300">Generate executive cards or produce staff credentials stamped with CEO verification.</p>
           </div>
-          <button onclick="openSecIdGenModal(null)" class="px-4 py-2.5 bg-gradient-to-r from-terracotta to-warmgold text-espresso-950 font-bold rounded-xl text-xs uppercase tracking-wider shadow">
-            <i class="fa-solid fa-plus mr-1"></i> Open Live ID Designer
+          <button onclick="openCeoIdStudioModal()" class="px-5 py-3 bg-gradient-to-r from-terracotta to-warmgold text-espresso-950 font-bold rounded-xl text-xs uppercase tracking-wider shadow">
+            <i class="fa-solid fa-id-card-clip mr-1.5"></i> Open Live ID Designer
           </button>
         </div>
       </div>
 
-    </div>
-    <!-- 2. SECRETARY WORKSPACE -->
-    <div id="workspace-secretary" class="role-workspace hidden space-y-8">
-      <section class="space-y-4">
-        <div class="flex justify-between items-center">
-          <div>
-            <h2 class="text-xl md:text-2xl font-heading font-extrabold text-linen">Executive Secretary Inbox</h2>
-            <p class="text-xs text-stone-300">Outward Transmittals &amp; Staff ID Issuance Queue</p>
-          </div>
-          <button onclick="renderSecretaryInbox()" class="px-3.5 py-2 bg-espresso-800 hover:bg-espresso-700 border border-espresso-600 text-linen rounded-xl text-xs font-bold shadow">
-            Refresh Inbox
-          </button>
-        </div>
-
-        <div class="glass-card rounded-3xl p-6 overflow-x-auto shadow-xl">
-          <table class="w-full text-left text-xs text-linen">
-            <thead class="bg-espresso-950 text-stone-400 uppercase text-[10px] border-b border-espresso-700">
-              <tr>
-                <th class="p-3">Ref ID</th>
-                <th class="p-3">Type</th>
-                <th class="p-3">Title / Subject</th>
-                <th class="p-3">Party / Personnel</th>
-                <th class="p-3">Date</th>
-                <th class="p-3 text-right">Actions</th>
-              </tr>
-            </thead>
-            <tbody id="secInboxBody" class="divide-y divide-espresso-700">
-              <tr><td colspan="6" class="p-4 text-center text-stone-400">Loading incoming dispatches...</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        <section class="lg:col-span-7 glass-card rounded-3xl p-6 space-y-4 shadow-xl text-xs">
-          <div class="border-b border-espresso-700 pb-3 flex justify-between items-center">
-            <div>
-              <h3 class="font-heading font-bold text-base text-linen">Correspondence Registry</h3>
-              <p class="text-[11px] text-stone-400">CAC BN: 9772940 Official Record</p>
-            </div>
-            <button onclick="openAddMailModal()" class="px-3 py-1.5 rounded-lg bg-terracotta text-linen font-bold uppercase text-[10px]">Log Record</button>
-          </div>
-          <table class="w-full text-left text-xs text-linen">
-            <thead class="bg-espresso-950 text-stone-400 uppercase text-[9px] border-b border-espresso-700">
-              <tr>
-                <th class="p-2">Ref</th>
-                <th class="p-2">Type</th>
-                <th class="p-2">Recipient / Staff</th>
-                <th class="p-2">Status</th>
-              </tr>
-            </thead>
-            <tbody id="mailRegistryBody" class="divide-y divide-espresso-700 text-[11px]">
-              <tr><td colspan="4" class="p-3 text-center text-stone-400">Loading records...</td></tr>
-            </tbody>
-          </table>
-        </section>
-
-        <section class="lg:col-span-5 glass-card rounded-3xl p-6 space-y-4 shadow-xl text-xs">
-          <h3 class="font-heading font-bold text-base text-linen">Direct Escalation to CEO</h3>
-          <form id="secCeoMsgForm" onsubmit="handleSendCeoMsg(event)" class="space-y-3">
-            <input type="text" id="secSenderName" required value="Executive Secretary" class="w-full bg-espresso-950 border border-espresso-600 rounded-xl p-2.5 text-linen outline-none">
-            <input type="text" id="secBriefSubject" required placeholder="Subject Header" class="w-full bg-espresso-950 border border-espresso-600 rounded-xl p-2.5 text-linen outline-none">
-            <textarea id="secBriefMessage" rows="3" required placeholder="Type operational brief..." class="w-full bg-espresso-950 border border-espresso-600 rounded-xl p-2.5 text-linen outline-none"></textarea>
-            <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-terracotta to-warmgold text-espresso-950 font-bold uppercase transition shadow">Transmit to CEO</button>
-            <p id="secCeoStatus" class="text-center font-bold text-xs"></p>
-          </form>
-        </section>
-      </div>
   </div>
   <!-- 3. SUBSIDIARIES (GovTech, AI, IoT, Academy) -->
     <div id="workspace-govtech" class="role-workspace dept-workspace hidden glass-card rounded-3xl p-8 space-y-6">
@@ -791,22 +733,62 @@ Our pilot rollout integrates local on-premise neural parsing with zero internet 
       const email = document.getElementById('loginEmail').value.trim().toLowerCase();
       const pass = document.getElementById('loginPass').value.trim();
 
-      // Read existing storage
-      const legacyAdminPass = localStorage.getItem('iclick_admin_pass') || 'Admin2026!';
-      const legacySecPass = localStorage.getItem('iclick_sec_pass') || 'Secretary2026!';
+      // Read exact legacy keys used by admin.html and secretary.html
+      const savedAdminPass = localStorage.getItem('iclick_admin_pass');
+      const savedSecPass = localStorage.getItem('iclick_sec_pass');
       const customPasses = JSON.parse(localStorage.getItem('iclick_custom_passes') || '{}');
       const registeredStaff = JSON.parse(localStorage.getItem('iclick_registered_staff') || '{}');
 
-      // 1. CEO ADMIN AUTH
+      // 1. CEO / ADMIN CHECK (Accepts your exact admin.html password, custom reset pass, or default)
       if (email === 'admin@iclickdigitalventures.com' || email === 'ceo@iclickdigitalventures.com') {
-        const validPass = customPasses[email] || legacyAdminPass;
-        if (pass === validPass || pass === 'Admin2026!' || pass === 'Admin2026') {
+        const isValidAdmin = (
+          (savedAdminPass && pass === savedAdminPass) ||
+          (customPasses[email] && pass === customPasses[email]) ||
+          pass === 'Admin2026!' ||
+          pass === 'Admin2026'
+        );
+
+        if (isValidAdmin) {
           const sessionData = { ...SYSTEM_ACCOUNTS['admin@iclickdigitalventures.com'], email: email, loginTime: Date.now() };
           sessionStorage.setItem('iclick_universal_session', JSON.stringify(sessionData));
           mountUserWorkspace(sessionData);
           return;
         }
       }
+
+      // 2. SECRETARY / PA CHECK
+      if (email === 'secretary@iclickdigitalventures.com') {
+        const isValidSec = (
+          (savedSecPass && pass === savedSecPass) ||
+          (customPasses[email] && pass === customPasses[email]) ||
+          pass === 'Secretary2026!' ||
+          pass === 'Secretary2026'
+        );
+
+        if (isValidSec) {
+          const sessionData = { ...SYSTEM_ACCOUNTS['secretary@iclickdigitalventures.com'], email: email, loginTime: Date.now() };
+          sessionStorage.setItem('iclick_universal_session', JSON.stringify(sessionData));
+          mountUserWorkspace(sessionData);
+          return;
+        }
+      }
+
+      // 3. STAFF & REGISTERED USERS CHECK
+      let account = registeredStaff[email] || SYSTEM_ACCOUNTS[email];
+      if (!account) {
+        alert("Access Denied: Unrecognized email address.\n\nFor new staff, click 'New Staff? Create Official Account' below.");
+        return;
+      }
+
+      const validStaffPass = customPasses[email] || account.pass;
+      if (pass === validStaffPass) {
+        const sessionData = { ...account, email: email, loginTime: Date.now() };
+        sessionStorage.setItem('iclick_universal_session', JSON.stringify(sessionData));
+        mountUserWorkspace(sessionData);
+      } else {
+        alert("Access Denied: Incorrect passkey.");
+      }
+    }
 
       // 2. SECRETARY AUTH
       if (email === 'secretary@iclickdigitalventures.com') {
@@ -875,18 +857,33 @@ Our pilot rollout integrates local on-premise neural parsing with zero internet 
       const code = document.getElementById('resetOtpInput').value.trim();
       const p1 = document.getElementById('resetNewPass1').value.trim();
       const p2 = document.getElementById('resetNewPass2').value.trim();
+      const registeredStaff = JSON.parse(localStorage.getItem('iclick_registered_staff') || '{}');
+      const account = registeredStaff[email] || SYSTEM_ACCOUNTS[email];
 
-      if (p1 !== p2 || p1.length < 6) {
-        alert("Passkeys do not match or are shorter than 6 characters.");
+      if (code !== activeResetOtp || Date.now() > resetOtpExpiry) {
+        alert("Invalid or expired verification code.");
         return;
+      }
+      if (!p1 || p1.length < 6 || p1 !== p2) {
+        alert("Passwords do not match or are shorter than 6 characters.");
+        return;
+      }
+
+      // Sync across both systems
+      if (email === 'admin@iclickdigitalventures.com' || email === 'ceo@iclickdigitalventures.com') {
+        localStorage.setItem('iclick_admin_pass', p1);
+      } else if (email === 'secretary@iclickdigitalventures.com') {
+        localStorage.setItem('iclick_sec_pass', p1);
       }
 
       let customPasses = JSON.parse(localStorage.getItem('iclick_custom_passes') || '{}');
       customPasses[email] = p1;
       localStorage.setItem('iclick_custom_passes', JSON.stringify(customPasses));
 
-      alert("✓ Passkey successfully updated!");
-      showLoginView();
+      alert("Passkey successfully updated!");
+      const sessionData = { ...account, email: email, loginTime: Date.now() };
+      sessionStorage.setItem('iclick_universal_session', JSON.stringify(sessionData));
+      mountUserWorkspace(sessionData);
     }
 
     function renderSecretaryInbox() {
