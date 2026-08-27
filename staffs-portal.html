@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff & Department Portal | iClick Digital Ventures</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        espresso: { 950: '#120B07', 900: '#19110B', 800: '#261911', 700: '#2A1A10', 600: '#3D271B' },
+                        terracotta: '#C28E68',
+                        warmgold: '#DFBA81',
+                        linen: '#FDFBF7'
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #120B07; color: #FDFBF7; font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; padding: 0; }
+        .glass-card { background: rgba(38, 25, 17, 0.85); backdrop-filter: blur(12px); border: 1px solid rgba(194, 142, 104, 0.25); }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-terracotta selection:text-linen">
+
+    <!-- Top App Navigation (Visible Post-Authentication) -->
+    <header id="portalHeader" class="hidden border-b border-espresso-600 bg-espresso-900/90 backdrop-blur sticky top-0 z-40 px-4 lg:px-8 py-3.5">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-terracotta/20 border border-terracotta/40 p-1.5 flex items-center justify-center shadow">
+                    <svg viewBox="0 0 100 100" class="w-full h-full">
+                        <rect x="20" y="20" width="26" height="26" rx="6" fill="#FDFBF7"></rect>
+                        <rect x="54" y="20" width="26" height="26" rx="6" fill="#DFBA81"></rect>
+                        <rect x="20" y="54" width="26" height="26" rx="6" fill="#C28E68"></rect>
+                        <rect x="54" y="54" width="26" height="26" rx="6" fill="#FDFBF7"></rect>
+                        <circle cx="50" cy="50" r="8" fill="#19110B" stroke="#DFBA81" stroke-width="3"></circle>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="font-heading font-extrabold text-base text-linen tracking-tight" id="userDeptTitle">Department Operations Workspace</h1>
+                    <p class="text-[11px] text-terracotta font-medium" id="userRoleBadge">Authenticated Session • iClick Digital Ventures</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-3">
+                <span id="userNameTag" class="text-xs text-stone-300 font-semibold bg-espresso-800 px-3 py-1.5 rounded-lg border border-espresso-600">User</span>
+                <button onclick="handlePortalLogout()" class="bg-rose-900/80 hover:bg-rose-800 text-stone-200 text-xs font-bold px-3.5 py-2 rounded-xl transition flex items-center gap-1.5 shadow">
+                    <i class="fa-solid fa-lock"></i> Exit Workspace
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 lg:px-8 py-8 flex-grow w-full">
+      <!-- UNIVERSAL AUTHENTICATION GATE -->
+        <section id="authGateSection" class="min-h-[80vh] flex items-center justify-center py-6">
+            <div class="glass-card w-full max-w-md p-8 rounded-3xl text-linen shadow-2xl space-y-6">
+                <div class="text-center">
+                    <div class="w-14 h-14 rounded-2xl bg-terracotta/20 border border-terracotta/40 p-2 flex items-center justify-center mx-auto mb-3 shadow">
+                        <svg viewBox="0 0 100 100" class="w-full h-full">
+                            <rect x="20" y="20" width="26" height="26" rx="6" fill="#FDFBF7"></rect>
+                            <rect x="54" y="20" width="26" height="26" rx="6" fill="#DFBA81"></rect>
+                            <rect x="20" y="54" width="26" height="26" rx="6" fill="#C28E68"></rect>
+                            <rect x="54" y="54" width="26" height="26" rx="6" fill="#FDFBF7"></rect>
+                            <circle cx="50" cy="50" r="8" fill="#19110B" stroke="#DFBA81" stroke-width="3"></circle>
+                        </svg>
+                    </div>
+                    <span class="inline-block px-3 py-0.5 rounded-full text-[10px] font-bold bg-terracotta/20 text-terracotta uppercase tracking-wider mb-1 border border-terracotta/30">Subsidiary Portal</span>
+                    <h2 class="text-2xl font-heading font-extrabold text-linen">Unified Staff Terminal</h2>
+                    <p class="text-xs text-stone-300 mt-1">GovTech • AI Automation • IoT Hardware • Digital Academy</p>
+                </div>
+
+                <!-- LOGIN FORM -->
+                <form id="portalLoginForm" onsubmit="handlePortalLogin(event)" class="space-y-4 text-xs">
+                    <div>
+                        <label class="block font-medium text-stone-300 mb-1">Corporate Email Address</label>
+                        <input type="email" id="portalEmailInput" required placeholder="e.g. lead.govtech@iclickdigitalventures.com" class="w-full px-4 py-3 rounded-xl bg-espresso-950 border border-espresso-600 text-linen text-xs focus:border-terracotta outline-none">
+                    </div>
+                    <div>
+                        <label class="block font-medium text-stone-300 mb-1">Staff Access Passkey</label>
+                        <input type="password" id="portalPassInput" required placeholder="••••••••" class="w-full px-4 py-3 rounded-xl bg-espresso-950 border border-espresso-600 text-linen text-xs focus:border-terracotta outline-none">
+                    </div>
+                    <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-terracotta to-warmgold hover:from-amber-600 hover:to-amber-500 text-espresso-950 font-heading font-extrabold text-xs uppercase tracking-wider transition shadow-lg flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-arrow-right-to-bracket"></i> Authenticate &amp; Enter Workspace
+                    </button>
+                    <div class="flex justify-between items-center pt-2 text-[11px]">
+                        <button type="button" onclick="showPortalReset()" class="text-warmgold hover:underline">Reset Passkey / First-Time Setup</button>
+                        <a href="index.html" class="text-stone-400 hover:text-linen">Public Site</a>
+                    </div>
+                </form>
+
+                <!-- OTP PASSWORD RESET VIEW -->
+                <div id="portalResetView" class="space-y-4 text-xs hidden">
+                    <p class="text-[11px] text-stone-300 leading-relaxed">Enter your registered staff email. An OTP verification code will be sent to the official security inbox (<code class="text-warmgold">password@iclickdigitalventures.com</code>).</p>
+                    <div>
+                        <label class="block font-medium text-stone-300 mb-1">Confirm Staff Email</label>
+                        <input type="email" id="portalResetEmailInput" required placeholder="your.name@iclickdigitalventures.com" class="w-full px-4 py-3 rounded-xl bg-espresso-950 border border-espresso-600 text-linen text-xs focus:border-terracotta outline-none font-mono">
+                    </div>
+                    <button onclick="dispatchPortalOtp()" id="portalOtpBtn" class="w-full py-3 rounded-xl bg-terracotta hover:bg-amber-700 text-linen font-bold uppercase transition">Send Verification Code</button>
+                    
+                    <div id="portalNewPassFields" class="space-y-3 pt-2 border-t border-espresso-700 hidden">
+                        <input type="text" id="portalOtpInput" placeholder="Enter 6-Digit Code" class="w-full px-4 py-2.5 rounded-xl bg-espresso-950 border border-espresso-600 text-linen text-center font-mono tracking-widest text-sm">
+                        <input type="password" id="portalNewPass1" placeholder="New Secret Passkey" class="w-full px-4 py-2.5 rounded-xl bg-espresso-950 border border-espresso-600 text-linen">
+                        <input type="password" id="portalNewPass2" placeholder="Confirm New Passkey" class="w-full px-4 py-2.5 rounded-xl bg-espresso-950 border border-espresso-600 text-linen">
+                        <button onclick="commitPortalNewPass()" class="w-full py-3 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white font-bold uppercase transition">Update Passkey &amp; Log In</button>
+                    </div>
+                    <button onclick="showPortalLogin()" class="w-full text-center text-stone-400 hover:text-linen block pt-1 text-[11px]">← Back to Login</button>
+                </div>
+            </div>
+                          </section>
+                          <!-- WORKSPACE: GOVTECH -->
+        <section id="workspace-govtech" class="dept-workspace hidden space-y-8">
+            <div class="glass-card rounded-3xl p-6 md:p-8 space-y-6">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-espresso-600 pb-6">
+                    <div>
+                        <span class="inline-block px-3 py-1 rounded-full text-[10px] font-bold bg-blue-950/80 text-blue-300 border border-blue-700/50 uppercase tracking-widest mb-2">GovTech &amp; Institutional Digitization</span>
+                        <h2 class="text-2xl md:text-3xl font-heading font-extrabold text-linen">Public Sector Systems &amp; e-Registry Desk</h2>
+                        <p class="text-xs text-stone-300 mt-1">Registry Automation, Shari'a Court Portals, NITDA Frameworks &amp; Inter-Agency Workflows.</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="openLeadMemoModal('iClick GovTech')" class="lead-only-action bg-gradient-to-r from-terracotta to-warmgold text-espresso-950 font-extrabold text-xs px-4 py-2.5 rounded-xl transition shadow flex items-center gap-1.5">
+                            <i class="fa-solid fa-file-pen"></i> Dispatch Department Memo
+                        </button>
+                        <button onclick="openIdRequestModal('iClick GovTech')" class="bg-espresso-800 hover:bg-espresso-700 text-linen text-xs font-semibold px-4 py-2.5 rounded-xl border border-espresso-600 transition flex items-center gap-1.5">
+                            <i class="fa-solid fa-id-card-clip text-warmgold"></i> Request Official ID Badge
+                        </button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                    <div class="bg-espresso-900 border border-espresso-600 p-5 rounded-2xl space-y-2">
+                        <div class="flex justify-between items-center text-stone-400">
+                            <span>Active Deployments</span>
+                            <i class="fa-solid fa-landmark text-terracotta"></i>
+                        </div>
+                        <p class="text-2xl font-bold font-heading text-linen">4 Ministries</p>
+                        <p class="text-[11px] text-emerald-400">Sokoto &amp; Abuja Pilot Systems Active</p>
+                    </div>
+                    <div class="bg-espresso-900 border border-espresso-600 p-5 rounded-2xl space-y-2">
+                        <div class="flex justify-between items-center text-stone-400">
+                            <span>Pending Transmittals</span>
+                            <i class="fa-solid fa-envelope-open-text text-warmgold"></i>
+                        </div>
+                        <p class="text-2xl font-bold font-heading text-linen">2 Proposals</p>
+                        <p class="text-[11px] text-stone-300">NITDA &amp; Judicial Registry Submissions</p>
+                    </div>
+                    <div class="bg-espresso-900 border border-espresso-600 p-5 rounded-2xl space-y-2">
+                        <div class="flex justify-between items-center text-stone-400">
+                            <span>Direct Linkage</span>
+                            <i class="fa-solid fa-network-wired text-blue-400"></i>
+                        </div>
+                        <p class="text-base font-bold font-heading text-linen">Executive Secretary Desk</p>
+                        <p class="text-[11px] text-stone-400">Memos route directly to Registry Log</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WORKSPACE: AI AUTOMATION -->
+        <section id="workspace-ai" class="dept-workspace hidden space-y-8">
+            <div class="glass-card rounded-3xl p-6 md:p-8 space-y-6">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-espresso-600 pb-6">
+                    <div>
+                        <span class="inline-block px-3 py-1 rounded-full text-[10px] font-bold bg-purple-950/80 text-purple-300 border border-purple-700/50 uppercase tracking-widest mb-2">iClick AI Automation Unit</span>
+                        <h2 class="text-2xl md:text-3xl font-heading font-extrabold text-linen">Enterprise Neural &amp; Workflow Intelligence</h2>
+                        <p class="text-sm text-stone-300 mt-1">Autonomous Customer Support, Internal LLM Integration &amp; Predictive Administrative Pipelines.</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="openLeadMemoModal('iClick AI Automation')" class="lead-only-action bg-gradient-to-r from-terracotta to-warmgold text-espresso-950 font-extrabold text-xs px-4 py-2.5 rounded-xl transition shadow flex items-center gap-1.5">
+                            <i class="fa-solid fa-file-pen"></i> Dispatch Department Memo
+                        </button>
+                        <button onclick="openIdRequestModal('iClick AI Automation')" class="bg-espresso-800 hover:bg-espresso-700 text-linen text-xs font-semibold px-4 py-2.5 rounded-xl border border-espresso-600 transition flex items-center gap-1.5">
+                            <i class="fa-solid fa-id-card-clip text-warmgold"></i> Request Official ID Badge
+                        </button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                    <div class="bg-espresso-900 border border-espresso-600 p-5 rounded-2xl space-y-2">
+                        <div class="flex justify-between items-center text-stone-400">
+                            <span>Active AI Pipelines</span>
+                            <i class="fa-solid fa-brain text-terracotta"></i>
+                        </div>
+                        <p class="text-2xl font-bold font-heading text-linen">12 Agents</p>
+                        <p class="text-[11px] text-emerald-400">Zero-Latency Local Webhook Routing</p>
+                    </div>
+                    <div class="bg-espresso-900 border border-espresso-600 p-5 rounded-2xl space-y-2">
+                        <div class="flex justify-between items-center text-stone-400">
+                            <span>Processing Volume</span>
+                            <i class="fa-solid fa-microchip text-warmgold"></i>
+                        </div>
+                        <p class="text-2xl font-bold font-heading text-linen">18.4k Requests</p>
+                        <p class="text-[11px] text-stone-300">Gov &amp; Private Client Endpoints</p>
+                    </div>
+                    <div class="bg-espresso-900 border border-espresso-600 p-5 rounded-2xl space-y-2">
+                        <div class="flex justify-between items-center text-stone-400">
+                            <span>Security Gateway</span>
+                            <i class="fa-solid fa-shield-halved text-purple-400"></i>
+                        </div>
+                        <p class="text-base font-bold font-heading text-linen">Encrypted Endpoints</p>
+                        <p class="text-[11px] text-stone-400">Zero Outside Data Leakage Protocol</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- WORKSPACE: IOT & HARDWARE -->
+        <section id="workspace-iot" class="dept-workspace hidden space-y-8">
+            <div class="glass-card rounded-3xl p-6 md:p-8 space-y-6">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-espresso-600 pb-6">
+                    <div>
+                        <span class="inline-block px-3 py-1 rounded-full text-[10px] font-bold bg-amber-950/80 text-amber-300 border border-amber-700/50 uppercase tracking-widest mb-2">iClick IoT &amp; Embedded Systems</span>
+                        <h2 class="text-2xl md:text-3xl font-heading font-extrabold text-linen">Smart Infrastructure &amp; Automation Lab</h2>
+                        <p class="text-sm text-stone-300 mt-1">Smart Office Telemetry, Microcontroller Deployment, Power Monitors &amp; Access Controls.</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="openLeadMemoModal('iClick IoT & Hardware')" class="lead-only-action bg-gradient-to-r from-terracotta to-warmgold text-espresso-950 font-extrabold text-xs px-4 py-2.5 rounded-xl transition shadow flex items-center gap-1.5">
+                            <i class="fa-solid fa-file-pen"></i> Dispatch Department Memo
+                        </button>
+                        <button onclick="openIdRequestModal('iClick IoT & Hardware')" class="bg-espresso-800 hover:bg-espresso-700 text-linen text-xs font-semibold px-4 py-2.5 rounded-xl border border-espresso-600 transition flex items-center gap-1.5">
+                            <i class="fa-solid fa-id-card-clip text-warmgold"></i> Request Official ID Badge
+                        </button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                    <div class="bg-espresso-900 border border-espresso-600 p-5 rounded-2xl space-y-2">
+                        <div class="flex justify-between items-center text-stone-400">
+                            <span>Sensors &amp; Microcontrollers</span>
+                            <i class="fa-solid fa-tower-broadcast text-terracotta"></i>
+                        </div>
+                        <p class="text-2xl font-bold font-heading text-linen">48 Units</p>
+                        <p class="text-[11px] text-emerald-400">Online &amp; Transmitting Telemetry</p>
+                    </div>
+                    <div class="bg-espresso-900 border border-espresso-600 p-5 rounded-2xl space-y-2">
+                        <div class="flex justify-between items-center text-stone-400">
+                            <span>Power Grid Monitoring</span>
+                            <i class="fa-solid fa-bolt text-warmgold"></i>
+                        </div>
+                        <p class="text-2xl font-bold font-heading text-linen">99.8% Uptime</p>
+                        <p class="text-[11px] text-stone-300">Dual HQ Energy Management</p>
+                    </div>
+                    <div class="bg-espresso-900 border border-espresso-600 p-5 rounded-2xl space-y-2">
+                        <div class="flex justify-between items-center text-stone-400">
+                            <span>Hardware Prototypes</span>
+                            <i class="fa-solid fa-screwdriver-wrench text-amber-400"></i>
+                        </div>
+                        <p class="text-base font-bold font-heading text-linen">Smart Access Node v2</p>
+                        <p class="text-[11px] text-stone-400">Bench Testing Underway</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WORKSPACE: DIGITAL ACADEMY -->
+        <section id="workspace-academy" class="dept-workspace hidden space-y-8">
+            <div class="glass-card rounded-3xl p-6 md:p-8 space-y-6">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-espresso-600 pb-6">
+                    <div>
+                        <span class="inline-block px-3 py-1 rounded-full text-[10px] font-bold bg-emerald-950/80 text-emerald-300 border border-emerald-700/50 uppercase tracking-widest mb-2">iClick Digital Academy</span>
+                        <h2 class="text-2xl md:text-3xl font-heading font-extrabold text-linen">Executive Training &amp; Capacity Development</h2>
+                        <p class="text-sm text-stone-300 mt-1">Non-Coding Digital Skills, GovTech Literacy, Enterprise Automation &amp; Student Cohorts.</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="openLeadMemoModal('iClick Digital Academy')" class="lead-only-action bg-gradient-to-r from-terracotta to-warmgold text-espresso-950 font-extrabold text-xs px-4 py-2.5 rounded-xl transition shadow flex items-center gap-1.5">
+                            <i class="fa-solid fa-file-pen"></i> Dispatch Department Memo
+                        </button>
+                        <button onclick="openIdRequestModal('iClick Digital Academy')" class="bg-espresso-800 hover:bg-espresso-700 text-linen text-xs font-semibold px-4 py-2.5 rounded-xl border border-espresso-600 transition flex items-center gap-1.5">
+                            <i class="fa-solid fa-id-card-clip text-warmgold"></i> Request Official ID Badge
+                        </button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                    <div class="bg-espresso-900 border border-espresso-600 p-5 rounded-2xl space-y-2">
+                        <div class="flex justify-between items-center text-stone-400">
+                            <span>Current Cohort</span>
+                            <i class="fa-solid fa-graduation-cap text-terracotta"></i>
+                        </div>
+                        <p class="text-2xl font-bold font-heading text-linen">Cohort 2026-B</p>
+                        <p class="text-[11px] text-emerald-400">142 Enrolled Trainees</p>
+                    </div>
+                    <div class="bg-espresso-900 border border-espresso-600 p-5 rounded-2xl space-y-2">
+                        <div class="flex justify-between items-center text-stone-400">
+                            <span>Certification Track</span>
+                            <i class="fa-solid fa-certificate text-warmgold"></i>
+                        </div>
+                        <p class="text-2xl font-bold font-heading text-linen">AI Workflow Specialist</p>
+                        <p class="text-[11px] text-stone-300">Non-Programming Curriculum</p>
+                    </div>
+                    <div class="bg-espresso-900 border border-espresso-600 p-5 rounded-2xl space-y-2">
+                        <div class="flex justify-between items-center text-stone-400">
+                            <span>Instructor Passports</span>
+                            <i class="fa-solid fa-chalkboard-user text-emerald-400"></i>
+                        </div>
+                        <p class="text-base font-bold font-heading text-linen">8 Certified Facilitators</p>
+                        <p class="text-[11px] text-stone-400">Active Academy Badges Issued</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-espresso-600 py-6 text-center text-xs text-stone-400 bg-espresso-950">
+        <p>© 2026 iClick Digital Ventures (BN: 9772940). All Rights Reserved. • portal@iclickdigitalventures.com</p>
+                      </footer>
+                      <!-- MODAL 1: DEPARTMENT SUPERIOR MEMO DISPATCH -->
+    <div id="leadMemoModal" class="hidden fixed inset-0 z-50 bg-espresso-950/90 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="glass-card w-full max-w-xl rounded-3xl p-6 md:p-8 space-y-4 shadow-2xl text-xs text-linen">
+            <div class="flex justify-between items-center border-b border-espresso-600 pb-3">
+                <div>
+                    <h3 class="font-heading font-extrabold text-base text-linen">Dispatch Department Operational Memo</h3>
+                    <p class="text-[11px] text-terracotta" id="memoModalDeptLabel">iClick Digital Ventures Subsidiary</p>
+                </div>
+                <button onclick="closeLeadMemoModal()" class="text-stone-400 hover:text-linen"><i class="fa-solid fa-xmark text-base"></i></button>
+            </div>
+
+            <form id="leadMemoForm" onsubmit="handleLeadMemoSubmit(event)" class="space-y-3">
+                <div>
+                    <label class="block text-stone-400 mb-1">Target Destination / Routing *</label>
+                    <select id="leadMemoTarget" class="w-full bg-espresso-900 border border-espresso-600 rounded-xl p-2.5 text-linen outline-none font-semibold">
+                        <option value="Secretary Desk">Executive Secretary Desk (Standard Registry)</option>
+                        <option value="Direct to CEO">CEO Control Center Desk (High Priority)</option>
+                    </select>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-stone-400 mb-1">Reference Number *</label>
+                        <input type="text" id="leadMemoRef" required value="IDV/DEPT/2026/012" class="w-full bg-espresso-900 border border-espresso-600 rounded-xl p-2.5 text-linen font-mono">
+                    </div>
+                    <div>
+                        <label class="block text-stone-400 mb-1">Officer In Charge *</label>
+                        <input type="text" id="leadMemoOfficer" required value="Department Superior" class="w-full bg-espresso-900 border border-espresso-600 rounded-xl p-2.5 text-linen">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-stone-400 mb-1">Subject Header *</label>
+                    <input type="text" id="leadMemoSubject" required placeholder="e.g. Q3 GovTech Deployment Progress Report" class="w-full bg-espresso-900 border border-espresso-600 rounded-xl p-2.5 text-linen">
+                </div>
+                <div>
+                    <label class="block text-stone-400 mb-1">Memo Body Content *</label>
+                    <textarea id="leadMemoBody" rows="4" required placeholder="Detail the operational briefing, resource request, or milestone update..." class="w-full bg-espresso-900 border border-espresso-600 rounded-xl p-2.5 text-linen"></textarea>
+                </div>
+                <button type="submit" id="leadMemoSubmitBtn" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-terracotta to-warmgold text-espresso-950 font-heading font-extrabold uppercase tracking-wider transition shadow">
+                    Transmit Memo Direct
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL 2: STAFF OFFICIAL ID CARD ISSUANCE REQUEST -->
+    <div id="idRequestModal" class="hidden fixed inset-0 z-50 bg-espresso-950/90 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="glass-card w-full max-w-lg rounded-3xl p-6 md:p-8 space-y-4 shadow-2xl text-xs text-linen">
+            <div class="flex justify-between items-center border-b border-espresso-600 pb-3">
+                <div>
+                    <h3 class="font-heading font-extrabold text-base text-linen">Request Official Staff ID Pass</h3>
+                    <p class="text-[11px] text-terracotta">Direct Transmission to Secretary Issuance Queue</p>
+                </div>
+                <button onclick="closeIdRequestModal()" class="text-stone-400 hover:text-linen"><i class="fa-solid fa-xmark text-base"></i></button>
+            </div>
+
+            <form id="idRequestForm" onsubmit="handleIdRequestSubmit(event)" class="space-y-3">
+                <div>
+                    <label class="block text-stone-400 mb-1">Subsidiary / Department</label>
+                    <input type="text" id="idReqDept" readonly class="w-full bg-espresso-950 border border-espresso-700 rounded-xl p-2.5 text-warmgold font-semibold outline-none">
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-stone-400 mb-1">Full Legal Name *</label>
+                        <input type="text" id="idReqName" required placeholder="e.g. Amina Bello Usman" class="w-full bg-espresso-900 border border-espresso-600 rounded-xl p-2.5 text-linen">
+                    </div>
+                    <div>
+                        <label class="block text-stone-400 mb-1">Job Designation *</label>
+                        <input type="text" id="idReqTitle" required placeholder="e.g. Senior Systems Analyst" class="w-full bg-espresso-900 border border-espresso-600 rounded-xl p-2.5 text-linen">
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-stone-400 mb-1">Official Corporate Email *</label>
+                        <input type="email" id="idReqEmail" required placeholder="name@iclickdigitalventures.com" class="w-full bg-espresso-900 border border-espresso-600 rounded-xl p-2.5 text-linen">
+                    </div>
+                    <div>
+                        <label class="block text-stone-400 mb-1">Official Phone Contact *</label>
+                        <input type="text" id="idReqPhone" required placeholder="+234 812 345 6789" class="w-full bg-espresso-900 border border-espresso-600 rounded-xl p-2.5 text-linen">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-stone-400 mb-1">Passport Photograph (JPEG/PNG)</label>
+                    <input type="file" id="idReqPhotoFile" accept="image/*" class="w-full bg-espresso-900 border border-espresso-600 rounded-xl p-2 text-stone-300">
+                </div>
+                <button type="submit" id="idReqSubmitBtn" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-terracotta to-warmgold text-espresso-950 font-heading font-extrabold uppercase tracking-wider transition shadow">
+                    Submit ID Pass Request to Secretary
+                </button>
+            </form>
+        </div>
+  </div>
+  <!-- Master Portal Logic & Session Engine -->
+    <script>
+        const SECURITY_ACCESS_KEY = "93f249e4-0f14-4643-8e32-4af9619ffe32"; // Routes strictly to password@iclickdigitalventures.com
+        let activePortalOtp = null;
+        let portalOtpExpiry = null;
+
+        // Subsidiary & User Directory
+        const STAFF_ACCOUNTS = {
+            // GovTech
+            "lead.govtech@iclickdigitalventures.com": { pass: "GovTech2026!", dept: "govtech", deptName: "iClick GovTech", role: "lead", name: "GovTech Superior / Director", title: "Director of GovTech Systems" },
+            "staff.govtech@iclickdigitalventures.com": { pass: "Staff2026!", dept: "govtech", deptName: "iClick GovTech", role: "staff", name: "GovTech Systems Engineer", title: "GovTech Engineer" },
+            // AI Automation
+            "lead.ai@iclickdigitalventures.com": { pass: "AiLead2026!", dept: "ai", deptName: "iClick AI Automation", role: "lead", name: "AI Automation Lead", title: "Lead AI Engineer" },
+            "staff.ai@iclickdigitalventures.com": { pass: "Staff2026!", dept: "ai", deptName: "iClick AI Automation", role: "staff", name: "AI Workflow Specialist", title: "AI Specialist" },
+            // IoT & Hardware
+            "lead.iot@iclickdigitalventures.com": { pass: "IotLead2026!", dept: "iot", deptName: "iClick IoT & Hardware", role: "lead", name: "IoT & Hardware Lead", title: "Lead Hardware Engineer" },
+            "staff.iot@iclickdigitalventures.com": { pass: "Staff2026!", dept: "iot", deptName: "iClick IoT & Hardware", role: "staff", name: "IoT Embedded Technician", title: "IoT Technician" },
+            // Digital Academy
+            "dean.academy@iclickdigitalventures.com": { pass: "Academy2026!", dept: "academy", deptName: "iClick Digital Academy", role: "lead", name: "Academy Dean / Lead", title: "Dean of Digital Academy" },
+            "instructor@iclickdigitalventures.com": { pass: "Staff2026!", dept: "academy", deptName: "iClick Digital Academy", role: "staff", name: "Lead Skills Facilitator", title: "Digital Skills Instructor" }
+        };
+
+        let currentSessionUser = null;
+
+        function handlePortalLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('portalEmailInput').value.trim().toLowerCase();
+            const pass = document.getElementById('portalPassInput').value.trim();
+
+            const customPasses = JSON.parse(localStorage.getItem('iclick_staff_custom_passes') || '{}');
+            const account = STAFF_ACCOUNTS[email];
+
+            if (!account) {
+                alert("Access Denied: Unrecognized subsidiary email address.");
+                return;
+            }
+
+            const validPass = customPasses[email] || account.pass;
+
+            if (pass === validPass) {
+                const sessionData = { ...account, email: email, loginTime: Date.now() };
+                sessionStorage.setItem('iclick_staff_session', JSON.stringify(sessionData));
+                mountUserWorkspace(sessionData);
+            } else {
+                alert("Access Denied: Incorrect staff passkey.");
+            }
+        }
+
+        function mountUserWorkspace(user) {
+            currentSessionUser = user;
+
+            // Hide Auth Gate, Show Header & Workspace
+            document.getElementById('authGateSection').classList.add('hidden');
+            document.getElementById('portalHeader').classList.remove('hidden');
+
+            document.getElementById('userDeptTitle').innerText = `${user.deptName} Operations Workspace`;
+            document.getElementById('userRoleBadge').innerText = `${user.role === 'lead' ? 'Department Superior / Lead' : 'Staff Specialist'} • Session Active`;
+            document.getElementById('userNameTag').innerText = `${user.name} (${user.email})`;
+
+            // Hide all workspaces first
+            document.querySelectorAll('.dept-workspace').forEach(el => el.classList.add('hidden'));
+
+            // Show current department workspace
+            const ws = document.getElementById(`workspace-${user.dept}`);
+            if (ws) ws.classList.remove('hidden');
+
+            // Toggle lead-only action buttons based on privilege
+            document.querySelectorAll('.lead-only-action').forEach(btn => {
+                if (user.role === 'lead') {
+                    btn.classList.remove('hidden');
+                } else {
+                    btn.classList.add('hidden');
+                }
+            });
+        }
+
+        function handlePortalLogout() {
+            sessionStorage.removeItem('iclick_staff_session');
+            location.reload();
+        }
+
+        // OTP Reset Flow for Staff
+        function showPortalReset() {
+            document.getElementById('portalLoginForm').classList.add('hidden');
+            document.getElementById('portalResetView').classList.remove('hidden');
+        }
+
+        function showPortalLogin() {
+            document.getElementById('portalResetView').classList.add('hidden');
+            document.getElementById('portalLoginForm').classList.remove('hidden');
+        }
+
+        function dispatchPortalOtp() {
+            const email = document.getElementById('portalResetEmailInput').value.trim().toLowerCase();
+            const btn = document.getElementById('portalOtpBtn');
+
+            if (!STAFF_ACCOUNTS[email]) {
+                alert("Unregistered corporate email address.");
+                return;
+            }
+
+            btn.disabled = true;
+            btn.innerText = "Transmitting OTP...";
+
+            activePortalOtp = Math.floor(100000 + Math.random() * 900000).toString();
+            portalOtpExpiry = Date.now() + (10 * 60 * 1000);
+
+            const payload = {
+                access_key: SECURITY_ACCESS_KEY,
+                subject: "Staff Portal Security Passkey Reset",
+                from_name: "iClick Security Gateway",
+                email: "password@iclickdigitalventures.com",
+                message: `One-time access verification code for ${email} (${STAFF_ACCOUNTS[email].deptName}) is:\n\n${activePortalOtp}\n\nExpires in 10 minutes.`
+            };
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify(payload)
+            }).then(() => {
+                alert("Verification code sent to password@iclickdigitalventures.com");
+                document.getElementById('portalNewPassFields').classList.remove('hidden');
+            }).finally(() => {
+                btn.disabled = false;
+                btn.innerText = "Send Verification Code";
+            });
+        }
+
+        function commitPortalNewPass() {
+            const email = document.getElementById('portalResetEmailInput').value.trim().toLowerCase();
+            const code = document.getElementById('portalOtpInput').value.trim();
+            const p1 = document.getElementById('portalNewPass1').value.trim();
+            const p2 = document.getElementById('portalNewPass2').value.trim();
+
+            if (code !== activePortalOtp || Date.now() > portalOtpExpiry) {
+                alert("Invalid or expired verification code.");
+                return;
+            }
+            if (!p1 || p1.length < 6 || p1 !== p2) {
+                alert("Passwords do not match or are shorter than 6 characters.");
+                return;
+            }
+
+            let customPasses = JSON.parse(localStorage.getItem('iclick_staff_custom_passes') || '{}');
+            customPasses[email] = p1;
+            localStorage.setItem('iclick_staff_custom_passes', JSON.stringify(customPasses));
+
+            alert("Passkey successfully updated!");
+            const sessionData = { ...STAFF_ACCOUNTS[email], email: email, loginTime: Date.now() };
+            sessionStorage.setItem('iclick_staff_session', JSON.stringify(sessionData));
+            mountUserWorkspace(sessionData);
+        }
+
+        // Modal Handlers: Lead Memo
+        function openLeadMemoModal(deptName) {
+            document.getElementById('memoModalDeptLabel').innerText = deptName;
+            document.getElementById('leadMemoOfficer').value = currentSessionUser ? currentSessionUser.name : 'Department Superior';
+            document.getElementById('leadMemoRef').value = `IDV/${currentSessionUser ? currentSessionUser.dept.toUpperCase() : 'DEPT'}/2026/${Math.floor(100+Math.random()*900)}`;
+            document.getElementById('leadMemoModal').classList.remove('hidden');
+        }
+
+        function closeLeadMemoModal() {
+            document.getElementById('leadMemoModal').classList.add('hidden');
+        }
+
+        function handleLeadMemoSubmit(e) {
+            e.preventDefault();
+            const target = document.getElementById('leadMemoTarget').value;
+            const ref = document.getElementById('leadMemoRef').value;
+            const officer = document.getElementById('leadMemoOfficer').value;
+            const subject = document.getElementById('leadMemoSubject').value;
+            const body = document.getElementById('leadMemoBody').value;
+            const deptName = currentSessionUser ? currentSessionUser.deptName : 'Subsidiary';
+
+            if (target === 'Direct to CEO') {
+                let adminInbox = JSON.parse(localStorage.getItem('iclick_admin_inbox') || '[]');
+                adminInbox.unshift({
+                    id: ref,
+                    sender: `${officer} (${deptName})`,
+                    subject: `[DIRECT DEPT MEMO] ${subject}`,
+                    message: body,
+                    date: new Date().toLocaleDateString('en-GB') + ' ' + new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }),
+                    status: 'Unread'
+                });
+                localStorage.setItem('iclick_admin_inbox', JSON.stringify(adminInbox));
+                alert(`✓ Memo ${ref} routed DIRECTLY to CEO Control Center Workspace!`);
+            } else {
+                let secInbox = JSON.parse(localStorage.getItem('iclick_sec_inbox') || '[]');
+                secInbox.unshift({
+                    id: ref,
+                    type: 'Department Memo',
+                    ref: ref,
+                    name: officer,
+                    title: deptName,
+                    subject: subject,
+                    body: body,
+                    recipient: 'Executive Secretary / CEO',
+                    status: 'Received from Dept Superior',
+                    timestamp: new Date().toLocaleDateString('en-GB')
+                });
+                localStorage.setItem('iclick_sec_inbox', JSON.stringify(secInbox));
+                alert(`✓ Memo ${ref} successfully dispatched to Executive Secretary Desk!`);
+            }
+
+            closeLeadMemoModal();
+            document.getElementById('leadMemoForm').reset();
+        }
+
+        // Modal Handlers: ID Request
+        function openIdRequestModal(deptName) {
+            document.getElementById('idReqDept').value = deptName;
+            if (currentSessionUser) {
+                document.getElementById('idReqName').value = currentSessionUser.name;
+                document.getElementById('idReqTitle').value = currentSessionUser.title;
+                document.getElementById('idReqEmail').value = currentSessionUser.email;
+            }
+            document.getElementById('idRequestModal').classList.remove('hidden');
+        }
+
+        function closeIdRequestModal() {
+            document.getElementById('idRequestModal').classList.add('hidden');
+        }
+
+        function handleIdRequestSubmit(e) {
+            e.preventDefault();
+            const dept = document.getElementById('idReqDept').value;
+            const name = document.getElementById('idReqName').value;
+            const title = document.getElementById('idReqTitle').value;
+            const email = document.getElementById('idReqEmail').value;
+            const phone = document.getElementById('idReqPhone').value;
+            const photoInput = document.getElementById('idReqPhotoFile');
+
+            function sendRequestToSecretary(photoDataUrl) {
+                let secInbox = JSON.parse(localStorage.getItem('iclick_sec_inbox') || '[]');
+                const newIdRef = `IDV-${dept.substring(6, 9).toUpperCase()}-${Math.floor(100+Math.random()*900)}`;
+
+                secInbox.unshift({
+                    id: 'REQ-ID-' + Math.floor(1000 + Math.random() * 9000),
+                    type: 'ID Issuance Request',
+                    ref: newIdRef,
+                    name: name,
+                    title: title,
+                    dept: dept,
+                    email: email,
+                    phone: phone,
+                    photo: photoDataUrl || '',
+                    status: 'Awaiting Secretary Production',
+                    timestamp: new Date().toLocaleDateString('en-GB')
+                });
+
+                localStorage.setItem('iclick_sec_inbox', JSON.stringify(secInbox));
+                alert(`✓ ID Pass request for ${name} (${dept}) submitted to the Secretary Desk! The Secretary can now generate your official pass immediately.`);
+                closeIdRequestModal();
+                document.getElementById('idRequestForm').reset();
+            }
+
+            if (photoInput.files && photoInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(evt) {
+                    sendRequestToSecretary(evt.target.result);
+                };
+                reader.readAsDataURL(photoInput.files[0]);
+            } else {
+                sendRequestToSecretary('');
+            }
+        }
+
+        // Auto mount if already logged in
+        window.addEventListener('DOMContentLoaded', () => {
+            const rawSession = sessionStorage.getItem('iclick_staff_session');
+            if (rawSession) {
+                mountUserWorkspace(JSON.parse(rawSession));
+            }
+        });
+    </script>
+</body>
+</html>
