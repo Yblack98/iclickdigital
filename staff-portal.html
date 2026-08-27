@@ -392,7 +392,7 @@
       </div>
     </div>
               </div>
-              <script>
+           <script>
     lucide.createIcons();
 
     const SEC_EMAIL = "secretary@iclickdigitalventures.com";
@@ -414,13 +414,18 @@
       e.preventDefault();
       const email = document.getElementById('secEmailInput').value.trim().toLowerCase();
       const pass = document.getElementById('secPassInput').value.trim();
-      const currentPass = localStorage.getItem('iclick_sec_pass') || 'Secretary2026!';
 
-      if (email === SEC_EMAIL && pass === currentPass) {
+      let currentPass = localStorage.getItem('iclick_sec_pass');
+      if (!currentPass) {
+        currentPass = 'Secretary2026!';
+        localStorage.setItem('iclick_sec_pass', currentPass);
+      }
+
+      if (email === SEC_EMAIL.toLowerCase() && pass === currentPass) {
         sessionStorage.setItem('iclick_sec_session', 'active_' + Date.now());
         openSecWorkspace();
       } else {
-        alert("Access Denied: Invalid email or passkey.");
+        alert("Access Denied: Incorrect Secretary passkey.\n\nUse default: Secretary2026!\n(Note: Capital 'S' and '!' at the end)");
       }
     }
 
