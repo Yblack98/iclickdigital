@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Staff & Department Portal | iClick Digital Ventures</title>
+    <title>Staff &amp; Department Portal | iClick Digital Ventures</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -65,7 +65,7 @@
     </header>
 
     <main class="max-w-7xl mx-auto px-4 lg:px-8 py-8 flex-grow w-full">
-      <!-- UNIVERSAL AUTHENTICATION GATE -->
+        <!-- UNIVERSAL AUTHENTICATION & ONBOARDING GATE -->
         <section id="authGateSection" class="min-h-[80vh] flex items-center justify-center py-6">
             <div class="glass-card w-full max-w-md p-8 rounded-3xl text-linen shadow-2xl space-y-6">
                 <div class="text-center">
@@ -83,11 +83,11 @@
                     <p class="text-xs text-stone-300 mt-1">GovTech • AI Automation • IoT Hardware • Digital Academy</p>
                 </div>
 
-                <!-- LOGIN FORM -->
+                <!-- 1. LOGIN FORM -->
                 <form id="portalLoginForm" onsubmit="handlePortalLogin(event)" class="space-y-4 text-xs">
                     <div>
                         <label class="block font-medium text-stone-300 mb-1">Corporate Email Address</label>
-                        <input type="email" id="portalEmailInput" required placeholder="e.g. lead.govtech@iclickdigitalventures.com" class="w-full px-4 py-3 rounded-xl bg-espresso-950 border border-espresso-600 text-linen text-xs focus:border-terracotta outline-none">
+                        <input type="email" id="portalEmailInput" required placeholder="e.g. name.govtech@iclickdigitalventures.com" class="w-full px-4 py-3 rounded-xl bg-espresso-950 border border-espresso-600 text-linen text-xs focus:border-terracotta outline-none">
                     </div>
                     <div>
                         <label class="block font-medium text-stone-300 mb-1">Staff Access Passkey</label>
@@ -96,18 +96,86 @@
                     <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-terracotta to-warmgold hover:from-amber-600 hover:to-amber-500 text-espresso-950 font-heading font-extrabold text-xs uppercase tracking-wider transition shadow-lg flex items-center justify-center gap-2">
                         <i class="fa-solid fa-arrow-right-to-bracket"></i> Authenticate &amp; Enter Workspace
                     </button>
-                    <div class="flex justify-between items-center pt-2 text-[11px]">
-                        <button type="button" onclick="showPortalReset()" class="text-warmgold hover:underline">Reset Passkey / First-Time Setup</button>
-                        <a href="index.html" class="text-stone-400 hover:text-linen">Public Site</a>
+                    
+                    <div class="pt-2 border-t border-espresso-700/60 flex flex-col gap-2 text-center text-[11px]">
+                        <button type="button" onclick="showPortalRegister()" class="text-warmgold hover:underline font-bold text-xs">
+                            <i class="fa-solid fa-user-plus mr-1"></i> New Employee? Create Official Account
+                        </button>
+                        <div class="flex justify-between items-center px-1 text-stone-400">
+                            <button type="button" onclick="showPortalReset()" class="hover:text-stone-200 underline">Reset Passkey</button>
+                            <a href="index.html" class="hover:text-linen">Public Site</a>
+                        </div>
                     </div>
                 </form>
 
-                <!-- OTP PASSWORD RESET VIEW -->
+                <!-- 2. NEW STAFF ONBOARDING & REGISTRATION FORM -->
+                <form id="portalRegisterForm" onsubmit="handlePortalRegistration(event)" class="space-y-3 text-xs hidden">
+                    <div class="border-b border-espresso-700 pb-2">
+                        <span class="text-[10px] font-bold text-warmgold uppercase">First-Time Setup</span>
+                        <h3 class="font-bold text-sm text-linen">Official Staff Account Creation</h3>
+                        <p class="text-[11px] text-stone-400">Policy: <code>firstname.dept@iclickdigitalventures.com</code></p>
+                    </div>
+
+                    <div>
+                        <label class="block font-medium text-stone-300 mb-1">Full Legal Name *</label>
+                        <input type="text" id="regFullName" required oninput="autoFormatCorporateEmail()" placeholder="e.g. Amina Bello Usman" class="w-full px-3.5 py-2.5 rounded-xl bg-espresso-950 border border-espresso-600 text-linen outline-none">
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-2.5">
+                        <div>
+                            <label class="block font-medium text-stone-300 mb-1">Department / Unit *</label>
+                            <select id="regDeptSelect" onchange="autoFormatCorporateEmail()" class="w-full px-3.5 py-2.5 rounded-xl bg-espresso-950 border border-espresso-600 text-linen outline-none">
+                                <option value="govtech">GovTech</option>
+                                <option value="ai">AI Automation</option>
+                                <option value="iot">IoT &amp; Hardware</option>
+                                <option value="academy">Digital Academy</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block font-medium text-stone-300 mb-1">Designation / Role *</label>
+                            <select id="regRoleSelect" class="w-full px-3.5 py-2.5 rounded-xl bg-espresso-950 border border-espresso-600 text-linen outline-none">
+                                <option value="staff">Staff / Specialist</option>
+                                <option value="lead">Department Superior / Lead</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block font-medium text-stone-300 mb-1">Official Corporate Email *</label>
+                        <input type="email" id="regEmail" required placeholder="firstname.dept@iclickdigitalventures.com" class="w-full px-3.5 py-2.5 rounded-xl bg-espresso-950 border border-espresso-600 text-linen outline-none font-mono">
+                    </div>
+
+                    <div>
+                        <label class="block font-medium text-stone-300 mb-1">Job Title *</label>
+                        <input type="text" id="regJobTitle" required placeholder="e.g. Systems Engineer / Lead Specialist" class="w-full px-3.5 py-2.5 rounded-xl bg-espresso-950 border border-espresso-600 text-linen outline-none">
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-2.5">
+                        <div>
+                            <label class="block font-medium text-stone-300 mb-1">Set Passkey *</label>
+                            <input type="password" id="regPass1" required placeholder="••••••••" class="w-full px-3.5 py-2.5 rounded-xl bg-espresso-950 border border-espresso-600 text-linen outline-none">
+                        </div>
+                        <div>
+                            <label class="block font-medium text-stone-300 mb-1">Confirm Passkey *</label>
+                            <input type="password" id="regPass2" required placeholder="••••••••" class="w-full px-3.5 py-2.5 rounded-xl bg-espresso-950 border border-espresso-600 text-linen outline-none">
+                        </div>
+                    </div>
+
+                    <button type="submit" id="regSubmitBtn" class="w-full py-3 rounded-xl bg-gradient-to-r from-terracotta to-warmgold text-espresso-950 font-bold uppercase transition shadow mt-2">
+                        Create Account &amp; Log In
+                    </button>
+
+                    <div class="text-center pt-2">
+                        <button type="button" onclick="showPortalLogin()" class="text-stone-400 hover:text-linen text-[11px]">← Already have an account? Sign In</button>
+                    </div>
+                </form>
+
+                <!-- 3. OTP PASSWORD RESET VIEW -->
                 <div id="portalResetView" class="space-y-4 text-xs hidden">
                     <p class="text-[11px] text-stone-300 leading-relaxed">Enter your registered staff email. An OTP verification code will be sent to the official security inbox (<code class="text-warmgold">password@iclickdigitalventures.com</code>).</p>
                     <div>
                         <label class="block font-medium text-stone-300 mb-1">Confirm Staff Email</label>
-                        <input type="email" id="portalResetEmailInput" required placeholder="your.name@iclickdigitalventures.com" class="w-full px-4 py-3 rounded-xl bg-espresso-950 border border-espresso-600 text-linen text-xs focus:border-terracotta outline-none font-mono">
+                        <input type="email" id="portalResetEmailInput" required placeholder="name.dept@iclickdigitalventures.com" class="w-full px-4 py-3 rounded-xl bg-espresso-950 border border-espresso-600 text-linen text-xs focus:border-terracotta outline-none font-mono">
                     </div>
                     <button onclick="dispatchPortalOtp()" id="portalOtpBtn" class="w-full py-3 rounded-xl bg-terracotta hover:bg-amber-700 text-linen font-bold uppercase transition">Send Verification Code</button>
                     
@@ -120,8 +188,8 @@
                     <button onclick="showPortalLogin()" class="w-full text-center text-stone-400 hover:text-linen block pt-1 text-[11px]">← Back to Login</button>
                 </div>
             </div>
-                          </section>
-                          <!-- WORKSPACE: GOVTECH -->
+    </section>
+    <!-- WORKSPACE: GOVTECH -->
         <section id="workspace-govtech" class="dept-workspace hidden space-y-8">
             <div class="glass-card rounded-3xl p-6 md:p-8 space-y-6">
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-espresso-600 pb-6">
@@ -215,8 +283,8 @@
                     </div>
                 </div>
             </div>
-        </section>
-        <!-- WORKSPACE: IOT & HARDWARE -->
+                    </section>
+                    <!-- WORKSPACE: IOT & HARDWARE -->
         <section id="workspace-iot" class="dept-workspace hidden space-y-8">
             <div class="glass-card rounded-3xl p-6 md:p-8 space-y-6">
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-espresso-600 pb-6">
@@ -316,8 +384,8 @@
 
     <footer class="border-t border-espresso-600 py-6 text-center text-xs text-stone-400 bg-espresso-950">
         <p>© 2026 iClick Digital Ventures (BN: 9772940). All Rights Reserved. • portal@iclickdigitalventures.com</p>
-                      </footer>
-                      <!-- MODAL 1: DEPARTMENT SUPERIOR MEMO DISPATCH -->
+                                                                                        </footer>
+                                                                                        <!-- MODAL 1: DEPARTMENT SUPERIOR MEMO DISPATCH -->
     <div id="leadMemoModal" class="hidden fixed inset-0 z-50 bg-espresso-950/90 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="glass-card w-full max-w-xl rounded-3xl p-6 md:p-8 space-y-4 shadow-2xl text-xs text-linen">
             <div class="flex justify-between items-center border-b border-espresso-600 pb-3">
@@ -390,7 +458,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                     <div>
                         <label class="block text-stone-400 mb-1">Official Corporate Email *</label>
-                        <input type="email" id="idReqEmail" required placeholder="name@iclickdigitalventures.com" class="w-full bg-espresso-900 border border-espresso-600 rounded-xl p-2.5 text-linen">
+                        <input type="email" id="idReqEmail" required placeholder="name.dept@iclickdigitalventures.com" class="w-full bg-espresso-900 border border-espresso-600 rounded-xl p-2.5 text-linen">
                     </div>
                     <div>
                         <label class="block text-stone-400 mb-1">Official Phone Contact *</label>
@@ -406,15 +474,16 @@
                 </button>
             </form>
         </div>
-  </div>
-  <!-- Master Portal Logic & Session Engine -->
+    </div>
+    <!-- Master Portal Logic, Onboarding & Session Engine -->
     <script>
         const SECURITY_ACCESS_KEY = "93f249e4-0f14-4643-8e32-4af9619ffe32"; // Routes strictly to password@iclickdigitalventures.com
+        const ONBOARDING_SECURITY_KEY = "93f249e4-0f14-4643-8e32-4af9619ffe32"; // Routes directly to onboarding@iclickdigitalventures.com
         let activePortalOtp = null;
         let portalOtpExpiry = null;
 
-        // Subsidiary & User Directory
-        const STAFF_ACCOUNTS = {
+        // Base Subsidiary User Directory
+        const DEFAULT_STAFF_ACCOUNTS = {
             // GovTech
             "lead.govtech@iclickdigitalventures.com": { pass: "GovTech2026!", dept: "govtech", deptName: "iClick GovTech", role: "lead", name: "GovTech Superior / Director", title: "Director of GovTech Systems" },
             "staff.govtech@iclickdigitalventures.com": { pass: "Staff2026!", dept: "govtech", deptName: "iClick GovTech", role: "staff", name: "GovTech Systems Engineer", title: "GovTech Engineer" },
@@ -431,16 +500,112 @@
 
         let currentSessionUser = null;
 
+        function showPortalRegister() {
+            document.getElementById('portalLoginForm').classList.add('hidden');
+            document.getElementById('portalResetView').classList.add('hidden');
+            document.getElementById('portalRegisterForm').classList.remove('hidden');
+        }
+
+        function showPortalLogin() {
+            document.getElementById('portalResetView').classList.add('hidden');
+            document.getElementById('portalRegisterForm').classList.add('hidden');
+            document.getElementById('portalLoginForm').classList.remove('hidden');
+        }
+
+        function showPortalReset() {
+            document.getElementById('portalLoginForm').classList.add('hidden');
+            document.getElementById('portalRegisterForm').classList.add('hidden');
+            document.getElementById('portalResetView').classList.remove('hidden');
+        }
+
+        function autoFormatCorporateEmail() {
+            const rawName = document.getElementById('regFullName').value.trim().toLowerCase();
+            const firstName = rawName.split(' ')[0] || 'firstname';
+            const dept = document.getElementById('regDeptSelect').value;
+            document.getElementById('regEmail').value = `${firstName}.${dept}@iclickdigitalventures.com`;
+        }
+
+        function handlePortalRegistration(e) {
+            e.preventDefault();
+            const fullName = document.getElementById('regFullName').value.trim();
+            const dept = document.getElementById('regDeptSelect').value;
+            const role = document.getElementById('regRoleSelect').value;
+            const email = document.getElementById('regEmail').value.trim().toLowerCase();
+            const jobTitle = document.getElementById('regJobTitle').value.trim();
+            const p1 = document.getElementById('regPass1').value.trim();
+            const p2 = document.getElementById('regPass2').value.trim();
+            const btn = document.getElementById('regSubmitBtn');
+
+            // Enforce corporate pattern: firstname.dept@iclickdigitalventures.com
+            const regex = new RegExp(`^[a-z0-9._%+-]+\\.${dept}@iclickdigitalventures\\.com$`);
+            if (!regex.test(email)) {
+                alert(`Invalid Email Format!\n\nOfficial company policy requires your email to follow:\n[firstname].${dept}@iclickdigitalventures.com`);
+                return;
+            }
+
+            if (p1.length < 6 || p1 !== p2) {
+                alert("Passkeys do not match or are less than 6 characters.");
+                return;
+            }
+
+            btn.disabled = true;
+            btn.innerText = "Registering & Dispatching Records...";
+
+            const deptNames = {
+                govtech: "iClick GovTech",
+                ai: "iClick AI Automation",
+                iot: "iClick IoT & Hardware",
+                academy: "iClick Digital Academy"
+            };
+
+            const newAccount = {
+                pass: p1,
+                dept: dept,
+                deptName: deptNames[dept],
+                role: role,
+                name: fullName,
+                title: jobTitle,
+                email: email
+            };
+
+            // Save permanently in registered staff local ledger
+            let registeredUsers = JSON.parse(localStorage.getItem('iclick_registered_staff') || '{}');
+            registeredUsers[email] = newAccount;
+            localStorage.setItem('iclick_registered_staff', JSON.stringify(registeredUsers));
+
+            // Dispatch notification record directly to onboarding@iclickdigitalventures.com
+            const payload = {
+                access_key: ONBOARDING_SECURITY_KEY,
+                subject: `New Staff Onboarding: ${fullName} (${deptNames[dept]})`,
+                from_name: "iClick Portal Gateway",
+                email: "onboarding@iclickdigitalventures.com",
+                message: `OFFICIAL STAFF ONBOARDING RECORD:\n\nFull Name: ${fullName}\nCorporate Email: ${email}\nSubsidiary: ${deptNames[dept]}\nRole Level: ${role.toUpperCase()}\nOfficial Title: ${jobTitle}\nOnboarded At: ${new Date().toLocaleString('en-GB')}`
+            };
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify(payload)
+            }).finally(() => {
+                alert(`✓ Welcome to iClick Digital Ventures, ${fullName}!\n\nYour official account (${email}) is active and your onboarding record has been logged.`);
+                const sessionData = { ...newAccount, loginTime: Date.now() };
+                sessionStorage.setItem('iclick_staff_session', JSON.stringify(sessionData));
+                mountUserWorkspace(sessionData);
+            });
+        }
         function handlePortalLogin(e) {
             e.preventDefault();
             const email = document.getElementById('portalEmailInput').value.trim().toLowerCase();
             const pass = document.getElementById('portalPassInput').value.trim();
 
             const customPasses = JSON.parse(localStorage.getItem('iclick_staff_custom_passes') || '{}');
-            const account = STAFF_ACCOUNTS[email];
+            const registeredUsers = JSON.parse(localStorage.getItem('iclick_registered_staff') || '{}');
+
+            // Check dynamic registered users first, then fallback to preconfigured accounts
+            const account = registeredUsers[email] || DEFAULT_STAFF_ACCOUNTS[email];
 
             if (!account) {
-                alert("Access Denied: Unrecognized subsidiary email address.");
+                alert("Access Denied: Unrecognized subsidiary email address.\n\nIf you are a new employee, click 'New Employee? Create Official Account' below to complete first-time onboarding.");
                 return;
             }
 
@@ -458,7 +623,6 @@
         function mountUserWorkspace(user) {
             currentSessionUser = user;
 
-            // Hide Auth Gate, Show Header & Workspace
             document.getElementById('authGateSection').classList.add('hidden');
             document.getElementById('portalHeader').classList.remove('hidden');
 
@@ -466,14 +630,11 @@
             document.getElementById('userRoleBadge').innerText = `${user.role === 'lead' ? 'Department Superior / Lead' : 'Staff Specialist'} • Session Active`;
             document.getElementById('userNameTag').innerText = `${user.name} (${user.email})`;
 
-            // Hide all workspaces first
             document.querySelectorAll('.dept-workspace').forEach(el => el.classList.add('hidden'));
 
-            // Show current department workspace
             const ws = document.getElementById(`workspace-${user.dept}`);
             if (ws) ws.classList.remove('hidden');
 
-            // Toggle lead-only action buttons based on privilege
             document.querySelectorAll('.lead-only-action').forEach(btn => {
                 if (user.role === 'lead') {
                     btn.classList.remove('hidden');
@@ -488,22 +649,13 @@
             location.reload();
         }
 
-        // OTP Reset Flow for Staff
-        function showPortalReset() {
-            document.getElementById('portalLoginForm').classList.add('hidden');
-            document.getElementById('portalResetView').classList.remove('hidden');
-        }
-
-        function showPortalLogin() {
-            document.getElementById('portalResetView').classList.add('hidden');
-            document.getElementById('portalLoginForm').classList.remove('hidden');
-        }
-
         function dispatchPortalOtp() {
             const email = document.getElementById('portalResetEmailInput').value.trim().toLowerCase();
             const btn = document.getElementById('portalOtpBtn');
+            const registeredUsers = JSON.parse(localStorage.getItem('iclick_registered_staff') || '{}');
+            const account = registeredUsers[email] || DEFAULT_STAFF_ACCOUNTS[email];
 
-            if (!STAFF_ACCOUNTS[email]) {
+            if (!account) {
                 alert("Unregistered corporate email address.");
                 return;
             }
@@ -519,7 +671,7 @@
                 subject: "Staff Portal Security Passkey Reset",
                 from_name: "iClick Security Gateway",
                 email: "password@iclickdigitalventures.com",
-                message: `One-time access verification code for ${email} (${STAFF_ACCOUNTS[email].deptName}) is:\n\n${activePortalOtp}\n\nExpires in 10 minutes.`
+                message: `One-time access verification code for ${email} (${account.deptName}) is:\n\n${activePortalOtp}\n\nExpires in 10 minutes.`
             };
 
             fetch('https://api.web3forms.com/submit', {
@@ -540,6 +692,8 @@
             const code = document.getElementById('portalOtpInput').value.trim();
             const p1 = document.getElementById('portalNewPass1').value.trim();
             const p2 = document.getElementById('portalNewPass2').value.trim();
+            const registeredUsers = JSON.parse(localStorage.getItem('iclick_registered_staff') || '{}');
+            const account = registeredUsers[email] || DEFAULT_STAFF_ACCOUNTS[email];
 
             if (code !== activePortalOtp || Date.now() > portalOtpExpiry) {
                 alert("Invalid or expired verification code.");
@@ -555,12 +709,11 @@
             localStorage.setItem('iclick_staff_custom_passes', JSON.stringify(customPasses));
 
             alert("Passkey successfully updated!");
-            const sessionData = { ...STAFF_ACCOUNTS[email], email: email, loginTime: Date.now() };
+            const sessionData = { ...account, email: email, loginTime: Date.now() };
             sessionStorage.setItem('iclick_staff_session', JSON.stringify(sessionData));
             mountUserWorkspace(sessionData);
         }
 
-        // Modal Handlers: Lead Memo
         function openLeadMemoModal(deptName) {
             document.getElementById('memoModalDeptLabel').innerText = deptName;
             document.getElementById('leadMemoOfficer').value = currentSessionUser ? currentSessionUser.name : 'Department Superior';
@@ -615,7 +768,6 @@
             document.getElementById('leadMemoForm').reset();
         }
 
-        // Modal Handlers: ID Request
         function openIdRequestModal(deptName) {
             document.getElementById('idReqDept').value = deptName;
             if (currentSessionUser) {
@@ -658,7 +810,7 @@
                 });
 
                 localStorage.setItem('iclick_sec_inbox', JSON.stringify(secInbox));
-                alert(`✓ ID Pass request for ${name} (${dept}) submitted to the Secretary Desk! The Secretary can now generate your official pass immediately.`);
+                alert(`✓ ID Pass request for ${name} (${dept}) submitted to Secretary Desk!`);
                 closeIdRequestModal();
                 document.getElementById('idRequestForm').reset();
             }
@@ -674,7 +826,6 @@
             }
         }
 
-        // Auto mount if already logged in
         window.addEventListener('DOMContentLoaded', () => {
             const rawSession = sessionStorage.getItem('iclick_staff_session');
             if (rawSession) {
