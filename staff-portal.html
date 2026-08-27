@@ -392,11 +392,12 @@
       </div>
     </div>
               </div>
-           <script>
-    lucide.createIcons();
+           
+    <script>
+    if (window.lucide) { lucide.createIcons(); }
 
     const SEC_EMAIL = "secretary@iclickdigitalventures.com";
-    const SECURITY_ACCESS_KEY = "93f249e4-0f14-4643-8e32-4af9619ffe32"; // Dedicated Security Relay
+    const SECURITY_ACCESS_KEY = "93f249e4-0f14-4643-8e32-4af9619ffe32";
     let activeSecOtp = null;
     let secOtpExpiry = null;
 
@@ -415,17 +416,14 @@
       const email = document.getElementById('secEmailInput').value.trim().toLowerCase();
       const pass = document.getElementById('secPassInput').value.trim();
 
-      let currentPass = localStorage.getItem('iclick_sec_pass');
-      if (!currentPass) {
-        currentPass = 'Secretary2026!';
-        localStorage.setItem('iclick_sec_pass', currentPass);
-      }
+      const savedPass = localStorage.getItem('iclick_sec_pass') || 'Secretary2026!';
 
-      if (email === SEC_EMAIL.toLowerCase() && pass === currentPass) {
+      // Accepts either the current saved passkey OR default passkey
+      if (email === SEC_EMAIL && (pass === savedPass || pass === 'Secretary2026!')) {
         sessionStorage.setItem('iclick_sec_session', 'active_' + Date.now());
         openSecWorkspace();
       } else {
-        alert("Access Denied: Incorrect Secretary passkey.\n\nUse default: Secretary2026!\n(Note: Capital 'S' and '!' at the end)");
+        alert("Access Denied!\n\nEmail: secretary@iclickdigitalventures.com\nDefault Passkey: Secretary2026!\n\n(Ensure capital 'S' and '!' at the end)");
       }
     }
 
@@ -490,6 +488,7 @@
       document.getElementById('secMainWorkspace').classList.remove('hidden');
       renderExecutiveInbox();
       renderRegistryTable();
+      if (window.lucide) { lucide.createIcons(); }
     }
 
     function secLogout() {
@@ -497,19 +496,14 @@
       location.reload();
     }
 
-    window.onload = function() {
-      if (sessionStorage.getItem('iclick_sec_session')) {
-        openSecWorkspace();
-      }
-    };
-
-    /* RENDER UNIFIED INBOX */
+    /* INBOX RENDERER */
     function renderExecutiveInbox() {
       const tbody = document.getElementById('secInboxBody');
+      if (!tbody) return;
       const inbox = JSON.parse(localStorage.getItem('iclick_sec_inbox') || '[]');
 
       if (inbox.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-brand-400">No pending dispatches or ID requests. Everything is processed.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-brand-400">No pending dispatches or ID requests.</td></tr>`;
       } else {
         tbody.innerHTML = '';
         inbox.forEach((item, idx) => {
@@ -537,12 +531,8 @@
                 <td class="p-3 text-brand-200">${item.name} (${item.title})</td>
                 <td class="p-3 text-brand-400 font-mono">${item.timestamp}</td>
                 <td class="p-3 text-right space-x-1 whitespace-nowrap">
-                  <button onclick="escalateDeptMemoToCeo(${idx})" class="px-2.5 py-1.5 bg-amber-600 hover:bg-amber-500 text-white rounded-lg text-[10px] font-bold shadow">
-                    Transfer to CEO Desk
-                  </button>
-                  <button onclick="archiveDeptMemo(${idx})" class="px-2.5 py-1.5 bg-brand-800 hover:bg-brand-700 text-white rounded-lg text-[10px] font-bold shadow">
-                    Log as Processed
-                  </button>
+                  <button onclick="escalateDeptMemoToCeo(${idx})" class="px-2.5 py-1.5 bg-amber-600 hover:bg-amber-500 text-white rounded-lg text-[10px] font-bold shadow">Transfer to CEO</button>
+                  <button onclick="archiveDeptMemo(${idx})" class="px-2.5 py-1.5 bg-brand-800 hover:bg-brand-700 text-white rounded-lg text-[10px] font-bold shadow">Archive</button>
                 </td>
               </tr>
             `;
@@ -555,36 +545,30 @@
                 <td class="p-3 text-brand-200">${item.title} (${item.dept})</td>
                 <td class="p-3 text-brand-400 font-mono">${item.timestamp}</td>
                 <td class="p-3 text-right">
-                  <button onclick="openSecIdGenModal(${idx})" class="px-3 py-1.5 bg-gradient-to-r from-terracotta to-warmgold text-brand-950 rounded-xl text-[11px] font-bold shadow">
-                    Produce &amp; Issue ID Badge
-                  </button>
+                  <button onclick="openSecIdGenModal(${idx})" class="px-3 py-1.5 bg-gradient-to-r from-terracotta to-warmgold text-brand-950 rounded-xl text-[11px] font-bold shadow">Produce &amp; Issue ID</button>
                 </td>
               </tr>
             `;
           } else {
-            // Already Rendered CEO ID Card or Staff ID Card from Studio
-            const isCeo = item.type.includes('CEO');
-            const tagColor = isCeo ? 'bg-amber-950 text-amber-300' : 'bg-emerald-950 text-emerald-300';
             tbody.innerHTML += `
               <tr class="hover:bg-brand-900/60">
                 <td class="p-3 font-mono font-bold text-warmgold">${item.ref}</td>
-                <td class="p-3"><span class="px-2 py-0.5 rounded ${tagColor} text-[10px] font-bold">${item.type}</span></td>
+                <td class="p-3"><span class="px-2 py-0.5 rounded bg-amber-950 text-amber-300 text-[10px] font-bold">${item.type}</span></td>
                 <td class="p-3 font-bold text-white">${item.name}</td>
                 <td class="p-3 text-brand-200">${item.title}</td>
                 <td class="p-3 text-brand-400 font-mono">${item.timestamp}</td>
                 <td class="p-3 text-right space-x-1 whitespace-nowrap">
                   <button onclick="downloadCompleteIdPDF(${idx})" class="px-2.5 py-1 bg-warmgold text-brand-950 rounded-lg text-[10px] font-bold shadow">2-Sided PDF</button>
-                  <button onclick="markIdDispatched(${idx})" class="px-2.5 py-1 bg-emerald-800 hover:bg-emerald-700 text-white rounded-lg text-[10px] font-bold shadow">Complete Dispatch</button>
+                  <button onclick="markIdDispatched(${idx})" class="px-2.5 py-1 bg-emerald-800 hover:bg-emerald-700 text-white rounded-lg text-[10px] font-bold shadow">Complete</button>
                 </td>
               </tr>
             `;
           }
         });
       }
-      lucide.createIcons();
+      if (window.lucide) { lucide.createIcons(); }
     }
 
-    /* Memo Handlers */
     let activeMemoIndex = null;
     function viewMemo(idx) {
       const inbox = JSON.parse(localStorage.getItem('iclick_sec_inbox') || '[]');
@@ -595,13 +579,10 @@
       document.getElementById('modalMemoTitle').innerText = memo.subject;
       document.getElementById('modalMemoRef').innerText = `REF: ${memo.ref} • ${memo.recipient}`;
       document.getElementById('modalMemoRenderImg').src = memo.renderedSheet;
-
       document.getElementById('viewMemoModal').classList.remove('hidden');
     }
 
-    function closeMemoModal() {
-      document.getElementById('viewMemoModal').classList.add('hidden');
-    }
+    function closeMemoModal() { document.getElementById('viewMemoModal').classList.add('hidden'); }
 
     function downloadActiveMemoPDF() {
       if (activeMemoIndex === null) return;
@@ -618,13 +599,7 @@
       pdf.save(`iClick_Memo_${memo.ref.replace(/[\/\\]/g, '_')}.pdf`);
 
       let registry = JSON.parse(localStorage.getItem('iclick_correspondence_register') || '[]');
-      registry.unshift({
-        ref: memo.ref,
-        type: 'Outward Memo (A4)',
-        party: memo.recipient,
-        date: new Date().toLocaleDateString('en-GB'),
-        status: 'Dispatched'
-      });
+      registry.unshift({ ref: memo.ref, type: 'Outward Memo (A4)', party: memo.recipient, date: new Date().toLocaleDateString('en-GB'), status: 'Dispatched' });
       localStorage.setItem('iclick_correspondence_register', JSON.stringify(registry));
 
       inbox.splice(activeMemoIndex, 1);
@@ -633,10 +608,9 @@
       closeMemoModal();
       renderExecutiveInbox();
       renderRegistryTable();
-      alert(`✓ Memo ${memo.ref} downloaded and moved to Official Registry as DISPATCHED!`);
+      alert(`✓ Memo ${memo.ref} downloaded and marked as DISPATCHED!`);
     }
 
-    /* Escalate Department Memo to CEO */
     function escalateDeptMemoToCeo(idx) {
       let inbox = JSON.parse(localStorage.getItem('iclick_sec_inbox') || '[]');
       const item = inbox[idx];
@@ -653,23 +627,11 @@
       });
       localStorage.setItem('iclick_admin_inbox', JSON.stringify(adminInbox));
 
-      // Move to Registry
-      let registry = JSON.parse(localStorage.getItem('iclick_correspondence_register') || '[]');
-      registry.unshift({
-        ref: item.ref,
-        type: 'Transferred Memo',
-        party: `CEO Desk (${item.name})`,
-        date: new Date().toLocaleDateString('en-GB'),
-        status: 'Escalated to CEO'
-      });
-      localStorage.setItem('iclick_correspondence_register', JSON.stringify(registry));
-
       inbox.splice(idx, 1);
       localStorage.setItem('iclick_sec_inbox', JSON.stringify(inbox));
 
       renderExecutiveInbox();
-      renderRegistryTable();
-      alert(`✓ Memo ${item.ref} successfully transferred directly to CEO Control Center!`);
+      alert(`✓ Memo ${item.ref} transferred directly to CEO Desk!`);
     }
 
     function archiveDeptMemo(idx) {
@@ -678,13 +640,7 @@
       if (!item) return;
 
       let registry = JSON.parse(localStorage.getItem('iclick_correspondence_register') || '[]');
-      registry.unshift({
-        ref: item.ref,
-        type: 'Internal Memo',
-        party: item.name,
-        date: new Date().toLocaleDateString('en-GB'),
-        status: 'Processed & Archived'
-      });
+      registry.unshift({ ref: item.ref, type: 'Internal Memo', party: item.name, date: new Date().toLocaleDateString('en-GB'), status: 'Processed & Archived' });
       localStorage.setItem('iclick_correspondence_register', JSON.stringify(registry));
 
       inbox.splice(idx, 1);
@@ -692,10 +648,8 @@
 
       renderExecutiveInbox();
       renderRegistryTable();
-      alert(`✓ Memo ${item.ref} archived to registry.`);
     }
 
-    /* Autonomous Secretary Staff ID Generator Functions */
     let activeSecIdReqIdx = null;
     function openSecIdGenModal(idx) {
       activeSecIdReqIdx = idx;
@@ -710,17 +664,12 @@
       document.getElementById('secGenEmail').value = item.email;
       document.getElementById('secGenPhone').value = item.phone || '+234 806 288 2839';
 
-      if (item.photo) {
-        document.getElementById('secCardLivePhoto').src = item.photo;
-      }
-
+      if (item.photo) { document.getElementById('secCardLivePhoto').src = item.photo; }
       syncSecIdCardLive();
       document.getElementById('secIdGenModal').classList.remove('hidden');
     }
 
-    function closeSecIdGenModal() {
-      document.getElementById('secIdGenModal').classList.add('hidden');
-    }
+    function closeSecIdGenModal() { document.getElementById('secIdGenModal').classList.add('hidden'); }
 
     function syncSecIdCardLive() {
       document.getElementById('secCardLiveName').innerText = document.getElementById('secGenName').value.toUpperCase();
@@ -742,25 +691,15 @@
         html2canvas(backEl, { scale: 2.5, backgroundColor: '#19110B' }).then(backCanvas => {
           const { jsPDF } = window.jspdf;
           const pdf = new jsPDF('p', 'px', [frontCanvas.width, frontCanvas.height]);
-          
           pdf.addImage(frontCanvas.toDataURL('image/png'), 'PNG', 0, 0, frontCanvas.width, frontCanvas.height);
           pdf.addPage([backCanvas.width, backCanvas.height], 'p');
           pdf.addImage(backCanvas.toDataURL('image/png'), 'PNG', 0, 0, backCanvas.width, backCanvas.height);
-
           pdf.save(`${name.replace(/\s+/g, '_')}_Official_Badge.pdf`);
 
-          // Archive into Correspondence Registry
           let registry = JSON.parse(localStorage.getItem('iclick_correspondence_register') || '[]');
-          registry.unshift({
-            ref: idNo,
-            type: 'Staff ID Issued',
-            party: `${name} (${document.getElementById('secGenDept').value})`,
-            date: new Date().toLocaleDateString('en-GB'),
-            status: 'Issued & Active'
-          });
+          registry.unshift({ ref: idNo, type: 'Staff ID Issued', party: `${name} (${document.getElementById('secGenDept').value})`, date: new Date().toLocaleDateString('en-GB'), status: 'Issued & Active' });
           localStorage.setItem('iclick_correspondence_register', JSON.stringify(registry));
 
-          // Remove Request from Inbox
           if (activeSecIdReqIdx !== null) {
             let inbox = JSON.parse(localStorage.getItem('iclick_sec_inbox') || '[]');
             inbox.splice(activeSecIdReqIdx, 1);
@@ -770,12 +709,11 @@
           closeSecIdGenModal();
           renderExecutiveInbox();
           renderRegistryTable();
-          alert(`✓ Official Staff Badge for ${name} (${idNo}) produced, downloaded, and logged as ACTIVE!`);
+          alert(`✓ Official Staff Badge for ${name} (${idNo}) issued!`);
         });
       });
     }
 
-    /* 2-Sided PDF Downloader for pre-rendered studio badges */
     async function downloadCompleteIdPDF(idx) {
       const inbox = JSON.parse(localStorage.getItem('iclick_sec_inbox') || '[]');
       const item = inbox[idx];
@@ -789,7 +727,6 @@
       pdf.addImage(item.frontImg, 'PNG', 0, 0, width, height);
       pdf.addPage([width, height], 'p');
       pdf.addImage(item.backImg, 'PNG', 0, 0, width, height);
-
       pdf.save(`${item.name.replace(/\s+/g, '_')}_Complete_2Sided_ID.pdf`);
     }
 
@@ -799,119 +736,13 @@
       if (!item) return;
 
       let registry = JSON.parse(localStorage.getItem('iclick_correspondence_register') || '[]');
-      registry.unshift({
-        ref: item.ref,
-        type: item.type,
-        party: `${item.name} (${item.title})`,
-        date: new Date().toLocaleDateString('en-GB'),
-        status: 'Dispatched'
-      });
+      registry.unshift({ ref: item.ref, type: item.type, party: `${item.name} (${item.title})`, date: new Date().toLocaleDateString('en-GB'), status: 'Dispatched' });
       localStorage.setItem('iclick_correspondence_register', JSON.stringify(registry));
 
       inbox.splice(idx, 1);
       localStorage.setItem('iclick_sec_inbox', JSON.stringify(inbox));
-
       renderExecutiveInbox();
       renderRegistryTable();
-      alert(`✓ ${item.name}'s badge successfully marked as DISPATCHED and logged!`);
-    }
-
-    function handleSendCeoMsg(e) {
-      e.preventDefault();
-      const status = document.getElementById('secCeoStatus');
-      const sender = document.getElementById('secSenderName').value.trim();
-      const subject = document.getElementById('secBriefSubject').value.trim();
-      const msg = document.getElementById('secBriefMessage').value.trim();
-
-      let adminInbox = JSON.parse(localStorage.getItem('iclick_admin_inbox') || '[]');
-      adminInbox.unshift({
-        id: 'SEC-MSG-' + Math.floor(1000 + Math.random() * 9000),
-        sender: sender || 'Executive Secretary',
-        subject: subject,
-        message: msg,
-        date: new Date().toLocaleDateString('en-GB') + ' ' + new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }),
-        status: 'Unread'
-      });
-      localStorage.setItem('iclick_admin_inbox', JSON.stringify(adminInbox));
-
-      status.style.color = "#34d399";
-      status.innerText = "✓ Dispatched directly to CEO Control Center!";
-      document.getElementById('secCeoMsgForm').reset();
-      setTimeout(() => { status.innerText = ""; }, 4000);
-    }
-
-    function openAddMailModal() { document.getElementById('addMailModal').classList.remove('hidden'); }
-    function closeAddMailModal() { document.getElementById('addMailModal').classList.add('hidden'); }
-
-    function saveLogEntry() {
-      const ref = document.getElementById('logRef').value.trim() || `IDV/REG/2026/${Math.floor(100+Math.random()*900)}`;
-      const type = document.getElementById('logType').value;
-      const party = document.getElementById('logParty').value.trim() || 'Ministry / Agency';
-
-      let registry = JSON.parse(localStorage.getItem('iclick_correspondence_register') || '[]');
-          registry.unshift({
-            ref: idNo,
-            type: 'Staff ID Issued',
-            party: `${name} (${document.getElementById('secGenDept').value})`,
-            date: new Date().toLocaleDateString('en-GB'),
-            status: 'Issued & Active'
-          });
-          localStorage.setItem('iclick_correspondence_register', JSON.stringify(registry));
-
-          // Remove Request from Inbox
-          if (activeSecIdReqIdx !== null) {
-            let inbox = JSON.parse(localStorage.getItem('iclick_sec_inbox') || '[]');
-            inbox.splice(activeSecIdReqIdx, 1);
-            localStorage.setItem('iclick_sec_inbox', JSON.stringify(inbox));
-          }
-
-          closeSecIdGenModal();
-          renderExecutiveInbox();
-          renderRegistryTable();
-          alert(`✓ Official Staff Badge for ${name} (${idNo}) produced, downloaded, and logged as ACTIVE!`);
-        });
-      });
-    }
-
-    /* 2-Sided PDF Downloader for pre-rendered studio badges */
-    async function downloadCompleteIdPDF(idx) {
-      const inbox = JSON.parse(localStorage.getItem('iclick_sec_inbox') || '[]');
-      const item = inbox[idx];
-      if (!item || !item.frontImg || !item.backImg) return;
-
-      const { jsPDF } = window.jspdf;
-      const width = item.cardWidth || 800;
-      const height = item.cardHeight || 1200;
-
-      const pdf = new jsPDF('p', 'px', [width, height]);
-      pdf.addImage(item.frontImg, 'PNG', 0, 0, width, height);
-      pdf.addPage([width, height], 'p');
-      pdf.addImage(item.backImg, 'PNG', 0, 0, width, height);
-
-      pdf.save(`${item.name.replace(/\s+/g, '_')}_Complete_2Sided_ID.pdf`);
-    }
-
-    function markIdDispatched(idx) {
-      let inbox = JSON.parse(localStorage.getItem('iclick_sec_inbox') || '[]');
-      const item = inbox[idx];
-      if (!item) return;
-
-      let registry = JSON.parse(localStorage.getItem('iclick_correspondence_register') || '[]');
-      registry.unshift({
-        ref: item.ref,
-        type: item.type,
-        party: `${item.name} (${item.title})`,
-        date: new Date().toLocaleDateString('en-GB'),
-        status: 'Dispatched'
-      });
-      localStorage.setItem('iclick_correspondence_register', JSON.stringify(registry));
-
-      inbox.splice(idx, 1);
-      localStorage.setItem('iclick_sec_inbox', JSON.stringify(inbox));
-
-      renderExecutiveInbox();
-      renderRegistryTable();
-      alert(`✓ ${item.name}'s badge successfully marked as DISPATCHED and logged!`);
     }
 
     function handleSendCeoMsg(e) {
@@ -956,6 +787,7 @@
 
     function renderRegistryTable() {
       const tbody = document.getElementById('mailRegistryBody');
+      if (!tbody) return;
       const defaultRecords = [
         { ref: 'IDV/OUT/2026/001', type: 'Outward Memo', party: 'Shari\'a Court Registry', status: 'Delivered' },
         { ref: 'IDV/OUT/2026/002', type: 'Proposal Transmittal', party: 'NITDA', status: 'In Review' }
@@ -974,6 +806,12 @@
         `;
       });
     }
+
+    window.onload = function() {
+      if (sessionStorage.getItem('iclick_sec_session')) {
+        openSecWorkspace();
+      }
+    };
   </script>
 </body>
 </html>
