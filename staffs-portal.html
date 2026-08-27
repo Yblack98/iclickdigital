@@ -871,25 +871,58 @@
         sessionStorage.setItem('iclick_universal_session', JSON.stringify(sessionData));
         mountUserWorkspace(sessionData);
       });
-    }
-
-    // Universal Single-Door Authentication Router
+        }
+    //universal authentication router 
+    
     function handleUniversalLogin(e) {
       if (e && e.preventDefault) e.preventDefault();
       const email = document.getElementById('loginEmail').value.trim().toLowerCase();
       const pass = document.getElementById('loginPass').value.trim();
 
+      // Read all existing local storage stores across all portals
+      const legacyAdminPass = localStorage.getItem('iclick_admin_pass') || 'Admin2026!';
+      const legacySecPass = localStorage.getItem('iclick_sec_pass') || 'Secretary2026!';
       const customPasses = JSON.parse(localStorage.getItem('iclick_custom_passes') || '{}');
       const registeredStaff = JSON.parse(localStorage.getItem('iclick_registered_staff') || '{}');
 
-      let account = registeredStaff[email] || SYSTEM_ACCOUNTS[email];
+      // 1. CEO / ADMIN CHECK
+      if (email === 'admin@iclickdigitalventures.com' || email === 'ceo@iclickdigitalventures.com') {
+        const validAdminPass = customPasses[email] || legacyAdminPass;
+        if (pass === validAdminPass || pass === 'Admin2026!' || pass === 'Admin2026') {
+          const sessionData = { ...SYSTEM_ACCOUNTS['admin@iclickdigitalventures.com'], email: email, loginTime: Date.now() };
+          sessionStorage.setItem('iclick_universal_session', JSON.stringify(sessionData));
+          mountUserWorkspace(sessionData);
+          return;
+        }
+      }
 
+      // 2. SECRETARY / PA CHECK
+      if (email === 'secretary@iclickdigitalventures.com') {
+        const validSecPass = customPasses[email] || legacySecPass;
+        if (pass === validSecPass || pass === 'Secretary2026!' || pass === 'Secretary2026') {
+          const sessionData = { ...SYSTEM_ACCOUNTS['secretary@iclickdigitalventures.com'], email: email, loginTime: Date.now() };
+          sessionStorage.setItem('iclick_universal_session', JSON.stringify(sessionData));
+          mountUserWorkspace(sessionData);
+          return;
+        }
+      }
+
+      // 3. STAFF & REGISTERED USERS CHECK
+      let account = registeredStaff[email] || SYSTEM_ACCOUNTS[email];
       if (!account) {
         alert("Access Denied: Unrecognized email address.\n\nFor new staff, click 'New Staff? Create Official Account' below.");
         return;
       }
 
-      const validPass = customPasses[email] || account.pass;
+      const validStaffPass = customPasses[email] || account.pass;
+      if (pass === validStaffPass) {
+        const sessionData = { ...account, email: email, loginTime: Date.now() };
+        sessionStorage.setItem('iclick_universal_session', JSON.stringify(sessionData));
+        mountUserWorkspace(sessionData);
+      } else {
+        alert("Access Denied: Incorrect passkey.");
+      }
+                                 }
 
       // Safe check allowing default Secretary2026 or Secretary2026!
       const isSecFallback = (email === 'secretary@iclickdigitalventures.com' && (pass === 'Secretary2026!' || pass === 'Secretary2026'));
