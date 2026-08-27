@@ -205,57 +205,84 @@
 
   <!-- ================= WORKSPACES ================= -->
   <main class="max-w-7xl mx-auto px-4 lg:px-8 py-8 flex-grow w-full">
-    
-    <!-- 1. CEO ADMIN WORKSPACE -->
+<!-- ================= UNIFIED CEO EXECUTIVE COMMAND & BRAND SUITE ================= -->
     <div id="workspace-admin" class="role-workspace hidden space-y-8">
-      <div class="glass-card rounded-3xl p-6 md:p-8 space-y-6">
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-espresso-600 pb-6">
-          <div>
-            <span class="inline-block px-3 py-1 rounded-full text-[10px] font-bold bg-amber-950/80 text-warmgold border border-warmgold/40 uppercase tracking-widest mb-2">Strategic Command</span>
-            <h2 class="text-2xl md:text-3xl font-heading font-extrabold text-linen">CEO Executive Control Center</h2>
-            <p class="text-xs text-stone-300 mt-1">Direct Operational Command • Multi-Subsidiary Oversight</p>
-          </div>
-          <div class="flex gap-2">
-            <a href="brand-suite.html" class="bg-gradient-to-r from-terracotta to-warmgold text-espresso-950 font-extrabold text-xs px-4 py-2.5 rounded-xl transition shadow flex items-center gap-1.5">
-              <i class="fa-solid fa-stamp"></i> Open Brand Suite
-            </a>
-          </div>
+      
+      <!-- Top CEO Sub-Navigation Tabs -->
+      <div class="glass-card rounded-2xl p-2.5 flex flex-wrap items-center justify-between gap-3 border border-espresso-600">
+        <div class="flex flex-wrap gap-2">
+          <button onclick="switchCeoTab('overview')" id="ceoTabBtn-overview" class="ceo-tab-btn px-4 py-2 rounded-xl text-xs font-bold bg-gradient-to-r from-terracotta to-warmgold text-espresso-950 shadow transition flex items-center gap-1.5">
+            <i class="fa-solid fa-gauge-high"></i> Executive Command
+          </button>
+          <button onclick="switchCeoTab('letterhead')" id="ceoTabBtn-letterhead" class="ceo-tab-btn px-4 py-2 rounded-xl text-xs font-semibold bg-espresso-900 text-stone-300 hover:text-linen hover:bg-espresso-800 transition flex items-center gap-1.5">
+            <i class="fa-solid fa-file-signature text-warmgold"></i> Letterhead &amp; Memo Studio
+          </button>
+          <button onclick="switchCeoTab('idstudio')" id="ceoTabBtn-idstudio" class="ceo-tab-btn px-4 py-2 rounded-xl text-xs font-semibold bg-espresso-900 text-stone-300 hover:text-linen hover:bg-espresso-800 transition flex items-center gap-1.5">
+            <i class="fa-solid fa-id-card text-terracotta"></i> Executive ID Studio
+          </button>
         </div>
+        <span class="text-[11px] text-warmgold font-mono px-3 py-1 bg-espresso-950 rounded-lg border border-espresso-700">
+          CAC BN: 9772940 • CEO Desk Active
+        </span>
+      </div>
 
+      <!-- TAB 1: EXECUTIVE OVERVIEW -->
+      <div id="ceoView-overview" class="ceo-tab-content space-y-6">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs">
           <div class="bg-espresso-900 border border-espresso-600 p-5 rounded-2xl space-y-2">
-            <span class="text-stone-400">GovTech Pilots</span>
+            <div class="flex justify-between items-center text-stone-400">
+              <span>GovTech Pipeline</span>
+              <i class="fa-solid fa-landmark text-terracotta"></i>
+            </div>
             <p class="text-2xl font-bold font-heading text-linen">4 Ministries</p>
-            <p class="text-[11px] text-emerald-400">Abuja &amp; Sokoto Deployments</p>
+            <p class="text-[11px] text-emerald-400">Registry Digitization Pilot Active</p>
           </div>
           <div class="bg-espresso-900 border border-espresso-600 p-5 rounded-2xl space-y-2">
-            <span class="text-stone-400">AI Automation</span>
-            <p class="text-2xl font-bold font-heading text-linen">12 Agents</p>
-            <p class="text-[11px] text-emerald-400">Zero-Latency Endpoints</p>
+            <div class="flex justify-between items-center text-stone-400">
+              <span>AI Automation Units</span>
+              <i class="fa-solid fa-brain text-warmgold"></i>
+            </div>
+            <p class="text-2xl font-bold font-heading text-linen">12 Pipelines</p>
+            <p class="text-[11px] text-stone-300">Local Neural Models Online</p>
           </div>
           <div class="bg-espresso-900 border border-espresso-600 p-5 rounded-2xl space-y-2">
-            <span class="text-stone-400">IoT Grid</span>
+            <div class="flex justify-between items-center text-stone-400">
+              <span>IoT Deployments</span>
+              <i class="fa-solid fa-microchip text-amber-400"></i>
+            </div>
             <p class="text-2xl font-bold font-heading text-linen">48 Units</p>
-            <p class="text-[11px] text-stone-300">Telemetry Active</p>
+            <p class="text-[11px] text-emerald-400">Telemetry Active</p>
           </div>
           <div class="bg-espresso-900 border border-espresso-600 p-5 rounded-2xl space-y-2">
-            <span class="text-stone-400">Digital Academy</span>
+            <div class="flex justify-between items-center text-stone-400">
+              <span>Digital Academy</span>
+              <i class="fa-solid fa-graduation-cap text-purple-400"></i>
+            </div>
             <p class="text-2xl font-bold font-heading text-linen">142 Trainees</p>
             <p class="text-[11px] text-stone-300">Cohort 2026-B</p>
           </div>
         </div>
 
-        <div class="space-y-3 pt-4 border-t border-espresso-700">
-          <h3 class="font-heading font-bold text-base text-linen">CEO Direct Memo Inbox &amp; Briefings</h3>
-          <div class="bg-espresso-950 border border-espresso-700 rounded-2xl p-4 overflow-x-auto">
+        <!-- CEO Escalation Inbox -->
+        <div class="glass-card rounded-3xl p-6 space-y-4 shadow-xl">
+          <div class="flex justify-between items-center border-b border-espresso-700 pb-3">
+            <div>
+              <h3 class="font-heading font-bold text-base text-linen">Escalated Department Briefings &amp; Inward Registry</h3>
+              <p class="text-xs text-stone-400">Urgent briefs transferred from Secretary or Dept Superiors.</p>
+            </div>
+            <button onclick="renderCeoInbox()" class="px-3 py-1.5 bg-espresso-800 border border-espresso-600 text-stone-300 hover:text-white rounded-xl text-xs font-bold">
+              Refresh
+            </button>
+          </div>
+          <div class="overflow-x-auto">
             <table class="w-full text-left text-xs text-linen">
-              <thead class="text-stone-400 uppercase text-[10px] border-b border-espresso-800">
+              <thead class="bg-espresso-950 text-stone-400 uppercase text-[10px] border-b border-espresso-800">
                 <tr>
-                  <th class="p-2.5">ID / Ref</th>
-                  <th class="p-2.5">Sender</th>
-                  <th class="p-2.5">Subject</th>
-                  <th class="p-2.5">Date</th>
-                  <th class="p-2.5 text-right">Action</th>
+                  <th class="p-3">Ref ID</th>
+                  <th class="p-3">Sender / Origin</th>
+                  <th class="p-3">Subject</th>
+                  <th class="p-3">Timestamp</th>
+                  <th class="p-3 text-right">Action</th>
                 </tr>
               </thead>
               <tbody id="ceoInboxBody" class="divide-y divide-espresso-800 text-[11px]">
@@ -265,8 +292,115 @@
           </div>
         </div>
       </div>
-    </div>
 
+      <!-- TAB 2: BRAND SUITE LETTERHEAD & SIGNED MEMO STUDIO -->
+      <div id="ceoView-letterhead" class="ceo-tab-content hidden space-y-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+          
+          <!-- Memo Controls -->
+          <div class="lg:col-span-5 glass-card rounded-3xl p-6 space-y-3 text-xs">
+            <h3 class="font-heading font-bold text-sm text-warmgold border-b border-espresso-700 pb-2">Draft Signed Executive Memo</h3>
+            <div>
+              <label class="block text-stone-400 mb-1">Reference Number *</label>
+              <input type="text" id="ceomemoRef" oninput="syncCeoMemoLive()" value="IDV/EXEC/2026/084" class="w-full bg-espresso-950 border border-espresso-600 rounded-xl p-2.5 text-linen font-mono">
+            </div>
+            <div>
+              <label class="block text-stone-400 mb-1">Target Recipient / Agency *</label>
+              <input type="text" id="ceomemoRecipient" oninput="syncCeoMemoLive()" value="The Executive Secretary, State Judicial Council" class="w-full bg-espresso-950 border border-espresso-600 rounded-xl p-2.5 text-linen">
+            </div>
+            <div>
+              <label class="block text-stone-400 mb-1">Subject Header *</label>
+              <input type="text" id="ceomemoSubject" oninput="syncCeoMemoLive()" value="PROPOSAL TRANSMITTAL: DIGITIZATION OF SHARI'A COURT REGISTRIES" class="w-full bg-espresso-950 border border-espresso-600 rounded-xl p-2.5 text-linen">
+            </div>
+            <div>
+              <label class="block text-stone-400 mb-1">Memo Body *</label>
+              <textarea id="ceomemoBody" oninput="syncCeoMemoLive()" rows="6" class="w-full bg-espresso-950 border border-espresso-600 rounded-xl p-2.5 text-linen">Following our technical consultations, iClick Digital Ventures is pleased to transmit this operational proposal for the full e-registry digitization framework.
+
+Our pilot rollout integrates local on-premise neural parsing with zero internet dependency, complying fully with judicial archiving security protocols.</textarea>
+            </div>
+            <button onclick="dispatchCeoMemoToSecretary()" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-terracotta to-warmgold text-espresso-950 font-bold uppercase tracking-wider transition shadow">
+              Transmit Signed Memo to Secretary Desk
+            </button>
+          </div>
+
+          <!-- Exact A4 Live Render Preview -->
+          <div class="lg:col-span-7 flex flex-col items-center">
+            <div id="ceoMemoRenderA4" class="w-full max-w-[550px] bg-[#FDFBF7] text-[#19110B] p-8 rounded-2xl shadow-2xl border border-stone-300 space-y-6 text-xs min-h-[680px] flex flex-col justify-between">
+              
+              <!-- Memo Header -->
+              <div class="border-b-2 border-[#19110B] pb-4 flex justify-between items-start">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10">
+                    <svg viewBox="0 0 100 100" class="w-full h-full">
+                      <rect x="20" y="20" width="26" height="26" rx="6" fill="#19110B"></rect>
+                      <rect x="54" y="20" width="26" height="26" rx="6" fill="#DFBA81"></rect>
+                      <rect x="20" y="54" width="26" height="26" rx="6" fill="#C28E68"></rect>
+                      <rect x="54" y="54" width="26" height="26" rx="6" fill="#19110B"></rect>
+                      <circle cx="50" cy="50" r="8" fill="#FDFBF7" stroke="#DFBA81" stroke-width="3"></circle>
+                    </svg>
+                  </div>
+                  <div>
+                    <h2 class="font-heading font-black text-sm tracking-tight">iClick Digital Ventures</h2>
+                    <p class="text-[9px] text-[#C28E68] font-bold uppercase">Executive Directorate • CAC BN: 9772940</p>
+                  </div>
+                </div>
+                <div class="text-right text-[8px] text-stone-600 font-mono">
+                  <p id="liveMemoRefDisplay">REF: IDV/EXEC/2026/084</p>
+                  <p>DATE: 27 AUG 2026</p>
+                </div>
+              </div>
+
+              <!-- Memo Content -->
+              <div class="space-y-3 flex-grow">
+                <div>
+                  <span class="text-[9px] text-stone-500 uppercase font-bold block">TO:</span>
+                  <p id="liveMemoRecipientDisplay" class="font-bold text-xs text-[#19110B]">The Executive Secretary, State Judicial Council</p>
+                </div>
+                <div class="pt-2">
+                  <span class="text-[9px] text-stone-500 uppercase font-bold block">SUBJECT:</span>
+                  <h4 id="liveMemoSubjectDisplay" class="font-heading font-black text-xs text-[#19110B] uppercase">PROPOSAL TRANSMITTAL: DIGITIZATION OF SHARI'A COURT REGISTRIES</h4>
+                </div>
+                <p id="liveMemoBodyDisplay" class="text-[10.5px] leading-relaxed text-stone-800 whitespace-pre-wrap pt-2">
+Following our technical consultations, iClick Digital Ventures is pleased to transmit this operational proposal for the full e-registry digitization framework.
+
+Our pilot rollout integrates local on-premise neural parsing with zero internet dependency, complying fully with judicial archiving security protocols.
+                </p>
+              </div>
+
+              <!-- Memo Sign-Off -->
+              <div class="border-t border-stone-300 pt-4 flex justify-between items-end">
+                <div class="text-[8px] text-stone-500">
+                  <p>HQ: No. 12 Sultan Abubakar Road, Sokoto</p>
+                  <p>Abuja: Central Business District, FCT</p>
+                  <p>Web: www.iclickdigitalventures.com</p>
+                </div>
+                <div class="text-right">
+                  <div class="w-24 h-8 border-b border-[#C28E68] flex items-end justify-center pb-1 ml-auto">
+                    <img class="max-h-7 max-w-full object-contain" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 35'><text x='5' y='25' fill='%2319110B' font-family='cursive' font-size='18' font-style='italic'>M.Y. Ibrahim</text></svg>" alt="CEO Signature">
+                  </div>
+                  <p class="font-bold text-[9px] mt-0.5">Muhammad Yasin Ibrahim</p>
+                  <p class="text-[8px] text-[#C28E68] uppercase font-semibold">Chief Executive Officer</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 3: EXECUTIVE & STAFF ID STUDIO -->
+      <div id="ceoView-idstudio" class="ceo-tab-content hidden space-y-6">
+        <div class="glass-card rounded-3xl p-6 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div>
+            <h3 class="font-heading font-bold text-base text-linen">Executive Dual-Sided ID Generator</h3>
+            <p class="text-xs text-stone-300">Generate executive badges or oversee issued credentials directly.</p>
+          </div>
+          <button onclick="openSecIdGenModal(null)" class="px-4 py-2.5 bg-gradient-to-r from-terracotta to-warmgold text-espresso-950 font-bold rounded-xl text-xs uppercase tracking-wider shadow">
+            <i class="fa-solid fa-plus mr-1"></i> Open Live ID Designer
+          </button>
+        </div>
+      </div>
+
+    </div>
     <!-- 2. SECRETARY WORKSPACE -->
     <div id="workspace-secretary" class="role-workspace hidden space-y-8">
       <section class="space-y-4">
@@ -534,6 +668,60 @@
   </footer>
   <!-- ================= MASTER ENGINE ================= -->
   <script>
+
+    // CEO Sub-Tab Navigator
+    function switchCeoTab(tabKey) {
+      document.querySelectorAll('.ceo-tab-content').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.ceo-tab-btn').forEach(btn => {
+        btn.classList.remove('bg-gradient-to-r', 'from-terracotta', 'to-warmgold', 'text-espresso-950');
+        btn.classList.add('bg-espresso-900', 'text-stone-300');
+      });
+
+      const activeView = document.getElementById(`ceoView-${tabKey}`);
+      const activeBtn = document.getElementById(`ceoTabBtn-${tabKey}`);
+
+      if (activeView) activeView.classList.remove('hidden');
+      if (activeBtn) {
+        activeBtn.classList.remove('bg-espresso-900', 'text-stone-300');
+        activeBtn.classList.add('bg-gradient-to-r', 'from-terracotta', 'to-warmgold', 'text-espresso-950');
+      }
+    }
+
+    // Live Memo Rendering
+    function syncCeoMemoLive() {
+      document.getElementById('liveMemoRefDisplay').innerText = `REF: ${document.getElementById('ceomemoRef').value}`;
+      document.getElementById('liveMemoRecipientDisplay').innerText = document.getElementById('ceomemoRecipient').value;
+      document.getElementById('liveMemoSubjectDisplay').innerText = document.getElementById('ceomemoSubject').value;
+      document.getElementById('liveMemoBodyDisplay').innerText = document.getElementById('ceomemoBody').value;
+    }
+
+    // Transmit Signed Memo directly to Secretary Desk Inbox
+    function dispatchCeoMemoToSecretary() {
+      const renderEl = document.getElementById('ceoMemoRenderA4');
+      const ref = document.getElementById('ceomemoRef').value;
+      const recipient = document.getElementById('ceomemoRecipient').value;
+      const subject = document.getElementById('ceomemoSubject').value;
+
+      html2canvas(renderEl, { scale: 2.5, backgroundColor: '#FDFBF7' }).then(canvas => {
+        const sheetImg = canvas.toDataURL('image/png');
+
+        let secInbox = JSON.parse(localStorage.getItem('iclick_sec_inbox') || '[]');
+        secInbox.unshift({
+          id: ref,
+          type: 'Executive Memo',
+          ref: ref,
+          recipient: recipient,
+          subject: subject,
+          date: new Date().toLocaleDateString('en-GB'),
+          renderedSheet: sheetImg,
+          sheetWidth: canvas.width,
+          sheetHeight: canvas.height
+        });
+        localStorage.setItem('iclick_sec_inbox', JSON.stringify(secInbox));
+
+        alert(`✓ Signed Memo ${ref} transmitted directly to Secretary Desk for dispatch!`);
+      });
+                                                 }
     const SECURITY_ACCESS_KEY = "93f249e4-0f14-4643-8e32-4af9619ffe32";
     let activeResetOtp = null;
     let resetOtpExpiry = null;
