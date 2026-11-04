@@ -6,19 +6,38 @@
   <title>Case Studies & Portfolio | iClick Digital Ventures</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Chart.js CDN for interactive visual analytics -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <script>
-    tailwind.config = { theme: { extend: { fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] }, colors: { brand: { 50: '#f9f8f6', 100: '#f0ece4', 200: '#e2d7c8', 300: '#dfba81', 400: '#c28e68', 600: '#3d271b', 800: '#261911', 900: '#120b07' } } } } }
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+          colors: {
+            brand: {
+              50: '#f9f8f6', 100: '#f0ece4', 200: '#e2d7c8', 300: '#d4a373', 400: '#b87d52', 600: '#8c5842', 800: '#4a2e2b', 900: '#2d1810', 950: '#1a0e0a'
+            }
+          }
+        }
+      }
+    }
   </script>
-  <style> body { font-family: 'Plus Jakarta Sans', sans-serif; } .glass-card { background: #261911; border: 1px solid rgba(223, 186, 129, 0.2); } </style>
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .glass-card { background: #2d1810; border: 1px solid rgba(212, 163, 115, 0.2); }
+  </style>
 </head>
 <body class="bg-brand-50 text-brand-900 min-h-screen flex flex-col antialiased">
-  <nav class="bg-brand-50/95 backdrop-blur-md sticky top-0 z-[100] border-b border-brand-200 shadow-sm transition-all duration-300">
+  
+  <!-- Sticky Navigation Bar -->
+  <nav class="sticky top-0 z-50 bg-brand-50/95 backdrop-blur-md border-b border-brand-200 shadow-sm transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
-      <a href="index.html" class="flex items-center space-x-3"><img src="images/iclick-full-logo-dark (2).svg" alt="iClick Digital Ventures Logo" class="h-9 w-auto object-contain"></a>
+      <a href="index.html" class="flex items-center space-x-3">
+        <img src="images/iclick-full-logo-dark (2).svg" alt="iClick Digital Ventures Logo" class="h-9 w-auto object-contain">
+      </a>
       <div class="hidden md:flex items-center space-x-6 text-sm font-medium text-brand-800">
         <a href="index.html" class="hover:text-brand-300 transition">Home</a>
         <a href="services.html" class="hover:text-brand-300 transition">Services</a>
@@ -41,61 +60,71 @@
     <div class="max-w-4xl mx-auto px-4">
       <span class="px-4 py-1.5 rounded-full bg-brand-200 text-brand-800 text-xs font-semibold uppercase tracking-wider inline-block mb-4">Proven Impact & Executed Projects</span>
       <h1 class="text-4xl sm:text-6xl font-black text-brand-900">Demonstrated Systems Deployments</h1>
-      <p class="text-xs sm:text-sm text-brand-700 max-w-2xl mx-auto mt-4 leading-relaxed">Explore how our enterprise architectures deliver measurable operational efficiency, data intelligence, and infrastructure resilience.</p>
+      <p class="text-xs sm:text-sm text-brand-700 max-w-2xl mx-auto mt-4 leading-relaxed">
+        Explore how our enterprise architectures deliver measurable operational efficiency, governance intelligence, and automated administrative control.
+      </p>
     </div>
   </header>
 
   <main class="max-w-6xl mx-auto px-4 py-16 space-y-12 flex-1 w-full">
     
-    <!-- Case 1: GovTech -->
+    <!-- Case 1: GovTech with Chart -->
     <div class="glass-card text-brand-50 rounded-3xl p-8 sm:p-10 space-y-6">
       <div class="flex flex-wrap items-center justify-between gap-2">
-        <span class="px-3 py-1 rounded-full bg-brand-900 text-brand-300 text-[11px] font-mono font-bold uppercase border border-brand-800">Pillar 01 • GovTech</span>
+        <span class="px-3 py-1 rounded-full bg-brand-950 text-brand-300 text-[11px] font-mono font-bold uppercase border border-brand-800">Pillar 01 • GovTech</span>
         <span class="text-xs text-brand-300 font-mono">Judiciary & MDA Registries</span>
       </div>
       <div>
         <h2 class="text-2xl font-extrabold text-brand-50">Court Registry Archival Digitization</h2>
-        <p class="text-xs sm:text-sm text-brand-200 mt-2">Modernized high-volume court registries, replacing manual physical tracking with digital optical indexing.</p>
+        <p class="text-xs sm:text-sm text-brand-200 leading-relaxed mt-2">
+          Modernized high-volume court registries with structural document conversion and digital operations dashboards, reducing file retrieval latency from 45 minutes down to under 15 seconds.
+        </p>
       </div>
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-        <div class="lg:col-span-7 bg-brand-900/70 p-5 rounded-2xl border border-brand-800/80">
+        <div class="lg:col-span-7 bg-brand-950/70 p-5 rounded-2xl border border-brand-800/80">
           <span class="text-[11px] font-bold text-brand-300 font-mono block mb-3">File Retrieval Latency Comparison (Minutes)</span>
-          <div class="h-48 relative"><canvas id="govtechChart"></canvas></div>
+          <div class="h-48 relative">
+            <canvas id="govtechChart"></canvas>
+          </div>
         </div>
         <div class="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3 font-mono text-xs">
-          <div class="p-3.5 bg-brand-900/60 rounded-xl border border-brand-800/80">
+          <div class="p-3.5 bg-brand-950/60 rounded-xl border border-brand-800/80">
             <span class="text-brand-300 font-bold block text-base">99.8%</span>
             <span class="text-brand-200 text-[11px]">Archival Accuracy</span>
           </div>
-          <div class="p-3.5 bg-brand-900/60 rounded-xl border border-brand-800/80">
-            <span class="text-brand-300 font-bold block text-base">< 15 Sec</span>
+          <div class="p-3.5 bg-brand-950/60 rounded-xl border border-brand-800/80">
+            <span class="text-brand-300 font-bold block text-base">&lt; 15 Sec</span>
             <span class="text-brand-200 text-[11px]">Digital Retrieval Time</span>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Case 2: Software Development -->
+    <!-- Case 2: Software Development with Chart -->
     <div class="glass-card text-brand-50 rounded-3xl p-8 sm:p-10 space-y-6">
       <div class="flex flex-wrap items-center justify-between gap-2">
-        <span class="px-3 py-1 rounded-full bg-brand-900 text-brand-300 text-[11px] font-mono font-bold uppercase border border-brand-800">Pillar 02 • Software Architecture</span>
+        <span class="px-3 py-1 rounded-full bg-brand-950 text-brand-300 text-[11px] font-mono font-bold uppercase border border-brand-800">Pillar 02 • Software Development</span>
         <span class="text-xs text-brand-300 font-mono">Enterprise Toolchains</span>
       </div>
       <div>
         <h2 class="text-2xl font-extrabold text-brand-50">Enterprise Staff Portals & Web Deployments</h2>
-        <p class="text-xs sm:text-sm text-brand-200 mt-2">Bypassed legacy manual coding by deploying scalable low-code structural architectures, reducing project go-live timelines dramatically.</p>
+        <p class="text-xs sm:text-sm text-brand-200 leading-relaxed mt-2">
+          Designed and scaled internal governance portals leveraging low-code structural architectures. Delivered robust environments that allow administrative staff to manage organizational data without handling manual codebase updates.
+        </p>
       </div>
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-        <div class="lg:col-span-7 bg-brand-900/70 p-5 rounded-2xl border border-brand-800/80">
-          <span class="text-[11px] font-bold text-brand-300 font-mono block mb-3">System Deployment Timeline (Weeks)</span>
-          <div class="h-48 relative"><canvas id="softwareChart"></canvas></div>
+        <div class="lg:col-span-7 bg-brand-950/70 p-5 rounded-2xl border border-brand-800/80">
+          <span class="text-[11px] font-bold text-brand-300 font-mono block mb-3">Weekly Maintenance Coding Hours Required</span>
+          <div class="h-48 relative">
+            <canvas id="softwareChart"></canvas>
+          </div>
         </div>
         <div class="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3 font-mono text-xs">
-          <div class="p-3.5 bg-brand-900/60 rounded-xl border border-brand-800/80">
+          <div class="p-3.5 bg-brand-950/60 rounded-xl border border-brand-800/80">
             <span class="text-brand-300 font-bold block text-base">Low-Code</span>
             <span class="text-brand-200 text-[11px]">Deployment Infrastructure</span>
           </div>
-          <div class="p-3.5 bg-brand-900/60 rounded-xl border border-brand-800/80">
+          <div class="p-3.5 bg-brand-950/60 rounded-xl border border-brand-800/80">
             <span class="text-brand-300 font-bold block text-base">Zero</span>
             <span class="text-brand-200 text-[11px]">Manual Coding Required</span>
           </div>
@@ -103,27 +132,31 @@
       </div>
     </div>
 
-    <!-- Case 3: AI & Automation -->
+    <!-- Case 3: AI Automation with Chart -->
     <div class="glass-card text-brand-50 rounded-3xl p-8 sm:p-10 space-y-6">
       <div class="flex flex-wrap items-center justify-between gap-2">
-        <span class="px-3 py-1 rounded-full bg-brand-900 text-brand-300 text-[11px] font-mono font-bold uppercase border border-brand-800">Pillar 03 • AI & Automation</span>
+        <span class="px-3 py-1 rounded-full bg-brand-950 text-brand-300 text-[11px] font-mono font-bold uppercase border border-brand-800">Pillar 03 • AI & Automation</span>
         <span class="text-xs text-brand-300 font-mono">Enterprise Operations</span>
       </div>
       <div>
         <h2 class="text-2xl font-extrabold text-brand-50">Automated Multi-Channel CRM Pipelines</h2>
-        <p class="text-xs sm:text-sm text-brand-200 mt-2">Engineered integrated webhook systems synchronizing customer communications, enabling automated ticket resolution without human entry.</p>
+        <p class="text-xs sm:text-sm text-brand-200 leading-relaxed mt-2">
+          Engineered integrated webhook systems synchronizing customer communications, automated ticketing, and structured database pipelines to resolve client inquiries autonomously.
+        </p>
       </div>
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-        <div class="lg:col-span-7 bg-brand-900/70 p-5 rounded-2xl border border-brand-800/80">
+        <div class="lg:col-span-7 bg-brand-950/70 p-5 rounded-2xl border border-brand-800/80">
           <span class="text-[11px] font-bold text-brand-300 font-mono block mb-3">Weekly Inquiries Handled Autonomously (%)</span>
-          <div class="h-48 relative"><canvas id="automationChart"></canvas></div>
+          <div class="h-48 relative">
+            <canvas id="automationChart"></canvas>
+          </div>
         </div>
         <div class="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3 font-mono text-xs">
-          <div class="p-3.5 bg-brand-900/60 rounded-xl border border-brand-800/80">
+          <div class="p-3.5 bg-brand-950/60 rounded-xl border border-brand-800/80">
             <span class="text-brand-300 font-bold block text-base">70%</span>
             <span class="text-brand-200 text-[11px]">Reduction in Response Time</span>
           </div>
-          <div class="p-3.5 bg-brand-900/60 rounded-xl border border-brand-800/80">
+          <div class="p-3.5 bg-brand-950/60 rounded-xl border border-brand-800/80">
             <span class="text-brand-300 font-bold block text-base">24/7</span>
             <span class="text-brand-200 text-[11px]">Uninterrupted Execution</span>
           </div>
@@ -131,34 +164,38 @@
       </div>
     </div>
 
-    <!-- Case 4: Digital Academy -->
+    <!-- Case 4: Digital Academy with Chart -->
     <div class="glass-card text-brand-50 rounded-3xl p-8 sm:p-10 space-y-6">
       <div class="flex flex-wrap items-center justify-between gap-2">
-        <span class="px-3 py-1 rounded-full bg-brand-900 text-brand-300 text-[11px] font-mono font-bold uppercase border border-brand-800">Pillar 04 • Digital Academy</span>
+        <span class="px-3 py-1 rounded-full bg-brand-950 text-brand-300 text-[11px] font-mono font-bold uppercase border border-brand-800">Pillar 04 • Digital Academy</span>
         <span class="text-xs text-brand-300 font-mono">Capacity Building</span>
       </div>
       <div>
         <h2 class="text-2xl font-extrabold text-brand-50">Corporate Upskilling & Tech Administration</h2>
-        <p class="text-xs sm:text-sm text-brand-200 mt-2">Orchestrated structured educational cohorts that transformed operational personnel into proficient digital administrators.</p>
+        <p class="text-xs sm:text-sm text-brand-200 leading-relaxed mt-2">
+          Orchestrated structured educational cohorts that transformed operational personnel into proficient digital administrators, ensuring the sustainability of deployed enterprise environments.
+        </p>
       </div>
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-        <div class="lg:col-span-7 bg-brand-900/70 p-5 rounded-2xl border border-brand-800/80">
-          <span class="text-[11px] font-bold text-brand-300 font-mono block mb-3">Staff Digital Proficiency Rating (Out of 100)</span>
-          <div class="h-48 relative"><canvas id="academyChart"></canvas></div>
+        <div class="lg:col-span-7 bg-brand-950/70 p-5 rounded-2xl border border-brand-800/80">
+          <span class="text-[11px] font-bold text-brand-300 font-mono block mb-3">Trainees Certified Per Cohort</span>
+          <div class="h-48 relative">
+            <canvas id="academyChart"></canvas>
+          </div>
         </div>
         <div class="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3 font-mono text-xs">
-          <div class="p-3.5 bg-brand-900/60 rounded-xl border border-brand-800/80">
-            <span class="text-brand-300 font-bold block text-base">Systems</span>
-            <span class="text-brand-200 text-[11px]">Administration Training</span>
+          <div class="p-3.5 bg-brand-950/60 rounded-xl border border-brand-800/80">
+            <span class="text-brand-300 font-bold block text-base">Targeted</span>
+            <span class="text-brand-200 text-[11px]">Systems Training</span>
           </div>
-          <div class="p-3.5 bg-brand-900/60 rounded-xl border border-brand-800/80">
-            <span class="text-brand-300 font-bold block text-base">Cohorts</span>
-            <span class="text-brand-200 text-[11px]">Intensive Learning Pathways</span>
+          <div class="p-3.5 bg-brand-950/60 rounded-xl border border-brand-800/80">
+            <span class="text-brand-300 font-bold block text-base">Strategic</span>
+            <span class="text-brand-200 text-[11px]">Workforce Empowerment</span>
           </div>
         </div>
       </div>
     </div>
-
+    
   </main>
 
   <footer class="bg-brand-900 border-t border-brand-800 text-xs text-brand-300 py-10 mt-auto">
@@ -166,6 +203,15 @@
       <div>
         <span class="font-bold text-brand-50 text-sm">iClick Digital Ventures</span>
         <p class="text-[11px] text-brand-400 mt-0.5">Main Office: Sokoto State • Branch Office: Abuja, FCT, Nigeria</p>
+        <p class="text-[10px] text-brand-500 mt-1">CAC Reg No: BN 9772940 • SCUML & EFCC Compliant</p>
+      </div>
+      <div class="flex items-center space-x-4">
+        <a href="https://www.facebook.com/IclickDigitalventures" target="_blank" rel="noopener noreferrer" class="p-2 rounded-xl bg-brand-950 hover:bg-brand-800 text-brand-300 hover:text-white transition flex items-center gap-1.5">
+          <i data-lucide="facebook" class="w-4 h-4"></i> <span class="text-[11px] font-semibold">Facebook</span>
+        </a>
+        <a href="https://www.instagram.com/iclickdigitalventures" target="_blank" rel="noopener noreferrer" class="p-2 rounded-xl bg-brand-950 hover:bg-brand-800 text-brand-300 hover:text-white transition flex items-center gap-1.5">
+          <i data-lucide="instagram" class="w-4 h-4"></i> <span class="text-[11px] font-semibold">Instagram</span>
+        </a>
       </div>
       <div class="flex flex-wrap justify-center gap-6 text-[11px]">
         <a href="index.html" class="hover:text-brand-100 transition">Home</a>
@@ -179,25 +225,80 @@
   </footer>
 
   <script>
-    lucide.createIcons(); function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('hidden'); }
-    
-    // Initialize All 4 Interactive Charts
+    lucide.createIcons();
+    function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('hidden'); }
+
+    // Initialize Interactive Charts for all 4 Pillars
     window.addEventListener('DOMContentLoaded', () => {
-      // 1. GovTech Chart
-      const ctxGov = document.getElementById('govtechChart').getContext('2d');
-      new Chart(ctxGov, { type: 'bar', data: { labels: ['Legacy Physical Archive', 'iClick Systems Tracker'], datasets: [{ label: 'Retrieval Time (Minutes)', data: [45, 0.25], backgroundColor: ['#3d271b', '#dfba81'], borderRadius: 8, borderWidth: 0 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, grid: { color: 'rgba(223, 186, 129, 0.1)' }, ticks: { color: '#e2d7c8', font: { size: 10 } } }, x: { grid: { display: false }, ticks: { color: '#e2d7c8', font: { size: 10 } } } } });
       
-      // 2. Software Architecture Chart
+      // 1. GovTech Latency Chart
+      const ctxGov = document.getElementById('govtechChart').getContext('2d');
+      new Chart(ctxGov, {
+        type: 'bar',
+        data: {
+          labels: ['Legacy Physical Archive', 'iClick Systems Tracker'],
+          datasets: [{
+            label: 'Retrieval Time (Minutes)',
+            data: [45, 0.25],
+            backgroundColor: ['#4a2e2b', '#d4a373'],
+            borderRadius: 8,
+            borderWidth: 0
+          }]
+        },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, grid: { color: 'rgba(212, 163, 115, 0.1)' }, ticks: { color: '#e2d7c8', font: { size: 10 } } }, x: { grid: { display: false }, ticks: { color: '#e2d7c8', font: { size: 10 } } } } }
+      });
+
+      // 2. Software Development (Zero Code Chart)
       const ctxSoft = document.getElementById('softwareChart').getContext('2d');
-      new Chart(ctxSoft, { type: 'bar', data: { labels: ['Manual Legacy Coding', 'iClick Low-Code Deployment'], datasets: [{ label: 'Timeline (Weeks)', data: [16, 2], backgroundColor: ['#3d271b', '#dfba81'], borderRadius: 8, borderWidth: 0 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, grid: { color: 'rgba(223, 186, 129, 0.1)' }, ticks: { color: '#e2d7c8', font: { size: 10 } } }, x: { grid: { display: false }, ticks: { color: '#e2d7c8', font: { size: 10 } } } } });
+      new Chart(ctxSoft, {
+        type: 'doughnut',
+        data: {
+          labels: ['Legacy Manual Coding', 'iClick Low-Code Toolchains'],
+          datasets: [{
+            data: [40, 0],
+            backgroundColor: ['#4a2e2b', '#d4a373'],
+            borderWidth: 0
+          }]
+        },
+        options: { responsive: true, maintainAspectRatio: false, cutout: '75%', plugins: { legend: { position: 'right', labels: { color: '#e2d7c8', font: { size: 11 } } } } }
+      });
 
-      // 3. Automation Chart
+      // 3. Automation Growth Chart
       const ctxAuto = document.getElementById('automationChart').getContext('2d');
-      new Chart(ctxAuto, { type: 'line', data: { labels: ['Wk 1', 'Wk 2', 'Wk 3', 'Wk 4', 'Wk 5', 'Wk 6'], datasets: [{ label: 'Autonomous Resolutions (%)', data: [20, 38, 55, 72, 84, 91], borderColor: '#dfba81', backgroundColor: 'rgba(223, 186, 129, 0.15)', fill: true, tension: 0.4, pointRadius: 4 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, max: 100, grid: { color: 'rgba(223, 186, 129, 0.1)' }, ticks: { color: '#e2d7c8', font: { size: 10 } } }, x: { grid: { display: false }, ticks: { color: '#e2d7c8', font: { size: 10 } } } } });
+      new Chart(ctxAuto, {
+        type: 'line',
+        data: {
+          labels: ['Wk 1', 'Wk 2', 'Wk 3', 'Wk 4', 'Wk 5', 'Wk 6'],
+          datasets: [{
+            label: 'Autonomous Resolutions (%)',
+            data: [20, 38, 55, 72, 84, 91],
+            borderColor: '#d4a373',
+            backgroundColor: 'rgba(212, 163, 115, 0.15)',
+            fill: true,
+            tension: 0.4,
+            pointRadius: 4
+          }]
+        },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, max: 100, grid: { color: 'rgba(212, 163, 115, 0.1)' }, ticks: { color: '#e2d7c8', font: { size: 10 } } }, x: { grid: { display: false }, ticks: { color: '#e2d7c8', font: { size: 10 } } } } }
+      });
 
-      // 4. Academy Chart
+      // 4. Academy Growth Chart
       const ctxAcad = document.getElementById('academyChart').getContext('2d');
-      new Chart(ctxAcad, { type: 'bar', data: { labels: ['Pre-Bootcamp', 'Post-Graduation'], datasets: [{ label: 'Proficiency Score', data: [35, 92], backgroundColor: ['#3d271b', '#dfba81'], borderRadius: 8, borderWidth: 0 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, max: 100, grid: { color: 'rgba(223, 186, 129, 0.1)' }, ticks: { color: '#e2d7c8', font: { size: 10 } } }, x: { grid: { display: false }, ticks: { color: '#e2d7c8', font: { size: 10 } } } } });
+      new Chart(ctxAcad, {
+        type: 'bar',
+        data: {
+          labels: ['Cohort 1', 'Cohort 2', 'Cohort 3', 'Cohort 4'],
+          datasets: [{
+            label: 'Trainees Certified',
+            data: [15, 28, 45, 65],
+            backgroundColor: '#d4a373',
+            borderRadius: 6,
+            borderWidth: 0
+          }]
+        },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, grid: { color: 'rgba(212, 163, 115, 0.1)' }, ticks: { color: '#e2d7c8', font: { size: 10 } } }, x: { grid: { display: false }, ticks: { color: '#e2d7c8', font: { size: 10 } } } } }
+      });
+      
     });
   </script>
 </body>
