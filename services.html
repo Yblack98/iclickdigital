@@ -29,7 +29,9 @@
   </style>
 </head>
 <body class="bg-brand-50 text-brand-900 min-h-screen flex flex-col antialiased">
-  <nav class="bg-brand-50/90 backdrop-blur-md sticky top-0 z-50 border-b border-brand-200 shadow-sm">
+  
+  <!-- Sticky Navigation Bar -->
+  <nav class="sticky top-0 z-50 bg-brand-50/95 backdrop-blur-md border-b border-brand-200 shadow-sm transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
       <a href="index.html" class="flex items-center space-x-3">
         <img src="images/iclick-full-logo-dark (2).svg" alt="iClick Digital Ventures Logo" class="h-9 w-auto object-contain">
@@ -148,14 +150,14 @@
       </div>
     </div>
 
-    <!-- 4. Digital Academy -->
+    <!-- 4. Digital Academy (Modified to link to Academy Page) -->
     <div id="academy" class="glass-card text-brand-50 rounded-3xl p-8 sm:p-10 space-y-6">
       <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
           <span class="px-3 py-1 rounded-full bg-brand-950 text-brand-300 text-[10px] font-mono font-bold uppercase border border-brand-800">Pillar 04 • Capacity Building</span>
           <h2 class="text-2xl sm:text-3xl font-bold text-brand-50 mt-2">iClick Digital Academy</h2>
         </div>
-        <button onclick="openServiceModal('Digital Academy & Training')" class="px-5 py-3 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold text-xs uppercase transition whitespace-nowrap shadow-md">Request Service Engagement →</button>
+        <a href="academy.html" class="px-5 py-3 rounded-xl bg-brand-300 hover:bg-brand-400 text-brand-950 font-bold text-xs uppercase transition whitespace-nowrap shadow-md text-center">Apply to Academy →</a>
       </div>
       <p class="text-xs sm:text-sm text-brand-200 leading-relaxed">
         Building technical capacity and structural digital literacy to meet modern workforce demands across the public and private sectors.
